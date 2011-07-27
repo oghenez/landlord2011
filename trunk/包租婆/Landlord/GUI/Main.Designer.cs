@@ -28,512 +28,643 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.基本设定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.数据备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.数据还原ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.数据初始化ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.源房ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.水电气核查ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.新增源房ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
-            this.涨租协定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.源房管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.源房缴费明细ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.客房ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.日常损耗ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
-            this.新增租户ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.客房管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.客房收租明细ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.装修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.装修分类ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.装修明细ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.提醒ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.提醒设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.提醒管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.数据报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.辅助工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.计算器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.电子地图ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.网上银行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.生活助手ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.使用手册ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.注册产品ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.检查更新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.用户反馈ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.components = new System.ComponentModel.Container();
+            this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
+            this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem9 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuSeparatorItem1 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
+            this.radMenuItem10 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem11 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem12 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem2 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem13 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem14 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuSeparatorItem2 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
+            this.radMenuItem15 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuSeparatorItem3 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
+            this.radMenuItem16 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuSeparatorItem4 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
+            this.radMenuItem17 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem18 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem3 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem19 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem20 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuSeparatorItem5 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
+            this.radMenuItem21 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuSeparatorItem6 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
+            this.radMenuItem22 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem23 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem4 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem24 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem25 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem5 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem26 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuSeparatorItem7 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
+            this.radMenuItem27 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem28 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem6 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem37 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem38 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem39 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem7 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem29 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem30 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuSeparatorItem8 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
+            this.radMenuItem31 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem32 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem8 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem33 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuSeparatorItem9 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
+            this.radMenuItem34 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem35 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuSeparatorItem10 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
+            this.radMenuItem36 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem40 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radOffice2007ScreenTipElement1 = new Telerik.WinControls.UI.RadOffice2007ScreenTipElement();
+            this.radToolStrip1 = new Telerik.WinControls.UI.RadToolStrip();
+            this.radToolStripElement1 = new Telerik.WinControls.UI.RadToolStripElement();
+            this.radToolStripItem1 = new Telerik.WinControls.UI.RadToolStripItem();
+            this.radButtonElement1 = new Telerik.WinControls.UI.RadButtonElement();
+            this.radButtonElement2 = new Telerik.WinControls.UI.RadButtonElement();
+            this.radToolStripItem2 = new Telerik.WinControls.UI.RadToolStripItem();
+            this.radButtonElement3 = new Telerik.WinControls.UI.RadButtonElement();
+            this.radButtonElement4 = new Telerik.WinControls.UI.RadButtonElement();
+            this.radToolStripItem3 = new Telerik.WinControls.UI.RadToolStripItem();
+            this.radButtonElement5 = new Telerik.WinControls.UI.RadButtonElement();
+            this.radToolStripItem4 = new Telerik.WinControls.UI.RadToolStripItem();
+            this.radButtonElement6 = new Telerik.WinControls.UI.RadButtonElement();
+            this.radStatusStrip1 = new Telerik.WinControls.UI.RadStatusStrip();
+            this.radLabelElement1 = new Telerik.WinControls.UI.RadLabelElement();
+            this.radLabelElement2 = new Telerik.WinControls.UI.RadLabelElement();
             this.windows7Theme1 = new Telerik.WinControls.Themes.Windows7Theme();
-            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.源房缴费ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.客房收租ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.radTreeView1 = new Telerik.WinControls.UI.RadTreeView();
+            this.bindingSourceTreeView = new System.Windows.Forms.BindingSource(this.components);
+            this.radSplitContainer1 = new Telerik.WinControls.UI.RadSplitContainer();
+            this.splitPanel1 = new Telerik.WinControls.UI.SplitPanel();
+            this.splitPanel2 = new Telerik.WinControls.UI.SplitPanel();
+            ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radToolStrip1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTreeView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTreeView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer1)).BeginInit();
+            this.radSplitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitPanel1)).BeginInit();
+            this.splitPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitPanel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel2,
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(784, 22);
-            this.statusStrip1.TabIndex = 0;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(79, 17);
-            this.toolStripStatusLabel2.Text = "版本：V1.0.0";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(690, 17);
-            this.toolStripStatusLabel1.Spring = true;
-            this.toolStripStatusLabel1.Text = "武汉创方科技有限公司";
-            this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton7,
-            this.toolStripButton6,
-            this.toolStripSeparator1,
-            this.toolStripButton5,
-            this.toolStripButton4,
-            this.toolStripSeparator2,
-            this.toolStripButton3,
-            this.toolStripSeparator3,
-            this.toolStripButton2});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 25);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(784, 31);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.系统ToolStripMenuItem,
-            this.源房ToolStripMenuItem,
-            this.客房ToolStripMenuItem,
-            this.装修ToolStripMenuItem,
-            this.提醒ToolStripMenuItem,
-            this.数据报表ToolStripMenuItem,
-            this.辅助工具ToolStripMenuItem,
-            this.帮助ToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 25);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
+            // radMenu1
             // 
-            // 系统ToolStripMenuItem
+            this.radMenu1.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem1,
+            this.radMenuItem2,
+            this.radMenuItem3,
+            this.radMenuItem4,
+            this.radMenuItem5,
+            this.radMenuItem6,
+            this.radMenuItem7,
+            this.radMenuItem8});
+            this.radMenu1.Location = new System.Drawing.Point(0, 0);
+            this.radMenu1.Name = "radMenu1";
+            this.radMenu1.Size = new System.Drawing.Size(792, 24);
+            this.radMenu1.TabIndex = 4;
+            this.radMenu1.Text = "radMenu1";
             // 
-            this.系统ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.基本设定ToolStripMenuItem,
-            this.toolStripSeparator7,
-            this.数据备份ToolStripMenuItem,
-            this.数据还原ToolStripMenuItem,
-            this.数据初始化ToolStripMenuItem});
-            this.系统ToolStripMenuItem.Name = "系统ToolStripMenuItem";
-            this.系统ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.系统ToolStripMenuItem.Text = "系统";
+            // radMenuItem1
             // 
-            // 基本设定ToolStripMenuItem
-            // 
-            this.基本设定ToolStripMenuItem.Name = "基本设定ToolStripMenuItem";
-            this.基本设定ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.基本设定ToolStripMenuItem.Text = "基本设定";
-            // 
-            // toolStripSeparator7
+            this.radMenuItem1.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem9,
+            this.radMenuSeparatorItem1,
+            this.radMenuItem10,
+            this.radMenuItem11,
+            this.radMenuItem12});
+            this.radMenuItem1.Name = "radMenuItem1";
+            this.radMenuItem1.Text = "系统";
             // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(133, 6);
+            // radMenuItem9
             // 
-            // 数据备份ToolStripMenuItem
+            this.radMenuItem9.Name = "radMenuItem9";
+            this.radMenuItem9.Text = "基本设定";
             // 
-            this.数据备份ToolStripMenuItem.Name = "数据备份ToolStripMenuItem";
-            this.数据备份ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.数据备份ToolStripMenuItem.Text = "数据备份";
+            // radMenuSeparatorItem1
             // 
-            // 数据还原ToolStripMenuItem
+            this.radMenuSeparatorItem1.Name = "radMenuSeparatorItem1";
+            this.radMenuSeparatorItem1.Text = "radMenuSeparatorItem1";
             // 
-            this.数据还原ToolStripMenuItem.Name = "数据还原ToolStripMenuItem";
-            this.数据还原ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.数据还原ToolStripMenuItem.Text = "数据还原";
+            // radMenuItem10
             // 
-            // 数据初始化ToolStripMenuItem
+            this.radMenuItem10.Name = "radMenuItem10";
+            this.radMenuItem10.Text = "数据备份";
             // 
-            this.数据初始化ToolStripMenuItem.Name = "数据初始化ToolStripMenuItem";
-            this.数据初始化ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.数据初始化ToolStripMenuItem.Text = "数据初始化";
+            // radMenuItem11
             // 
-            // 源房ToolStripMenuItem
+            this.radMenuItem11.Name = "radMenuItem11";
+            this.radMenuItem11.Text = "数据还原";
             // 
-            this.源房ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.源房缴费ToolStripMenuItem,
-            this.水电气核查ToolStripMenuItem,
-            this.toolStripSeparator10,
-            this.新增源房ToolStripMenuItem,
-            this.toolStripSeparator12,
-            this.涨租协定ToolStripMenuItem,
-            this.toolStripSeparator8,
-            this.源房管理ToolStripMenuItem,
-            this.源房缴费明细ToolStripMenuItem});
-            this.源房ToolStripMenuItem.Name = "源房ToolStripMenuItem";
-            this.源房ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.源房ToolStripMenuItem.Text = "源房";
+            // radMenuItem12
             // 
-            // 水电气核查ToolStripMenuItem
+            this.radMenuItem12.Name = "radMenuItem12";
+            this.radMenuItem12.Text = "数据初始化";
             // 
-            this.水电气核查ToolStripMenuItem.Name = "水电气核查ToolStripMenuItem";
-            this.水电气核查ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.水电气核查ToolStripMenuItem.Text = "水电气核查";
+            // radMenuItem2
             // 
-            // toolStripSeparator10
+            this.radMenuItem2.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem13,
+            this.radMenuItem14,
+            this.radMenuSeparatorItem2,
+            this.radMenuItem15,
+            this.radMenuSeparatorItem3,
+            this.radMenuItem16,
+            this.radMenuSeparatorItem4,
+            this.radMenuItem17,
+            this.radMenuItem18});
+            this.radMenuItem2.Name = "radMenuItem2";
+            this.radMenuItem2.Text = "源房";
             // 
-            this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(145, 6);
+            // radMenuItem13
             // 
-            // 新增源房ToolStripMenuItem
+            this.radMenuItem13.Image = global::Landlord.Properties.Resources.Sign_Yen_3;
+            this.radMenuItem13.Name = "radMenuItem13";
+            this.radMenuItem13.ScaleTransform = new System.Drawing.SizeF(1F, 1F);
+            this.radMenuItem13.Text = "源房缴费";
             // 
-            this.新增源房ToolStripMenuItem.Name = "新增源房ToolStripMenuItem";
-            this.新增源房ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.新增源房ToolStripMenuItem.Text = "新增源房";
+            // radMenuItem14
             // 
-            // toolStripSeparator12
+            this.radMenuItem14.Name = "radMenuItem14";
+            this.radMenuItem14.Text = "水电气核查";
             // 
-            this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(145, 6);
+            // radMenuSeparatorItem2
             // 
-            // 涨租协定ToolStripMenuItem
+            this.radMenuSeparatorItem2.Name = "radMenuSeparatorItem2";
+            this.radMenuSeparatorItem2.Text = "radMenuSeparatorItem2";
             // 
-            this.涨租协定ToolStripMenuItem.Name = "涨租协定ToolStripMenuItem";
-            this.涨租协定ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.涨租协定ToolStripMenuItem.Text = "涨租协定";
+            // radMenuItem15
             // 
-            // toolStripSeparator8
+            this.radMenuItem15.Name = "radMenuItem15";
+            this.radMenuItem15.Text = "新增源房";
             // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(145, 6);
+            // radMenuSeparatorItem3
             // 
-            // 源房管理ToolStripMenuItem
+            this.radMenuSeparatorItem3.Name = "radMenuSeparatorItem3";
+            this.radMenuSeparatorItem3.Text = "radMenuSeparatorItem3";
             // 
-            this.源房管理ToolStripMenuItem.Name = "源房管理ToolStripMenuItem";
-            this.源房管理ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.源房管理ToolStripMenuItem.Text = "源房管理";
+            // radMenuItem16
             // 
-            // 源房缴费明细ToolStripMenuItem
+            this.radMenuItem16.Name = "radMenuItem16";
+            this.radMenuItem16.Text = "涨租协定";
             // 
-            this.源房缴费明细ToolStripMenuItem.Name = "源房缴费明细ToolStripMenuItem";
-            this.源房缴费明细ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.源房缴费明细ToolStripMenuItem.Text = "源房缴费明细";
+            // radMenuSeparatorItem4
             // 
-            // 客房ToolStripMenuItem
+            this.radMenuSeparatorItem4.Name = "radMenuSeparatorItem4";
+            this.radMenuSeparatorItem4.Text = "radMenuSeparatorItem4";
             // 
-            this.客房ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.客房收租ToolStripMenuItem,
-            this.日常损耗ToolStripMenuItem,
-            this.toolStripSeparator11,
-            this.新增租户ToolStripMenuItem,
-            this.toolStripSeparator9,
-            this.客房管理ToolStripMenuItem,
-            this.客房收租明细ToolStripMenuItem});
-            this.客房ToolStripMenuItem.Name = "客房ToolStripMenuItem";
-            this.客房ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.客房ToolStripMenuItem.Text = "客房";
+            // radMenuItem17
             // 
-            // 日常损耗ToolStripMenuItem
+            this.radMenuItem17.Name = "radMenuItem17";
+            this.radMenuItem17.Text = "源房管理";
             // 
-            this.日常损耗ToolStripMenuItem.Name = "日常损耗ToolStripMenuItem";
-            this.日常损耗ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.日常损耗ToolStripMenuItem.Text = "日常损耗";
+            // radMenuItem18
             // 
-            // toolStripSeparator11
+            this.radMenuItem18.Name = "radMenuItem18";
+            this.radMenuItem18.Text = "源房缴费明细";
             // 
-            this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(145, 6);
+            // radMenuItem3
             // 
-            // 新增租户ToolStripMenuItem
+            this.radMenuItem3.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem19,
+            this.radMenuItem20,
+            this.radMenuSeparatorItem5,
+            this.radMenuItem21,
+            this.radMenuSeparatorItem6,
+            this.radMenuItem22,
+            this.radMenuItem23});
+            this.radMenuItem3.Name = "radMenuItem3";
+            this.radMenuItem3.Text = "客房";
             // 
-            this.新增租户ToolStripMenuItem.Name = "新增租户ToolStripMenuItem";
-            this.新增租户ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.新增租户ToolStripMenuItem.Text = "新增租户";
+            // radMenuItem19
             // 
-            // toolStripSeparator9
+            this.radMenuItem19.Image = global::Landlord.Properties.Resources.Sign_Yen_2;
+            this.radMenuItem19.Name = "radMenuItem19";
+            this.radMenuItem19.Text = "客房收租";
             // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(145, 6);
+            // radMenuItem20
             // 
-            // 客房管理ToolStripMenuItem
+            this.radMenuItem20.Name = "radMenuItem20";
+            this.radMenuItem20.Text = "日常损耗";
             // 
-            this.客房管理ToolStripMenuItem.Name = "客房管理ToolStripMenuItem";
-            this.客房管理ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.客房管理ToolStripMenuItem.Text = "客房管理";
+            // radMenuSeparatorItem5
             // 
-            // 客房收租明细ToolStripMenuItem
+            this.radMenuSeparatorItem5.Name = "radMenuSeparatorItem5";
+            this.radMenuSeparatorItem5.Text = "radMenuSeparatorItem5";
             // 
-            this.客房收租明细ToolStripMenuItem.Name = "客房收租明细ToolStripMenuItem";
-            this.客房收租明细ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.客房收租明细ToolStripMenuItem.Text = "客房收租明细";
+            // radMenuItem21
             // 
-            // 装修ToolStripMenuItem
+            this.radMenuItem21.Name = "radMenuItem21";
+            this.radMenuItem21.Text = "新增租户";
             // 
-            this.装修ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.装修分类ToolStripMenuItem,
-            this.装修明细ToolStripMenuItem});
-            this.装修ToolStripMenuItem.Name = "装修ToolStripMenuItem";
-            this.装修ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.装修ToolStripMenuItem.Text = "装修";
+            // radMenuSeparatorItem6
             // 
-            // 装修分类ToolStripMenuItem
+            this.radMenuSeparatorItem6.Name = "radMenuSeparatorItem6";
+            this.radMenuSeparatorItem6.Text = "radMenuSeparatorItem6";
             // 
-            this.装修分类ToolStripMenuItem.Name = "装修分类ToolStripMenuItem";
-            this.装修分类ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.装修分类ToolStripMenuItem.Text = "装修分类";
+            // radMenuItem22
             // 
-            // 装修明细ToolStripMenuItem
+            this.radMenuItem22.Name = "radMenuItem22";
+            this.radMenuItem22.Text = "客房管理";
             // 
-            this.装修明细ToolStripMenuItem.Name = "装修明细ToolStripMenuItem";
-            this.装修明细ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.装修明细ToolStripMenuItem.Text = "装修明细";
+            // radMenuItem23
             // 
-            // 提醒ToolStripMenuItem
+            this.radMenuItem23.Name = "radMenuItem23";
+            this.radMenuItem23.Text = "客房收租明细";
             // 
-            this.提醒ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.提醒设置ToolStripMenuItem,
-            this.提醒管理ToolStripMenuItem});
-            this.提醒ToolStripMenuItem.Name = "提醒ToolStripMenuItem";
-            this.提醒ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.提醒ToolStripMenuItem.Text = "提醒";
+            // radMenuItem4
             // 
-            // 提醒设置ToolStripMenuItem
+            this.radMenuItem4.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem24,
+            this.radMenuItem25});
+            this.radMenuItem4.Name = "radMenuItem4";
+            this.radMenuItem4.Text = "装修";
             // 
-            this.提醒设置ToolStripMenuItem.Name = "提醒设置ToolStripMenuItem";
-            this.提醒设置ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.提醒设置ToolStripMenuItem.Text = "提醒设置";
+            // radMenuItem24
             // 
-            // 提醒管理ToolStripMenuItem
+            this.radMenuItem24.Name = "radMenuItem24";
+            this.radMenuItem24.Text = "装修分类";
             // 
-            this.提醒管理ToolStripMenuItem.Name = "提醒管理ToolStripMenuItem";
-            this.提醒管理ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.提醒管理ToolStripMenuItem.Text = "提醒管理";
+            // radMenuItem25
             // 
-            // 数据报表ToolStripMenuItem
+            this.radMenuItem25.Name = "radMenuItem25";
+            this.radMenuItem25.Text = "装修明细";
             // 
-            this.数据报表ToolStripMenuItem.Name = "数据报表ToolStripMenuItem";
-            this.数据报表ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.数据报表ToolStripMenuItem.Text = "数据报表";
+            // radMenuItem5
             // 
-            // 辅助工具ToolStripMenuItem
+            this.radMenuItem5.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem26,
+            this.radMenuSeparatorItem7,
+            this.radMenuItem27,
+            this.radMenuItem28});
+            this.radMenuItem5.Name = "radMenuItem5";
+            this.radMenuItem5.Text = "提醒";
             // 
-            this.辅助工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.计算器ToolStripMenuItem,
-            this.电子地图ToolStripMenuItem,
-            this.toolStripSeparator6,
-            this.网上银行ToolStripMenuItem,
-            this.生活助手ToolStripMenuItem});
-            this.辅助工具ToolStripMenuItem.Name = "辅助工具ToolStripMenuItem";
-            this.辅助工具ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.辅助工具ToolStripMenuItem.Text = "辅助工具";
+            // radMenuItem26
             // 
-            // 计算器ToolStripMenuItem
+            this.radMenuItem26.Name = "radMenuItem26";
+            this.radMenuItem26.Text = "新增提醒";
             // 
-            this.计算器ToolStripMenuItem.Name = "计算器ToolStripMenuItem";
-            this.计算器ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.计算器ToolStripMenuItem.Text = "计算器";
+            // radMenuSeparatorItem7
             // 
-            // 电子地图ToolStripMenuItem
+            this.radMenuSeparatorItem7.Name = "radMenuSeparatorItem7";
+            this.radMenuSeparatorItem7.Text = "radMenuSeparatorItem7";
             // 
-            this.电子地图ToolStripMenuItem.Name = "电子地图ToolStripMenuItem";
-            this.电子地图ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.电子地图ToolStripMenuItem.Text = "电子地图";
+            // radMenuItem27
             // 
-            // toolStripSeparator6
+            this.radMenuItem27.Name = "radMenuItem27";
+            this.radMenuItem27.Text = "提醒设置";
             // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(121, 6);
+            // radMenuItem28
             // 
-            // 网上银行ToolStripMenuItem
+            this.radMenuItem28.Name = "radMenuItem28";
+            this.radMenuItem28.Text = "提醒管理";
             // 
-            this.网上银行ToolStripMenuItem.Name = "网上银行ToolStripMenuItem";
-            this.网上银行ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.网上银行ToolStripMenuItem.Text = "网上银行";
+            // radMenuItem6
             // 
-            // 生活助手ToolStripMenuItem
+            this.radMenuItem6.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem37,
+            this.radMenuItem38,
+            this.radMenuItem39});
+            this.radMenuItem6.Name = "radMenuItem6";
+            this.radMenuItem6.Text = "数据报表";
             // 
-            this.生活助手ToolStripMenuItem.Name = "生活助手ToolStripMenuItem";
-            this.生活助手ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.生活助手ToolStripMenuItem.Text = "生活助手";
+            // radMenuItem37
             // 
-            // 帮助ToolStripMenuItem
+            this.radMenuItem37.Name = "radMenuItem37";
+            this.radMenuItem37.Text = "单套房投资分析";
             // 
-            this.帮助ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.使用手册ToolStripMenuItem,
-            this.toolStripSeparator4,
-            this.注册产品ToolStripMenuItem,
-            this.检查更新ToolStripMenuItem,
-            this.toolStripSeparator5,
-            this.用户反馈ToolStripMenuItem,
-            this.关于ToolStripMenuItem});
-            this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.帮助ToolStripMenuItem.Text = "帮助";
+            // radMenuItem38
             // 
-            // 使用手册ToolStripMenuItem
+            this.radMenuItem38.Name = "radMenuItem38";
+            this.radMenuItem38.Text = "整体投资分析";
             // 
-            this.使用手册ToolStripMenuItem.Name = "使用手册ToolStripMenuItem";
-            this.使用手册ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.使用手册ToolStripMenuItem.Text = "使用手册";
+            // radMenuItem39
             // 
-            // toolStripSeparator4
+            this.radMenuItem39.Name = "radMenuItem39";
+            this.radMenuItem39.Text = "投资决策模拟";
+            this.radMenuItem39.ToolTipText = "一个用于投资决策的分析模拟工具。例如：XX万元用于投资，投资多少源房，选多大面积，隔成多少间，在市场风险不变的情况下，预定时期收益最大。";
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(121, 6);
+            // radMenuItem7
             // 
-            // 注册产品ToolStripMenuItem
+            this.radMenuItem7.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem29,
+            this.radMenuItem30,
+            this.radMenuSeparatorItem8,
+            this.radMenuItem31,
+            this.radMenuItem32});
+            this.radMenuItem7.Name = "radMenuItem7";
+            this.radMenuItem7.Text = "辅助工具";
             // 
-            this.注册产品ToolStripMenuItem.Name = "注册产品ToolStripMenuItem";
-            this.注册产品ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.注册产品ToolStripMenuItem.Text = "注册产品";
+            // radMenuItem29
             // 
-            // 检查更新ToolStripMenuItem
+            this.radMenuItem29.Name = "radMenuItem29";
+            this.radMenuItem29.Text = "计算器";
             // 
-            this.检查更新ToolStripMenuItem.Name = "检查更新ToolStripMenuItem";
-            this.检查更新ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.检查更新ToolStripMenuItem.Text = "检查更新";
+            // radMenuItem30
             // 
-            // toolStripSeparator5
+            this.radMenuItem30.Name = "radMenuItem30";
+            this.radMenuItem30.Text = "电子地图";
             // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(121, 6);
+            // radMenuSeparatorItem8
             // 
-            // 用户反馈ToolStripMenuItem
+            this.radMenuSeparatorItem8.Name = "radMenuSeparatorItem8";
+            this.radMenuSeparatorItem8.Text = "radMenuSeparatorItem8";
             // 
-            this.用户反馈ToolStripMenuItem.Name = "用户反馈ToolStripMenuItem";
-            this.用户反馈ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.用户反馈ToolStripMenuItem.Text = "用户反馈";
+            // radMenuItem31
             // 
-            // 关于ToolStripMenuItem
+            this.radMenuItem31.Name = "radMenuItem31";
+            this.radMenuItem31.Text = "网上银行";
             // 
-            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.关于ToolStripMenuItem.Text = "关于";
+            // radMenuItem32
             // 
-            // toolStripButton7
+            this.radMenuItem32.Name = "radMenuItem32";
+            this.radMenuItem32.Text = "生活助手";
             // 
-            this.toolStripButton7.Image = global::Landlord.Properties.Resources.Sign_Yen_3;
-            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(84, 28);
-            this.toolStripButton7.Text = "源房缴费";
+            // radMenuItem8
             // 
-            // toolStripButton6
+            this.radMenuItem8.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem33,
+            this.radMenuSeparatorItem9,
+            this.radMenuItem34,
+            this.radMenuItem35,
+            this.radMenuSeparatorItem10,
+            this.radMenuItem36,
+            this.radMenuItem40});
+            this.radMenuItem8.Name = "radMenuItem8";
+            this.radMenuItem8.Text = "帮助";
             // 
-            this.toolStripButton6.Image = global::Landlord.Properties.Resources.estatok_32_hot;
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(96, 28);
-            this.toolStripButton6.Text = "水电气核查";
+            // radMenuItem33
             // 
-            // toolStripButton5
+            this.radMenuItem33.Name = "radMenuItem33";
+            this.radMenuItem33.Text = "使用手册";
             // 
-            this.toolStripButton5.Image = global::Landlord.Properties.Resources.Sign_Yen_2;
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(84, 28);
-            this.toolStripButton5.Text = "客房收租";
+            // radMenuSeparatorItem9
             // 
-            // toolStripButton4
+            this.radMenuSeparatorItem9.Name = "radMenuSeparatorItem9";
+            this.radMenuSeparatorItem9.Text = "radMenuSeparatorItem9";
             // 
-            this.toolStripButton4.Image = global::Landlord.Properties.Resources.leveldel_32_hot;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(84, 28);
-            this.toolStripButton4.Text = "日常损耗";
+            // radMenuItem34
             // 
-            // toolStripButton3
+            this.radMenuItem34.Name = "radMenuItem34";
+            this.radMenuItem34.Text = "注册产品";
             // 
-            this.toolStripButton3.Image = global::Landlord.Properties.Resources.system_32_hot;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(84, 28);
-            this.toolStripButton3.Text = "装修明细";
+            // radMenuItem35
             // 
-            // toolStripButton2
+            this.radMenuItem35.Name = "radMenuItem35";
+            this.radMenuItem35.Text = "检查更新";
             // 
-            this.toolStripButton2.Image = global::Landlord.Properties.Resources.ideaadd_32_hot;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(84, 28);
-            this.toolStripButton2.Text = "新增提醒";
+            // radMenuSeparatorItem10
             // 
-            // 源房缴费ToolStripMenuItem
+            this.radMenuSeparatorItem10.Name = "radMenuSeparatorItem10";
+            this.radMenuSeparatorItem10.Text = "radMenuSeparatorItem10";
             // 
-            this.源房缴费ToolStripMenuItem.Image = global::Landlord.Properties.Resources.Sign_Yen;
-            this.源房缴费ToolStripMenuItem.Name = "源房缴费ToolStripMenuItem";
-            this.源房缴费ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.源房缴费ToolStripMenuItem.Text = "源房缴费";
+            // radMenuItem36
             // 
-            // 客房收租ToolStripMenuItem
+            this.radMenuItem36.Name = "radMenuItem36";
+            this.radMenuItem36.Text = "用户反馈";
             // 
-            this.客房收租ToolStripMenuItem.Image = global::Landlord.Properties.Resources.Sign_Yen_2;
-            this.客房收租ToolStripMenuItem.Name = "客房收租ToolStripMenuItem";
-            this.客房收租ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.客房收租ToolStripMenuItem.Text = "客房收租";
+            // radMenuItem40
+            // 
+            this.radMenuItem40.Name = "radMenuItem40";
+            this.radMenuItem40.Text = "关于";
+            // 
+            // radOffice2007ScreenTipElement1
+            // 
+            this.radOffice2007ScreenTipElement1.Description = "Override this property and provide custom screentip template description in Desig" +
+    "nTime.";
+            this.radOffice2007ScreenTipElement1.Name = "radOffice2007ScreenTipElement1";
+            this.radOffice2007ScreenTipElement1.TemplateType = null;
+            this.radOffice2007ScreenTipElement1.TipSize = new System.Drawing.Size(210, 50);
+            // 
+            // radToolStrip1
+            // 
+            this.radToolStrip1.AllowDragging = false;
+            this.radToolStrip1.AllowFloating = false;
+            this.radToolStrip1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.radToolStrip1.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radToolStripElement1});
+            this.radToolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.radToolStrip1.MinimumSize = new System.Drawing.Size(5, 5);
+            this.radToolStrip1.Name = "radToolStrip1";
+            this.radToolStrip1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // 
+            // 
+            this.radToolStrip1.RootElement.AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
+            this.radToolStrip1.RootElement.MinSize = new System.Drawing.Size(5, 5);
+            this.radToolStrip1.ShowOverFlowButton = false;
+            this.radToolStrip1.Size = new System.Drawing.Size(792, 43);
+            this.radToolStrip1.TabIndex = 5;
+            this.radToolStrip1.Text = "radToolStrip1";
+            // 
+            // radToolStripElement1
+            // 
+            this.radToolStripElement1.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radToolStripItem1,
+            this.radToolStripItem2,
+            this.radToolStripItem3,
+            this.radToolStripItem4});
+            this.radToolStripElement1.Name = "radToolStripElement1";
+            // 
+            // radToolStripItem1
+            // 
+            this.radToolStripItem1.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radButtonElement1,
+            this.radButtonElement2});
+            this.radToolStripItem1.Key = "0";
+            this.radToolStripItem1.Name = "radToolStripItem1";
+            this.radToolStripItem1.Text = "radToolStripItem1";
+            // 
+            // radButtonElement1
+            // 
+            this.radButtonElement1.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.radButtonElement1.AutoSize = true;
+            this.radButtonElement1.AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
+            this.radButtonElement1.FitToSizeMode = Telerik.WinControls.RadFitToSizeMode.FitToParentContent;
+            this.radButtonElement1.Image = global::Landlord.Properties.Resources.Sign_Yen_3;
+            this.radButtonElement1.Name = "radButtonElement1";
+            this.radButtonElement1.Shape = null;
+            this.radButtonElement1.ShowBorder = false;
+            this.radButtonElement1.SmallImage = null;
+            this.radButtonElement1.Text = "源房缴费";
+            this.radButtonElement1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            // 
+            // radButtonElement2
+            // 
+            this.radButtonElement2.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.radButtonElement2.Image = global::Landlord.Properties.Resources.estatok_32_hot;
+            this.radButtonElement2.Name = "radButtonElement2";
+            this.radButtonElement2.ShowBorder = false;
+            this.radButtonElement2.Text = "水电气核查";
+            this.radButtonElement2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            // 
+            // radToolStripItem2
+            // 
+            this.radToolStripItem2.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radButtonElement3,
+            this.radButtonElement4});
+            this.radToolStripItem2.Key = "1";
+            this.radToolStripItem2.Name = "radToolStripItem2";
+            this.radToolStripItem2.Text = "radToolStripItem2";
+            // 
+            // radButtonElement3
+            // 
+            this.radButtonElement3.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.radButtonElement3.Image = global::Landlord.Properties.Resources.Sign_Yen_2;
+            this.radButtonElement3.Name = "radButtonElement3";
+            this.radButtonElement3.ShowBorder = false;
+            this.radButtonElement3.Text = "客房收租";
+            this.radButtonElement3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            // 
+            // radButtonElement4
+            // 
+            this.radButtonElement4.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.radButtonElement4.Image = global::Landlord.Properties.Resources.leveldel_32_hot;
+            this.radButtonElement4.Name = "radButtonElement4";
+            this.radButtonElement4.ShowBorder = false;
+            this.radButtonElement4.Text = "日常损耗";
+            this.radButtonElement4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            // 
+            // radToolStripItem3
+            // 
+            this.radToolStripItem3.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radButtonElement5});
+            this.radToolStripItem3.Key = "2";
+            this.radToolStripItem3.Name = "radToolStripItem3";
+            this.radToolStripItem3.Text = "radToolStripItem3";
+            // 
+            // radButtonElement5
+            // 
+            this.radButtonElement5.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.radButtonElement5.Image = global::Landlord.Properties.Resources.system_32_hot;
+            this.radButtonElement5.Name = "radButtonElement5";
+            this.radButtonElement5.ShowBorder = false;
+            this.radButtonElement5.Text = "装修明细";
+            this.radButtonElement5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            // 
+            // radToolStripItem4
+            // 
+            this.radToolStripItem4.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radButtonElement6});
+            this.radToolStripItem4.Key = "3";
+            this.radToolStripItem4.Name = "radToolStripItem4";
+            this.radToolStripItem4.Text = "radToolStripItem4";
+            // 
+            // radButtonElement6
+            // 
+            this.radButtonElement6.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.radButtonElement6.Image = global::Landlord.Properties.Resources.ideaadd_32_hot;
+            this.radButtonElement6.Name = "radButtonElement6";
+            this.radButtonElement6.ShowBorder = false;
+            this.radButtonElement6.Text = "新增提醒";
+            this.radButtonElement6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.radButtonElement6.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            // 
+            // radStatusStrip1
+            // 
+            this.radStatusStrip1.AutoSize = true;
+            this.radStatusStrip1.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radLabelElement1,
+            this.radLabelElement2});
+            this.radStatusStrip1.LayoutStyle = Telerik.WinControls.UI.RadStatusBarLayoutStyle.Stack;
+            this.radStatusStrip1.Location = new System.Drawing.Point(0, 534);
+            this.radStatusStrip1.Name = "radStatusStrip1";
+            this.radStatusStrip1.Size = new System.Drawing.Size(792, 28);
+            this.radStatusStrip1.SizingGrip = false;
+            this.radStatusStrip1.TabIndex = 6;
+            this.radStatusStrip1.Text = "radStatusStrip1";
+            // 
+            // radLabelElement1
+            // 
+            this.radLabelElement1.Margin = new System.Windows.Forms.Padding(1);
+            this.radLabelElement1.Name = "radLabelElement1";
+            this.radStatusStrip1.SetSpring(this.radLabelElement1, false);
+            this.radLabelElement1.Text = "版本：V1.0.0";
+            this.radLabelElement1.TextWrap = true;
+            // 
+            // radLabelElement2
+            // 
+            this.radLabelElement2.Margin = new System.Windows.Forms.Padding(1);
+            this.radLabelElement2.Name = "radLabelElement2";
+            this.radStatusStrip1.SetSpring(this.radLabelElement2, true);
+            this.radLabelElement2.Text = "武汉创方科技有限公司";
+            this.radLabelElement2.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            this.radLabelElement2.TextWrap = true;
+            // 
+            // radTreeView1
+            // 
+            this.radTreeView1.DataSource = this.bindingSourceTreeView;
+            this.radTreeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radTreeView1.Location = new System.Drawing.Point(0, 0);
+            this.radTreeView1.Name = "radTreeView1";
+            this.radTreeView1.Size = new System.Drawing.Size(201, 467);
+            this.radTreeView1.TabIndex = 7;
+            this.radTreeView1.Text = "radTreeView1";
+            // 
+            // radSplitContainer1
+            // 
+            this.radSplitContainer1.Controls.Add(this.splitPanel1);
+            this.radSplitContainer1.Controls.Add(this.splitPanel2);
+            this.radSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radSplitContainer1.Location = new System.Drawing.Point(0, 67);
+            this.radSplitContainer1.Name = "radSplitContainer1";
+            // 
+            // 
+            // 
+            this.radSplitContainer1.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.radSplitContainer1.Size = new System.Drawing.Size(792, 467);
+            this.radSplitContainer1.TabIndex = 8;
+            this.radSplitContainer1.TabStop = false;
+            this.radSplitContainer1.Text = "radSplitContainer1";
+            // 
+            // splitPanel1
+            // 
+            this.splitPanel1.Controls.Add(this.radTreeView1);
+            this.splitPanel1.Location = new System.Drawing.Point(0, 0);
+            this.splitPanel1.Name = "splitPanel1";
+            // 
+            // 
+            // 
+            this.splitPanel1.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.splitPanel1.Size = new System.Drawing.Size(201, 467);
+            this.splitPanel1.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(-0.2455696F, 0F);
+            this.splitPanel1.SizeInfo.SplitterCorrection = new System.Drawing.Size(-194, 0);
+            this.splitPanel1.TabIndex = 0;
+            this.splitPanel1.TabStop = false;
+            this.splitPanel1.Text = "splitPanel1";
+            // 
+            // splitPanel2
+            // 
+            this.splitPanel2.Location = new System.Drawing.Point(204, 0);
+            this.splitPanel2.Name = "splitPanel2";
+            // 
+            // 
+            // 
+            this.splitPanel2.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.splitPanel2.Size = new System.Drawing.Size(588, 467);
+            this.splitPanel2.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0.2455696F, 0F);
+            this.splitPanel2.SizeInfo.SplitterCorrection = new System.Drawing.Size(194, 0);
+            this.splitPanel2.TabIndex = 1;
+            this.splitPanel2.TabStop = false;
+            this.splitPanel2.Text = "splitPanel2";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 562);
-            this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.ClientSize = new System.Drawing.Size(792, 562);
+            this.Controls.Add(this.radSplitContainer1);
+            this.Controls.Add(this.radStatusStrip1);
+            this.Controls.Add(this.radToolStrip1);
+            this.Controls.Add(this.radMenu1);
             this.Name = "Main";
             // 
             // 
@@ -541,13 +672,17 @@
             this.RootElement.ApplyShapeToControl = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "创方包租婆 -- 租赁管理系统（单机版V1.0.0）";
-            this.ThemeName = "Windows7";
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.Load += new System.EventHandler(this.Main_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radToolStrip1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTreeView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTreeView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer1)).EndInit();
+            this.radSplitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitPanel1)).EndInit();
+            this.splitPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitPanel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -556,65 +691,78 @@
 
         #endregion
 
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 系统ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 源房ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 客房ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 装修ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 提醒ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 数据报表ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 辅助工具ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 基本设定ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
-        private System.Windows.Forms.ToolStripMenuItem 数据备份ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 数据还原ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 数据初始化ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 提醒设置ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 计算器ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 电子地图ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripMenuItem 网上银行ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 生活助手ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 使用手册ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem 注册产品ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 检查更新ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripMenuItem 用户反馈ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 装修分类ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 装修明细ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 提醒管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 源房缴费ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 水电气核查ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
-        private System.Windows.Forms.ToolStripMenuItem 新增源房ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
-        private System.Windows.Forms.ToolStripMenuItem 源房管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 源房缴费明细ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 客房收租ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 日常损耗ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
-        private System.Windows.Forms.ToolStripMenuItem 新增租户ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.ToolStripMenuItem 客房管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 客房收租明细ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
-        private System.Windows.Forms.ToolStripMenuItem 涨租协定ToolStripMenuItem;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton7;
-        private System.Windows.Forms.ToolStripButton toolStripButton6;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private Telerik.WinControls.UI.RadMenu radMenu1;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem1;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem9;
+        private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem1;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem10;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem11;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem12;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem2;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem3;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem4;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem5;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem6;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem7;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem8;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem13;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem14;
+        private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem2;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem15;
+        private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem3;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem16;
+        private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem4;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem17;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem18;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem19;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem20;
+        private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem5;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem21;
+        private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem6;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem22;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem23;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem24;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem25;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem26;
+        private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem7;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem27;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem28;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem37;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem38;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem39;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem29;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem30;
+        private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem8;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem31;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem32;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem33;
+        private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem9;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem34;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem35;
+        private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem10;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem36;
+        private Telerik.WinControls.UI.RadOffice2007ScreenTipElement radOffice2007ScreenTipElement1;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem40;
+        private Telerik.WinControls.UI.RadToolStrip radToolStrip1;
+        private Telerik.WinControls.UI.RadToolStripElement radToolStripElement1;
+        private Telerik.WinControls.UI.RadToolStripItem radToolStripItem1;
+        private Telerik.WinControls.UI.RadButtonElement radButtonElement1;
+        private Telerik.WinControls.UI.RadButtonElement radButtonElement2;
+        private Telerik.WinControls.UI.RadToolStripItem radToolStripItem2;
+        private Telerik.WinControls.UI.RadButtonElement radButtonElement3;
+        private Telerik.WinControls.UI.RadButtonElement radButtonElement4;
+        private Telerik.WinControls.UI.RadToolStripItem radToolStripItem3;
+        private Telerik.WinControls.UI.RadButtonElement radButtonElement5;
+        private Telerik.WinControls.UI.RadToolStripItem radToolStripItem4;
+        private Telerik.WinControls.UI.RadButtonElement radButtonElement6;
+        private Telerik.WinControls.UI.RadStatusStrip radStatusStrip1;
+        private Telerik.WinControls.UI.RadLabelElement radLabelElement1;
+        private Telerik.WinControls.UI.RadLabelElement radLabelElement2;
         private Telerik.WinControls.Themes.Windows7Theme windows7Theme1;
+        private Telerik.WinControls.UI.RadTreeView radTreeView1;
+        private Telerik.WinControls.UI.RadSplitContainer radSplitContainer1;
+        private Telerik.WinControls.UI.SplitPanel splitPanel1;
+        private Telerik.WinControls.UI.SplitPanel splitPanel2;
+        private System.Windows.Forms.BindingSource bindingSourceTreeView;
     }
 }
