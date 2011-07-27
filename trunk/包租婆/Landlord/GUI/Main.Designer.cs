@@ -575,7 +575,7 @@
             this.radLabelElement1,
             this.radLabelElement2});
             this.radStatusStrip1.LayoutStyle = Telerik.WinControls.UI.RadStatusBarLayoutStyle.Stack;
-            this.radStatusStrip1.Location = new System.Drawing.Point(0, 534);
+            this.radStatusStrip1.Location = new System.Drawing.Point(0, 564);
             this.radStatusStrip1.Name = "radStatusStrip1";
             this.radStatusStrip1.Size = new System.Drawing.Size(792, 28);
             this.radStatusStrip1.SizingGrip = false;
@@ -605,7 +605,7 @@
             this.radTreeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radTreeView1.Location = new System.Drawing.Point(0, 0);
             this.radTreeView1.Name = "radTreeView1";
-            this.radTreeView1.Size = new System.Drawing.Size(201, 467);
+            this.radTreeView1.Size = new System.Drawing.Size(201, 497);
             this.radTreeView1.TabIndex = 7;
             this.radTreeView1.Text = "radTreeView1";
             // 
@@ -620,7 +620,7 @@
             // 
             // 
             this.radSplitContainer1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.radSplitContainer1.Size = new System.Drawing.Size(792, 467);
+            this.radSplitContainer1.Size = new System.Drawing.Size(792, 497);
             this.radSplitContainer1.TabIndex = 8;
             this.radSplitContainer1.TabStop = false;
             this.radSplitContainer1.Text = "radSplitContainer1";
@@ -634,7 +634,7 @@
             // 
             // 
             this.splitPanel1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel1.Size = new System.Drawing.Size(201, 467);
+            this.splitPanel1.Size = new System.Drawing.Size(201, 497);
             this.splitPanel1.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(-0.2455696F, 0F);
             this.splitPanel1.SizeInfo.SplitterCorrection = new System.Drawing.Size(-194, 0);
             this.splitPanel1.TabIndex = 0;
@@ -649,7 +649,7 @@
             // 
             // 
             this.splitPanel2.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel2.Size = new System.Drawing.Size(588, 467);
+            this.splitPanel2.Size = new System.Drawing.Size(588, 497);
             this.splitPanel2.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0.2455696F, 0F);
             this.splitPanel2.SizeInfo.SplitterCorrection = new System.Drawing.Size(194, 0);
             this.splitPanel2.TabIndex = 1;
@@ -660,7 +660,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 562);
+            this.ClientSize = new System.Drawing.Size(792, 592);
             this.Controls.Add(this.radSplitContainer1);
             this.Controls.Add(this.radStatusStrip1);
             this.Controls.Add(this.radToolStrip1);
