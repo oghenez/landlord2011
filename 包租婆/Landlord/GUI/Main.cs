@@ -21,7 +21,8 @@ namespace Landlord.GUI
 
         private void Main_Load(object sender, EventArgs e)
         {
-            
+            UC源房详细 uc = new UC源房详细();
+            splitPanel2.Controls.Add(uc);
         }
 
         /// <summary>

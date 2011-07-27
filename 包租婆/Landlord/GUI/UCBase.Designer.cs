@@ -49,7 +49,7 @@
             // 
             // 
             this.radGroupBoxInfo.RootElement.Padding = new System.Windows.Forms.Padding(10, 20, 10, 10);
-            this.radGroupBoxInfo.Size = new System.Drawing.Size(588, 467);
+            this.radGroupBoxInfo.Size = new System.Drawing.Size(588, 497);
             this.radGroupBoxInfo.TabIndex = 0;
             this.radGroupBoxInfo.Text = "radGroupBoxInfo";
             // 
@@ -59,7 +59,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.radGroupBoxInfo);
             this.Name = "UCBase";
-            this.Size = new System.Drawing.Size(588, 467);
+            this.Size = new System.Drawing.Size(588, 497);
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBoxInfo)).EndInit();
             this.ResumeLayout(false);
 
