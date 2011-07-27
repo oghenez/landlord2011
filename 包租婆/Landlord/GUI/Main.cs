@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
+using Telerik.WinControls;
 
 namespace Landlord.GUI
 {
@@ -15,10 +16,19 @@ namespace Landlord.GUI
         public Main()
         {
             InitializeComponent();
+            ThemeResolutionService.ApplicationThemeName = "Windows7"; 
         }
 
-        private void radPanel1_Paint(object sender, PaintEventArgs e)
+        private void Main_Load(object sender, EventArgs e)
         {
+            
+        }
+
+        /// <summary>
+        /// 载入房源、客源信息到TreeView控件
+        /// </summary>
+        private void LoadTreeView()
+        { 
 
         }
     }

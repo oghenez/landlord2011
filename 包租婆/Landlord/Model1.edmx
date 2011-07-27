@@ -4,10 +4,11 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LandlordModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.3.5" ProviderManifestToken="3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="LandlordModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.3.5" ProviderManifestToken="3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="LandlordModelStoreContainer">
           <EntitySet Name="缴收项目" EntityType="LandlordModel.Store.缴收项目" store:Type="Tables" />
           <EntitySet Name="客房" EntityType="LandlordModel.Store.客房" store:Type="Tables" />
+          <EntitySet Name="客房出租历史记录" EntityType="LandlordModel.Store.客房出租历史记录" store:Type="Tables" />
           <EntitySet Name="客房租金明细" EntityType="LandlordModel.Store.客房租金明细" store:Type="Tables" />
           <EntitySet Name="日常损耗" EntityType="LandlordModel.Store.日常损耗" store:Type="Tables" />
           <EntitySet Name="提醒" EntityType="LandlordModel.Store.提醒" store:Type="Tables" />
@@ -57,6 +58,24 @@
           <Property Name="月宽带费" Type="money" Nullable="false" />
           <Property Name="月厨房费" Type="money" Nullable="false" />
           <Property Name="中介费用" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="客房出租历史记录">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="客房ID" Type="int" Nullable="false" />
+          <Property Name="租户" Type="nvarchar" MaxLength="100" />
+          <Property Name="联系地址" Type="nvarchar" MaxLength="100" />
+          <Property Name="身份证号" Type="nvarchar" MaxLength="18" />
+          <Property Name="电话1" Type="nvarchar" MaxLength="100" />
+          <Property Name="电话2" Type="nvarchar" MaxLength="100" />
+          <Property Name="期始" Type="datetime" />
+          <Property Name="期止" Type="datetime" />
+          <Property Name="月租金" Type="money" />
+          <Property Name="押金" Type="money" />
+          <Property Name="支付月数" Type="smallint" />
+          <Property Name="备注" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="客房租金明细">
           <Key>
@@ -125,7 +144,6 @@
           <Property Name="月租金" Type="money" Nullable="false" />
           <Property Name="押金" Type="money" Nullable="false" />
           <Property Name="支付月数" Type="smallint" Nullable="false" />
-          <Property Name="涨租协定" Type="nvarchar" MaxLength="100" />
           <Property Name="租赁协议照片1" Type="image" />
           <Property Name="租赁协议照片2" Type="image" />
           <Property Name="租赁协议照片3" Type="image" />
@@ -212,8 +230,7 @@
           <Property Name="购买地点" Type="nvarchar" MaxLength="100" />
           <Property Name="备注" Type="nvarchar" MaxLength="500" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LandlordModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -229,6 +246,7 @@
           <EntitySet Name="源房涨租协定" EntityType="LandlordModel.源房涨租协定" />
           <EntitySet Name="装修分类" EntityType="LandlordModel.装修分类" />
           <EntitySet Name="装修明细" EntityType="LandlordModel.装修明细" />
+          <EntitySet Name="客房出租历史记录" EntityType="LandlordModel.客房出租历史记录" />
         </EntityContainer>
         <EntityType Name="缴收项目">
           <Key>
@@ -337,7 +355,6 @@
           <Property Name="月租金" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="押金" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="支付月数" Type="Int16" Nullable="false" />
-          <Property Name="涨租协定" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="租赁协议照片1" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="租赁协议照片2" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="租赁协议照片3" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -423,6 +440,24 @@
           <Property Name="单价" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="购买地点" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="备注" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="客房出租历史记录">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="客房ID" Nullable="false" />
+          <Property Type="String" Name="租户" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="联系地址" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="身份证号" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="电话1" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="电话2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="期始" />
+          <Property Type="DateTime" Name="期止" />
+          <Property Type="Decimal" Name="月租金" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="押金" Precision="19" Scale="4" />
+          <Property Type="Int16" Name="支付月数" />
+          <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -519,7 +554,6 @@
             <ScalarProperty Name="月租金" ColumnName="月租金" />
             <ScalarProperty Name="押金" ColumnName="押金" />
             <ScalarProperty Name="支付月数" ColumnName="支付月数" />
-            <ScalarProperty Name="涨租协定" ColumnName="涨租协定" />
             <ScalarProperty Name="租赁协议照片1" ColumnName="租赁协议照片1" />
             <ScalarProperty Name="租赁协议照片2" ColumnName="租赁协议照片2" />
             <ScalarProperty Name="租赁协议照片3" ColumnName="租赁协议照片3" />
@@ -591,6 +625,25 @@
             <ScalarProperty Name="购买地点" ColumnName="购买地点" />
             <ScalarProperty Name="备注" ColumnName="备注" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="客房出租历史记录">
+            <EntityTypeMapping TypeName="LandlordModel.客房出租历史记录">
+              <MappingFragment StoreEntitySet="客房出租历史记录">
+                <ScalarProperty Name="备注" ColumnName="备注" />
+                <ScalarProperty Name="支付月数" ColumnName="支付月数" />
+                <ScalarProperty Name="押金" ColumnName="押金" />
+                <ScalarProperty Name="月租金" ColumnName="月租金" />
+                <ScalarProperty Name="期止" ColumnName="期止" />
+                <ScalarProperty Name="期始" ColumnName="期始" />
+                <ScalarProperty Name="电话2" ColumnName="电话2" />
+                <ScalarProperty Name="电话1" ColumnName="电话1" />
+                <ScalarProperty Name="身份证号" ColumnName="身份证号" />
+                <ScalarProperty Name="联系地址" ColumnName="联系地址" />
+                <ScalarProperty Name="租户" ColumnName="租户" />
+                <ScalarProperty Name="客房ID" ColumnName="客房ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -611,18 +664,19 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="Model1">
+      <Diagram Name="Model1" ZoomLevel="90">
         <EntityTypeShape EntityType="LandlordModel.缴收项目" Width="1.5" PointX="0.75" PointY="0.75" Height="1.5879931640625" IsExpanded="true" />
         <EntityTypeShape EntityType="LandlordModel.客房" Width="1.5" PointX="2.75" PointY="0.75" Height="6.1724658203125" IsExpanded="true" />
         <EntityTypeShape EntityType="LandlordModel.客房租金明细" Width="1.5" PointX="4.75" PointY="0.75" Height="3.4981901041666656" IsExpanded="true" />
         <EntityTypeShape EntityType="LandlordModel.日常损耗" Width="1.5" PointX="4.75" PointY="5.75" Height="2.3520719401041656" IsExpanded="true" />
         <EntityTypeShape EntityType="LandlordModel.提醒" Width="1.5" PointX="6.75" PointY="0.75" Height="2.5430916341145835" IsExpanded="true" />
-        <EntityTypeShape EntityType="LandlordModel.源房" Width="1.5" PointX="6.75" PointY="4.75" Height="8.6557218424479174" IsExpanded="true" />
+        <EntityTypeShape EntityType="LandlordModel.源房" Width="1.5" PointX="6.75" PointY="4.75" Height="8.4647021484375" IsExpanded="true" />
         <EntityTypeShape EntityType="LandlordModel.源房缴费明细" Width="1.5" PointX="0.75" PointY="7.75" Height="2.9251310221354174" IsExpanded="true" />
         <EntityTypeShape EntityType="LandlordModel.源房水电气核查" Width="1.5" PointX="8.75" PointY="0.75" Height="3.4981901041666674" IsExpanded="true" />
         <EntityTypeShape EntityType="LandlordModel.源房涨租协定" Width="1.5" PointX="8.75" PointY="5.75" Height="1.9700325520833317" IsExpanded="true" />
         <EntityTypeShape EntityType="LandlordModel.装修分类" Width="1.5" PointX="8.75" PointY="8.75" Height="1.3969734700520817" IsExpanded="true" />
         <EntityTypeShape EntityType="LandlordModel.装修明细" Width="1.5" PointX="2.75" PointY="9.75" Height="3.1161507161458317" IsExpanded="true" />
+        <EntityTypeShape EntityType="LandlordModel.客房出租历史记录" Width="1.5" PointX="11.375" PointY="0.75" Height="3.4981901041666674" />
       </Diagram>
     </Diagrams>
   </Designer>
