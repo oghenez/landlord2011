@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Telerik.WinControls.UI;
+
+namespace Landlord.GUI
+{
+    public partial class Main : RadForm
+    {
+        public Main()
+        {
+            InitializeComponent();
+        }
+
+        private void radPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+    }
+}

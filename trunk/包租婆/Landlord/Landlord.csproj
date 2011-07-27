@@ -1,0 +1,559 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D1D33715-5187-4428-B268-9803D8EB4574}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Landlord</RootNamespace>
+    <AssemblyName>Landlord</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls, Version=2010.2.10.713, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.BreezeExtended, Version=2010.2.10.713, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Windows7, Version=2010.2.10.713, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.UI, Version=2010.2.10.713, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="TelerikCommon, Version=2010.2.10.713, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GUI\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="LandlordEntities.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Data\Landlord.sdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Readme.txt" />
+    <None Include="Resources\menu_firstlook_bg.png" />
+    <None Include="Resources\ff_32_hot.png" />
+    <None Include="Resources\gamesback_32_hot.png" />
+    <None Include="Resources\userback_32_hot.png" />
+    <None Include="Resources\timeclose_32_hot.png" />
+    <None Include="Resources\groupok_32_hot.png" />
+    <None Include="Resources\next_32_hot.png" />
+    <None Include="Resources\mailnext_32_hot.png" />
+    <None Include="Resources\adduser_32_hot.png" />
+    <None Include="Resources\datenext_32_hot.png" />
+    <None Include="Resources\supportnext_32_hot.png" />
+    <None Include="Resources\notessave_32_hot.png" />
+    <None Include="Resources\toolsadd_32_hot.png" />
+    <None Include="Resources\docnext_32_hot.png" />
+    <None Include="Resources\toolssave_32_hot.png" />
+    <None Include="Resources\adminprev_32_hot.png" />
+    <None Include="Resources\levelok_32_hot.png" />
+    <None Include="Resources\mail_32_hot.png" />
+    <None Include="Resources\notesadd_32_hot.png" />
+    <None Include="Resources\locksave_32_hot.png" />
+    <None Include="Resources\support_32_hot.png" />
+    <None Include="Resources\mailboxprev_32_hot.png" />
+    <None Include="Resources\mailadd_32_hot.png" />
+    <None Include="Resources\musicoff_32_hot.png" />
+    <None Include="Resources\musicdel_32_hot.png" />
+    <None Include="Resources\idea_32_hot.png" />
+    <None Include="Resources\mailboxback_32_hot.png" />
+    <None Include="Resources\recyclesave_32_hot.png" />
+    <None Include="Resources\edit_32_hot.png" />
+    <None Include="Resources\bookprev_32_hot.png" />
+    <None Include="Resources\notesclose_32_hot.png" />
+    <None Include="Resources\inf_32_hot.png" />
+    <None Include="Resources\brcasedel_32_hot.png" />
+    <None Include="Resources\mailboxdel_32_hot.png" />
+    <None Include="Resources\del_32_hot.png" />
+    <None Include="Resources\leveladd_32_hot.png" />
+    <None Include="Resources\musicsave_32_hot.png" />
+    <None Include="Resources\camok_32_hot.png" />
+    <None Include="Resources\webcamclose_32_hot.png" />
+    <None Include="Resources\wizardok_32_hot.png" />
+    <None Include="Resources\estatok_32_hot.png" />
+    <None Include="Resources\phoneclose_32_hot.png" />
+    <None Include="Resources\folderdel_32_hot.png" />
+    <None Include="Resources\games_32_hot.png" />
+    <None Include="Resources\mailboxnext_32_hot.png" />
+    <None Include="Resources\folderclose_32_hot.png" />
+    <None Include="Resources\winnext_32_hot.png" />
+    <None Include="Resources\timeok_32_hot.png" />
+    <None Include="Resources\brcasenext_32_hot.png" />
+    <None Include="Resources\phoneadd_32_hot.png" />
+    <None Include="Resources\windowsdel_32_hot.png" />
+    <None Include="Resources\mailback_32_hot.png" />
+    <None Include="Resources\pasteok_32_hot.png" />
+    <None Include="Resources\phonesave_32_hot.png" />
+    <None Include="Resources\docclose_32_hot.png" />
+    <None Include="Resources\micadd_32_hot.png" />
+    <None Include="Resources\fav_32_hot.png" />
+    <None Include="Resources\clientsnext_32_hot.png" />
+    <None Include="Resources\estatclose_32_hot.png" />
+    <None Include="Resources\shopingcarback_32_hot.png" />
+    <None Include="Resources\mailbox_32_hot.png" />
+    <None Include="Resources\userok_32_hot.png" />
+    <None Include="Resources\estatdel_32_hot.png" />
+    <None Include="Resources\micsave_32_hot.png" />
+    <None Include="Resources\download_32_hot.png" />
+    <None Include="Resources\bookclose_32_hot.png" />
+    <None Include="Resources\wizardback_32_hot.png" />
+    <None Include="Resources\back_32_hot.png" />
+    <None Include="Resources\wizardadd_32_hot.png" />
+    <None Include="Resources\netprev_32_hot.png" />
+    <None Include="Resources\camback_32_hot.png" />
+    <None Include="Resources\lockclose_32_hot.png" />
+    <None Include="Resources\wizardprev_32_hot.png" />
+    <None Include="Resources\docadd_32_hot.png" />
+    <None Include="Resources\ideanext_32_hot.png" />
+    <None Include="Resources\winok_32_hot.png" />
+    <None Include="Resources\programsadd_32_hot.png" />
+    <None Include="Resources\wizardclose_32_hot.png" />
+    <None Include="Resources\copyprev_32_hot.png" />
+    <None Include="Resources\notesprev_32_hot.png" />
+    <None Include="Resources\lockdel_32_hot.png" />
+    <None Include="Resources\cleanbyn_32_hot.png" />
+    <None Include="Resources\micdel_32_hot.png" />
+    <None Include="Resources\estatnext_32_hot.png" />
+    <None Include="Resources\usersave_32_hot.png" />
+    <None Include="Resources\systemadd_32_hot.png" />
+    <None Include="Resources\webcamprev_32_hot.png" />
+    <None Include="Resources\phoneprev_32_hot.png" />
+    <None Include="Resources\ideaback_32_hot.png" />
+    <None Include="Resources\zoomclose_32_hot.png" />
+    <None Include="Resources\cutok_32_hot.png" />
+    <None Include="Resources\netclose_32_hot.png" />
+    <None Include="Resources\cutadd_32_hot.png" />
+    <None Include="Resources\attach_32_hot.png" />
+    <None Include="Resources\musicback_32_hot.png" />
+    <None Include="Resources\ideaok_32_hot.png" />
+    <None Include="Resources\levelprev_32_hot.png" />
+    <None Include="Resources\bookok_32_hot.png" />
+    <None Include="Resources\zoomin_32_hot.png" />
+    <None Include="Resources\gamesclose_32_hot.png" />
+    <None Include="Resources\usernext_32_hot.png" />
+    <None Include="Resources\windowsok_32_hot.png" />
+    <None Include="Resources\pastenext_32_hot.png" />
+    <None Include="Resources\homeback_32_hot.png" />
+    <None Include="Resources\wizardsave_32_hot.png" />
+    <None Include="Resources\tools_32_hot.png" />
+    <None Include="Resources\booksave_32_hot.png" />
+    <None Include="Resources\netadd_32_hot.png" />
+    <None Include="Resources\gamesnext_32_hot.png" />
+    <None Include="Resources\doorsave_32_hot.png" />
+    <None Include="Resources\wizardnext_32_hot.png" />
+    <None Include="Resources\downlevel_32_hot.png" />
+    <None Include="Resources\webcamsave_32_hot.png" />
+    <None Include="Resources\clientsclose_32_hot.png" />
+    <None Include="Resources\recycleok_32_hot.png" />
+    <None Include="Resources\estatback_32_hot.png" />
+    <None Include="Resources\adminsave_32_hot.png" />
+    <None Include="Resources\windowsadd_32_hot.png" />
+    <None Include="Resources\save_32_hot.png" />
+    <None Include="Resources\topaint_32_hot.png" />
+    <None Include="Resources\favadd_32_hot.png" />
+    <None Include="Resources\doorok_32_hot.png" />
+    <None Include="Resources\lock_32_hot.png" />
+    <None Include="Resources\levelback_32_hot.png" />
+    <None Include="Resources\gamesprev_32_hot.png" />
+    <None Include="Resources\cutnext_32_hot.png" />
+    <None Include="Resources\account_32_hot.png" />
+    <None Include="Resources\ideasave_32_hot.png" />
+    <None Include="Resources\groupprev_32_hot.png" />
+    <None Include="Resources\cut_32_hot.png" />
+    <None Include="Resources\pastesave_32_hot.png" />
+    <None Include="Resources\docprev_32_hot.png" />
+    <None Include="Resources\winback_32_hot.png" />
+    <None Include="Resources\unlock_32_hot.png" />
+    <None Include="Resources\reload_32_hot.png" />
+    <None Include="Resources\surf_32_hot.png" />
+    <None Include="Resources\webcamdel_32_hot.png" />
+    <None Include="Resources\gamesadd_32_hot.png" />
+    <None Include="Resources\mailboxsave_32_hot.png" />
+    <None Include="Resources\windowsnext_32_hot.png" />
+    <None Include="Resources\levelsave_32_hot.png" />
+    <None Include="Resources\pasteclose_32_hot.png" />
+    <None Include="Resources\paste_32_hot.png" />
+    <None Include="Resources\programsprev_32_hot.png" />
+    <None Include="Resources\programs_32_hot.png" />
+    <None Include="Resources\maildel_32_hot.png" />
+    <None Include="Resources\user_32_hot.png" />
+    <None Include="Resources\cutdel_32_hot.png" />
+    <None Include="Resources\exit_32_hot.png" />
+    <None Include="Resources\webcamadd_32_hot.png" />
+    <None Include="Resources\levelnext_32_hot.png" />
+    <None Include="Resources\ideaprev_32_hot.png" />
+    <None Include="Resources\phonenext_32_hot.png" />
+    <None Include="Resources\docok_32_hot.png" />
+    <None Include="Resources\notesok_32_hot.png" />
+    <None Include="Resources\adminok_32_hot.png" />
+    <None Include="Resources\timeback_32_hot.png" />
+    <None Include="Resources\net_32_hot.png" />
+    <None Include="Resources\winsave_32_hot.png" />
+    <None Include="Resources\systemsave_32_hot.png" />
+    <None Include="Resources\homeclose_32_hot.png" />
+    <None Include="Resources\time_32_hot.png" />
+    <None Include="Resources\camsave_32_hot.png" />
+    <None Include="Resources\userprev_32_hot.png" />
+    <None Include="Resources\last_32_hot.png" />
+    <None Include="Resources\adminback_32_hot.png" />
+    <None Include="Resources\clientsback_32_hot.png" />
+    <None Include="Resources\shopingcardel_32_hot.png" />
+    <None Include="Resources\groupclose_32_hot.png" />
+    <None Include="Resources\shopingcarsave_32_hot.png" />
+    <None Include="Resources\pasteprev_32_hot.png" />
+    <None Include="Resources\check_32_hot.png" />
+    <None Include="Resources\webcamnext_32_hot.png" />
+    <None Include="Resources\system_32_hot.png" />
+    <None Include="Resources\accountclose_32_hot.png" />
+    <None Include="Resources\brcasesave_32_hot.png" />
+    <None Include="Resources\phone_ 32_hot.png" />
+    <None Include="Resources\netdel_32_hot.png" />
+    <None Include="Resources\homeprev_32_hot.png" />
+    <None Include="Resources\admin_32_hot.png" />
+    <None Include="Resources\webcam_32_hot.png" />
+    <None Include="Resources\adminclose_32_hot.png" />
+    <None Include="Resources\phoneok_32_hot.png" />
+    <None Include="Resources\homedel_32_hot.png" />
+    <None Include="Resources\musicadd_32_hot.png" />
+    <None Include="Resources\supportback_32_hot.png" />
+    <None Include="Resources\cutsave_32_hot.png" />
+    <None Include="Resources\datesave_32_hot.png" />
+    <None Include="Resources\group_32_hot.png" />
+    <None Include="Resources\mailsave_32_hot.png" />
+    <None Include="Resources\musicprev_32_hot.png" />
+    <None Include="Resources\clientsdel_32_hot.png" />
+    <None Include="Resources\bookdel_32_hot.png" />
+    <None Include="Resources\supportsave_32_hot.png" />
+    <None Include="Resources\shopingcarok_32_hot.png" />
+    <None Include="Resources\systemnext_32_hot.png" />
+    <None Include="Resources\systemok_32_hot.png" />
+    <None Include="Resources\netback_32_hot.png" />
+    <None Include="Resources\doorprev_32_hot.png" />
+    <None Include="Resources\camprev_32_hot.png" />
+    <None Include="Resources\out_32_hot.png" />
+    <None Include="Resources\groupadd_32_hot.png" />
+    <None Include="Resources\add_32_hot.png" />
+    <None Include="Resources\brcaseadd_32_hot.png" />
+    <None Include="Resources\shopingcarprev_32_hot.png" />
+    <None Include="Resources\mailprev_32_hot.png" />
+    <None Include="Resources\gamesdel_32_hot.png" />
+    <None Include="Resources\pasteadd_32_hot.png" />
+    <None Include="Resources\dooradd_32_hot.png" />
+    <None Include="Resources\micnext_32_hot.png" />
+    <None Include="Resources\userclose_32_hot.png" />
+    <None Include="Resources\homesave_32_hot.png" />
+    <None Include="Resources\mailboxadd_32_hot.png" />
+    <None Include="Resources\bookback_32_hot.png" />
+    <None Include="Resources\zoomback_32_hot.png" />
+    <None Include="Resources\docback_32_hot.png" />
+    <None Include="Resources\winclose_32_hot.png" />
+    <None Include="Resources\windowsprev_32_hot.png" />
+    <None Include="Resources\mailok_32_hot.png" />
+    <None Include="Resources\accountprev_32_hot.png" />
+    <None Include="Resources\netsave_32_hot.png" />
+    <None Include="Resources\folderback_32_hot.png" />
+    <None Include="Resources\recycleadd_32_hot.png" />
+    <None Include="Resources\brcaseback_32_hot.png" />
+    <None Include="Resources\mailboxclose_32_hot.png" />
+    <None Include="Resources\clientsok_32_hot.png" />
+    <None Include="Resources\folder_32_hot.png" />
+    <None Include="Resources\folderok_32_hot.png" />
+    <None Include="Resources\homenext_32_hot.png" />
+    <None Include="Resources\deluser_32_hot.png" />
+    <None Include="Resources\updoc_32_hot.png" />
+    <None Include="Resources\addshopingcar_32_hot.png" />
+    <None Include="Resources\programssave_32_hot.png" />
+    <None Include="Resources\camadd_32_hot.png" />
+    <None Include="Resources\draw_32_hot.png" />
+    <None Include="Resources\systemdel_32_hot.png" />
+    <None Include="Resources\timenext_32_hot.png" />
+    <None Include="Resources\help_32_hot.png" />
+    <None Include="Resources\preview_32_hot.png" />
+    <None Include="Resources\micprev_32_hot.png" />
+    <None Include="Resources\copy_32_hot.png" />
+    <None Include="Resources\camoff_32_hot.png" />
+    <None Include="Resources\doorback_32_hot.png" />
+    <None Include="Resources\programsnext_32_hot.png" />
+    <None Include="Resources\print_32_hot.png" />
+    <None Include="Resources\winprev_32_hot.png" />
+    <None Include="Resources\notesnext_32_hot.png" />
+    <None Include="Resources\zoomok_32_hot.png" />
+    <None Include="Resources\phoneback_32_hot.png" />
+    <None Include="Resources\camnext_32_hot.png" />
+    <None Include="Resources\accountdel_32_hot.png" />
+    <None Include="Resources\dateback_32_hot.png" />
+    <None Include="Resources\estatprev_32_hot.png" />
+    <None Include="Resources\webcamok_32_hot.png" />
+    <None Include="Resources\cancel_32_hot.png" />
+    <None Include="Resources\dateprev_32_hot.png" />
+    <None Include="Resources\copyok_32_hot.png" />
+    <None Include="Resources\mailboxok_32_hot.png" />
+    <None Include="Resources\windows_32_hot.png" />
+    <None Include="Resources\toolsprev_32_hot.png" />
+    <None Include="Resources\systemback_32_hot.png" />
+    <None Include="Resources\docsave_32_hot.png" />
+    <None Include="Resources\toolsnext_32_hot.png" />
+    <None Include="Resources\zoomout_32_hot.png" />
+    <None Include="Resources\wizard_32_hot.png" />
+    <None Include="Resources\paint_32_hot.png" />
+    <None Include="Resources\clientsadd_32_hot.png" />
+    <None Include="Resources\timeadd_32_hot.png" />
+    <None Include="Resources\datedel_32_hot.png" />
+    <None Include="Resources\wait_32_hot.png" />
+    <None Include="Resources\refresh_32_hot.png" />
+    <None Include="Resources\dateadd_32_hot.png" />
+    <None Include="Resources\backsurf_32_hot.png" />
+    <None Include="Resources\level_32_hot.png" />
+    <None Include="Resources\accountnext_32_hot.png" />
+    <None Include="Resources\gamesok_32_hot.png" />
+    <None Include="Resources\ideaadd_32_hot.png" />
+    <None Include="Resources\supportok_32_hot.png" />
+    <None Include="Resources\supportadd_32_hot.png" />
+    <None Include="Resources\delete_32_hot.png" />
+    <None Include="Resources\admindel_32_hot.png" />
+    <None Include="Resources\groupdel_32_hot.png" />
+    <None Include="Resources\supportclose_32_hot.png" />
+    <None Include="Resources\lockadd_32_hot.png" />
+    <None Include="Resources\doc_32_hot.png" />
+    <None Include="Resources\adminnext_32_hot.png" />
+    <None Include="Resources\musicok_32_hot.png" />
+    <None Include="Resources\dateok_32_hot.png" />
+    <None Include="Resources\brcaseprev_32_hot.png" />
+    <None Include="Resources\supportprev_32_hot.png" />
+    <None Include="Resources\play_32_hot.png" />
+    <None Include="Resources\gamessave_32_hot.png" />
+    <None Include="Resources\pastedel_32_hot.png" />
+    <None Include="Resources\micback_32_hot.png" />
+    <None Include="Resources\booknext_32_hot.png" />
+    <None Include="Resources\zoomnext_32_hot.png" />
+    <None Include="Resources\toolsok_32_hot.png" />
+    <None Include="Resources\phonedel_32_hot.png" />
+    <None Include="Resources\systemprev_32_hot.png" />
+    <None Include="Resources\foldersave_32_hot.png" />
+    <None Include="Resources\mailclose_32_hot.png" />
+    <None Include="Resources\systemclose_32_hot.png" />
+    <None Include="Resources\music_32_hot.png" />
+    <None Include="Resources\wizarddel_32_hot.png" />
+    <None Include="Resources\pause_32_hot.png" />
+    <None Include="Resources\adminadd_32_hot.png" />
+    <None Include="Resources\netok_32_hot.png" />
+    <None Include="Resources\rr_32_hot.png" />
+    <None Include="Resources\estatadd_32_hot.png" />
+    <None Include="Resources\notesback_32_hot.png" />
+    <None Include="Resources\mic_32_hot.png" />
+    <None Include="Resources\recycle_32_hot.png" />
+    <None Include="Resources\cutback_32_hot.png" />
+    <None Include="Resources\windel_32_hot.png" />
+    <None Include="Resources\refreshwin_32_hot.png" />
+    <None Include="Resources\advance_32_hot.png" />
+    <None Include="Resources\recyclenext_32_hot.png" />
+    <None Include="Resources\doorclose_32_hot.png" />
+    <None Include="Resources\brcaseok_32_hot.png" />
+    <None Include="Resources\brcaseclose_32_hot.png" />
+    <None Include="Resources\toolsclose_32_hot.png" />
+    <None Include="Resources\groupsave_32_hot.png" />
+    <None Include="Resources\door_32_hot.png" />
+    <None Include="Resources\programsok_32_hot.png" />
+    <None Include="Resources\upload_32_hot.png" />
+    <None Include="Resources\cutprev_32_hot.png" />
+    <None Include="Resources\folderadd_32_hot.png" />
+    <None Include="Resources\windowsclose_32_hot.png" />
+    <None Include="Resources\locknext_32_hot.png" />
+    <None Include="Resources\win_32_hot.png" />
+    <None Include="Resources\leveldel_32_hot.png" />
+    <None Include="Resources\zoomsave_32_hot.png" />
+    <None Include="Resources\dateclose_32_hot.png" />
+    <None Include="Resources\supportdel_32_hot.png" />
+    <None Include="Resources\bookadd_32_hot.png" />
+    <None Include="Resources\notesdel_32_hot.png" />
+    <None Include="Resources\word_32_hot.png" />
+    <None Include="Resources\lockback_32_hot.png" />
+    <None Include="Resources\lockok_32_hot.png" />
+    <None Include="Resources\programsback_32_hot.png" />
+    <None Include="Resources\timesave_32_hot.png" />
+    <None Include="Resources\docdel_32_hot.png" />
+    <None Include="Resources\timedel_32_hot.png" />
+    <None Include="Resources\notes_32_hot.png" />
+    <None Include="Resources\upfolder_32_hot.png" />
+    <None Include="Resources\accountsave_32_hot.png" />
+    <None Include="Resources\estat_32_hot.png" />
+    <None Include="Resources\brcase_32_hot.png" />
+    <None Include="Resources\recycleback_32_hot.png" />
+    <None Include="Resources\groupnext_32_hot.png" />
+    <None Include="Resources\lockprev_32_hot.png" />
+    <None Include="Resources\micok_32_hot.png" />
+    <None Include="Resources\book_32_hot.png" />
+    <None Include="Resources\camdel_32_hot.png" />
+    <None Include="Resources\homeadd_32_hot.png" />
+    <None Include="Resources\recycleprev_32_hot.png" />
+    <None Include="Resources\circle_32_hot.png" />
+    <None Include="Resources\ideadel_32_hot.png" />
+    <None Include="Resources\date_32_hot.png" />
+    <None Include="Resources\cutclose_32_hot.png" />
+    <None Include="Resources\ideaclose_32_hot.png" />
+    <None Include="Resources\doordel_32_hot.png" />
+    <None Include="Resources\estatsave_32_hot.png" />
+    <None Include="Resources\home_32_hot.png" />
+    <None Include="Resources\shopingcarclose_32_hot.png" />
+    <None Include="Resources\webcamback_32_hot.png" />
+    <None Include="Resources\chat_32_hot.png" />
+    <None Include="Resources\shoppingcart_32_hot.png" />
+    <None Include="Resources\programsdel_32_hot.png" />
+    <None Include="Resources\programsclose_32_hot.png" />
+    <None Include="Resources\copysave_32_hot.png" />
+    <None Include="Resources\calc_32_hot.png" />
+    <None Include="Resources\groupback_32_hot.png" />
+    <None Include="Resources\windowssave_32_hot.png" />
+    <None Include="Resources\timeprev_32_hot.png" />
+    <None Include="Resources\folderprev_32_hot.png" />
+    <None Include="Resources\recycledel_32_hot.png" />
+    <None Include="Resources\adddoc_32_hot.png" />
+    <None Include="Resources\zoom_32_hot.png" />
+    <None Include="Resources\toolsdel_32_hot.png" />
+    <None Include="Resources\foldernext_32_hot.png" />
+    <None Include="Resources\musicnext_32_hot.png" />
+    <None Include="Resources\winadd_32_hot.png" />
+    <None Include="Resources\stop_32_hot.png" />
+    <None Include="Resources\pasteback_32_hot.png" />
+    <None Include="Resources\square_32_hot.png" />
+    <None Include="Resources\micoff_32_hot.png" />
+    <None Include="Resources\levelclose_32_hot.png" />
+    <None Include="Resources\cam_32_hot.png" />
+    <None Include="Resources\shopingcarnext_32_hot.png" />
+    <None Include="Resources\open_32_hot.png" />
+    <None Include="Resources\windowsback_32_hot.png" />
+    <None Include="Resources\Sign Yen 2.png" />
+    <None Include="Resources\Sign Yen 3.png" />
+    <None Include="Resources\Sign Yen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.3.5">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 3.5 SP2</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
