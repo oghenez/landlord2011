@@ -95,7 +95,7 @@
             this.radToolStripItem4 = new Telerik.WinControls.UI.RadToolStripItem();
             this.radButtonElement6 = new Telerik.WinControls.UI.RadButtonElement();
             this.radStatusStrip1 = new Telerik.WinControls.UI.RadStatusStrip();
-            this.radLabelElement1 = new Telerik.WinControls.UI.RadLabelElement();
+            this.radLabelMsg = new Telerik.WinControls.UI.RadLabelElement();
             this.radLabelElement2 = new Telerik.WinControls.UI.RadLabelElement();
             this.windows7Theme1 = new Telerik.WinControls.Themes.Windows7Theme();
             this.radTreeView1 = new Telerik.WinControls.UI.RadTreeView();
@@ -585,7 +585,7 @@
             // 
             this.radStatusStrip1.AutoSize = true;
             this.radStatusStrip1.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.radLabelElement1,
+            this.radLabelMsg,
             this.radLabelElement2});
             this.radStatusStrip1.LayoutStyle = Telerik.WinControls.UI.RadStatusBarLayoutStyle.Stack;
             this.radStatusStrip1.Location = new System.Drawing.Point(0, 564);
@@ -595,13 +595,13 @@
             this.radStatusStrip1.TabIndex = 6;
             this.radStatusStrip1.Text = "radStatusStrip1";
             // 
-            // radLabelElement1
+            // radLabelMsg
             // 
-            this.radLabelElement1.Margin = new System.Windows.Forms.Padding(1);
-            this.radLabelElement1.Name = "radLabelElement1";
-            this.radStatusStrip1.SetSpring(this.radLabelElement1, true);
-            this.radLabelElement1.Text = "版本：V1.0.0";
-            this.radLabelElement1.TextWrap = true;
+            this.radLabelMsg.Margin = new System.Windows.Forms.Padding(1);
+            this.radLabelMsg.Name = "radLabelMsg";
+            this.radStatusStrip1.SetSpring(this.radLabelMsg, true);
+            this.radLabelMsg.Text = "版本：V1.0.0";
+            this.radLabelMsg.TextWrap = true;
             // 
             // radLabelElement2
             // 
@@ -772,7 +772,7 @@
         private Telerik.WinControls.UI.RadToolStripItem radToolStripItem4;
         private Telerik.WinControls.UI.RadButtonElement radButtonElement6;
         private Telerik.WinControls.UI.RadStatusStrip radStatusStrip1;
-        private Telerik.WinControls.UI.RadLabelElement radLabelElement1;
+        private Telerik.WinControls.UI.RadLabelElement radLabelMsg;
         private Telerik.WinControls.UI.RadLabelElement radLabelElement2;
         private Telerik.WinControls.Themes.Windows7Theme windows7Theme1;
         private Telerik.WinControls.UI.RadTreeView radTreeView1;

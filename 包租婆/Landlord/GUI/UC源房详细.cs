@@ -14,6 +14,7 @@ namespace Landlord.GUI
     {
         private 源房 yf = null;
         public UC源房详细() { InitializeComponent(); }
+
         //新增
         public UC源房详细(Main main)
             : base(main, DockStyle.None)
@@ -21,9 +22,10 @@ namespace Landlord.GUI
             InitializeComponent();
             radButton1.Text = "新 增";
             yf = new 源房();
-            yf.ID = -1;//预分配ID
+            yf.ID = Guid.NewGuid();//预分配ID
             源房BindingSource.DataSource = yf;
         }
+
         //修改
         public UC源房详细(源房 old, Main main)
             : base(main, DockStyle.None)
@@ -36,15 +38,24 @@ namespace Landlord.GUI
 
         private void radButton1_Click(object sender, EventArgs e)
         {
+            if (Validate(false))
+                return;
+
             if (yf.EntityState == EntityState.Modified)//修改
             {
                 saveData("修改");
 
             }
-            else if(yf.EntityState == EntityState.Added)//新增
+            else if(yf.EntityState == EntityState.Added )//新增
             {
                 saveData("新增");
             }
+            else if (yf.EntityState == EntityState.Detached)
+            {
+                mainForm.context.源房.AddObject(yf);
+                saveData("新增");
+            }
+
         }
 
         private void saveData(string txt)
