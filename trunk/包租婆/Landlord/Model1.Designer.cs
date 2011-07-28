@@ -100,6 +100,22 @@ namespace Landlord
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
+        public ObjectSet<客房出租历史记录> 客房出租历史记录
+        {
+            get
+            {
+                if ((_客房出租历史记录 == null))
+                {
+                    _客房出租历史记录 = base.CreateObjectSet<客房出租历史记录>("客房出租历史记录");
+                }
+                return _客房出租历史记录;
+            }
+        }
+        private ObjectSet<客房出租历史记录> _客房出租历史记录;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
         public ObjectSet<客房租金明细> 客房租金明细
         {
             get
@@ -240,22 +256,6 @@ namespace Landlord
             }
         }
         private ObjectSet<装修明细> _装修明细;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        public ObjectSet<客房出租历史记录> 客房出租历史记录
-        {
-            get
-            {
-                if ((_客房出租历史记录 == null))
-                {
-                    _客房出租历史记录 = base.CreateObjectSet<客房出租历史记录>("客房出租历史记录");
-                }
-                return _客房出租历史记录;
-            }
-        }
-        private ObjectSet<客房出租历史记录> _客房出租历史记录;
 
         #endregion
         #region AddTo 方法
@@ -274,6 +274,14 @@ namespace Landlord
         public void AddTo客房(客房 客房)
         {
             base.AddObject("客房", 客房);
+        }
+    
+        /// <summary>
+        /// 用于向 客房出租历史记录 EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTo客房出租历史记录(客房出租历史记录 客房出租历史记录)
+        {
+            base.AddObject("客房出租历史记录", 客房出租历史记录);
         }
     
         /// <summary>
@@ -347,14 +355,6 @@ namespace Landlord
         {
             base.AddObject("装修明细", 装修明细);
         }
-    
-        /// <summary>
-        /// 用于向 客房出租历史记录 EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddTo客房出租历史记录(客房出租历史记录 客房出租历史记录)
-        {
-            base.AddObject("客房出租历史记录", 客房出租历史记录);
-        }
 
         #endregion
     }
@@ -377,12 +377,10 @@ namespace Landlord
         /// <summary>
         /// 创建新的 缴收项目 对象。
         /// </summary>
-        /// <param name="id">ID 属性的初始值。</param>
         /// <param name="项目名">项目名 属性的初始值。</param>
-        public static 缴收项目 Create缴收项目(global::System.Int32 id, global::System.String 项目名)
+        public static 缴收项目 Create缴收项目(global::System.String 项目名)
         {
             缴收项目 缴收项目 = new 缴收项目();
-            缴收项目.ID = id;
             缴收项目.项目名 = 项目名;
             return 缴收项目;
         }
@@ -395,33 +393,6 @@ namespace Landlord
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.String 项目名
         {
             get
@@ -430,11 +401,14 @@ namespace Landlord
             }
             set
             {
-                On项目名Changing(value);
-                ReportPropertyChanging("项目名");
-                _项目名 = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("项目名");
-                On项目名Changed();
+                if (_项目名 != value)
+                {
+                    On项目名Changing(value);
+                    ReportPropertyChanging("项目名");
+                    _项目名 = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("项目名");
+                    On项目名Changed();
+                }
             }
         }
         private global::System.String _项目名;
@@ -482,12 +456,10 @@ namespace Landlord
         /// <summary>
         /// 创建新的 客房 对象。
         /// </summary>
-        /// <param name="源房ID">源房ID 属性的初始值。</param>
         /// <param name="命名">命名 属性的初始值。</param>
         /// <param name="面积">面积 属性的初始值。</param>
         /// <param name="含厨房">含厨房 属性的初始值。</param>
         /// <param name="含卫生间">含卫生间 属性的初始值。</param>
-        /// <param name="id">ID 属性的初始值。</param>
         /// <param name="水始码">水始码 属性的初始值。</param>
         /// <param name="电始码">电始码 属性的初始值。</param>
         /// <param name="气始码">气始码 属性的初始值。</param>
@@ -495,15 +467,15 @@ namespace Landlord
         /// <param name="月宽带费">月宽带费 属性的初始值。</param>
         /// <param name="月厨房费">月厨房费 属性的初始值。</param>
         /// <param name="中介费用">中介费用 属性的初始值。</param>
-        public static 客房 Create客房(global::System.Int32 源房ID, global::System.String 命名, global::System.Double 面积, global::System.Boolean 含厨房, global::System.Boolean 含卫生间, global::System.Int32 id, global::System.Double 水始码, global::System.Double 电始码, global::System.Double 气始码, global::System.Decimal 月物业费, global::System.Decimal 月宽带费, global::System.Decimal 月厨房费, global::System.Decimal 中介费用)
+        /// <param name="id">ID 属性的初始值。</param>
+        /// <param name="源房ID">源房ID 属性的初始值。</param>
+        public static 客房 Create客房(global::System.String 命名, global::System.Double 面积, global::System.Boolean 含厨房, global::System.Boolean 含卫生间, global::System.Double 水始码, global::System.Double 电始码, global::System.Double 气始码, global::System.Decimal 月物业费, global::System.Decimal 月宽带费, global::System.Decimal 月厨房费, global::System.Decimal 中介费用, global::System.Guid id, global::System.Guid 源房ID)
         {
             客房 客房 = new 客房();
-            客房.源房ID = 源房ID;
             客房.命名 = 命名;
             客房.面积 = 面积;
             客房.含厨房 = 含厨房;
             客房.含卫生间 = 含卫生间;
-            客房.ID = id;
             客房.水始码 = 水始码;
             客房.电始码 = 电始码;
             客房.气始码 = 气始码;
@@ -511,35 +483,13 @@ namespace Landlord
             客房.月宽带费 = 月宽带费;
             客房.月厨房费 = 月厨房费;
             客房.中介费用 = 中介费用;
+            客房.ID = id;
+            客房.源房ID = 源房ID;
             return 客房;
         }
 
         #endregion
         #region 基元属性
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 源房ID
-        {
-            get
-            {
-                return _源房ID;
-            }
-            set
-            {
-                On源房IDChanging(value);
-                ReportPropertyChanging("源房ID");
-                _源房ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("源房ID");
-                On源房IDChanged();
-            }
-        }
-        private global::System.Int32 _源房ID;
-        partial void On源房IDChanging(global::System.Int32 value);
-        partial void On源房IDChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -976,33 +926,6 @@ namespace Landlord
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Double 水始码
@@ -1167,6 +1090,57 @@ namespace Landlord
         private global::System.Decimal _中介费用;
         partial void On中介费用Changing(global::System.Decimal value);
         partial void On中介费用Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Guid _ID;
+        partial void OnIDChanging(global::System.Guid value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid 源房ID
+        {
+            get
+            {
+                return _源房ID;
+            }
+            set
+            {
+                On源房IDChanging(value);
+                ReportPropertyChanging("源房ID");
+                _源房ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("源房ID");
+                On源房IDChanged();
+            }
+        }
+        private global::System.Guid _源房ID;
+        partial void On源房IDChanging(global::System.Guid value);
+        partial void On源房IDChanged();
 
         #endregion
     
@@ -1185,12 +1159,12 @@ namespace Landlord
         /// <summary>
         /// 创建新的 客房出租历史记录 对象。
         /// </summary>
-        /// <param name="id">ID 属性的初始值。</param>
+        /// <param name="租户">租户 属性的初始值。</param>
         /// <param name="客房ID">客房ID 属性的初始值。</param>
-        public static 客房出租历史记录 Create客房出租历史记录(global::System.Int32 id, global::System.Int32 客房ID)
+        public static 客房出租历史记录 Create客房出租历史记录(global::System.String 租户, global::System.Guid 客房ID)
         {
             客房出租历史记录 客房出租历史记录 = new 客房出租历史记录();
-            客房出租历史记录.ID = id;
+            客房出租历史记录.租户 = 租户;
             客房出租历史记录.客房ID = 客房ID;
             return 客房出租历史记录;
         }
@@ -1203,57 +1177,6 @@ namespace Landlord
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 客房ID
-        {
-            get
-            {
-                return _客房ID;
-            }
-            set
-            {
-                On客房IDChanging(value);
-                ReportPropertyChanging("客房ID");
-                _客房ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("客房ID");
-                On客房IDChanged();
-            }
-        }
-        private global::System.Int32 _客房ID;
-        partial void On客房IDChanging(global::System.Int32 value);
-        partial void On客房IDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public global::System.String 租户
         {
             get
@@ -1262,11 +1185,14 @@ namespace Landlord
             }
             set
             {
-                On租户Changing(value);
-                ReportPropertyChanging("租户");
-                _租户 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("租户");
-                On租户Changed();
+                if (_租户 != value)
+                {
+                    On租户Changing(value);
+                    ReportPropertyChanging("租户");
+                    _租户 = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("租户");
+                    On租户Changed();
+                }
             }
         }
         private global::System.String _租户;
@@ -1512,6 +1438,33 @@ namespace Landlord
         private global::System.String _备注;
         partial void On备注Changing(global::System.String value);
         partial void On备注Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid 客房ID
+        {
+            get
+            {
+                return _客房ID;
+            }
+            set
+            {
+                if (_客房ID != value)
+                {
+                    On客房IDChanging(value);
+                    ReportPropertyChanging("客房ID");
+                    _客房ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("客房ID");
+                    On客房IDChanged();
+                }
+            }
+        }
+        private global::System.Guid _客房ID;
+        partial void On客房IDChanging(global::System.Guid value);
+        partial void On客房IDChanged();
 
         #endregion
     
@@ -1530,17 +1483,15 @@ namespace Landlord
         /// <summary>
         /// 创建新的 客房租金明细 对象。
         /// </summary>
-        /// <param name="id">ID 属性的初始值。</param>
-        /// <param name="客房ID">客房ID 属性的初始值。</param>
         /// <param name="起付日期">起付日期 属性的初始值。</param>
         /// <param name="止付日期">止付日期 属性的初始值。</param>
-        public static 客房租金明细 Create客房租金明细(global::System.Int32 id, global::System.Int32 客房ID, global::System.DateTime 起付日期, global::System.DateTime 止付日期)
+        /// <param name="客房ID">客房ID 属性的初始值。</param>
+        public static 客房租金明细 Create客房租金明细(global::System.DateTime 起付日期, global::System.DateTime 止付日期, global::System.Guid 客房ID)
         {
             客房租金明细 客房租金明细 = new 客房租金明细();
-            客房租金明细.ID = id;
-            客房租金明细.客房ID = 客房ID;
             客房租金明细.起付日期 = 起付日期;
             客房租金明细.止付日期 = 止付日期;
+            客房租金明细.客房ID = 客房ID;
             return 客房租金明细;
         }
 
@@ -1552,57 +1503,6 @@ namespace Landlord
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 客房ID
-        {
-            get
-            {
-                return _客房ID;
-            }
-            set
-            {
-                On客房IDChanging(value);
-                ReportPropertyChanging("客房ID");
-                _客房ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("客房ID");
-                On客房IDChanged();
-            }
-        }
-        private global::System.Int32 _客房ID;
-        partial void On客房IDChanging(global::System.Int32 value);
-        partial void On客房IDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.DateTime 起付日期
         {
             get
@@ -1611,11 +1511,14 @@ namespace Landlord
             }
             set
             {
-                On起付日期Changing(value);
-                ReportPropertyChanging("起付日期");
-                _起付日期 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("起付日期");
-                On起付日期Changed();
+                if (_起付日期 != value)
+                {
+                    On起付日期Changing(value);
+                    ReportPropertyChanging("起付日期");
+                    _起付日期 = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("起付日期");
+                    On起付日期Changed();
+                }
             }
         }
         private global::System.DateTime _起付日期;
@@ -1625,7 +1528,7 @@ namespace Landlord
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.DateTime 止付日期
         {
@@ -1635,11 +1538,14 @@ namespace Landlord
             }
             set
             {
-                On止付日期Changing(value);
-                ReportPropertyChanging("止付日期");
-                _止付日期 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("止付日期");
-                On止付日期Changed();
+                if (_止付日期 != value)
+                {
+                    On止付日期Changing(value);
+                    ReportPropertyChanging("止付日期");
+                    _止付日期 = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("止付日期");
+                    On止付日期Changed();
+                }
             }
         }
         private global::System.DateTime _止付日期;
@@ -1861,6 +1767,33 @@ namespace Landlord
         private global::System.String _备注;
         partial void On备注Changing(global::System.String value);
         partial void On备注Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid 客房ID
+        {
+            get
+            {
+                return _客房ID;
+            }
+            set
+            {
+                if (_客房ID != value)
+                {
+                    On客房IDChanging(value);
+                    ReportPropertyChanging("客房ID");
+                    _客房ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("客房ID");
+                    On客房IDChanged();
+                }
+            }
+        }
+        private global::System.Guid _客房ID;
+        partial void On客房IDChanging(global::System.Guid value);
+        partial void On客房IDChanged();
 
         #endregion
     
@@ -1879,93 +1812,16 @@ namespace Landlord
         /// <summary>
         /// 创建新的 日常损耗 对象。
         /// </summary>
-        /// <param name="id">ID 属性的初始值。</param>
         /// <param name="源房ID">源房ID 属性的初始值。</param>
-        public static 日常损耗 Create日常损耗(global::System.Int32 id, global::System.Int32 源房ID)
+        public static 日常损耗 Create日常损耗(global::System.Guid 源房ID)
         {
             日常损耗 日常损耗 = new 日常损耗();
-            日常损耗.ID = id;
             日常损耗.源房ID = 源房ID;
             return 日常损耗;
         }
 
         #endregion
         #region 基元属性
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 源房ID
-        {
-            get
-            {
-                return _源房ID;
-            }
-            set
-            {
-                On源房IDChanging(value);
-                ReportPropertyChanging("源房ID");
-                _源房ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("源房ID");
-                On源房IDChanged();
-            }
-        }
-        private global::System.Int32 _源房ID;
-        partial void On源房IDChanging(global::System.Int32 value);
-        partial void On源房IDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> 客房ID
-        {
-            get
-            {
-                return _客房ID;
-            }
-            set
-            {
-                On客房IDChanging(value);
-                ReportPropertyChanging("客房ID");
-                _客房ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("客房ID");
-                On客房IDChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _客房ID;
-        partial void On客房IDChanging(Nullable<global::System.Int32> value);
-        partial void On客房IDChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -2062,6 +1918,57 @@ namespace Landlord
         private global::System.String _备注;
         partial void On备注Changing(global::System.String value);
         partial void On备注Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid 源房ID
+        {
+            get
+            {
+                return _源房ID;
+            }
+            set
+            {
+                if (_源房ID != value)
+                {
+                    On源房IDChanging(value);
+                    ReportPropertyChanging("源房ID");
+                    _源房ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("源房ID");
+                    On源房IDChanged();
+                }
+            }
+        }
+        private global::System.Guid _源房ID;
+        partial void On源房IDChanging(global::System.Guid value);
+        partial void On源房IDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> 客房ID
+        {
+            get
+            {
+                return _客房ID;
+            }
+            set
+            {
+                On客房IDChanging(value);
+                ReportPropertyChanging("客房ID");
+                _客房ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("客房ID");
+                On客房IDChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _客房ID;
+        partial void On客房IDChanging(Nullable<global::System.Guid> value);
+        partial void On客房IDChanged();
 
         #endregion
     
@@ -2080,15 +1987,13 @@ namespace Landlord
         /// <summary>
         /// 创建新的 提醒 对象。
         /// </summary>
-        /// <param name="id">ID 属性的初始值。</param>
         /// <param name="提醒时间">提醒时间 属性的初始值。</param>
         /// <param name="事项">事项 属性的初始值。</param>
         /// <param name="已完成">已完成 属性的初始值。</param>
         /// <param name="创建日期">创建日期 属性的初始值。</param>
-        public static 提醒 Create提醒(global::System.Int32 id, global::System.DateTime 提醒时间, global::System.String 事项, global::System.Boolean 已完成, global::System.DateTime 创建日期)
+        public static 提醒 Create提醒(global::System.DateTime 提醒时间, global::System.String 事项, global::System.Boolean 已完成, global::System.DateTime 创建日期)
         {
             提醒 提醒 = new 提醒();
-            提醒.ID = id;
             提醒.提醒时间 = 提醒时间;
             提醒.事项 = 事项;
             提醒.已完成 = 已完成;
@@ -2104,33 +2009,6 @@ namespace Landlord
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.DateTime 提醒时间
         {
             get
@@ -2139,11 +2017,14 @@ namespace Landlord
             }
             set
             {
-                On提醒时间Changing(value);
-                ReportPropertyChanging("提醒时间");
-                _提醒时间 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("提醒时间");
-                On提醒时间Changed();
+                if (_提醒时间 != value)
+                {
+                    On提醒时间Changing(value);
+                    ReportPropertyChanging("提醒时间");
+                    _提醒时间 = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("提醒时间");
+                    On提醒时间Changed();
+                }
             }
         }
         private global::System.DateTime _提醒时间;
@@ -2153,7 +2034,7 @@ namespace Landlord
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String 事项
         {
@@ -2163,11 +2044,14 @@ namespace Landlord
             }
             set
             {
-                On事项Changing(value);
-                ReportPropertyChanging("事项");
-                _事项 = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("事项");
-                On事项Changed();
+                if (_事项 != value)
+                {
+                    On事项Changing(value);
+                    ReportPropertyChanging("事项");
+                    _事项 = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("事项");
+                    On事项Changed();
+                }
             }
         }
         private global::System.String _事项;
@@ -2177,7 +2061,7 @@ namespace Landlord
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Boolean 已完成
         {
@@ -2187,11 +2071,14 @@ namespace Landlord
             }
             set
             {
-                On已完成Changing(value);
-                ReportPropertyChanging("已完成");
-                _已完成 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("已完成");
-                On已完成Changed();
+                if (_已完成 != value)
+                {
+                    On已完成Changing(value);
+                    ReportPropertyChanging("已完成");
+                    _已完成 = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("已完成");
+                    On已完成Changed();
+                }
             }
         }
         private global::System.Boolean _已完成;
@@ -2201,55 +2088,7 @@ namespace Landlord
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> 客房ID
-        {
-            get
-            {
-                return _客房ID;
-            }
-            set
-            {
-                On客房IDChanging(value);
-                ReportPropertyChanging("客房ID");
-                _客房ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("客房ID");
-                On客房IDChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _客房ID;
-        partial void On客房IDChanging(Nullable<global::System.Int32> value);
-        partial void On客房IDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> 源房ID
-        {
-            get
-            {
-                return _源房ID;
-            }
-            set
-            {
-                On源房IDChanging(value);
-                ReportPropertyChanging("源房ID");
-                _源房ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("源房ID");
-                On源房IDChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _源房ID;
-        partial void On源房IDChanging(Nullable<global::System.Int32> value);
-        partial void On源房IDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.DateTime 创建日期
         {
@@ -2259,11 +2098,14 @@ namespace Landlord
             }
             set
             {
-                On创建日期Changing(value);
-                ReportPropertyChanging("创建日期");
-                _创建日期 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("创建日期");
-                On创建日期Changed();
+                if (_创建日期 != value)
+                {
+                    On创建日期Changing(value);
+                    ReportPropertyChanging("创建日期");
+                    _创建日期 = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("创建日期");
+                    On创建日期Changed();
+                }
             }
         }
         private global::System.DateTime _创建日期;
@@ -2293,6 +2135,54 @@ namespace Landlord
         private Nullable<global::System.DateTime> _完成日期;
         partial void On完成日期Changing(Nullable<global::System.DateTime> value);
         partial void On完成日期Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> 客房ID
+        {
+            get
+            {
+                return _客房ID;
+            }
+            set
+            {
+                On客房IDChanging(value);
+                ReportPropertyChanging("客房ID");
+                _客房ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("客房ID");
+                On客房IDChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _客房ID;
+        partial void On客房IDChanging(Nullable<global::System.Guid> value);
+        partial void On客房IDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> 源房ID
+        {
+            get
+            {
+                return _源房ID;
+            }
+            set
+            {
+                On源房IDChanging(value);
+                ReportPropertyChanging("源房ID");
+                _源房ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("源房ID");
+                On源房IDChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _源房ID;
+        partial void On源房IDChanging(Nullable<global::System.Guid> value);
+        partial void On源房IDChanged();
 
         #endregion
     
@@ -2311,7 +2201,6 @@ namespace Landlord
         /// <summary>
         /// 创建新的 源房 对象。
         /// </summary>
-        /// <param name="id">ID 属性的初始值。</param>
         /// <param name="房名">房名 属性的初始值。</param>
         /// <param name="用途">用途 属性的初始值。</param>
         /// <param name="结构">结构 属性的初始值。</param>
@@ -2337,10 +2226,10 @@ namespace Landlord
         /// <param name="月卫生费">月卫生费 属性的初始值。</param>
         /// <param name="水务代扣卫生费">水务代扣卫生费 属性的初始值。</param>
         /// <param name="月宽带费">月宽带费 属性的初始值。</param>
-        public static 源房 Create源房(global::System.Int32 id, global::System.String 房名, global::System.String 用途, global::System.String 结构, global::System.Double 建筑面积, global::System.Int16 室, global::System.Int16 厅, global::System.Int16 卫, global::System.String 装修, global::System.String 房东, global::System.String 联系地址, global::System.String 身份证号, global::System.String 电话1, global::System.DateTime 期始, global::System.DateTime 期止, global::System.Decimal 月租金, global::System.Decimal 押金, global::System.Int16 支付月数, global::System.Decimal 月物业费, global::System.Double 水始码, global::System.Double 电始码, global::System.Double 气始码, global::System.Decimal 中介费用, global::System.Decimal 月卫生费, global::System.Boolean 水务代扣卫生费, global::System.Decimal 月宽带费)
+        /// <param name="id">ID 属性的初始值。</param>
+        public static 源房 Create源房(global::System.String 房名, global::System.String 用途, global::System.String 结构, global::System.Double 建筑面积, global::System.Int16 室, global::System.Int16 厅, global::System.Int16 卫, global::System.String 装修, global::System.String 房东, global::System.String 联系地址, global::System.String 身份证号, global::System.String 电话1, global::System.DateTime 期始, global::System.DateTime 期止, global::System.Decimal 月租金, global::System.Decimal 押金, global::System.Int16 支付月数, global::System.Decimal 月物业费, global::System.Double 水始码, global::System.Double 电始码, global::System.Double 气始码, global::System.Decimal 中介费用, global::System.Decimal 月卫生费, global::System.Boolean 水务代扣卫生费, global::System.Decimal 月宽带费, global::System.Guid id)
         {
             源房 源房 = new 源房();
-            源房.ID = id;
             源房.房名 = 房名;
             源房.用途 = 用途;
             源房.结构 = 结构;
@@ -2366,38 +2255,12 @@ namespace Landlord
             源房.月卫生费 = 月卫生费;
             源房.水务代扣卫生费 = 水务代扣卫生费;
             源房.月宽带费 = 月宽带费;
+            源房.ID = id;
             return 源房;
         }
 
         #endregion
         #region 基元属性
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -3310,6 +3173,33 @@ namespace Landlord
         private Nullable<global::System.Decimal> _气单价;
         partial void On气单价Changing(Nullable<global::System.Decimal> value);
         partial void On气单价Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Guid _ID;
+        partial void OnIDChanging(global::System.Guid value);
+        partial void OnIDChanged();
 
         #endregion
     
@@ -3328,17 +3218,15 @@ namespace Landlord
         /// <summary>
         /// 创建新的 源房缴费明细 对象。
         /// </summary>
-        /// <param name="id">ID 属性的初始值。</param>
-        /// <param name="源房ID">源房ID 属性的初始值。</param>
         /// <param name="缴费时间">缴费时间 属性的初始值。</param>
         /// <param name="缴费金额">缴费金额 属性的初始值。</param>
-        public static 源房缴费明细 Create源房缴费明细(global::System.Int32 id, global::System.Int32 源房ID, global::System.DateTime 缴费时间, global::System.Decimal 缴费金额)
+        /// <param name="源房ID">源房ID 属性的初始值。</param>
+        public static 源房缴费明细 Create源房缴费明细(global::System.DateTime 缴费时间, global::System.Decimal 缴费金额, global::System.Guid 源房ID)
         {
             源房缴费明细 源房缴费明细 = new 源房缴费明细();
-            源房缴费明细.ID = id;
-            源房缴费明细.源房ID = 源房ID;
             源房缴费明细.缴费时间 = 缴费时间;
             源房缴费明细.缴费金额 = 缴费金额;
+            源房缴费明细.源房ID = 源房ID;
             return 源房缴费明细;
         }
 
@@ -3350,57 +3238,6 @@ namespace Landlord
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 源房ID
-        {
-            get
-            {
-                return _源房ID;
-            }
-            set
-            {
-                On源房IDChanging(value);
-                ReportPropertyChanging("源房ID");
-                _源房ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("源房ID");
-                On源房IDChanged();
-            }
-        }
-        private global::System.Int32 _源房ID;
-        partial void On源房IDChanging(global::System.Int32 value);
-        partial void On源房IDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.DateTime 缴费时间
         {
             get
@@ -3409,11 +3246,14 @@ namespace Landlord
             }
             set
             {
-                On缴费时间Changing(value);
-                ReportPropertyChanging("缴费时间");
-                _缴费时间 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("缴费时间");
-                On缴费时间Changed();
+                if (_缴费时间 != value)
+                {
+                    On缴费时间Changing(value);
+                    ReportPropertyChanging("缴费时间");
+                    _缴费时间 = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("缴费时间");
+                    On缴费时间Changed();
+                }
             }
         }
         private global::System.DateTime _缴费时间;
@@ -3423,31 +3263,7 @@ namespace Landlord
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> 项目ID
-        {
-            get
-            {
-                return _项目ID;
-            }
-            set
-            {
-                On项目IDChanging(value);
-                ReportPropertyChanging("项目ID");
-                _项目ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("项目ID");
-                On项目IDChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _项目ID;
-        partial void On项目IDChanging(Nullable<global::System.Int32> value);
-        partial void On项目IDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Decimal 缴费金额
         {
@@ -3457,11 +3273,14 @@ namespace Landlord
             }
             set
             {
-                On缴费金额Changing(value);
-                ReportPropertyChanging("缴费金额");
-                _缴费金额 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("缴费金额");
-                On缴费金额Changed();
+                if (_缴费金额 != value)
+                {
+                    On缴费金额Changing(value);
+                    ReportPropertyChanging("缴费金额");
+                    _缴费金额 = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("缴费金额");
+                    On缴费金额Changed();
+                }
             }
         }
         private global::System.Decimal _缴费金额;
@@ -3587,6 +3406,57 @@ namespace Landlord
         private global::System.String _备注;
         partial void On备注Changing(global::System.String value);
         partial void On备注Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid 源房ID
+        {
+            get
+            {
+                return _源房ID;
+            }
+            set
+            {
+                if (_源房ID != value)
+                {
+                    On源房IDChanging(value);
+                    ReportPropertyChanging("源房ID");
+                    _源房ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("源房ID");
+                    On源房IDChanged();
+                }
+            }
+        }
+        private global::System.Guid _源房ID;
+        partial void On源房IDChanging(global::System.Guid value);
+        partial void On源房IDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 缴费项
+        {
+            get
+            {
+                return _缴费项;
+            }
+            set
+            {
+                On缴费项Changing(value);
+                ReportPropertyChanging("缴费项");
+                _缴费项 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("缴费项");
+                On缴费项Changed();
+            }
+        }
+        private global::System.String _缴费项;
+        partial void On缴费项Changing(global::System.String value);
+        partial void On缴费项Changed();
 
         #endregion
     
@@ -3605,69 +3475,16 @@ namespace Landlord
         /// <summary>
         /// 创建新的 源房水电气核查 对象。
         /// </summary>
-        /// <param name="id">ID 属性的初始值。</param>
         /// <param name="源房ID">源房ID 属性的初始值。</param>
-        public static 源房水电气核查 Create源房水电气核查(global::System.Int32 id, global::System.Int32 源房ID)
+        public static 源房水电气核查 Create源房水电气核查(global::System.Guid 源房ID)
         {
             源房水电气核查 源房水电气核查 = new 源房水电气核查();
-            源房水电气核查.ID = id;
             源房水电气核查.源房ID = 源房ID;
             return 源房水电气核查;
         }
 
         #endregion
         #region 基元属性
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 源房ID
-        {
-            get
-            {
-                return _源房ID;
-            }
-            set
-            {
-                On源房IDChanging(value);
-                ReportPropertyChanging("源房ID");
-                _源房ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("源房ID");
-                On源房IDChanged();
-            }
-        }
-        private global::System.Int32 _源房ID;
-        partial void On源房IDChanging(global::System.Int32 value);
-        partial void On源房IDChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -3932,6 +3749,33 @@ namespace Landlord
         private global::System.String _备注;
         partial void On备注Changing(global::System.String value);
         partial void On备注Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid 源房ID
+        {
+            get
+            {
+                return _源房ID;
+            }
+            set
+            {
+                if (_源房ID != value)
+                {
+                    On源房IDChanging(value);
+                    ReportPropertyChanging("源房ID");
+                    _源房ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("源房ID");
+                    On源房IDChanged();
+                }
+            }
+        }
+        private global::System.Guid _源房ID;
+        partial void On源房IDChanging(global::System.Guid value);
+        partial void On源房IDChanged();
 
         #endregion
     
@@ -3950,19 +3794,17 @@ namespace Landlord
         /// <summary>
         /// 创建新的 源房涨租协定 对象。
         /// </summary>
-        /// <param name="id">ID 属性的初始值。</param>
-        /// <param name="源房ID">源房ID 属性的初始值。</param>
         /// <param name="期始">期始 属性的初始值。</param>
         /// <param name="期止">期止 属性的初始值。</param>
         /// <param name="月租金">月租金 属性的初始值。</param>
-        public static 源房涨租协定 Create源房涨租协定(global::System.Int32 id, global::System.Int32 源房ID, global::System.DateTime 期始, global::System.DateTime 期止, global::System.Decimal 月租金)
+        /// <param name="源房ID">源房ID 属性的初始值。</param>
+        public static 源房涨租协定 Create源房涨租协定(global::System.DateTime 期始, global::System.DateTime 期止, global::System.Decimal 月租金, global::System.Guid 源房ID)
         {
             源房涨租协定 源房涨租协定 = new 源房涨租协定();
-            源房涨租协定.ID = id;
-            源房涨租协定.源房ID = 源房ID;
             源房涨租协定.期始 = 期始;
             源房涨租协定.期止 = 期止;
             源房涨租协定.月租金 = 月租金;
+            源房涨租协定.源房ID = 源房ID;
             return 源房涨租协定;
         }
 
@@ -3974,57 +3816,6 @@ namespace Landlord
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 源房ID
-        {
-            get
-            {
-                return _源房ID;
-            }
-            set
-            {
-                On源房IDChanging(value);
-                ReportPropertyChanging("源房ID");
-                _源房ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("源房ID");
-                On源房IDChanged();
-            }
-        }
-        private global::System.Int32 _源房ID;
-        partial void On源房IDChanging(global::System.Int32 value);
-        partial void On源房IDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.DateTime 期始
         {
             get
@@ -4033,11 +3824,14 @@ namespace Landlord
             }
             set
             {
-                On期始Changing(value);
-                ReportPropertyChanging("期始");
-                _期始 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("期始");
-                On期始Changed();
+                if (_期始 != value)
+                {
+                    On期始Changing(value);
+                    ReportPropertyChanging("期始");
+                    _期始 = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("期始");
+                    On期始Changed();
+                }
             }
         }
         private global::System.DateTime _期始;
@@ -4047,7 +3841,7 @@ namespace Landlord
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.DateTime 期止
         {
@@ -4057,11 +3851,14 @@ namespace Landlord
             }
             set
             {
-                On期止Changing(value);
-                ReportPropertyChanging("期止");
-                _期止 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("期止");
-                On期止Changed();
+                if (_期止 != value)
+                {
+                    On期止Changing(value);
+                    ReportPropertyChanging("期止");
+                    _期止 = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("期止");
+                    On期止Changed();
+                }
             }
         }
         private global::System.DateTime _期止;
@@ -4071,7 +3868,7 @@ namespace Landlord
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Decimal 月租金
         {
@@ -4081,16 +3878,46 @@ namespace Landlord
             }
             set
             {
-                On月租金Changing(value);
-                ReportPropertyChanging("月租金");
-                _月租金 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("月租金");
-                On月租金Changed();
+                if (_月租金 != value)
+                {
+                    On月租金Changing(value);
+                    ReportPropertyChanging("月租金");
+                    _月租金 = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("月租金");
+                    On月租金Changed();
+                }
             }
         }
         private global::System.Decimal _月租金;
         partial void On月租金Changing(global::System.Decimal value);
         partial void On月租金Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid 源房ID
+        {
+            get
+            {
+                return _源房ID;
+            }
+            set
+            {
+                if (_源房ID != value)
+                {
+                    On源房IDChanging(value);
+                    ReportPropertyChanging("源房ID");
+                    _源房ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("源房ID");
+                    On源房IDChanged();
+                }
+            }
+        }
+        private global::System.Guid _源房ID;
+        partial void On源房IDChanging(global::System.Guid value);
+        partial void On源房IDChanged();
 
         #endregion
     
@@ -4109,12 +3936,10 @@ namespace Landlord
         /// <summary>
         /// 创建新的 装修分类 对象。
         /// </summary>
-        /// <param name="id">ID 属性的初始值。</param>
         /// <param name="类别">类别 属性的初始值。</param>
-        public static 装修分类 Create装修分类(global::System.Int32 id, global::System.String 类别)
+        public static 装修分类 Create装修分类(global::System.String 类别)
         {
             装修分类 装修分类 = new 装修分类();
-            装修分类.ID = id;
             装修分类.类别 = 类别;
             return 装修分类;
         }
@@ -4127,33 +3952,6 @@ namespace Landlord
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.String 类别
         {
             get
@@ -4162,11 +3960,14 @@ namespace Landlord
             }
             set
             {
-                On类别Changing(value);
-                ReportPropertyChanging("类别");
-                _类别 = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("类别");
-                On类别Changed();
+                if (_类别 != value)
+                {
+                    On类别Changing(value);
+                    ReportPropertyChanging("类别");
+                    _类别 = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("类别");
+                    On类别Changed();
+                }
             }
         }
         private global::System.String _类别;
@@ -4190,23 +3991,21 @@ namespace Landlord
         /// <summary>
         /// 创建新的 装修明细 对象。
         /// </summary>
-        /// <param name="id">ID 属性的初始值。</param>
-        /// <param name="源房ID">源房ID 属性的初始值。</param>
         /// <param name="日期">日期 属性的初始值。</param>
-        /// <param name="装修分类ID">装修分类ID 属性的初始值。</param>
         /// <param name="项目名称">项目名称 属性的初始值。</param>
         /// <param name="数量">数量 属性的初始值。</param>
         /// <param name="单价">单价 属性的初始值。</param>
-        public static 装修明细 Create装修明细(global::System.Int32 id, global::System.Int32 源房ID, global::System.DateTime 日期, global::System.Int32 装修分类ID, global::System.String 项目名称, global::System.Int16 数量, global::System.Decimal 单价)
+        /// <param name="源房ID">源房ID 属性的初始值。</param>
+        /// <param name="装修分类">装修分类 属性的初始值。</param>
+        public static 装修明细 Create装修明细(global::System.DateTime 日期, global::System.String 项目名称, global::System.Int16 数量, global::System.Decimal 单价, global::System.Guid 源房ID, global::System.String 装修分类)
         {
             装修明细 装修明细 = new 装修明细();
-            装修明细.ID = id;
-            装修明细.源房ID = 源房ID;
             装修明细.日期 = 日期;
-            装修明细.装修分类ID = 装修分类ID;
             装修明细.项目名称 = 项目名称;
             装修明细.数量 = 数量;
             装修明细.单价 = 单价;
+            装修明细.源房ID = 源房ID;
+            装修明细.装修分类 = 装修分类;
             return 装修明细;
         }
 
@@ -4218,57 +4017,6 @@ namespace Landlord
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 源房ID
-        {
-            get
-            {
-                return _源房ID;
-            }
-            set
-            {
-                On源房IDChanging(value);
-                ReportPropertyChanging("源房ID");
-                _源房ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("源房ID");
-                On源房IDChanged();
-            }
-        }
-        private global::System.Int32 _源房ID;
-        partial void On源房IDChanging(global::System.Int32 value);
-        partial void On源房IDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.DateTime 日期
         {
             get
@@ -4277,11 +4025,14 @@ namespace Landlord
             }
             set
             {
-                On日期Changing(value);
-                ReportPropertyChanging("日期");
-                _日期 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("日期");
-                On日期Changed();
+                if (_日期 != value)
+                {
+                    On日期Changing(value);
+                    ReportPropertyChanging("日期");
+                    _日期 = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("日期");
+                    On日期Changed();
+                }
             }
         }
         private global::System.DateTime _日期;
@@ -4291,31 +4042,7 @@ namespace Landlord
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 装修分类ID
-        {
-            get
-            {
-                return _装修分类ID;
-            }
-            set
-            {
-                On装修分类IDChanging(value);
-                ReportPropertyChanging("装修分类ID");
-                _装修分类ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("装修分类ID");
-                On装修分类IDChanged();
-            }
-        }
-        private global::System.Int32 _装修分类ID;
-        partial void On装修分类IDChanging(global::System.Int32 value);
-        partial void On装修分类IDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String 项目名称
         {
@@ -4325,11 +4052,14 @@ namespace Landlord
             }
             set
             {
-                On项目名称Changing(value);
-                ReportPropertyChanging("项目名称");
-                _项目名称 = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("项目名称");
-                On项目名称Changed();
+                if (_项目名称 != value)
+                {
+                    On项目名称Changing(value);
+                    ReportPropertyChanging("项目名称");
+                    _项目名称 = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("项目名称");
+                    On项目名称Changed();
+                }
             }
         }
         private global::System.String _项目名称;
@@ -4363,7 +4093,7 @@ namespace Landlord
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int16 数量
         {
@@ -4373,11 +4103,14 @@ namespace Landlord
             }
             set
             {
-                On数量Changing(value);
-                ReportPropertyChanging("数量");
-                _数量 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("数量");
-                On数量Changed();
+                if (_数量 != value)
+                {
+                    On数量Changing(value);
+                    ReportPropertyChanging("数量");
+                    _数量 = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("数量");
+                    On数量Changed();
+                }
             }
         }
         private global::System.Int16 _数量;
@@ -4411,7 +4144,7 @@ namespace Landlord
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Decimal 单价
         {
@@ -4421,11 +4154,14 @@ namespace Landlord
             }
             set
             {
-                On单价Changing(value);
-                ReportPropertyChanging("单价");
-                _单价 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("单价");
-                On单价Changed();
+                if (_单价 != value)
+                {
+                    On单价Changing(value);
+                    ReportPropertyChanging("单价");
+                    _单价 = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("单价");
+                    On单价Changed();
+                }
             }
         }
         private global::System.Decimal _单价;
@@ -4479,6 +4215,60 @@ namespace Landlord
         private global::System.String _备注;
         partial void On备注Changing(global::System.String value);
         partial void On备注Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid 源房ID
+        {
+            get
+            {
+                return _源房ID;
+            }
+            set
+            {
+                if (_源房ID != value)
+                {
+                    On源房IDChanging(value);
+                    ReportPropertyChanging("源房ID");
+                    _源房ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("源房ID");
+                    On源房IDChanged();
+                }
+            }
+        }
+        private global::System.Guid _源房ID;
+        partial void On源房IDChanging(global::System.Guid value);
+        partial void On源房IDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String 装修分类
+        {
+            get
+            {
+                return _装修分类;
+            }
+            set
+            {
+                if (_装修分类 != value)
+                {
+                    On装修分类Changing(value);
+                    ReportPropertyChanging("装修分类");
+                    _装修分类 = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("装修分类");
+                    On装修分类Changed();
+                }
+            }
+        }
+        private global::System.String _装修分类;
+        partial void On装修分类Changing(global::System.String value);
+        partial void On装修分类Changed();
 
         #endregion
     

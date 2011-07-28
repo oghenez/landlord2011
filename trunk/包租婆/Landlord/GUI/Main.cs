@@ -65,16 +65,16 @@ namespace Landlord.GUI
         {
             DoThreadSafe(() =>
             {
-                radStatusStrip1.Text = string.Format("{0}:{1}", DateTime.Now.ToShortTimeString(), msg);
-                radStatusStrip1.ForeColor = Color.Black;
+                radLabelMsg.Text = string.Format("{0}:{1}", DateTime.Now.ToShortTimeString(), msg);
+                radLabelMsg.ForeColor = Color.Black;
             });
         }
         public void UpdateStatusStrip(string msg, Color color)
         {
             DoThreadSafe(() =>
             {
-                radStatusStrip1.Text = string.Format("{0}:{1}", DateTime.Now.ToShortTimeString(), msg);
-                radStatusStrip1.ForeColor = color;
+                radLabelMsg.Text = string.Format("{0}:{1}", DateTime.Now.ToShortTimeString(), msg);
+                radLabelMsg.ForeColor = color;
             });
         }
         #endregion

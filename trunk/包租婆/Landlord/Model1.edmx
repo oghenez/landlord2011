@@ -8,22 +8,117 @@
         <EntityContainer Name="LandlordModelStoreContainer">
           <EntitySet Name="缴收项目" EntityType="LandlordModel.Store.缴收项目" store:Type="Tables" />
           <EntitySet Name="客房" EntityType="LandlordModel.Store.客房" store:Type="Tables" />
-          <EntitySet Name="客房出租历史记录" EntityType="LandlordModel.Store.客房出租历史记录" store:Type="Tables" />
-          <EntitySet Name="客房租金明细" EntityType="LandlordModel.Store.客房租金明细" store:Type="Tables" />
-          <EntitySet Name="日常损耗" EntityType="LandlordModel.Store.日常损耗" store:Type="Tables" />
-          <EntitySet Name="提醒" EntityType="LandlordModel.Store.提醒" store:Type="Tables" />
+          <EntitySet Name="客房出租历史记录" EntityType="LandlordModel.Store.客房出租历史记录" store:Type="Tables" store:Name="客房出租历史记录">
+            <DefiningQuery>SELECT 
+            [客房出租历史记录].[租户] AS [租户], 
+            [客房出租历史记录].[联系地址] AS [联系地址], 
+            [客房出租历史记录].[身份证号] AS [身份证号], 
+            [客房出租历史记录].[电话1] AS [电话1], 
+            [客房出租历史记录].[电话2] AS [电话2], 
+            [客房出租历史记录].[期始] AS [期始], 
+            [客房出租历史记录].[期止] AS [期止], 
+            [客房出租历史记录].[月租金] AS [月租金], 
+            [客房出租历史记录].[押金] AS [押金], 
+            [客房出租历史记录].[支付月数] AS [支付月数], 
+            [客房出租历史记录].[备注] AS [备注], 
+            [客房出租历史记录].[客房ID] AS [客房ID]
+            FROM [客房出租历史记录] AS [客房出租历史记录]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="客房租金明细" EntityType="LandlordModel.Store.客房租金明细" store:Type="Tables" store:Name="客房租金明细">
+            <DefiningQuery>SELECT 
+            [客房租金明细].[起付日期] AS [起付日期], 
+            [客房租金明细].[止付日期] AS [止付日期], 
+            [客房租金明细].[付款日期] AS [付款日期], 
+            [客房租金明细].[水止码] AS [水止码], 
+            [客房租金明细].[电止码] AS [电止码], 
+            [客房租金明细].[气止码] AS [气止码], 
+            [客房租金明细].[应付金额] AS [应付金额], 
+            [客房租金明细].[实付金额] AS [实付金额], 
+            [客房租金明细].[付款人] AS [付款人], 
+            [客房租金明细].[收款人] AS [收款人], 
+            [客房租金明细].[备注] AS [备注], 
+            [客房租金明细].[客房ID] AS [客房ID]
+            FROM [客房租金明细] AS [客房租金明细]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="日常损耗" EntityType="LandlordModel.Store.日常损耗" store:Type="Tables" store:Name="日常损耗">
+            <DefiningQuery>SELECT 
+            [日常损耗].[项目] AS [项目], 
+            [日常损耗].[支出金额] AS [支出金额], 
+            [日常损耗].[支出日期] AS [支出日期], 
+            [日常损耗].[备注] AS [备注], 
+            [日常损耗].[源房ID] AS [源房ID], 
+            [日常损耗].[客房ID] AS [客房ID]
+            FROM [日常损耗] AS [日常损耗]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="提醒" EntityType="LandlordModel.Store.提醒" store:Type="Tables" store:Name="提醒">
+            <DefiningQuery>SELECT 
+            [提醒].[提醒时间] AS [提醒时间], 
+            [提醒].[事项] AS [事项], 
+            [提醒].[已完成] AS [已完成], 
+            [提醒].[创建日期] AS [创建日期], 
+            [提醒].[完成日期] AS [完成日期], 
+            [提醒].[客房ID] AS [客房ID], 
+            [提醒].[源房ID] AS [源房ID]
+            FROM [提醒] AS [提醒]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="源房" EntityType="LandlordModel.Store.源房" store:Type="Tables" />
-          <EntitySet Name="源房缴费明细" EntityType="LandlordModel.Store.源房缴费明细" store:Type="Tables" />
-          <EntitySet Name="源房水电气核查" EntityType="LandlordModel.Store.源房水电气核查" store:Type="Tables" />
-          <EntitySet Name="源房涨租协定" EntityType="LandlordModel.Store.源房涨租协定" store:Type="Tables" />
+          <EntitySet Name="源房缴费明细" EntityType="LandlordModel.Store.源房缴费明细" store:Type="Tables" store:Name="源房缴费明细">
+            <DefiningQuery>SELECT 
+            [源房缴费明细].[缴费时间] AS [缴费时间], 
+            [源房缴费明细].[缴费金额] AS [缴费金额], 
+            [源房缴费明细].[期始] AS [期始], 
+            [源房缴费明细].[期止] AS [期止], 
+            [源房缴费明细].[付款人] AS [付款人], 
+            [源房缴费明细].[收款人] AS [收款人], 
+            [源房缴费明细].[备注] AS [备注], 
+            [源房缴费明细].[源房ID] AS [源房ID], 
+            [源房缴费明细].[缴费项] AS [缴费项]
+            FROM [源房缴费明细] AS [源房缴费明细]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="源房水电气核查" EntityType="LandlordModel.Store.源房水电气核查" store:Type="Tables" store:Name="源房水电气核查">
+            <DefiningQuery>SELECT 
+            [源房水电气核查].[抄表日期(水)] AS [抄表日期(水)], 
+            [源房水电气核查].[水止码] AS [水止码], 
+            [源房水电气核查].[水账户余额] AS [水账户余额], 
+            [源房水电气核查].[抄表日期(电)] AS [抄表日期(电)], 
+            [源房水电气核查].[电止码] AS [电止码], 
+            [源房水电气核查].[电账户余额] AS [电账户余额], 
+            [源房水电气核查].[抄表日期(气)] AS [抄表日期(气)], 
+            [源房水电气核查].[气表剩余字数] AS [气表剩余字数], 
+            [源房水电气核查].[核查人] AS [核查人], 
+            [源房水电气核查].[核查时间] AS [核查时间], 
+            [源房水电气核查].[备注] AS [备注], 
+            [源房水电气核查].[源房ID] AS [源房ID]
+            FROM [源房水电气核查] AS [源房水电气核查]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="源房涨租协定" EntityType="LandlordModel.Store.源房涨租协定" store:Type="Tables" store:Name="源房涨租协定">
+            <DefiningQuery>SELECT 
+            [源房涨租协定].[期始] AS [期始], 
+            [源房涨租协定].[期止] AS [期止], 
+            [源房涨租协定].[月租金] AS [月租金], 
+            [源房涨租协定].[源房ID] AS [源房ID]
+            FROM [源房涨租协定] AS [源房涨租协定]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="装修分类" EntityType="LandlordModel.Store.装修分类" store:Type="Tables" />
-          <EntitySet Name="装修明细" EntityType="LandlordModel.Store.装修明细" store:Type="Tables" />
+          <EntitySet Name="装修明细" EntityType="LandlordModel.Store.装修明细" store:Type="Tables" store:Name="装修明细">
+            <DefiningQuery>SELECT 
+            [装修明细].[日期] AS [日期], 
+            [装修明细].[项目名称] AS [项目名称], 
+            [装修明细].[规格] AS [规格], 
+            [装修明细].[数量] AS [数量], 
+            [装修明细].[单位] AS [单位], 
+            [装修明细].[单价] AS [单价], 
+            [装修明细].[购买地点] AS [购买地点], 
+            [装修明细].[备注] AS [备注], 
+            [装修明细].[源房ID] AS [源房ID], 
+            [装修明细].[装修分类] AS [装修分类]
+            FROM [装修明细] AS [装修明细]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
         <EntityType Name="缴收项目">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="项目名" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="项目名" Type="nvarchar" Nullable="false" MaxLength="10" />
           <Property Name="计量单位" Type="nvarchar" MaxLength="8" />
         </EntityType>
@@ -31,7 +126,6 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="源房ID" Type="int" Nullable="false" />
           <Property Name="命名" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="面积" Type="float" Nullable="false" />
           <Property Name="含厨房" Type="bit" Nullable="false" />
@@ -50,7 +144,6 @@
           <Property Name="租赁协议照片2" Type="image" />
           <Property Name="租赁协议照片3" Type="image" />
           <Property Name="备注" Type="nvarchar" MaxLength="500" />
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="水始码" Type="float" Nullable="false" />
           <Property Name="电始码" Type="float" Nullable="false" />
           <Property Name="气始码" Type="float" Nullable="false" />
@@ -58,14 +151,18 @@
           <Property Name="月宽带费" Type="money" Nullable="false" />
           <Property Name="月厨房费" Type="money" Nullable="false" />
           <Property Name="中介费用" Type="money" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="源房ID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
+        <!--生成过程中发现错误:
+            警告 6002: 表/视图“客房出租历史记录”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+            -->
         <EntityType Name="客房出租历史记录">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="租户" />
+            <PropertyRef Name="客房ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="客房ID" Type="int" Nullable="false" />
-          <Property Name="租户" Type="nvarchar" MaxLength="100" />
+          <Property Name="租户" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="联系地址" Type="nvarchar" MaxLength="100" />
           <Property Name="身份证号" Type="nvarchar" MaxLength="18" />
           <Property Name="电话1" Type="nvarchar" MaxLength="100" />
@@ -76,13 +173,17 @@
           <Property Name="押金" Type="money" />
           <Property Name="支付月数" Type="smallint" />
           <Property Name="备注" Type="nvarchar" MaxLength="500" />
+          <Property Name="客房ID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
+        <!--生成过程中发现错误:
+            警告 6002: 表/视图“客房租金明细”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+            -->
         <EntityType Name="客房租金明细">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="起付日期" />
+            <PropertyRef Name="止付日期" />
+            <PropertyRef Name="客房ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="客房ID" Type="int" Nullable="false" />
           <Property Name="起付日期" Type="datetime" Nullable="false" />
           <Property Name="止付日期" Type="datetime" Nullable="false" />
           <Property Name="付款日期" Type="datetime" />
@@ -94,37 +195,44 @@
           <Property Name="付款人" Type="nvarchar" MaxLength="100" />
           <Property Name="收款人" Type="nvarchar" MaxLength="100" />
           <Property Name="备注" Type="nvarchar" MaxLength="500" />
+          <Property Name="客房ID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
+        <!--生成过程中发现错误:
+            警告 6002: 表/视图“日常损耗”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+            -->
         <EntityType Name="日常损耗">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="源房ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="源房ID" Type="int" Nullable="false" />
-          <Property Name="客房ID" Type="int" />
           <Property Name="项目" Type="nvarchar" MaxLength="100" />
           <Property Name="支出金额" Type="money" />
           <Property Name="支出日期" Type="datetime" />
           <Property Name="备注" Type="nvarchar" MaxLength="500" />
+          <Property Name="源房ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="客房ID" Type="uniqueidentifier" />
         </EntityType>
+        <!--生成过程中发现错误:
+            警告 6002: 表/视图“提醒”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+            -->
         <EntityType Name="提醒">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="提醒时间" />
+            <PropertyRef Name="事项" />
+            <PropertyRef Name="已完成" />
+            <PropertyRef Name="创建日期" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="提醒时间" Type="datetime" Nullable="false" />
           <Property Name="事项" Type="nvarchar" Nullable="false" MaxLength="500" />
           <Property Name="已完成" Type="bit" Nullable="false" />
-          <Property Name="客房ID" Type="int" />
-          <Property Name="源房ID" Type="int" />
           <Property Name="创建日期" Type="datetime" Nullable="false" />
           <Property Name="完成日期" Type="datetime" />
+          <Property Name="客房ID" Type="uniqueidentifier" />
+          <Property Name="源房ID" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="源房">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="房名" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="用途" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="结构" Type="nvarchar" Nullable="false" MaxLength="100" />
@@ -163,28 +271,34 @@
           <Property Name="阶梯水价" Type="nvarchar" MaxLength="100" />
           <Property Name="阶梯电价" Type="nvarchar" MaxLength="100" />
           <Property Name="气单价" Type="money" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
+        <!--生成过程中发现错误:
+            警告 6002: 表/视图“源房缴费明细”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+            -->
         <EntityType Name="源房缴费明细">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="缴费时间" />
+            <PropertyRef Name="缴费金额" />
+            <PropertyRef Name="源房ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="源房ID" Type="int" Nullable="false" />
           <Property Name="缴费时间" Type="datetime" Nullable="false" />
-          <Property Name="项目ID" Type="int" />
           <Property Name="缴费金额" Type="money" Nullable="false" />
           <Property Name="期始" Type="datetime" />
           <Property Name="期止" Type="datetime" />
           <Property Name="付款人" Type="nvarchar" MaxLength="10" />
           <Property Name="收款人" Type="nvarchar" MaxLength="10" />
           <Property Name="备注" Type="nvarchar" MaxLength="500" />
+          <Property Name="源房ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="缴费项" Type="nvarchar" MaxLength="10" />
         </EntityType>
+        <!--生成过程中发现错误:
+            警告 6002: 表/视图“源房水电气核查”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+            -->
         <EntityType Name="源房水电气核查">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="源房ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="源房ID" Type="int" Nullable="false" />
           <Property Name="抄表日期(水)" Type="datetime" />
           <Property Name="水止码" Type="float" />
           <Property Name="水账户余额" Type="money" />
@@ -196,32 +310,42 @@
           <Property Name="核查人" Type="nvarchar" MaxLength="10" />
           <Property Name="核查时间" Type="datetime" />
           <Property Name="备注" Type="nvarchar" MaxLength="500" />
+          <Property Name="源房ID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
+        <!--生成过程中发现错误:
+            警告 6002: 表/视图“源房涨租协定”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+            -->
         <EntityType Name="源房涨租协定">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="期始" />
+            <PropertyRef Name="期止" />
+            <PropertyRef Name="月租金" />
+            <PropertyRef Name="源房ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="源房ID" Type="int" Nullable="false" />
           <Property Name="期始" Type="datetime" Nullable="false" />
           <Property Name="期止" Type="datetime" Nullable="false" />
           <Property Name="月租金" Type="money" Nullable="false" />
+          <Property Name="源房ID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="装修分类">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="类别" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="类别" Type="nvarchar" Nullable="false" MaxLength="10" />
         </EntityType>
+        <!--生成过程中发现错误:
+            警告 6002: 表/视图“装修明细”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+            -->
         <EntityType Name="装修明细">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="日期" />
+            <PropertyRef Name="项目名称" />
+            <PropertyRef Name="数量" />
+            <PropertyRef Name="单价" />
+            <PropertyRef Name="源房ID" />
+            <PropertyRef Name="装修分类" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="源房ID" Type="int" Nullable="false" />
           <Property Name="日期" Type="datetime" Nullable="false" />
-          <Property Name="装修分类ID" Type="int" Nullable="false" />
           <Property Name="项目名称" Type="nvarchar" Nullable="false" MaxLength="20" />
           <Property Name="规格" Type="nvarchar" MaxLength="20" />
           <Property Name="数量" Type="smallint" Nullable="false" />
@@ -229,6 +353,8 @@
           <Property Name="单价" Type="money" Nullable="false" />
           <Property Name="购买地点" Type="nvarchar" MaxLength="100" />
           <Property Name="备注" Type="nvarchar" MaxLength="500" />
+          <Property Name="源房ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="装修分类" Type="nvarchar" Nullable="false" MaxLength="10" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -237,6 +363,7 @@
         <EntityContainer Name="LandlordEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="缴收项目" EntityType="LandlordModel.缴收项目" />
           <EntitySet Name="客房" EntityType="LandlordModel.客房" />
+          <EntitySet Name="客房出租历史记录" EntityType="LandlordModel.客房出租历史记录" />
           <EntitySet Name="客房租金明细" EntityType="LandlordModel.客房租金明细" />
           <EntitySet Name="日常损耗" EntityType="LandlordModel.日常损耗" />
           <EntitySet Name="提醒" EntityType="LandlordModel.提醒" />
@@ -246,207 +373,22 @@
           <EntitySet Name="源房涨租协定" EntityType="LandlordModel.源房涨租协定" />
           <EntitySet Name="装修分类" EntityType="LandlordModel.装修分类" />
           <EntitySet Name="装修明细" EntityType="LandlordModel.装修明细" />
-          <EntitySet Name="客房出租历史记录" EntityType="LandlordModel.客房出租历史记录" />
         </EntityContainer>
         <EntityType Name="缴收项目">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="项目名" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="项目名" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Name="计量单位" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="项目名" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="计量单位" MaxLength="8" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="客房">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="源房ID" Type="Int32" Nullable="false" />
-          <Property Name="命名" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="面积" Type="Double" Nullable="false" />
-          <Property Name="含厨房" Type="Boolean" Nullable="false" />
-          <Property Name="含卫生间" Type="Boolean" Nullable="false" />
-          <Property Name="租户" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="联系地址" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="身份证号" Type="String" MaxLength="18" Unicode="true" FixedLength="false" />
-          <Property Name="电话1" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="电话2" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="期始" Type="DateTime" />
-          <Property Name="期止" Type="DateTime" />
-          <Property Name="月租金" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="押金" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="支付月数" Type="Int16" />
-          <Property Name="租赁协议照片1" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="租赁协议照片2" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="租赁协议照片3" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="备注" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="水始码" Type="Double" Nullable="false" />
-          <Property Name="电始码" Type="Double" Nullable="false" />
-          <Property Name="气始码" Type="Double" Nullable="false" />
-          <Property Name="月物业费" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="月宽带费" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="月厨房费" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="中介费用" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-        </EntityType>
-        <EntityType Name="客房租金明细">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="客房ID" Type="Int32" Nullable="false" />
-          <Property Name="起付日期" Type="DateTime" Nullable="false" />
-          <Property Name="止付日期" Type="DateTime" Nullable="false" />
-          <Property Name="付款日期" Type="DateTime" />
-          <Property Name="水止码" Type="Double" />
-          <Property Name="电止码" Type="Double" />
-          <Property Name="气止码" Type="Double" />
-          <Property Name="应付金额" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="实付金额" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="付款人" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="收款人" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="备注" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="日常损耗">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="源房ID" Type="Int32" Nullable="false" />
-          <Property Name="客房ID" Type="Int32" />
-          <Property Name="项目" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="支出金额" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="支出日期" Type="DateTime" />
-          <Property Name="备注" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="提醒">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="提醒时间" Type="DateTime" Nullable="false" />
-          <Property Name="事项" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
-          <Property Name="已完成" Type="Boolean" Nullable="false" />
-          <Property Name="客房ID" Type="Int32" />
-          <Property Name="源房ID" Type="Int32" />
-          <Property Name="创建日期" Type="DateTime" Nullable="false" />
-          <Property Name="完成日期" Type="DateTime" />
-        </EntityType>
-        <EntityType Name="源房">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="房名" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="用途" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="结构" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="建筑面积" Type="Double" Nullable="false" />
-          <Property Name="室" Type="Int16" Nullable="false" />
-          <Property Name="厅" Type="Int16" Nullable="false" />
-          <Property Name="卫" Type="Int16" Nullable="false" />
-          <Property Name="装修" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="权证号" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="房东" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="联系地址" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="身份证号" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="电话1" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="电话2" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="期始" Type="DateTime" Nullable="false" />
-          <Property Name="期止" Type="DateTime" Nullable="false" />
-          <Property Name="月租金" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="押金" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="支付月数" Type="Int16" Nullable="false" />
-          <Property Name="租赁协议照片1" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="租赁协议照片2" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="租赁协议照片3" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="备注" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-          <Property Name="月物业费" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="水始码" Type="Double" Nullable="false" />
-          <Property Name="电始码" Type="Double" Nullable="false" />
-          <Property Name="气始码" Type="Double" Nullable="false" />
-          <Property Name="中介费用" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="月卫生费" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="源房东银行卡" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="水表编号" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="电表编号" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="气表编号" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="水务代扣卫生费" Type="Boolean" Nullable="false" />
-          <Property Name="月宽带费" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="阶梯水价" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="阶梯电价" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="气单价" Type="Decimal" Precision="19" Scale="4" />
-        </EntityType>
-        <EntityType Name="源房缴费明细">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="源房ID" Type="Int32" Nullable="false" />
-          <Property Name="缴费时间" Type="DateTime" Nullable="false" />
-          <Property Name="项目ID" Type="Int32" />
-          <Property Name="缴费金额" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="期始" Type="DateTime" />
-          <Property Name="期止" Type="DateTime" />
-          <Property Name="付款人" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Name="收款人" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Name="备注" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="源房水电气核查">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="源房ID" Type="Int32" Nullable="false" />
-          <Property Name="抄表日期_水_" Type="DateTime" />
-          <Property Name="水止码" Type="Double" />
-          <Property Name="水账户余额" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="抄表日期_电_" Type="DateTime" />
-          <Property Name="电止码" Type="Double" />
-          <Property Name="电账户余额" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="抄表日期_气_" Type="DateTime" />
-          <Property Name="气表剩余字数" Type="Double" />
-          <Property Name="核查人" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Name="核查时间" Type="DateTime" />
-          <Property Name="备注" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="源房涨租协定">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="源房ID" Type="Int32" Nullable="false" />
-          <Property Name="期始" Type="DateTime" Nullable="false" />
-          <Property Name="期止" Type="DateTime" Nullable="false" />
-          <Property Name="月租金" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-        </EntityType>
-        <EntityType Name="装修分类">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="类别" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="装修明细">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="源房ID" Type="Int32" Nullable="false" />
-          <Property Name="日期" Type="DateTime" Nullable="false" />
-          <Property Name="装修分类ID" Type="Int32" Nullable="false" />
-          <Property Name="项目名称" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="规格" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="数量" Type="Int16" Nullable="false" />
-          <Property Name="单位" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Name="单价" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="购买地点" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="备注" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="客房出租历史记录">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="客房ID" Nullable="false" />
+          <Property Type="String" Name="命名" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="面积" Nullable="false" />
+          <Property Type="Boolean" Name="含厨房" Nullable="false" />
+          <Property Type="Boolean" Name="含卫生间" Nullable="false" />
           <Property Type="String" Name="租户" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="联系地址" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="身份证号" MaxLength="18" FixedLength="false" Unicode="true" />
@@ -457,177 +399,249 @@
           <Property Type="Decimal" Name="月租金" Precision="19" Scale="4" />
           <Property Type="Decimal" Name="押金" Precision="19" Scale="4" />
           <Property Type="Int16" Name="支付月数" />
+          <Property Type="Binary" Name="租赁协议照片1" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="租赁协议照片2" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="租赁协议照片3" MaxLength="Max" FixedLength="false" />
           <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="水始码" Nullable="false" />
+          <Property Type="Double" Name="电始码" Nullable="false" />
+          <Property Type="Double" Name="气始码" Nullable="false" />
+          <Property Type="Decimal" Name="月物业费" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="月宽带费" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="月厨房费" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="中介费用" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="源房ID" Nullable="false" />
         </EntityType>
-      </Schema>
+        <EntityType Name="客房出租历史记录">
+          <Key>
+            <PropertyRef Name="租户" />
+            <PropertyRef Name="客房ID" />
+          </Key>
+          <Property Type="String" Name="租户" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="联系地址" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="身份证号" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="电话1" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="电话2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="期始" />
+          <Property Type="DateTime" Name="期止" />
+          <Property Type="Decimal" Name="月租金" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="押金" Precision="19" Scale="4" />
+          <Property Type="Int16" Name="支付月数" />
+          <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="客房ID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="客房租金明细">
+          <Key>
+            <PropertyRef Name="起付日期" />
+            <PropertyRef Name="止付日期" />
+            <PropertyRef Name="客房ID" />
+          </Key>
+          <Property Type="DateTime" Name="起付日期" Nullable="false" />
+          <Property Type="DateTime" Name="止付日期" Nullable="false" />
+          <Property Type="DateTime" Name="付款日期" />
+          <Property Type="Double" Name="水止码" />
+          <Property Type="Double" Name="电止码" />
+          <Property Type="Double" Name="气止码" />
+          <Property Type="Decimal" Name="应付金额" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="实付金额" Precision="19" Scale="4" />
+          <Property Type="String" Name="付款人" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="收款人" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="客房ID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="日常损耗">
+          <Key>
+            <PropertyRef Name="源房ID" />
+          </Key>
+          <Property Type="String" Name="项目" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="支出金额" Precision="19" Scale="4" />
+          <Property Type="DateTime" Name="支出日期" />
+          <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="源房ID" Nullable="false" />
+          <Property Type="Guid" Name="客房ID" />
+        </EntityType>
+        <EntityType Name="提醒">
+          <Key>
+            <PropertyRef Name="提醒时间" />
+            <PropertyRef Name="事项" />
+            <PropertyRef Name="已完成" />
+            <PropertyRef Name="创建日期" />
+          </Key>
+          <Property Type="DateTime" Name="提醒时间" Nullable="false" />
+          <Property Type="String" Name="事项" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="已完成" Nullable="false" />
+          <Property Type="DateTime" Name="创建日期" Nullable="false" />
+          <Property Type="DateTime" Name="完成日期" />
+          <Property Type="Guid" Name="客房ID" />
+          <Property Type="Guid" Name="源房ID" />
+        </EntityType>
+        <EntityType Name="源房">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="String" Name="房名" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="用途" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="结构" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="建筑面积" Nullable="false" />
+          <Property Type="Int16" Name="室" Nullable="false" />
+          <Property Type="Int16" Name="厅" Nullable="false" />
+          <Property Type="Int16" Name="卫" Nullable="false" />
+          <Property Type="String" Name="装修" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="权证号" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="房东" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="联系地址" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="身份证号" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="电话1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="电话2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="期始" Nullable="false" />
+          <Property Type="DateTime" Name="期止" Nullable="false" />
+          <Property Type="Decimal" Name="月租金" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="押金" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int16" Name="支付月数" Nullable="false" />
+          <Property Type="Binary" Name="租赁协议照片1" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="租赁协议照片2" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="租赁协议照片3" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="月物业费" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Double" Name="水始码" Nullable="false" />
+          <Property Type="Double" Name="电始码" Nullable="false" />
+          <Property Type="Double" Name="气始码" Nullable="false" />
+          <Property Type="Decimal" Name="中介费用" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="月卫生费" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="String" Name="源房东银行卡" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="水表编号" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="电表编号" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="气表编号" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="水务代扣卫生费" Nullable="false" />
+          <Property Type="Decimal" Name="月宽带费" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="String" Name="阶梯水价" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="阶梯电价" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="气单价" Precision="19" Scale="4" />
+          <Property Type="Guid" Name="ID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="源房缴费明细">
+          <Key>
+            <PropertyRef Name="缴费时间" />
+            <PropertyRef Name="缴费金额" />
+            <PropertyRef Name="源房ID" />
+          </Key>
+          <Property Type="DateTime" Name="缴费时间" Nullable="false" />
+          <Property Type="Decimal" Name="缴费金额" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="DateTime" Name="期始" />
+          <Property Type="DateTime" Name="期止" />
+          <Property Type="String" Name="付款人" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="收款人" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="源房ID" Nullable="false" />
+          <Property Type="String" Name="缴费项" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="源房水电气核查">
+          <Key>
+            <PropertyRef Name="源房ID" />
+          </Key>
+          <Property Type="DateTime" Name="抄表日期_水_" />
+          <Property Type="Double" Name="水止码" />
+          <Property Type="Decimal" Name="水账户余额" Precision="19" Scale="4" />
+          <Property Type="DateTime" Name="抄表日期_电_" />
+          <Property Type="Double" Name="电止码" />
+          <Property Type="Decimal" Name="电账户余额" Precision="19" Scale="4" />
+          <Property Type="DateTime" Name="抄表日期_气_" />
+          <Property Type="Double" Name="气表剩余字数" />
+          <Property Type="String" Name="核查人" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="核查时间" />
+          <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="源房ID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="源房涨租协定">
+          <Key>
+            <PropertyRef Name="期始" />
+            <PropertyRef Name="期止" />
+            <PropertyRef Name="月租金" />
+            <PropertyRef Name="源房ID" />
+          </Key>
+          <Property Type="DateTime" Name="期始" Nullable="false" />
+          <Property Type="DateTime" Name="期止" Nullable="false" />
+          <Property Type="Decimal" Name="月租金" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Guid" Name="源房ID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="装修分类">
+          <Key>
+            <PropertyRef Name="类别" />
+          </Key>
+          <Property Type="String" Name="类别" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="装修明细">
+          <Key>
+            <PropertyRef Name="日期" />
+            <PropertyRef Name="项目名称" />
+            <PropertyRef Name="数量" />
+            <PropertyRef Name="单价" />
+            <PropertyRef Name="源房ID" />
+            <PropertyRef Name="装修分类" />
+          </Key>
+          <Property Type="DateTime" Name="日期" Nullable="false" />
+          <Property Type="String" Name="项目名称" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="规格" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="数量" Nullable="false" />
+          <Property Type="String" Name="单位" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="单价" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="String" Name="购买地点" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="源房ID" Nullable="false" />
+          <Property Type="String" Name="装修分类" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="LandlordModelStoreContainer" CdmEntityContainer="LandlordEntities">
-          <EntitySetMapping Name="缴收项目"><EntityTypeMapping TypeName="LandlordModel.缴收项目"><MappingFragment StoreEntitySet="缴收项目">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="项目名" ColumnName="项目名" />
-            <ScalarProperty Name="计量单位" ColumnName="计量单位" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="客房"><EntityTypeMapping TypeName="LandlordModel.客房"><MappingFragment StoreEntitySet="客房">
-            <ScalarProperty Name="源房ID" ColumnName="源房ID" />
-            <ScalarProperty Name="命名" ColumnName="命名" />
-            <ScalarProperty Name="面积" ColumnName="面积" />
-            <ScalarProperty Name="含厨房" ColumnName="含厨房" />
-            <ScalarProperty Name="含卫生间" ColumnName="含卫生间" />
-            <ScalarProperty Name="租户" ColumnName="租户" />
-            <ScalarProperty Name="联系地址" ColumnName="联系地址" />
-            <ScalarProperty Name="身份证号" ColumnName="身份证号" />
-            <ScalarProperty Name="电话1" ColumnName="电话1" />
-            <ScalarProperty Name="电话2" ColumnName="电话2" />
-            <ScalarProperty Name="期始" ColumnName="期始" />
-            <ScalarProperty Name="期止" ColumnName="期止" />
-            <ScalarProperty Name="月租金" ColumnName="月租金" />
-            <ScalarProperty Name="押金" ColumnName="押金" />
-            <ScalarProperty Name="支付月数" ColumnName="支付月数" />
-            <ScalarProperty Name="租赁协议照片1" ColumnName="租赁协议照片1" />
-            <ScalarProperty Name="租赁协议照片2" ColumnName="租赁协议照片2" />
-            <ScalarProperty Name="租赁协议照片3" ColumnName="租赁协议照片3" />
-            <ScalarProperty Name="备注" ColumnName="备注" />
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="水始码" ColumnName="水始码" />
-            <ScalarProperty Name="电始码" ColumnName="电始码" />
-            <ScalarProperty Name="气始码" ColumnName="气始码" />
-            <ScalarProperty Name="月物业费" ColumnName="月物业费" />
-            <ScalarProperty Name="月宽带费" ColumnName="月宽带费" />
-            <ScalarProperty Name="月厨房费" ColumnName="月厨房费" />
-            <ScalarProperty Name="中介费用" ColumnName="中介费用" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="客房租金明细"><EntityTypeMapping TypeName="LandlordModel.客房租金明细"><MappingFragment StoreEntitySet="客房租金明细">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="客房ID" ColumnName="客房ID" />
-            <ScalarProperty Name="起付日期" ColumnName="起付日期" />
-            <ScalarProperty Name="止付日期" ColumnName="止付日期" />
-            <ScalarProperty Name="付款日期" ColumnName="付款日期" />
-            <ScalarProperty Name="水止码" ColumnName="水止码" />
-            <ScalarProperty Name="电止码" ColumnName="电止码" />
-            <ScalarProperty Name="气止码" ColumnName="气止码" />
-            <ScalarProperty Name="应付金额" ColumnName="应付金额" />
-            <ScalarProperty Name="实付金额" ColumnName="实付金额" />
-            <ScalarProperty Name="付款人" ColumnName="付款人" />
-            <ScalarProperty Name="收款人" ColumnName="收款人" />
-            <ScalarProperty Name="备注" ColumnName="备注" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="日常损耗"><EntityTypeMapping TypeName="LandlordModel.日常损耗"><MappingFragment StoreEntitySet="日常损耗">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="源房ID" ColumnName="源房ID" />
-            <ScalarProperty Name="客房ID" ColumnName="客房ID" />
-            <ScalarProperty Name="项目" ColumnName="项目" />
-            <ScalarProperty Name="支出金额" ColumnName="支出金额" />
-            <ScalarProperty Name="支出日期" ColumnName="支出日期" />
-            <ScalarProperty Name="备注" ColumnName="备注" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="提醒"><EntityTypeMapping TypeName="LandlordModel.提醒"><MappingFragment StoreEntitySet="提醒">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="提醒时间" ColumnName="提醒时间" />
-            <ScalarProperty Name="事项" ColumnName="事项" />
-            <ScalarProperty Name="已完成" ColumnName="已完成" />
-            <ScalarProperty Name="客房ID" ColumnName="客房ID" />
-            <ScalarProperty Name="源房ID" ColumnName="源房ID" />
-            <ScalarProperty Name="创建日期" ColumnName="创建日期" />
-            <ScalarProperty Name="完成日期" ColumnName="完成日期" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="源房"><EntityTypeMapping TypeName="LandlordModel.源房"><MappingFragment StoreEntitySet="源房">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="房名" ColumnName="房名" />
-            <ScalarProperty Name="用途" ColumnName="用途" />
-            <ScalarProperty Name="结构" ColumnName="结构" />
-            <ScalarProperty Name="建筑面积" ColumnName="建筑面积" />
-            <ScalarProperty Name="室" ColumnName="室" />
-            <ScalarProperty Name="厅" ColumnName="厅" />
-            <ScalarProperty Name="卫" ColumnName="卫" />
-            <ScalarProperty Name="装修" ColumnName="装修" />
-            <ScalarProperty Name="权证号" ColumnName="权证号" />
-            <ScalarProperty Name="房东" ColumnName="房东" />
-            <ScalarProperty Name="联系地址" ColumnName="联系地址" />
-            <ScalarProperty Name="身份证号" ColumnName="身份证号" />
-            <ScalarProperty Name="电话1" ColumnName="电话1" />
-            <ScalarProperty Name="电话2" ColumnName="电话2" />
-            <ScalarProperty Name="期始" ColumnName="期始" />
-            <ScalarProperty Name="期止" ColumnName="期止" />
-            <ScalarProperty Name="月租金" ColumnName="月租金" />
-            <ScalarProperty Name="押金" ColumnName="押金" />
-            <ScalarProperty Name="支付月数" ColumnName="支付月数" />
-            <ScalarProperty Name="租赁协议照片1" ColumnName="租赁协议照片1" />
-            <ScalarProperty Name="租赁协议照片2" ColumnName="租赁协议照片2" />
-            <ScalarProperty Name="租赁协议照片3" ColumnName="租赁协议照片3" />
-            <ScalarProperty Name="备注" ColumnName="备注" />
-            <ScalarProperty Name="月物业费" ColumnName="月物业费" />
-            <ScalarProperty Name="水始码" ColumnName="水始码" />
-            <ScalarProperty Name="电始码" ColumnName="电始码" />
-            <ScalarProperty Name="气始码" ColumnName="气始码" />
-            <ScalarProperty Name="中介费用" ColumnName="中介费用" />
-            <ScalarProperty Name="月卫生费" ColumnName="月卫生费" />
-            <ScalarProperty Name="源房东银行卡" ColumnName="源房东银行卡" />
-            <ScalarProperty Name="水表编号" ColumnName="水表编号" />
-            <ScalarProperty Name="电表编号" ColumnName="电表编号" />
-            <ScalarProperty Name="气表编号" ColumnName="气表编号" />
-            <ScalarProperty Name="水务代扣卫生费" ColumnName="水务代扣卫生费" />
-            <ScalarProperty Name="月宽带费" ColumnName="月宽带费" />
-            <ScalarProperty Name="阶梯水价" ColumnName="阶梯水价" />
-            <ScalarProperty Name="阶梯电价" ColumnName="阶梯电价" />
-            <ScalarProperty Name="气单价" ColumnName="气单价" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="源房缴费明细"><EntityTypeMapping TypeName="LandlordModel.源房缴费明细"><MappingFragment StoreEntitySet="源房缴费明细">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="源房ID" ColumnName="源房ID" />
-            <ScalarProperty Name="缴费时间" ColumnName="缴费时间" />
-            <ScalarProperty Name="项目ID" ColumnName="项目ID" />
-            <ScalarProperty Name="缴费金额" ColumnName="缴费金额" />
-            <ScalarProperty Name="期始" ColumnName="期始" />
-            <ScalarProperty Name="期止" ColumnName="期止" />
-            <ScalarProperty Name="付款人" ColumnName="付款人" />
-            <ScalarProperty Name="收款人" ColumnName="收款人" />
-            <ScalarProperty Name="备注" ColumnName="备注" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="源房水电气核查"><EntityTypeMapping TypeName="LandlordModel.源房水电气核查"><MappingFragment StoreEntitySet="源房水电气核查">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="源房ID" ColumnName="源房ID" />
-            <ScalarProperty Name="抄表日期_水_" ColumnName="抄表日期(水)" />
-            <ScalarProperty Name="水止码" ColumnName="水止码" />
-            <ScalarProperty Name="水账户余额" ColumnName="水账户余额" />
-            <ScalarProperty Name="抄表日期_电_" ColumnName="抄表日期(电)" />
-            <ScalarProperty Name="电止码" ColumnName="电止码" />
-            <ScalarProperty Name="电账户余额" ColumnName="电账户余额" />
-            <ScalarProperty Name="抄表日期_气_" ColumnName="抄表日期(气)" />
-            <ScalarProperty Name="气表剩余字数" ColumnName="气表剩余字数" />
-            <ScalarProperty Name="核查人" ColumnName="核查人" />
-            <ScalarProperty Name="核查时间" ColumnName="核查时间" />
-            <ScalarProperty Name="备注" ColumnName="备注" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="源房涨租协定"><EntityTypeMapping TypeName="LandlordModel.源房涨租协定"><MappingFragment StoreEntitySet="源房涨租协定">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="源房ID" ColumnName="源房ID" />
-            <ScalarProperty Name="期始" ColumnName="期始" />
-            <ScalarProperty Name="期止" ColumnName="期止" />
-            <ScalarProperty Name="月租金" ColumnName="月租金" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="装修分类"><EntityTypeMapping TypeName="LandlordModel.装修分类"><MappingFragment StoreEntitySet="装修分类">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="类别" ColumnName="类别" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="装修明细"><EntityTypeMapping TypeName="LandlordModel.装修明细"><MappingFragment StoreEntitySet="装修明细">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="源房ID" ColumnName="源房ID" />
-            <ScalarProperty Name="日期" ColumnName="日期" />
-            <ScalarProperty Name="装修分类ID" ColumnName="装修分类ID" />
-            <ScalarProperty Name="项目名称" ColumnName="项目名称" />
-            <ScalarProperty Name="规格" ColumnName="规格" />
-            <ScalarProperty Name="数量" ColumnName="数量" />
-            <ScalarProperty Name="单位" ColumnName="单位" />
-            <ScalarProperty Name="单价" ColumnName="单价" />
-            <ScalarProperty Name="购买地点" ColumnName="购买地点" />
-            <ScalarProperty Name="备注" ColumnName="备注" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="缴收项目">
+            <EntityTypeMapping TypeName="LandlordModel.缴收项目">
+              <MappingFragment StoreEntitySet="缴收项目">
+                <ScalarProperty Name="计量单位" ColumnName="计量单位" />
+                <ScalarProperty Name="项目名" ColumnName="项目名" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="客房">
+            <EntityTypeMapping TypeName="LandlordModel.客房">
+              <MappingFragment StoreEntitySet="客房">
+                <ScalarProperty Name="源房ID" ColumnName="源房ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="中介费用" ColumnName="中介费用" />
+                <ScalarProperty Name="月厨房费" ColumnName="月厨房费" />
+                <ScalarProperty Name="月宽带费" ColumnName="月宽带费" />
+                <ScalarProperty Name="月物业费" ColumnName="月物业费" />
+                <ScalarProperty Name="气始码" ColumnName="气始码" />
+                <ScalarProperty Name="电始码" ColumnName="电始码" />
+                <ScalarProperty Name="水始码" ColumnName="水始码" />
+                <ScalarProperty Name="备注" ColumnName="备注" />
+                <ScalarProperty Name="租赁协议照片3" ColumnName="租赁协议照片3" />
+                <ScalarProperty Name="租赁协议照片2" ColumnName="租赁协议照片2" />
+                <ScalarProperty Name="租赁协议照片1" ColumnName="租赁协议照片1" />
+                <ScalarProperty Name="支付月数" ColumnName="支付月数" />
+                <ScalarProperty Name="押金" ColumnName="押金" />
+                <ScalarProperty Name="月租金" ColumnName="月租金" />
+                <ScalarProperty Name="期止" ColumnName="期止" />
+                <ScalarProperty Name="期始" ColumnName="期始" />
+                <ScalarProperty Name="电话2" ColumnName="电话2" />
+                <ScalarProperty Name="电话1" ColumnName="电话1" />
+                <ScalarProperty Name="身份证号" ColumnName="身份证号" />
+                <ScalarProperty Name="联系地址" ColumnName="联系地址" />
+                <ScalarProperty Name="租户" ColumnName="租户" />
+                <ScalarProperty Name="含卫生间" ColumnName="含卫生间" />
+                <ScalarProperty Name="含厨房" ColumnName="含厨房" />
+                <ScalarProperty Name="面积" ColumnName="面积" />
+                <ScalarProperty Name="命名" ColumnName="命名" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="客房出租历史记录">
             <EntityTypeMapping TypeName="LandlordModel.客房出租历史记录">
               <MappingFragment StoreEntitySet="客房出租历史记录">
+                <ScalarProperty Name="客房ID" ColumnName="客房ID" />
                 <ScalarProperty Name="备注" ColumnName="备注" />
                 <ScalarProperty Name="支付月数" ColumnName="支付月数" />
                 <ScalarProperty Name="押金" ColumnName="押金" />
@@ -639,8 +653,160 @@
                 <ScalarProperty Name="身份证号" ColumnName="身份证号" />
                 <ScalarProperty Name="联系地址" ColumnName="联系地址" />
                 <ScalarProperty Name="租户" ColumnName="租户" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="客房租金明细">
+            <EntityTypeMapping TypeName="LandlordModel.客房租金明细">
+              <MappingFragment StoreEntitySet="客房租金明细">
                 <ScalarProperty Name="客房ID" ColumnName="客房ID" />
+                <ScalarProperty Name="备注" ColumnName="备注" />
+                <ScalarProperty Name="收款人" ColumnName="收款人" />
+                <ScalarProperty Name="付款人" ColumnName="付款人" />
+                <ScalarProperty Name="实付金额" ColumnName="实付金额" />
+                <ScalarProperty Name="应付金额" ColumnName="应付金额" />
+                <ScalarProperty Name="气止码" ColumnName="气止码" />
+                <ScalarProperty Name="电止码" ColumnName="电止码" />
+                <ScalarProperty Name="水止码" ColumnName="水止码" />
+                <ScalarProperty Name="付款日期" ColumnName="付款日期" />
+                <ScalarProperty Name="止付日期" ColumnName="止付日期" />
+                <ScalarProperty Name="起付日期" ColumnName="起付日期" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="日常损耗">
+            <EntityTypeMapping TypeName="LandlordModel.日常损耗">
+              <MappingFragment StoreEntitySet="日常损耗">
+                <ScalarProperty Name="客房ID" ColumnName="客房ID" />
+                <ScalarProperty Name="源房ID" ColumnName="源房ID" />
+                <ScalarProperty Name="备注" ColumnName="备注" />
+                <ScalarProperty Name="支出日期" ColumnName="支出日期" />
+                <ScalarProperty Name="支出金额" ColumnName="支出金额" />
+                <ScalarProperty Name="项目" ColumnName="项目" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="提醒">
+            <EntityTypeMapping TypeName="LandlordModel.提醒">
+              <MappingFragment StoreEntitySet="提醒">
+                <ScalarProperty Name="源房ID" ColumnName="源房ID" />
+                <ScalarProperty Name="客房ID" ColumnName="客房ID" />
+                <ScalarProperty Name="完成日期" ColumnName="完成日期" />
+                <ScalarProperty Name="创建日期" ColumnName="创建日期" />
+                <ScalarProperty Name="已完成" ColumnName="已完成" />
+                <ScalarProperty Name="事项" ColumnName="事项" />
+                <ScalarProperty Name="提醒时间" ColumnName="提醒时间" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="源房">
+            <EntityTypeMapping TypeName="LandlordModel.源房">
+              <MappingFragment StoreEntitySet="源房">
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="气单价" ColumnName="气单价" />
+                <ScalarProperty Name="阶梯电价" ColumnName="阶梯电价" />
+                <ScalarProperty Name="阶梯水价" ColumnName="阶梯水价" />
+                <ScalarProperty Name="月宽带费" ColumnName="月宽带费" />
+                <ScalarProperty Name="水务代扣卫生费" ColumnName="水务代扣卫生费" />
+                <ScalarProperty Name="气表编号" ColumnName="气表编号" />
+                <ScalarProperty Name="电表编号" ColumnName="电表编号" />
+                <ScalarProperty Name="水表编号" ColumnName="水表编号" />
+                <ScalarProperty Name="源房东银行卡" ColumnName="源房东银行卡" />
+                <ScalarProperty Name="月卫生费" ColumnName="月卫生费" />
+                <ScalarProperty Name="中介费用" ColumnName="中介费用" />
+                <ScalarProperty Name="气始码" ColumnName="气始码" />
+                <ScalarProperty Name="电始码" ColumnName="电始码" />
+                <ScalarProperty Name="水始码" ColumnName="水始码" />
+                <ScalarProperty Name="月物业费" ColumnName="月物业费" />
+                <ScalarProperty Name="备注" ColumnName="备注" />
+                <ScalarProperty Name="租赁协议照片3" ColumnName="租赁协议照片3" />
+                <ScalarProperty Name="租赁协议照片2" ColumnName="租赁协议照片2" />
+                <ScalarProperty Name="租赁协议照片1" ColumnName="租赁协议照片1" />
+                <ScalarProperty Name="支付月数" ColumnName="支付月数" />
+                <ScalarProperty Name="押金" ColumnName="押金" />
+                <ScalarProperty Name="月租金" ColumnName="月租金" />
+                <ScalarProperty Name="期止" ColumnName="期止" />
+                <ScalarProperty Name="期始" ColumnName="期始" />
+                <ScalarProperty Name="电话2" ColumnName="电话2" />
+                <ScalarProperty Name="电话1" ColumnName="电话1" />
+                <ScalarProperty Name="身份证号" ColumnName="身份证号" />
+                <ScalarProperty Name="联系地址" ColumnName="联系地址" />
+                <ScalarProperty Name="房东" ColumnName="房东" />
+                <ScalarProperty Name="权证号" ColumnName="权证号" />
+                <ScalarProperty Name="装修" ColumnName="装修" />
+                <ScalarProperty Name="卫" ColumnName="卫" />
+                <ScalarProperty Name="厅" ColumnName="厅" />
+                <ScalarProperty Name="室" ColumnName="室" />
+                <ScalarProperty Name="建筑面积" ColumnName="建筑面积" />
+                <ScalarProperty Name="结构" ColumnName="结构" />
+                <ScalarProperty Name="用途" ColumnName="用途" />
+                <ScalarProperty Name="房名" ColumnName="房名" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="源房缴费明细">
+            <EntityTypeMapping TypeName="LandlordModel.源房缴费明细">
+              <MappingFragment StoreEntitySet="源房缴费明细">
+                <ScalarProperty Name="缴费项" ColumnName="缴费项" />
+                <ScalarProperty Name="源房ID" ColumnName="源房ID" />
+                <ScalarProperty Name="备注" ColumnName="备注" />
+                <ScalarProperty Name="收款人" ColumnName="收款人" />
+                <ScalarProperty Name="付款人" ColumnName="付款人" />
+                <ScalarProperty Name="期止" ColumnName="期止" />
+                <ScalarProperty Name="期始" ColumnName="期始" />
+                <ScalarProperty Name="缴费金额" ColumnName="缴费金额" />
+                <ScalarProperty Name="缴费时间" ColumnName="缴费时间" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="源房水电气核查">
+            <EntityTypeMapping TypeName="LandlordModel.源房水电气核查">
+              <MappingFragment StoreEntitySet="源房水电气核查">
+                <ScalarProperty Name="源房ID" ColumnName="源房ID" />
+                <ScalarProperty Name="备注" ColumnName="备注" />
+                <ScalarProperty Name="核查时间" ColumnName="核查时间" />
+                <ScalarProperty Name="核查人" ColumnName="核查人" />
+                <ScalarProperty Name="气表剩余字数" ColumnName="气表剩余字数" />
+                <ScalarProperty Name="抄表日期_气_" ColumnName="抄表日期(气)" />
+                <ScalarProperty Name="电账户余额" ColumnName="电账户余额" />
+                <ScalarProperty Name="电止码" ColumnName="电止码" />
+                <ScalarProperty Name="抄表日期_电_" ColumnName="抄表日期(电)" />
+                <ScalarProperty Name="水账户余额" ColumnName="水账户余额" />
+                <ScalarProperty Name="水止码" ColumnName="水止码" />
+                <ScalarProperty Name="抄表日期_水_" ColumnName="抄表日期(水)" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="源房涨租协定">
+            <EntityTypeMapping TypeName="LandlordModel.源房涨租协定">
+              <MappingFragment StoreEntitySet="源房涨租协定">
+                <ScalarProperty Name="源房ID" ColumnName="源房ID" />
+                <ScalarProperty Name="月租金" ColumnName="月租金" />
+                <ScalarProperty Name="期止" ColumnName="期止" />
+                <ScalarProperty Name="期始" ColumnName="期始" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="装修分类">
+            <EntityTypeMapping TypeName="LandlordModel.装修分类">
+              <MappingFragment StoreEntitySet="装修分类">
+                <ScalarProperty Name="类别" ColumnName="类别" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="装修明细">
+            <EntityTypeMapping TypeName="LandlordModel.装修明细">
+              <MappingFragment StoreEntitySet="装修明细">
+                <ScalarProperty Name="装修分类" ColumnName="装修分类" />
+                <ScalarProperty Name="源房ID" ColumnName="源房ID" />
+                <ScalarProperty Name="备注" ColumnName="备注" />
+                <ScalarProperty Name="购买地点" ColumnName="购买地点" />
+                <ScalarProperty Name="单价" ColumnName="单价" />
+                <ScalarProperty Name="单位" ColumnName="单位" />
+                <ScalarProperty Name="数量" ColumnName="数量" />
+                <ScalarProperty Name="规格" ColumnName="规格" />
+                <ScalarProperty Name="项目名称" ColumnName="项目名称" />
+                <ScalarProperty Name="日期" ColumnName="日期" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -659,24 +825,24 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="False" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model1" ZoomLevel="90">
-        <EntityTypeShape EntityType="LandlordModel.缴收项目" Width="1.5" PointX="0.75" PointY="0.75" Height="1.5879931640625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LandlordModel.客房" Width="1.5" PointX="2.75" PointY="0.75" Height="6.1724658203125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LandlordModel.客房租金明细" Width="1.5" PointX="4.75" PointY="0.75" Height="3.4981901041666656" IsExpanded="true" />
-        <EntityTypeShape EntityType="LandlordModel.日常损耗" Width="1.5" PointX="4.75" PointY="5.75" Height="2.3520719401041656" IsExpanded="true" />
-        <EntityTypeShape EntityType="LandlordModel.提醒" Width="1.5" PointX="6.75" PointY="0.75" Height="2.5430916341145835" IsExpanded="true" />
-        <EntityTypeShape EntityType="LandlordModel.源房" Width="1.5" PointX="6.75" PointY="4.75" Height="8.4647021484375" IsExpanded="true" />
-        <EntityTypeShape EntityType="LandlordModel.源房缴费明细" Width="1.5" PointX="0.75" PointY="7.75" Height="2.9251310221354174" IsExpanded="true" />
-        <EntityTypeShape EntityType="LandlordModel.源房水电气核查" Width="1.5" PointX="8.75" PointY="0.75" Height="3.4981901041666674" IsExpanded="true" />
-        <EntityTypeShape EntityType="LandlordModel.源房涨租协定" Width="1.5" PointX="8.75" PointY="5.75" Height="1.9700325520833317" IsExpanded="true" />
-        <EntityTypeShape EntityType="LandlordModel.装修分类" Width="1.5" PointX="8.75" PointY="8.75" Height="1.3969734700520817" IsExpanded="true" />
-        <EntityTypeShape EntityType="LandlordModel.装修明细" Width="1.5" PointX="2.75" PointY="9.75" Height="3.1161507161458317" IsExpanded="true" />
-        <EntityTypeShape EntityType="LandlordModel.客房出租历史记录" Width="1.5" PointX="11.375" PointY="0.75" Height="3.4981901041666674" />
+        <EntityTypeShape EntityType="LandlordModel.缴收项目" Width="1.5" PointX="0.75" PointY="0.75" Height="1.3969734700520888" />
+        <EntityTypeShape EntityType="LandlordModel.客房" Width="1.5" PointX="2.75" PointY="0.75" Height="6.1724658203125031" />
+        <EntityTypeShape EntityType="LandlordModel.客房出租历史记录" Width="1.5" PointX="4.75" PointY="0.75" Height="3.3071704101562531" />
+        <EntityTypeShape EntityType="LandlordModel.客房租金明细" Width="1.5" PointX="4.75" PointY="5.75" Height="3.3071704101562531" />
+        <EntityTypeShape EntityType="LandlordModel.日常损耗" Width="1.5" PointX="6.75" PointY="0.75" Height="2.1610522460937531" />
+        <EntityTypeShape EntityType="LandlordModel.提醒" Width="1.5" PointX="6.75" PointY="3.75" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="LandlordModel.源房" Width="1.5" PointX="0.75" PointY="7.75" Height="8.4647021484375031" />
+        <EntityTypeShape EntityType="LandlordModel.源房缴费明细" Width="1.5" PointX="6.75" PointY="7.75" Height="2.7341113281250031" />
+        <EntityTypeShape EntityType="LandlordModel.源房水电气核查" Width="1.5" PointX="8.75" PointY="0.75" Height="3.3071704101562531" />
+        <EntityTypeShape EntityType="LandlordModel.源房涨租协定" Width="1.5" PointX="8.75" PointY="5.75" Height="1.7790128580729174" />
+        <EntityTypeShape EntityType="LandlordModel.装修分类" Width="1.5" PointX="8.75" PointY="8.75" Height="1.2059537760416674" />
+        <EntityTypeShape EntityType="LandlordModel.装修明细" Width="1.5" PointX="10.75" PointY="0.75" Height="2.9251310221354174" />
       </Diagram>
     </Diagrams>
   </Designer>
