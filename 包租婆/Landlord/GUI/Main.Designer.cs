@@ -44,7 +44,7 @@
             this.radMenuSeparatorItem3 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
             this.radMenuItem16 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuSeparatorItem4 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
-            this.radMenuItem17 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radBtnManageYuanFang = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem18 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem3 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem19 = new Telerik.WinControls.UI.RadMenuItem();
@@ -84,6 +84,7 @@
             this.radToolStrip1 = new Telerik.WinControls.UI.RadToolStrip();
             this.radToolStripElement1 = new Telerik.WinControls.UI.RadToolStripElement();
             this.radToolStripItem1 = new Telerik.WinControls.UI.RadToolStripItem();
+            this.radBtnAddNewYuanFang = new Telerik.WinControls.UI.RadButtonElement();
             this.radButtonElement1 = new Telerik.WinControls.UI.RadButtonElement();
             this.radButtonElement2 = new Telerik.WinControls.UI.RadButtonElement();
             this.radToolStripItem2 = new Telerik.WinControls.UI.RadToolStripItem();
@@ -178,7 +179,7 @@
             this.radMenuSeparatorItem3,
             this.radMenuItem16,
             this.radMenuSeparatorItem4,
-            this.radMenuItem17,
+            this.radBtnManageYuanFang,
             this.radMenuItem18});
             this.radMenuItem2.Name = "radMenuItem2";
             this.radMenuItem2.Text = "源房";
@@ -220,10 +221,11 @@
             this.radMenuSeparatorItem4.Name = "radMenuSeparatorItem4";
             this.radMenuSeparatorItem4.Text = "radMenuSeparatorItem4";
             // 
-            // radMenuItem17
+            // radBtnManageYuanFang
             // 
-            this.radMenuItem17.Name = "radMenuItem17";
-            this.radMenuItem17.Text = "源房管理";
+            this.radBtnManageYuanFang.Name = "radBtnManageYuanFang";
+            this.radBtnManageYuanFang.Text = "源房管理";
+            this.radBtnManageYuanFang.Click += new System.EventHandler(this.radBtnManageYuanFang_Click);
             // 
             // radMenuItem18
             // 
@@ -477,11 +479,22 @@
             // radToolStripItem1
             // 
             this.radToolStripItem1.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radBtnAddNewYuanFang,
             this.radButtonElement1,
             this.radButtonElement2});
             this.radToolStripItem1.Key = "0";
             this.radToolStripItem1.Name = "radToolStripItem1";
             this.radToolStripItem1.Text = "radToolStripItem1";
+            // 
+            // radBtnAddNewYuanFang
+            // 
+            this.radBtnAddNewYuanFang.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.radBtnAddNewYuanFang.Image = global::Landlord.Properties.Resources.homeadd_32_hot;
+            this.radBtnAddNewYuanFang.Name = "radBtnAddNewYuanFang";
+            this.radBtnAddNewYuanFang.ShowBorder = false;
+            this.radBtnAddNewYuanFang.Text = "新增源房";
+            this.radBtnAddNewYuanFang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.radBtnAddNewYuanFang.Click += new System.EventHandler(this.radBtnAddNewYuanFang_Click);
             // 
             // radButtonElement1
             // 
@@ -566,7 +579,7 @@
             this.radButtonElement6.ShowBorder = false;
             this.radButtonElement6.Text = "新增提醒";
             this.radButtonElement6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.radButtonElement6.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            this.radButtonElement6.Visibility = Telerik.WinControls.ElementVisibility.Hidden;
             // 
             // radStatusStrip1
             // 
@@ -586,7 +599,7 @@
             // 
             this.radLabelElement1.Margin = new System.Windows.Forms.Padding(1);
             this.radLabelElement1.Name = "radLabelElement1";
-            this.radStatusStrip1.SetSpring(this.radLabelElement1, false);
+            this.radStatusStrip1.SetSpring(this.radLabelElement1, true);
             this.radLabelElement1.Text = "版本：V1.0.0";
             this.radLabelElement1.TextWrap = true;
             // 
@@ -594,7 +607,7 @@
             // 
             this.radLabelElement2.Margin = new System.Windows.Forms.Padding(1);
             this.radLabelElement2.Name = "radLabelElement2";
-            this.radStatusStrip1.SetSpring(this.radLabelElement2, true);
+            this.radStatusStrip1.SetSpring(this.radLabelElement2, false);
             this.radLabelElement2.Text = "武汉创方科技有限公司";
             this.radLabelElement2.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.radLabelElement2.TextWrap = true;
@@ -605,7 +618,7 @@
             this.radTreeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radTreeView1.Location = new System.Drawing.Point(0, 0);
             this.radTreeView1.Name = "radTreeView1";
-            this.radTreeView1.Size = new System.Drawing.Size(201, 497);
+            this.radTreeView1.Size = new System.Drawing.Size(200, 497);
             this.radTreeView1.TabIndex = 7;
             this.radTreeView1.Text = "radTreeView1";
             // 
@@ -634,8 +647,9 @@
             // 
             // 
             this.splitPanel1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel1.Size = new System.Drawing.Size(201, 497);
+            this.splitPanel1.Size = new System.Drawing.Size(200, 497);
             this.splitPanel1.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(-0.2455696F, 0F);
+            this.splitPanel1.SizeInfo.SizeMode = Telerik.WinControls.UI.Docking.SplitPanelSizeMode.Absolute;
             this.splitPanel1.SizeInfo.SplitterCorrection = new System.Drawing.Size(-194, 0);
             this.splitPanel1.TabIndex = 0;
             this.splitPanel1.TabStop = false;
@@ -643,13 +657,15 @@
             // 
             // splitPanel2
             // 
-            this.splitPanel2.Location = new System.Drawing.Point(204, 0);
+            this.splitPanel2.Location = new System.Drawing.Point(203, 0);
             this.splitPanel2.Name = "splitPanel2";
+            this.splitPanel2.Padding = new System.Windows.Forms.Padding(1);
             // 
             // 
             // 
             this.splitPanel2.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel2.Size = new System.Drawing.Size(588, 497);
+            this.splitPanel2.RootElement.Padding = new System.Windows.Forms.Padding(1);
+            this.splitPanel2.Size = new System.Drawing.Size(589, 497);
             this.splitPanel2.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0.2455696F, 0F);
             this.splitPanel2.SizeInfo.SplitterCorrection = new System.Drawing.Size(194, 0);
             this.splitPanel2.TabIndex = 1;
@@ -712,7 +728,7 @@
         private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem3;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem16;
         private Telerik.WinControls.UI.RadMenuSeparatorItem radMenuSeparatorItem4;
-        private Telerik.WinControls.UI.RadMenuItem radMenuItem17;
+        private Telerik.WinControls.UI.RadMenuItem radBtnManageYuanFang;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem18;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem19;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem20;
@@ -764,5 +780,6 @@
         private Telerik.WinControls.UI.SplitPanel splitPanel1;
         private Telerik.WinControls.UI.SplitPanel splitPanel2;
         private System.Windows.Forms.BindingSource bindingSourceTreeView;
+        private Telerik.WinControls.UI.RadButtonElement radBtnAddNewYuanFang;
     }
 }

@@ -67,12 +67,12 @@
             System.Windows.Forms.Label 租赁协议照片1Label;
             System.Windows.Forms.Label 租赁协议照片2Label;
             System.Windows.Forms.Label 租赁协议照片3Label;
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn2 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn1 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn2 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn3 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn4 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn5 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn3 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn4 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn6 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor2 = new Telerik.WinControls.Data.SortDescriptor();
             this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
             this.房名RadTextBox = new Telerik.WinControls.UI.RadTextBox();
             this.源房BindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -119,7 +119,6 @@
             this.阶梯水价RadTextBox = new Telerik.WinControls.UI.RadTextBox();
             this.气表编号RadTextBox = new Telerik.WinControls.UI.RadTextBox();
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
-            this.radButton2 = new Telerik.WinControls.UI.RadButton();
             房名Label = new System.Windows.Forms.Label();
             用途Label = new System.Windows.Forms.Label();
             结构Label = new System.Windows.Forms.Label();
@@ -210,12 +209,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.阶梯水价RadTextBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.气表编号RadTextBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
             this.SuspendLayout();
             // 
             // radGroupBoxInfo
             // 
-            this.radGroupBoxInfo.Controls.Add(this.radButton2);
             this.radGroupBoxInfo.Controls.Add(this.radButton1);
             this.radGroupBoxInfo.Controls.Add(this.radGroupBox4);
             this.radGroupBoxInfo.Controls.Add(this.radGroupBox3);
@@ -594,7 +591,6 @@
             this.radGroupBox1.Controls.Add(权证号Label);
             this.radGroupBox1.FooterImageIndex = -1;
             this.radGroupBox1.FooterImageKey = "";
-            this.radGroupBox1.GroupBoxStyle = Telerik.WinControls.UI.RadGroupBoxStyle.Office;
             this.radGroupBox1.HeaderImageIndex = -1;
             this.radGroupBox1.HeaderImageKey = "";
             this.radGroupBox1.HeaderMargin = new System.Windows.Forms.Padding(0);
@@ -719,7 +715,6 @@
             this.radGroupBox2.Controls.Add(源房东银行卡Label);
             this.radGroupBox2.FooterImageIndex = -1;
             this.radGroupBox2.FooterImageKey = "";
-            this.radGroupBox2.GroupBoxStyle = Telerik.WinControls.UI.RadGroupBoxStyle.Office;
             this.radGroupBox2.HeaderImageIndex = -1;
             this.radGroupBox2.HeaderImageKey = "";
             this.radGroupBox2.HeaderMargin = new System.Windows.Forms.Padding(0);
@@ -845,7 +840,6 @@
             this.radGroupBox3.Controls.Add(支付月数Label);
             this.radGroupBox3.FooterImageIndex = -1;
             this.radGroupBox3.FooterImageKey = "";
-            this.radGroupBox3.GroupBoxStyle = Telerik.WinControls.UI.RadGroupBoxStyle.Office;
             this.radGroupBox3.HeaderImageIndex = -1;
             this.radGroupBox3.HeaderImageKey = "";
             this.radGroupBox3.HeaderMargin = new System.Windows.Forms.Padding(0);
@@ -880,55 +874,55 @@
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.AllowAddNewRow = false;
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.AllowCellContextMenu = false;
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.AllowColumnChooser = false;
-            gridViewDecimalColumn1.DataType = typeof(decimal);
-            gridViewDecimalColumn1.FieldName = "ID";
-            gridViewDecimalColumn1.FormatInfo = new System.Globalization.CultureInfo("");
-            gridViewDecimalColumn1.HeaderText = "ID";
-            gridViewDecimalColumn1.IsAutoGenerated = true;
-            gridViewDecimalColumn1.IsVisible = false;
-            gridViewDecimalColumn1.Name = "ID";
-            gridViewDecimalColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            gridViewDecimalColumn2.DataType = typeof(decimal);
-            gridViewDecimalColumn2.FieldName = "源房ID";
-            gridViewDecimalColumn2.FormatInfo = new System.Globalization.CultureInfo("");
-            gridViewDecimalColumn2.HeaderText = "源房ID";
-            gridViewDecimalColumn2.IsAutoGenerated = true;
-            gridViewDecimalColumn2.IsVisible = false;
-            gridViewDecimalColumn2.Name = "源房ID";
-            gridViewDecimalColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            gridViewDateTimeColumn1.DataType = typeof(System.DateTime);
-            gridViewDateTimeColumn1.FieldName = "期始";
-            gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            gridViewDateTimeColumn1.FormatInfo = new System.Globalization.CultureInfo("");
-            gridViewDateTimeColumn1.HeaderText = "期始";
-            gridViewDateTimeColumn1.IsAutoGenerated = true;
-            gridViewDateTimeColumn1.Name = "期始";
-            gridViewDateTimeColumn2.DataType = typeof(System.DateTime);
-            gridViewDateTimeColumn2.FieldName = "期止";
-            gridViewDateTimeColumn2.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            gridViewDateTimeColumn2.FormatInfo = new System.Globalization.CultureInfo("");
-            gridViewDateTimeColumn2.HeaderText = "期止";
-            gridViewDateTimeColumn2.IsAutoGenerated = true;
-            gridViewDateTimeColumn2.Name = "期止";
-            gridViewDecimalColumn3.DataType = typeof(decimal);
-            gridViewDecimalColumn3.FieldName = "月租金";
-            gridViewDecimalColumn3.FormatInfo = new System.Globalization.CultureInfo("");
-            gridViewDecimalColumn3.HeaderText = "月租金";
-            gridViewDecimalColumn3.IsAutoGenerated = true;
-            gridViewDecimalColumn3.Name = "月租金";
-            gridViewDecimalColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            gridViewDecimalColumn4.DataType = typeof(decimal);
+            gridViewDecimalColumn4.FieldName = "ID";
+            gridViewDecimalColumn4.FormatInfo = new System.Globalization.CultureInfo("");
+            gridViewDecimalColumn4.HeaderText = "ID";
+            gridViewDecimalColumn4.IsAutoGenerated = true;
+            gridViewDecimalColumn4.IsVisible = false;
+            gridViewDecimalColumn4.Name = "ID";
+            gridViewDecimalColumn4.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            gridViewDecimalColumn5.DataType = typeof(decimal);
+            gridViewDecimalColumn5.FieldName = "源房ID";
+            gridViewDecimalColumn5.FormatInfo = new System.Globalization.CultureInfo("");
+            gridViewDecimalColumn5.HeaderText = "源房ID";
+            gridViewDecimalColumn5.IsAutoGenerated = true;
+            gridViewDecimalColumn5.IsVisible = false;
+            gridViewDecimalColumn5.Name = "源房ID";
+            gridViewDecimalColumn5.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            gridViewDateTimeColumn3.DataType = typeof(System.DateTime);
+            gridViewDateTimeColumn3.FieldName = "期始";
+            gridViewDateTimeColumn3.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            gridViewDateTimeColumn3.FormatInfo = new System.Globalization.CultureInfo("");
+            gridViewDateTimeColumn3.HeaderText = "期始";
+            gridViewDateTimeColumn3.IsAutoGenerated = true;
+            gridViewDateTimeColumn3.Name = "期始";
+            gridViewDateTimeColumn4.DataType = typeof(System.DateTime);
+            gridViewDateTimeColumn4.FieldName = "期止";
+            gridViewDateTimeColumn4.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            gridViewDateTimeColumn4.FormatInfo = new System.Globalization.CultureInfo("");
+            gridViewDateTimeColumn4.HeaderText = "期止";
+            gridViewDateTimeColumn4.IsAutoGenerated = true;
+            gridViewDateTimeColumn4.Name = "期止";
+            gridViewDecimalColumn6.DataType = typeof(decimal);
+            gridViewDecimalColumn6.FieldName = "月租金";
+            gridViewDecimalColumn6.FormatInfo = new System.Globalization.CultureInfo("");
+            gridViewDecimalColumn6.HeaderText = "月租金";
+            gridViewDecimalColumn6.IsAutoGenerated = true;
+            gridViewDecimalColumn6.Name = "月租金";
+            gridViewDecimalColumn6.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewDecimalColumn1,
-            gridViewDecimalColumn2,
-            gridViewDateTimeColumn1,
-            gridViewDateTimeColumn2,
-            gridViewDecimalColumn3});
+            gridViewDecimalColumn4,
+            gridViewDecimalColumn5,
+            gridViewDateTimeColumn3,
+            gridViewDateTimeColumn4,
+            gridViewDecimalColumn6});
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.DataSource = this.源房涨租协定BindingSource;
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.EnableGrouping = false;
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            sortDescriptor1.PropertyName = "期始";
+            sortDescriptor2.PropertyName = "期始";
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
-            sortDescriptor1});
+            sortDescriptor2});
             this.radMultiColumnComboBox1.EditorControl.Name = "NestedRadGridView";
             this.radMultiColumnComboBox1.EditorControl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.radMultiColumnComboBox1.EditorControl.ReadOnly = true;
@@ -1078,7 +1072,6 @@
             this.radGroupBox4.Controls.Add(this.气表编号RadTextBox);
             this.radGroupBox4.FooterImageIndex = -1;
             this.radGroupBox4.FooterImageKey = "";
-            this.radGroupBox4.GroupBoxStyle = Telerik.WinControls.UI.RadGroupBoxStyle.Office;
             this.radGroupBox4.HeaderImageIndex = -1;
             this.radGroupBox4.HeaderImageKey = "";
             this.radGroupBox4.HeaderMargin = new System.Windows.Forms.Padding(0);
@@ -1201,20 +1194,12 @@
             // radButton1
             // 
             this.radButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.radButton1.Location = new System.Drawing.Point(345, 464);
+            this.radButton1.Location = new System.Drawing.Point(463, 464);
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(90, 26);
             this.radButton1.TabIndex = 86;
             this.radButton1.Text = "确 定";
-            // 
-            // radButton2
-            // 
-            this.radButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.radButton2.Location = new System.Drawing.Point(463, 464);
-            this.radButton2.Name = "radButton2";
-            this.radButton2.Size = new System.Drawing.Size(90, 26);
-            this.radButton2.TabIndex = 86;
-            this.radButton2.Text = "取 消";
+            this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
             // 
             // UC源房详细
             // 
@@ -1276,7 +1261,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.阶梯水价RadTextBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.气表编号RadTextBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1329,6 +1313,5 @@
         private System.Windows.Forms.PictureBox 租赁协议照片2PictureBox;
         private System.Windows.Forms.PictureBox 租赁协议照片3PictureBox;
         private Telerik.WinControls.UI.RadButton radButton1;
-        private Telerik.WinControls.UI.RadButton radButton2;
     }
 }

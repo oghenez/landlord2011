@@ -89,6 +89,12 @@
     <Compile Include="GUI\UCBase.Designer.cs">
       <DependentUpon>UCBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UC源房管理.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UC源房管理.Designer.cs">
+      <DependentUpon>UC源房管理.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\UC源房详细.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UCBase.resx">
       <DependentUpon>UCBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UC源房管理.resx">
+      <DependentUpon>UC源房管理.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UC源房详细.resx">
       <DependentUpon>UC源房详细.cs</DependentUpon>
