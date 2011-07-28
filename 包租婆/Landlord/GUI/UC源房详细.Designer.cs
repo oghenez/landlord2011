@@ -67,12 +67,12 @@
             System.Windows.Forms.Label 租赁协议照片1Label;
             System.Windows.Forms.Label 租赁协议照片2Label;
             System.Windows.Forms.Label 租赁协议照片3Label;
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn4 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn5 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn3 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn4 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn6 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.Data.SortDescriptor sortDescriptor2 = new Telerik.WinControls.Data.SortDescriptor();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn2 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn1 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn2 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn3 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
             this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
             this.房名RadTextBox = new Telerik.WinControls.UI.RadTextBox();
             this.源房BindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -603,7 +603,7 @@
             // 
             this.radGroupBox1.RootElement.Padding = new System.Windows.Forms.Padding(10, 20, 10, 10);
             this.radGroupBox1.Size = new System.Drawing.Size(517, 100);
-            this.radGroupBox1.TabIndex = 82;
+            this.radGroupBox1.TabIndex = 0;
             this.radGroupBox1.Text = "基本信息";
             // 
             // 房名RadTextBox
@@ -612,7 +612,7 @@
             this.房名RadTextBox.Location = new System.Drawing.Point(69, 26);
             this.房名RadTextBox.Name = "房名RadTextBox";
             this.房名RadTextBox.Size = new System.Drawing.Size(290, 20);
-            this.房名RadTextBox.TabIndex = 16;
+            this.房名RadTextBox.TabIndex = 0;
             this.房名RadTextBox.TabStop = false;
             // 
             // 源房BindingSource
@@ -625,7 +625,7 @@
             this.用途RadTextBox.Location = new System.Drawing.Point(429, 26);
             this.用途RadTextBox.Name = "用途RadTextBox";
             this.用途RadTextBox.Size = new System.Drawing.Size(79, 20);
-            this.用途RadTextBox.TabIndex = 56;
+            this.用途RadTextBox.TabIndex = 6;
             this.用途RadTextBox.TabStop = false;
             // 
             // 结构RadTextBox
@@ -634,7 +634,7 @@
             this.结构RadTextBox.Location = new System.Drawing.Point(429, 51);
             this.结构RadTextBox.Name = "结构RadTextBox";
             this.结构RadTextBox.Size = new System.Drawing.Size(79, 20);
-            this.结构RadTextBox.TabIndex = 24;
+            this.结构RadTextBox.TabIndex = 7;
             this.结构RadTextBox.TabStop = false;
             // 
             // 建筑面积RadTextBox
@@ -643,7 +643,7 @@
             this.建筑面积RadTextBox.Location = new System.Drawing.Point(69, 51);
             this.建筑面积RadTextBox.Name = "建筑面积RadTextBox";
             this.建筑面积RadTextBox.Size = new System.Drawing.Size(71, 20);
-            this.建筑面积RadTextBox.TabIndex = 18;
+            this.建筑面积RadTextBox.TabIndex = 1;
             this.建筑面积RadTextBox.TabStop = false;
             // 
             // 室RadTextBox
@@ -652,7 +652,7 @@
             this.室RadTextBox.Location = new System.Drawing.Point(173, 51);
             this.室RadTextBox.Name = "室RadTextBox";
             this.室RadTextBox.Size = new System.Drawing.Size(35, 20);
-            this.室RadTextBox.TabIndex = 42;
+            this.室RadTextBox.TabIndex = 2;
             this.室RadTextBox.TabStop = false;
             // 
             // 厅RadTextBox
@@ -661,7 +661,7 @@
             this.厅RadTextBox.Location = new System.Drawing.Point(242, 51);
             this.厅RadTextBox.Name = "厅RadTextBox";
             this.厅RadTextBox.Size = new System.Drawing.Size(31, 20);
-            this.厅RadTextBox.TabIndex = 50;
+            this.厅RadTextBox.TabIndex = 3;
             this.厅RadTextBox.TabStop = false;
             // 
             // 卫RadTextBox
@@ -670,7 +670,7 @@
             this.卫RadTextBox.Location = new System.Drawing.Point(307, 51);
             this.卫RadTextBox.Name = "卫RadTextBox";
             this.卫RadTextBox.Size = new System.Drawing.Size(29, 20);
-            this.卫RadTextBox.TabIndex = 52;
+            this.卫RadTextBox.TabIndex = 4;
             this.卫RadTextBox.TabStop = false;
             // 
             // 装修RadTextBox
@@ -679,7 +679,7 @@
             this.装修RadTextBox.Location = new System.Drawing.Point(429, 76);
             this.装修RadTextBox.Name = "装修RadTextBox";
             this.装修RadTextBox.Size = new System.Drawing.Size(79, 20);
-            this.装修RadTextBox.TabIndex = 74;
+            this.装修RadTextBox.TabIndex = 8;
             this.装修RadTextBox.TabStop = false;
             // 
             // 权证号RadTextBox
@@ -688,7 +688,7 @@
             this.权证号RadTextBox.Location = new System.Drawing.Point(69, 76);
             this.权证号RadTextBox.Name = "权证号RadTextBox";
             this.权证号RadTextBox.Size = new System.Drawing.Size(290, 20);
-            this.权证号RadTextBox.TabIndex = 38;
+            this.权证号RadTextBox.TabIndex = 5;
             this.权证号RadTextBox.TabStop = false;
             // 
             // radGroupBox2
@@ -727,7 +727,7 @@
             // 
             this.radGroupBox2.RootElement.Padding = new System.Windows.Forms.Padding(10, 20, 10, 10);
             this.radGroupBox2.Size = new System.Drawing.Size(517, 100);
-            this.radGroupBox2.TabIndex = 83;
+            this.radGroupBox2.TabIndex = 1;
             this.radGroupBox2.Text = "房东信息";
             // 
             // 房东RadTextBox
@@ -736,7 +736,7 @@
             this.房东RadTextBox.Location = new System.Drawing.Point(69, 26);
             this.房东RadTextBox.Name = "房东RadTextBox";
             this.房东RadTextBox.Size = new System.Drawing.Size(106, 20);
-            this.房东RadTextBox.TabIndex = 14;
+            this.房东RadTextBox.TabIndex = 0;
             this.房东RadTextBox.TabStop = false;
             // 
             // 租赁协议照片3PictureBox
@@ -775,7 +775,7 @@
             this.联系地址RadTextBox.Location = new System.Drawing.Point(252, 26);
             this.联系地址RadTextBox.Name = "联系地址RadTextBox";
             this.联系地址RadTextBox.Size = new System.Drawing.Size(107, 20);
-            this.联系地址RadTextBox.TabIndex = 26;
+            this.联系地址RadTextBox.TabIndex = 1;
             this.联系地址RadTextBox.TabStop = false;
             // 
             // 身份证号RadTextBox
@@ -784,7 +784,7 @@
             this.身份证号RadTextBox.Location = new System.Drawing.Point(252, 51);
             this.身份证号RadTextBox.Name = "身份证号RadTextBox";
             this.身份证号RadTextBox.Size = new System.Drawing.Size(107, 20);
-            this.身份证号RadTextBox.TabIndex = 40;
+            this.身份证号RadTextBox.TabIndex = 3;
             this.身份证号RadTextBox.TabStop = false;
             // 
             // 电话1RadTextBox
@@ -793,7 +793,7 @@
             this.电话1RadTextBox.Location = new System.Drawing.Point(69, 51);
             this.电话1RadTextBox.Name = "电话1RadTextBox";
             this.电话1RadTextBox.Size = new System.Drawing.Size(106, 20);
-            this.电话1RadTextBox.TabIndex = 8;
+            this.电话1RadTextBox.TabIndex = 2;
             this.电话1RadTextBox.TabStop = false;
             // 
             // 电话2RadTextBox
@@ -802,7 +802,7 @@
             this.电话2RadTextBox.Location = new System.Drawing.Point(69, 76);
             this.电话2RadTextBox.Name = "电话2RadTextBox";
             this.电话2RadTextBox.Size = new System.Drawing.Size(106, 20);
-            this.电话2RadTextBox.TabIndex = 10;
+            this.电话2RadTextBox.TabIndex = 4;
             this.电话2RadTextBox.TabStop = false;
             // 
             // 源房东银行卡RadTextBox
@@ -811,7 +811,7 @@
             this.源房东银行卡RadTextBox.Location = new System.Drawing.Point(252, 76);
             this.源房东银行卡RadTextBox.Name = "源房东银行卡RadTextBox";
             this.源房东银行卡RadTextBox.Size = new System.Drawing.Size(107, 20);
-            this.源房东银行卡RadTextBox.TabIndex = 58;
+            this.源房东银行卡RadTextBox.TabIndex = 5;
             this.源房东银行卡RadTextBox.TabStop = false;
             // 
             // radGroupBox3
@@ -852,7 +852,7 @@
             // 
             this.radGroupBox3.RootElement.Padding = new System.Windows.Forms.Padding(10, 20, 10, 10);
             this.radGroupBox3.Size = new System.Drawing.Size(517, 100);
-            this.radGroupBox3.TabIndex = 84;
+            this.radGroupBox3.TabIndex = 2;
             this.radGroupBox3.Text = "协议信息";
             // 
             // radMultiColumnComboBox1
@@ -869,60 +869,60 @@
             this.radMultiColumnComboBox1.EditorControl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.radMultiColumnComboBox1.EditorControl.Location = new System.Drawing.Point(0, 0);
             // 
-            // radMultiColumnComboBox1.NestedRadGridView
+            // 
             // 
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.AllowAddNewRow = false;
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.AllowCellContextMenu = false;
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.AllowColumnChooser = false;
-            gridViewDecimalColumn4.DataType = typeof(decimal);
-            gridViewDecimalColumn4.FieldName = "ID";
-            gridViewDecimalColumn4.FormatInfo = new System.Globalization.CultureInfo("");
-            gridViewDecimalColumn4.HeaderText = "ID";
-            gridViewDecimalColumn4.IsAutoGenerated = true;
-            gridViewDecimalColumn4.IsVisible = false;
-            gridViewDecimalColumn4.Name = "ID";
-            gridViewDecimalColumn4.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            gridViewDecimalColumn5.DataType = typeof(decimal);
-            gridViewDecimalColumn5.FieldName = "源房ID";
-            gridViewDecimalColumn5.FormatInfo = new System.Globalization.CultureInfo("");
-            gridViewDecimalColumn5.HeaderText = "源房ID";
-            gridViewDecimalColumn5.IsAutoGenerated = true;
-            gridViewDecimalColumn5.IsVisible = false;
-            gridViewDecimalColumn5.Name = "源房ID";
-            gridViewDecimalColumn5.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            gridViewDateTimeColumn3.DataType = typeof(System.DateTime);
-            gridViewDateTimeColumn3.FieldName = "期始";
-            gridViewDateTimeColumn3.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            gridViewDateTimeColumn3.FormatInfo = new System.Globalization.CultureInfo("");
-            gridViewDateTimeColumn3.HeaderText = "期始";
-            gridViewDateTimeColumn3.IsAutoGenerated = true;
-            gridViewDateTimeColumn3.Name = "期始";
-            gridViewDateTimeColumn4.DataType = typeof(System.DateTime);
-            gridViewDateTimeColumn4.FieldName = "期止";
-            gridViewDateTimeColumn4.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            gridViewDateTimeColumn4.FormatInfo = new System.Globalization.CultureInfo("");
-            gridViewDateTimeColumn4.HeaderText = "期止";
-            gridViewDateTimeColumn4.IsAutoGenerated = true;
-            gridViewDateTimeColumn4.Name = "期止";
-            gridViewDecimalColumn6.DataType = typeof(decimal);
-            gridViewDecimalColumn6.FieldName = "月租金";
-            gridViewDecimalColumn6.FormatInfo = new System.Globalization.CultureInfo("");
-            gridViewDecimalColumn6.HeaderText = "月租金";
-            gridViewDecimalColumn6.IsAutoGenerated = true;
-            gridViewDecimalColumn6.Name = "月租金";
-            gridViewDecimalColumn6.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            gridViewDecimalColumn1.DataType = typeof(decimal);
+            gridViewDecimalColumn1.FieldName = "ID";
+            gridViewDecimalColumn1.FormatInfo = new System.Globalization.CultureInfo("");
+            gridViewDecimalColumn1.HeaderText = "ID";
+            gridViewDecimalColumn1.IsAutoGenerated = true;
+            gridViewDecimalColumn1.IsVisible = false;
+            gridViewDecimalColumn1.Name = "ID";
+            gridViewDecimalColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            gridViewDecimalColumn2.DataType = typeof(decimal);
+            gridViewDecimalColumn2.FieldName = "源房ID";
+            gridViewDecimalColumn2.FormatInfo = new System.Globalization.CultureInfo("");
+            gridViewDecimalColumn2.HeaderText = "源房ID";
+            gridViewDecimalColumn2.IsAutoGenerated = true;
+            gridViewDecimalColumn2.IsVisible = false;
+            gridViewDecimalColumn2.Name = "源房ID";
+            gridViewDecimalColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            gridViewDateTimeColumn1.DataType = typeof(System.DateTime);
+            gridViewDateTimeColumn1.FieldName = "期始";
+            gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            gridViewDateTimeColumn1.FormatInfo = new System.Globalization.CultureInfo("");
+            gridViewDateTimeColumn1.HeaderText = "期始";
+            gridViewDateTimeColumn1.IsAutoGenerated = true;
+            gridViewDateTimeColumn1.Name = "期始";
+            gridViewDateTimeColumn2.DataType = typeof(System.DateTime);
+            gridViewDateTimeColumn2.FieldName = "期止";
+            gridViewDateTimeColumn2.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            gridViewDateTimeColumn2.FormatInfo = new System.Globalization.CultureInfo("");
+            gridViewDateTimeColumn2.HeaderText = "期止";
+            gridViewDateTimeColumn2.IsAutoGenerated = true;
+            gridViewDateTimeColumn2.Name = "期止";
+            gridViewDecimalColumn3.DataType = typeof(decimal);
+            gridViewDecimalColumn3.FieldName = "月租金";
+            gridViewDecimalColumn3.FormatInfo = new System.Globalization.CultureInfo("");
+            gridViewDecimalColumn3.HeaderText = "月租金";
+            gridViewDecimalColumn3.IsAutoGenerated = true;
+            gridViewDecimalColumn3.Name = "月租金";
+            gridViewDecimalColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewDecimalColumn4,
-            gridViewDecimalColumn5,
-            gridViewDateTimeColumn3,
-            gridViewDateTimeColumn4,
-            gridViewDecimalColumn6});
+            gridViewDecimalColumn1,
+            gridViewDecimalColumn2,
+            gridViewDateTimeColumn1,
+            gridViewDateTimeColumn2,
+            gridViewDecimalColumn3});
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.DataSource = this.源房涨租协定BindingSource;
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.EnableGrouping = false;
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            sortDescriptor2.PropertyName = "期始";
+            sortDescriptor1.PropertyName = "期始";
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
-            sortDescriptor2});
+            sortDescriptor1});
             this.radMultiColumnComboBox1.EditorControl.Name = "NestedRadGridView";
             this.radMultiColumnComboBox1.EditorControl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.radMultiColumnComboBox1.EditorControl.ReadOnly = true;
@@ -941,7 +941,7 @@
             // 
             this.radMultiColumnComboBox1.RootElement.AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
             this.radMultiColumnComboBox1.Size = new System.Drawing.Size(106, 20);
-            this.radMultiColumnComboBox1.TabIndex = 73;
+            this.radMultiColumnComboBox1.TabIndex = 9;
             this.radMultiColumnComboBox1.TabStop = false;
             this.radMultiColumnComboBox1.Text = "涨租详细。。。";
             // 
@@ -960,7 +960,7 @@
             this.期止RadDateTimePicker.Name = "期止RadDateTimePicker";
             this.期止RadDateTimePicker.NullDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.期止RadDateTimePicker.Size = new System.Drawing.Size(139, 20);
-            this.期止RadDateTimePicker.TabIndex = 30;
+            this.期止RadDateTimePicker.TabIndex = 1;
             this.期止RadDateTimePicker.TabStop = false;
             this.期止RadDateTimePicker.Text = "radDateTimePicker1";
             this.期止RadDateTimePicker.Value = new System.DateTime(2011, 7, 27, 15, 45, 58, 533);
@@ -976,7 +976,7 @@
             this.期始RadDateTimePicker.Name = "期始RadDateTimePicker";
             this.期始RadDateTimePicker.NullDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.期始RadDateTimePicker.Size = new System.Drawing.Size(139, 20);
-            this.期始RadDateTimePicker.TabIndex = 28;
+            this.期始RadDateTimePicker.TabIndex = 0;
             this.期始RadDateTimePicker.TabStop = false;
             this.期始RadDateTimePicker.Text = "radDateTimePicker1";
             this.期始RadDateTimePicker.Value = new System.DateTime(2011, 7, 27, 15, 45, 58, 414);
@@ -987,7 +987,7 @@
             this.水始码RadTextBox.Location = new System.Drawing.Point(69, 51);
             this.水始码RadTextBox.Name = "水始码RadTextBox";
             this.水始码RadTextBox.Size = new System.Drawing.Size(52, 20);
-            this.水始码RadTextBox.TabIndex = 46;
+            this.水始码RadTextBox.TabIndex = 3;
             this.水始码RadTextBox.TabStop = false;
             // 
             // 电始码RadTextBox
@@ -996,7 +996,7 @@
             this.电始码RadTextBox.Location = new System.Drawing.Point(189, 51);
             this.电始码RadTextBox.Name = "电始码RadTextBox";
             this.电始码RadTextBox.Size = new System.Drawing.Size(52, 20);
-            this.电始码RadTextBox.TabIndex = 12;
+            this.电始码RadTextBox.TabIndex = 4;
             this.电始码RadTextBox.TabStop = false;
             // 
             // 月租金RadTextBox
@@ -1005,7 +1005,7 @@
             this.月租金RadTextBox.Location = new System.Drawing.Point(69, 76);
             this.月租金RadTextBox.Name = "月租金RadTextBox";
             this.月租金RadTextBox.Size = new System.Drawing.Size(52, 20);
-            this.月租金RadTextBox.TabIndex = 66;
+            this.月租金RadTextBox.TabIndex = 7;
             this.月租金RadTextBox.TabStop = false;
             // 
             // 气始码RadTextBox
@@ -1014,7 +1014,7 @@
             this.气始码RadTextBox.Location = new System.Drawing.Point(307, 51);
             this.气始码RadTextBox.Name = "气始码RadTextBox";
             this.气始码RadTextBox.Size = new System.Drawing.Size(52, 20);
-            this.气始码RadTextBox.TabIndex = 36;
+            this.气始码RadTextBox.TabIndex = 5;
             this.气始码RadTextBox.TabStop = false;
             // 
             // 押金RadTextBox
@@ -1023,7 +1023,7 @@
             this.押金RadTextBox.Location = new System.Drawing.Point(429, 26);
             this.押金RadTextBox.Name = "押金RadTextBox";
             this.押金RadTextBox.Size = new System.Drawing.Size(79, 20);
-            this.押金RadTextBox.TabIndex = 54;
+            this.押金RadTextBox.TabIndex = 2;
             this.押金RadTextBox.TabStop = false;
             // 
             // 支付月数RadTextBox
@@ -1033,7 +1033,7 @@
             this.支付月数RadTextBox.Name = "支付月数RadTextBox";
             this.支付月数RadTextBox.NullText = "多少个月一付款";
             this.支付月数RadTextBox.Size = new System.Drawing.Size(117, 20);
-            this.支付月数RadTextBox.TabIndex = 70;
+            this.支付月数RadTextBox.TabIndex = 8;
             this.支付月数RadTextBox.TabStop = false;
             // 
             // 中介费用RadTextBox
@@ -1042,7 +1042,7 @@
             this.中介费用RadTextBox.Location = new System.Drawing.Point(429, 51);
             this.中介费用RadTextBox.Name = "中介费用RadTextBox";
             this.中介费用RadTextBox.Size = new System.Drawing.Size(79, 20);
-            this.中介费用RadTextBox.TabIndex = 72;
+            this.中介费用RadTextBox.TabIndex = 6;
             this.中介费用RadTextBox.TabStop = false;
             // 
             // radGroupBox4
@@ -1084,7 +1084,7 @@
             // 
             this.radGroupBox4.RootElement.Padding = new System.Windows.Forms.Padding(10, 20, 10, 10);
             this.radGroupBox4.Size = new System.Drawing.Size(517, 128);
-            this.radGroupBox4.TabIndex = 85;
+            this.radGroupBox4.TabIndex = 3;
             this.radGroupBox4.Text = "其他信息";
             // 
             // 月物业费RadTextBox
@@ -1093,7 +1093,7 @@
             this.月物业费RadTextBox.Location = new System.Drawing.Point(69, 51);
             this.月物业费RadTextBox.Name = "月物业费RadTextBox";
             this.月物业费RadTextBox.Size = new System.Drawing.Size(71, 20);
-            this.月物业费RadTextBox.TabIndex = 64;
+            this.月物业费RadTextBox.TabIndex = 3;
             this.月物业费RadTextBox.TabStop = false;
             // 
             // 备注RadTextBox
@@ -1107,7 +1107,7 @@
             // 
             this.备注RadTextBox.RootElement.StretchVertically = true;
             this.备注RadTextBox.Size = new System.Drawing.Size(286, 20);
-            this.备注RadTextBox.TabIndex = 87;
+            this.备注RadTextBox.TabIndex = 10;
             this.备注RadTextBox.TabStop = false;
             // 
             // 月卫生费RadTextBox
@@ -1116,7 +1116,7 @@
             this.月卫生费RadTextBox.Location = new System.Drawing.Point(69, 76);
             this.月卫生费RadTextBox.Name = "月卫生费RadTextBox";
             this.月卫生费RadTextBox.Size = new System.Drawing.Size(71, 20);
-            this.月卫生费RadTextBox.TabIndex = 62;
+            this.月卫生费RadTextBox.TabIndex = 6;
             this.月卫生费RadTextBox.TabStop = false;
             // 
             // 水务代扣卫生费RadCheckBox
@@ -1125,7 +1125,7 @@
             this.水务代扣卫生费RadCheckBox.Location = new System.Drawing.Point(9, 102);
             this.水务代扣卫生费RadCheckBox.Name = "水务代扣卫生费RadCheckBox";
             this.水务代扣卫生费RadCheckBox.Size = new System.Drawing.Size(100, 18);
-            this.水务代扣卫生费RadCheckBox.TabIndex = 48;
+            this.水务代扣卫生费RadCheckBox.TabIndex = 9;
             this.水务代扣卫生费RadCheckBox.Text = "水务代扣卫生费";
             // 
             // 月宽带费RadTextBox
@@ -1134,7 +1134,7 @@
             this.月宽带费RadTextBox.Location = new System.Drawing.Point(69, 26);
             this.月宽带费RadTextBox.Name = "月宽带费RadTextBox";
             this.月宽带费RadTextBox.Size = new System.Drawing.Size(71, 20);
-            this.月宽带费RadTextBox.TabIndex = 60;
+            this.月宽带费RadTextBox.TabIndex = 0;
             this.月宽带费RadTextBox.TabStop = false;
             // 
             // 气单价RadTextBox
@@ -1143,7 +1143,7 @@
             this.气单价RadTextBox.Location = new System.Drawing.Point(402, 76);
             this.气单价RadTextBox.Name = "气单价RadTextBox";
             this.气单价RadTextBox.Size = new System.Drawing.Size(106, 20);
-            this.气单价RadTextBox.TabIndex = 34;
+            this.气单价RadTextBox.TabIndex = 8;
             this.气单价RadTextBox.TabStop = false;
             // 
             // 阶梯电价RadTextBox
@@ -1152,7 +1152,7 @@
             this.阶梯电价RadTextBox.Location = new System.Drawing.Point(402, 51);
             this.阶梯电价RadTextBox.Name = "阶梯电价RadTextBox";
             this.阶梯电价RadTextBox.Size = new System.Drawing.Size(106, 20);
-            this.阶梯电价RadTextBox.TabIndex = 20;
+            this.阶梯电价RadTextBox.TabIndex = 5;
             this.阶梯电价RadTextBox.TabStop = false;
             // 
             // 水表编号RadTextBox
@@ -1161,7 +1161,7 @@
             this.水表编号RadTextBox.Location = new System.Drawing.Point(222, 26);
             this.水表编号RadTextBox.Name = "水表编号RadTextBox";
             this.水表编号RadTextBox.Size = new System.Drawing.Size(106, 20);
-            this.水表编号RadTextBox.TabIndex = 44;
+            this.水表编号RadTextBox.TabIndex = 1;
             this.水表编号RadTextBox.TabStop = false;
             // 
             // 电表编号RadTextBox
@@ -1170,7 +1170,7 @@
             this.电表编号RadTextBox.Location = new System.Drawing.Point(222, 51);
             this.电表编号RadTextBox.Name = "电表编号RadTextBox";
             this.电表编号RadTextBox.Size = new System.Drawing.Size(106, 20);
-            this.电表编号RadTextBox.TabIndex = 6;
+            this.电表编号RadTextBox.TabIndex = 4;
             this.电表编号RadTextBox.TabStop = false;
             // 
             // 阶梯水价RadTextBox
@@ -1179,7 +1179,7 @@
             this.阶梯水价RadTextBox.Location = new System.Drawing.Point(402, 26);
             this.阶梯水价RadTextBox.Name = "阶梯水价RadTextBox";
             this.阶梯水价RadTextBox.Size = new System.Drawing.Size(106, 20);
-            this.阶梯水价RadTextBox.TabIndex = 22;
+            this.阶梯水价RadTextBox.TabIndex = 2;
             this.阶梯水价RadTextBox.TabStop = false;
             // 
             // 气表编号RadTextBox
@@ -1188,7 +1188,7 @@
             this.气表编号RadTextBox.Location = new System.Drawing.Point(222, 76);
             this.气表编号RadTextBox.Name = "气表编号RadTextBox";
             this.气表编号RadTextBox.Size = new System.Drawing.Size(106, 20);
-            this.气表编号RadTextBox.TabIndex = 32;
+            this.气表编号RadTextBox.TabIndex = 7;
             this.气表编号RadTextBox.TabStop = false;
             // 
             // radButton1
@@ -1197,7 +1197,7 @@
             this.radButton1.Location = new System.Drawing.Point(463, 464);
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(90, 26);
-            this.radButton1.TabIndex = 86;
+            this.radButton1.TabIndex = 4;
             this.radButton1.Text = "确 定";
             this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
             // 

@@ -44,30 +44,31 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn1 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
             Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn2 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn6 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn7 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn8 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewImageColumn gridViewImageColumn1 = new Telerik.WinControls.UI.GridViewImageColumn();
-            Telerik.WinControls.UI.GridViewImageColumn gridViewImageColumn2 = new Telerik.WinControls.UI.GridViewImageColumn();
-            Telerik.WinControls.UI.GridViewImageColumn gridViewImageColumn3 = new Telerik.WinControls.UI.GridViewImageColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn9 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn10 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn11 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn12 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn13 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn14 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn15 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn13 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn14 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn15 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewCheckBoxColumn gridViewCheckBoxColumn1 = new Telerik.WinControls.UI.GridViewCheckBoxColumn();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn15 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn16 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn17 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn16 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewCheckBoxColumn gridViewCheckBoxColumn1 = new Telerik.WinControls.UI.GridViewCheckBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn17 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewImageColumn gridViewImageColumn1 = new Telerik.WinControls.UI.GridViewImageColumn();
+            Telerik.WinControls.UI.GridViewImageColumn gridViewImageColumn2 = new Telerik.WinControls.UI.GridViewImageColumn();
+            Telerik.WinControls.UI.GridViewImageColumn gridViewImageColumn3 = new Telerik.WinControls.UI.GridViewImageColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
             this.radGridView1 = new Telerik.WinControls.UI.RadGridView();
             this.源房BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.radSplitContainer1 = new Telerik.WinControls.UI.RadSplitContainer();
@@ -102,10 +103,17 @@
             // 
             // radGridView1
             // 
+            this.radGridView1.MasterTemplate.AddNewRowPosition = Telerik.WinControls.UI.SystemRowPosition.Bottom;
+            this.radGridView1.MasterTemplate.AllowCellContextMenu = false;
+            this.radGridView1.MasterTemplate.AllowColumnChooser = false;
+            this.radGridView1.MasterTemplate.AllowColumnHeaderContextMenu = false;
+            this.radGridView1.MasterTemplate.AllowColumnReorder = false;
+            this.radGridView1.MasterTemplate.AllowDragToGroup = false;
             gridViewDecimalColumn1.DataType = typeof(int);
             gridViewDecimalColumn1.FieldName = "ID";
             gridViewDecimalColumn1.HeaderText = "ID";
             gridViewDecimalColumn1.IsAutoGenerated = true;
+            gridViewDecimalColumn1.IsVisible = false;
             gridViewDecimalColumn1.Name = "ID";
             gridViewDecimalColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             gridViewDecimalColumn1.Width = 17;
@@ -113,7 +121,7 @@
             gridViewTextBoxColumn1.HeaderText = "房名";
             gridViewTextBoxColumn1.IsAutoGenerated = true;
             gridViewTextBoxColumn1.Name = "房名";
-            gridViewTextBoxColumn1.Width = 29;
+            gridViewTextBoxColumn1.Width = 120;
             gridViewTextBoxColumn2.FieldName = "用途";
             gridViewTextBoxColumn2.HeaderText = "用途";
             gridViewTextBoxColumn2.IsAutoGenerated = true;
@@ -161,40 +169,47 @@
             gridViewTextBoxColumn5.HeaderText = "权证号";
             gridViewTextBoxColumn5.IsAutoGenerated = true;
             gridViewTextBoxColumn5.Name = "权证号";
-            gridViewTextBoxColumn5.Width = 40;
+            gridViewTextBoxColumn5.Width = 60;
             gridViewTextBoxColumn6.FieldName = "房东";
             gridViewTextBoxColumn6.HeaderText = "房东";
             gridViewTextBoxColumn6.IsAutoGenerated = true;
             gridViewTextBoxColumn6.Name = "房东";
-            gridViewTextBoxColumn6.Width = 29;
+            gridViewTextBoxColumn6.Width = 40;
             gridViewTextBoxColumn7.FieldName = "联系地址";
             gridViewTextBoxColumn7.HeaderText = "联系地址";
             gridViewTextBoxColumn7.IsAutoGenerated = true;
             gridViewTextBoxColumn7.Name = "联系地址";
-            gridViewTextBoxColumn7.Width = 52;
+            gridViewTextBoxColumn7.Width = 60;
             gridViewTextBoxColumn8.FieldName = "身份证号";
             gridViewTextBoxColumn8.HeaderText = "身份证号";
             gridViewTextBoxColumn8.IsAutoGenerated = true;
             gridViewTextBoxColumn8.Name = "身份证号";
-            gridViewTextBoxColumn8.Width = 52;
-            gridViewTextBoxColumn9.FieldName = "电话1";
-            gridViewTextBoxColumn9.HeaderText = "电话1";
+            gridViewTextBoxColumn8.Width = 60;
+            gridViewTextBoxColumn9.FieldName = "源房东银行卡";
+            gridViewTextBoxColumn9.HeaderText = "源房东银行卡";
             gridViewTextBoxColumn9.IsAutoGenerated = true;
-            gridViewTextBoxColumn9.Name = "电话1";
-            gridViewTextBoxColumn10.FieldName = "电话2";
-            gridViewTextBoxColumn10.HeaderText = "电话2";
+            gridViewTextBoxColumn9.Name = "源房东银行卡";
+            gridViewTextBoxColumn9.Width = 80;
+            gridViewTextBoxColumn10.FieldName = "电话1";
+            gridViewTextBoxColumn10.HeaderText = "电话1";
             gridViewTextBoxColumn10.IsAutoGenerated = true;
-            gridViewTextBoxColumn10.Name = "电话2";
+            gridViewTextBoxColumn10.Name = "电话1";
+            gridViewTextBoxColumn11.FieldName = "电话2";
+            gridViewTextBoxColumn11.HeaderText = "电话2";
+            gridViewTextBoxColumn11.IsAutoGenerated = true;
+            gridViewTextBoxColumn11.Name = "电话2";
             gridViewDateTimeColumn1.DataType = typeof(System.DateTime);
             gridViewDateTimeColumn1.FieldName = "期始";
             gridViewDateTimeColumn1.HeaderText = "期始";
             gridViewDateTimeColumn1.IsAutoGenerated = true;
             gridViewDateTimeColumn1.Name = "期始";
+            gridViewDateTimeColumn1.Width = 60;
             gridViewDateTimeColumn2.DataType = typeof(System.DateTime);
             gridViewDateTimeColumn2.FieldName = "期止";
             gridViewDateTimeColumn2.HeaderText = "期止";
             gridViewDateTimeColumn2.IsAutoGenerated = true;
             gridViewDateTimeColumn2.Name = "期止";
+            gridViewDateTimeColumn2.Width = 60;
             gridViewDecimalColumn6.DataType = typeof(decimal);
             gridViewDecimalColumn6.FieldName = "月租金";
             gridViewDecimalColumn6.HeaderText = "月租金";
@@ -213,6 +228,82 @@
             gridViewDecimalColumn8.IsAutoGenerated = true;
             gridViewDecimalColumn8.Name = "支付月数";
             gridViewDecimalColumn8.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            gridViewDecimalColumn9.DataType = typeof(decimal);
+            gridViewDecimalColumn9.FieldName = "月物业费";
+            gridViewDecimalColumn9.HeaderText = "月物业费";
+            gridViewDecimalColumn9.IsAutoGenerated = true;
+            gridViewDecimalColumn9.Name = "月物业费";
+            gridViewDecimalColumn9.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            gridViewDecimalColumn10.DataType = typeof(decimal);
+            gridViewDecimalColumn10.FieldName = "月卫生费";
+            gridViewDecimalColumn10.HeaderText = "月卫生费";
+            gridViewDecimalColumn10.IsAutoGenerated = true;
+            gridViewDecimalColumn10.Name = "月卫生费";
+            gridViewDecimalColumn10.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            gridViewDecimalColumn11.DataType = typeof(decimal);
+            gridViewDecimalColumn11.FieldName = "月宽带费";
+            gridViewDecimalColumn11.HeaderText = "月宽带费";
+            gridViewDecimalColumn11.IsAutoGenerated = true;
+            gridViewDecimalColumn11.Name = "月宽带费";
+            gridViewDecimalColumn11.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            gridViewDecimalColumn12.DataType = typeof(double);
+            gridViewDecimalColumn12.FieldName = "水始码";
+            gridViewDecimalColumn12.HeaderText = "水始码";
+            gridViewDecimalColumn12.IsAutoGenerated = true;
+            gridViewDecimalColumn12.Name = "水始码";
+            gridViewDecimalColumn12.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            gridViewDecimalColumn13.DataType = typeof(double);
+            gridViewDecimalColumn13.FieldName = "电始码";
+            gridViewDecimalColumn13.HeaderText = "电始码";
+            gridViewDecimalColumn13.IsAutoGenerated = true;
+            gridViewDecimalColumn13.Name = "电始码";
+            gridViewDecimalColumn13.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            gridViewDecimalColumn14.DataType = typeof(double);
+            gridViewDecimalColumn14.FieldName = "气始码";
+            gridViewDecimalColumn14.HeaderText = "气始码";
+            gridViewDecimalColumn14.IsAutoGenerated = true;
+            gridViewDecimalColumn14.Name = "气始码";
+            gridViewDecimalColumn14.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            gridViewDecimalColumn15.DataType = typeof(decimal);
+            gridViewDecimalColumn15.FieldName = "中介费用";
+            gridViewDecimalColumn15.HeaderText = "中介费用";
+            gridViewDecimalColumn15.IsAutoGenerated = true;
+            gridViewDecimalColumn15.Name = "中介费用";
+            gridViewDecimalColumn15.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            gridViewTextBoxColumn12.FieldName = "水表编号";
+            gridViewTextBoxColumn12.HeaderText = "水表编号";
+            gridViewTextBoxColumn12.IsAutoGenerated = true;
+            gridViewTextBoxColumn12.Name = "水表编号";
+            gridViewTextBoxColumn13.FieldName = "电表编号";
+            gridViewTextBoxColumn13.HeaderText = "电表编号";
+            gridViewTextBoxColumn13.IsAutoGenerated = true;
+            gridViewTextBoxColumn13.Name = "电表编号";
+            gridViewTextBoxColumn14.FieldName = "气表编号";
+            gridViewTextBoxColumn14.HeaderText = "气表编号";
+            gridViewTextBoxColumn14.IsAutoGenerated = true;
+            gridViewTextBoxColumn14.Name = "气表编号";
+            gridViewTextBoxColumn15.FieldName = "阶梯水价";
+            gridViewTextBoxColumn15.HeaderText = "阶梯水价";
+            gridViewTextBoxColumn15.IsAutoGenerated = true;
+            gridViewTextBoxColumn15.Name = "阶梯水价";
+            gridViewTextBoxColumn16.FieldName = "阶梯电价";
+            gridViewTextBoxColumn16.HeaderText = "阶梯电价";
+            gridViewTextBoxColumn16.IsAutoGenerated = true;
+            gridViewTextBoxColumn16.Name = "阶梯电价";
+            gridViewDecimalColumn16.DataType = typeof(decimal);
+            gridViewDecimalColumn16.FieldName = "气单价";
+            gridViewDecimalColumn16.HeaderText = "气单价";
+            gridViewDecimalColumn16.IsAutoGenerated = true;
+            gridViewDecimalColumn16.Name = "气单价";
+            gridViewDecimalColumn16.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            gridViewCheckBoxColumn1.FieldName = "水务代扣卫生费";
+            gridViewCheckBoxColumn1.HeaderText = "水务代扣卫生费";
+            gridViewCheckBoxColumn1.IsAutoGenerated = true;
+            gridViewCheckBoxColumn1.Name = "水务代扣卫生费";
+            gridViewTextBoxColumn17.FieldName = "备注";
+            gridViewTextBoxColumn17.HeaderText = "备注";
+            gridViewTextBoxColumn17.IsAutoGenerated = true;
+            gridViewTextBoxColumn17.Name = "备注";
             gridViewImageColumn1.DataType = typeof(System.Drawing.Image);
             gridViewImageColumn1.FieldName = "租赁协议照片1";
             gridViewImageColumn1.HeaderText = "租赁协议照片1";
@@ -228,86 +319,6 @@
             gridViewImageColumn3.HeaderText = "租赁协议照片3";
             gridViewImageColumn3.IsAutoGenerated = true;
             gridViewImageColumn3.Name = "租赁协议照片3";
-            gridViewTextBoxColumn11.FieldName = "备注";
-            gridViewTextBoxColumn11.HeaderText = "备注";
-            gridViewTextBoxColumn11.IsAutoGenerated = true;
-            gridViewTextBoxColumn11.Name = "备注";
-            gridViewDecimalColumn9.DataType = typeof(decimal);
-            gridViewDecimalColumn9.FieldName = "月物业费";
-            gridViewDecimalColumn9.HeaderText = "月物业费";
-            gridViewDecimalColumn9.IsAutoGenerated = true;
-            gridViewDecimalColumn9.Name = "月物业费";
-            gridViewDecimalColumn9.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            gridViewDecimalColumn10.DataType = typeof(double);
-            gridViewDecimalColumn10.FieldName = "水始码";
-            gridViewDecimalColumn10.HeaderText = "水始码";
-            gridViewDecimalColumn10.IsAutoGenerated = true;
-            gridViewDecimalColumn10.Name = "水始码";
-            gridViewDecimalColumn10.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            gridViewDecimalColumn11.DataType = typeof(double);
-            gridViewDecimalColumn11.FieldName = "电始码";
-            gridViewDecimalColumn11.HeaderText = "电始码";
-            gridViewDecimalColumn11.IsAutoGenerated = true;
-            gridViewDecimalColumn11.Name = "电始码";
-            gridViewDecimalColumn11.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            gridViewDecimalColumn12.DataType = typeof(double);
-            gridViewDecimalColumn12.FieldName = "气始码";
-            gridViewDecimalColumn12.HeaderText = "气始码";
-            gridViewDecimalColumn12.IsAutoGenerated = true;
-            gridViewDecimalColumn12.Name = "气始码";
-            gridViewDecimalColumn12.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            gridViewDecimalColumn13.DataType = typeof(decimal);
-            gridViewDecimalColumn13.FieldName = "中介费用";
-            gridViewDecimalColumn13.HeaderText = "中介费用";
-            gridViewDecimalColumn13.IsAutoGenerated = true;
-            gridViewDecimalColumn13.Name = "中介费用";
-            gridViewDecimalColumn13.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            gridViewDecimalColumn14.DataType = typeof(decimal);
-            gridViewDecimalColumn14.FieldName = "月卫生费";
-            gridViewDecimalColumn14.HeaderText = "月卫生费";
-            gridViewDecimalColumn14.IsAutoGenerated = true;
-            gridViewDecimalColumn14.Name = "月卫生费";
-            gridViewDecimalColumn14.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            gridViewTextBoxColumn12.FieldName = "源房东银行卡";
-            gridViewTextBoxColumn12.HeaderText = "源房东银行卡";
-            gridViewTextBoxColumn12.IsAutoGenerated = true;
-            gridViewTextBoxColumn12.Name = "源房东银行卡";
-            gridViewTextBoxColumn13.FieldName = "水表编号";
-            gridViewTextBoxColumn13.HeaderText = "水表编号";
-            gridViewTextBoxColumn13.IsAutoGenerated = true;
-            gridViewTextBoxColumn13.Name = "水表编号";
-            gridViewTextBoxColumn14.FieldName = "电表编号";
-            gridViewTextBoxColumn14.HeaderText = "电表编号";
-            gridViewTextBoxColumn14.IsAutoGenerated = true;
-            gridViewTextBoxColumn14.Name = "电表编号";
-            gridViewTextBoxColumn15.FieldName = "气表编号";
-            gridViewTextBoxColumn15.HeaderText = "气表编号";
-            gridViewTextBoxColumn15.IsAutoGenerated = true;
-            gridViewTextBoxColumn15.Name = "气表编号";
-            gridViewCheckBoxColumn1.FieldName = "水务代扣卫生费";
-            gridViewCheckBoxColumn1.HeaderText = "水务代扣卫生费";
-            gridViewCheckBoxColumn1.IsAutoGenerated = true;
-            gridViewCheckBoxColumn1.Name = "水务代扣卫生费";
-            gridViewDecimalColumn15.DataType = typeof(decimal);
-            gridViewDecimalColumn15.FieldName = "月宽带费";
-            gridViewDecimalColumn15.HeaderText = "月宽带费";
-            gridViewDecimalColumn15.IsAutoGenerated = true;
-            gridViewDecimalColumn15.Name = "月宽带费";
-            gridViewDecimalColumn15.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            gridViewTextBoxColumn16.FieldName = "阶梯水价";
-            gridViewTextBoxColumn16.HeaderText = "阶梯水价";
-            gridViewTextBoxColumn16.IsAutoGenerated = true;
-            gridViewTextBoxColumn16.Name = "阶梯水价";
-            gridViewTextBoxColumn17.FieldName = "阶梯电价";
-            gridViewTextBoxColumn17.HeaderText = "阶梯电价";
-            gridViewTextBoxColumn17.IsAutoGenerated = true;
-            gridViewTextBoxColumn17.Name = "阶梯电价";
-            gridViewDecimalColumn16.DataType = typeof(decimal);
-            gridViewDecimalColumn16.FieldName = "气单价";
-            gridViewDecimalColumn16.HeaderText = "气单价";
-            gridViewDecimalColumn16.IsAutoGenerated = true;
-            gridViewDecimalColumn16.Name = "气单价";
-            gridViewDecimalColumn16.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.radGridView1.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewDecimalColumn1,
             gridViewTextBoxColumn1,
@@ -324,31 +335,35 @@
             gridViewTextBoxColumn8,
             gridViewTextBoxColumn9,
             gridViewTextBoxColumn10,
+            gridViewTextBoxColumn11,
             gridViewDateTimeColumn1,
             gridViewDateTimeColumn2,
             gridViewDecimalColumn6,
             gridViewDecimalColumn7,
             gridViewDecimalColumn8,
-            gridViewImageColumn1,
-            gridViewImageColumn2,
-            gridViewImageColumn3,
-            gridViewTextBoxColumn11,
             gridViewDecimalColumn9,
             gridViewDecimalColumn10,
             gridViewDecimalColumn11,
             gridViewDecimalColumn12,
             gridViewDecimalColumn13,
             gridViewDecimalColumn14,
+            gridViewDecimalColumn15,
             gridViewTextBoxColumn12,
             gridViewTextBoxColumn13,
             gridViewTextBoxColumn14,
             gridViewTextBoxColumn15,
-            gridViewCheckBoxColumn1,
-            gridViewDecimalColumn15,
             gridViewTextBoxColumn16,
+            gridViewDecimalColumn16,
+            gridViewCheckBoxColumn1,
             gridViewTextBoxColumn17,
-            gridViewDecimalColumn16});
+            gridViewImageColumn1,
+            gridViewImageColumn2,
+            gridViewImageColumn3});
             this.radGridView1.MasterTemplate.DataSource = this.源房BindingSource;
+            this.radGridView1.MasterTemplate.EnableGrouping = false;
+            sortDescriptor1.PropertyName = "ID";
+            this.radGridView1.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
+            sortDescriptor1});
             this.radGridView1.Name = "radGridView1";
             this.radGridView1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             // 
