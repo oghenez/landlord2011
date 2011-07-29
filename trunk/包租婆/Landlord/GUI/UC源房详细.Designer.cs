@@ -119,6 +119,7 @@
             this.阶梯水价RadTextBox = new Telerik.WinControls.UI.RadTextBox();
             this.气表编号RadTextBox = new Telerik.WinControls.UI.RadTextBox();
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             房名Label = new System.Windows.Forms.Label();
             用途Label = new System.Windows.Forms.Label();
             结构Label = new System.Windows.Forms.Label();
@@ -209,6 +210,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.阶梯水价RadTextBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.气表编号RadTextBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // radGroupBoxInfo
@@ -608,9 +610,11 @@
             // 
             // 房名RadTextBox
             // 
+            this.房名RadTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.房名RadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "房名", true));
             this.房名RadTextBox.Location = new System.Drawing.Point(69, 26);
             this.房名RadTextBox.Name = "房名RadTextBox";
+            this.房名RadTextBox.NullText = "必填项";
             this.房名RadTextBox.Size = new System.Drawing.Size(290, 20);
             this.房名RadTextBox.TabIndex = 0;
             this.房名RadTextBox.TabStop = false;
@@ -624,6 +628,7 @@
             this.用途RadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "用途", true));
             this.用途RadTextBox.Location = new System.Drawing.Point(429, 26);
             this.用途RadTextBox.Name = "用途RadTextBox";
+            this.用途RadTextBox.NullText = "必填项";
             this.用途RadTextBox.Size = new System.Drawing.Size(79, 20);
             this.用途RadTextBox.TabIndex = 6;
             this.用途RadTextBox.TabStop = false;
@@ -633,6 +638,7 @@
             this.结构RadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "结构", true));
             this.结构RadTextBox.Location = new System.Drawing.Point(429, 51);
             this.结构RadTextBox.Name = "结构RadTextBox";
+            this.结构RadTextBox.NullText = "必填项";
             this.结构RadTextBox.Size = new System.Drawing.Size(79, 20);
             this.结构RadTextBox.TabIndex = 7;
             this.结构RadTextBox.TabStop = false;
@@ -642,6 +648,7 @@
             this.建筑面积RadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "建筑面积", true));
             this.建筑面积RadTextBox.Location = new System.Drawing.Point(69, 51);
             this.建筑面积RadTextBox.Name = "建筑面积RadTextBox";
+            this.建筑面积RadTextBox.NullText = "必填项";
             this.建筑面积RadTextBox.Size = new System.Drawing.Size(71, 20);
             this.建筑面积RadTextBox.TabIndex = 1;
             this.建筑面积RadTextBox.TabStop = false;
@@ -678,6 +685,7 @@
             this.装修RadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "装修", true));
             this.装修RadTextBox.Location = new System.Drawing.Point(429, 76);
             this.装修RadTextBox.Name = "装修RadTextBox";
+            this.装修RadTextBox.NullText = "必填项";
             this.装修RadTextBox.Size = new System.Drawing.Size(79, 20);
             this.装修RadTextBox.TabIndex = 8;
             this.装修RadTextBox.TabStop = false;
@@ -735,6 +743,7 @@
             this.房东RadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "房东", true));
             this.房东RadTextBox.Location = new System.Drawing.Point(69, 26);
             this.房东RadTextBox.Name = "房东RadTextBox";
+            this.房东RadTextBox.NullText = "必填项";
             this.房东RadTextBox.Size = new System.Drawing.Size(106, 20);
             this.房东RadTextBox.TabIndex = 0;
             this.房东RadTextBox.TabStop = false;
@@ -774,6 +783,7 @@
             this.联系地址RadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "联系地址", true));
             this.联系地址RadTextBox.Location = new System.Drawing.Point(252, 26);
             this.联系地址RadTextBox.Name = "联系地址RadTextBox";
+            this.联系地址RadTextBox.NullText = "必填项";
             this.联系地址RadTextBox.Size = new System.Drawing.Size(107, 20);
             this.联系地址RadTextBox.TabIndex = 1;
             this.联系地址RadTextBox.TabStop = false;
@@ -783,6 +793,7 @@
             this.身份证号RadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "身份证号", true));
             this.身份证号RadTextBox.Location = new System.Drawing.Point(252, 51);
             this.身份证号RadTextBox.Name = "身份证号RadTextBox";
+            this.身份证号RadTextBox.NullText = "必填项";
             this.身份证号RadTextBox.Size = new System.Drawing.Size(107, 20);
             this.身份证号RadTextBox.TabIndex = 3;
             this.身份证号RadTextBox.TabStop = false;
@@ -792,6 +803,7 @@
             this.电话1RadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "电话1", true));
             this.电话1RadTextBox.Location = new System.Drawing.Point(69, 51);
             this.电话1RadTextBox.Name = "电话1RadTextBox";
+            this.电话1RadTextBox.NullText = "必填项";
             this.电话1RadTextBox.Size = new System.Drawing.Size(106, 20);
             this.电话1RadTextBox.TabIndex = 2;
             this.电话1RadTextBox.TabStop = false;
@@ -955,10 +967,10 @@
             this.期止RadDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.源房BindingSource, "期止", true));
             this.期止RadDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.期止RadDateTimePicker.Location = new System.Drawing.Point(220, 26);
-            this.期止RadDateTimePicker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.期止RadDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.期止RadDateTimePicker.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
+            this.期止RadDateTimePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.期止RadDateTimePicker.Name = "期止RadDateTimePicker";
-            this.期止RadDateTimePicker.NullDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.期止RadDateTimePicker.NullDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.期止RadDateTimePicker.Size = new System.Drawing.Size(139, 20);
             this.期止RadDateTimePicker.TabIndex = 1;
             this.期止RadDateTimePicker.TabStop = false;
@@ -971,10 +983,10 @@
             this.期始RadDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.源房BindingSource, "期始", true));
             this.期始RadDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.期始RadDateTimePicker.Location = new System.Drawing.Point(69, 26);
-            this.期始RadDateTimePicker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.期始RadDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.期始RadDateTimePicker.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
+            this.期始RadDateTimePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.期始RadDateTimePicker.Name = "期始RadDateTimePicker";
-            this.期始RadDateTimePicker.NullDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.期始RadDateTimePicker.NullDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.期始RadDateTimePicker.Size = new System.Drawing.Size(139, 20);
             this.期始RadDateTimePicker.TabIndex = 0;
             this.期始RadDateTimePicker.TabStop = false;
@@ -1201,6 +1213,11 @@
             this.radButton1.Text = "确 定";
             this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.DataSource = this.源房BindingSource;
+            // 
             // UC源房详细
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1261,6 +1278,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.阶梯水价RadTextBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.气表编号RadTextBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1313,5 +1331,6 @@
         private System.Windows.Forms.PictureBox 租赁协议照片2PictureBox;
         private System.Windows.Forms.PictureBox 租赁协议照片3PictureBox;
         private Telerik.WinControls.UI.RadButton radButton1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
