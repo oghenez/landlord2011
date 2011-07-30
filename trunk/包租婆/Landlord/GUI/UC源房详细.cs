@@ -65,6 +65,7 @@ namespace Landlord.GUI
             {
                 int num = mainForm.context.SaveChanges();
                 mainForm.UpdateStatusStrip(string.Format("成功{0}{1}条源房信息", txt, num));
+                //刷新树视图
             }
             catch (OptimisticConcurrencyException)
             {

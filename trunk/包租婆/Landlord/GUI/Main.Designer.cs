@@ -99,7 +99,6 @@
             this.radLabelElement2 = new Telerik.WinControls.UI.RadLabelElement();
             this.windows7Theme1 = new Telerik.WinControls.Themes.Windows7Theme();
             this.radTreeView1 = new Telerik.WinControls.UI.RadTreeView();
-            this.bindingSourceTreeView = new System.Windows.Forms.BindingSource(this.components);
             this.radSplitContainer1 = new Telerik.WinControls.UI.RadSplitContainer();
             this.splitPanel1 = new Telerik.WinControls.UI.SplitPanel();
             this.splitPanel2 = new Telerik.WinControls.UI.SplitPanel();
@@ -107,7 +106,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.radToolStrip1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTreeView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTreeView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer1)).BeginInit();
             this.radSplitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel1)).BeginInit();
@@ -614,13 +612,14 @@
             // 
             // radTreeView1
             // 
-            this.radTreeView1.DataSource = this.bindingSourceTreeView;
+            this.radTreeView1.DisplayMember = "";
             this.radTreeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radTreeView1.Location = new System.Drawing.Point(0, 0);
             this.radTreeView1.Name = "radTreeView1";
             this.radTreeView1.Size = new System.Drawing.Size(200, 497);
             this.radTreeView1.TabIndex = 7;
             this.radTreeView1.Text = "radTreeView1";
+            this.radTreeView1.SelectedNodeChanged += new Telerik.WinControls.UI.RadTreeView.RadTreeViewEventHandler(this.radTreeView1_SelectedNodeChanged);
             // 
             // radSplitContainer1
             // 
@@ -693,7 +692,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.radToolStrip1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTreeView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTreeView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer1)).EndInit();
             this.radSplitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel1)).EndInit();
@@ -779,7 +777,6 @@
         private Telerik.WinControls.UI.RadSplitContainer radSplitContainer1;
         private Telerik.WinControls.UI.SplitPanel splitPanel1;
         private Telerik.WinControls.UI.SplitPanel splitPanel2;
-        private System.Windows.Forms.BindingSource bindingSourceTreeView;
         private Telerik.WinControls.UI.RadButtonElement radBtnAddNewYuanFang;
     }
 }
