@@ -38,7 +38,7 @@ namespace Landlord.GUI
 
         private void Main_Load(object sender, EventArgs e)
         {
-            
+            LoadTreeView();
         }
         #region 构造实体连接字符串
         private string CreateConnectString()
@@ -93,9 +93,13 @@ namespace Landlord.GUI
         /// </summary>
         private void LoadTreeView()
         {
-
+            radTreeView1.RootRelationDisplayName = "所有源、客房";
+            radTreeView1.RelationBindings.Add(new RelationBinding("客房", context.客房, null, "命名", "ID"));
+            radTreeView1.DataSource = context.源房;
         }
-
+        public void RefreshTreeView()
+        { 
+        }
         //新增源房
         private void radBtnAddNewYuanFang_Click(object sender, EventArgs e)
         {
@@ -108,6 +112,11 @@ namespace Landlord.GUI
         {
             UC源房管理 uc = new UC源房管理(this);
             LoadUC(uc, "源房管理");
+        }
+
+        private void radTreeView1_SelectedNodeChanged(object sender, RadTreeViewEventArgs e)
+        {
+            
         }
     }
 }

@@ -16,6 +16,18 @@ using System.Xml.Serialization;
 using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
+#region EDM 关系源元数据
+
+[assembly: EdmRelationshipAttribute("LandlordModel", "客房_客房出租历史", "客房", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Landlord.客房), "客房出租历史记录", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Landlord.客房出租历史记录), true)]
+[assembly: EdmRelationshipAttribute("LandlordModel", "客房_客房租金明细", "客房", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Landlord.客房), "客房租金明细", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Landlord.客房租金明细), true)]
+[assembly: EdmRelationshipAttribute("LandlordModel", "源房客房", "源房", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Landlord.源房), "客房", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Landlord.客房), true)]
+[assembly: EdmRelationshipAttribute("LandlordModel", "源房_提醒", "源房", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Landlord.源房), "提醒", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Landlord.提醒), true)]
+[assembly: EdmRelationshipAttribute("LandlordModel", "源房_源房缴费明细", "源房", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Landlord.源房), "源房缴费明细", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Landlord.源房缴费明细), true)]
+[assembly: EdmRelationshipAttribute("LandlordModel", "源房_源房水电气核查", "源房", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Landlord.源房), "源房水电气核查", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Landlord.源房水电气核查), true)]
+[assembly: EdmRelationshipAttribute("LandlordModel", "源房_源房涨租协定", "源房", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Landlord.源房), "源房涨租协定", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Landlord.源房涨租协定), true)]
+[assembly: EdmRelationshipAttribute("LandlordModel", "源房_装修明细", "源房", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Landlord.源房), "装修明细", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Landlord.装修明细), true)]
+
+#endregion
 
 namespace Landlord
 {
@@ -128,22 +140,6 @@ namespace Landlord
             }
         }
         private ObjectSet<客房租金明细> _客房租金明细;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        public ObjectSet<日常损耗> 日常损耗
-        {
-            get
-            {
-                if ((_日常损耗 == null))
-                {
-                    _日常损耗 = base.CreateObjectSet<日常损耗>("日常损耗");
-                }
-                return _日常损耗;
-            }
-        }
-        private ObjectSet<日常损耗> _日常损耗;
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -290,14 +286,6 @@ namespace Landlord
         public void AddTo客房租金明细(客房租金明细 客房租金明细)
         {
             base.AddObject("客房租金明细", 客房租金明细);
-        }
-    
-        /// <summary>
-        /// 用于向 日常损耗 EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddTo日常损耗(日常损耗 日常损耗)
-        {
-            base.AddObject("日常损耗", 日常损耗);
         }
     
         /// <summary>
@@ -1144,6 +1132,91 @@ namespace Landlord
 
         #endregion
     
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LandlordModel", "客房_客房出租历史", "客房出租历史记录")]
+        public EntityCollection<客房出租历史记录> 客房出租历史记录
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<客房出租历史记录>("LandlordModel.客房_客房出租历史", "客房出租历史记录");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<客房出租历史记录>("LandlordModel.客房_客房出租历史", "客房出租历史记录", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LandlordModel", "客房_客房租金明细", "客房租金明细")]
+        public EntityCollection<客房租金明细> 客房租金明细
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<客房租金明细>("LandlordModel.客房_客房租金明细", "客房租金明细");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<客房租金明细>("LandlordModel.客房_客房租金明细", "客房租金明细", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LandlordModel", "源房客房", "源房")]
+        public 源房 源房
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房客房", "源房").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房客房", "源房").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<源房> 源房Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房客房", "源房");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<源房>("LandlordModel.源房客房", "源房", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -1468,6 +1541,47 @@ namespace Landlord
 
         #endregion
     
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LandlordModel", "客房_客房出租历史", "客房")]
+        public 客房 客房
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<客房>("LandlordModel.客房_客房出租历史", "客房").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<客房>("LandlordModel.客房_客房出租历史", "客房").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<客房> 客房Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<客房>("LandlordModel.客房_客房出租历史", "客房");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<客房>("LandlordModel.客房_客房出租历史", "客房", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -1797,181 +1911,47 @@ namespace Landlord
 
         #endregion
     
-    }
-    
-    /// <summary>
-    /// 没有元数据文档可用。
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="LandlordModel", Name="日常损耗")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class 日常损耗 : EntityObject
-    {
-        #region 工厂方法
-    
-        /// <summary>
-        /// 创建新的 日常损耗 对象。
-        /// </summary>
-        /// <param name="源房ID">源房ID 属性的初始值。</param>
-        public static 日常损耗 Create日常损耗(global::System.Guid 源房ID)
-        {
-            日常损耗 日常损耗 = new 日常损耗();
-            日常损耗.源房ID = 源房ID;
-            return 日常损耗;
-        }
-
-        #endregion
-        #region 基元属性
+        #region 导航属性
     
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        public global::System.String 项目
+        [EdmRelationshipNavigationPropertyAttribute("LandlordModel", "客房_客房租金明细", "客房")]
+        public 客房 客房
         {
             get
             {
-                return _项目;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<客房>("LandlordModel.客房_客房租金明细", "客房").Value;
             }
             set
             {
-                On项目Changing(value);
-                ReportPropertyChanging("项目");
-                _项目 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("项目");
-                On项目Changed();
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<客房>("LandlordModel.客房_客房租金明细", "客房").Value = value;
             }
         }
-        private global::System.String _项目;
-        partial void On项目Changing(global::System.String value);
-        partial void On项目Changed();
-    
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Decimal> 支出金额
+        public EntityReference<客房> 客房Reference
         {
             get
             {
-                return _支出金额;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<客房>("LandlordModel.客房_客房租金明细", "客房");
             }
             set
             {
-                On支出金额Changing(value);
-                ReportPropertyChanging("支出金额");
-                _支出金额 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("支出金额");
-                On支出金额Changed();
-            }
-        }
-        private Nullable<global::System.Decimal> _支出金额;
-        partial void On支出金额Changing(Nullable<global::System.Decimal> value);
-        partial void On支出金额Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> 支出日期
-        {
-            get
-            {
-                return _支出日期;
-            }
-            set
-            {
-                On支出日期Changing(value);
-                ReportPropertyChanging("支出日期");
-                _支出日期 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("支出日期");
-                On支出日期Changed();
-            }
-        }
-        private Nullable<global::System.DateTime> _支出日期;
-        partial void On支出日期Changing(Nullable<global::System.DateTime> value);
-        partial void On支出日期Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String 备注
-        {
-            get
-            {
-                return _备注;
-            }
-            set
-            {
-                On备注Changing(value);
-                ReportPropertyChanging("备注");
-                _备注 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("备注");
-                On备注Changed();
-            }
-        }
-        private global::System.String _备注;
-        partial void On备注Changing(global::System.String value);
-        partial void On备注Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Guid 源房ID
-        {
-            get
-            {
-                return _源房ID;
-            }
-            set
-            {
-                if (_源房ID != value)
+                if ((value != null))
                 {
-                    On源房IDChanging(value);
-                    ReportPropertyChanging("源房ID");
-                    _源房ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("源房ID");
-                    On源房IDChanged();
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<客房>("LandlordModel.客房_客房租金明细", "客房", value);
                 }
             }
         }
-        private global::System.Guid _源房ID;
-        partial void On源房IDChanging(global::System.Guid value);
-        partial void On源房IDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Guid> 客房ID
-        {
-            get
-            {
-                return _客房ID;
-            }
-            set
-            {
-                On客房IDChanging(value);
-                ReportPropertyChanging("客房ID");
-                _客房ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("客房ID");
-                On客房IDChanged();
-            }
-        }
-        private Nullable<global::System.Guid> _客房ID;
-        partial void On客房IDChanging(Nullable<global::System.Guid> value);
-        partial void On客房IDChanged();
 
         #endregion
-    
     }
     
     /// <summary>
@@ -2186,6 +2166,47 @@ namespace Landlord
 
         #endregion
     
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LandlordModel", "源房_提醒", "源房")]
+        public 源房 源房
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房_提醒", "源房").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房_提醒", "源房").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<源房> 源房Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房_提醒", "源房");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<源房>("LandlordModel.源房_提醒", "源房", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -3203,6 +3224,157 @@ namespace Landlord
 
         #endregion
     
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LandlordModel", "源房客房", "客房")]
+        public EntityCollection<客房> 客房
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<客房>("LandlordModel.源房客房", "客房");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<客房>("LandlordModel.源房客房", "客房", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LandlordModel", "源房_提醒", "提醒")]
+        public EntityCollection<提醒> 提醒
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<提醒>("LandlordModel.源房_提醒", "提醒");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<提醒>("LandlordModel.源房_提醒", "提醒", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LandlordModel", "源房_源房缴费明细", "源房缴费明细")]
+        public EntityCollection<源房缴费明细> 源房缴费明细
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<源房缴费明细>("LandlordModel.源房_源房缴费明细", "源房缴费明细");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<源房缴费明细>("LandlordModel.源房_源房缴费明细", "源房缴费明细", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LandlordModel", "源房_源房水电气核查", "源房水电气核查")]
+        public 源房水电气核查 源房水电气核查
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房水电气核查>("LandlordModel.源房_源房水电气核查", "源房水电气核查").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房水电气核查>("LandlordModel.源房_源房水电气核查", "源房水电气核查").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<源房水电气核查> 源房水电气核查Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房水电气核查>("LandlordModel.源房_源房水电气核查", "源房水电气核查");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<源房水电气核查>("LandlordModel.源房_源房水电气核查", "源房水电气核查", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LandlordModel", "源房_源房涨租协定", "源房涨租协定")]
+        public EntityCollection<源房涨租协定> 源房涨租协定
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<源房涨租协定>("LandlordModel.源房_源房涨租协定", "源房涨租协定");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<源房涨租协定>("LandlordModel.源房_源房涨租协定", "源房涨租协定", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LandlordModel", "源房_装修明细", "装修明细")]
+        public EntityCollection<装修明细> 装修明细
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<装修明细>("LandlordModel.源房_装修明细", "装修明细");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<装修明细>("LandlordModel.源房_装修明细", "装修明细", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -3460,6 +3632,47 @@ namespace Landlord
 
         #endregion
     
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LandlordModel", "源房_源房缴费明细", "源房")]
+        public 源房 源房
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房_源房缴费明细", "源房").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房_源房缴费明细", "源房").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<源房> 源房Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房_源房缴费明细", "源房");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<源房>("LandlordModel.源房_源房缴费明细", "源房", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -3779,6 +3992,47 @@ namespace Landlord
 
         #endregion
     
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LandlordModel", "源房_源房水电气核查", "源房")]
+        public 源房 源房
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房_源房水电气核查", "源房").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房_源房水电气核查", "源房").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<源房> 源房Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房_源房水电气核查", "源房");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<源房>("LandlordModel.源房_源房水电气核查", "源房", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -3921,6 +4175,47 @@ namespace Landlord
 
         #endregion
     
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LandlordModel", "源房_源房涨租协定", "源房")]
+        public 源房 源房
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房_源房涨租协定", "源房").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房_源房涨租协定", "源房").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<源房> 源房Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房_源房涨租协定", "源房");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<源房>("LandlordModel.源房_源房涨租协定", "源房", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -4272,6 +4567,47 @@ namespace Landlord
 
         #endregion
     
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("LandlordModel", "源房_装修明细", "源房")]
+        public 源房 源房
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房_装修明细", "源房").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房_装修明细", "源房").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<源房> 源房Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("LandlordModel.源房_装修明细", "源房");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<源房>("LandlordModel.源房_装修明细", "源房", value);
+                }
+            }
+        }
+
+        #endregion
     }
 
     #endregion

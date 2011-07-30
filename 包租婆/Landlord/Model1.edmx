@@ -40,16 +40,6 @@
             [客房租金明细].[客房ID] AS [客房ID]
             FROM [客房租金明细] AS [客房租金明细]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="日常损耗" EntityType="LandlordModel.Store.日常损耗" store:Type="Tables" store:Name="日常损耗">
-            <DefiningQuery>SELECT 
-            [日常损耗].[项目] AS [项目], 
-            [日常损耗].[支出金额] AS [支出金额], 
-            [日常损耗].[支出日期] AS [支出日期], 
-            [日常损耗].[备注] AS [备注], 
-            [日常损耗].[源房ID] AS [源房ID], 
-            [日常损耗].[客房ID] AS [客房ID]
-            FROM [日常损耗] AS [日常损耗]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="提醒" EntityType="LandlordModel.Store.提醒" store:Type="Tables" store:Name="提醒">
             <DefiningQuery>SELECT 
             [提醒].[提醒时间] AS [提醒时间], 
@@ -114,6 +104,38 @@
             [装修明细].[装修分类] AS [装修分类]
             FROM [装修明细] AS [装修明细]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="客房-客房出租历史" Association="LandlordModel.Store.客房-客房出租历史">
+            <End Role="客房" EntitySet="客房" />
+            <End Role="客房出租历史记录" EntitySet="客房出租历史记录" />
+          </AssociationSet>
+          <AssociationSet Name="客房-客房租金明细" Association="LandlordModel.Store.客房-客房租金明细">
+            <End Role="客房" EntitySet="客房" />
+            <End Role="客房租金明细" EntitySet="客房租金明细" />
+          </AssociationSet>
+          <AssociationSet Name="源房客房" Association="LandlordModel.Store.源房客房">
+            <End Role="源房" EntitySet="源房" />
+            <End Role="客房" EntitySet="客房" />
+          </AssociationSet>
+          <AssociationSet Name="源房-提醒" Association="LandlordModel.Store.源房-提醒">
+            <End Role="源房" EntitySet="源房" />
+            <End Role="提醒" EntitySet="提醒" />
+          </AssociationSet>
+          <AssociationSet Name="源房-源房缴费明细" Association="LandlordModel.Store.源房-源房缴费明细">
+            <End Role="源房" EntitySet="源房" />
+            <End Role="源房缴费明细" EntitySet="源房缴费明细" />
+          </AssociationSet>
+          <AssociationSet Name="源房-源房水电气核查" Association="LandlordModel.Store.源房-源房水电气核查">
+            <End Role="源房" EntitySet="源房" />
+            <End Role="源房水电气核查" EntitySet="源房水电气核查" />
+          </AssociationSet>
+          <AssociationSet Name="源房-源房涨租协定" Association="LandlordModel.Store.源房-源房涨租协定">
+            <End Role="源房" EntitySet="源房" />
+            <End Role="源房涨租协定" EntitySet="源房涨租协定" />
+          </AssociationSet>
+          <AssociationSet Name="源房-装修明细" Association="LandlordModel.Store.源房-装修明细">
+            <End Role="源房" EntitySet="源房" />
+            <End Role="装修明细" EntitySet="装修明细" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="缴收项目">
           <Key>
@@ -196,20 +218,6 @@
           <Property Name="收款人" Type="nvarchar" MaxLength="100" />
           <Property Name="备注" Type="nvarchar" MaxLength="500" />
           <Property Name="客房ID" Type="uniqueidentifier" Nullable="false" />
-        </EntityType>
-        <!--生成过程中发现错误:
-            警告 6002: 表/视图“日常损耗”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
-            -->
-        <EntityType Name="日常损耗">
-          <Key>
-            <PropertyRef Name="源房ID" />
-          </Key>
-          <Property Name="项目" Type="nvarchar" MaxLength="100" />
-          <Property Name="支出金额" Type="money" />
-          <Property Name="支出日期" Type="datetime" />
-          <Property Name="备注" Type="nvarchar" MaxLength="500" />
-          <Property Name="源房ID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="客房ID" Type="uniqueidentifier" />
         </EntityType>
         <!--生成过程中发现错误:
             警告 6002: 表/视图“提醒”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
@@ -356,6 +364,129 @@
           <Property Name="源房ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="装修分类" Type="nvarchar" Nullable="false" MaxLength="10" />
         </EntityType>
+        <Association Name="客房-客房出租历史">
+          <End Role="客房" Type="LandlordModel.Store.客房" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="客房出租历史记录" Type="LandlordModel.Store.客房出租历史记录" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="客房">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="客房出租历史记录">
+              <PropertyRef Name="客房ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="客房-客房租金明细">
+          <End Role="客房" Type="LandlordModel.Store.客房" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="客房租金明细" Type="LandlordModel.Store.客房租金明细" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="客房">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="客房租金明细">
+              <PropertyRef Name="客房ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="源房客房">
+          <End Role="源房" Type="LandlordModel.Store.源房" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="客房" Type="LandlordModel.Store.客房" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="源房">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="客房">
+              <PropertyRef Name="源房ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="源房-提醒">
+          <End Role="源房" Type="LandlordModel.Store.源房" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="提醒" Type="LandlordModel.Store.提醒" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="源房">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="提醒">
+              <PropertyRef Name="源房ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="源房-源房缴费明细">
+          <End Role="源房" Type="LandlordModel.Store.源房" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="源房缴费明细" Type="LandlordModel.Store.源房缴费明细" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="源房">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="源房缴费明细">
+              <PropertyRef Name="源房ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="源房-源房水电气核查">
+          <End Role="源房" Type="LandlordModel.Store.源房" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="源房水电气核查" Type="LandlordModel.Store.源房水电气核查" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="源房">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="源房水电气核查">
+              <PropertyRef Name="源房ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="源房-源房涨租协定">
+          <End Role="源房" Type="LandlordModel.Store.源房" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="源房涨租协定" Type="LandlordModel.Store.源房涨租协定" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="源房">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="源房涨租协定">
+              <PropertyRef Name="源房ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="源房-装修明细">
+          <End Role="源房" Type="LandlordModel.Store.源房" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="装修明细" Type="LandlordModel.Store.装修明细" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="源房">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="装修明细">
+              <PropertyRef Name="源房ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--生成过程中发现错误:
+            警告 6013: 表/视图“日常损耗”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+            
+            <EntityType Name="日常损耗">
+              <Property Name="源房ID" Type="uniqueidentifier" />
+              <Property Name="客房ID" Type="uniqueidentifier" />
+              <Property Name="项目" Type="nvarchar" MaxLength="500" />
+              <Property Name="支出金额" Type="money" />
+              <Property Name="支出日期" Type="money" />
+              <Property Name="备注" Type="nvarchar" MaxLength="500" />
+            </EntityType>-->
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -365,7 +496,6 @@
           <EntitySet Name="客房" EntityType="LandlordModel.客房" />
           <EntitySet Name="客房出租历史记录" EntityType="LandlordModel.客房出租历史记录" />
           <EntitySet Name="客房租金明细" EntityType="LandlordModel.客房租金明细" />
-          <EntitySet Name="日常损耗" EntityType="LandlordModel.日常损耗" />
           <EntitySet Name="提醒" EntityType="LandlordModel.提醒" />
           <EntitySet Name="源房" EntityType="LandlordModel.源房" />
           <EntitySet Name="源房缴费明细" EntityType="LandlordModel.源房缴费明细" />
@@ -373,6 +503,38 @@
           <EntitySet Name="源房涨租协定" EntityType="LandlordModel.源房涨租协定" />
           <EntitySet Name="装修分类" EntityType="LandlordModel.装修分类" />
           <EntitySet Name="装修明细" EntityType="LandlordModel.装修明细" />
+          <AssociationSet Name="客房_客房出租历史" Association="LandlordModel.客房_客房出租历史">
+            <End Role="客房" EntitySet="客房" />
+            <End Role="客房出租历史记录" EntitySet="客房出租历史记录" />
+          </AssociationSet>
+          <AssociationSet Name="客房_客房租金明细" Association="LandlordModel.客房_客房租金明细">
+            <End Role="客房" EntitySet="客房" />
+            <End Role="客房租金明细" EntitySet="客房租金明细" />
+          </AssociationSet>
+          <AssociationSet Name="源房客房" Association="LandlordModel.源房客房">
+            <End Role="源房" EntitySet="源房" />
+            <End Role="客房" EntitySet="客房" />
+          </AssociationSet>
+          <AssociationSet Name="源房_提醒" Association="LandlordModel.源房_提醒">
+            <End Role="源房" EntitySet="源房" />
+            <End Role="提醒" EntitySet="提醒" />
+          </AssociationSet>
+          <AssociationSet Name="源房_源房缴费明细" Association="LandlordModel.源房_源房缴费明细">
+            <End Role="源房" EntitySet="源房" />
+            <End Role="源房缴费明细" EntitySet="源房缴费明细" />
+          </AssociationSet>
+          <AssociationSet Name="源房_源房水电气核查" Association="LandlordModel.源房_源房水电气核查">
+            <End Role="源房" EntitySet="源房" />
+            <End Role="源房水电气核查" EntitySet="源房水电气核查" />
+          </AssociationSet>
+          <AssociationSet Name="源房_源房涨租协定" Association="LandlordModel.源房_源房涨租协定">
+            <End Role="源房" EntitySet="源房" />
+            <End Role="源房涨租协定" EntitySet="源房涨租协定" />
+          </AssociationSet>
+          <AssociationSet Name="源房_装修明细" Association="LandlordModel.源房_装修明细">
+            <End Role="源房" EntitySet="源房" />
+            <End Role="装修明细" EntitySet="装修明细" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="缴收项目">
           <Key>
@@ -412,6 +574,9 @@
           <Property Type="Decimal" Name="中介费用" Nullable="false" Precision="19" Scale="4" />
           <Property Type="Guid" Name="ID" Nullable="false" />
           <Property Type="Guid" Name="源房ID" Nullable="false" />
+          <NavigationProperty Name="客房出租历史记录" Relationship="LandlordModel.客房_客房出租历史" FromRole="客房" ToRole="客房出租历史记录" />
+          <NavigationProperty Name="客房租金明细" Relationship="LandlordModel.客房_客房租金明细" FromRole="客房" ToRole="客房租金明细" />
+          <NavigationProperty Name="源房" Relationship="LandlordModel.源房客房" FromRole="客房" ToRole="源房" />
         </EntityType>
         <EntityType Name="客房出租历史记录">
           <Key>
@@ -430,6 +595,7 @@
           <Property Type="Int16" Name="支付月数" />
           <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Type="Guid" Name="客房ID" Nullable="false" />
+          <NavigationProperty Name="客房" Relationship="LandlordModel.客房_客房出租历史" FromRole="客房出租历史记录" ToRole="客房" />
         </EntityType>
         <EntityType Name="客房租金明细">
           <Key>
@@ -449,17 +615,7 @@
           <Property Type="String" Name="收款人" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Type="Guid" Name="客房ID" Nullable="false" />
-        </EntityType>
-        <EntityType Name="日常损耗">
-          <Key>
-            <PropertyRef Name="源房ID" />
-          </Key>
-          <Property Type="String" Name="项目" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="支出金额" Precision="19" Scale="4" />
-          <Property Type="DateTime" Name="支出日期" />
-          <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="Guid" Name="源房ID" Nullable="false" />
-          <Property Type="Guid" Name="客房ID" />
+          <NavigationProperty Name="客房" Relationship="LandlordModel.客房_客房租金明细" FromRole="客房租金明细" ToRole="客房" />
         </EntityType>
         <EntityType Name="提醒">
           <Key>
@@ -475,6 +631,7 @@
           <Property Type="DateTime" Name="完成日期" />
           <Property Type="Guid" Name="客房ID" />
           <Property Type="Guid" Name="源房ID" />
+          <NavigationProperty Name="源房" Relationship="LandlordModel.源房_提醒" FromRole="提醒" ToRole="源房" />
         </EntityType>
         <EntityType Name="源房">
           <Key>
@@ -519,6 +676,12 @@
           <Property Type="String" Name="阶梯电价" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="Decimal" Name="气单价" Precision="19" Scale="4" />
           <Property Type="Guid" Name="ID" Nullable="false" />
+          <NavigationProperty Name="客房" Relationship="LandlordModel.源房客房" FromRole="源房" ToRole="客房" />
+          <NavigationProperty Name="提醒" Relationship="LandlordModel.源房_提醒" FromRole="源房" ToRole="提醒" />
+          <NavigationProperty Name="源房缴费明细" Relationship="LandlordModel.源房_源房缴费明细" FromRole="源房" ToRole="源房缴费明细" />
+          <NavigationProperty Name="源房水电气核查" Relationship="LandlordModel.源房_源房水电气核查" FromRole="源房" ToRole="源房水电气核查" />
+          <NavigationProperty Name="源房涨租协定" Relationship="LandlordModel.源房_源房涨租协定" FromRole="源房" ToRole="源房涨租协定" />
+          <NavigationProperty Name="装修明细" Relationship="LandlordModel.源房_装修明细" FromRole="源房" ToRole="装修明细" />
         </EntityType>
         <EntityType Name="源房缴费明细">
           <Key>
@@ -535,6 +698,7 @@
           <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Type="Guid" Name="源房ID" Nullable="false" />
           <Property Type="String" Name="缴费项" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="源房" Relationship="LandlordModel.源房_源房缴费明细" FromRole="源房缴费明细" ToRole="源房" />
         </EntityType>
         <EntityType Name="源房水电气核查">
           <Key>
@@ -552,6 +716,7 @@
           <Property Type="DateTime" Name="核查时间" />
           <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Type="Guid" Name="源房ID" Nullable="false" />
+          <NavigationProperty Name="源房" Relationship="LandlordModel.源房_源房水电气核查" FromRole="源房水电气核查" ToRole="源房" />
         </EntityType>
         <EntityType Name="源房涨租协定">
           <Key>
@@ -564,6 +729,7 @@
           <Property Type="DateTime" Name="期止" Nullable="false" />
           <Property Type="Decimal" Name="月租金" Nullable="false" Precision="19" Scale="4" />
           <Property Type="Guid" Name="源房ID" Nullable="false" />
+          <NavigationProperty Name="源房" Relationship="LandlordModel.源房_源房涨租协定" FromRole="源房涨租协定" ToRole="源房" />
         </EntityType>
         <EntityType Name="装修分类">
           <Key>
@@ -590,7 +756,104 @@
           <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Type="Guid" Name="源房ID" Nullable="false" />
           <Property Type="String" Name="装修分类" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="源房" Relationship="LandlordModel.源房_装修明细" FromRole="装修明细" ToRole="源房" />
         </EntityType>
+        <Association Name="客房_客房出租历史">
+          <End Type="LandlordModel.客房" Role="客房" Multiplicity="1" />
+          <End Type="LandlordModel.客房出租历史记录" Role="客房出租历史记录" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="客房">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="客房出租历史记录">
+              <PropertyRef Name="客房ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="客房_客房租金明细">
+          <End Type="LandlordModel.客房" Role="客房" Multiplicity="1" />
+          <End Type="LandlordModel.客房租金明细" Role="客房租金明细" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="客房">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="客房租金明细">
+              <PropertyRef Name="客房ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="源房客房">
+          <End Type="LandlordModel.源房" Role="源房" Multiplicity="1" />
+          <End Type="LandlordModel.客房" Role="客房" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="源房">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="客房">
+              <PropertyRef Name="源房ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="源房_提醒">
+          <End Type="LandlordModel.源房" Role="源房" Multiplicity="0..1" />
+          <End Type="LandlordModel.提醒" Role="提醒" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="源房">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="提醒">
+              <PropertyRef Name="源房ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="源房_源房缴费明细">
+          <End Type="LandlordModel.源房" Role="源房" Multiplicity="1" />
+          <End Type="LandlordModel.源房缴费明细" Role="源房缴费明细" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="源房">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="源房缴费明细">
+              <PropertyRef Name="源房ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="源房_源房水电气核查">
+          <End Type="LandlordModel.源房" Role="源房" Multiplicity="1" />
+          <End Type="LandlordModel.源房水电气核查" Role="源房水电气核查" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="源房">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="源房水电气核查">
+              <PropertyRef Name="源房ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="源房_源房涨租协定">
+          <End Type="LandlordModel.源房" Role="源房" Multiplicity="1" />
+          <End Type="LandlordModel.源房涨租协定" Role="源房涨租协定" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="源房">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="源房涨租协定">
+              <PropertyRef Name="源房ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="源房_装修明细">
+          <End Type="LandlordModel.源房" Role="源房" Multiplicity="1" />
+          <End Type="LandlordModel.装修明细" Role="装修明细" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="源房">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="装修明细">
+              <PropertyRef Name="源房ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -671,18 +934,6 @@
                 <ScalarProperty Name="付款日期" ColumnName="付款日期" />
                 <ScalarProperty Name="止付日期" ColumnName="止付日期" />
                 <ScalarProperty Name="起付日期" ColumnName="起付日期" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="日常损耗">
-            <EntityTypeMapping TypeName="LandlordModel.日常损耗">
-              <MappingFragment StoreEntitySet="日常损耗">
-                <ScalarProperty Name="客房ID" ColumnName="客房ID" />
-                <ScalarProperty Name="源房ID" ColumnName="源房ID" />
-                <ScalarProperty Name="备注" ColumnName="备注" />
-                <ScalarProperty Name="支出日期" ColumnName="支出日期" />
-                <ScalarProperty Name="支出金额" ColumnName="支出金额" />
-                <ScalarProperty Name="项目" ColumnName="项目" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -824,25 +1075,61 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="Model1" ZoomLevel="90">
-        <EntityTypeShape EntityType="LandlordModel.缴收项目" Width="1.5" PointX="0.75" PointY="0.75" Height="1.3969734700520888" />
-        <EntityTypeShape EntityType="LandlordModel.客房" Width="1.5" PointX="2.75" PointY="0.75" Height="6.1724658203125031" />
-        <EntityTypeShape EntityType="LandlordModel.客房出租历史记录" Width="1.5" PointX="4.75" PointY="0.75" Height="3.3071704101562531" />
-        <EntityTypeShape EntityType="LandlordModel.客房租金明细" Width="1.5" PointX="4.75" PointY="5.75" Height="3.3071704101562531" />
-        <EntityTypeShape EntityType="LandlordModel.日常损耗" Width="1.5" PointX="6.75" PointY="0.75" Height="2.1610522460937531" />
-        <EntityTypeShape EntityType="LandlordModel.提醒" Width="1.5" PointX="6.75" PointY="3.75" Height="2.3520719401041674" />
-        <EntityTypeShape EntityType="LandlordModel.源房" Width="1.5" PointX="0.75" PointY="7.75" Height="8.4647021484375031" />
-        <EntityTypeShape EntityType="LandlordModel.源房缴费明细" Width="1.5" PointX="6.75" PointY="7.75" Height="2.7341113281250031" />
-        <EntityTypeShape EntityType="LandlordModel.源房水电气核查" Width="1.5" PointX="8.75" PointY="0.75" Height="3.3071704101562531" />
-        <EntityTypeShape EntityType="LandlordModel.源房涨租协定" Width="1.5" PointX="8.75" PointY="5.75" Height="1.7790128580729174" />
-        <EntityTypeShape EntityType="LandlordModel.装修分类" Width="1.5" PointX="8.75" PointY="8.75" Height="1.2059537760416674" />
-        <EntityTypeShape EntityType="LandlordModel.装修明细" Width="1.5" PointX="10.75" PointY="0.75" Height="2.9251310221354174" />
+      <Diagram Name="Model1" ZoomLevel="125">
+        <EntityTypeShape EntityType="LandlordModel.缴收项目" Width="1.5" PointX="7.75" PointY="0.75" Height="1.3969734700520888" />
+        <EntityTypeShape EntityType="LandlordModel.客房" Width="1.5" PointX="3" PointY="2.625" Height="6.7455249023437531" />
+        <EntityTypeShape EntityType="LandlordModel.客房出租历史记录" Width="1.5" PointX="5.25" PointY="2.125" Height="3.4981901041666674" />
+        <EntityTypeShape EntityType="LandlordModel.客房租金明细" Width="1.5" PointX="5.25" PointY="6.375" Height="3.4981901041666674" />
+        <EntityTypeShape EntityType="LandlordModel.提醒" Width="1.5" PointX="3" PointY="10.625" Height="2.5430916341145888" />
+        <EntityTypeShape EntityType="LandlordModel.源房" Width="1.5" PointX="0.75" PointY="10.125" Height="9.6108203125000049" />
+        <EntityTypeShape EntityType="LandlordModel.源房缴费明细" Width="1.5" PointX="3" PointY="13.875" Height="2.9251310221354174" />
+        <EntityTypeShape EntityType="LandlordModel.源房水电气核查" Width="1.5" PointX="3" PointY="17.625" Height="3.4981901041666674" />
+        <EntityTypeShape EntityType="LandlordModel.源房涨租协定" Width="1.5" PointX="3" PointY="21.875" Height="1.9700325520833388" />
+        <EntityTypeShape EntityType="LandlordModel.装修分类" Width="1.5" PointX="7.75" PointY="3.75" Height="1.2059537760416674" />
+        <EntityTypeShape EntityType="LandlordModel.装修明细" Width="1.5" PointX="3" PointY="24.5" Height="3.1161507161458246" />
+        <AssociationConnector Association="LandlordModel.客房_客房出租历史" >
+          <ConnectorPoint PointX="4.5" PointY="4.1240950520833337" />
+          <ConnectorPoint PointX="5.25" PointY="4.1240950520833337" />
+        </AssociationConnector>
+        <AssociationConnector Association="LandlordModel.客房_客房租金明细" >
+          <ConnectorPoint PointX="4.5" PointY="7.8727624511718766" />
+          <ConnectorPoint PointX="5.25" PointY="7.8727624511718766" />
+        </AssociationConnector>
+        <AssociationConnector Association="LandlordModel.源房客房" >
+          <ConnectorPoint PointX="1.5" PointY="10.125" />
+          <ConnectorPoint PointX="1.5" PointY="5.9977624511718766" />
+          <ConnectorPoint PointX="3" PointY="5.9977624511718766" />
+        </AssociationConnector>
+        <AssociationConnector Association="LandlordModel.源房_提醒" >
+          <ConnectorPoint PointX="2.25" PointY="11.896545817057294" />
+          <ConnectorPoint PointX="3" PointY="11.896545817057294" />
+        </AssociationConnector>
+        <AssociationConnector Association="LandlordModel.源房_源房缴费明细" >
+          <ConnectorPoint PointX="2.25" PointY="15.337565511067709" />
+          <ConnectorPoint PointX="3" PointY="15.337565511067709" />
+        </AssociationConnector>
+        <AssociationConnector Association="LandlordModel.源房_源房水电气核查" >
+          <ConnectorPoint PointX="2.25" PointY="18.68041015625" />
+          <ConnectorPoint PointX="3" PointY="18.68041015625" />
+        </AssociationConnector>
+        <AssociationConnector Association="LandlordModel.源房_源房涨租协定" >
+          <ConnectorPoint PointX="1.5" PointY="19.735820312500003" />
+          <ConnectorPoint PointX="1.5" PointY="22.860016276041669" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="22.860016276041669" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="22.860016276041669" />
+          <ConnectorPoint PointX="3" PointY="22.860016276041669" />
+        </AssociationConnector>
+        <AssociationConnector Association="LandlordModel.源房_装修明细" >
+          <ConnectorPoint PointX="1.9062525" PointY="19.735820312500003" />
+          <ConnectorPoint PointX="1.9062525" PointY="26.058075358072912" />
+          <ConnectorPoint PointX="3" PointY="26.058075358072912" />
+        </AssociationConnector>
       </Diagram>
     </Diagrams>
   </Designer>
