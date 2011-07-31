@@ -93,9 +93,14 @@ namespace Landlord.GUI
         /// </summary>
         private void LoadTreeView()
         {
-            radTreeView1.RootRelationDisplayName = "所有源、客房";
-            radTreeView1.RelationBindings.Add(new RelationBinding("客房", context.客房, null, "命名", "ID"));
+            //radTreeView1.RootRelationDisplayName = "所有源、客房";
+            //radTreeView1.RelationBindings.Add(new RelationBinding("源房客房", context.源房));
+            radTreeView1.DisplayMember = "房名";
+            radTreeView1.ValueMember = "ID";
             radTreeView1.DataSource = context.源房;
+
+            radTreeView1.RelationBindings.Add(new RelationBinding("客房", context.源房.Select(m => m.客房), null, "命名", "ID"));
+
         }
         public void RefreshTreeView()
         { 
