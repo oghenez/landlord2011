@@ -95,6 +95,12 @@
     <Compile Include="GUI\UCBase.Designer.cs">
       <DependentUpon>UCBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UC客房详细.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UC客房详细.Designer.cs">
+      <DependentUpon>UC客房详细.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\UC源房管理.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     <EmbeddedResource Include="GUI\UCBase.resx">
       <DependentUpon>UCBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UC客房详细.resx">
+      <DependentUpon>UC客房详细.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\UC源房管理.resx">
       <DependentUpon>UC源房管理.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,6 +154,7 @@
     </EntityDeploy>
     <None Include="App.Config" />
     <None Include="LandlordEntities.datasource" />
+    <None Include="Properties\DataSources\客房.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -154,8 +164,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="源房.datasource" />
-    <None Include="源房涨租协定.datasource" />
+    <None Include="Properties\DataSources\源房.datasource" />
+    <None Include="Properties\DataSources\源房涨租协定.datasource" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\Landlord.sdf">

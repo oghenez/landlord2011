@@ -167,7 +167,11 @@ namespace Landlord.GUI
                 LoadUC(uc, "源房："+yf.房名);
             }
             else if (e.Node.Tag is 客房)
-            { }
+            {
+                客房 kf = e.Node.Tag as 客房;
+                UC客房详细 uc = new UC客房详细(kf, this);
+                LoadUC(uc, "客房：" + kf.命名);
+            }
 
             
 
