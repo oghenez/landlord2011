@@ -68,10 +68,9 @@
             System.Windows.Forms.Label 租赁协议照片2Label;
             System.Windows.Forms.Label 租赁协议照片3Label;
             Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn2 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn1 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
             Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn2 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn3 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn2 = new Telerik.WinControls.UI.GridViewDecimalColumn();
             Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
             this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
             this.房名RadTextBox = new Telerik.WinControls.UI.RadTextBox();
@@ -320,7 +319,7 @@
             // 联系地址Label
             // 
             联系地址Label.AutoSize = true;
-            联系地址Label.Location = new System.Drawing.Point(192, 30);
+            联系地址Label.Location = new System.Drawing.Point(191, 30);
             联系地址Label.Name = "联系地址Label";
             联系地址Label.Size = new System.Drawing.Size(58, 13);
             联系地址Label.TabIndex = 25;
@@ -329,7 +328,7 @@
             // 身份证号Label
             // 
             身份证号Label.AutoSize = true;
-            身份证号Label.Location = new System.Drawing.Point(192, 55);
+            身份证号Label.Location = new System.Drawing.Point(191, 55);
             身份证号Label.Name = "身份证号Label";
             身份证号Label.Size = new System.Drawing.Size(58, 13);
             身份证号Label.TabIndex = 39;
@@ -356,7 +355,7 @@
             // 源房东银行卡Label
             // 
             源房东银行卡Label.AutoSize = true;
-            源房东银行卡Label.Location = new System.Drawing.Point(200, 80);
+            源房东银行卡Label.Location = new System.Drawing.Point(199, 80);
             源房东银行卡Label.Name = "源房东银行卡Label";
             源房东银行卡Label.Size = new System.Drawing.Size(46, 13);
             源房东银行卡Label.TabIndex = 57;
@@ -781,20 +780,20 @@
             // 联系地址RadTextBox
             // 
             this.联系地址RadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "联系地址", true));
-            this.联系地址RadTextBox.Location = new System.Drawing.Point(252, 26);
+            this.联系地址RadTextBox.Location = new System.Drawing.Point(247, 26);
             this.联系地址RadTextBox.Name = "联系地址RadTextBox";
             this.联系地址RadTextBox.NullText = "必填项";
-            this.联系地址RadTextBox.Size = new System.Drawing.Size(107, 20);
+            this.联系地址RadTextBox.Size = new System.Drawing.Size(112, 20);
             this.联系地址RadTextBox.TabIndex = 1;
             this.联系地址RadTextBox.TabStop = false;
             // 
             // 身份证号RadTextBox
             // 
             this.身份证号RadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "身份证号", true));
-            this.身份证号RadTextBox.Location = new System.Drawing.Point(252, 51);
+            this.身份证号RadTextBox.Location = new System.Drawing.Point(247, 51);
             this.身份证号RadTextBox.Name = "身份证号RadTextBox";
             this.身份证号RadTextBox.NullText = "必填项";
-            this.身份证号RadTextBox.Size = new System.Drawing.Size(107, 20);
+            this.身份证号RadTextBox.Size = new System.Drawing.Size(112, 20);
             this.身份证号RadTextBox.TabIndex = 3;
             this.身份证号RadTextBox.TabStop = false;
             // 
@@ -820,9 +819,9 @@
             // 源房东银行卡RadTextBox
             // 
             this.源房东银行卡RadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "源房东银行卡", true));
-            this.源房东银行卡RadTextBox.Location = new System.Drawing.Point(252, 76);
+            this.源房东银行卡RadTextBox.Location = new System.Drawing.Point(247, 76);
             this.源房东银行卡RadTextBox.Name = "源房东银行卡RadTextBox";
-            this.源房东银行卡RadTextBox.Size = new System.Drawing.Size(107, 20);
+            this.源房东银行卡RadTextBox.Size = new System.Drawing.Size(112, 20);
             this.源房东银行卡RadTextBox.TabIndex = 5;
             this.源房东银行卡RadTextBox.TabStop = false;
             // 
@@ -887,21 +886,13 @@
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.AllowCellContextMenu = false;
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.AllowColumnChooser = false;
             gridViewDecimalColumn1.DataType = typeof(decimal);
-            gridViewDecimalColumn1.FieldName = "ID";
+            gridViewDecimalColumn1.FieldName = "源房ID";
             gridViewDecimalColumn1.FormatInfo = new System.Globalization.CultureInfo("");
-            gridViewDecimalColumn1.HeaderText = "ID";
+            gridViewDecimalColumn1.HeaderText = "源房ID";
             gridViewDecimalColumn1.IsAutoGenerated = true;
             gridViewDecimalColumn1.IsVisible = false;
-            gridViewDecimalColumn1.Name = "ID";
+            gridViewDecimalColumn1.Name = "源房ID";
             gridViewDecimalColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            gridViewDecimalColumn2.DataType = typeof(decimal);
-            gridViewDecimalColumn2.FieldName = "源房ID";
-            gridViewDecimalColumn2.FormatInfo = new System.Globalization.CultureInfo("");
-            gridViewDecimalColumn2.HeaderText = "源房ID";
-            gridViewDecimalColumn2.IsAutoGenerated = true;
-            gridViewDecimalColumn2.IsVisible = false;
-            gridViewDecimalColumn2.Name = "源房ID";
-            gridViewDecimalColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             gridViewDateTimeColumn1.DataType = typeof(System.DateTime);
             gridViewDateTimeColumn1.FieldName = "期始";
             gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
@@ -916,19 +907,18 @@
             gridViewDateTimeColumn2.HeaderText = "期止";
             gridViewDateTimeColumn2.IsAutoGenerated = true;
             gridViewDateTimeColumn2.Name = "期止";
-            gridViewDecimalColumn3.DataType = typeof(decimal);
-            gridViewDecimalColumn3.FieldName = "月租金";
-            gridViewDecimalColumn3.FormatInfo = new System.Globalization.CultureInfo("");
-            gridViewDecimalColumn3.HeaderText = "月租金";
-            gridViewDecimalColumn3.IsAutoGenerated = true;
-            gridViewDecimalColumn3.Name = "月租金";
-            gridViewDecimalColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            gridViewDecimalColumn2.DataType = typeof(decimal);
+            gridViewDecimalColumn2.FieldName = "月租金";
+            gridViewDecimalColumn2.FormatInfo = new System.Globalization.CultureInfo("");
+            gridViewDecimalColumn2.HeaderText = "月租金";
+            gridViewDecimalColumn2.IsAutoGenerated = true;
+            gridViewDecimalColumn2.Name = "月租金";
+            gridViewDecimalColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewDecimalColumn1,
-            gridViewDecimalColumn2,
             gridViewDateTimeColumn1,
             gridViewDateTimeColumn2,
-            gridViewDecimalColumn3});
+            gridViewDecimalColumn2});
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.DataSource = this.源房涨租协定BindingSource;
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.EnableGrouping = false;
             this.radMultiColumnComboBox1.EditorControl.MasterTemplate.ShowFilteringRow = false;
