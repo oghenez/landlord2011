@@ -116,7 +116,7 @@ namespace Landlord.GUI
                     RadTreeNode root2 = new RadTreeNode("历史源房信息");
                     radTreeView1.Nodes.Add(root2);
                     foreach (var yf in yfGroup)
-                        AddYuanFangToTree(root2, yf);
+                        AddYuanFangToTree(root2, yf); 
                 }
             }            
         }
