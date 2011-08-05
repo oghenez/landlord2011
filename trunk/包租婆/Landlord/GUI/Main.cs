@@ -39,6 +39,7 @@ namespace Landlord.GUI
         private void Main_Load(object sender, EventArgs e)
         {
             LoadTreeView();
+            //radTreeView1.ExpandAll();
         }
         #region 构造实体连接字符串
         private string CreateConnectString()
@@ -93,18 +94,54 @@ namespace Landlord.GUI
         /// </summary>
         private void LoadTreeView()
         {
-            //radTreeView1.RootRelationDisplayName = "所有源、客房";
-            //radTreeView1.RelationBindings.Add(new RelationBinding("源房客房", context.源房));
-            radTreeView1.DisplayMember = "房名";
-            radTreeView1.ValueMember = "ID";
-            radTreeView1.DataSource = context.源房;
+            var yfGroups = from o in context.源房
+                      orderby o.期止
+                      group o by o.期止 > DateTime.Now into temp
+                      orderby temp.Key descending
+                      select temp;
+            foreach (var yfGroup in yfGroups)
+            {
+                if (yfGroup.Key == true) // 满足 '期止 > DateTime.Now'
+                {
+                    RadTreeNode root1 = new RadTreeNode("当前源房信息");
+                    radTreeView1.Nodes.Add(root1);
+                    foreach (var yf in yfGroup)
+                        AddYuanFangToTree(root1, yf);
 
-            radTreeView1.RelationBindings.Add(new RelationBinding("客房", context.源房.Select(m => m.客房), null, "命名", "ID"));
 
+                    root1.ExpandAll();
+                }
+                else
+                {
+                    RadTreeNode root2 = new RadTreeNode("历史源房信息");
+                    radTreeView1.Nodes.Add(root2);
+                    foreach (var yf in yfGroup)
+                        AddYuanFangToTree(root2, yf);
+                }
+            }            
         }
-        public void RefreshTreeView()
-        { 
+        /// <summary>
+        /// 加入一个树节点
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="yf"></param>
+        private void AddYuanFangToTree(RadTreeNode parent, 源房 yf)
+        {
+            RadTreeNode yfNode = new RadTreeNode();
+            yfNode.Text = yf.房名;
+            yfNode.Tag = yf;
+            parent.Nodes.Add(yfNode);
+
+            var kfs = yf.客房;
+            foreach (var kf in kfs)
+            {
+                RadTreeNode kfNode = new RadTreeNode();
+                kfNode.Text = kf.命名;
+                kfNode.Tag = kf;
+                yfNode.Nodes.Add(kfNode);
+            }     
         }
+
         //新增源房
         private void radBtnAddNewYuanFang_Click(object sender, EventArgs e)
         {
@@ -121,7 +158,19 @@ namespace Landlord.GUI
 
         private void radTreeView1_SelectedNodeChanged(object sender, RadTreeViewEventArgs e)
         {
+            if(e.Node.Tag == null)
+                return;
+            else if (e.Node.Tag is 源房)
+            {
+                源房 yf = e.Node.Tag as 源房;
+                UC源房详细 uc = new UC源房详细(yf,this);
+                LoadUC(uc, "源房："+yf.房名);
+            }
+            else if (e.Node.Tag is 客房)
+            { }
+
             
+
         }
     }
 }

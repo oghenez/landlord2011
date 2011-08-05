@@ -15,8 +15,8 @@ namespace Landlord
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new GUI.Main());
-            Application.Run(new GUI.test());
+            Application.Run(new GUI.Main());
+            //Application.Run(new GUI.test());
         }
     }
 }
