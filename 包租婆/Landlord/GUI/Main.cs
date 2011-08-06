@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Telerik.WinControls.UI;
 using Telerik.WinControls;
 using System.Data.EntityClient;
+using Landlord.Properties;
 
 namespace Landlord.GUI
 {
@@ -33,7 +34,7 @@ namespace Landlord.GUI
             InitializeComponent();
             ThemeResolutionService.ApplicationThemeName = "Windows7";
 
-            context = new LandlordEntities(CreateConnectString());
+            context = new LandlordEntities(Helper.CreateConnectString());
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -41,26 +42,7 @@ namespace Landlord.GUI
             LoadTreeView();
             //radTreeView1.ExpandAll();
         }
-        #region 构造实体连接字符串
-        private string CreateConnectString()
-        {
-            // Initialize the EntityConnectionStringBuilder.
-            EntityConnectionStringBuilder entityBuilder =
-                new EntityConnectionStringBuilder();
 
-            //Set the provider name.
-            entityBuilder.Provider = "System.Data.SqlServerCe.3.5";
-
-            // Set the provider-specific connection string.
-            entityBuilder.ProviderConnectionString = @"Data Source=|DataDirectory|\Data\Landlord.sdf;Password ='qwlpy0a'";
-
-            // Set the Metadata location.
-            entityBuilder.Metadata = @"res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl";
-
-
-            return entityBuilder.ToString();
-        } 
-        #endregion
         #region 状态栏更新最近操作状态
         public void UpdateStatusStrip(string msg)
         {
@@ -108,7 +90,6 @@ namespace Landlord.GUI
                     foreach (var yf in yfGroup)
                         AddYuanFangToTree(root1, yf);
 
-
                     root1.ExpandAll();
                 }
                 else
@@ -130,6 +111,7 @@ namespace Landlord.GUI
             RadTreeNode yfNode = new RadTreeNode();
             yfNode.Text = yf.房名;
             yfNode.Tag = yf;
+            yfNode.Image = Resources.house_24;
             parent.Nodes.Add(yfNode);
 
             var kfs = yf.客房;
@@ -138,6 +120,7 @@ namespace Landlord.GUI
                 RadTreeNode kfNode = new RadTreeNode();
                 kfNode.Text = kf.命名;
                 kfNode.Tag = kf;
+                kfNode.Image = (kf.期止 < DateTime.Now) ? Resources.house_2__2_ : Resources.House__6_;/*是否到期*/                
                 yfNode.Nodes.Add(kfNode);
             }     
         }
@@ -175,6 +158,12 @@ namespace Landlord.GUI
 
             
 
+        }
+        //装修明细
+        private void radButtonElement5_Click(object sender, EventArgs e)
+        {
+            UC装修明细 uc = new UC装修明细(this,null);
+            LoadUC(uc, "装修明细");
         }
     }
 }
