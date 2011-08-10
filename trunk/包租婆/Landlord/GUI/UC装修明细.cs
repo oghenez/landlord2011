@@ -13,8 +13,7 @@ namespace Landlord.GUI
     {
         private 源房 yf = null;
         public UC装修明细() { InitializeComponent(); }
-        public UC装修明细(Main main, 源房 yf)
-            : base(main, DockStyle.Fill)
+        public UC装修明细( 源房 yf) : base(DockStyle.Fill)
         {
             InitializeComponent();
             this.yf = yf;
@@ -22,9 +21,9 @@ namespace Landlord.GUI
             RadGridLocalizationProvider.CurrentProvider = new MyChsRadGridLocalizationProvider();
             radGridView1.Columns["小计"].Expression = "数量 * 单价";
 
-            源房BindingSource.DataSource = mainForm.context.源房;
-            装修分类BindingSource.DataSource = mainForm.context.装修分类;
-            装修明细BindingSource.DataSource = mainForm.context.装修明细;
+            源房BindingSource.DataSource = Main.context.源房;
+            装修分类BindingSource.DataSource = Main.context.装修分类;
+            装修明细BindingSource.DataSource = Main.context.装修明细;
 
         }
     }

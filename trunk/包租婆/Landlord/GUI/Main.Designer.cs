@@ -460,7 +460,7 @@
             this.radToolStrip1.RootElement.AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
             this.radToolStrip1.RootElement.MinSize = new System.Drawing.Size(5, 5);
             this.radToolStrip1.ShowOverFlowButton = false;
-            this.radToolStrip1.Size = new System.Drawing.Size(792, 65);
+            this.radToolStrip1.Size = new System.Drawing.Size(792, 43);
             this.radToolStrip1.TabIndex = 5;
             this.radToolStrip1.Text = "radToolStrip1";
             // 
@@ -616,7 +616,7 @@
             this.radTreeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radTreeView1.Location = new System.Drawing.Point(0, 0);
             this.radTreeView1.Name = "radTreeView1";
-            this.radTreeView1.Size = new System.Drawing.Size(200, 475);
+            this.radTreeView1.Size = new System.Drawing.Size(200, 497);
             this.radTreeView1.TabIndex = 7;
             this.radTreeView1.Text = "radTreeView1";
             this.radTreeView1.SelectedNodeChanged += new Telerik.WinControls.UI.RadTreeView.RadTreeViewEventHandler(this.radTreeView1_SelectedNodeChanged);
@@ -626,13 +626,13 @@
             this.radSplitContainer1.Controls.Add(this.splitPanel1);
             this.radSplitContainer1.Controls.Add(this.splitPanel2);
             this.radSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radSplitContainer1.Location = new System.Drawing.Point(0, 89);
+            this.radSplitContainer1.Location = new System.Drawing.Point(0, 67);
             this.radSplitContainer1.Name = "radSplitContainer1";
             // 
             // 
             // 
             this.radSplitContainer1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.radSplitContainer1.Size = new System.Drawing.Size(792, 475);
+            this.radSplitContainer1.Size = new System.Drawing.Size(792, 497);
             this.radSplitContainer1.TabIndex = 8;
             this.radSplitContainer1.TabStop = false;
             this.radSplitContainer1.Text = "radSplitContainer1";
@@ -646,7 +646,7 @@
             // 
             // 
             this.splitPanel1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel1.Size = new System.Drawing.Size(200, 475);
+            this.splitPanel1.Size = new System.Drawing.Size(200, 497);
             this.splitPanel1.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(-0.2455696F, 0F);
             this.splitPanel1.SizeInfo.SizeMode = Telerik.WinControls.UI.Docking.SplitPanelSizeMode.Absolute;
             this.splitPanel1.SizeInfo.SplitterCorrection = new System.Drawing.Size(-194, 0);
@@ -664,12 +664,13 @@
             // 
             this.splitPanel2.RootElement.MinSize = new System.Drawing.Size(25, 25);
             this.splitPanel2.RootElement.Padding = new System.Windows.Forms.Padding(1);
-            this.splitPanel2.Size = new System.Drawing.Size(589, 475);
+            this.splitPanel2.Size = new System.Drawing.Size(589, 497);
             this.splitPanel2.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0.2455696F, 0F);
             this.splitPanel2.SizeInfo.SplitterCorrection = new System.Drawing.Size(194, 0);
             this.splitPanel2.TabIndex = 1;
             this.splitPanel2.TabStop = false;
             this.splitPanel2.Text = "splitPanel2";
+            this.splitPanel2.Layout += new System.Windows.Forms.LayoutEventHandler(this.splitPanel2_Layout);
             // 
             // Main
             // 

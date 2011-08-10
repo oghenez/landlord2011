@@ -28,7 +28,7 @@ namespace Landlord.GUI
 
         #endregion
 
-        public LandlordEntities context;
+        public static LandlordEntities context;
         public Main()
         {
             InitializeComponent();
@@ -64,10 +64,18 @@ namespace Landlord.GUI
         #region 载入用户控件
         private void LoadUC(UCBase uc, string text)
         {
+            //载入控件时，测试检测是否有未保存数据
+            var changes = context.ObjectStateManager.GetObjectStateEntries(
+                EntityState.Added |
+                EntityState.Deleted |
+                EntityState.Detached |
+                EntityState.Modified);
+            if (changes != null)
+                MessageBox.Show("[测试] 当前存在数据修改。");
+
             splitPanel2.Controls.Clear();
             uc.radGroupBoxInfo.Text = text;
-            splitPanel2.Controls.Add(uc);
-            uc.main_Layout(null, null); //手动调用一次，调整初次位置
+            splitPanel2.Controls.Add(uc);           
         } 
         #endregion
 
@@ -128,14 +136,14 @@ namespace Landlord.GUI
         //新增源房
         private void radBtnAddNewYuanFang_Click(object sender, EventArgs e)
         {
-            UC源房详细 uc = new UC源房详细(this);
+            UC源房详细 uc = new UC源房详细();
             LoadUC(uc, "新增源房");
         }
 
         //源房管理
         private void radBtnManageYuanFang_Click(object sender, EventArgs e)
         {
-            UC源房管理 uc = new UC源房管理(this);
+            UC源房管理 uc = new UC源房管理();
             LoadUC(uc, "源房管理");
         }
 
@@ -146,13 +154,13 @@ namespace Landlord.GUI
             else if (e.Node.Tag is 源房)
             {
                 源房 yf = e.Node.Tag as 源房;
-                UC源房详细 uc = new UC源房详细(yf,this);
+                UC源房详细 uc = new UC源房详细(yf);
                 LoadUC(uc, "源房："+yf.房名);
             }
             else if (e.Node.Tag is 客房)
             {
                 客房 kf = e.Node.Tag as 客房;
-                UC客房详细 uc = new UC客房详细(kf, this);
+                UC客房详细 uc = new UC客房详细(kf);
                 LoadUC(uc, "客房：" + kf.命名);
             }
 
@@ -162,8 +170,24 @@ namespace Landlord.GUI
         //装修明细
         private void radButtonElement5_Click(object sender, EventArgs e)
         {
-            UC装修明细 uc = new UC装修明细(this,null);
+            UC装修明细 uc = new UC装修明细();
             LoadUC(uc, "装修明细");
+        }
+
+        private void splitPanel2_Layout(object sender, LayoutEventArgs e)
+        {
+            if (splitPanel2.Controls.Count == 0)
+                return;
+            var control = splitPanel2.Controls[0];
+            if (control.Dock != DockStyle.Fill)
+            {
+                int x = (splitPanel2.Width - control.Width) / 2;
+                int y = (splitPanel2.Height - control.Height) / 2;
+                x = (x > 0) ? x : 0;
+                y = (y > 0) ? y : 0;
+                control.SetBounds(x, y, control.Width, control.Height); 
+            }
+            
         }
     }
 }
