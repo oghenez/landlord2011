@@ -12,12 +12,10 @@ namespace Landlord.GUI
 {
     public partial class UC客房详细 : Landlord.GUI.UCBase
     {
-        private 客房 kf = null;
-        public UC客房详细() { InitializeComponent(); }
+        private 客房 kf = null;       
 
         //新增
-        public UC客房详细(Main main)
-            : base(main, DockStyle.None)
+        public UC客房详细( )
         {
             InitializeComponent();
             radButton1.Text = "新 增";
@@ -31,8 +29,7 @@ namespace Landlord.GUI
         }
 
         //修改
-        public UC客房详细(客房 old, Main main)
-            : base(main, DockStyle.None)
+        public UC客房详细(客房 old)
         {
             InitializeComponent();
             radButton1.Text = "修 改";
@@ -52,7 +49,7 @@ namespace Landlord.GUI
             }
             else if (kf.EntityState == EntityState.Detached)
             {
-                mainForm.context.客房.AddObject(kf);
+                Main.context.客房.AddObject(kf);
                 saveData("新增");
             }
         }
@@ -60,21 +57,21 @@ namespace Landlord.GUI
         {
             try
             {
-                int num = mainForm.context.SaveChanges();
-                mainForm.UpdateStatusStrip(string.Format("成功{0}{1}条客房信息", txt, num));
+                int num = Main.context.SaveChanges();
+                //mainForm.UpdateStatusStrip(string.Format("成功{0}{1}条客房信息", txt, num));
                 //刷新树视图
             }
             catch (OptimisticConcurrencyException)
             {
-                mainForm.context.Refresh(RefreshMode.ClientWins, kf);
+                Main.context.Refresh(RefreshMode.ClientWins, kf);
 
-                mainForm.context.SaveChanges();
-                mainForm.UpdateStatusStrip(string.Format("成功处理开放式并发异常，并{0}客房信息", txt));
+                Main.context.SaveChanges();
+                //mainForm.UpdateStatusStrip(string.Format("成功处理开放式并发异常，并{0}客房信息", txt));
             }
             catch (Exception ex)
             {
                 string msg = (ex.InnerException != null) ? ex.InnerException.Message : ex.Message;
-                mainForm.UpdateStatusStrip(string.Format("{0}客房信息失败：{1}", txt, msg), Color.Red);
+                //mainForm.UpdateStatusStrip(string.Format("{0}客房信息失败：{1}", txt, msg), Color.Red);
             }
         }
     }

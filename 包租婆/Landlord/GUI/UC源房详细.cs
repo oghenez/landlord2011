@@ -12,12 +12,11 @@ namespace Landlord.GUI
 {
     public partial class UC源房详细 : Landlord.GUI.UCBase
     {
-        private 源房 yf = null;
-        public UC源房详细() { InitializeComponent(); }
+        
+        private 源房 yf = null;        
 
         //新增
-        public UC源房详细(Main main)
-            : base(main, DockStyle.None)
+        public UC源房详细()
         {
             InitializeComponent();
             radButton1.Text = "新 增";
@@ -31,8 +30,7 @@ namespace Landlord.GUI
         }
 
         //修改
-        public UC源房详细(源房 old, Main main)
-            : base(main, DockStyle.None)
+        public UC源房详细(源房 old)
         {
             InitializeComponent();
             radButton1.Text = "修 改";
@@ -53,7 +51,7 @@ namespace Landlord.GUI
             }
             else if (yf.EntityState == EntityState.Detached)
             {
-                mainForm.context.源房.AddObject(yf);
+                Main.context.源房.AddObject(yf);
                 saveData("新增");
             }
 
@@ -63,21 +61,21 @@ namespace Landlord.GUI
         {
             try
             {
-                int num = mainForm.context.SaveChanges();
-                mainForm.UpdateStatusStrip(string.Format("成功{0}{1}条源房信息", txt, num));
+                int num = Main.context.SaveChanges();
+                //mainForm.UpdateStatusStrip(string.Format("成功{0}{1}条源房信息", txt, num));
                 //刷新树视图
             }
             catch (OptimisticConcurrencyException)
             {
-                mainForm.context.Refresh(RefreshMode.ClientWins, yf);
+                Main.context.Refresh(RefreshMode.ClientWins, yf);
 
-                mainForm.context.SaveChanges();
-                mainForm.UpdateStatusStrip(string.Format("成功处理开放式并发异常，并{0}源房信息", txt));
+                Main.context.SaveChanges();
+                //mainForm.UpdateStatusStrip(string.Format("成功处理开放式并发异常，并{0}源房信息", txt));
             }
             catch (Exception ex)
             {
                 string msg = (ex.InnerException != null) ? ex.InnerException.Message : ex.Message;
-                mainForm.UpdateStatusStrip(string.Format("{0}源房信息失败：{1}", txt, msg), Color.Red);
+                //mainForm.UpdateStatusStrip(string.Format("{0}源房信息失败：{1}", txt, msg), Color.Red);
             }
         }
     }
