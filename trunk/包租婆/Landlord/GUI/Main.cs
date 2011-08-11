@@ -68,7 +68,7 @@ namespace Landlord.GUI
             var changes = context.ObjectStateManager.GetObjectStateEntries(
                 EntityState.Added |
                 EntityState.Deleted |
-                EntityState.Detached |
+                //EntityState.Detached |
                 EntityState.Modified);
             if (changes != null)
                 MessageBox.Show("[测试] 当前存在数据修改。");

@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landlord", "Landlord\Landlord.csproj", "{D1D33715-5187-4428-B268-9803D8EB4574}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landlord2", "Landlord2\Landlord2.csproj", "{78845175-88FF-4D51-AF00-A472A3256F54}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -19,7 +21,6 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D1D33715-5187-4428-B268-9803D8EB4574}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{D1D33715-5187-4428-B268-9803D8EB4574}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{D1D33715-5187-4428-B268-9803D8EB4574}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{D1D33715-5187-4428-B268-9803D8EB4574}.Debug|x86.ActiveCfg = Debug|x86
 		{D1D33715-5187-4428-B268-9803D8EB4574}.Debug|x86.Build.0 = Debug|x86
 		{D1D33715-5187-4428-B268-9803D8EB4574}.Release|Any CPU.ActiveCfg = Release|x86
@@ -27,6 +28,16 @@ Global
 		{D1D33715-5187-4428-B268-9803D8EB4574}.Release|Mixed Platforms.Build.0 = Release|x86
 		{D1D33715-5187-4428-B268-9803D8EB4574}.Release|x86.ActiveCfg = Release|x86
 		{D1D33715-5187-4428-B268-9803D8EB4574}.Release|x86.Build.0 = Release|x86
+		{78845175-88FF-4D51-AF00-A472A3256F54}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{78845175-88FF-4D51-AF00-A472A3256F54}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{78845175-88FF-4D51-AF00-A472A3256F54}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{78845175-88FF-4D51-AF00-A472A3256F54}.Debug|x86.ActiveCfg = Debug|x86
+		{78845175-88FF-4D51-AF00-A472A3256F54}.Debug|x86.Build.0 = Debug|x86
+		{78845175-88FF-4D51-AF00-A472A3256F54}.Release|Any CPU.ActiveCfg = Release|x86
+		{78845175-88FF-4D51-AF00-A472A3256F54}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{78845175-88FF-4D51-AF00-A472A3256F54}.Release|Mixed Platforms.Build.0 = Release|x86
+		{78845175-88FF-4D51-AF00-A472A3256F54}.Release|x86.ActiveCfg = Release|x86
+		{78845175-88FF-4D51-AF00-A472A3256F54}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
