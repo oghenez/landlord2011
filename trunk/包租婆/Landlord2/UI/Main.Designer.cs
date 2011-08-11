@@ -1,6 +1,6 @@
 ﻿namespace Landlord2
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -379,7 +379,7 @@
             this.帮助LToolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(330, 39);
+            this.toolStrip1.Size = new System.Drawing.Size(361, 39);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -391,6 +391,7 @@
             this.新建NToolStripButton.Name = "新建NToolStripButton";
             this.新建NToolStripButton.Size = new System.Drawing.Size(84, 36);
             this.新建NToolStripButton.Text = "新建(&N)";
+            this.新建NToolStripButton.Click += new System.EventHandler(this.新建NToolStripButton_Click);
             // 
             // 打开OToolStripButton
             // 
@@ -523,6 +524,7 @@
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonCheckButton1);
             this.kryptonHeaderGroup1.Size = new System.Drawing.Size(200, 497);
             this.kryptonHeaderGroup1.TabIndex = 0;
+            this.kryptonHeaderGroup1.ValuesPrimary.Heading = " ";
             this.kryptonHeaderGroup1.ValuesPrimary.Image = null;
             // 
             // buttonSpecHeaderGroup1
@@ -662,7 +664,7 @@
             this.kryptonCheckSet1.CheckedButton = this.kryptonCheckButton3;
             this.kryptonCheckSet1.CheckedButtonChanged += new System.EventHandler(this.kryptonCheckSet1_CheckedButtonChanged);
             // 
-            // Form1
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -671,7 +673,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "二房东 -- 租赁管理系统（单机版V2.0）";
             this.Load += new System.EventHandler(this.Form1_Load);

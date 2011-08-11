@@ -69,11 +69,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="UI\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="UI\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -82,8 +82,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="UI\UCBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UCBase.Designer.cs">
+      <DependentUpon>UCBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UC源房详细.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UC源房详细.Designer.cs">
+      <DependentUpon>UC源房详细.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -95,12 +107,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\UCBase.resx">
+      <DependentUpon>UCBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UC源房详细.resx">
+      <DependentUpon>UC源房详细.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="Data\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="App.Config" />
     <None Include="Properties\DataSources\Landlord2.Data.Landlord2Entities.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.客房.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.源房.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

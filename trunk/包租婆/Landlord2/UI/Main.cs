@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
+using Landlord2.UI;
 
 namespace Landlord2
 {
-    public partial class Form1 : KryptonForm
+    public partial class Main : KryptonForm
     {
         private int _widthLeftRight;
         
-        public Form1()
+        public Main()
         {
             InitializeComponent();            
         }
@@ -84,6 +85,30 @@ namespace Landlord2
         private void kryptonCheckSet1_CheckedButtonChanged(object sender, EventArgs e)
         {
             kryptonHeaderGroup1.ValuesPrimary.Heading = kryptonCheckSet1.CheckedButton.Values.Text;
+        }
+
+        #region 载入用户控件
+        private void LoadUC(UCBase uc, string text)
+        {
+            ////载入控件时，测试检测是否有未保存数据
+            //var changes = context.ObjectStateManager.GetObjectStateEntries(
+            //    EntityState.Added |
+            //    EntityState.Deleted |
+            //    //EntityState.Detached |
+            //    EntityState.Modified);
+            //if (changes != null)
+            //    MessageBox.Show("[测试] 当前存在数据修改。");
+
+            kryptonHeaderGroup2.Panel.Controls.Clear();
+            kryptonHeaderGroup2.ValuesPrimary.Heading = text;
+            kryptonHeaderGroup2.Panel.Controls.Add(uc);
+        }
+        #endregion
+        private void 新建NToolStripButton_Click(object sender, EventArgs e)
+        {
+            //测试用.....
+            UC源房详细 uc = new UC源房详细();
+            LoadUC(uc, "测试源房详细。。。");
         }
     }
 }
