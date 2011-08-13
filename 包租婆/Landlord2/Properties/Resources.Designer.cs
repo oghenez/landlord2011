@@ -95,6 +95,27 @@ namespace Landlord2.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap idea_16 {
+            get {
+                object obj = ResourceManager.GetObject("idea_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap idea_16_dis {
+            get {
+                object obj = ResourceManager.GetObject("idea_16_dis", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap idea_16_hot {
+            get {
+                object obj = ResourceManager.GetObject("idea_16_hot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap ideaadd_32_hot {
             get {
                 object obj = ResourceManager.GetObject("ideaadd_32_hot", resourceCulture);
