@@ -38,7 +38,18 @@ namespace Landlord2
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadTreeView();
+            AlarmTimer1.Enabled = true; //-- 测试闪动提醒图标
         }
+
+        #region 闪动提醒图标
+        private bool flag = false;
+        private void AlarmTimer1_Tick(object sender, EventArgs e)
+        {
+            kryptonHeaderGroup3.ValuesPrimary.Image = (flag) ? Resources.idea_16_dis : Resources.idea_16_hot;
+            flag = !flag;
+        } 
+        #endregion
+
         /// <summary>
         /// 载入房源、客源信息到TreeView控件
         /// </summary>
@@ -199,5 +210,6 @@ namespace Landlord2
             UC源房详细 uc = new UC源房详细();
             LoadUC(uc, "测试源房详细。。。");
         }
+
     }
 }
