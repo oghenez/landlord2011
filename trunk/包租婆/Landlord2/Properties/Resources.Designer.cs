@@ -60,41 +60,6 @@ namespace Landlord2.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap estatok_32_hot {
-            get {
-                object obj = ResourceManager.GetObject("estatok_32_hot", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap homeadd_32_hot {
-            get {
-                object obj = ResourceManager.GetObject("homeadd_32_hot", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap House__6_ {
-            get {
-                object obj = ResourceManager.GetObject("House__6_", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap house_2__2_ {
-            get {
-                object obj = ResourceManager.GetObject("house_2__2_", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap house_24 {
-            get {
-                object obj = ResourceManager.GetObject("house_24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap idea_16 {
             get {
                 object obj = ResourceManager.GetObject("idea_16", resourceCulture);
@@ -112,41 +77,6 @@ namespace Landlord2.Properties {
         internal static System.Drawing.Bitmap idea_16_hot {
             get {
                 object obj = ResourceManager.GetObject("idea_16_hot", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap ideaadd_32_hot {
-            get {
-                object obj = ResourceManager.GetObject("ideaadd_32_hot", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap leveldel_32_hot {
-            get {
-                object obj = ResourceManager.GetObject("leveldel_32_hot", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap Sign_Yen_2 {
-            get {
-                object obj = ResourceManager.GetObject("Sign_Yen_2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap Sign_Yen_3 {
-            get {
-                object obj = ResourceManager.GetObject("Sign_Yen_3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap system_32_hot {
-            get {
-                object obj = ResourceManager.GetObject("system_32_hot", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
