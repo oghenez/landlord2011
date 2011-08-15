@@ -55,35 +55,40 @@ namespace Landlord2
         /// </summary>
         private void LoadTreeView()
         {
-            if (context.源房.Count() == 0)
+            treeView1.BeginUpdate();
+            treeView1.Nodes.Clear();
+            if (context.源房.Count() > 0)
+            {
+                var yfGroups = from o in context.源房
+                               orderby o.源房涨租协定.Max(m => m.期止)
+                               group o by o.源房涨租协定.Max(m => m.期止) > DateTime.Now into temp
+                               orderby temp.Key descending
+                               select temp;
+                foreach (var yfGroup in yfGroups)
+                {
+                    if (yfGroup.Key == true) // 满足 '期止 > DateTime.Now'
+                    {
+                        TreeNode root1 = new TreeNode("当前源房信息");
+                        treeView1.Nodes.Add(root1);
+                        foreach (var yf in yfGroup)
+                            AddYuanFangToTree(root1, yf);
+
+                        root1.ExpandAll();
+                    }
+                    else
+                    {
+                        TreeNode root2 = new TreeNode("历史源房信息");
+                        treeView1.Nodes.Add(root2);
+                        foreach (var yf in yfGroup)
+                            AddYuanFangToTree(root2, yf);
+                    }
+                }
+            }
+            else
             {
                 treeView1.Nodes.Add("当前没有源房、客房信息");
-                return;
             }
-            var yfGroups = from o in context.源房
-                           orderby o.源房涨租协定.Max(m=>m.期止)
-                           group o by o.源房涨租协定.Max(m => m.期止) > DateTime.Now into temp
-                           orderby temp.Key descending
-                           select temp;
-            foreach (var yfGroup in yfGroups)
-            {
-                if (yfGroup.Key == true) // 满足 '期止 > DateTime.Now'
-                {
-                    TreeNode root1 = new TreeNode("当前源房信息");
-                    treeView1.Nodes.Add(root1);
-                    foreach (var yf in yfGroup)
-                        AddYuanFangToTree(root1, yf);
-
-                    root1.ExpandAll();
-                }
-                else
-                {
-                    TreeNode root2 = new TreeNode("历史源房信息");
-                    treeView1.Nodes.Add(root2);
-                    foreach (var yf in yfGroup)
-                        AddYuanFangToTree(root2, yf);
-                }
-            }
+            treeView1.EndUpdate();
         }
         /// <summary>
         /// 加入一个树节点
@@ -212,27 +217,85 @@ namespace Landlord2
         private void 新建NToolStripButton_Click(object sender, EventArgs e)
         {
             //测试用.....
-            UC源房详细 uc = new UC源房详细();
-            //uc.Dock = DockStyle.Fill;
+            UC源房操作菜单 ucc = new UC源房操作菜单(); ucc.Dock = DockStyle.Top;
+            kryptonHeaderGroup2.Panel.Controls.Add(ucc);
+            UC源房详细 uc = new UC源房详细();            
             LoadUC(uc, "测试源房详细。。。");
+
         }
 
         #region 使加载的控件居中
         private void kryptonHeaderGroup2_Panel_Layout(object sender, LayoutEventArgs e)
         {
-            if (kryptonHeaderGroup2.Panel.Controls.Count == 0)
-                return;
-            var control = kryptonHeaderGroup2.Panel.Controls[0];
-            if (control.Dock != DockStyle.Fill)
+            switch (kryptonHeaderGroup2.Panel.Controls.Count)
             {
-                int x = (kryptonHeaderGroup2.Panel.Width - control.Width) / 2;
-                int y = (kryptonHeaderGroup2.Panel.Height - control.Height) / 2;
-                x = (x > 0) ? x : 0;
-                y = (y > 0) ? y : 0;
-                control.SetBounds(x, y, control.Width, control.Height);
-            }
+                case 0:
+                    break;
+                case 1://唯一加载控件
+                    {
+                        var control = kryptonHeaderGroup2.Panel.Controls[0];
+                        if (control.Dock != DockStyle.Fill)
+                        {
+                            int x = (kryptonHeaderGroup2.Panel.Width - control.Width) / 2;
+                            int y = (kryptonHeaderGroup2.Panel.Height - control.Height) / 2;
+                            x = (x > 0) ? x : 0;
+                            y = (y > 0) ? y : 0;
+                            control.SetBounds(x, y, control.Width, control.Height);
+                        }
+                    }
+                    break;
+                case 2://2个控件，第一个为菜单，第二个才是需要调整的
+                    {
+                        var control0 = kryptonHeaderGroup2.Panel.Controls[0];
+                        var control1 = kryptonHeaderGroup2.Panel.Controls[1];
+                        if (control1.Dock != DockStyle.Fill)
+                        {
+                            int x = (kryptonHeaderGroup2.Panel.Width - control1.Width) / 2;
+                            int y = (kryptonHeaderGroup2.Panel.Height - control1.Height - control0.Height) / 2;
+                            x = (x > 0) ? x : 0;
+                            y = (y > 0) ? y : 0;
+                            control1.SetBounds(x, y + control0.Height, control1.Width, control1.Height);
+                        }
+                    }
+                    break;
+                default:
+                    {
+                        MessageBox.Show("超过2个控件的加载");
+                    }
+                    break;
+            }            
         } 
         #endregion
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case System.Windows.Forms.MouseButtons.Left:
+                    {
+                        //if (e.Node.Tag == null)
+                        //    return;
+                        //else if (e.Node.Tag is 源房)
+                        //{
+                        //    源房 yf = e.Node.Tag as 源房;
+                        //    UC源房详细 uc = new UC源房详细(yf);
+                        //    LoadUC(uc, "源房：" + yf.房名);
+                        //}
+                        //else if (e.Node.Tag is 客房)
+                        //{
+                        //    客房 kf = e.Node.Tag as 客房;
+                        //    UC客房详细 uc = new UC客房详细(kf);
+                        //    LoadUC(uc, "客房：" + kf.命名);
+                        //}
+                    }
+                    break;
+                case System.Windows.Forms.MouseButtons.Right:
+                    { }
+                    break;
+                default:
+                    break;
+            }
+        }
 
     }
 }
