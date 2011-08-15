@@ -60,6 +60,13 @@ namespace Landlord2.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap attach_16_dis {
+            get {
+                object obj = ResourceManager.GetObject("attach_16_dis", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap idea_16 {
             get {
                 object obj = ResourceManager.GetObject("idea_16", resourceCulture);

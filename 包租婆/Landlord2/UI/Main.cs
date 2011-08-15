@@ -16,11 +16,11 @@ namespace Landlord2
     public partial class Main : KryptonForm
     {
         private int _widthLeftRight, _heightUpDown;
-        public static Landlord2Entities context;     
+        public static Entities context;     
         public Main()
         {
             InitializeComponent();
-            context = new Landlord2Entities(Helper.CreateConnectString());
+            context = new Entities(Helper.CreateConnectString());
         }
         #region 线程安全的访问UI控件的方法
 
@@ -51,13 +51,18 @@ namespace Landlord2
         #endregion
 
         /// <summary>
-        /// 载入房源、客源信息到TreeView控件
+        /// 源房、客房信息到TreeView控件
         /// </summary>
         private void LoadTreeView()
         {
+            if (context.源房.Count() == 0)
+            {
+                treeView1.Nodes.Add("当前没有源房、客房信息");
+                return;
+            }
             var yfGroups = from o in context.源房
-                           orderby o.期止
-                           group o by o.期止 > DateTime.Now into temp
+                           orderby o.源房涨租协定.Max(m=>m.期止)
+                           group o by o.源房涨租协定.Max(m => m.期止) > DateTime.Now into temp
                            orderby temp.Key descending
                            select temp;
             foreach (var yfGroup in yfGroups)
@@ -208,8 +213,26 @@ namespace Landlord2
         {
             //测试用.....
             UC源房详细 uc = new UC源房详细();
+            //uc.Dock = DockStyle.Fill;
             LoadUC(uc, "测试源房详细。。。");
         }
+
+        #region 使加载的控件居中
+        private void kryptonHeaderGroup2_Panel_Layout(object sender, LayoutEventArgs e)
+        {
+            if (kryptonHeaderGroup2.Panel.Controls.Count == 0)
+                return;
+            var control = kryptonHeaderGroup2.Panel.Controls[0];
+            if (control.Dock != DockStyle.Fill)
+            {
+                int x = (kryptonHeaderGroup2.Panel.Width - control.Width) / 2;
+                int y = (kryptonHeaderGroup2.Panel.Height - control.Height) / 2;
+                x = (x > 0) ? x : 0;
+                y = (y > 0) ? y : 0;
+                control.SetBounds(x, y, control.Width, control.Height);
+            }
+        } 
+        #endregion
 
     }
 }
