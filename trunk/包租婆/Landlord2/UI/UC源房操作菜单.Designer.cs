@@ -31,17 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC源房操作菜单));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.yfBtnAdd = new System.Windows.Forms.ToolStripButton();
             this.yfBtnDel = new System.Windows.Forms.ToolStripButton();
+            this.yfBtnEdit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.yfBtnAddKeFang = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.yfBtnPayDetail = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.yfBtnSdq = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.yfBtnZhuangXiuDetail = new System.Windows.Forms.ToolStripButton();
+            this.yfBtnPay = new System.Windows.Forms.ToolStripButton();
+            this.yfBtnSdqDetail = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,15 +54,17 @@
             this.toolStripLabel1,
             this.yfBtnAdd,
             this.yfBtnDel,
-            this.toolStripButton5,
+            this.yfBtnEdit,
             this.toolStripSeparator4,
-            this.toolStripButton1,
+            this.yfBtnAddKeFang,
             this.toolStripSeparator1,
-            this.toolStripButton2,
+            this.yfBtnPay,
+            this.yfBtnPayDetail,
             this.toolStripSeparator2,
-            this.toolStripButton3,
+            this.yfBtnSdq,
+            this.yfBtnSdqDetail,
             this.toolStripSeparator3,
-            this.toolStripButton4});
+            this.yfBtnZhuangXiuDetail});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(835, 25);
@@ -73,66 +77,6 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(67, 22);
             this.toolStripLabel1.Text = "源房操作：";
             // 
-            // toolStripButton5
-            // 
-            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(75, 22);
-            this.toolStripButton5.Text = "编辑源房";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(75, 22);
-            this.toolStripButton1.Text = "增加客房";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(75, 22);
-            this.toolStripButton2.Text = "缴费明细";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(87, 22);
-            this.toolStripButton3.Text = "水电气核查";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(75, 22);
-            this.toolStripButton4.Text = "装修明细";
-            // 
             // yfBtnAdd
             // 
             this.yfBtnAdd.Image = ((System.Drawing.Image)(resources.GetObject("yfBtnAdd.Image")));
@@ -141,6 +85,7 @@
             this.yfBtnAdd.Size = new System.Drawing.Size(75, 22);
             this.yfBtnAdd.Text = "新增源房";
             this.yfBtnAdd.ToolTipText = "新增一套源房信息";
+            this.yfBtnAdd.Click += new System.EventHandler(this.yfBtnAdd_Click);
             // 
             // yfBtnDel
             // 
@@ -150,14 +95,106 @@
             this.yfBtnDel.Size = new System.Drawing.Size(75, 22);
             this.yfBtnDel.Text = "删除源房";
             this.yfBtnDel.ToolTipText = "删除当前选中的源房信息";
+            this.yfBtnDel.Click += new System.EventHandler(this.yfBtnDel_Click);
+            // 
+            // yfBtnEdit
+            // 
+            this.yfBtnEdit.Image = ((System.Drawing.Image)(resources.GetObject("yfBtnEdit.Image")));
+            this.yfBtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnEdit.Name = "yfBtnEdit";
+            this.yfBtnEdit.Size = new System.Drawing.Size(75, 22);
+            this.yfBtnEdit.Text = "编辑源房";
+            this.yfBtnEdit.ToolTipText = "编辑当前选中的源房信息";
+            this.yfBtnEdit.Click += new System.EventHandler(this.yfBtnEdit_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // yfBtnAddKeFang
+            // 
+            this.yfBtnAddKeFang.Image = ((System.Drawing.Image)(resources.GetObject("yfBtnAddKeFang.Image")));
+            this.yfBtnAddKeFang.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnAddKeFang.Name = "yfBtnAddKeFang";
+            this.yfBtnAddKeFang.Size = new System.Drawing.Size(75, 22);
+            this.yfBtnAddKeFang.Text = "增加客房";
+            this.yfBtnAddKeFang.ToolTipText = "为当前选中的源房增加客房";
+            this.yfBtnAddKeFang.Click += new System.EventHandler(this.yfBtnAddKeFang_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // yfBtnPayDetail
+            // 
+            this.yfBtnPayDetail.Image = ((System.Drawing.Image)(resources.GetObject("yfBtnPayDetail.Image")));
+            this.yfBtnPayDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnPayDetail.Name = "yfBtnPayDetail";
+            this.yfBtnPayDetail.Size = new System.Drawing.Size(75, 22);
+            this.yfBtnPayDetail.Text = "缴费明细";
+            this.yfBtnPayDetail.ToolTipText = "当前选中源房的所有缴费明细";
+            this.yfBtnPayDetail.Click += new System.EventHandler(this.yfBtnPayDetail_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // yfBtnSdq
+            // 
+            this.yfBtnSdq.Image = ((System.Drawing.Image)(resources.GetObject("yfBtnSdq.Image")));
+            this.yfBtnSdq.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnSdq.Name = "yfBtnSdq";
+            this.yfBtnSdq.Size = new System.Drawing.Size(51, 22);
+            this.yfBtnSdq.Text = "抄表";
+            this.yfBtnSdq.ToolTipText = "为当前选中的源房抄表\r\n包括：水、电、气表";
+            this.yfBtnSdq.Click += new System.EventHandler(this.yfBtnSdq_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // yfBtnZhuangXiuDetail
+            // 
+            this.yfBtnZhuangXiuDetail.Image = ((System.Drawing.Image)(resources.GetObject("yfBtnZhuangXiuDetail.Image")));
+            this.yfBtnZhuangXiuDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnZhuangXiuDetail.Name = "yfBtnZhuangXiuDetail";
+            this.yfBtnZhuangXiuDetail.Size = new System.Drawing.Size(75, 22);
+            this.yfBtnZhuangXiuDetail.Text = "装修明细";
+            this.yfBtnZhuangXiuDetail.ToolTipText = "当前选中源房的所有装修明细";
+            this.yfBtnZhuangXiuDetail.Click += new System.EventHandler(this.yfBtnZhuangXiuDetail_Click);
+            // 
+            // yfBtnPay
+            // 
+            this.yfBtnPay.Image = ((System.Drawing.Image)(resources.GetObject("yfBtnPay.Image")));
+            this.yfBtnPay.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnPay.Name = "yfBtnPay";
+            this.yfBtnPay.Size = new System.Drawing.Size(51, 22);
+            this.yfBtnPay.Text = "缴费";
+            this.yfBtnPay.ToolTipText = "为当前选中的源房缴费\r\n例如：缴纳房租、水电等";
+            this.yfBtnPay.Click += new System.EventHandler(this.yfBtnPay_Click);
+            // 
+            // yfBtnSdqDetail
+            // 
+            this.yfBtnSdqDetail.Image = ((System.Drawing.Image)(resources.GetObject("yfBtnSdqDetail.Image")));
+            this.yfBtnSdqDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnSdqDetail.Name = "yfBtnSdqDetail";
+            this.yfBtnSdqDetail.Size = new System.Drawing.Size(75, 22);
+            this.yfBtnSdqDetail.Text = "抄表明细";
+            this.yfBtnSdqDetail.ToolTipText = "当前选中源房的所有抄表明细";
+            this.yfBtnSdqDetail.Click += new System.EventHandler(this.yfBtnSdqDetail_Click);
             // 
             // UC源房操作菜单
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.Controls.Add(this.toolStrip1);
             this.Name = "UC源房操作菜单";
-            this.Size = new System.Drawing.Size(835, 149);
+            this.Size = new System.Drawing.Size(835, 25);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -171,15 +208,17 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripButton yfBtnAdd;
         private System.Windows.Forms.ToolStripButton yfBtnDel;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton yfBtnEdit;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton yfBtnAddKeFang;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton yfBtnPayDetail;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton yfBtnSdq;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton yfBtnZhuangXiuDetail;
+        private System.Windows.Forms.ToolStripButton yfBtnPay;
+        private System.Windows.Forms.ToolStripButton yfBtnSdqDetail;
 
     }
 }
