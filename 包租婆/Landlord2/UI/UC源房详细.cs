@@ -15,12 +15,12 @@ namespace Landlord2.UI
         public UC源房详细()
         {
             InitializeComponent();
-            MessageBox.Show("UC源房详细--默认构造函数仅调试使用！");
         }
         public UC源房详细(源房 yf)
         {
             InitializeComponent();
             this.yf = yf;
+            源房BindingSource.DataSource = yf;
         }
     }
 }

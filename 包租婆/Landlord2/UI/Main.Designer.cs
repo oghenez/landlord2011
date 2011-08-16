@@ -607,7 +607,6 @@
             // 
             this.uC源房ToolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.uC源房ToolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.uC源房ToolStrip1.ImageScalingSize = new System.Drawing.Size(48, 48);
             this.uC源房ToolStrip1.Location = new System.Drawing.Point(3, 0);
             this.uC源房ToolStrip1.Name = "uC源房ToolStrip1";
             this.uC源房ToolStrip1.Size = new System.Drawing.Size(586, 70);
