@@ -147,7 +147,8 @@ namespace Landlord2.UI
         private void yfBtnAdd_Click(object sender, EventArgs e)
         {
             //新增源房
-            MessageBox.Show("新增源房");
+            yfForm yF = new yfForm(null);
+            yF.ShowDialog();
         }
         private void yfBtnDel_Click(object sender, EventArgs e)
         {
