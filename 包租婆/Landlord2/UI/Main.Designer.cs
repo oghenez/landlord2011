@@ -61,17 +61,6 @@
             this.搜索SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.关于AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.新建NToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.打开OToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.保存SToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.打印PToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.剪切UToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.复制CToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.粘贴PToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.帮助LToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.kryptonSplitContainer1 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.kryptonHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
@@ -94,8 +83,9 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
             this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.uC源房ToolStrip1 = new Landlord2.UI.UC源房ToolStrip();
             this.menuStrip1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -364,108 +354,6 @@
             this.关于AToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.关于AToolStripMenuItem.Text = "关于(&A)...";
             // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.新建NToolStripButton,
-            this.打开OToolStripButton,
-            this.保存SToolStripButton,
-            this.打印PToolStripButton,
-            this.toolStripSeparator6,
-            this.剪切UToolStripButton,
-            this.复制CToolStripButton,
-            this.粘贴PToolStripButton,
-            this.toolStripSeparator7,
-            this.帮助LToolStripButton});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(266, 25);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // 新建NToolStripButton
-            // 
-            this.新建NToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.新建NToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.新建NToolStripButton.Name = "新建NToolStripButton";
-            this.新建NToolStripButton.Size = new System.Drawing.Size(52, 22);
-            this.新建NToolStripButton.Text = "新建(&N)";
-            this.新建NToolStripButton.Click += new System.EventHandler(this.新建NToolStripButton_Click);
-            // 
-            // 打开OToolStripButton
-            // 
-            this.打开OToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.打开OToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.打开OToolStripButton.Name = "打开OToolStripButton";
-            this.打开OToolStripButton.Size = new System.Drawing.Size(52, 22);
-            this.打开OToolStripButton.Text = "打开(&O)";
-            // 
-            // 保存SToolStripButton
-            // 
-            this.保存SToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.保存SToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("保存SToolStripButton.Image")));
-            this.保存SToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.保存SToolStripButton.Name = "保存SToolStripButton";
-            this.保存SToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.保存SToolStripButton.Text = "保存(&S)";
-            // 
-            // 打印PToolStripButton
-            // 
-            this.打印PToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.打印PToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("打印PToolStripButton.Image")));
-            this.打印PToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.打印PToolStripButton.Name = "打印PToolStripButton";
-            this.打印PToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.打印PToolStripButton.Text = "打印(&P)";
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
-            // 
-            // 剪切UToolStripButton
-            // 
-            this.剪切UToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.剪切UToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("剪切UToolStripButton.Image")));
-            this.剪切UToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.剪切UToolStripButton.Name = "剪切UToolStripButton";
-            this.剪切UToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.剪切UToolStripButton.Text = "剪切(&U)";
-            // 
-            // 复制CToolStripButton
-            // 
-            this.复制CToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.复制CToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("复制CToolStripButton.Image")));
-            this.复制CToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.复制CToolStripButton.Name = "复制CToolStripButton";
-            this.复制CToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.复制CToolStripButton.Text = "复制(&C)";
-            // 
-            // 粘贴PToolStripButton
-            // 
-            this.粘贴PToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.粘贴PToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("粘贴PToolStripButton.Image")));
-            this.粘贴PToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.粘贴PToolStripButton.Name = "粘贴PToolStripButton";
-            this.粘贴PToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.粘贴PToolStripButton.Text = "粘贴(&P)";
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
-            // 
-            // 帮助LToolStripButton
-            // 
-            this.帮助LToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.帮助LToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("帮助LToolStripButton.Image")));
-            this.帮助LToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.帮助LToolStripButton.Name = "帮助LToolStripButton";
-            this.帮助LToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.帮助LToolStripButton.Text = "帮助(&L)";
-            // 
             // toolStripContainer1
             // 
             this.toolStripContainer1.BottomToolStripPanelVisible = false;
@@ -476,7 +364,7 @@
             this.toolStripContainer1.ContentPanel.Controls.Add(this.kryptonSplitContainer1);
             this.toolStripContainer1.ContentPanel.Padding = new System.Windows.Forms.Padding(5);
             this.toolStripContainer1.ContentPanel.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1008, 659);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1008, 614);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 24);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -486,7 +374,7 @@
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.uC源房ToolStrip1);
             // 
             // kryptonSplitContainer1
             // 
@@ -503,7 +391,7 @@
             // kryptonSplitContainer1.Panel2
             // 
             this.kryptonSplitContainer1.Panel2.Controls.Add(this.kryptonSplitContainer2);
-            this.kryptonSplitContainer1.Size = new System.Drawing.Size(998, 649);
+            this.kryptonSplitContainer1.Size = new System.Drawing.Size(998, 604);
             this.kryptonSplitContainer1.SplitterDistance = 200;
             this.kryptonSplitContainer1.TabIndex = 0;
             // 
@@ -522,7 +410,7 @@
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonCheckButton3);
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonCheckButton2);
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonCheckButton1);
-            this.kryptonHeaderGroup1.Size = new System.Drawing.Size(200, 649);
+            this.kryptonHeaderGroup1.Size = new System.Drawing.Size(200, 604);
             this.kryptonHeaderGroup1.TabIndex = 0;
             this.kryptonHeaderGroup1.ValuesPrimary.Heading = " ";
             this.kryptonHeaderGroup1.ValuesPrimary.Image = null;
@@ -537,9 +425,12 @@
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.HideSelection = false;
+            this.treeView1.ImageIndex = 0;
+            this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(198, 540);
+            this.treeView1.SelectedImageIndex = 0;
+            this.treeView1.Size = new System.Drawing.Size(198, 495);
             this.treeView1.TabIndex = 3;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             // 
@@ -547,7 +438,7 @@
             // 
             this.kryptonCheckButton3.Checked = true;
             this.kryptonCheckButton3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonCheckButton3.Location = new System.Drawing.Point(0, 540);
+            this.kryptonCheckButton3.Location = new System.Drawing.Point(0, 495);
             this.kryptonCheckButton3.Name = "kryptonCheckButton3";
             this.kryptonCheckButton3.Size = new System.Drawing.Size(198, 25);
             this.kryptonCheckButton3.TabIndex = 2;
@@ -556,7 +447,7 @@
             // kryptonCheckButton2
             // 
             this.kryptonCheckButton2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonCheckButton2.Location = new System.Drawing.Point(0, 565);
+            this.kryptonCheckButton2.Location = new System.Drawing.Point(0, 520);
             this.kryptonCheckButton2.Name = "kryptonCheckButton2";
             this.kryptonCheckButton2.Size = new System.Drawing.Size(198, 25);
             this.kryptonCheckButton2.TabIndex = 1;
@@ -565,7 +456,7 @@
             // kryptonCheckButton1
             // 
             this.kryptonCheckButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonCheckButton1.Location = new System.Drawing.Point(0, 590);
+            this.kryptonCheckButton1.Location = new System.Drawing.Point(0, 545);
             this.kryptonCheckButton1.Name = "kryptonCheckButton1";
             this.kryptonCheckButton1.Size = new System.Drawing.Size(198, 25);
             this.kryptonCheckButton1.TabIndex = 0;
@@ -587,8 +478,8 @@
             // kryptonSplitContainer2.Panel2
             // 
             this.kryptonSplitContainer2.Panel2.Controls.Add(this.kryptonHeaderGroup3);
-            this.kryptonSplitContainer2.Size = new System.Drawing.Size(793, 649);
-            this.kryptonSplitContainer2.SplitterDistance = 552;
+            this.kryptonSplitContainer2.Size = new System.Drawing.Size(793, 604);
+            this.kryptonSplitContainer2.SplitterDistance = 507;
             this.kryptonSplitContainer2.TabIndex = 0;
             // 
             // kryptonHeaderGroup2
@@ -604,7 +495,7 @@
             // kryptonHeaderGroup2.Panel
             // 
             this.kryptonHeaderGroup2.Panel.Layout += new System.Windows.Forms.LayoutEventHandler(this.kryptonHeaderGroup2_Panel_Layout);
-            this.kryptonHeaderGroup2.Size = new System.Drawing.Size(793, 552);
+            this.kryptonHeaderGroup2.Size = new System.Drawing.Size(793, 507);
             this.kryptonHeaderGroup2.TabIndex = 0;
             this.kryptonHeaderGroup2.ValuesPrimary.Heading = " ";
             this.kryptonHeaderGroup2.ValuesSecondary.Heading = "操作：";
@@ -678,7 +569,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(642, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(866, 17);
             this.toolStripStatusLabel1.Spring = true;
             this.toolStripStatusLabel1.Text = "单机版V2.0";
             this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -702,6 +593,26 @@
             this.AlarmTimer1.Interval = 500;
             this.AlarmTimer1.Tick += new System.EventHandler(this.AlarmTimer1_Tick);
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "源房24.png");
+            this.imageList1.Images.SetKeyName(1, "客房-已租24.png");
+            this.imageList1.Images.SetKeyName(2, "客房-未租24.png");
+            this.imageList1.Images.SetKeyName(3, "源房-历史24.png");
+            this.imageList1.Images.SetKeyName(4, "客房-历史24.png");
+            // 
+            // uC源房ToolStrip1
+            // 
+            this.uC源房ToolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.uC源房ToolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.uC源房ToolStrip1.ImageScalingSize = new System.Drawing.Size(48, 48);
+            this.uC源房ToolStrip1.Location = new System.Drawing.Point(3, 0);
+            this.uC源房ToolStrip1.Name = "uC源房ToolStrip1";
+            this.uC源房ToolStrip1.Size = new System.Drawing.Size(586, 70);
+            this.uC源房ToolStrip1.TabIndex = 2;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -710,6 +621,7 @@
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -717,8 +629,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
@@ -780,17 +690,6 @@
         private System.Windows.Forms.ToolStripMenuItem 搜索SToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem 关于AToolStripMenuItem;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton 新建NToolStripButton;
-        private System.Windows.Forms.ToolStripButton 打开OToolStripButton;
-        private System.Windows.Forms.ToolStripButton 保存SToolStripButton;
-        private System.Windows.Forms.ToolStripButton 打印PToolStripButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripButton 剪切UToolStripButton;
-        private System.Windows.Forms.ToolStripButton 复制CToolStripButton;
-        private System.Windows.Forms.ToolStripButton 粘贴PToolStripButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
-        private System.Windows.Forms.ToolStripButton 帮助LToolStripButton;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer kryptonSplitContainer1;
@@ -813,6 +712,8 @@
         private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup buttonSpecHeaderGroup5;
         private System.Windows.Forms.Timer AlarmTimer1;
         private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup buttonSpecHeaderGroup6;
+        private UI.UC源房ToolStrip uC源房ToolStrip1;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 

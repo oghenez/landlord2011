@@ -87,5 +87,131 @@ namespace Landlord2.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        internal static System.Drawing.Bitmap 客房_历史24 {
+            get {
+                object obj = ResourceManager.GetObject("客房_历史24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 客房_已租24 {
+            get {
+                object obj = ResourceManager.GetObject("客房_已租24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 客房_未租24 {
+            get {
+                object obj = ResourceManager.GetObject("客房_未租24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 客房24 {
+            get {
+                object obj = ResourceManager.GetObject("客房24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 客房24Add {
+            get {
+                object obj = ResourceManager.GetObject("客房24Add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 客房24Del {
+            get {
+                object obj = ResourceManager.GetObject("客房24Del", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 客房24Edit {
+            get {
+                object obj = ResourceManager.GetObject("客房24Edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 客房48Add {
+            get {
+                object obj = ResourceManager.GetObject("客房48Add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 客房48Del {
+            get {
+                object obj = ResourceManager.GetObject("客房48Del", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 客房48Edit {
+            get {
+                object obj = ResourceManager.GetObject("客房48Edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 源房_历史24 {
+            get {
+                object obj = ResourceManager.GetObject("源房_历史24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 源房24 {
+            get {
+                object obj = ResourceManager.GetObject("源房24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 源房24Add {
+            get {
+                object obj = ResourceManager.GetObject("源房24Add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 源房24Del {
+            get {
+                object obj = ResourceManager.GetObject("源房24Del", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 源房24Edit {
+            get {
+                object obj = ResourceManager.GetObject("源房24Edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 源房48Add {
+            get {
+                object obj = ResourceManager.GetObject("源房48Add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 源房48Del {
+            get {
+                object obj = ResourceManager.GetObject("源房48Del", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 源房48Edit {
+            get {
+                object obj = ResourceManager.GetObject("源房48Edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

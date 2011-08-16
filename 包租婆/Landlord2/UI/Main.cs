@@ -214,15 +214,15 @@ namespace Landlord2
             kryptonHeaderGroup2.Panel.Controls.Add(uc);
         }
         #endregion
-        private void 新建NToolStripButton_Click(object sender, EventArgs e)
-        {
-            //测试用.....
-            UC源房操作菜单 ucc = new UC源房操作菜单(); ucc.Dock = DockStyle.Top;
-            kryptonHeaderGroup2.Panel.Controls.Add(ucc);
-            UC源房详细 uc = new UC源房详细();            
-            LoadUC(uc, "测试源房详细。。。");
+        //private void 新建NToolStripButton_Click(object sender, EventArgs e)
+        //{
+        //    //测试用.....
+        //    UC源房操作菜单 ucc = new UC源房操作菜单(); ucc.Dock = DockStyle.Top;
+        //    kryptonHeaderGroup2.Panel.Controls.Add(ucc);
+        //    UC源房详细 uc = new UC源房详细();            
+        //    LoadUC(uc, "测试源房详细。。。");
 
-        }
+        //}
 
         #region 使加载的控件居中
         private void kryptonHeaderGroup2_Panel_Layout(object sender, LayoutEventArgs e)
