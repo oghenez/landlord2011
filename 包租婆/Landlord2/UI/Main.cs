@@ -209,7 +209,7 @@ namespace Landlord2
             //if (changes != null)
             //    MessageBox.Show("[测试] 当前存在数据修改。");
 
-            kryptonHeaderGroup2.Panel.Controls.Clear();
+            //kryptonHeaderGroup2.Panel.Controls.Clear();
             kryptonHeaderGroup2.ValuesPrimary.Heading = text;
             kryptonHeaderGroup2.Panel.Controls.Add(uc);
         }
