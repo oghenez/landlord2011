@@ -13,107 +13,109 @@ namespace Landlord2.Data
     public class MyEntityHelper
     {
         /// <summary>
-        /// 校验非空属性
+        /// 校验所有非空属性
+        /// 当flag = true时，如果是int16,int32,float,double,decimal类型，同时进行‘非负’判断。
         /// </summary>
-        /// <param name="entity"></param>
-        /// <param name="columnName"></param>
-        /// <returns></returns>
-        public static string CheckNullOrEmpty(EntityObject entity, string columnName)
+        /// <param name="entity">实体实例</param>
+        /// <param name="flag">是否需要校验‘非负’</param>
+        /// <returns>如果验证通过，回传string.Empty，否则回传具体错误信息。</returns>
+        public static string CheckNullOrEmptyAndABS(EntityObject entity, bool flag)
         {
-            string result = string.Empty;
+            StringBuilder sb = new StringBuilder();
             Type type = entity.GetType();
-            System.Reflection.PropertyInfo pInfo = type.GetProperty(columnName);
-            //实体类为Property自动生成的EdmScalarPropertyAttribute属性
-            EdmScalarPropertyAttribute att = (EdmScalarPropertyAttribute)Attribute.GetCustomAttribute(pInfo, typeof(EdmScalarPropertyAttribute));
-            if (att != null) 
+            foreach (System.Reflection.PropertyInfo pInfo in type.GetProperties())
             {
-                if (att.IsNullable == false)//针对非空列进行校验
+                //实体类为Property自动生成的EdmScalarPropertyAttribute属性
+                var att = Attribute.GetCustomAttribute(pInfo, typeof(EdmScalarPropertyAttribute));
+                if (att != null)
                 {
-                    object value = type.GetProperty(columnName).GetValue(entity, null);//得到相应属性值
-                    if (value == null || string.IsNullOrEmpty(value.ToString()))
-                        result = string.Format("[{0}]不能为空值!",columnName);
-                }
-            }
-            return result;
-        }
-    }
-
-    public partial class 源房 : IDataErrorInfo
-    {
-        #region IDataErrorInfo Members
-
-        private string _lastError = "";
-        
-        public string Error
-        {
-            get { return _lastError; }
-        }
-        private int i = 0;
-        public string this[string columnName]
-        {
-            get
-            {
-                //for test...
-                StringBuilder sb = new StringBuilder();
-                //sb.Append("-------------------"+Environment.NewLine);
-                for (int j = 1; j < 10; j++)
-                {
-                    System.Reflection.MethodInfo method = (System.Reflection.MethodInfo)(new System.Diagnostics.StackTrace().GetFrame(j).GetMethod());
-                    if (method != null)
+                    if (((EdmScalarPropertyAttribute)att).IsNullable == false)//针对非空列进行校验
                     {
-                        sb.Append(i + "--" + j + "--");
-                        sb.Append(method.Name); 
-                        sb.Append(Environment.NewLine); 
+                        object value = pInfo.GetValue(entity, null);//得到相应属性值
+                        if(value == null || string.IsNullOrEmpty(value.ToString()))
+                        {
+                            sb.Append(string.Format("[{0}]--不能为空值!",pInfo.Name));
+                            sb.Append(Environment.NewLine);
+                        }
+                        if (flag)
+                        {
+                            if (value is Int16 || value is Int32 || value is float || value is double || value is decimal)
+                            {
+                                if (value.ToString()[0] == '-')
+                                {
+                                    sb.Append(string.Format("[{0}]--不能为负数!", pInfo.Name));
+                                    sb.Append(Environment.NewLine);
+                                }
+                            } 
+                        }
                     }
                 }
-                i++;
-                sb.Append("###" + columnName+Environment.NewLine);
-                sb.Append("-------------------"+Environment.NewLine);
-
-                Console.Write(sb.ToString());
-                _lastError = MyEntityHelper.CheckNullOrEmpty(this, columnName);
-                ////额外校验
-                //switch (columnName)
-                //{
-                //    case "LastName":
-                //        if (String.IsNullOrEmpty(LastName))
-                //            _lastError = "Please insert a name!";
-                //        break;
-
-                //    default: _lastError = "";
-                //        break;
-                //}
-                return _lastError;
             }
+            return sb.ToString();
         }
 
-        #endregion
+        // 校验所有非空属性，如果是int16,int32,float,double,decimal类型，同时进行‘非负’判断。
+        public static string CheckNullOrEmptyAndABS(EntityObject entity)
+        {
+           return CheckNullOrEmptyAndABS(entity, true);
+        }
     }
-    public partial class 源房涨租协定 : IDataErrorInfo
+
+    #region 自定义ICheck接口，每个实体继承，进行规则验证。
+    /// <summary>
+    /// 自定义ICheck接口，每个实体继承，进行规则验证。
+    /// </summary>
+    interface ICheck
     {
-        private Dictionary<string, string> _errors = new Dictionary<string, string>();
+        /// <summary>
+        /// 如果验证通过，回传string.Empty，否则回传具体错误信息。
+        /// </summary>
+        /// <returns></returns>
+        string CheckRules();
+    } 
+    #endregion
 
-        partial void On月租金Changing(Decimal value)
+    public partial class 源房:ICheck
+    {
+        public string CheckRules()
         {
-            //if (value < 1000)
-            //    _errors.Add("月租金", "月租金小于1000 -- 实体验证测试");
-        }
+            string returnStr = string.Empty;
+            //校验所有非空属性
+            returnStr = MyEntityHelper.CheckNullOrEmptyAndABS(this);
 
-        public string Error
-        {
-            get { return string.Empty; }
-        }
-
-        public string this[string columnName]
-        {
-            get
+            //校验源房下的‘源房涨租协定’表
+            DateTime temp = DateTime.MinValue;
+            foreach (var o in this.源房涨租协定.OrderBy(m=>m.期始))
             {
-                if (_errors.ContainsKey(columnName))
-
-                    return _errors[columnName];
-
-                return string.Empty;
+                returnStr += o.CheckRules();//时间校验
+                //判断是否连续
+                if (temp != DateTime.MinValue)
+                {
+                    if (temp.Date.AddDays(1) != o.期始.Date)
+                    {
+                        returnStr += string.Format("时间段不连续，请检查[期止{0}]和[期始{1}]。",
+                            temp.ToShortDateString(), o.期始.ToShortDateString()) + Environment.NewLine ;
+                    }
+                }
+                temp = o.期止; //这里赋值
             }
+
+            return returnStr;
+        }
+    }
+    public partial class 源房涨租协定 :ICheck
+    {
+        public string CheckRules()
+        {
+            string returnStr = string.Empty;
+            //校验所有非空属性
+            returnStr = MyEntityHelper.CheckNullOrEmptyAndABS(this);
+
+            //时间校验
+            if (this.期止.Date < this.期始.Date)
+                returnStr += string.Format("期止时间[{0}]不能小于期始时间[{1}]!",
+                    this.期止.ToShortDateString(),this.期始.ToShortDateString()) + Environment.NewLine;
+            return returnStr;
         }
     }
 }
