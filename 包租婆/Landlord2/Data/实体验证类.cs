@@ -48,14 +48,29 @@ namespace Landlord2.Data
         {
             get { return _lastError; }
         }
-        //private int i = 0;
+        private int i = 0;
         public string this[string columnName]
         {
             get
             {
                 //for test...
-                //System.Reflection.MethodInfo method = (System.Reflection.MethodInfo)(new System.Diagnostics.StackTrace().GetFrame(1).GetMethod());
-                //Console.Write(i++.ToString() + method.Name + "@@@" + columnName + Environment.NewLine);
+                StringBuilder sb = new StringBuilder();
+                //sb.Append("-------------------"+Environment.NewLine);
+                for (int j = 1; j < 10; j++)
+                {
+                    System.Reflection.MethodInfo method = (System.Reflection.MethodInfo)(new System.Diagnostics.StackTrace().GetFrame(j).GetMethod());
+                    if (method != null)
+                    {
+                        sb.Append(i + "--" + j + "--");
+                        sb.Append(method.Name); 
+                        sb.Append(Environment.NewLine); 
+                    }
+                }
+                i++;
+                sb.Append("###" + columnName+Environment.NewLine);
+                sb.Append("-------------------"+Environment.NewLine);
+
+                Console.Write(sb.ToString());
                 _lastError = MyEntityHelper.CheckNullOrEmpty(this, columnName);
                 ////额外校验
                 //switch (columnName)
