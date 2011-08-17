@@ -22,8 +22,8 @@ namespace Landlord2.UI
         /// <param name="yf">yf=null则为新增操作</param>
         public yfForm(源房 yf)
         {
-            InitializeComponent();
             this.yf = yf;
+            InitializeComponent();
         }
 
         private void YF_Load(object sender, EventArgs e)
@@ -32,7 +32,7 @@ namespace Landlord2.UI
             {
                 isNew = true;
                 Text = "新增源房";
-                yf=new 源房();
+                yf = new 源房();
                 uC源房详细1.源房BindingSource.DataSource = yf;
             }
             else
@@ -43,7 +43,7 @@ namespace Landlord2.UI
         }
 
         private void btnOK_Click(object sender, EventArgs e)
-        {
+        {            
             if (isNew)
             {
                 Main.context.AddTo源房(yf);
@@ -59,7 +59,7 @@ namespace Landlord2.UI
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
     }
 }

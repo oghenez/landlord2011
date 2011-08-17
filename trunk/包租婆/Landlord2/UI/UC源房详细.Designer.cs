@@ -1025,11 +1025,11 @@
         private System.Windows.Forms.PictureBox 租赁协议照片1PictureBox;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton3;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton2;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
         public System.Windows.Forms.BindingSource 源房BindingSource;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn 期始DataGridViewTextBoxColumn;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn 期止DataGridViewTextBoxColumn;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn 月租金DataGridViewTextBoxColumn;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
 
     }
 }
