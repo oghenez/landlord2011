@@ -945,7 +945,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="Model1">
+      <Diagram Name="Model1" ZoomLevel="49">
         <EntityTypeShape EntityType="Landlord2Model.Data.缴收项目" Width="1.5" PointX="7.75" PointY="0.75" Height="1.3969734700520888" />
         <EntityTypeShape EntityType="Landlord2Model.Data.客房" Width="1.5" PointX="3" PointY="2.625" Height="6.7455249023437531" />
         <EntityTypeShape EntityType="Landlord2Model.Data.客房出租历史记录" Width="1.5" PointX="5.25" PointY="2" Height="3.6892097981770888" />

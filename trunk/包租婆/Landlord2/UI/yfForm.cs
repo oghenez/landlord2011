@@ -43,7 +43,13 @@ namespace Landlord2.UI
         }
 
         private void btnOK_Click(object sender, EventArgs e)
-        {            
+        {
+            string check = yf.CheckRules();
+            if (!string.IsNullOrEmpty(check))
+            {
+                MessageBox.Show(check, "数据校验失败");
+                return;
+            }
             if (isNew)
             {
                 Main.context.AddTo源房(yf);
