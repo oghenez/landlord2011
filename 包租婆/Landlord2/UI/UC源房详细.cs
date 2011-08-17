@@ -11,17 +11,17 @@ namespace Landlord2.UI
 {
     public partial class UC源房详细 : Landlord2.UI.UCBase
     {
-        private 源房 yf;
+        //private 源房 yf;
         public UC源房详细()
         {
             InitializeComponent();
         }
-        public UC源房详细(源房 yf)
-        {
-            InitializeComponent();
-            this.yf = yf;
-            源房BindingSource.DataSource = yf;
+        //public UC源房详细(源房 yf)
+        //{
+        //    InitializeComponent();
+        //    this.yf = yf;
+        //    源房BindingSource.DataSource = yf;
             
-        }
+        //}
     }
 }
