@@ -21,6 +21,7 @@ namespace Landlord2.UI
             InitializeComponent();
             this.yf = yf;
             源房BindingSource.DataSource = yf;
+            
         }
     }
 }
