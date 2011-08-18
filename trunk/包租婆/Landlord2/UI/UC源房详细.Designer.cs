@@ -110,6 +110,7 @@
             this.租赁协议照片1PictureBox = new System.Windows.Forms.PictureBox();
             this.租赁协议照片2PictureBox = new System.Windows.Forms.PictureBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             房名Label = new System.Windows.Forms.Label();
             建筑面积Label = new System.Windows.Forms.Label();
             室Label = new System.Windows.Forms.Label();
@@ -899,6 +900,7 @@
             this.btnOpenFile1.Name = "btnOpenFile1";
             this.btnOpenFile1.Size = new System.Drawing.Size(22, 20);
             this.btnOpenFile1.TabIndex = 77;
+            this.toolTip1.SetToolTip(this.btnOpenFile1, "载入协议照片...");
             this.btnOpenFile1.Values.Image = global::Landlord2.Properties.Resources.attach_16_dis;
             this.btnOpenFile1.Values.Text = "";
             this.btnOpenFile1.Click += new System.EventHandler(this.btnOpenFile_Click);
@@ -912,6 +914,7 @@
             this.btnOpenFile2.Name = "btnOpenFile2";
             this.btnOpenFile2.Size = new System.Drawing.Size(22, 20);
             this.btnOpenFile2.TabIndex = 77;
+            this.toolTip1.SetToolTip(this.btnOpenFile2, "载入协议照片...");
             this.btnOpenFile2.Values.Image = global::Landlord2.Properties.Resources.attach_16_dis;
             this.btnOpenFile2.Values.Text = "";
             this.btnOpenFile2.Click += new System.EventHandler(this.btnOpenFile_Click);
@@ -925,6 +928,7 @@
             this.btnOpenFile3.Name = "btnOpenFile3";
             this.btnOpenFile3.Size = new System.Drawing.Size(22, 20);
             this.btnOpenFile3.TabIndex = 77;
+            this.toolTip1.SetToolTip(this.btnOpenFile3, "载入协议照片...");
             this.btnOpenFile3.Values.Image = global::Landlord2.Properties.Resources.attach_16_dis;
             this.btnOpenFile3.Values.Text = "";
             this.btnOpenFile3.Click += new System.EventHandler(this.btnOpenFile_Click);
@@ -939,8 +943,8 @@
             this.租赁协议照片3PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.租赁协议照片3PictureBox.TabIndex = 35;
             this.租赁协议照片3PictureBox.TabStop = false;
-            this.租赁协议照片3PictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            this.租赁协议照片3PictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
+            this.toolTip1.SetToolTip(this.租赁协议照片3PictureBox, "无图像");
+            this.租赁协议照片3PictureBox.DoubleClick += new System.EventHandler(this.PictureBox_DoubleClick);
             // 
             // 租赁协议照片1PictureBox
             // 
@@ -952,8 +956,8 @@
             this.租赁协议照片1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.租赁协议照片1PictureBox.TabIndex = 33;
             this.租赁协议照片1PictureBox.TabStop = false;
-            this.租赁协议照片1PictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            this.租赁协议照片1PictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
+            this.toolTip1.SetToolTip(this.租赁协议照片1PictureBox, "无图像");
+            this.租赁协议照片1PictureBox.DoubleClick += new System.EventHandler(this.PictureBox_DoubleClick);
             // 
             // 租赁协议照片2PictureBox
             // 
@@ -965,13 +969,22 @@
             this.租赁协议照片2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.租赁协议照片2PictureBox.TabIndex = 33;
             this.租赁协议照片2PictureBox.TabStop = false;
-            this.租赁协议照片2PictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            this.租赁协议照片2PictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
+            this.toolTip1.SetToolTip(this.租赁协议照片2PictureBox, "无图像");
+            this.租赁协议照片2PictureBox.DoubleClick += new System.EventHandler(this.PictureBox_DoubleClick);
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.DataSource = this.源房BindingSource;
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutoPopDelay = 5000;
+            this.toolTip1.InitialDelay = 50;
+            this.toolTip1.OwnerDraw = true;
+            this.toolTip1.ReshowDelay = 10;
+            this.toolTip1.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTip1_Draw);
+            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
             // UC源房详细
             // 
@@ -1042,6 +1055,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn 期止DataGridViewTextBoxColumn;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn 月租金DataGridViewTextBoxColumn;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ToolTip toolTip1;
 
     }
 }

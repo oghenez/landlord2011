@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using Landlord2.Data;
 using ComponentFactory.Krypton.Toolkit;
+using System.Drawing.Drawing2D;
+using System.Drawing;
 
 namespace Landlord2.UI
 {
@@ -56,22 +58,85 @@ namespace Landlord2.UI
             }
         }
 
-        private PictureBox tempPicBox;
-        private void PictureBox_MouseEnter(object sender, EventArgs e)
+        private void toolTip1_Draw(object sender, DrawToolTipEventArgs e)
         {
-            PictureBox pbox = sender as PictureBox;
-            if (pbox.Image == null)
-                return;
+            if (e.AssociatedControl is PictureBox)
+            {
+                Image img = ((PictureBox)e.AssociatedControl).Image;
+                if (img != null)
+                {
+                    //开始绘制图像
+                    e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
+                    e.Graphics.DrawImage(img, e.Bounds);
 
-            if (tempPicBox == null)
-                tempPicBox = new PictureBox();
-            //tempPicBox.Size = 
-            
+                    LinearGradientBrush linGrBrush = new LinearGradientBrush(
+                                                   new Point(0, 10),
+                                                   new Point(200, 10),
+                                                   Color.FromArgb(255, 255, 0, 0),   // Opaque red
+                                                   Color.FromArgb(255, 0, 0, 255));  // Opaque blue
+                    Font f = new Font("宋体", 10, FontStyle.Bold);
+                    e.Graphics.DrawString("双击打开图像", f, linGrBrush,2,2);
+                    return;
+                }
+            }
+
+            //其他控件，或PictureBox无图像时
+            e.DrawBackground();
+            e.DrawBorder();
+            e.DrawText();
         }
 
-        private void PictureBox_MouseLeave(object sender, EventArgs e)
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
         {
+            if (e.AssociatedControl is PictureBox)
+            {
+                Image img = ((PictureBox)e.AssociatedControl).Image;
+                if (img != null)
+                {
+                    //宽、高设定在240像素之内
+                    int toolTipWidth, toolTipHeight;
+                    if (img.Width <= 240 && img.Height <= 240)
+                    {
+                        toolTipWidth = img.Width;
+                        toolTipHeight = img.Height;
+                    }
+                    else
+                    {
+                        if (img.Width > img.Height)
+                        {
+                            toolTipWidth = 240;
+                            toolTipHeight = 240 * img.Height / img.Width;
+                        }
+                        else
+                        {
+                            toolTipHeight = 240;
+                            toolTipWidth = 240 * img.Width / img.Height;
+                        }
+                    }
+                    e.ToolTipSize = new Size(toolTipWidth, toolTipHeight); 
+                }
+            }
+        }
 
+        private void PictureBox_DoubleClick(object sender, EventArgs e)
+        {
+            PictureBox picBox = sender as PictureBox;
+            Image img = picBox.Image;
+            if (img != null)
+            {
+                string filename = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonPictures), "协议照片"+DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg");
+                try
+                {
+                    img.Save(filename);
+                    System.Diagnostics.Process.Start(filename);
+                }
+                catch (Exception ex)
+                {
+
+                    KryptonMessageBox.Show(ex.Message, "错误提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+             
         }
     }
 }
