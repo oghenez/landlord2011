@@ -103,9 +103,9 @@
             this.kryptonTextBox31 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonCheckBox1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.kryptonTextBox19 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.kryptonButton2 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.kryptonButton3 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnOpenFile1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnOpenFile2 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnOpenFile3 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.租赁协议照片3PictureBox = new System.Windows.Forms.PictureBox();
             this.租赁协议照片1PictureBox = new System.Windows.Forms.PictureBox();
             this.租赁协议照片2PictureBox = new System.Windows.Forms.PictureBox();
@@ -157,15 +157,18 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.租赁协议照片3PictureBox);
+            this.kryptonPanel1.Controls.Add(this.租赁协议照片2PictureBox);
+            this.kryptonPanel1.Controls.Add(this.租赁协议照片1PictureBox);
             this.kryptonPanel1.Controls.Add(备注Label);
             this.kryptonPanel1.Controls.Add(源房东银行卡Label);
             this.kryptonPanel1.Controls.Add(身份证号Label);
             this.kryptonPanel1.Controls.Add(联系地址Label);
             this.kryptonPanel1.Controls.Add(权证号Label);
             this.kryptonPanel1.Controls.Add(房名Label);
-            this.kryptonPanel1.Controls.Add(this.kryptonButton3);
-            this.kryptonPanel1.Controls.Add(this.kryptonButton2);
-            this.kryptonPanel1.Controls.Add(this.kryptonButton1);
+            this.kryptonPanel1.Controls.Add(this.btnOpenFile3);
+            this.kryptonPanel1.Controls.Add(this.btnOpenFile2);
+            this.kryptonPanel1.Controls.Add(this.btnOpenFile1);
             this.kryptonPanel1.Controls.Add(this.kryptonCheckBox1);
             this.kryptonPanel1.Controls.Add(气单价Label);
             this.kryptonPanel1.Controls.Add(阶梯电价Label);
@@ -184,10 +187,7 @@
             this.kryptonPanel1.Controls.Add(电始码Label);
             this.kryptonPanel1.Controls.Add(水始码Label);
             this.kryptonPanel1.Controls.Add(租赁协议照片3Label);
-            this.kryptonPanel1.Controls.Add(this.租赁协议照片3PictureBox);
             this.kryptonPanel1.Controls.Add(租赁协议照片2Label);
-            this.kryptonPanel1.Controls.Add(this.租赁协议照片1PictureBox);
-            this.kryptonPanel1.Controls.Add(this.租赁协议照片2PictureBox);
             this.kryptonPanel1.Controls.Add(租赁协议照片1Label);
             this.kryptonPanel1.Controls.Add(房东Label);
             this.kryptonPanel1.Controls.Add(电话2Label);
@@ -890,41 +890,44 @@
             this.kryptonTextBox19.Size = new System.Drawing.Size(150, 80);
             this.kryptonTextBox19.TabIndex = 31;
             // 
-            // kryptonButton1
+            // btnOpenFile1
             // 
-            this.kryptonButton1.AutoSize = true;
-            this.kryptonButton1.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ButtonSpec;
-            this.kryptonButton1.Location = new System.Drawing.Point(746, 146);
-            this.kryptonButton1.Margin = new System.Windows.Forms.Padding(0);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(22, 20);
-            this.kryptonButton1.TabIndex = 77;
-            this.kryptonButton1.Values.Image = global::Landlord2.Properties.Resources.attach_16_dis;
-            this.kryptonButton1.Values.Text = "";
+            this.btnOpenFile1.AutoSize = true;
+            this.btnOpenFile1.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ButtonSpec;
+            this.btnOpenFile1.Location = new System.Drawing.Point(746, 146);
+            this.btnOpenFile1.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOpenFile1.Name = "btnOpenFile1";
+            this.btnOpenFile1.Size = new System.Drawing.Size(22, 20);
+            this.btnOpenFile1.TabIndex = 77;
+            this.btnOpenFile1.Values.Image = global::Landlord2.Properties.Resources.attach_16_dis;
+            this.btnOpenFile1.Values.Text = "";
+            this.btnOpenFile1.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
-            // kryptonButton2
+            // btnOpenFile2
             // 
-            this.kryptonButton2.AutoSize = true;
-            this.kryptonButton2.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ButtonSpec;
-            this.kryptonButton2.Location = new System.Drawing.Point(746, 176);
-            this.kryptonButton2.Margin = new System.Windows.Forms.Padding(0);
-            this.kryptonButton2.Name = "kryptonButton2";
-            this.kryptonButton2.Size = new System.Drawing.Size(22, 20);
-            this.kryptonButton2.TabIndex = 77;
-            this.kryptonButton2.Values.Image = global::Landlord2.Properties.Resources.attach_16_dis;
-            this.kryptonButton2.Values.Text = "";
+            this.btnOpenFile2.AutoSize = true;
+            this.btnOpenFile2.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ButtonSpec;
+            this.btnOpenFile2.Location = new System.Drawing.Point(746, 176);
+            this.btnOpenFile2.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOpenFile2.Name = "btnOpenFile2";
+            this.btnOpenFile2.Size = new System.Drawing.Size(22, 20);
+            this.btnOpenFile2.TabIndex = 77;
+            this.btnOpenFile2.Values.Image = global::Landlord2.Properties.Resources.attach_16_dis;
+            this.btnOpenFile2.Values.Text = "";
+            this.btnOpenFile2.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
-            // kryptonButton3
+            // btnOpenFile3
             // 
-            this.kryptonButton3.AutoSize = true;
-            this.kryptonButton3.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ButtonSpec;
-            this.kryptonButton3.Location = new System.Drawing.Point(746, 206);
-            this.kryptonButton3.Margin = new System.Windows.Forms.Padding(0);
-            this.kryptonButton3.Name = "kryptonButton3";
-            this.kryptonButton3.Size = new System.Drawing.Size(22, 20);
-            this.kryptonButton3.TabIndex = 77;
-            this.kryptonButton3.Values.Image = global::Landlord2.Properties.Resources.attach_16_dis;
-            this.kryptonButton3.Values.Text = "";
+            this.btnOpenFile3.AutoSize = true;
+            this.btnOpenFile3.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ButtonSpec;
+            this.btnOpenFile3.Location = new System.Drawing.Point(746, 206);
+            this.btnOpenFile3.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOpenFile3.Name = "btnOpenFile3";
+            this.btnOpenFile3.Size = new System.Drawing.Size(22, 20);
+            this.btnOpenFile3.TabIndex = 77;
+            this.btnOpenFile3.Values.Image = global::Landlord2.Properties.Resources.attach_16_dis;
+            this.btnOpenFile3.Values.Text = "";
+            this.btnOpenFile3.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
             // 租赁协议照片3PictureBox
             // 
@@ -933,8 +936,11 @@
             this.租赁协议照片3PictureBox.Location = new System.Drawing.Point(717, 204);
             this.租赁协议照片3PictureBox.Name = "租赁协议照片3PictureBox";
             this.租赁协议照片3PictureBox.Size = new System.Drawing.Size(25, 25);
+            this.租赁协议照片3PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.租赁协议照片3PictureBox.TabIndex = 35;
             this.租赁协议照片3PictureBox.TabStop = false;
+            this.租赁协议照片3PictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            this.租赁协议照片3PictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
             // 
             // 租赁协议照片1PictureBox
             // 
@@ -943,8 +949,11 @@
             this.租赁协议照片1PictureBox.Location = new System.Drawing.Point(717, 144);
             this.租赁协议照片1PictureBox.Name = "租赁协议照片1PictureBox";
             this.租赁协议照片1PictureBox.Size = new System.Drawing.Size(25, 25);
+            this.租赁协议照片1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.租赁协议照片1PictureBox.TabIndex = 33;
             this.租赁协议照片1PictureBox.TabStop = false;
+            this.租赁协议照片1PictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            this.租赁协议照片1PictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
             // 
             // 租赁协议照片2PictureBox
             // 
@@ -953,8 +962,11 @@
             this.租赁协议照片2PictureBox.Location = new System.Drawing.Point(717, 174);
             this.租赁协议照片2PictureBox.Name = "租赁协议照片2PictureBox";
             this.租赁协议照片2PictureBox.Size = new System.Drawing.Size(25, 25);
+            this.租赁协议照片2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.租赁协议照片2PictureBox.TabIndex = 33;
             this.租赁协议照片2PictureBox.TabStop = false;
+            this.租赁协议照片2PictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            this.租赁协议照片2PictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
             // 
             // errorProvider1
             // 
@@ -1021,10 +1033,10 @@
         private ComponentFactory.Krypton.Toolkit.ButtonSpecAny buttonSpecAny阶梯水价;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryptonCheckBox1;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox19;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnOpenFile1;
         private System.Windows.Forms.PictureBox 租赁协议照片1PictureBox;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton3;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton2;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnOpenFile3;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnOpenFile2;
         public System.Windows.Forms.BindingSource 源房BindingSource;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn 期始DataGridViewTextBoxColumn;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn 期止DataGridViewTextBoxColumn;
