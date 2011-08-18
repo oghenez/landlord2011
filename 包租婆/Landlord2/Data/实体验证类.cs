@@ -93,7 +93,7 @@ namespace Landlord2.Data
                 {
                     if (temp.Date.AddDays(1) != o.期始.Date)
                     {
-                        returnStr += string.Format("时间段不连续，请检查[期止{0}]和[期始{1}]。",
+                        returnStr += string.Format("时间段不连续，请检查[期止{0}]和[期始{1}]!",
                             temp.ToShortDateString(), o.期始.ToShortDateString()) + Environment.NewLine ;
                     }
                 }

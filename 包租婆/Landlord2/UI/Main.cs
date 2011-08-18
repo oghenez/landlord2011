@@ -207,7 +207,7 @@ namespace Landlord2
             //    //EntityState.Detached |
             //    EntityState.Modified);
             //if (changes != null)
-            //    MessageBox.Show("[测试] 当前存在数据修改。");
+            //    KryptonMessageBox.Show("[测试] 当前存在数据修改。");
 
             //kryptonHeaderGroup2.Panel.Controls.Clear();
             kryptonHeaderGroup2.ValuesPrimary.Heading = text;
@@ -260,7 +260,7 @@ namespace Landlord2
                     break;
                 default:
                     {
-                        MessageBox.Show("超过2个控件的加载");
+                        KryptonMessageBox.Show("超过2个控件的加载");
                     }
                     break;
             }            

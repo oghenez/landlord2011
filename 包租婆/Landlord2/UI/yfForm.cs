@@ -47,7 +47,7 @@ namespace Landlord2.UI
             string check = yf.CheckRules();
             if (!string.IsNullOrEmpty(check))
             {
-                MessageBox.Show(check, "数据校验失败");
+                KryptonMessageBox.Show(check, "数据校验失败");
                 return;
             }
             if (isNew)
@@ -55,9 +55,9 @@ namespace Landlord2.UI
                 Main.context.AddTo源房(yf);
                 string msg;
                 if (Helper.saveData(Main.context.源房, out msg))
-                    MessageBox.Show(msg, "成功新增源房");
+                    KryptonMessageBox.Show(msg, "成功新增源房");
                 else
-                    MessageBox.Show(msg, "失败");
+                    KryptonMessageBox.Show(msg, "失败");
             }
             else
             { }
