@@ -88,6 +88,13 @@ namespace Landlord2.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap info {
+            get {
+                object obj = ResourceManager.GetObject("info", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap 客房_历史24 {
             get {
                 object obj = ResourceManager.GetObject("客房_历史24", resourceCulture);
@@ -155,6 +162,33 @@ namespace Landlord2.Properties {
             get {
                 object obj = ResourceManager.GetObject("客房48Edit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 http://www.whwater.gov.cn/3637.html 的本地化字符串。
+        /// </summary>
+        internal static string 武汉市城市供水价格表 {
+            get {
+                return ResourceManager.GetString("武汉市城市供水价格表", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 1.90,0,25;2.45,25,33;3.00,33 的本地化字符串。
+        /// </summary>
+        internal static string 武汉市阶梯水价默认值 {
+            get {
+                return ResourceManager.GetString("武汉市阶梯水价默认值", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 0.573 的本地化字符串。
+        /// </summary>
+        internal static string 武汉市阶梯电价默认值 {
+            get {
+                return ResourceManager.GetString("武汉市阶梯电价默认值", resourceCulture);
             }
         }
         

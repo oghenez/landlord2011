@@ -130,6 +130,9 @@
   <data name="idea_16_hot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\idea_16_hot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="客房24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\客房24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -159,6 +162,18 @@
   </data>
   <data name="客房_未租24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\客房-未租24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="武汉市城市供水价格表" xml:space="preserve">
+    <value>http://www.whwater.gov.cn/3637.html</value>
+    <comment>武汉市城市供水价格表--武汉水务网</comment>
+  </data>
+  <data name="武汉市阶梯水价默认值" xml:space="preserve">
+    <value>1.90,0,25;2.45,25,33;3.00,33</value>
+    <comment>表示：1.9元/吨，0~25吨（含）；2.45元/吨，25~33吨（含）；3元/吨，33吨以上。</comment>
+  </data>
+  <data name="武汉市阶梯电价默认值" xml:space="preserve">
+    <value>0.573</value>
+    <comment>目前未实行阶梯电价，先仅定义电单价</comment>
   </data>
   <data name="源房24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\源房24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

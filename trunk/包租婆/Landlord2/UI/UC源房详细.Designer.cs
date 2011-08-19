@@ -838,14 +838,17 @@
             this.kryptonTextBox29.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "阶梯水价", true));
             this.kryptonTextBox29.Location = new System.Drawing.Point(444, 296);
             this.kryptonTextBox29.Name = "kryptonTextBox29";
+            this.kryptonTextBox29.ReadOnly = true;
             this.kryptonTextBox29.Size = new System.Drawing.Size(172, 21);
             this.kryptonTextBox29.TabIndex = 28;
+            this.toolTip1.SetToolTip(this.kryptonTextBox29, "单击右侧图标修改...");
             // 
             // buttonSpecAny阶梯水价
             // 
             this.buttonSpecAny阶梯水价.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Standalone;
             this.buttonSpecAny阶梯水价.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.ArrowRight;
             this.buttonSpecAny阶梯水价.UniqueName = "7756BC7E44C546DFC4A3BB5E72916EC3";
+            this.buttonSpecAny阶梯水价.Click += new System.EventHandler(this.buttonSpecAny阶梯水价_Click);
             // 
             // kryptonTextBox30
             // 
@@ -854,14 +857,17 @@
             this.kryptonTextBox30.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "阶梯电价", true));
             this.kryptonTextBox30.Location = new System.Drawing.Point(444, 326);
             this.kryptonTextBox30.Name = "kryptonTextBox30";
+            this.kryptonTextBox30.ReadOnly = true;
             this.kryptonTextBox30.Size = new System.Drawing.Size(172, 21);
             this.kryptonTextBox30.TabIndex = 29;
+            this.toolTip1.SetToolTip(this.kryptonTextBox30, "单击右侧图标修改...");
             // 
             // buttonSpecAny阶梯电价
             // 
             this.buttonSpecAny阶梯电价.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Standalone;
             this.buttonSpecAny阶梯电价.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.ArrowRight;
             this.buttonSpecAny阶梯电价.UniqueName = "F996FEBF43074559ADB26E8097C897AD";
+            this.buttonSpecAny阶梯电价.Click += new System.EventHandler(this.buttonSpecAny阶梯电价_Click);
             // 
             // kryptonTextBox31
             // 

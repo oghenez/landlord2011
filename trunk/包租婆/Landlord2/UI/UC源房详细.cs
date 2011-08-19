@@ -141,5 +141,27 @@ namespace Landlord2.UI
                 }
             }
         }
+
+        private void buttonSpecAny阶梯水价_Click(object sender, EventArgs e)
+        {
+            源房 yf = 源房BindingSource.DataSource as 源房;
+            阶梯水价Form form = new 阶梯水价Form(yf.阶梯水价);
+            DialogResult dr = form.ShowDialog(this);
+            if (dr == DialogResult.OK)
+            {
+                yf.阶梯水价 = form.ResultWaterValue;
+            }
+        }
+
+        private void buttonSpecAny阶梯电价_Click(object sender, EventArgs e)
+        {
+            源房 yf = 源房BindingSource.DataSource as 源房;
+            阶梯电价Form f = new 阶梯电价Form(yf.阶梯电价);
+            DialogResult dr = f.ShowDialog(this);
+            if (dr == DialogResult.OK)
+            {
+                yf.阶梯电价 = f.ResultElectricValue;
+            }
+        }
     }
 }
