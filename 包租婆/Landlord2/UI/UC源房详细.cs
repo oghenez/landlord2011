@@ -8,7 +8,8 @@ using System.Windows.Forms;
 using Landlord2.Data;
 using ComponentFactory.Krypton.Toolkit;
 using System.Drawing.Drawing2D;
-using System.Drawing;
+using System.IO;
+using System.CodeDom.Compiler;
 
 namespace Landlord2.UI
 {
@@ -124,19 +125,21 @@ namespace Landlord2.UI
             Image img = picBox.Image;
             if (img != null)
             {
-                string filename = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonPictures), "协议照片"+DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg");
-                try
+                //使用默认设置初始化集合的默认构造函数。默认情况下，此临时文件集合将文件存储在默认临时目录中，并在生成和使用临时文件后将其删除。
+                using (TempFileCollection tfc = new TempFileCollection())
                 {
-                    img.Save(filename);
-                    System.Diagnostics.Process.Start(filename);
-                }
-                catch (Exception ex)
-                {
-
-                    KryptonMessageBox.Show(ex.Message, "错误提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string fileName = tfc.AddExtension("jpg");
+                    try
+                    {
+                        img.Save(fileName);
+                        System.Diagnostics.Process.Start(fileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        KryptonMessageBox.Show(ex.Message, "错误提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
-             
         }
     }
 }
