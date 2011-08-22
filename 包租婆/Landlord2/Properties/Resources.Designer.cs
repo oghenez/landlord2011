@@ -95,34 +95,6 @@ namespace Landlord2.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap 客房_历史24 {
-            get {
-                object obj = ResourceManager.GetObject("客房_历史24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap 客房_已租24 {
-            get {
-                object obj = ResourceManager.GetObject("客房_已租24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap 客房_未租24 {
-            get {
-                object obj = ResourceManager.GetObject("客房_未租24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap 客房24 {
-            get {
-                object obj = ResourceManager.GetObject("客房24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap 客房24Add {
             get {
                 object obj = ResourceManager.GetObject("客房24Add", resourceCulture);
@@ -189,20 +161,6 @@ namespace Landlord2.Properties {
         internal static string 武汉市阶梯电价默认值 {
             get {
                 return ResourceManager.GetString("武汉市阶梯电价默认值", resourceCulture);
-            }
-        }
-        
-        internal static System.Drawing.Bitmap 源房_历史24 {
-            get {
-                object obj = ResourceManager.GetObject("源房_历史24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap 源房24 {
-            get {
-                object obj = ResourceManager.GetObject("源房24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

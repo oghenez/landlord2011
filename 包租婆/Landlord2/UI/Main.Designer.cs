@@ -66,6 +66,7 @@
             this.kryptonHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.buttonSpecHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.kryptonCheckButton3 = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
             this.kryptonCheckButton2 = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
             this.kryptonCheckButton1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
@@ -78,13 +79,13 @@
             this.buttonSpecHeaderGroup5 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.buttonSpecHeaderGroup6 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.buttonSpecHeaderGroupAlarm = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.yfBtnAdd = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
             this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.uC源房ToolStrip1 = new Landlord2.UI.UC源房ToolStrip();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -104,6 +105,7 @@
             this.kryptonHeaderGroup2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup3)).BeginInit();
             this.kryptonHeaderGroup3.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonCheckSet1)).BeginInit();
             this.SuspendLayout();
@@ -374,7 +376,7 @@
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.uC源房ToolStrip1);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
             // 
             // kryptonSplitContainer1
             // 
@@ -429,10 +431,24 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            this.treeView1.SelectedImageIndex = 0;
+            this.treeView1.SelectedImageIndex = 7;
+            this.treeView1.ShowRootLines = false;
             this.treeView1.Size = new System.Drawing.Size(198, 495);
             this.treeView1.TabIndex = 3;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Ball_Green.png");
+            this.imageList1.Images.SetKeyName(1, "Ball_Gray.png");
+            this.imageList1.Images.SetKeyName(2, "源房24.png");
+            this.imageList1.Images.SetKeyName(3, "客房-已租24.png");
+            this.imageList1.Images.SetKeyName(4, "客房-未租24.png");
+            this.imageList1.Images.SetKeyName(5, "源房-历史24.png");
+            this.imageList1.Images.SetKeyName(6, "客房-历史24.png");
+            this.imageList1.Images.SetKeyName(7, "Ball_Yellow.png");
             // 
             // kryptonCheckButton3
             // 
@@ -553,6 +569,29 @@
             this.buttonSpecHeaderGroupAlarm.UniqueName = "360B4AAA7FA84B1FAF806F875045C459";
             this.buttonSpecHeaderGroupAlarm.Click += new System.EventHandler(this.OnUpDown);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(48, 48);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.yfBtnAdd});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(71, 70);
+            this.toolStrip1.TabIndex = 0;
+            // 
+            // yfBtnAdd
+            // 
+            this.yfBtnAdd.Image = global::Landlord2.Properties.Resources.源房48Add;
+            this.yfBtnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnAdd.Name = "yfBtnAdd";
+            this.yfBtnAdd.Size = new System.Drawing.Size(59, 67);
+            this.yfBtnAdd.Text = "新增源房";
+            this.yfBtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.yfBtnAdd.ToolTipText = "新增一套源房信息";
+            this.yfBtnAdd.Click += new System.EventHandler(this.yfBtnAdd_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -593,25 +632,6 @@
             this.AlarmTimer1.Interval = 500;
             this.AlarmTimer1.Tick += new System.EventHandler(this.AlarmTimer1_Tick);
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "源房24.png");
-            this.imageList1.Images.SetKeyName(1, "客房-已租24.png");
-            this.imageList1.Images.SetKeyName(2, "客房-未租24.png");
-            this.imageList1.Images.SetKeyName(3, "源房-历史24.png");
-            this.imageList1.Images.SetKeyName(4, "客房-历史24.png");
-            // 
-            // uC源房ToolStrip1
-            // 
-            this.uC源房ToolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.uC源房ToolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.uC源房ToolStrip1.Location = new System.Drawing.Point(3, 0);
-            this.uC源房ToolStrip1.Name = "uC源房ToolStrip1";
-            this.uC源房ToolStrip1.Size = new System.Drawing.Size(586, 70);
-            this.uC源房ToolStrip1.TabIndex = 2;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -620,6 +640,7 @@
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
@@ -648,6 +669,8 @@
             this.kryptonHeaderGroup2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup3)).EndInit();
             this.kryptonHeaderGroup3.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonCheckSet1)).EndInit();
@@ -711,8 +734,9 @@
         private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup buttonSpecHeaderGroup5;
         private System.Windows.Forms.Timer AlarmTimer1;
         private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup buttonSpecHeaderGroup6;
-        private UI.UC源房ToolStrip uC源房ToolStrip1;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton yfBtnAdd;
     }
 }
 

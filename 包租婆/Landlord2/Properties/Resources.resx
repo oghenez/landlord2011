@@ -133,17 +133,14 @@
   <data name="info" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="客房24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\客房24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="客房24Add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\客房24Add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\resources\客房24add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="客房24Del" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\客房24Del.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\resources\客房24del.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="客房24Edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\客房24Edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\resources\客房24edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="客房48Add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\客房48Add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -153,15 +150,6 @@
   </data>
   <data name="客房48Edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\客房48Edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="客房_历史24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\客房-历史24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="客房_已租24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\客房-已租24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="客房_未租24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\客房-未租24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="武汉市城市供水价格表" xml:space="preserve">
     <value>http://www.whwater.gov.cn/3637.html</value>
@@ -175,17 +163,14 @@
     <value>0.573</value>
     <comment>目前未实行阶梯电价，先仅定义电单价</comment>
   </data>
-  <data name="源房24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\源房24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="源房24Add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\源房24Add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\resources\源房24add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="源房24Del" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\源房24Del.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\resources\源房24del.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="源房24Edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\源房24Edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\resources\源房24edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="源房48Add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\源房48Add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -195,8 +180,5 @@
   </data>
   <data name="源房48Edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\源房48Edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="源房_历史24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\源房-历史24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

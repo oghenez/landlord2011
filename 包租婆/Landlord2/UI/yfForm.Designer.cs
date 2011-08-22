@@ -35,7 +35,8 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(549, 426);
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOK.Location = new System.Drawing.Point(549, 395);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(90, 25);
             this.btnOK.TabIndex = 1;
@@ -44,9 +45,10 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.CausesValidation = false;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(680, 426);
+            this.btnCancel.Location = new System.Drawing.Point(680, 395);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 25);
             this.btnCancel.TabIndex = 1;
@@ -55,10 +57,11 @@
             // 
             // uC源房详细1
             // 
+            this.uC源房详细1.BackColor = System.Drawing.Color.Transparent;
             this.uC源房详细1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.uC源房详细1.Location = new System.Drawing.Point(5, 5);
+            this.uC源房详细1.Location = new System.Drawing.Point(9, 5);
             this.uC源房详细1.Name = "uC源房详细1";
-            this.uC源房详细1.Size = new System.Drawing.Size(790, 402);
+            this.uC源房详细1.Size = new System.Drawing.Size(783, 376);
             this.uC源房详细1.TabIndex = 0;
             // 
             // yfForm
@@ -67,7 +70,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(800, 463);
+            this.ClientSize = new System.Drawing.Size(800, 432);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.uC源房详细1);

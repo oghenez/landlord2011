@@ -55,9 +55,16 @@ namespace Landlord2.UI
                 Main.context.AddTo源房(yf);
                 string msg;
                 if (Helper.saveData(Main.context.源房, out msg))
+                {
                     KryptonMessageBox.Show(msg, "成功新增源房");
+                    (this.Owner as Main).RefreshAndLocateTree(yf);//刷新TreeView，并定位到yf节点。
+                    Close();
+                }
                 else
+                {
                     KryptonMessageBox.Show(msg, "失败");
+                    Main.context.Detach(yf);
+                }
             }
             else
             { }

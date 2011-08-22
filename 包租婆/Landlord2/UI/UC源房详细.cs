@@ -15,19 +15,17 @@ namespace Landlord2.UI
 {
     public partial class UC源房详细 : Landlord2.UI.UCBase
     {
-        //private 源房 yf;
+        private bool IsReadOnly = false;
         public UC源房详细()
         {
             InitializeComponent();
+            Controls.Remove(toolStrip1);
         }
-
-        //public UC源房详细(源房 yf)
-        //{
-        //    InitializeComponent();
-        //    this.yf = yf;
-        //    源房BindingSource.DataSource = yf;
-            
-        //}
+        public UC源房详细(bool isReadOnly)
+        {
+            InitializeComponent();
+            IsReadOnly = isReadOnly;
+        }
 
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
@@ -163,5 +161,17 @@ namespace Landlord2.UI
                 yf.阶梯电价 = f.ResultElectricValue;
             }
         }
+
+        #region 如果仅仅显示实体值而不需更改时，处理这2个事件，丢弃当前模型的更新值。
+        private void UC源房详细_ParentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 源房BindingSource_DataSourceChanged(object sender, EventArgs e)
+        {
+
+        } 
+        #endregion
     }
 }
