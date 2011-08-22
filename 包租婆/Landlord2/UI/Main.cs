@@ -253,49 +253,6 @@ namespace Landlord2
 
         //}
 
-        #region 使加载的控件居中
-        private void kryptonHeaderGroup2_Panel_Layout(object sender, LayoutEventArgs e)
-        {
-            switch (kryptonHeaderGroup2.Panel.Controls.Count)
-            {
-                case 0:
-                    break;
-                case 1://唯一加载控件
-                    {
-                        var control = kryptonHeaderGroup2.Panel.Controls[0];
-                        if (control.Dock != DockStyle.Fill)
-                        {
-                            int x = (kryptonHeaderGroup2.Panel.Width - control.Width) / 2;
-                            int y = (kryptonHeaderGroup2.Panel.Height - control.Height) / 2;
-                            x = (x > 0) ? x : 0;
-                            y = (y > 0) ? y : 0;
-                            control.SetBounds(x, y, control.Width, control.Height);
-                        }
-                    }
-                    break;
-                case 2://2个控件，第一个为菜单，第二个才是需要调整的
-                    {
-                        var control0 = kryptonHeaderGroup2.Panel.Controls[0];
-                        var control1 = kryptonHeaderGroup2.Panel.Controls[1];
-                        if (control1.Dock != DockStyle.Fill)
-                        {
-                            int x = (kryptonHeaderGroup2.Panel.Width - control1.Width) / 2;
-                            int y = (kryptonHeaderGroup2.Panel.Height - control1.Height - control0.Height) / 2;
-                            x = (x > 0) ? x : 0;
-                            y = (y > 0) ? y : 0;
-                            control1.SetBounds(x, y + control0.Height, control1.Width, control1.Height);
-                        }
-                    }
-                    break;
-                default:
-                    {
-                        KryptonMessageBox.Show("超过2个控件的加载");
-                    }
-                    break;
-            }            
-        } 
-        #endregion
-
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             switch (e.Button)
