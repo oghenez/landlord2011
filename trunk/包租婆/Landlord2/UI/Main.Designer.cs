@@ -507,10 +507,6 @@
             this.kryptonHeaderGroup2.HeaderVisibleSecondary = false;
             this.kryptonHeaderGroup2.Location = new System.Drawing.Point(0, 0);
             this.kryptonHeaderGroup2.Name = "kryptonHeaderGroup2";
-            // 
-            // kryptonHeaderGroup2.Panel
-            // 
-            this.kryptonHeaderGroup2.Panel.Layout += new System.Windows.Forms.LayoutEventHandler(this.kryptonHeaderGroup2_Panel_Layout);
             this.kryptonHeaderGroup2.Size = new System.Drawing.Size(793, 507);
             this.kryptonHeaderGroup2.TabIndex = 0;
             this.kryptonHeaderGroup2.ValuesPrimary.Heading = " ";

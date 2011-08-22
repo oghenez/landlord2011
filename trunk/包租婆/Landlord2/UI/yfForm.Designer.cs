@@ -59,7 +59,7 @@
             // 
             this.uC源房详细1.BackColor = System.Drawing.Color.Transparent;
             this.uC源房详细1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.uC源房详细1.Location = new System.Drawing.Point(9, 5);
+            this.uC源房详细1.Location = new System.Drawing.Point(9, 9);
             this.uC源房详细1.Name = "uC源房详细1";
             this.uC源房详细1.Size = new System.Drawing.Size(783, 376);
             this.uC源房详细1.TabIndex = 0;
