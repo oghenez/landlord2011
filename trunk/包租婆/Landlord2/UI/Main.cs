@@ -10,13 +10,16 @@ using ComponentFactory.Krypton.Toolkit;
 using Landlord2.UI;
 using Landlord2.Data;
 using Landlord2.Properties;
+using System.Data.Objects.DataClasses;
 
 namespace Landlord2
 {
     public partial class Main : KryptonForm
     {
         private int _widthLeftRight, _heightUpDown;
-        public static Entities context;     
+        public static Entities context;
+        private UC源房详细 yfUC = new UC源房详细(true) { Dock = DockStyle.Fill };
+
         public Main()
         {
             InitializeComponent();
@@ -37,7 +40,7 @@ namespace Landlord2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadTreeView();
+            LoadTreeView(null);
             AlarmTimer1.Enabled = true; //-- 测试闪动提醒图标
         }
 
@@ -50,10 +53,16 @@ namespace Landlord2
         } 
         #endregion
 
+        //根据数据源，刷新数，并定位到指定对象所对应的节点。（新增、修改、删除等操作后）
+        public void RefreshAndLocateTree(EntityObject obj)
+        {
+            LoadTreeView(obj);
+        }
         /// <summary>
-        /// 源房、客房信息到TreeView控件
+        /// 加载源房、客房信息到TreeView控件。
+        /// 同时如果传入了EntityObject[例如：某个源房、客房对象]，加载后则选中之。
         /// </summary>
-        private void LoadTreeView()
+        private void LoadTreeView(EntityObject obj)
         {
             treeView1.BeginUpdate();
             treeView1.Nodes.Clear();
@@ -69,18 +78,23 @@ namespace Landlord2
                     if (yfGroup.Key == true) // 满足 '期止 > DateTime.Now'
                     {
                         TreeNode root1 = new TreeNode("当前源房信息");
+                        root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
+                        root1.ImageIndex = 0;
                         treeView1.Nodes.Add(root1);
                         foreach (var yf in yfGroup)
-                            AddYuanFangToTree(root1, yf);
+                            AddYuanFangToTree(root1, yf,false,obj);
 
                         root1.ExpandAll();
                     }
                     else
                     {
                         TreeNode root2 = new TreeNode("历史源房信息");
+                        root2.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
+                        root2.ForeColor = Color.DimGray;
+                        root2.ImageIndex = 1;
                         treeView1.Nodes.Add(root2);
                         foreach (var yf in yfGroup)
-                            AddYuanFangToTree(root2, yf);
+                            AddYuanFangToTree(root2, yf,true,obj);
                     }
                 }
             }
@@ -95,13 +109,16 @@ namespace Landlord2
         /// </summary>
         /// <param name="parent"></param>
         /// <param name="yf"></param>
-        private void AddYuanFangToTree(TreeNode parent, 源房 yf)
+        /// <param name="isHistory">是否是历史源房（历史源房下的客房不管到期与否都置灰）</param>
+        private void AddYuanFangToTree(TreeNode parent, 源房 yf, bool isHistory,EntityObject obj)
         {
             TreeNode yfNode = new TreeNode();
             yfNode.Text = yf.房名;
             yfNode.Tag = yf;
-            //yfNode.Image = Resources.house_24;
+            yfNode.ImageIndex = isHistory ? 5 : 2;//历史源房5：当前有效源房2
             parent.Nodes.Add(yfNode);
+            if (yf == obj)
+                yfNode.TreeView.SelectedNode = yfNode ;
 
             var kfs = yf.客房;
             foreach (var kf in kfs)
@@ -109,8 +126,13 @@ namespace Landlord2
                 TreeNode kfNode = new TreeNode();
                 kfNode.Text = kf.命名;
                 kfNode.Tag = kf;
-                //kfNode.Image = (kf.期止 < DateTime.Now) ? Resources.house_2__2_ : Resources.House__6_;/*是否到期*/
+                if (isHistory)
+                    kfNode.ImageIndex = 6;//历史客房
+                else
+                    kfNode.ImageIndex = (kf.期止 < DateTime.Now) ? 4 : 3;//已租3：未租4
                 yfNode.Nodes.Add(kfNode);
+                if (kf == obj)
+                    kfNode.TreeView.SelectedNode = kfNode;
             }
         }
         #region 左侧自动缩近、扩展
@@ -197,21 +219,28 @@ namespace Landlord2
             kryptonHeaderGroup1.ValuesPrimary.Heading = kryptonCheckSet1.CheckedButton.Values.Text;
         }
 
-        #region 载入用户控件
-        private void LoadUC(UCBase uc, string text)
+        #region 加载或刷新用户控件（例如：上次和当前都是点击的‘源房’，那么仅仅刷新而不重复加载）
+        private void LoadOrRefreshUC(object entity)
         {
-            ////载入控件时，测试检测是否有未保存数据
-            //var changes = context.ObjectStateManager.GetObjectStateEntries(
-            //    EntityState.Added |
-            //    EntityState.Deleted |
-            //    //EntityState.Detached |
-            //    EntityState.Modified);
-            //if (changes != null)
-            //    KryptonMessageBox.Show("[测试] 当前存在数据修改。");
+            if (entity == null)
+                return;
+            
+            //这里直接丢弃更改，因为加载后的
 
-            //kryptonHeaderGroup2.Panel.Controls.Clear();
-            kryptonHeaderGroup2.ValuesPrimary.Heading = text;
-            kryptonHeaderGroup2.Panel.Controls.Add(uc);
+            if (entity is 源房)
+            {
+                if (kryptonHeaderGroup2.Panel.Controls.Count > 0)
+                { }
+                else
+                {
+                    yfUC.源房BindingSource.DataSource = entity;
+                    kryptonHeaderGroup2.Panel.Controls.Add(yfUC);
+                }
+            }
+            else if (entity is 客房)
+            { }
+
+
         }
         #endregion
         //private void 新建NToolStripButton_Click(object sender, EventArgs e)
@@ -273,19 +302,18 @@ namespace Landlord2
             {
                 case System.Windows.Forms.MouseButtons.Left:
                     {
-                        //if (e.Node.Tag == null)
-                        //    return;
+                        LoadOrRefreshUC(e.Node.Tag);
                         //else if (e.Node.Tag is 源房)
                         //{
-                        //    源房 yf = e.Node.Tag as 源房;
-                        //    UC源房详细 uc = new UC源房详细(yf);
-                        //    LoadUC(uc, "源房：" + yf.房名);
+                        //    //源房 yf = e.Node.Tag as 源房;
+                        //    //UC源房详细 uc = new UC源房详细();
+                        //    //LoadOrRefreshUC(uc, "源房：" + yf.房名);
                         //}
                         //else if (e.Node.Tag is 客房)
                         //{
-                        //    客房 kf = e.Node.Tag as 客房;
-                        //    UC客房详细 uc = new UC客房详细(kf);
-                        //    LoadUC(uc, "客房：" + kf.命名);
+                        //    //客房 kf = e.Node.Tag as 客房;
+                        //    //UC客房详细 uc = new UC客房详细(kf);
+                        //    //LoadUC(uc, "客房：" + kf.命名);
                         //}
                     }
                     break;
@@ -296,6 +324,15 @@ namespace Landlord2
                     break;
             }
         }
+
+        #region 菜单按钮
+        private void yfBtnAdd_Click(object sender, EventArgs e)
+        {
+            //新增源房
+            yfForm yF = new yfForm(null);
+            yF.ShowDialog(this);
+        } 
+        #endregion
 
     }
 }

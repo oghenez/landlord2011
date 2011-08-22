@@ -23,20 +23,21 @@
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Location = new System.Drawing.Point(10, 43);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ControlClient;
-            this.kryptonPanel1.Size = new System.Drawing.Size(569, 400);
+            this.kryptonPanel1.Size = new System.Drawing.Size(569, 372);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // UCBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.kryptonPanel1);
             this.Name = "UCBase";
-            this.Size = new System.Drawing.Size(569, 400);
+            this.Size = new System.Drawing.Size(588, 429);
+            this.Layout += new System.Windows.Forms.LayoutEventHandler(this.UCBase_Layout);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.ResumeLayout(false);
 

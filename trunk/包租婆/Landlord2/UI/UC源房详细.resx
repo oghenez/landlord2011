@@ -117,343 +117,227 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="租赁协议照片3PictureBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="源房BindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>127, 17</value>
   </metadata>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>528, 17</value>
-  </metadata>
-  <metadata name="租赁协议照片2PictureBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="租赁协议照片1PictureBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+    <value>638, 17</value>
   </metadata>
   <metadata name="备注Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="备注Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="源房东银行卡Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="源房东银行卡Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="身份证号Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="身份证号Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="联系地址Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="联系地址Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="权证号Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="权证号Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="房名Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="房名Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="btnOpenFile3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="btnOpenFile2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="btnOpenFile1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonCheckBox1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="气单价Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="气单价Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="阶梯电价Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="阶梯电价Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="阶梯水价Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="阶梯水价Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="气表编号Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="气表编号Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="电表编号Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="电表编号Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="水表编号Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="水表编号Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="月卫生费Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="月卫生费Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="月物业费Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="月物业费Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="月宽带费Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="月宽带费Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonDataGridView1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="源房涨租协定BindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>179, 17</value>
+    <value>289, 17</value>
   </metadata>
   <metadata name="中介费用Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="中介费用Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="押金Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="押金Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="支付月数Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="支付月数Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="气始码Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="气始码Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="电始码Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="电始码Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="水始码Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="水始码Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="租赁协议照片3Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="租赁协议照片3Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="租赁协议照片2Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="租赁协议照片2Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="租赁协议照片1Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="租赁协议照片1Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="房东Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="房东Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="电话2Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="电话2Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox15.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="装修Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="装修Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="电话1Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="电话1Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="结构Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="结构Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox14.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="用途Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="用途Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox13.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="卫Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="卫Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="厅Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="厅Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="室Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="室Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="建筑面积Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="建筑面积Label.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox9.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox8.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox7.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox6.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox21.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox19.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox28.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox27.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox31.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox30.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox29.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox26.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox22.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox25.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox24.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox23.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox18.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox20.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox17.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox16.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox10.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox11.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="kryptonTextBox12.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>391, 17</value>
-  </metadata>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+    <value>501, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>55</value>
   </metadata>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>739, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolStripButton4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="toolStripButton3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAZwSURBVEhLlZV7VJNlHMdf86/KyhI6WZ7s6kSQweQmBBYN
+        lIvBxoABYyDsAhtjIDBJRi+XwRhsgznGHcUAKdAs8xLesEMiUpnZFJjChihpll1Mu5z02ztIyuOx7D3n
+        e973eZ/f7/v5Pc/7e85LEP/zGmhOfeLzJtGGLpI7UhD/SvR9p9eSq+Z1bAwv68wPS2jJCV0Mgpjzz+T+
+        uvTHj5mE8qE60fgRQyqMWWEoF7xyKZfr7XpfkDbFauf2DWuvt78Zjq354T9sUYQcaMlerXy7IMJ3oF6c
+        8Vl92vinjWIMNQixUy9Fb0sh9Nls5HG9hmQcN8f/hDStD05oU4RhS14oNueGoDV3DVpy1qBZ/vrNFkXo
+        rW6Sjf1VPHxQFoe3y0TYsUkBUYQHcmM8kBnF6CFJ4oF/hTRlBRtaKcPN2Uw0ZwWiMSsIDZTqM5mozQiE
+        IX0VDJJV0Ketwo4iNrYXx4If5AwF1wcyFgNJTKeCewJIknygQcbsa8gMRHFaOKqy2KiXB8EofW1a1WkB
+        qJMHoz6HmhP4YeuGUHQqWSiI90KVKABqQQByo9x+byN5GTm8oIfvAtVkMp+tlwVetSeLct+CzlALagy9
+        2B9akT9V+at4pyQBijhfVAn9oUn1nVYlFV+RsnJW9ngukz6ybNGjCT6LFj04CzKk+wfXpAfcKhcGIk/T
+        hEZjJWqE3tMGmlQ/HKhOhVocjKQgJ5SnzJiWr1sJzTovVCR5QMX3QinfE6VJPtCUbIR4XcKvy5+bnzQL
+        0Ar9Cu2V6sQBqM3jwJjLgjrZC6pkH+yr4mNXZTISXl8KHqU347ypOR+okjwh5axEFjdg2rg4no4SARN6
+        vR7GWtOUTCb7u7PUqSs/uL1UNZWoSvSgkryxpyIexxslkEYyEB3wImJfW4K0N9ymqy+MXoY1iVmQ6XtQ
+        KXoVSo4TSjLjoKveBI1GM2U0GhfMrqBS4LvTXlUZzx2l8W4g4+jUhwxDS0EcBPwYpHDDwfF7Fhz/FxEf
+        uBTFPE/kR9MRld8IVWMPyhLdoYxZjjJlNgUw3A2wn9pjB3Z2d7dWQ5/HRetbSegwqdHe0YmBweM4NzaG
+        UoUIIW4LwPJ7AXnRDArigXI5B1U58SiMcUEhj9r/8lLo9NV3A+xLmbSNbzZ29UKibsPwyAjGrROUrJiw
+        WXH+4kXYJi8gTxyLILojROGuKEr0RAFlbJcy1hWkmGphqvoqnd6uizpd8xN3tOuYxdK2o/cTFNXvwMio
+        BeetY2jt2QdVQzc+P3Ycn1E6cbQfKavdwfV5GmS0C4qilqGI4wyS9TJUGbHQV1RApyqBpkI9tU3KffoO
+        gIUCmM1m9Pf34/Tp05iwnsOWvUeRnyzHVwlhOJYcgXO5ibBkRmKI5w0zdR6Gqb4fSfvrLgvFcGYEzNI3
+        8KU4/Hcry/PsIfozXbMQ25ilrbZzN/K0bRihtshiGYV5zIa96yW4zA/At4oofKeIxI/KKNwojqEUjRsl
+        M7pOPV8rjMKPG9m4qmDjyno2LinicYrpOjULmByfaul4fxAZmk6MWiw4PjiIvsEhfLReiMtrFuIKbym+
+        T6bhmoCGG2k0/Cqh4TfpjH5Jp+G6iIafUmm4yqfhGy4Nl2Kc8IW74/lpgO7Wogc/mSzff+TUdvQepLpm
+        2Arb2AWM2CbxroAPm9eTmAhzwoW1NExF0vA1m4bLHBquxFBm0TOyj+3vL0Y6YXItpXBnnGQ8dWEawNnj
+        Gqg8ueRm6Qk/9Iyx0HWiCGfODcJsHQYZEon3CAK75xHofXwuDi2Yg8MOc9DnSN0dCRx5cg4lAn0OBDVH
+        4PB84ubBR4g/Dj1EoGMuMTqzRUL/hXS1l0G638UsP7ocavMKNE8wkKWLQAFpRKnKhBRpMeQSEn3b3sfB
+        bT3orGtGYko+NlUasaWqEhsEQiglkinf55+PWkgQ/lQLMR0Iwv2OTlpM0ucvzmaw/IwMPX+X06WSWiFO
+        DJ3CWes4tnbvRZFBjIGrWgxaBmA7/zV2932JT0/Z0HfkY1TotKgxmST/+We7HbCiYsVjjR3ays72rm96
+        ez8CSapuJDW+fE15ZgmMZ/zQfjYC+042YNR2GLv3fAi1Wv1hd3f33PsG3A7UarUOJpOJnb8xX+Qg9Ahh
+        dbq08Xctn8oZcEGNxRmqM3TIm9J+Vpfo6P/b/F4Jj6V7vBBUt5TL0HtuFx9+6dt0k1hxr9g/ASEI/V+O
+        0+pLAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="toolStripButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
 </root>

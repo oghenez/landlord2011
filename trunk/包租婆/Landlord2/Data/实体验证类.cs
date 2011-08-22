@@ -83,6 +83,10 @@ namespace Landlord2.Data
             //校验所有非空属性
             returnStr = MyEntityHelper.CheckNullOrEmptyAndABS(this);
 
+            //源房必须有‘源房涨租协定表’
+            if (this.源房涨租协定.Count() == 0)
+                returnStr += "请填写协议租期!" + Environment.NewLine;
+
             //校验源房下的‘源房涨租协定’表
             DateTime temp = DateTime.MinValue;
             foreach (var o in this.源房涨租协定.OrderBy(m=>m.期始))
