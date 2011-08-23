@@ -106,9 +106,6 @@
     <Compile Include="UI\UC客房详细.Designer.cs">
       <DependentUpon>UC客房详细.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\UC源房ToolStrip.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="UI\UC源房详细.cs">
       <SubType>UserControl</SubType>
     </Compile>
