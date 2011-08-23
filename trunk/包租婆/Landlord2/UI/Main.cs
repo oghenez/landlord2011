@@ -19,6 +19,7 @@ namespace Landlord2
         private int _widthLeftRight, _heightUpDown;
         public static Entities context;
         private UC源房详细 yfUC = new UC源房详细(true) { Dock = DockStyle.Fill };
+        private UC客房详细 kfUC = new UC客房详细(true) { Dock = DockStyle.Fill };
 
         public Main()
         {
@@ -225,33 +226,54 @@ namespace Landlord2
             if (entity == null)
                 return;
             
-            //这里直接丢弃更改，因为加载后的
-
             if (entity is 源房)
             {
-                if (kryptonHeaderGroup2.Panel.Controls.Count > 0)
-                { }
-                else
+                if (kryptonHeaderGroup2.Panel.Controls.Count == 0) //初次加载
                 {
                     yfUC.源房BindingSource.DataSource = entity;
                     kryptonHeaderGroup2.Panel.Controls.Add(yfUC);
                 }
+                else if(kryptonHeaderGroup2.Panel.Controls[0] is UC源房详细)//原来加载的是‘源房详细’控件
+                {
+                    //仅仅更改绑定实体
+                    yfUC.源房BindingSource.DataSource = entity;
+                }
+                else if (kryptonHeaderGroup2.Panel.Controls[0] is UC客房详细)
+                {
+                    //删除控件
+                    kryptonHeaderGroup2.Panel.Controls.RemoveAt(0);
+                    //加载
+                    yfUC.源房BindingSource.DataSource = entity;
+                    kryptonHeaderGroup2.Panel.Controls.Add(yfUC);
+                }
+                kryptonHeaderGroup2.ValuesPrimary.Heading = string.Format("源房：{0}", (entity as 源房).房名);
             }
             else if (entity is 客房)
-            { }
+            {
+                if (kryptonHeaderGroup2.Panel.Controls.Count == 0) //初次加载
+                {
+                    kfUC.客房BindingSource.DataSource = entity;
+                    kryptonHeaderGroup2.Panel.Controls.Add(kfUC);
+                }
+                else if (kryptonHeaderGroup2.Panel.Controls[0] is UC客房详细)
+                {
+                    //仅仅更改绑定实体
+                    kfUC.客房BindingSource.DataSource = entity;
+                }
+                else if (kryptonHeaderGroup2.Panel.Controls[0] is UC源房详细)
+                {
+                    //删除控件
+                    kryptonHeaderGroup2.Panel.Controls.RemoveAt(0);
+                    //加载
+                    kfUC.客房BindingSource.DataSource = entity;
+                    kryptonHeaderGroup2.Panel.Controls.Add(kfUC);
+                }
+                kryptonHeaderGroup2.ValuesPrimary.Heading = string.Format("客房：{0} <隶属于：{1}>", (entity as 客房).命名,(entity as 客房).源房.房名) ;
+            }
 
 
         }
         #endregion
-        //private void 新建NToolStripButton_Click(object sender, EventArgs e)
-        //{
-        //    //测试用.....
-        //    UC源房操作菜单 ucc = new UC源房操作菜单(); ucc.Dock = DockStyle.Top;
-        //    kryptonHeaderGroup2.Panel.Controls.Add(ucc);
-        //    UC源房详细 uc = new UC源房详细();            
-        //    LoadUC(uc, "测试源房详细。。。");
-
-        //}
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
@@ -260,18 +282,6 @@ namespace Landlord2
                 case System.Windows.Forms.MouseButtons.Left:
                     {
                         LoadOrRefreshUC(e.Node.Tag);
-                        //else if (e.Node.Tag is 源房)
-                        //{
-                        //    //源房 yf = e.Node.Tag as 源房;
-                        //    //UC源房详细 uc = new UC源房详细();
-                        //    //LoadOrRefreshUC(uc, "源房：" + yf.房名);
-                        //}
-                        //else if (e.Node.Tag is 客房)
-                        //{
-                        //    //客房 kf = e.Node.Tag as 客房;
-                        //    //UC客房详细 uc = new UC客房详细(kf);
-                        //    //LoadUC(uc, "客房：" + kf.命名);
-                        //}
                     }
                     break;
                 case System.Windows.Forms.MouseButtons.Right:
@@ -288,7 +298,33 @@ namespace Landlord2
             //新增源房
             yfForm yF = new yfForm(null);
             yF.ShowDialog(this);
-        } 
+        }
+        private void yfBtnDel_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void yfBtnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kfBtnAdd_Click(object sender, EventArgs e)
+        {
+            //新增客房
+            kfForm kF = new kfForm(null);
+            kF.ShowDialog(this);
+        }
+
+        private void kfBtnDel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kfBtnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
         #endregion
 
     }

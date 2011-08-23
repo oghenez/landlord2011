@@ -75,6 +75,45 @@ namespace Landlord2.Data
     } 
     #endregion
 
+    public partial class 客房 : ICheck
+    {
+        public string CheckRules()
+        {
+            string returnStr = string.Empty;
+            //校验所有非空属性
+            returnStr = MyEntityHelper.CheckNullOrEmptyAndABS(this);
+
+            //时间校验
+            //1、当存在‘租户’时，必须有期止期始值
+            if (!string.IsNullOrEmpty(this.租户))
+            {
+                if (!this.期始.HasValue || !this.期止.HasValue)
+                {
+                    returnStr += string.Format("存在租户时，必须有期始和期止时间!") + Environment.NewLine;
+                }
+            }
+            //2、不可仅有单边值
+            if(this.期始.HasValue && !this.期止.HasValue)
+            {
+                returnStr += "缺少期止时间!" + Environment.NewLine;
+            }
+            else if (!this.期始.HasValue && this.期止.HasValue)
+            {
+                returnStr += "缺少期始时间!" + Environment.NewLine;
+            }
+            //3、期止>期始
+            if (this.期始.HasValue && this.期止.HasValue)
+            {
+                if (this.期止.Value.Date < this.期始.Value.Date)
+                {
+                    returnStr += string.Format("期止时间[{0}]不能小于期始时间[{1}]!",
+                     this.期止.Value.ToShortDateString(), this.期始.Value.ToShortDateString()) + Environment.NewLine;
+                }
+            }        
+          
+            return returnStr;
+        }
+    }
     public partial class 源房:ICheck
     {
         public string CheckRules()
