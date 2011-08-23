@@ -5,31 +5,30 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Landlord2.Data;
 using ComponentFactory.Krypton.Toolkit;
-using System.Drawing.Drawing2D;
-using System.IO;
 using System.CodeDom.Compiler;
+using System.Drawing.Drawing2D;
 
 namespace Landlord2.UI
 {
-    public partial class UC源房详细 : Landlord2.UI.UCBase
+    public partial class UC客房详细 : Landlord2.UI.UCBase
     {
         private bool IsReadOnly = false;
         /// <summary>
-        /// 此构造函数仅编辑器调用
+        ///  此构造函数仅编辑器调用
         /// </summary>
-        public UC源房详细()
+        public UC客房详细()
         {
             InitializeComponent();
             Controls.Remove(toolStrip1);
         }
-        public UC源房详细(bool isReadOnly)
+        public UC客房详细(bool isReadOnly)
         {
             InitializeComponent();
             IsReadOnly = isReadOnly;
         }
-        private void UC源房详细_Load(object sender, EventArgs e)
+
+        private void UC客房详细_Load(object sender, EventArgs e)
         {
             //如果ReadOnly状态，相应控件只读或不可用
             if (IsReadOnly)
@@ -44,12 +43,9 @@ namespace Landlord2.UI
                     else if (con is KryptonButton)
                         (con as KryptonButton).Enabled = false;
                 }
-                buttonSpecAny阶梯电价.Enabled = ButtonEnabled.False;
-                buttonSpecAny阶梯水价.Enabled = ButtonEnabled.False;
-                kryptonDataGridView1.ReadOnly = true;
-                kryptonDataGridView1.AllowUserToAddRows = false;
             }
         }
+
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -75,8 +71,8 @@ namespace Landlord2.UI
             }
             catch (Exception)
             {
-                
-                 KryptonMessageBox.Show("加载图像出错！");
+
+                KryptonMessageBox.Show("加载图像出错！");
             }
         }
 
@@ -97,7 +93,7 @@ namespace Landlord2.UI
                                                    Color.FromArgb(255, 255, 0, 0),   // Opaque red
                                                    Color.FromArgb(255, 0, 0, 255));  // Opaque blue
                     Font f = new Font("宋体", 10, FontStyle.Bold);
-                    e.Graphics.DrawString("双击打开图像", f, linGrBrush,2,2);
+                    e.Graphics.DrawString("双击打开图像", f, linGrBrush, 2, 2);
                     return;
                 }
             }
@@ -135,7 +131,7 @@ namespace Landlord2.UI
                             toolTipWidth = 240 * img.Width / img.Height;
                         }
                     }
-                    e.ToolTipSize = new Size(toolTipWidth, toolTipHeight); 
+                    e.ToolTipSize = new Size(toolTipWidth, toolTipHeight);
                 }
             }
         }
@@ -162,30 +158,6 @@ namespace Landlord2.UI
                 }
             }
         }
-
-        private void buttonSpecAny阶梯水价_Click(object sender, EventArgs e)
-        {
-            源房 yf = 源房BindingSource.DataSource as 源房;
-            阶梯水价Form form = new 阶梯水价Form(yf.阶梯水价);
-            DialogResult dr = form.ShowDialog(this);
-            if (dr == DialogResult.OK)
-            {
-                yf.阶梯水价 = form.ResultWaterValue;
-            }
-        }
-
-        private void buttonSpecAny阶梯电价_Click(object sender, EventArgs e)
-        {
-            源房 yf = 源房BindingSource.DataSource as 源房;
-            阶梯电价Form f = new 阶梯电价Form(yf.阶梯电价);
-            DialogResult dr = f.ShowDialog(this);
-            if (dr == DialogResult.OK)
-            {
-                yf.阶梯电价 = f.ResultElectricValue;
-            }
-        }
-
-
 
     }
 }
