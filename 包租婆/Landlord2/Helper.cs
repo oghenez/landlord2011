@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.EntityClient;
 using System.Data;
 using System.Data.Objects;
+using System.IO;
 
 namespace Landlord2
 {
@@ -45,21 +46,50 @@ namespace Landlord2
             {
                 num = Main.context.SaveChanges();
                 flag = true;
+                
+#if DEBUG
                 ResultMsg = string.Format("成功操作{0}条记录。", num);
+#else
+                ResultMsg = string.Format("数据操作成功。");
+#endif
             }
             catch (OptimisticConcurrencyException)
             {
                 Main.context.Refresh(RefreshMode.ClientWins, entity);
                 num = Main.context.SaveChanges();
                 flag = true;
-                ResultMsg = string.Format("成功处理开放式并发异常，并操作{0}条记录。",num);
+                
+#if DEBUG
+                ResultMsg = string.Format("成功处理开放式并发异常，并操作{0}条记录。", num);
+#else
+                ResultMsg = string.Format("数据操作成功。");
+#endif
             }
             catch (Exception ex)
             {
                 string msg = (ex.InnerException != null) ? ex.InnerException.Message : ex.Message;
-                ResultMsg = string.Format("数据操作失败：{0}",  msg);
+                
+#if DEBUG
+                ResultMsg = string.Format("数据操作失败：{0}", msg);
+#else
+                ResultMsg = string.Format("数据操作失败，详细信息请查看日志文件。");
+                PrintLog(string.Format("数据操作失败：{0}", msg));
+#endif
             }
             return flag;
+        }
+
+        /// <summary>
+        /// 写日志，当前目录下的log.txt文件。
+        /// </summary>
+        /// <param name="msg"></param>
+        public static void PrintLog(string msg)
+        {
+            string path = Directory.GetCurrentDirectory();
+            using (StreamWriter sw = File.AppendText(Path.Combine(path, "log.txt")))
+            {
+                sw.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss ") +msg);
+            }
         }
 
         /// <summary>

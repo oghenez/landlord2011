@@ -132,13 +132,13 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(备注Label);
             this.kryptonPanel1.Controls.Add(this.kryptonMaskedTextBox2);
             this.kryptonPanel1.Controls.Add(this.kryptonMaskedTextBox1);
             this.kryptonPanel1.Controls.Add(this.labReadOnly);
             this.kryptonPanel1.Controls.Add(this.btnOpenFile3);
             this.kryptonPanel1.Controls.Add(this.btnOpenFile2);
             this.kryptonPanel1.Controls.Add(this.btnOpenFile1);
-            this.kryptonPanel1.Controls.Add(备注Label);
             this.kryptonPanel1.Controls.Add(月厨房费Label);
             this.kryptonPanel1.Controls.Add(月物业费Label);
             this.kryptonPanel1.Controls.Add(月宽带费Label);
@@ -231,13 +231,13 @@
             this.kryptonPanel1.Controls.SetChildIndex(月宽带费Label, 0);
             this.kryptonPanel1.Controls.SetChildIndex(月物业费Label, 0);
             this.kryptonPanel1.Controls.SetChildIndex(月厨房费Label, 0);
-            this.kryptonPanel1.Controls.SetChildIndex(备注Label, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.btnOpenFile1, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.btnOpenFile2, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.btnOpenFile3, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.labReadOnly, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonMaskedTextBox1, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonMaskedTextBox2, 0);
+            this.kryptonPanel1.Controls.SetChildIndex(备注Label, 0);
             // 
             // 命名Label
             // 
@@ -251,7 +251,7 @@
             // 面积Label
             // 
             面积Label.AutoSize = true;
-            面积Label.Location = new System.Drawing.Point(194, 24);
+            面积Label.Location = new System.Drawing.Point(191, 24);
             面积Label.Name = "面积Label";
             面积Label.Size = new System.Drawing.Size(59, 12);
             面积Label.TabIndex = 6;
@@ -278,7 +278,7 @@
             // 身份证号Label
             // 
             身份证号Label.AutoSize = true;
-            身份证号Label.Location = new System.Drawing.Point(385, 84);
+            身份证号Label.Location = new System.Drawing.Point(379, 84);
             身份证号Label.Name = "身份证号Label";
             身份证号Label.Size = new System.Drawing.Size(59, 12);
             身份证号Label.TabIndex = 14;
@@ -287,7 +287,7 @@
             // 电话1Label
             // 
             电话1Label.AutoSize = true;
-            电话1Label.Location = new System.Drawing.Point(212, 54);
+            电话1Label.Location = new System.Drawing.Point(209, 54);
             电话1Label.Name = "电话1Label";
             电话1Label.Size = new System.Drawing.Size(41, 12);
             电话1Label.TabIndex = 16;
@@ -296,7 +296,7 @@
             // 电话2Label
             // 
             电话2Label.AutoSize = true;
-            电话2Label.Location = new System.Drawing.Point(403, 54);
+            电话2Label.Location = new System.Drawing.Point(397, 54);
             电话2Label.Name = "电话2Label";
             电话2Label.Size = new System.Drawing.Size(41, 12);
             电话2Label.TabIndex = 18;
@@ -350,7 +350,7 @@
             // 押金Label
             // 
             押金Label.AutoSize = true;
-            押金Label.Location = new System.Drawing.Point(409, 114);
+            押金Label.Location = new System.Drawing.Point(403, 114);
             押金Label.Name = "押金Label";
             押金Label.Size = new System.Drawing.Size(35, 12);
             押金Label.TabIndex = 30;
@@ -368,7 +368,7 @@
             // 水始码Label
             // 
             水始码Label.AutoSize = true;
-            水始码Label.Location = new System.Drawing.Point(206, 144);
+            水始码Label.Location = new System.Drawing.Point(203, 144);
             水始码Label.Name = "水始码Label";
             水始码Label.Size = new System.Drawing.Size(47, 12);
             水始码Label.TabIndex = 34;
@@ -377,7 +377,7 @@
             // 电始码Label
             // 
             电始码Label.AutoSize = true;
-            电始码Label.Location = new System.Drawing.Point(206, 174);
+            电始码Label.Location = new System.Drawing.Point(203, 174);
             电始码Label.Name = "电始码Label";
             电始码Label.Size = new System.Drawing.Size(47, 12);
             电始码Label.TabIndex = 36;
@@ -386,7 +386,7 @@
             // 气始码Label
             // 
             气始码Label.AutoSize = true;
-            气始码Label.Location = new System.Drawing.Point(206, 204);
+            气始码Label.Location = new System.Drawing.Point(203, 204);
             气始码Label.Name = "气始码Label";
             气始码Label.Size = new System.Drawing.Size(47, 12);
             气始码Label.TabIndex = 38;
@@ -413,7 +413,7 @@
             // 月宽带费Label
             // 
             月宽带费Label.AutoSize = true;
-            月宽带费Label.Location = new System.Drawing.Point(385, 144);
+            月宽带费Label.Location = new System.Drawing.Point(379, 144);
             月宽带费Label.Name = "月宽带费Label";
             月宽带费Label.Size = new System.Drawing.Size(59, 12);
             月宽带费Label.TabIndex = 44;
@@ -422,7 +422,7 @@
             // 月物业费Label
             // 
             月物业费Label.AutoSize = true;
-            月物业费Label.Location = new System.Drawing.Point(385, 174);
+            月物业费Label.Location = new System.Drawing.Point(379, 174);
             月物业费Label.Name = "月物业费Label";
             月物业费Label.Size = new System.Drawing.Size(59, 12);
             月物业费Label.TabIndex = 46;
@@ -431,7 +431,7 @@
             // 月厨房费Label
             // 
             月厨房费Label.AutoSize = true;
-            月厨房费Label.Location = new System.Drawing.Point(385, 204);
+            月厨房费Label.Location = new System.Drawing.Point(379, 204);
             月厨房费Label.Name = "月厨房费Label";
             月厨房费Label.Size = new System.Drawing.Size(59, 12);
             月厨房费Label.TabIndex = 48;
@@ -440,11 +440,11 @@
             // 备注Label
             // 
             备注Label.AutoSize = true;
-            备注Label.Location = new System.Drawing.Point(573, 125);
+            备注Label.Location = new System.Drawing.Point(698, 207);
             备注Label.Name = "备注Label";
-            备注Label.Size = new System.Drawing.Size(35, 12);
+            备注Label.Size = new System.Drawing.Size(41, 12);
             备注Label.TabIndex = 50;
-            备注Label.Text = "备注:";
+            备注Label.Text = "[备注]";
             // 
             // toolStrip1
             // 
@@ -578,7 +578,7 @@
             this.btnOpenFile3.Margin = new System.Windows.Forms.Padding(0);
             this.btnOpenFile3.Name = "btnOpenFile3";
             this.btnOpenFile3.Size = new System.Drawing.Size(22, 20);
-            this.btnOpenFile3.TabIndex = 80;
+            this.btnOpenFile3.TabIndex = 24;
             this.toolTip1.SetToolTip(this.btnOpenFile3, "载入协议照片...");
             this.btnOpenFile3.Values.Image = global::Landlord2.Properties.Resources.attach_16_dis;
             this.btnOpenFile3.Values.Text = "";
@@ -592,7 +592,7 @@
             this.btnOpenFile2.Margin = new System.Windows.Forms.Padding(0);
             this.btnOpenFile2.Name = "btnOpenFile2";
             this.btnOpenFile2.Size = new System.Drawing.Size(22, 20);
-            this.btnOpenFile2.TabIndex = 79;
+            this.btnOpenFile2.TabIndex = 23;
             this.toolTip1.SetToolTip(this.btnOpenFile2, "载入协议照片...");
             this.btnOpenFile2.Values.Image = global::Landlord2.Properties.Resources.attach_16_dis;
             this.btnOpenFile2.Values.Text = "";
@@ -606,7 +606,7 @@
             this.btnOpenFile1.Margin = new System.Windows.Forms.Padding(0);
             this.btnOpenFile1.Name = "btnOpenFile1";
             this.btnOpenFile1.Size = new System.Drawing.Size(22, 20);
-            this.btnOpenFile1.TabIndex = 78;
+            this.btnOpenFile1.TabIndex = 22;
             this.toolTip1.SetToolTip(this.btnOpenFile1, "载入协议照片...");
             this.btnOpenFile1.Values.Image = global::Landlord2.Properties.Resources.attach_16_dis;
             this.btnOpenFile1.Values.Text = "";
@@ -618,15 +618,15 @@
             this.kryptonTextBox1.Location = new System.Drawing.Point(74, 20);
             this.kryptonTextBox1.Name = "kryptonTextBox1";
             this.kryptonTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.kryptonTextBox1.TabIndex = 6;
+            this.kryptonTextBox1.TabIndex = 0;
             // 
             // kryptonTextBox2
             // 
             this.kryptonTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "面积", true));
-            this.kryptonTextBox2.Location = new System.Drawing.Point(259, 20);
+            this.kryptonTextBox2.Location = new System.Drawing.Point(256, 20);
             this.kryptonTextBox2.Name = "kryptonTextBox2";
             this.kryptonTextBox2.Size = new System.Drawing.Size(100, 20);
-            this.kryptonTextBox2.TabIndex = 6;
+            this.kryptonTextBox2.TabIndex = 1;
             // 
             // kryptonCheckBox1
             // 
@@ -635,7 +635,7 @@
             this.kryptonCheckBox1.Location = new System.Drawing.Point(403, 20);
             this.kryptonCheckBox1.Name = "kryptonCheckBox1";
             this.kryptonCheckBox1.Size = new System.Drawing.Size(61, 20);
-            this.kryptonCheckBox1.TabIndex = 12;
+            this.kryptonCheckBox1.TabIndex = 2;
             this.kryptonCheckBox1.Text = "含厨房";
             this.kryptonCheckBox1.Values.Text = "含厨房";
             // 
@@ -646,7 +646,7 @@
             this.kryptonCheckBox2.Location = new System.Drawing.Point(488, 20);
             this.kryptonCheckBox2.Name = "kryptonCheckBox2";
             this.kryptonCheckBox2.Size = new System.Drawing.Size(73, 20);
-            this.kryptonCheckBox2.TabIndex = 12;
+            this.kryptonCheckBox2.TabIndex = 3;
             this.kryptonCheckBox2.Text = "含卫生间";
             this.kryptonCheckBox2.Values.Text = "含卫生间";
             // 
@@ -656,38 +656,38 @@
             this.kryptonTextBox3.Location = new System.Drawing.Point(74, 50);
             this.kryptonTextBox3.Name = "kryptonTextBox3";
             this.kryptonTextBox3.Size = new System.Drawing.Size(100, 20);
-            this.kryptonTextBox3.TabIndex = 6;
+            this.kryptonTextBox3.TabIndex = 4;
             // 
             // kryptonTextBox4
             // 
             this.kryptonTextBox4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "联系地址", true));
             this.kryptonTextBox4.Location = new System.Drawing.Point(74, 80);
             this.kryptonTextBox4.Name = "kryptonTextBox4";
-            this.kryptonTextBox4.Size = new System.Drawing.Size(285, 20);
-            this.kryptonTextBox4.TabIndex = 6;
+            this.kryptonTextBox4.Size = new System.Drawing.Size(282, 20);
+            this.kryptonTextBox4.TabIndex = 7;
             // 
             // kryptonTextBox5
             // 
             this.kryptonTextBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "身份证号", true));
-            this.kryptonTextBox5.Location = new System.Drawing.Point(450, 80);
+            this.kryptonTextBox5.Location = new System.Drawing.Point(444, 80);
             this.kryptonTextBox5.Name = "kryptonTextBox5";
-            this.kryptonTextBox5.Size = new System.Drawing.Size(110, 20);
-            this.kryptonTextBox5.TabIndex = 6;
+            this.kryptonTextBox5.Size = new System.Drawing.Size(116, 20);
+            this.kryptonTextBox5.TabIndex = 8;
             // 
             // kryptonTextBox6
             // 
             this.kryptonTextBox6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "电话1", true));
-            this.kryptonTextBox6.Location = new System.Drawing.Point(259, 50);
+            this.kryptonTextBox6.Location = new System.Drawing.Point(256, 50);
             this.kryptonTextBox6.Name = "kryptonTextBox6";
             this.kryptonTextBox6.Size = new System.Drawing.Size(100, 20);
-            this.kryptonTextBox6.TabIndex = 6;
+            this.kryptonTextBox6.TabIndex = 5;
             // 
             // kryptonTextBox7
             // 
             this.kryptonTextBox7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "电话2", true));
-            this.kryptonTextBox7.Location = new System.Drawing.Point(450, 50);
+            this.kryptonTextBox7.Location = new System.Drawing.Point(444, 50);
             this.kryptonTextBox7.Name = "kryptonTextBox7";
-            this.kryptonTextBox7.Size = new System.Drawing.Size(110, 20);
+            this.kryptonTextBox7.Size = new System.Drawing.Size(116, 20);
             this.kryptonTextBox7.TabIndex = 6;
             // 
             // 租赁协议照片1PictureBox
@@ -729,10 +729,10 @@
             // kryptonTextBox8
             // 
             this.kryptonTextBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "押金", true));
-            this.kryptonTextBox8.Location = new System.Drawing.Point(450, 110);
+            this.kryptonTextBox8.Location = new System.Drawing.Point(444, 110);
             this.kryptonTextBox8.Name = "kryptonTextBox8";
-            this.kryptonTextBox8.Size = new System.Drawing.Size(110, 20);
-            this.kryptonTextBox8.TabIndex = 6;
+            this.kryptonTextBox8.Size = new System.Drawing.Size(116, 20);
+            this.kryptonTextBox8.TabIndex = 11;
             // 
             // kryptonTextBox9
             // 
@@ -740,31 +740,31 @@
             this.kryptonTextBox9.Location = new System.Drawing.Point(74, 140);
             this.kryptonTextBox9.Name = "kryptonTextBox9";
             this.kryptonTextBox9.Size = new System.Drawing.Size(100, 20);
-            this.kryptonTextBox9.TabIndex = 6;
+            this.kryptonTextBox9.TabIndex = 12;
             // 
             // kryptonTextBox10
             // 
             this.kryptonTextBox10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "水始码", true));
-            this.kryptonTextBox10.Location = new System.Drawing.Point(259, 140);
+            this.kryptonTextBox10.Location = new System.Drawing.Point(256, 140);
             this.kryptonTextBox10.Name = "kryptonTextBox10";
             this.kryptonTextBox10.Size = new System.Drawing.Size(100, 20);
-            this.kryptonTextBox10.TabIndex = 6;
+            this.kryptonTextBox10.TabIndex = 15;
             // 
             // kryptonTextBox11
             // 
             this.kryptonTextBox11.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "电始码", true));
-            this.kryptonTextBox11.Location = new System.Drawing.Point(259, 170);
+            this.kryptonTextBox11.Location = new System.Drawing.Point(256, 170);
             this.kryptonTextBox11.Name = "kryptonTextBox11";
             this.kryptonTextBox11.Size = new System.Drawing.Size(100, 20);
-            this.kryptonTextBox11.TabIndex = 6;
+            this.kryptonTextBox11.TabIndex = 16;
             // 
             // kryptonTextBox12
             // 
             this.kryptonTextBox12.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "气始码", true));
-            this.kryptonTextBox12.Location = new System.Drawing.Point(259, 200);
+            this.kryptonTextBox12.Location = new System.Drawing.Point(256, 200);
             this.kryptonTextBox12.Name = "kryptonTextBox12";
             this.kryptonTextBox12.Size = new System.Drawing.Size(100, 20);
-            this.kryptonTextBox12.TabIndex = 6;
+            this.kryptonTextBox12.TabIndex = 17;
             // 
             // kryptonTextBox13
             // 
@@ -772,7 +772,7 @@
             this.kryptonTextBox13.Location = new System.Drawing.Point(74, 170);
             this.kryptonTextBox13.Name = "kryptonTextBox13";
             this.kryptonTextBox13.Size = new System.Drawing.Size(100, 20);
-            this.kryptonTextBox13.TabIndex = 6;
+            this.kryptonTextBox13.TabIndex = 13;
             // 
             // kryptonTextBox14
             // 
@@ -780,40 +780,40 @@
             this.kryptonTextBox14.Location = new System.Drawing.Point(74, 200);
             this.kryptonTextBox14.Name = "kryptonTextBox14";
             this.kryptonTextBox14.Size = new System.Drawing.Size(100, 20);
-            this.kryptonTextBox14.TabIndex = 6;
+            this.kryptonTextBox14.TabIndex = 14;
             // 
             // kryptonTextBox15
             // 
             this.kryptonTextBox15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "月宽带费", true));
-            this.kryptonTextBox15.Location = new System.Drawing.Point(450, 140);
+            this.kryptonTextBox15.Location = new System.Drawing.Point(444, 140);
             this.kryptonTextBox15.Name = "kryptonTextBox15";
-            this.kryptonTextBox15.Size = new System.Drawing.Size(110, 20);
-            this.kryptonTextBox15.TabIndex = 6;
+            this.kryptonTextBox15.Size = new System.Drawing.Size(116, 20);
+            this.kryptonTextBox15.TabIndex = 18;
             // 
             // kryptonTextBox16
             // 
             this.kryptonTextBox16.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "月物业费", true));
-            this.kryptonTextBox16.Location = new System.Drawing.Point(450, 170);
+            this.kryptonTextBox16.Location = new System.Drawing.Point(444, 170);
             this.kryptonTextBox16.Name = "kryptonTextBox16";
-            this.kryptonTextBox16.Size = new System.Drawing.Size(110, 20);
-            this.kryptonTextBox16.TabIndex = 6;
+            this.kryptonTextBox16.Size = new System.Drawing.Size(116, 20);
+            this.kryptonTextBox16.TabIndex = 19;
             // 
             // kryptonTextBox17
             // 
             this.kryptonTextBox17.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "月厨房费", true));
-            this.kryptonTextBox17.Location = new System.Drawing.Point(450, 200);
+            this.kryptonTextBox17.Location = new System.Drawing.Point(444, 200);
             this.kryptonTextBox17.Name = "kryptonTextBox17";
-            this.kryptonTextBox17.Size = new System.Drawing.Size(110, 20);
-            this.kryptonTextBox17.TabIndex = 6;
+            this.kryptonTextBox17.Size = new System.Drawing.Size(116, 20);
+            this.kryptonTextBox17.TabIndex = 20;
             // 
             // kryptonTextBox18
             // 
             this.kryptonTextBox18.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "备注", true));
-            this.kryptonTextBox18.Location = new System.Drawing.Point(575, 140);
+            this.kryptonTextBox18.Location = new System.Drawing.Point(575, 110);
             this.kryptonTextBox18.Multiline = true;
             this.kryptonTextBox18.Name = "kryptonTextBox18";
-            this.kryptonTextBox18.Size = new System.Drawing.Size(165, 80);
-            this.kryptonTextBox18.TabIndex = 6;
+            this.kryptonTextBox18.Size = new System.Drawing.Size(165, 110);
+            this.kryptonTextBox18.TabIndex = 21;
             // 
             // labReadOnly
             // 
@@ -833,7 +833,7 @@
             this.kryptonMaskedTextBox1.Mask = " 0000 年 00 月 00 日";
             this.kryptonMaskedTextBox1.Name = "kryptonMaskedTextBox1";
             this.kryptonMaskedTextBox1.Size = new System.Drawing.Size(128, 20);
-            this.kryptonMaskedTextBox1.TabIndex = 82;
+            this.kryptonMaskedTextBox1.TabIndex = 9;
             this.kryptonMaskedTextBox1.Text = "      年    月    日";
             // 
             // kryptonMaskedTextBox2
@@ -842,8 +842,8 @@
             this.kryptonMaskedTextBox2.Location = new System.Drawing.Point(231, 110);
             this.kryptonMaskedTextBox2.Mask = " 0000 年 00 月 00 日";
             this.kryptonMaskedTextBox2.Name = "kryptonMaskedTextBox2";
-            this.kryptonMaskedTextBox2.Size = new System.Drawing.Size(128, 20);
-            this.kryptonMaskedTextBox2.TabIndex = 82;
+            this.kryptonMaskedTextBox2.Size = new System.Drawing.Size(125, 20);
+            this.kryptonMaskedTextBox2.TabIndex = 10;
             this.kryptonMaskedTextBox2.Text = "      年    月    日";
             // 
             // UC客房详细

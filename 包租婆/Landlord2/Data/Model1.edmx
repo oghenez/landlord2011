@@ -618,7 +618,9 @@
           <NavigationProperty Name="源房" Relationship="Landlord2Model.Data.源房_装修明细" FromRole="装修明细" ToRole="源房" />
         </EntityType>
         <Association Name="客房_客房出租历史">
-          <End Type="Landlord2Model.Data.客房" Role="客房" Multiplicity="1" />
+          <End Type="Landlord2Model.Data.客房" Role="客房" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Landlord2Model.Data.客房出租历史记录" Role="客房出租历史记录" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="客房">
@@ -630,7 +632,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="客房_客房租金明细">
-          <End Type="Landlord2Model.Data.客房" Role="客房" Multiplicity="1" />
+          <End Type="Landlord2Model.Data.客房" Role="客房" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Landlord2Model.Data.客房租金明细" Role="客房租金明细" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="客房">
@@ -642,7 +646,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="源房客房">
-          <End Type="Landlord2Model.Data.源房" Role="源房" Multiplicity="1" />
+          <End Type="Landlord2Model.Data.源房" Role="源房" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Landlord2Model.Data.客房" Role="客房" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="源房">
@@ -654,7 +660,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="源房_源房缴费明细">
-          <End Type="Landlord2Model.Data.源房" Role="源房" Multiplicity="1" />
+          <End Type="Landlord2Model.Data.源房" Role="源房" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Landlord2Model.Data.源房缴费明细" Role="源房缴费明细" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="源房">
@@ -666,7 +674,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="源房_源房水电气核查">
-          <End Type="Landlord2Model.Data.源房" Role="源房" Multiplicity="1" />
+          <End Type="Landlord2Model.Data.源房" Role="源房" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Landlord2Model.Data.源房水电气核查" Role="源房水电气核查" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="源房">
@@ -678,7 +688,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="源房_源房涨租协定">
-          <End Type="Landlord2Model.Data.源房" Role="源房" Multiplicity="1" />
+          <End Type="Landlord2Model.Data.源房" Role="源房" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Landlord2Model.Data.源房涨租协定" Role="源房涨租协定" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="源房">
@@ -690,7 +702,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="源房_装修明细">
-          <End Type="Landlord2Model.Data.源房" Role="源房" Multiplicity="1" />
+          <End Type="Landlord2Model.Data.源房" Role="源房" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Landlord2Model.Data.装修明细" Role="装修明细" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="源房">
@@ -945,7 +959,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="Model1" ZoomLevel="49">
+      <Diagram Name="Model1" ZoomLevel="95">
         <EntityTypeShape EntityType="Landlord2Model.Data.缴收项目" Width="1.5" PointX="7.75" PointY="0.75" Height="1.3969734700520888" />
         <EntityTypeShape EntityType="Landlord2Model.Data.客房" Width="1.5" PointX="3" PointY="2.625" Height="6.7455249023437531" />
         <EntityTypeShape EntityType="Landlord2Model.Data.客房出租历史记录" Width="1.5" PointX="5.25" PointY="2" Height="3.6892097981770888" />
