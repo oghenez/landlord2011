@@ -23,6 +23,7 @@ namespace Landlord2.UI
 
         private void kfForm_Load(object sender, EventArgs e)
         {
+            bindingSource1.DataSource = Main.context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) > DateTime.Now);
             if (kf == null)
             {
                 isNew = true;

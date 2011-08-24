@@ -70,7 +70,6 @@ namespace Landlord2
             if (context.源房.Count() > 0)
             {
                 var yfGroups = from o in context.源房
-                               orderby o.源房涨租协定.Max(m => m.期止)
                                group o by o.源房涨租协定.Max(m => m.期止) > DateTime.Now into temp
                                orderby temp.Key descending
                                select temp;
@@ -82,7 +81,7 @@ namespace Landlord2
                         root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
                         root1.ImageIndex = 0;
                         treeView1.Nodes.Add(root1);
-                        foreach (var yf in yfGroup)
+                        foreach (var yf in yfGroup.OrderBy(m=>m.源房涨租协定.Max(n=>n.期止)))
                             AddYuanFangToTree(root1, yf,false,obj);
 
                         root1.ExpandAll();
@@ -94,7 +93,7 @@ namespace Landlord2
                         root2.ForeColor = Color.DimGray;
                         root2.ImageIndex = 1;
                         treeView1.Nodes.Add(root2);
-                        foreach (var yf in yfGroup)
+                        foreach (var yf in yfGroup.OrderBy(m => m.源房涨租协定.Max(n => n.期止)))
                             AddYuanFangToTree(root2, yf,true,obj);
 
                         root2.ExpandAll();
