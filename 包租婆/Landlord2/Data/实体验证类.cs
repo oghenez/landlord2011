@@ -106,7 +106,7 @@ namespace Landlord2.Data
             {
                 returnStr += "缺少期始时间!" + Environment.NewLine;
             }
-            //3、期止>期始
+            //3、期止>期始，并且时间范围必须在源房协议期之内
             if (this.期始.HasValue && this.期止.HasValue)
             {
                 if (this.期止.Value.Date < this.期始.Value.Date)
@@ -114,7 +114,18 @@ namespace Landlord2.Data
                     returnStr += string.Format("期止时间[{0}]不能小于期始时间[{1}]!",
                      this.期止.Value.ToShortDateString(), this.期始.Value.ToShortDateString()) + Environment.NewLine;
                 }
-            }         
+                else
+                {
+                    DateTime min源房期始 = this.源房.源房涨租协定.Min(m => m.期始);
+                    DateTime max源房期止 = this.源房.源房涨租协定.Max(m => m.期止);
+                    if (this.期始.Value.Date < min源房期始)
+                        returnStr += string.Format("期始时间[{0}]不能小于所隶属的源房的期始时间[{1}]!",
+                            this.期始.Value.ToShortDateString(),min源房期始.ToShortDateString()) +Environment.NewLine;
+                    if (this.期止 > max源房期止)
+                        returnStr += string.Format("期止时间[{0}]不能大于所隶属的源房的期止时间[{1}]!",
+                            this.期止.Value.ToShortDateString(), max源房期止.ToShortDateString()) + Environment.NewLine;
+                }
+            }            
             #endregion
           
             return returnStr;
