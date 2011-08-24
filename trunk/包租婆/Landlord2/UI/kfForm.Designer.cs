@@ -124,6 +124,7 @@
             this.Name = "kfForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "客房";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.kfForm_FormClosed);
             this.Load += new System.EventHandler(this.kfForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();

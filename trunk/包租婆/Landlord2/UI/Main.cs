@@ -25,6 +25,19 @@ namespace Landlord2
         {
             InitializeComponent();
             context = new Entities(Helper.CreateConnectString());
+
+            #region 调试代码
+#if DEBUG
+            context.ObjectStateManager.ObjectStateManagerChanged += (sender, e) =>
+            {
+                Console.WriteLine(string.Format(
+                "ObjectStateManager.ObjectStateManagerChanged | Action:{0} Object:{1}"
+                , e.Action
+                , e.Element));
+            };
+#endif
+            #endregion
+
         }
         #region 线程安全的访问UI控件的方法
 
@@ -38,6 +51,7 @@ namespace Landlord2
         }
 
         #endregion
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -78,6 +92,7 @@ namespace Landlord2
                     if (yfGroup.Key == true) // 满足 '期止 > DateTime.Now'
                     {
                         TreeNode root1 = new TreeNode("当前源房信息");
+                        root1.ToolTipText = "当前源房按照期止时间自动排序";
                         root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
                         root1.ImageIndex = 0;
                         treeView1.Nodes.Add(root1);
@@ -89,6 +104,7 @@ namespace Landlord2
                     else
                     {
                         TreeNode root2 = new TreeNode("历史源房信息");
+                        root2.ToolTipText = "历史源房按照期止时间自动排序";
                         root2.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
                         root2.ForeColor = Color.DimGray;
                         root2.ImageIndex = 1;
@@ -230,7 +246,10 @@ namespace Landlord2
         private void LoadOrRefreshUC(object entity)
         {
             if (entity == null)
-                return;
+            {
+                kryptonHeaderGroup2.Panel.Controls.Clear();
+                kryptonHeaderGroup2.ValuesPrimary.Heading = " ";//加个空格，避免控件高度自动减少
+            }
             
             if (entity is 源房)
             {
@@ -304,12 +323,42 @@ namespace Landlord2
         }
         private void yfBtnDel_Click(object sender, EventArgs e)
         {
-            
+            //删除源房
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 源房)
+            {
+                源房 yf = treeView1.SelectedNode.Tag as 源房;
+                string txt = string.Format("确定要删除源房 [{0}] 吗？\r\n（将同时删除此源房下面的所有客房及所有关联的信息）",yf.房名);
+                var result = KryptonMessageBox.Show(txt, "源房删除确认", 
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, 
+                    MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.OK)
+                {
+                    context.DeleteObject(yf);
+                    string msg;
+                    if (Helper.saveData(yf, out msg))
+                    {
+                        KryptonMessageBox.Show(msg, "成功删除源房");
+                        RefreshAndLocateTree(null);
+                        LoadOrRefreshUC(null);
+                    }
+                    else 
+                    {
+                        KryptonMessageBox.Show(msg, "失败");
+                        context.Refresh(System.Data.Objects.RefreshMode.StoreWins, yf);
+                    }
+                }
+            }
         }
 
         private void yfBtnEdit_Click(object sender, EventArgs e)
         {
-
+            //编辑源房
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 源房)
+            {
+                源房 yf = treeView1.SelectedNode.Tag as 源房;
+                yfForm yF = new yfForm(yf);
+                yF.ShowDialog(this);
+            }
         }
 
         private void kfBtnAdd_Click(object sender, EventArgs e)

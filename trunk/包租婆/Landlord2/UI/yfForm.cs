@@ -32,14 +32,14 @@ namespace Landlord2.UI
             {
                 isNew = true;
                 Text = "新增源房";
-                yf = new 源房();
-                uC源房详细1.源房BindingSource.DataSource = yf;
+                yf = new 源房();                
             }
             else
             {
                 isNew = false;
                 Text = "编辑源房";
             }
+            uC源房详细1.源房BindingSource.DataSource = yf;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -54,7 +54,7 @@ namespace Landlord2.UI
             {
                 Main.context.AddTo源房(yf);
                 string msg;
-                if (Helper.saveData(Main.context.源房, out msg))
+                if (Helper.saveData(yf, out msg))
                 {
                     KryptonMessageBox.Show(msg, "成功新增源房");
                     (this.Owner as Main).RefreshAndLocateTree(yf);//刷新TreeView，并定位到yf节点。
@@ -67,12 +67,34 @@ namespace Landlord2.UI
                 }
             }
             else
-            { }
+            {
+                string msg;
+                if (Helper.saveData(yf, out msg))
+                {
+                    KryptonMessageBox.Show(msg, "成功编辑源房");
+                    (this.Owner as Main).RefreshAndLocateTree(yf);//刷新TreeView，并定位到yf节点。
+                    Close();
+                }
+                else
+                {
+                    KryptonMessageBox.Show(msg, "失败");
+                    //Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, yf);失败后这里不处理，关闭窗体时处理更改
+                }
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
-        {
+        {            
             Close();
+        }
+
+        private void yfForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (!isNew && Main.context.ObjectStateManager.GetObjectStateEntry(yf).State == EntityState.Modified)
+            {
+                Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, yf);
+                Main.context.AcceptAllChanges();
+            }
         }
     }
 }

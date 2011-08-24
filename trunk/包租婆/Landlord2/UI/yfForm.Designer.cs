@@ -79,6 +79,7 @@
             this.Name = "yfForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "源房";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.yfForm_FormClosed);
             this.Load += new System.EventHandler(this.YF_Load);
             this.ResumeLayout(false);
 

@@ -70,5 +70,14 @@ namespace Landlord2.UI
         {
             Close();
         }
+
+        private void kfForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (!isNew && Main.context.ObjectStateManager.GetObjectStateEntry(kf).State == EntityState.Modified)
+            {
+                Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, kf);
+                Main.context.AcceptAllChanges();
+            }
+        }
     }
 }
