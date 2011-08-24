@@ -80,18 +80,18 @@
             this.buttonSpecHeaderGroup6 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.buttonSpecHeaderGroupAlarm = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.yfBtnAdd = new System.Windows.Forms.ToolStripButton();
+            this.yfBtnDel = new System.Windows.Forms.ToolStripButton();
+            this.yfBtnEdit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.kfBtnAdd = new System.Windows.Forms.ToolStripButton();
+            this.kfBtnDel = new System.Windows.Forms.ToolStripButton();
             this.kfBtnEdit = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
             this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.kfBtnDel = new System.Windows.Forms.ToolStripButton();
-            this.kfBtnAdd = new System.Windows.Forms.ToolStripButton();
-            this.yfBtnEdit = new System.Windows.Forms.ToolStripButton();
-            this.yfBtnDel = new System.Windows.Forms.ToolStripButton();
-            this.yfBtnAdd = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -441,6 +441,7 @@
             this.treeView1.ShowRootLines = false;
             this.treeView1.Size = new System.Drawing.Size(198, 495);
             this.treeView1.TabIndex = 3;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             // 
             // imageList1
@@ -586,8 +587,68 @@
             this.kfBtnEdit});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(403, 70);
+            this.toolStrip1.Size = new System.Drawing.Size(372, 70);
             this.toolStrip1.TabIndex = 0;
+            // 
+            // yfBtnAdd
+            // 
+            this.yfBtnAdd.Image = global::Landlord2.Properties.Resources.源房48Add;
+            this.yfBtnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnAdd.Name = "yfBtnAdd";
+            this.yfBtnAdd.Size = new System.Drawing.Size(59, 67);
+            this.yfBtnAdd.Text = "新增源房";
+            this.yfBtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.yfBtnAdd.ToolTipText = "新增一套源房信息";
+            this.yfBtnAdd.Click += new System.EventHandler(this.yfBtnAdd_Click);
+            // 
+            // yfBtnDel
+            // 
+            this.yfBtnDel.Image = global::Landlord2.Properties.Resources.源房48Del;
+            this.yfBtnDel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnDel.Name = "yfBtnDel";
+            this.yfBtnDel.Size = new System.Drawing.Size(59, 67);
+            this.yfBtnDel.Text = "删除源房";
+            this.yfBtnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.yfBtnDel.ToolTipText = "删除当前选中的源房信息";
+            this.yfBtnDel.Click += new System.EventHandler(this.yfBtnDel_Click);
+            // 
+            // yfBtnEdit
+            // 
+            this.yfBtnEdit.Image = global::Landlord2.Properties.Resources.源房48Edit;
+            this.yfBtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnEdit.Name = "yfBtnEdit";
+            this.yfBtnEdit.Size = new System.Drawing.Size(59, 67);
+            this.yfBtnEdit.Text = "编辑源房";
+            this.yfBtnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.yfBtnEdit.ToolTipText = "编辑当前选中的源房信息";
+            this.yfBtnEdit.Click += new System.EventHandler(this.yfBtnEdit_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 70);
+            // 
+            // kfBtnAdd
+            // 
+            this.kfBtnAdd.Image = global::Landlord2.Properties.Resources.客房48Add;
+            this.kfBtnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnAdd.Name = "kfBtnAdd";
+            this.kfBtnAdd.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnAdd.Text = "增加客房";
+            this.kfBtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnAdd.ToolTipText = "为当前源房增加一套客房信息";
+            this.kfBtnAdd.Click += new System.EventHandler(this.kfBtnAdd_Click);
+            // 
+            // kfBtnDel
+            // 
+            this.kfBtnDel.Image = global::Landlord2.Properties.Resources.客房48Del;
+            this.kfBtnDel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnDel.Name = "kfBtnDel";
+            this.kfBtnDel.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnDel.Text = "删除客房";
+            this.kfBtnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnDel.ToolTipText = "删除当前选中的客房信息";
+            this.kfBtnDel.Click += new System.EventHandler(this.kfBtnDel_Click);
             // 
             // kfBtnEdit
             // 
@@ -639,66 +700,6 @@
             // 
             this.AlarmTimer1.Interval = 500;
             this.AlarmTimer1.Tick += new System.EventHandler(this.AlarmTimer1_Tick);
-            // 
-            // kfBtnDel
-            // 
-            this.kfBtnDel.Image = global::Landlord2.Properties.Resources.客房48Del;
-            this.kfBtnDel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.kfBtnDel.Name = "kfBtnDel";
-            this.kfBtnDel.Size = new System.Drawing.Size(59, 67);
-            this.kfBtnDel.Text = "删除客房";
-            this.kfBtnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.kfBtnDel.ToolTipText = "删除当前选中的客房信息";
-            this.kfBtnDel.Click += new System.EventHandler(this.kfBtnDel_Click);
-            // 
-            // kfBtnAdd
-            // 
-            this.kfBtnAdd.Image = global::Landlord2.Properties.Resources.客房48Add;
-            this.kfBtnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.kfBtnAdd.Name = "kfBtnAdd";
-            this.kfBtnAdd.Size = new System.Drawing.Size(59, 67);
-            this.kfBtnAdd.Text = "增加客房";
-            this.kfBtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.kfBtnAdd.ToolTipText = "为当前源房增加一套客房信息";
-            this.kfBtnAdd.Click += new System.EventHandler(this.kfBtnAdd_Click);
-            // 
-            // yfBtnEdit
-            // 
-            this.yfBtnEdit.Image = global::Landlord2.Properties.Resources.源房48Edit;
-            this.yfBtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.yfBtnEdit.Name = "yfBtnEdit";
-            this.yfBtnEdit.Size = new System.Drawing.Size(59, 67);
-            this.yfBtnEdit.Text = "编辑源房";
-            this.yfBtnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.yfBtnEdit.ToolTipText = "编辑当前选中的源房信息";
-            this.yfBtnEdit.Click += new System.EventHandler(this.yfBtnEdit_Click);
-            // 
-            // yfBtnDel
-            // 
-            this.yfBtnDel.Image = global::Landlord2.Properties.Resources.源房48Del;
-            this.yfBtnDel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.yfBtnDel.Name = "yfBtnDel";
-            this.yfBtnDel.Size = new System.Drawing.Size(59, 67);
-            this.yfBtnDel.Text = "删除源房";
-            this.yfBtnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.yfBtnDel.ToolTipText = "删除当前选中的源房信息";
-            this.yfBtnDel.Click += new System.EventHandler(this.yfBtnDel_Click);
-            // 
-            // yfBtnAdd
-            // 
-            this.yfBtnAdd.Image = global::Landlord2.Properties.Resources.源房48Add;
-            this.yfBtnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.yfBtnAdd.Name = "yfBtnAdd";
-            this.yfBtnAdd.Size = new System.Drawing.Size(59, 67);
-            this.yfBtnAdd.Text = "新增源房";
-            this.yfBtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.yfBtnAdd.ToolTipText = "新增一套源房信息";
-            this.yfBtnAdd.Click += new System.EventHandler(this.yfBtnAdd_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 70);
             // 
             // Main
             // 

@@ -96,6 +96,8 @@ namespace Landlord2
                         treeView1.Nodes.Add(root2);
                         foreach (var yf in yfGroup)
                             AddYuanFangToTree(root2, yf,true,obj);
+
+                        root2.ExpandAll();
                     }
                 }
             }
@@ -118,7 +120,7 @@ namespace Landlord2
             yfNode.Tag = yf;
             yfNode.ImageIndex = isHistory ? 5 : 2;//历史源房5：当前有效源房2
             parent.Nodes.Add(yfNode);
-            if (yf == obj)
+            if (yf == obj)                
                 yfNode.TreeView.SelectedNode = yfNode ;
 
             var kfs = yf.客房;
@@ -130,7 +132,12 @@ namespace Landlord2
                 if (isHistory)
                     kfNode.ImageIndex = 6;//历史客房
                 else
-                    kfNode.ImageIndex = (kf.期止 < DateTime.Now) ? 4 : 3;//已租3：未租4
+                {
+                    if (!kf.期止.HasValue)
+                        kfNode.ImageIndex = 4;//未租（无前任租客）
+                    else
+                        kfNode.ImageIndex = (kf.期止 < DateTime.Now) ? 4 : 3;//已租3：未租4
+                }
                 yfNode.Nodes.Add(kfNode);
                 if (kf == obj)
                     kfNode.TreeView.SelectedNode = kfNode;
@@ -275,20 +282,17 @@ namespace Landlord2
         }
         #endregion
 
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            e.Node.SelectedImageIndex = e.Node.ImageIndex;//不变更选定的树节点图标
+            LoadOrRefreshUC(e.Node.Tag);
+        }
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            switch (e.Button)
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
-                case System.Windows.Forms.MouseButtons.Left:
-                    {
-                        LoadOrRefreshUC(e.Node.Tag);
-                    }
-                    break;
-                case System.Windows.Forms.MouseButtons.Right:
-                    { }
-                    break;
-                default:
-                    break;
+                //弹出右键菜单
+
             }
         }
 
@@ -326,6 +330,8 @@ namespace Landlord2
 
         }
         #endregion
+
+
 
     }
 }

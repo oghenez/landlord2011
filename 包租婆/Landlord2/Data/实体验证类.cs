@@ -80,10 +80,15 @@ namespace Landlord2.Data
         public string CheckRules()
         {
             string returnStr = string.Empty;
-            //校验所有非空属性
-            returnStr = MyEntityHelper.CheckNullOrEmptyAndABS(this);
+            
+            //客房必须隶属于一个上级的源房
+            if (this.源房 == null)
+                returnStr += "请指定此客房上级的源房! " + Environment.NewLine;
 
-            //时间校验
+            //校验所有非空属性
+            returnStr += MyEntityHelper.CheckNullOrEmptyAndABS(this);
+
+            #region  时间校验
             //1、当存在‘租户’时，必须有期止期始值
             if (!string.IsNullOrEmpty(this.租户))
             {
@@ -93,7 +98,7 @@ namespace Landlord2.Data
                 }
             }
             //2、不可仅有单边值
-            if(this.期始.HasValue && !this.期止.HasValue)
+            if (this.期始.HasValue && !this.期止.HasValue)
             {
                 returnStr += "缺少期止时间!" + Environment.NewLine;
             }
@@ -109,7 +114,8 @@ namespace Landlord2.Data
                     returnStr += string.Format("期止时间[{0}]不能小于期始时间[{1}]!",
                      this.期止.Value.ToShortDateString(), this.期始.Value.ToShortDateString()) + Environment.NewLine;
                 }
-            }        
+            }         
+            #endregion
           
             return returnStr;
         }
@@ -120,7 +126,7 @@ namespace Landlord2.Data
         {
             string returnStr = string.Empty;
             //校验所有非空属性
-            returnStr = MyEntityHelper.CheckNullOrEmptyAndABS(this);
+            returnStr += MyEntityHelper.CheckNullOrEmptyAndABS(this);
 
             //源房必须有‘源房涨租协定表’
             if (this.源房涨租协定.Count() == 0)
@@ -152,7 +158,7 @@ namespace Landlord2.Data
         {
             string returnStr = string.Empty;
             //校验所有非空属性
-            returnStr = MyEntityHelper.CheckNullOrEmptyAndABS(this);
+            returnStr += MyEntityHelper.CheckNullOrEmptyAndABS(this);
 
             //时间校验
             if (this.期止.Date < this.期始.Date)
