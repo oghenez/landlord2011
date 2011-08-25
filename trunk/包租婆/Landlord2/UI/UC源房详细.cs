@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Landlord2.Data;
 using ComponentFactory.Krypton.Toolkit;
@@ -31,6 +27,10 @@ namespace Landlord2.UI
         }
         private void UC源房详细_Load(object sender, EventArgs e)
         {
+            租赁协议照片1PictureBox.DataBindings["Image"].Format += new ConvertEventHandler(ByteArray2Image_Format);
+            租赁协议照片2PictureBox.DataBindings["Image"].Format += new ConvertEventHandler(ByteArray2Image_Format);
+            租赁协议照片3PictureBox.DataBindings["Image"].Format += new ConvertEventHandler(ByteArray2Image_Format);
+
             //如果ReadOnly状态，相应控件只读或不可用
             if (IsReadOnly)
             {
@@ -50,6 +50,19 @@ namespace Landlord2.UI
                 kryptonDataGridView1.AllowUserToAddRows = false;
             }
         }
+
+        void ByteArray2Image_Format(object sender, ConvertEventArgs e)
+        {
+            if (e.Value == null)
+                return;
+
+            Byte[] bytes = e.Value as Byte[];
+            using (MemoryStream ms = new MemoryStream(bytes))
+            {
+                e.Value = Image.FromStream(ms);
+            }
+        }
+
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -62,15 +75,28 @@ namespace Landlord2.UI
                 Image img = Image.FromFile(ofd.FileName);
                 if (sender == btnOpenFile1)
                 {
-                    租赁协议照片1PictureBox.Image = img;
+                    //租赁协议照片1PictureBox.Image = img;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        (源房BindingSource.DataSource as 源房).租赁协议照片1 = ms.ToArray();
+                    }
                 }
                 else if (sender == btnOpenFile2)
                 {
-                    租赁协议照片2PictureBox.Image = img;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        (源房BindingSource.DataSource as 源房).租赁协议照片2 = ms.ToArray();
+                    }
                 }
                 else if (sender == btnOpenFile3)
                 {
-                    租赁协议照片3PictureBox.Image = img;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        (源房BindingSource.DataSource as 源房).租赁协议照片3 = ms.ToArray();
+                    }
                 }
             }
             catch (Exception)
