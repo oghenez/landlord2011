@@ -118,6 +118,12 @@
     <Compile Include="UI\yfForm.Designer.cs">
       <DependentUpon>yfForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\缴费明细Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\缴费明细Form.Designer.cs">
+      <DependentUpon>缴费明细Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\阶梯水价Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,9 @@
     <EmbeddedResource Include="UI\yfForm.resx">
       <DependentUpon>yfForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\缴费明细Form.resx">
+      <DependentUpon>缴费明细Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\阶梯水价Form.resx">
       <DependentUpon>阶梯水价Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +184,8 @@
     <None Include="Properties\DataSources\Landlord2.Data.提醒.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.源房.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.源房涨租协定.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.源房缴费明细.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.缴收项目.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -198,6 +209,7 @@
     <Content Include="Resources\Ball_Gray.png" />
     <Content Include="Resources\Ball_Green.png" />
     <Content Include="Resources\Ball_Yellow.png" />
+    <Content Include="Resources\Filter.png" />
     <Content Include="Resources\info.png" />
     <None Include="Resources\源房48Del.png" />
     <None Include="Resources\源房48Add.png" />

@@ -349,7 +349,6 @@ namespace Landlord2
                 }
             }
         }
-
         private void yfBtnEdit_Click(object sender, EventArgs e)
         {
             //编辑源房
@@ -367,7 +366,6 @@ namespace Landlord2
             kfForm kF = new kfForm(null);
             kF.ShowDialog(this);
         }
-
         private void kfBtnDel_Click(object sender, EventArgs e)
         {
             //删除客房
@@ -396,7 +394,6 @@ namespace Landlord2
                 }
             }
         }
-
         private void kfBtnEdit_Click(object sender, EventArgs e)
         {
             //编辑客房
@@ -407,7 +404,22 @@ namespace Landlord2
                 kF.ShowDialog(this);
             }
         }
+
+        private void yfBtnPay_Click(object sender, EventArgs e)
+        {
+            //源房缴费
+            
+        }
+        private void yfBtnPayDetail_Click(object sender, EventArgs e)
+        {
+            //源房缴费明细
+            缴费明细Form jF = new 缴费明细Form();
+            jF.ShowDialog(this);
+        }
         #endregion
+
+
+
 
 
 
