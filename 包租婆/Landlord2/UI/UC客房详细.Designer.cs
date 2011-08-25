@@ -71,6 +71,9 @@
             this.btnOpenFile3 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnOpenFile2 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnOpenFile1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.租赁协议照片1PictureBox = new System.Windows.Forms.PictureBox();
+            this.租赁协议照片2PictureBox = new System.Windows.Forms.PictureBox();
+            this.租赁协议照片3PictureBox = new System.Windows.Forms.PictureBox();
             this.kryptonTextBox1 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox2 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonCheckBox1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
@@ -80,9 +83,6 @@
             this.kryptonTextBox5 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox6 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox7 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.租赁协议照片1PictureBox = new System.Windows.Forms.PictureBox();
-            this.租赁协议照片2PictureBox = new System.Windows.Forms.PictureBox();
-            this.租赁协议照片3PictureBox = new System.Windows.Forms.PictureBox();
             this.kryptonTextBox8 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox9 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox10 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -612,6 +612,45 @@
             this.btnOpenFile1.Values.Text = "";
             this.btnOpenFile1.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
+            // 租赁协议照片1PictureBox
+            // 
+            this.租赁协议照片1PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.租赁协议照片1PictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.客房BindingSource, "租赁协议照片1", true));
+            this.租赁协议照片1PictureBox.Location = new System.Drawing.Point(662, 18);
+            this.租赁协议照片1PictureBox.Name = "租赁协议照片1PictureBox";
+            this.租赁协议照片1PictureBox.Size = new System.Drawing.Size(25, 25);
+            this.租赁协议照片1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.租赁协议照片1PictureBox.TabIndex = 21;
+            this.租赁协议照片1PictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.租赁协议照片1PictureBox, "无图像");
+            this.租赁协议照片1PictureBox.DoubleClick += new System.EventHandler(this.PictureBox_DoubleClick);
+            // 
+            // 租赁协议照片2PictureBox
+            // 
+            this.租赁协议照片2PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.租赁协议照片2PictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.客房BindingSource, "租赁协议照片2", true));
+            this.租赁协议照片2PictureBox.Location = new System.Drawing.Point(662, 48);
+            this.租赁协议照片2PictureBox.Name = "租赁协议照片2PictureBox";
+            this.租赁协议照片2PictureBox.Size = new System.Drawing.Size(25, 25);
+            this.租赁协议照片2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.租赁协议照片2PictureBox.TabIndex = 23;
+            this.租赁协议照片2PictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.租赁协议照片2PictureBox, "无图像");
+            this.租赁协议照片2PictureBox.DoubleClick += new System.EventHandler(this.PictureBox_DoubleClick);
+            // 
+            // 租赁协议照片3PictureBox
+            // 
+            this.租赁协议照片3PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.租赁协议照片3PictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.客房BindingSource, "租赁协议照片3", true));
+            this.租赁协议照片3PictureBox.Location = new System.Drawing.Point(662, 78);
+            this.租赁协议照片3PictureBox.Name = "租赁协议照片3PictureBox";
+            this.租赁协议照片3PictureBox.Size = new System.Drawing.Size(25, 25);
+            this.租赁协议照片3PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.租赁协议照片3PictureBox.TabIndex = 25;
+            this.租赁协议照片3PictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.租赁协议照片3PictureBox, "无图像");
+            this.租赁协议照片3PictureBox.DoubleClick += new System.EventHandler(this.PictureBox_DoubleClick);
+            // 
             // kryptonTextBox1
             // 
             this.kryptonTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "命名", true));
@@ -635,6 +674,7 @@
             this.kryptonCheckBox1.Location = new System.Drawing.Point(403, 20);
             this.kryptonCheckBox1.Name = "kryptonCheckBox1";
             this.kryptonCheckBox1.Size = new System.Drawing.Size(61, 20);
+            this.kryptonCheckBox1.StateDisabled.ShortText.Color1 = System.Drawing.Color.Black;
             this.kryptonCheckBox1.TabIndex = 2;
             this.kryptonCheckBox1.Text = "含厨房";
             this.kryptonCheckBox1.Values.Text = "含厨房";
@@ -646,6 +686,7 @@
             this.kryptonCheckBox2.Location = new System.Drawing.Point(488, 20);
             this.kryptonCheckBox2.Name = "kryptonCheckBox2";
             this.kryptonCheckBox2.Size = new System.Drawing.Size(73, 20);
+            this.kryptonCheckBox2.StateDisabled.ShortText.Color1 = System.Drawing.Color.Black;
             this.kryptonCheckBox2.TabIndex = 3;
             this.kryptonCheckBox2.Text = "含卫生间";
             this.kryptonCheckBox2.Values.Text = "含卫生间";
@@ -689,45 +730,6 @@
             this.kryptonTextBox7.Name = "kryptonTextBox7";
             this.kryptonTextBox7.Size = new System.Drawing.Size(116, 20);
             this.kryptonTextBox7.TabIndex = 6;
-            // 
-            // 租赁协议照片1PictureBox
-            // 
-            this.租赁协议照片1PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.租赁协议照片1PictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.客房BindingSource, "租赁协议照片1", true));
-            this.租赁协议照片1PictureBox.Location = new System.Drawing.Point(662, 18);
-            this.租赁协议照片1PictureBox.Name = "租赁协议照片1PictureBox";
-            this.租赁协议照片1PictureBox.Size = new System.Drawing.Size(25, 25);
-            this.租赁协议照片1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.租赁协议照片1PictureBox.TabIndex = 21;
-            this.租赁协议照片1PictureBox.TabStop = false;
-            this.toolTip1.SetToolTip(this.租赁协议照片1PictureBox, "无图像");
-            this.租赁协议照片1PictureBox.DoubleClick += new System.EventHandler(this.PictureBox_DoubleClick);
-            // 
-            // 租赁协议照片2PictureBox
-            // 
-            this.租赁协议照片2PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.租赁协议照片2PictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.客房BindingSource, "租赁协议照片2", true));
-            this.租赁协议照片2PictureBox.Location = new System.Drawing.Point(662, 48);
-            this.租赁协议照片2PictureBox.Name = "租赁协议照片2PictureBox";
-            this.租赁协议照片2PictureBox.Size = new System.Drawing.Size(25, 25);
-            this.租赁协议照片2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.租赁协议照片2PictureBox.TabIndex = 23;
-            this.租赁协议照片2PictureBox.TabStop = false;
-            this.toolTip1.SetToolTip(this.租赁协议照片2PictureBox, "无图像");
-            this.租赁协议照片2PictureBox.DoubleClick += new System.EventHandler(this.PictureBox_DoubleClick);
-            // 
-            // 租赁协议照片3PictureBox
-            // 
-            this.租赁协议照片3PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.租赁协议照片3PictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.客房BindingSource, "租赁协议照片3", true));
-            this.租赁协议照片3PictureBox.Location = new System.Drawing.Point(662, 78);
-            this.租赁协议照片3PictureBox.Name = "租赁协议照片3PictureBox";
-            this.租赁协议照片3PictureBox.Size = new System.Drawing.Size(25, 25);
-            this.租赁协议照片3PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.租赁协议照片3PictureBox.TabIndex = 25;
-            this.租赁协议照片3PictureBox.TabStop = false;
-            this.toolTip1.SetToolTip(this.租赁协议照片3PictureBox, "无图像");
-            this.租赁协议照片3PictureBox.DoubleClick += new System.EventHandler(this.PictureBox_DoubleClick);
             // 
             // kryptonTextBox8
             // 

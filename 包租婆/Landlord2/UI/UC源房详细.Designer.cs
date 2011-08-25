@@ -71,9 +71,6 @@
             this.kryptonTextBox4 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox5 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox6 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.kryptonTextBox7 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.kryptonTextBox8 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.kryptonTextBox9 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox10 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox11 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox12 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -127,6 +124,9 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.labReadOnly = new System.Windows.Forms.Label();
+            this.kryptonComboBox1 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.kryptonComboBox2 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.kryptonComboBox3 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             房名Label = new System.Windows.Forms.Label();
             建筑面积Label = new System.Windows.Forms.Label();
             室Label = new System.Windows.Forms.Label();
@@ -171,10 +171,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.租赁协议照片2PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonComboBox3);
+            this.kryptonPanel1.Controls.Add(this.kryptonComboBox2);
+            this.kryptonPanel1.Controls.Add(this.kryptonComboBox1);
             this.kryptonPanel1.Controls.Add(this.labReadOnly);
             this.kryptonPanel1.Controls.Add(this.租赁协议照片3PictureBox);
             this.kryptonPanel1.Controls.Add(this.租赁协议照片2PictureBox);
@@ -221,9 +227,6 @@
             this.kryptonPanel1.Controls.Add(厅Label);
             this.kryptonPanel1.Controls.Add(室Label);
             this.kryptonPanel1.Controls.Add(建筑面积Label);
-            this.kryptonPanel1.Controls.Add(this.kryptonTextBox9);
-            this.kryptonPanel1.Controls.Add(this.kryptonTextBox8);
-            this.kryptonPanel1.Controls.Add(this.kryptonTextBox7);
             this.kryptonPanel1.Controls.Add(this.kryptonTextBox5);
             this.kryptonPanel1.Controls.Add(this.kryptonTextBox4);
             this.kryptonPanel1.Controls.Add(this.kryptonTextBox3);
@@ -276,9 +279,6 @@
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox3, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox4, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox5, 0);
-            this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox7, 0);
-            this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox8, 0);
-            this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox9, 0);
             this.kryptonPanel1.Controls.SetChildIndex(建筑面积Label, 0);
             this.kryptonPanel1.Controls.SetChildIndex(室Label, 0);
             this.kryptonPanel1.Controls.SetChildIndex(厅Label, 0);
@@ -325,6 +325,9 @@
             this.kryptonPanel1.Controls.SetChildIndex(this.租赁协议照片2PictureBox, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.租赁协议照片3PictureBox, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.labReadOnly, 0);
+            this.kryptonPanel1.Controls.SetChildIndex(this.kryptonComboBox1, 0);
+            this.kryptonPanel1.Controls.SetChildIndex(this.kryptonComboBox2, 0);
+            this.kryptonPanel1.Controls.SetChildIndex(this.kryptonComboBox3, 0);
             // 
             // 房名Label
             // 
@@ -685,30 +688,6 @@
             this.kryptonTextBox6.Size = new System.Drawing.Size(197, 20);
             this.kryptonTextBox6.TabIndex = 1;
             // 
-            // kryptonTextBox7
-            // 
-            this.kryptonTextBox7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "用途", true));
-            this.kryptonTextBox7.Location = new System.Drawing.Point(576, 50);
-            this.kryptonTextBox7.Name = "kryptonTextBox7";
-            this.kryptonTextBox7.Size = new System.Drawing.Size(60, 20);
-            this.kryptonTextBox7.TabIndex = 7;
-            // 
-            // kryptonTextBox8
-            // 
-            this.kryptonTextBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "结构", true));
-            this.kryptonTextBox8.Location = new System.Drawing.Point(712, 50);
-            this.kryptonTextBox8.Name = "kryptonTextBox8";
-            this.kryptonTextBox8.Size = new System.Drawing.Size(60, 20);
-            this.kryptonTextBox8.TabIndex = 8;
-            // 
-            // kryptonTextBox9
-            // 
-            this.kryptonTextBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "装修", true));
-            this.kryptonTextBox9.Location = new System.Drawing.Point(440, 50);
-            this.kryptonTextBox9.Name = "kryptonTextBox9";
-            this.kryptonTextBox9.Size = new System.Drawing.Size(60, 20);
-            this.kryptonTextBox9.TabIndex = 6;
-            // 
             // kryptonTextBox10
             // 
             this.kryptonTextBox10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "房东", true));
@@ -981,6 +960,7 @@
             this.kryptonCheckBox1.Location = new System.Drawing.Point(646, 260);
             this.kryptonCheckBox1.Name = "kryptonCheckBox1";
             this.kryptonCheckBox1.Size = new System.Drawing.Size(111, 20);
+            this.kryptonCheckBox1.StateDisabled.ShortText.Color1 = System.Drawing.Color.Black;
             this.kryptonCheckBox1.TabIndex = 21;
             this.kryptonCheckBox1.Text = "水务代扣卫生费";
             this.kryptonCheckBox1.Values.Text = "水务代扣卫生费";
@@ -1217,6 +1197,58 @@
             this.labReadOnly.Text = "* 非编辑状态，仅显示信息。";
             this.labReadOnly.Visible = false;
             // 
+            // kryptonComboBox1
+            // 
+            this.kryptonComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "装修", true));
+            this.kryptonComboBox1.DropDownWidth = 121;
+            this.kryptonComboBox1.Items.AddRange(new object[] {
+            "毛坯",
+            "简装",
+            "精装"});
+            this.kryptonComboBox1.Location = new System.Drawing.Point(440, 50);
+            this.kryptonComboBox1.Name = "kryptonComboBox1";
+            this.kryptonComboBox1.Size = new System.Drawing.Size(60, 21);
+            this.kryptonComboBox1.StateDisabled.ComboBox.Border.Color1 = System.Drawing.Color.Black;
+            this.kryptonComboBox1.StateDisabled.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonComboBox1.StateDisabled.ComboBox.Content.Color1 = System.Drawing.Color.Black;
+            this.kryptonComboBox1.TabIndex = 79;
+            // 
+            // kryptonComboBox2
+            // 
+            this.kryptonComboBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "用途", true));
+            this.kryptonComboBox2.DropDownWidth = 121;
+            this.kryptonComboBox2.Items.AddRange(new object[] {
+            "住宅",
+            "办公"});
+            this.kryptonComboBox2.Location = new System.Drawing.Point(576, 50);
+            this.kryptonComboBox2.Name = "kryptonComboBox2";
+            this.kryptonComboBox2.Size = new System.Drawing.Size(60, 21);
+            this.kryptonComboBox2.StateDisabled.ComboBox.Border.Color1 = System.Drawing.Color.Black;
+            this.kryptonComboBox2.StateDisabled.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonComboBox2.StateDisabled.ComboBox.Content.Color1 = System.Drawing.Color.Black;
+            this.kryptonComboBox2.TabIndex = 79;
+            // 
+            // kryptonComboBox3
+            // 
+            this.kryptonComboBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "结构", true));
+            this.kryptonComboBox3.DropDownWidth = 121;
+            this.kryptonComboBox3.Items.AddRange(new object[] {
+            "框架",
+            "砖混"});
+            this.kryptonComboBox3.Location = new System.Drawing.Point(712, 50);
+            this.kryptonComboBox3.Name = "kryptonComboBox3";
+            this.kryptonComboBox3.Size = new System.Drawing.Size(60, 21);
+            this.kryptonComboBox3.StateDisabled.ComboBox.Border.Color1 = System.Drawing.Color.Black;
+            this.kryptonComboBox3.StateDisabled.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonComboBox3.StateDisabled.ComboBox.Content.Color1 = System.Drawing.Color.Black;
+            this.kryptonComboBox3.TabIndex = 79;
+            // 
             // UC源房详细
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1239,6 +1271,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1252,9 +1287,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox4;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox3;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox6;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox9;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox8;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox7;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox10;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox11;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox12;
@@ -1309,6 +1341,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.Label labReadOnly;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox3;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox2;
 
     }
 }

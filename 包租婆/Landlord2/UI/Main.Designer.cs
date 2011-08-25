@@ -87,11 +87,15 @@
             this.kfBtnAdd = new System.Windows.Forms.ToolStripButton();
             this.kfBtnDel = new System.Windows.Forms.ToolStripButton();
             this.kfBtnEdit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.yfBtnPay = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
             this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
+            this.yfBtnPayDetail = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -585,10 +589,14 @@
             this.toolStripSeparator6,
             this.kfBtnAdd,
             this.kfBtnDel,
-            this.kfBtnEdit});
+            this.kfBtnEdit,
+            this.toolStripSeparator7,
+            this.yfBtnPay,
+            this.yfBtnPayDetail,
+            this.toolStripSeparator8});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(372, 70);
+            this.toolStrip1.Size = new System.Drawing.Size(533, 70);
             this.toolStrip1.TabIndex = 0;
             // 
             // yfBtnAdd
@@ -662,6 +670,22 @@
             this.kfBtnEdit.ToolTipText = "编辑当前选中的客房信息";
             this.kfBtnEdit.Click += new System.EventHandler(this.kfBtnEdit_Click);
             // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 70);
+            // 
+            // yfBtnPay
+            // 
+            this.yfBtnPay.Image = global::Landlord2.Properties.Resources.info;
+            this.yfBtnPay.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnPay.Name = "yfBtnPay";
+            this.yfBtnPay.Size = new System.Drawing.Size(59, 67);
+            this.yfBtnPay.Text = "源房缴费";
+            this.yfBtnPay.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.yfBtnPay.ToolTipText = "编辑当前选中的客房信息";
+            this.yfBtnPay.Click += new System.EventHandler(this.yfBtnPay_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -701,6 +725,22 @@
             // 
             this.AlarmTimer1.Interval = 500;
             this.AlarmTimer1.Tick += new System.EventHandler(this.AlarmTimer1_Tick);
+            // 
+            // yfBtnPayDetail
+            // 
+            this.yfBtnPayDetail.Image = global::Landlord2.Properties.Resources.info;
+            this.yfBtnPayDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnPayDetail.Name = "yfBtnPayDetail";
+            this.yfBtnPayDetail.Size = new System.Drawing.Size(59, 67);
+            this.yfBtnPayDetail.Text = "缴费明细";
+            this.yfBtnPayDetail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.yfBtnPayDetail.ToolTipText = "编辑当前选中的客房信息";
+            this.yfBtnPayDetail.Click += new System.EventHandler(this.yfBtnPayDetail_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 70);
             // 
             // Main
             // 
@@ -813,6 +853,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripButton kfBtnAdd;
         private System.Windows.Forms.ToolStripButton kfBtnDel;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripButton yfBtnPay;
+        private System.Windows.Forms.ToolStripButton yfBtnPayDetail;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
     }
 }
 

@@ -14,10 +14,18 @@ namespace Landlord2.UI
     public partial class kfForm : KryptonForm
     {
         private 客房 kf;
+        private Guid yfGuid;//客房隶属的源房Guid
         private bool isNew;//是否新增操作
+
         public kfForm(客房 kf)
         {
             this.kf = kf;
+            InitializeComponent();
+        }
+
+        public kfForm(Guid yfGuid)
+        {
+            this.yfGuid = yfGuid;
             InitializeComponent();
         }
 
@@ -30,7 +38,13 @@ namespace Landlord2.UI
                 Text = "新增客房";
                 BtnOkAndContinue.Visible = true;//保存并继续按钮可见
                 kf = new 客房();
-                kf.源房 = bindingSource1.Current as 源房; 
+                if (yfGuid == null)
+                    kf.源房 = bindingSource1.Current as 源房;
+                else
+                {
+                    kf.源房ID = yfGuid;
+                    kryptonComboBox1.SelectedValue = yfGuid;
+                }
             }
             else
             {
