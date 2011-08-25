@@ -471,6 +471,9 @@ namespace Landlord2.Data
         /// <param name="面积">面积 属性的初始值。</param>
         /// <param name="含厨房">含厨房 属性的初始值。</param>
         /// <param name="含卫生间">含卫生间 属性的初始值。</param>
+        /// <param name="月租金">月租金 属性的初始值。</param>
+        /// <param name="押金">押金 属性的初始值。</param>
+        /// <param name="支付月数">支付月数 属性的初始值。</param>
         /// <param name="水始码">水始码 属性的初始值。</param>
         /// <param name="电始码">电始码 属性的初始值。</param>
         /// <param name="气始码">气始码 属性的初始值。</param>
@@ -480,13 +483,16 @@ namespace Landlord2.Data
         /// <param name="中介费用">中介费用 属性的初始值。</param>
         /// <param name="id">ID 属性的初始值。</param>
         /// <param name="源房ID">源房ID 属性的初始值。</param>
-        public static 客房 Create客房(global::System.String 命名, global::System.Double 面积, global::System.Boolean 含厨房, global::System.Boolean 含卫生间, global::System.Double 水始码, global::System.Double 电始码, global::System.Double 气始码, global::System.Decimal 月物业费, global::System.Decimal 月宽带费, global::System.Decimal 月厨房费, global::System.Decimal 中介费用, global::System.Guid id, global::System.Guid 源房ID)
+        public static 客房 Create客房(global::System.String 命名, global::System.Double 面积, global::System.Boolean 含厨房, global::System.Boolean 含卫生间, global::System.Decimal 月租金, global::System.Decimal 押金, global::System.Int16 支付月数, global::System.Double 水始码, global::System.Double 电始码, global::System.Double 气始码, global::System.Decimal 月物业费, global::System.Decimal 月宽带费, global::System.Decimal 月厨房费, global::System.Decimal 中介费用, global::System.Guid id, global::System.Guid 源房ID)
         {
             客房 客房 = new 客房();
             客房.命名 = 命名;
             客房.面积 = 面积;
             客房.含厨房 = 含厨房;
             客房.含卫生间 = 含卫生间;
+            客房.月租金 = 月租金;
+            客房.押金 = 押金;
+            客房.支付月数 = 支付月数;
             客房.水始码 = 水始码;
             客房.电始码 = 电始码;
             客房.气始码 = 气始码;
@@ -769,9 +775,9 @@ namespace Landlord2.Data
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Decimal> 月租金
+        public global::System.Decimal 月租金
         {
             get
             {
@@ -786,16 +792,16 @@ namespace Landlord2.Data
                 On月租金Changed();
             }
         }
-        private Nullable<global::System.Decimal> _月租金;
-        partial void On月租金Changing(Nullable<global::System.Decimal> value);
+        private global::System.Decimal _月租金;
+        partial void On月租金Changing(global::System.Decimal value);
         partial void On月租金Changed();
     
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Decimal> 押金
+        public global::System.Decimal 押金
         {
             get
             {
@@ -810,16 +816,16 @@ namespace Landlord2.Data
                 On押金Changed();
             }
         }
-        private Nullable<global::System.Decimal> _押金;
-        partial void On押金Changing(Nullable<global::System.Decimal> value);
+        private global::System.Decimal _押金;
+        partial void On押金Changing(global::System.Decimal value);
         partial void On押金Changed();
     
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int16> 支付月数
+        public global::System.Int16 支付月数
         {
             get
             {
@@ -834,8 +840,8 @@ namespace Landlord2.Data
                 On支付月数Changed();
             }
         }
-        private Nullable<global::System.Int16> _支付月数;
-        partial void On支付月数Changing(Nullable<global::System.Int16> value);
+        private global::System.Int16 _支付月数;
+        partial void On支付月数Changing(global::System.Int16 value);
         partial void On支付月数Changed();
     
         /// <summary>

@@ -69,9 +69,9 @@
           <Property Name="电话2" Type="nvarchar" MaxLength="100" />
           <Property Name="期始" Type="datetime" />
           <Property Name="期止" Type="datetime" />
-          <Property Name="月租金" Type="money" />
-          <Property Name="押金" Type="money" />
-          <Property Name="支付月数" Type="smallint" />
+          <Property Name="月租金" Type="money" Nullable="false" />
+          <Property Name="押金" Type="money" Nullable="false" />
+          <Property Name="支付月数" Type="smallint" Nullable="false" />
           <Property Name="租赁协议照片1" Type="image" />
           <Property Name="租赁协议照片2" Type="image" />
           <Property Name="租赁协议照片3" Type="image" />
@@ -419,9 +419,9 @@
           <Property Type="String" Name="电话2" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="期始" />
           <Property Type="DateTime" Name="期止" />
-          <Property Type="Decimal" Name="月租金" Precision="19" Scale="4" />
-          <Property Type="Decimal" Name="押金" Precision="19" Scale="4" />
-          <Property Type="Int16" Name="支付月数" />
+          <Property Type="Decimal" Name="月租金" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="押金" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int16" Name="支付月数" Nullable="false" />
           <Property Type="Binary" Name="租赁协议照片1" MaxLength="Max" FixedLength="false" />
           <Property Type="Binary" Name="租赁协议照片2" MaxLength="Max" FixedLength="false" />
           <Property Type="Binary" Name="租赁协议照片3" MaxLength="Max" FixedLength="false" />

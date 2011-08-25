@@ -370,12 +370,42 @@ namespace Landlord2
 
         private void kfBtnDel_Click(object sender, EventArgs e)
         {
-
+            //删除客房
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
+            {
+                客房 kf = treeView1.SelectedNode.Tag as 客房;
+                string txt = string.Format("确定要删除客房 [{0}] 吗？\r\n（将同时删除此客房下所有关联的信息）", kf.命名);
+                var result = KryptonMessageBox.Show(txt, "客房删除确认",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.OK)
+                {
+                    context.DeleteObject(kf);
+                    string msg;
+                    if (Helper.saveData(kf, out msg))
+                    {
+                        KryptonMessageBox.Show(msg, "成功删除客房");
+                        RefreshAndLocateTree(null);
+                        LoadOrRefreshUC(null);
+                    }
+                    else
+                    {
+                        KryptonMessageBox.Show(msg, "失败");
+                        context.Refresh(System.Data.Objects.RefreshMode.StoreWins, kf);
+                    }
+                }
+            }
         }
 
         private void kfBtnEdit_Click(object sender, EventArgs e)
         {
-
+            //编辑客房
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
+            {
+                客房 kf = treeView1.SelectedNode.Tag as 客房;
+                kfForm kF = new kfForm(kf);
+                kF.ShowDialog(this);
+            }
         }
         #endregion
 

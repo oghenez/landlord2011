@@ -28,18 +28,23 @@ namespace Landlord2.UI
             {
                 isNew = true;
                 Text = "新增客房";
+                BtnOkAndContinue.Visible = true;//保存并继续按钮可见
                 kf = new 客房();
-                uC客房详细1.客房BindingSource.DataSource = kf;
+                kf.源房 = bindingSource1.Current as 源房; 
             }
             else
             {
                 isNew = false;
                 Text = "编辑客房";
+                kryptonComboBox1.SelectedValue = kf.源房ID;
             }
+            uC客房详细1.客房BindingSource.DataSource = kf;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            uC客房详细1.客房BindingSource.EndEdit();
+
             string check = kf.CheckRules();
             if (!string.IsNullOrEmpty(check))
             {
@@ -85,7 +90,43 @@ namespace Landlord2.UI
                 }
             }
         }
+        private void BtnOkAndContinue_Click(object sender, EventArgs e)
+        {
+            string check = kf.CheckRules();
+            if (!string.IsNullOrEmpty(check))
+            {
+                KryptonMessageBox.Show(check, "数据校验失败");
+                return;
+            }
 
+#if DEBUG
+            System.Diagnostics.Debug.Assert(isNew);//只有新增状态才有此按钮
+#endif
+
+            Main.context.AddTo客房(kf);
+            string msg;
+            if (Helper.saveData(kf, out msg))
+            {
+                KryptonMessageBox.Show(string.Format("成功新增客房[{0}]。您可以继续添加客房！", kf.命名), "成功新增客房");
+                (this.Owner as Main).RefreshAndLocateTree(kf);//刷新TreeView，并定位到kf节点。
+                客房 old = kf;
+                kf = new 客房()
+                {
+                    面积=old.面积,
+                    含厨房 = old.含厨房,
+                    含卫生间=old.含卫生间,
+                    源房=old.源房
+                };
+                
+                uC客房详细1.客房BindingSource.DataSource = kf;
+            }
+            else
+            {
+                KryptonMessageBox.Show(msg, "失败");
+                Main.context.Detach(kf);
+            }
+            
+        } 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
@@ -99,5 +140,12 @@ namespace Landlord2.UI
                 Main.context.AcceptAllChanges();
             }
         }
+
+        private void kryptonComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            kf.源房ID = (Guid)kryptonComboBox1.SelectedValue;
+        }
+
+
     }
 }

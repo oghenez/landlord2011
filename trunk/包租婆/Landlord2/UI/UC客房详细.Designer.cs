@@ -700,6 +700,7 @@
             this.租赁协议照片1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.租赁协议照片1PictureBox.TabIndex = 21;
             this.租赁协议照片1PictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.租赁协议照片1PictureBox, "无图像");
             this.租赁协议照片1PictureBox.DoubleClick += new System.EventHandler(this.PictureBox_DoubleClick);
             // 
             // 租赁协议照片2PictureBox
@@ -712,6 +713,7 @@
             this.租赁协议照片2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.租赁协议照片2PictureBox.TabIndex = 23;
             this.租赁协议照片2PictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.租赁协议照片2PictureBox, "无图像");
             this.租赁协议照片2PictureBox.DoubleClick += new System.EventHandler(this.PictureBox_DoubleClick);
             // 
             // 租赁协议照片3PictureBox
@@ -724,6 +726,7 @@
             this.租赁协议照片3PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.租赁协议照片3PictureBox.TabIndex = 25;
             this.租赁协议照片3PictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.租赁协议照片3PictureBox, "无图像");
             this.租赁协议照片3PictureBox.DoubleClick += new System.EventHandler(this.PictureBox_DoubleClick);
             // 
             // kryptonTextBox8
