@@ -59,7 +59,14 @@ namespace Landlord2.UI
             Byte[] bytes = e.Value as Byte[];
             using (MemoryStream ms = new MemoryStream(bytes))
             {
-                e.Value = Image.FromStream(ms);
+                Image oldImg = Image.FromStream(ms);
+                Image newImg = new Bitmap(oldImg.Width, oldImg.Height);
+                Graphics draw = Graphics.FromImage(newImg);
+                draw.DrawImage(oldImg, 0, 0);
+                e.Value = newImg;
+                draw.Dispose();
+                oldImg.Dispose();
+                //e.Value = Image.FromStream(ms);因为ms流的关闭，造成后面会出现GDI+ 错误
             }
         }
 
@@ -175,6 +182,7 @@ namespace Landlord2.UI
                 //使用默认设置初始化集合的默认构造函数。默认情况下，此临时文件集合将文件存储在默认临时目录中，并在生成和使用临时文件后将其删除。
                 using (TempFileCollection tfc = new TempFileCollection())
                 {
+                    tfc.KeepFiles = true;
                     string fileName = tfc.AddExtension("jpg");
                     try
                     {

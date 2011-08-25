@@ -89,13 +89,17 @@ namespace Landlord2.Data
             returnStr += MyEntityHelper.CheckNullOrEmptyAndABS(this);
 
             #region  时间校验
-            //1、当存在‘租户’时，必须有期止期始值
+            //1、当存在‘租户’时，必须有期止、期始值，必须有电话1、联系地址、身份证号、
             if (!string.IsNullOrEmpty(this.租户))
             {
                 if (!this.期始.HasValue || !this.期止.HasValue)
-                {
                     returnStr += string.Format("存在租户时，必须有期始和期止时间!") + Environment.NewLine;
-                }
+                if(string.IsNullOrEmpty(this.电话1))
+                    returnStr += string.Format("存在租户时，[电话1]不可为空!") + Environment.NewLine;
+                if(string.IsNullOrEmpty(this.联系地址))
+                    returnStr += string.Format("存在租户时，[联系地址]不可为空!") + Environment.NewLine;
+                if(string.IsNullOrEmpty(this.身份证号))
+                    returnStr += string.Format("存在租户时，[身份证号]不可为空!") + Environment.NewLine;
             }
             //2、不可仅有单边值
             if (this.期始.HasValue && !this.期止.HasValue)

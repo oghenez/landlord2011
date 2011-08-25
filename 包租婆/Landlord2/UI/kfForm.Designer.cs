@@ -82,6 +82,7 @@
             this.kryptonComboBox1.Size = new System.Drawing.Size(215, 21);
             this.kryptonComboBox1.TabIndex = 5;
             this.kryptonComboBox1.ValueMember = "ID";
+            this.kryptonComboBox1.SelectedIndexChanged += new System.EventHandler(this.kryptonComboBox1_SelectedIndexChanged);
             // 
             // bindingSource1
             // 
@@ -95,7 +96,8 @@
             this.BtnOkAndContinue.Size = new System.Drawing.Size(90, 25);
             this.BtnOkAndContinue.TabIndex = 2;
             this.BtnOkAndContinue.Values.Text = "保存并继续";
-            this.BtnOkAndContinue.Click += new System.EventHandler(this.btnOK_Click);
+            this.BtnOkAndContinue.Visible = false;
+            this.BtnOkAndContinue.Click += new System.EventHandler(this.BtnOkAndContinue_Click);
             // 
             // uC客房详细1
             // 

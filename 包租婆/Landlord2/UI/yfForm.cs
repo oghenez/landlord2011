@@ -44,6 +44,8 @@ namespace Landlord2.UI
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            uC源房详细1.源房BindingSource.EndEdit();
+
             string check = yf.CheckRules();
             if (!string.IsNullOrEmpty(check))
             {
