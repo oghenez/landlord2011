@@ -46,11 +46,11 @@ namespace Landlord2.UI
                 KryptonMessageBox.Show(check, "数据校验失败");
                 return;
             }
-            if (isNew)
+            if (isNew)//新增
             {
                 Main.context.AddTo客房(kf);
                 string msg;
-                if (Helper.saveData(Main.context.源房, out msg))
+                if (Helper.saveData(kf, out msg))
                 {
                     KryptonMessageBox.Show(msg, "成功新增客房");
                     (this.Owner as Main).RefreshAndLocateTree(kf);//刷新TreeView，并定位到kf节点。
@@ -62,8 +62,28 @@ namespace Landlord2.UI
                     Main.context.Detach(kf);
                 }
             }
-            else
-            { }
+            else//编辑
+            {                
+                if (Main.context.ObjectStateManager.GetObjectStateEntry(kf).State == EntityState.Unchanged)
+                {
+                    Close(); //如果编辑状态下，未做任何修改，则直接退出
+                }
+                else
+                {
+                    string msg;
+                    if (Helper.saveData(kf, out msg))
+                    {
+                        KryptonMessageBox.Show(msg, "成功编辑客房");
+                        (this.Owner as Main).RefreshAndLocateTree(kf);//刷新TreeView，并定位到kf节点。
+                        Close();
+                    }
+                    else
+                    {
+                        KryptonMessageBox.Show(msg, "失败");
+                        //Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, yf);失败后这里不处理，关闭窗体时处理更改
+                    }
+                }
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
