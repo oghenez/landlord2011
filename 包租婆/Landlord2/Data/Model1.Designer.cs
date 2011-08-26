@@ -3518,13 +3518,15 @@ namespace Landlord2.Data
         /// <param name="缴费时间">缴费时间 属性的初始值。</param>
         /// <param name="缴费金额">缴费金额 属性的初始值。</param>
         /// <param name="源房ID">源房ID 属性的初始值。</param>
+        /// <param name="缴费项">缴费项 属性的初始值。</param>
         /// <param name="id">ID 属性的初始值。</param>
-        public static 源房缴费明细 Create源房缴费明细(global::System.DateTime 缴费时间, global::System.Decimal 缴费金额, global::System.Guid 源房ID, global::System.Guid id)
+        public static 源房缴费明细 Create源房缴费明细(global::System.DateTime 缴费时间, global::System.Decimal 缴费金额, global::System.Guid 源房ID, global::System.String 缴费项, global::System.Guid id)
         {
             源房缴费明细 源房缴费明细 = new 源房缴费明细();
             源房缴费明细.缴费时间 = 缴费时间;
             源房缴费明细.缴费金额 = 缴费金额;
             源房缴费明细.源房ID = 源房ID;
+            源房缴费明细.缴费项 = 缴费项;
             源房缴费明细.ID = id;
             return 源房缴费明细;
         }
@@ -3727,7 +3729,7 @@ namespace Landlord2.Data
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String 缴费项
         {
@@ -3739,7 +3741,7 @@ namespace Landlord2.Data
             {
                 On缴费项Changing(value);
                 ReportPropertyChanging("缴费项");
-                _缴费项 = StructuralObject.SetValidValue(value, true);
+                _缴费项 = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("缴费项");
                 On缴费项Changed();
             }

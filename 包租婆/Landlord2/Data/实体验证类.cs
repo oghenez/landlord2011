@@ -74,7 +74,54 @@ namespace Landlord2.Data
         string CheckRules();
     } 
     #endregion
+    public partial class 源房缴费明细 : ICheck
+    {
 
+        public string CheckRules()
+        {
+            string returnStr = string.Empty;
+
+            //源房缴费明细必须隶属于一个上级的源房
+            if (this.源房 == null)
+                returnStr += "请指定此缴费明细的源房! " + Environment.NewLine;
+
+            //校验所有非空属性
+            returnStr += MyEntityHelper.CheckNullOrEmptyAndABS(this);
+
+            //时间校验
+            //不可仅有单边值
+            if (this.期始.HasValue && !this.期止.HasValue)
+            {
+                returnStr += "缺少期止时间!" + Environment.NewLine;
+            }
+            else if (!this.期始.HasValue && this.期止.HasValue)
+            {
+                returnStr += "缺少期始时间!" + Environment.NewLine;
+            }
+            //期止>期始，并且期始时间和上次此源房同类型缴费的期止时间应该连续
+            if (this.期始.HasValue && this.期止.HasValue)
+            {
+                if (this.期止.Value.Date < this.期始.Value.Date)
+                {
+                    returnStr += string.Format("期止时间[{0}]不能小于期始时间[{1}]!",
+                     this.期止.Value.ToShortDateString(), this.期始.Value.ToShortDateString()) + Environment.NewLine;
+                }
+                else
+                {
+                    //判断是否连续
+                    var entities = this.源房.源房缴费明细.Where(m => m.缴费项 == this.缴费项).ToList();
+                    entities.Remove(this);//this肯定包含在其中
+                    DateTime? max = entities.Max(n => n.期止);
+                    if (max.HasValue && max.Value.Date.AddDays(1) != this.期始.Value.Date)
+                    {
+                        returnStr += string.Format("期始时间和上次此源房同类型缴费的期止时间应该连续，请检查[期止{0}]和[期始{1}]!",
+                                                   max.Value.ToShortDateString(), this.期始.Value.ToShortDateString()) + Environment.NewLine;
+                    }
+                }
+            }     
+            return returnStr;
+        }
+    }
     public partial class 客房 : ICheck
     {
         public string CheckRules()
