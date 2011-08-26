@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MyDataGridViewDateTimePickerColumn.cs" />
     <Compile Include="Data\实体初始化GUID类.cs" />
     <Compile Include="Data\实体验证类.cs" />
     <Compile Include="Data\Model1.Designer.cs">
