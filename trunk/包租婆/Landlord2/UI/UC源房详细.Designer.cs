@@ -1133,9 +1133,10 @@
             // 
             // toolStripButton8
             // 
+            this.toolStripButton8.Image = global::Landlord2.Properties.Resources.客房24Add;
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(59, 28);
+            this.toolStripButton8.Size = new System.Drawing.Size(83, 28);
             this.toolStripButton8.Text = "增加客房";
             this.toolStripButton8.ToolTipText = "为当前选中的源房增加客房";
             // 
@@ -1146,17 +1147,19 @@
             // 
             // toolStripButton7
             // 
+            this.toolStripButton7.Image = global::Landlord2.Properties.Resources.缴费24;
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(35, 28);
+            this.toolStripButton7.Size = new System.Drawing.Size(59, 28);
             this.toolStripButton7.Text = "缴费";
             this.toolStripButton7.ToolTipText = "为当前选中的源房缴费\\r\\n例如：缴纳房租、水电等";
             // 
             // toolStripButton6
             // 
+            this.toolStripButton6.Image = global::Landlord2.Properties.Resources.缴费明细24;
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(59, 28);
+            this.toolStripButton6.Size = new System.Drawing.Size(83, 28);
             this.toolStripButton6.Text = "缴费明细";
             this.toolStripButton6.ToolTipText = "当前选中源房的所有缴费明细";
             // 

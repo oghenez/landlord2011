@@ -212,5 +212,33 @@ namespace Landlord2.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        internal static System.Drawing.Bitmap 缴费24 {
+            get {
+                object obj = ResourceManager.GetObject("缴费24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 缴费48 {
+            get {
+                object obj = ResourceManager.GetObject("缴费48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 缴费明细24 {
+            get {
+                object obj = ResourceManager.GetObject("缴费明细24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 缴费明细48 {
+            get {
+                object obj = ResourceManager.GetObject("缴费明细48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

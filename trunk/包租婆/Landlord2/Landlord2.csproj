@@ -185,7 +185,6 @@
     <None Include="Properties\DataSources\Landlord2.Data.源房.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.源房涨租协定.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.源房缴费明细.datasource" />
-    <None Include="Properties\DataSources\Landlord2.Data.缴收项目.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -211,6 +210,10 @@
     <Content Include="Resources\Ball_Yellow.png" />
     <Content Include="Resources\Filter.png" />
     <Content Include="Resources\info.png" />
+    <Content Include="Resources\缴费24.png" />
+    <Content Include="Resources\缴费48.png" />
+    <Content Include="Resources\缴费明细24.png" />
+    <Content Include="Resources\缴费明细48.png" />
     <None Include="Resources\源房48Del.png" />
     <None Include="Resources\源房48Add.png" />
     <None Include="Resources\源房24Edit.png" />
