@@ -157,7 +157,8 @@ namespace Landlord2.UI
 
         private void kryptonComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            kf.源房ID = (Guid)kryptonComboBox1.SelectedValue;
+            if(kryptonComboBox1.SelectedValue != null)
+                kf.源房ID = (Guid)kryptonComboBox1.SelectedValue;
         }
 
 
