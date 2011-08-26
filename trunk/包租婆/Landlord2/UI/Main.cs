@@ -363,7 +363,11 @@ namespace Landlord2
         private void kfBtnAdd_Click(object sender, EventArgs e)
         {
             //新增客房
-            kfForm kF = new kfForm(null);
+            kfForm kF;
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 源房)
+                kF = new kfForm((treeView1.SelectedNode.Tag as 源房).ID);
+            else
+                kF = new kfForm(null);
             kF.ShowDialog(this);
         }
         private void kfBtnDel_Click(object sender, EventArgs e)
