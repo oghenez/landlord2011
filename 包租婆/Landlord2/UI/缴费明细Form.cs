@@ -108,7 +108,7 @@ namespace Landlord2.UI
 
         private void kryptonComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void 源房缴费明细BindingSource_AddingNew(object sender, AddingNewEventArgs e)

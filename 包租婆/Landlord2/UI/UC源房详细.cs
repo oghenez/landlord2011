@@ -50,6 +50,7 @@ namespace Landlord2.UI
                 buttonSpecAny阶梯水价.Enabled = ButtonEnabled.False;
                 kryptonDataGridView1.ReadOnly = true;
                 kryptonDataGridView1.AllowUserToAddRows = false;
+                kryptonDataGridView1.AllowUserToDeleteRows = false;
             }
         }
 
