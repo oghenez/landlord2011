@@ -14,6 +14,11 @@ namespace Landlord2.UI
 {
     public partial class 缴费明细Form : KryptonForm
     {
+        /// <summary>
+        ///当前绑定的第一层过滤实体集（针对“源房”：仅过滤单个源房/或全部源房），后续如果有第二层过滤（例如某缴费项）则是在此基础上进行。
+        /// </summary>
+        private IQueryable<源房缴费明细> firstLevelObjSet = null;
+
         public 缴费明细Form()
         {
             InitializeComponent();
@@ -21,7 +26,7 @@ namespace Landlord2.UI
 
         private void 缴费Form_Load(object sender, EventArgs e)
         {
-            源房缴费明细BindingSource.DataSource = Main.context.源房缴费明细;
+            源房缴费明细BindingSource.DataSource = firstLevelObjSet = Main.context.源房缴费明细; //初始情况，针对所有源房
             bindingSource1.DataSource = Main.context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) > DateTime.Now);
         }
 
@@ -101,14 +106,18 @@ namespace Landlord2.UI
         {
             kryptonDataGridView1.AllowUserToAddRows = raBtnOne.Checked;//选中单个源房时，允许添加。
             kryptonComboBox1.Enabled = raBtnOne.Checked;
-
+            
+            if (raBtnAll.Checked)
+                firstLevelObjSet = Main.context.源房缴费明细;
+            else if (raBtnOne.Checked)
+                firstLevelObjSet = Main.context.源房缴费明细.Where(m => m.源房ID == (Guid)kryptonComboBox1.SelectedValue);
+            源房缴费明细BindingSource.DataSource = firstLevelObjSet;
             btnFilter.Text = "按 [缴费项] 筛选 - 所有";
-            源房缴费明细BindingSource.Filter = string.Empty;
         }
 
         private void kryptonComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            源房缴费明细BindingSource.DataSource = firstLevelObjSet = Main.context.源房缴费明细.Where(m => m.源房ID == (Guid)kryptonComboBox1.SelectedValue);
         }
 
         private void 源房缴费明细BindingSource_AddingNew(object sender, AddingNewEventArgs e)
@@ -120,6 +129,72 @@ namespace Landlord2.UI
             yfPay.源房ID = (Guid)kryptonComboBox1.SelectedValue;
             yfPay.缴费时间 = DateTime.Now.Date;
             e.NewObject = yfPay;
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            string txt = item.Text;
+            switch (txt)
+            {
+                case "所有缴费项":
+                    源房缴费明细BindingSource.DataSource = firstLevelObjSet;
+                    btnFilter.Text = "按 [缴费项] 筛选 - 所有";
+                    break;
+                case "房租":
+                    源房缴费明细BindingSource.DataSource = firstLevelObjSet.Where(m => m.缴费项 == "房租");
+                    btnFilter.Text = "按 [缴费项] 筛选 - 房租";
+                    break;
+                case "物业费":
+                    源房缴费明细BindingSource.DataSource = firstLevelObjSet.Where(m => m.缴费项 == "物业费");
+                    btnFilter.Text = "按 [缴费项] 筛选 - 物业费";
+                    break;
+                case "水":
+                    源房缴费明细BindingSource.DataSource = firstLevelObjSet.Where(m => m.缴费项 == "水");
+                    btnFilter.Text = "按 [缴费项] 筛选 - 水";
+                    break;
+                case "电":
+                    源房缴费明细BindingSource.DataSource = firstLevelObjSet.Where(m => m.缴费项 == "电");
+                    btnFilter.Text = "按 [缴费项] 筛选 - 电";
+                    break;
+                case "气":
+                    源房缴费明细BindingSource.DataSource = firstLevelObjSet.Where(m => m.缴费项 == "气");
+                    btnFilter.Text = "按 [缴费项] 筛选 - 气";
+                    break;
+                case "宽带费":
+                    源房缴费明细BindingSource.DataSource = firstLevelObjSet.Where(m => m.缴费项 == "宽带费");
+                    btnFilter.Text = "按 [缴费项] 筛选 - 宽带费";
+                    break;
+                case "中介费":
+                    源房缴费明细BindingSource.DataSource = firstLevelObjSet.Where(m => m.缴费项 == "中介费");
+                    btnFilter.Text = "按 [缴费项] 筛选 - 中介费";
+                    break;
+                case "押金":
+                    源房缴费明细BindingSource.DataSource = firstLevelObjSet.Where(m => m.缴费项 == "押金");
+                    btnFilter.Text = "按 [缴费项] 筛选 - 押金";
+                    break;
+                case "其他":
+                    源房缴费明细BindingSource.DataSource = from p in firstLevelObjSet
+                                                     where !(new[] { "房租", "物业费", "水", "电", "气", "宽带费", "中介费", "押金" }.Contains(p.缴费项))
+                                                     select p;
+                    btnFilter.Text = "按 [缴费项] 筛选 - 其他";
+                    break;
+                default:
+                    break;
+            }
+            
+
+        }
+
+        private void 源房缴费明细BindingSource_DataSourceChanged(object sender, EventArgs e)
+        {
+            var source = 源房缴费明细BindingSource.DataSource as IQueryable<源房缴费明细>;
+            decimal sum ;
+            if(source.Count()==0)
+                sum = 0;
+            else
+                sum = (source).Sum(m => m.缴费金额);
+            labCountMoney.Text = string.Format("当前合计金额： {0} 元", sum);
         }
 
 
