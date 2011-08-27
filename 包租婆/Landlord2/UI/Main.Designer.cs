@@ -683,7 +683,7 @@
             this.yfBtnPay.Size = new System.Drawing.Size(59, 67);
             this.yfBtnPay.Text = "源房缴费";
             this.yfBtnPay.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.yfBtnPay.ToolTipText = "编辑当前选中的客房信息";
+            this.yfBtnPay.ToolTipText = "源房相关缴费事宜\r\n例如：交付源房租、水电等。";
             this.yfBtnPay.Click += new System.EventHandler(this.yfBtnPay_Click);
             // 
             // yfBtnPayDetail
@@ -694,7 +694,7 @@
             this.yfBtnPayDetail.Size = new System.Drawing.Size(59, 67);
             this.yfBtnPayDetail.Text = "缴费明细";
             this.yfBtnPayDetail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.yfBtnPayDetail.ToolTipText = "编辑当前选中的客房信息";
+            this.yfBtnPayDetail.ToolTipText = "所有源房相关缴费的明细";
             this.yfBtnPayDetail.Click += new System.EventHandler(this.yfBtnPayDetail_Click);
             // 
             // toolStripSeparator8

@@ -45,7 +45,7 @@
             this.中介费ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.押金ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.其他ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.labCountMoney = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonComboBox1 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.raBtnOne = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
             this.raBtnAll = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
@@ -81,6 +81,7 @@
             this.源房缴费明细BindingSource.DataSource = typeof(Landlord2.Data.源房缴费明细);
             this.源房缴费明细BindingSource.Sort = "缴费时间";
             this.源房缴费明细BindingSource.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.源房缴费明细BindingSource_AddingNew);
+            this.源房缴费明细BindingSource.DataSourceChanged += new System.EventHandler(this.源房缴费明细BindingSource_DataSourceChanged);
             // 
             // statusStrip1
             // 
@@ -89,7 +90,7 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnFilter,
-            this.toolStripStatusLabel1});
+            this.labCountMoney});
             this.statusStrip1.Location = new System.Drawing.Point(0, 352);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
@@ -124,6 +125,7 @@
             this.所有缴费项ToolStripMenuItem.Name = "所有缴费项ToolStripMenuItem";
             this.所有缴费项ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.所有缴费项ToolStripMenuItem.Text = "所有缴费项";
+            this.所有缴费项ToolStripMenuItem.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // toolStripSeparator1
             // 
@@ -135,63 +137,72 @@
             this.房租ToolStripMenuItem.Name = "房租ToolStripMenuItem";
             this.房租ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.房租ToolStripMenuItem.Text = "房租";
+            this.房租ToolStripMenuItem.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // 物业费ToolStripMenuItem
             // 
             this.物业费ToolStripMenuItem.Name = "物业费ToolStripMenuItem";
             this.物业费ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.物业费ToolStripMenuItem.Text = "物业费";
+            this.物业费ToolStripMenuItem.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // 水ToolStripMenuItem
             // 
             this.水ToolStripMenuItem.Name = "水ToolStripMenuItem";
             this.水ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.水ToolStripMenuItem.Text = "水";
+            this.水ToolStripMenuItem.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // 电ToolStripMenuItem
             // 
             this.电ToolStripMenuItem.Name = "电ToolStripMenuItem";
             this.电ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.电ToolStripMenuItem.Text = "电";
+            this.电ToolStripMenuItem.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // 气ToolStripMenuItem
             // 
             this.气ToolStripMenuItem.Name = "气ToolStripMenuItem";
             this.气ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.气ToolStripMenuItem.Text = "气";
+            this.气ToolStripMenuItem.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // 宽带费ToolStripMenuItem
             // 
             this.宽带费ToolStripMenuItem.Name = "宽带费ToolStripMenuItem";
             this.宽带费ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.宽带费ToolStripMenuItem.Text = "宽带费";
+            this.宽带费ToolStripMenuItem.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // 中介费ToolStripMenuItem
             // 
             this.中介费ToolStripMenuItem.Name = "中介费ToolStripMenuItem";
             this.中介费ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.中介费ToolStripMenuItem.Text = "中介费";
+            this.中介费ToolStripMenuItem.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // 押金ToolStripMenuItem
             // 
             this.押金ToolStripMenuItem.Name = "押金ToolStripMenuItem";
             this.押金ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.押金ToolStripMenuItem.Text = "押金";
+            this.押金ToolStripMenuItem.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // 其他ToolStripMenuItem
             // 
             this.其他ToolStripMenuItem.Name = "其他ToolStripMenuItem";
             this.其他ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.其他ToolStripMenuItem.Text = "其他";
+            this.其他ToolStripMenuItem.Click += new System.EventHandler(this.btnFilter_Click);
             // 
-            // toolStripStatusLabel1
+            // labCountMoney
             // 
-            this.toolStripStatusLabel1.AutoToolTip = true;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(664, 27);
-            this.toolStripStatusLabel1.Spring = true;
-            this.toolStripStatusLabel1.Text = "当前合计金额：";
-            this.toolStripStatusLabel1.ToolTipText = "合计当前列表显示的项目金额";
+            this.labCountMoney.AutoToolTip = true;
+            this.labCountMoney.Name = "labCountMoney";
+            this.labCountMoney.Size = new System.Drawing.Size(664, 27);
+            this.labCountMoney.Spring = true;
+            this.labCountMoney.Text = "当前合计金额：";
+            this.labCountMoney.ToolTipText = "合计当前列表显示的项目金额";
             // 
             // kryptonComboBox1
             // 
@@ -448,7 +459,7 @@
 
         private System.Windows.Forms.BindingSource 源房缴费明细BindingSource;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel labCountMoney;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox1;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOK;
