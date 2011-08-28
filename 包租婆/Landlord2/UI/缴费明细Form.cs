@@ -181,9 +181,7 @@ namespace Landlord2.UI
                     break;
                 default:
                     break;
-            }
-            
-
+            }           
         }
 
         private void 源房缴费明细BindingSource_DataSourceChanged(object sender, EventArgs e)
