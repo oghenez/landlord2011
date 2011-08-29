@@ -105,7 +105,13 @@ namespace Landlord2.UI
             if (raBtnAll.Checked)
                 源房缴费明细BindingSource.DataSource = Main.context.源房缴费明细;
             else if (raBtnOne.Checked)
-                源房缴费明细BindingSource.DataSource = GetPayDetails((Guid)kryptonComboBox1.SelectedValue);
+            {
+                //源房缴费明细BindingSource.RaiseListChangedEvents = false;
+                var temp = GetPayDetails((Guid)kryptonComboBox1.SelectedValue);
+                源房缴费明细BindingSource.DataSource = temp;
+                //源房缴费明细BindingSource.RaiseListChangedEvents = true;
+                //源房缴费明细BindingSource.ResetBindings(false);
+            }
             
             btnFilter.Text = "按 [缴费项] 筛选 - 所有";
         }
