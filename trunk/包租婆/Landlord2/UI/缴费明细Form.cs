@@ -14,11 +14,6 @@ namespace Landlord2.UI
 {
     public partial class 缴费明细Form : KryptonForm
     {
-        /// <summary>
-        ///当前绑定的第一层过滤实体集（针对“源房”：仅过滤单个源房/或全部源房），后续如果有第二层过滤（例如某缴费项）则是在此基础上进行。
-        /// </summary>
-        private IQueryable<源房缴费明细> firstLevelObjSet = null;
-
         public 缴费明细Form()
         {
             InitializeComponent();
@@ -26,7 +21,7 @@ namespace Landlord2.UI
 
         private void 缴费Form_Load(object sender, EventArgs e)
         {
-            源房缴费明细BindingSource.DataSource = firstLevelObjSet = Main.context.源房缴费明细; //初始情况，针对所有源房
+            源房缴费明细BindingSource.DataSource = Main.context.源房缴费明细; //初始情况，针对所有源房
             bindingSource1.DataSource = Main.context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) > DateTime.Now);
         }
 
@@ -108,16 +103,17 @@ namespace Landlord2.UI
             kryptonComboBox1.Enabled = raBtnOne.Checked;
             
             if (raBtnAll.Checked)
-                firstLevelObjSet = Main.context.源房缴费明细;
+                源房缴费明细BindingSource.DataSource = Main.context.源房缴费明细;
             else if (raBtnOne.Checked)
-                firstLevelObjSet = Main.context.源房缴费明细.Where(m => m.源房ID == (Guid)kryptonComboBox1.SelectedValue);
-            源房缴费明细BindingSource.DataSource = firstLevelObjSet;
+                源房缴费明细BindingSource.DataSource = GetPayDetails((Guid)kryptonComboBox1.SelectedValue);
+            
             btnFilter.Text = "按 [缴费项] 筛选 - 所有";
         }
 
         private void kryptonComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            源房缴费明细BindingSource.DataSource = firstLevelObjSet = Main.context.源房缴费明细.Where(m => m.源房ID == (Guid)kryptonComboBox1.SelectedValue);
+            源房缴费明细BindingSource.DataSource = GetPayDetails((Guid)kryptonComboBox1.SelectedValue);
+            btnFilter.Text = "按 [缴费项] 筛选 - 所有";
         }
 
         private void 源房缴费明细BindingSource_AddingNew(object sender, AddingNewEventArgs e)
@@ -138,43 +134,43 @@ namespace Landlord2.UI
             switch (txt)
             {
                 case "所有缴费项":
-                    源房缴费明细BindingSource.DataSource = firstLevelObjSet;
+                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? GetPayDetails((Guid)kryptonComboBox1.SelectedValue) : GetPayDetails();
                     btnFilter.Text = "按 [缴费项] 筛选 - 所有";
                     break;
                 case "房租":
-                    源房缴费明细BindingSource.DataSource = firstLevelObjSet.Where(m => m.缴费项 == "房租");
+                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? GetPayDetails((Guid)kryptonComboBox1.SelectedValue,"房租"):GetPayDetails("房租");
                     btnFilter.Text = "按 [缴费项] 筛选 - 房租";
                     break;
                 case "物业费":
-                    源房缴费明细BindingSource.DataSource = firstLevelObjSet.Where(m => m.缴费项 == "物业费");
+                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? GetPayDetails((Guid)kryptonComboBox1.SelectedValue, "物业费") : GetPayDetails("物业费");
                     btnFilter.Text = "按 [缴费项] 筛选 - 物业费";
                     break;
                 case "水":
-                    源房缴费明细BindingSource.DataSource = firstLevelObjSet.Where(m => m.缴费项 == "水");
+                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? GetPayDetails((Guid)kryptonComboBox1.SelectedValue, "水") : GetPayDetails("水");
                     btnFilter.Text = "按 [缴费项] 筛选 - 水";
                     break;
                 case "电":
-                    源房缴费明细BindingSource.DataSource = firstLevelObjSet.Where(m => m.缴费项 == "电");
+                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? GetPayDetails((Guid)kryptonComboBox1.SelectedValue, "电") : GetPayDetails("电");
                     btnFilter.Text = "按 [缴费项] 筛选 - 电";
                     break;
                 case "气":
-                    源房缴费明细BindingSource.DataSource = firstLevelObjSet.Where(m => m.缴费项 == "气");
+                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? GetPayDetails((Guid)kryptonComboBox1.SelectedValue, "气") : GetPayDetails("气");
                     btnFilter.Text = "按 [缴费项] 筛选 - 气";
                     break;
                 case "宽带费":
-                    源房缴费明细BindingSource.DataSource = firstLevelObjSet.Where(m => m.缴费项 == "宽带费");
+                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? GetPayDetails((Guid)kryptonComboBox1.SelectedValue, "宽带费") : GetPayDetails("宽带费");
                     btnFilter.Text = "按 [缴费项] 筛选 - 宽带费";
                     break;
                 case "中介费":
-                    源房缴费明细BindingSource.DataSource = firstLevelObjSet.Where(m => m.缴费项 == "中介费");
+                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? GetPayDetails((Guid)kryptonComboBox1.SelectedValue, "中介费") : GetPayDetails("中介费");
                     btnFilter.Text = "按 [缴费项] 筛选 - 中介费";
                     break;
                 case "押金":
-                    源房缴费明细BindingSource.DataSource = firstLevelObjSet.Where(m => m.缴费项 == "押金");
+                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? GetPayDetails((Guid)kryptonComboBox1.SelectedValue, "押金") : GetPayDetails("押金");
                     btnFilter.Text = "按 [缴费项] 筛选 - 押金";
                     break;
                 case "其他":
-                    源房缴费明细BindingSource.DataSource = from p in firstLevelObjSet
+                    源房缴费明细BindingSource.DataSource = from p in raBtnOne.Checked ? GetPayDetails((Guid)kryptonComboBox1.SelectedValue) : GetPayDetails()
                                                      where !(new[] { "房租", "物业费", "水", "电", "气", "宽带费", "中介费", "押金" }.Contains(p.缴费项))
                                                      select p;
                     btnFilter.Text = "按 [缴费项] 筛选 - 其他";
@@ -183,21 +179,65 @@ namespace Landlord2.UI
                     break;
             }           
         }
-
+        private void 源房缴费明细BindingSource_CurrentItemChanged(object sender, EventArgs e)
+        {
+            //var source = 源房缴费明细BindingSource.DataSource as IQueryable<源房缴费明细>;
+            //decimal sum;
+            //if (source.Count() == 0)
+            //    sum = 0;
+            //else
+            //    sum = (source).Sum(m => m.缴费金额);
+            //labCountMoney.Text = string.Format("当前合计金额： {0} 元", sum);
+        }
         private void 源房缴费明细BindingSource_DataSourceChanged(object sender, EventArgs e)
         {
-            var source = 源房缴费明细BindingSource.DataSource as IQueryable<源房缴费明细>;
-            decimal sum ;
-            if(source.Count()==0)
-                sum = 0;
-            else
-                sum = (source).Sum(m => m.缴费金额);
-            labCountMoney.Text = string.Format("当前合计金额： {0} 元", sum);
+            
         }
 
+        /// <summary>
+        /// 预编译查询0 -- 查询所有
+        /// </summary>
+        static readonly Func<Entities, IQueryable<源房缴费明细>> compiledQuery0 =
+    CompiledQuery.Compile<Entities,  IQueryable<源房缴费明细>>(
+            (context) => context.源房缴费明细);
 
+        private IQueryable<源房缴费明细> GetPayDetails()
+        {
+            return compiledQuery0.Invoke(Main.context);
+        }
+        /// <summary>
+        /// 预编译查询1 -- 根据源房ID和缴费项2个条件过滤
+        /// </summary>
+        static readonly Func<Entities,Guid, string, IQueryable<源房缴费明细>> compiledQuery1 =
+    CompiledQuery.Compile<Entities,Guid, string, IQueryable<源房缴费明细>>(
+            (context, guid, payItem) => context.源房缴费明细.Where(m=>m.源房ID == guid && m.缴费项 == payItem));
 
+        private IQueryable<源房缴费明细> GetPayDetails(Guid guid,string 缴费项)
+        {
+            return compiledQuery1.Invoke(Main.context, guid, 缴费项);
+        }
+        /// <summary>
+        /// 预编译查询2 -- 根据源房ID过滤
+        /// </summary>
+        static readonly Func<Entities, Guid, IQueryable<源房缴费明细>> compiledQuery2 =
+    CompiledQuery.Compile<Entities, Guid, IQueryable<源房缴费明细>>(
+            (context, guid) => context.源房缴费明细.Where(m => m.源房ID == guid));
 
+        private IQueryable<源房缴费明细> GetPayDetails(Guid guid)
+        {
+            return compiledQuery2.Invoke(Main.context, guid);
+        }
+        /// <summary>
+        /// 预编译查询3 -- 根据缴费项过滤
+        /// </summary>
+        static readonly Func<Entities, string, IQueryable<源房缴费明细>> compiledQuery3 =
+    CompiledQuery.Compile<Entities, string, IQueryable<源房缴费明细>>(
+            (context, payItem) => context.源房缴费明细.Where(m => m.缴费项 == payItem));
+
+        private IQueryable<源房缴费明细> GetPayDetails(string 缴费项)
+        {
+            return compiledQuery3.Invoke(Main.context, 缴费项);
+        }
 
 
     }
