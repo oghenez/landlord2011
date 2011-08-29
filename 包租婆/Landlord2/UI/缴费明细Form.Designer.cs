@@ -82,6 +82,7 @@
             this.源房缴费明细BindingSource.Sort = "缴费时间";
             this.源房缴费明细BindingSource.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.源房缴费明细BindingSource_AddingNew);
             this.源房缴费明细BindingSource.DataSourceChanged += new System.EventHandler(this.源房缴费明细BindingSource_DataSourceChanged);
+            this.源房缴费明细BindingSource.CurrentItemChanged += new System.EventHandler(this.源房缴费明细BindingSource_CurrentItemChanged);
             // 
             // statusStrip1
             // 
