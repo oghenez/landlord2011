@@ -54,9 +54,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.myDataGridViewDateTimePickerColumn1 = new Landlord2.MyDataGridViewDateTimePickerColumn();
-            this.myDataGridViewDateTimePickerColumn2 = new Landlord2.MyDataGridViewDateTimePickerColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.源房 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.缴费时间DataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn();
             this.缴费项DataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewComboBoxColumn();
@@ -67,6 +64,9 @@
             this.收款人DataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.备注DataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.myDataGridViewDateTimePickerColumn1 = new Landlord2.MyDataGridViewDateTimePickerColumn();
+            this.myDataGridViewDateTimePickerColumn2 = new Landlord2.MyDataGridViewDateTimePickerColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.源房缴费明细BindingSource)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -84,8 +84,7 @@
             this.源房缴费明细BindingSource.DataSource = typeof(Landlord2.Data.源房缴费明细);
             this.源房缴费明细BindingSource.Sort = "";
             this.源房缴费明细BindingSource.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.源房缴费明细BindingSource_AddingNew);
-            this.源房缴费明细BindingSource.DataSourceChanged += new System.EventHandler(this.源房缴费明细BindingSource_DataSourceChanged);
-            this.源房缴费明细BindingSource.CurrentItemChanged += new System.EventHandler(this.源房缴费明细BindingSource_CurrentItemChanged);
+            this.源房缴费明细BindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.源房缴费明细BindingSource_ListChanged);
             // 
             // statusStrip1
             // 
@@ -203,9 +202,8 @@
             // 
             this.labCountMoney.AutoToolTip = true;
             this.labCountMoney.Name = "labCountMoney";
-            this.labCountMoney.Size = new System.Drawing.Size(664, 27);
+            this.labCountMoney.Size = new System.Drawing.Size(633, 27);
             this.labCountMoney.Spring = true;
-            this.labCountMoney.Text = "当前合计金额：";
             this.labCountMoney.ToolTipText = "合计当前列表显示的项目金额";
             // 
             // kryptonComboBox1
@@ -307,37 +305,6 @@
             this.kryptonDataGridView1.RowTemplate.Height = 23;
             this.kryptonDataGridView1.Size = new System.Drawing.Size(844, 352);
             this.kryptonDataGridView1.TabIndex = 0;
-            // 
-            // myDataGridViewDateTimePickerColumn1
-            // 
-            this.myDataGridViewDateTimePickerColumn1.Checked = false;
-            this.myDataGridViewDateTimePickerColumn1.DataPropertyName = "期始";
-            this.myDataGridViewDateTimePickerColumn1.HeaderText = "期始";
-            this.myDataGridViewDateTimePickerColumn1.MaxDate = new System.DateTime(2030, 12, 31, 23, 59, 0, 0);
-            this.myDataGridViewDateTimePickerColumn1.Name = "myDataGridViewDateTimePickerColumn1";
-            this.myDataGridViewDateTimePickerColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.myDataGridViewDateTimePickerColumn1.ShowCheckBox = true;
-            this.myDataGridViewDateTimePickerColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.myDataGridViewDateTimePickerColumn1.Width = 100;
-            // 
-            // myDataGridViewDateTimePickerColumn2
-            // 
-            this.myDataGridViewDateTimePickerColumn2.Checked = false;
-            this.myDataGridViewDateTimePickerColumn2.DataPropertyName = "期止";
-            this.myDataGridViewDateTimePickerColumn2.HeaderText = "期止";
-            this.myDataGridViewDateTimePickerColumn2.MaxDate = new System.DateTime(2030, 12, 31, 23, 59, 0, 0);
-            this.myDataGridViewDateTimePickerColumn2.Name = "myDataGridViewDateTimePickerColumn2";
-            this.myDataGridViewDateTimePickerColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.myDataGridViewDateTimePickerColumn2.ShowCheckBox = true;
-            this.myDataGridViewDateTimePickerColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.myDataGridViewDateTimePickerColumn2.Width = 100;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Visible = false;
             // 
             // 源房
             // 
@@ -462,6 +429,37 @@
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
             this.ID.Visible = false;
+            // 
+            // myDataGridViewDateTimePickerColumn1
+            // 
+            this.myDataGridViewDateTimePickerColumn1.Checked = false;
+            this.myDataGridViewDateTimePickerColumn1.DataPropertyName = "期始";
+            this.myDataGridViewDateTimePickerColumn1.HeaderText = "期始";
+            this.myDataGridViewDateTimePickerColumn1.MaxDate = new System.DateTime(2030, 12, 31, 23, 59, 0, 0);
+            this.myDataGridViewDateTimePickerColumn1.Name = "myDataGridViewDateTimePickerColumn1";
+            this.myDataGridViewDateTimePickerColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.myDataGridViewDateTimePickerColumn1.ShowCheckBox = true;
+            this.myDataGridViewDateTimePickerColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.myDataGridViewDateTimePickerColumn1.Width = 100;
+            // 
+            // myDataGridViewDateTimePickerColumn2
+            // 
+            this.myDataGridViewDateTimePickerColumn2.Checked = false;
+            this.myDataGridViewDateTimePickerColumn2.DataPropertyName = "期止";
+            this.myDataGridViewDateTimePickerColumn2.HeaderText = "期止";
+            this.myDataGridViewDateTimePickerColumn2.MaxDate = new System.DateTime(2030, 12, 31, 23, 59, 0, 0);
+            this.myDataGridViewDateTimePickerColumn2.Name = "myDataGridViewDateTimePickerColumn2";
+            this.myDataGridViewDateTimePickerColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.myDataGridViewDateTimePickerColumn2.ShowCheckBox = true;
+            this.myDataGridViewDateTimePickerColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.myDataGridViewDateTimePickerColumn2.Width = 100;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Visible = false;
             // 
             // 缴费明细Form
             // 
