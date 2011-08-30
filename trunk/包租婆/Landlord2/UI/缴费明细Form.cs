@@ -14,6 +14,7 @@ namespace Landlord2.UI
 {
     public partial class 缴费明细Form : KryptonForm
     {
+        System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();//for test
         public 缴费明细Form()
         {
             InitializeComponent();
@@ -21,8 +22,15 @@ namespace Landlord2.UI
 
         private void 缴费Form_Load(object sender, EventArgs e)
         {
+            stopwatch.Restart();
             源房缴费明细BindingSource.DataSource = Main.context.源房缴费明细; //初始情况，针对所有源房
-            bindingSource1.DataSource = Main.context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) > DateTime.Now);
+            stopwatch.Stop();
+            Console.WriteLine("1.2-------------" + stopwatch.ElapsedMilliseconds.ToString());
+
+            stopwatch.Restart();
+            bindingSource1.DataSource = Main.context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) > DateTime.Now); 
+            stopwatch.Stop();
+            Console.WriteLine("2.2----------------"+stopwatch.ElapsedMilliseconds.ToString()); 
         }
 
         private void 缴费明细Form_FormClosed(object sender, FormClosedEventArgs e)
