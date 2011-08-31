@@ -202,7 +202,7 @@
             // 
             this.labCountMoney.AutoToolTip = true;
             this.labCountMoney.Name = "labCountMoney";
-            this.labCountMoney.Size = new System.Drawing.Size(633, 27);
+            this.labCountMoney.Size = new System.Drawing.Size(664, 27);
             this.labCountMoney.Spring = true;
             this.labCountMoney.ToolTipText = "合计当前列表显示的项目金额";
             // 
