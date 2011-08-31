@@ -216,7 +216,7 @@ namespace Landlord2.UI
         {
             if (Main.context.源房缴费明细.HasAddedObject())
             {
-                return Main.context.源房缴费明细.Local()  ;
+                return Main.context.源房缴费明细.Local();
             }
             else
             {
@@ -280,7 +280,7 @@ namespace Landlord2.UI
         {
             if (Main.context.源房缴费明细.HasAddedObject())
             {
-                return Main.context.源房缴费明细.Local().Where(m => m.缴费项 == 缴费项);
+                return Main.context.源房缴费明细.Local().Where(m => m.缴费项 == 缴费项) ;
             }
             else
             {
