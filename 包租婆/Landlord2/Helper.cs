@@ -9,7 +9,7 @@ using System.IO;
 
 namespace Landlord2
 {
-    class Helper
+    static class Helper
     {
         #region 构造实体连接字符串
         public static string CreateConnectString()
@@ -33,6 +33,41 @@ namespace Landlord2
         }
         #endregion
 
+        /// <summary>
+        /// 本地查询[Added,Modified,Unchanged对象]（基于ObjectSet的扩展方法）
+        /// 因为“实体框架执行的查询根据数据源中的数据进行计算，且结果将不反映对象上下文中的新对象。http://msdn.microsoft.com/zh-cn/library/bb896241.aspx ”
+        /// 那么本地新增对象未保存时，下次查询不包括这些新对象。所以增加此本地查询[Added,Modified,Unchanged对象]功能。http://blogs.msdn.com/b/dsimmons/archive/2009/02/21/local-queries.aspx
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="objectSet"></param>
+        /// <returns></returns>
+        public static IEnumerable<T> Local<T>(this ObjectSet<T> objectSet) where T : class
+        {
+            return from stateEntry in objectSet.Context.ObjectStateManager
+                                               .GetObjectStateEntries(EntityState.Added |
+                                                                      EntityState.Modified |
+                                                                      EntityState.Unchanged)
+                   where stateEntry.Entity != null && stateEntry.EntitySet == objectSet.EntitySet
+                   select stateEntry.Entity as T;
+        }
+
+        /// <summary>
+        /// 是否有Added状态对象（基于ObjectSet的扩展方法）
+        /// 如果有的话，那么查询时应该调用Local扩展方法得到本地对象；否则可以调用‘预编译’查询加速
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="objectSet"></param>
+        /// <returns></returns>
+        public static bool HasAddedObject<T>(this ObjectSet<T> objectSet) where T : class
+        {
+            var objectStateEntries = objectSet.Context.ObjectStateManager.GetObjectStateEntries(EntityState.Added);
+            foreach (var entity in objectStateEntries)
+            {
+                if (entity.EntitySet == objectSet.EntitySet)// T 类型对象有Added
+                    return true;
+            }
+            return false;
+        }
         /// <summary>
         /// 保存到数据库
         /// </summary>
