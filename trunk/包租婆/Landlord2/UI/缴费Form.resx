@@ -117,53 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="bindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>240, 17</value>
+  <metadata name="缴费项Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="缴费时间Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="缴费金额Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="期始Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="期止Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="收款人Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="付款人Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="备注Label.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="源房BindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>229, 17</value>
   </metadata>
   <metadata name="源房缴费明细BindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
-  </metadata>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>416, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnFilter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-</value>
-  </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>531, 14</value>
-  </metadata>
-  <metadata name="ID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>46</value>
   </metadata>
 </root>

@@ -38,7 +38,7 @@ namespace Landlord2.UI
                 Text = "新增客房";
                 BtnOkAndContinue.Visible = true;//保存并继续按钮可见
                 kf = new 客房();
-                if (yfGuid == null)
+                if (yfGuid == Guid.Empty)
                     kf.源房 = bindingSource1.Current as 源房;
                 else
                 {
