@@ -32,12 +32,12 @@
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.kryptonComboBox1 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.cmbYF = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.源房BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BtnOkAndContinue = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.uC客房详细1 = new Landlord2.UI.UC客房详细();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbYF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -72,21 +72,21 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "隶属源房：";
             // 
-            // kryptonComboBox1
+            // cmbYF
             // 
-            this.kryptonComboBox1.DataSource = this.bindingSource1;
-            this.kryptonComboBox1.DisplayMember = "房名";
-            this.kryptonComboBox1.DropDownWidth = 215;
-            this.kryptonComboBox1.Location = new System.Drawing.Point(84, 267);
-            this.kryptonComboBox1.Name = "kryptonComboBox1";
-            this.kryptonComboBox1.Size = new System.Drawing.Size(215, 21);
-            this.kryptonComboBox1.TabIndex = 5;
-            this.kryptonComboBox1.ValueMember = "ID";
-            this.kryptonComboBox1.SelectedIndexChanged += new System.EventHandler(this.kryptonComboBox1_SelectedIndexChanged);
+            this.cmbYF.DataSource = this.源房BindingSource;
+            this.cmbYF.DisplayMember = "房名";
+            this.cmbYF.DropDownWidth = 215;
+            this.cmbYF.Location = new System.Drawing.Point(84, 267);
+            this.cmbYF.Name = "cmbYF";
+            this.cmbYF.Size = new System.Drawing.Size(215, 21);
+            this.cmbYF.TabIndex = 5;
+            this.cmbYF.ValueMember = "ID";
+            this.cmbYF.SelectedIndexChanged += new System.EventHandler(this.kryptonComboBox1_SelectedIndexChanged);
             // 
-            // bindingSource1
+            // 源房BindingSource
             // 
-            this.bindingSource1.DataSource = typeof(Landlord2.Data.源房);
+            this.源房BindingSource.DataSource = typeof(Landlord2.Data.源房);
             // 
             // BtnOkAndContinue
             // 
@@ -113,7 +113,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 302);
-            this.Controls.Add(this.kryptonComboBox1);
+            this.Controls.Add(this.cmbYF);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.BtnOkAndContinue);
@@ -127,8 +127,8 @@
             this.Text = "客房";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.kfForm_FormClosed);
             this.Load += new System.EventHandler(this.kfForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbYF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,8 +140,8 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOK;
         private System.Windows.Forms.Label label1;
-        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox1;
-        private System.Windows.Forms.BindingSource bindingSource1;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbYF;
+        private System.Windows.Forms.BindingSource 源房BindingSource;
         private ComponentFactory.Krypton.Toolkit.KryptonButton BtnOkAndContinue;
     }
 }

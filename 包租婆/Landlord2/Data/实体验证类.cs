@@ -82,7 +82,7 @@ namespace Landlord2.Data
             string returnStr = string.Empty;
 
             //源房缴费明细必须隶属于一个上级的源房
-            if (this.源房 == null)
+            if (this.源房ID == null || this.源房ID == Guid.Empty)
                 returnStr += "请指定此缴费明细的源房! " + Environment.NewLine;
 
             //校验所有非空属性
@@ -129,7 +129,7 @@ namespace Landlord2.Data
             string returnStr = string.Empty;
             
             //客房必须隶属于一个上级的源房
-            if (this.源房ID == null)
+            if (this.源房ID == null || this.源房ID == Guid.Empty)
                 returnStr += "请指定此客房上级的源房! " + Environment.NewLine;
 
             //校验所有非空属性

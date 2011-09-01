@@ -376,7 +376,7 @@ namespace Landlord2
                     kF = new kfForm((treeView1.SelectedNode.Tag as 客房).源房ID);
             }
             else
-                kF = new kfForm(null);
+                kF = new kfForm();
             kF.ShowDialog(this);
             kF.Dispose();
         }
