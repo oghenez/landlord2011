@@ -14,43 +14,48 @@ namespace Landlord2.UI
     public partial class kfForm : KryptonForm
     {
         private 客房 kf;
-        private Guid yfGuid;//客房隶属的源房Guid
+        private Guid yfID;//客房隶属的源房id
         private bool isNew;//是否新增操作
 
+        public kfForm()
+        {
+            InitializeComponent();
+            isNew = true;
+        }
         public kfForm(客房 kf)
         {
-            this.kf = kf;
             InitializeComponent();
+            isNew = false;
+            this.kf = kf;
         }
 
         public kfForm(Guid yfGuid)
         {
-            this.yfGuid = yfGuid;
             InitializeComponent();
+            isNew = true;
+            this.yfID = yfGuid;
         }
 
         private void kfForm_Load(object sender, EventArgs e)
         {
-            bindingSource1.DataSource = Main.context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) > DateTime.Now);
-            if (kf == null)
+            Text = string.Format("{0}客房",isNew? "新增":"编辑");
+            源房BindingSource.DataSource = 源房.GetYF_Current();
+
+            if (isNew)//新增
             {
-                isNew = true;
-                Text = "新增客房";
                 BtnOkAndContinue.Visible = true;//保存并继续按钮可见
                 kf = new 客房();
-                if (yfGuid == Guid.Empty)
-                    kf.源房 = bindingSource1.Current as 源房;
+                if (yfID == Guid.Empty)
+                    kf.源房 = 源房BindingSource.Current as 源房;
                 else
                 {
-                    kf.源房ID = yfGuid;
-                    kryptonComboBox1.SelectedValue = yfGuid;
+                    kf.源房ID = yfID;
+                    cmbYF.SelectedValue = yfID;
                 }
             }
-            else
+            else//编辑
             {
-                isNew = false;
-                Text = "编辑客房";
-                kryptonComboBox1.SelectedValue = kf.源房ID;
+                cmbYF.SelectedValue = kf.源房ID;
             }
             uC客房详细1.客房BindingSource.DataSource = kf;
         }
@@ -106,6 +111,8 @@ namespace Landlord2.UI
         }
         private void BtnOkAndContinue_Click(object sender, EventArgs e)
         {
+            uC客房详细1.客房BindingSource.EndEdit();
+
             string check = kf.CheckRules();
             if (!string.IsNullOrEmpty(check))
             {
@@ -157,8 +164,8 @@ namespace Landlord2.UI
 
         private void kryptonComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(kryptonComboBox1.SelectedValue != null)
-                kf.源房ID = (Guid)kryptonComboBox1.SelectedValue;
+            if(cmbYF.SelectedValue != null)
+                kf.源房ID = (Guid)cmbYF.SelectedValue;
         }
 
 
