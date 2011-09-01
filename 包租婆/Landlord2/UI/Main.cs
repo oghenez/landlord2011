@@ -318,8 +318,10 @@ namespace Landlord2
         private void yfBtnAdd_Click(object sender, EventArgs e)
         {
             //新增源房
-            yfForm yF = new yfForm(null);
-            yF.ShowDialog(this);
+            using (yfForm yF = new yfForm(null))
+            {
+                yF.ShowDialog(this);
+            }
         }
         private void yfBtnDel_Click(object sender, EventArgs e)
         {
@@ -355,8 +357,10 @@ namespace Landlord2
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 源房)
             {
                 源房 yf = treeView1.SelectedNode.Tag as 源房;
-                yfForm yF = new yfForm(yf);
-                yF.ShowDialog(this);
+                using (yfForm yF = new yfForm(yf))
+                {
+                    yF.ShowDialog(this);
+                }
             }
         }
 
@@ -374,6 +378,7 @@ namespace Landlord2
             else
                 kF = new kfForm(null);
             kF.ShowDialog(this);
+            kF.Dispose();
         }
         private void kfBtnDel_Click(object sender, EventArgs e)
         {
@@ -409,21 +414,28 @@ namespace Landlord2
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
             {
                 客房 kf = treeView1.SelectedNode.Tag as 客房;
-                kfForm kF = new kfForm(kf);
-                kF.ShowDialog(this);
+                using (kfForm kF = new kfForm(kf))
+                {
+                    kF.ShowDialog(this);
+                }
             }
         }
 
         private void yfBtnPay_Click(object sender, EventArgs e)
         {
             //源房缴费
-            
+            using (缴费Form jf = new 缴费Form())
+            {
+                jf.ShowDialog(this);
+            }
         }
         private void yfBtnPayDetail_Click(object sender, EventArgs e)
         {
             //源房缴费明细
-            缴费明细Form jF = new 缴费明细Form();
-            jF.ShowDialog(this);
+            using (缴费明细Form jF = new 缴费明细Form())
+            {
+                jF.ShowDialog(this);
+            }
         }
         #endregion
 

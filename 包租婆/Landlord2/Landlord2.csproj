@@ -77,8 +77,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Views.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\客房.cs" />
+    <Compile Include="Data\客房出租历史记录.cs" />
+    <Compile Include="Data\客房租金明细.cs" />
+    <Compile Include="Data\提醒.cs" />
+    <Compile Include="Data\日常损耗.cs" />
+    <Compile Include="Data\源房.cs" />
+    <Compile Include="Data\源房水电气核查.cs" />
+    <Compile Include="Data\源房涨租协定.cs" />
+    <Compile Include="Data\源房缴费明细.cs" />
+    <Compile Include="Data\装修明细.cs" />
     <Compile Include="MyDataGridViewDateTimePickerColumn.cs" />
-    <Compile Include="Data\实体初始化GUID类.cs" />
     <Compile Include="Data\实体验证类.cs" />
     <Compile Include="Data\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -123,6 +132,12 @@
     </Compile>
     <Compile Include="UI\yfForm.Designer.cs">
       <DependentUpon>yfForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\缴费Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\缴费Form.Designer.cs">
+      <DependentUpon>缴费Form.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\缴费明细Form.cs">
       <SubType>Form</SubType>
@@ -169,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\yfForm.resx">
       <DependentUpon>yfForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\缴费Form.resx">
+      <DependentUpon>缴费Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\缴费明细Form.resx">
       <DependentUpon>缴费明细Form.cs</DependentUpon>
