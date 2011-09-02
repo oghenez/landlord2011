@@ -14,7 +14,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Data.Mapping.EntityViewGenerationAttribute(typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets6A878D56C086F2D1A4B227423C056262F9DCD4DCA524217C6A62B0048A847D30))]
+[assembly: System.Data.Mapping.EntityViewGenerationAttribute(typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets6B6BC1282E897EE8D3AED73B58DB0502C5C85310DE1766FD8BC41D714AD85CEB))]
 
 namespace Edm_EntityMappingGeneratedViews
 {
@@ -23,19 +23,19 @@ namespace Edm_EntityMappingGeneratedViews
     /// <Summary>
     /// 此类型包含在设计时生成的 EntitySets 和 AssociationSets 的视图。
     /// </Summary>
-    public sealed class ViewsForBaseEntitySets6A878D56C086F2D1A4B227423C056262F9DCD4DCA524217C6A62B0048A847D30 : System.Data.Mapping.EntityViewContainer
+    public sealed class ViewsForBaseEntitySets6B6BC1282E897EE8D3AED73B58DB0502C5C85310DE1766FD8BC41D714AD85CEB : System.Data.Mapping.EntityViewContainer
     {
         
         /// <Summary>
         /// 构造函数存储各区的视图，以及根据元数据和映射结束和视图生成的哈希值。
         /// </Summary>
-        public ViewsForBaseEntitySets6A878D56C086F2D1A4B227423C056262F9DCD4DCA524217C6A62B0048A847D30()
+        public ViewsForBaseEntitySets6B6BC1282E897EE8D3AED73B58DB0502C5C85310DE1766FD8BC41D714AD85CEB()
         {
             this.EdmEntityContainerName = "Entities";
             this.StoreEntityContainerName = "Landlord2ModelStoreContainer";
-            this.HashOverMappingClosure = "7ba4c2c2db82f21521f775a3b630eb38f24ddccc1e69227c993ecd15b4c82eaf";
-            this.HashOverAllExtentViews = "92d84eadfb69ccc3a98645aa641d81d5124993334b067a0542c9a1ac0c93c912";
-            this.ViewCount = 24;
+            this.HashOverMappingClosure = "36f23694f5875bfba7d6e568b8e8e628ea56fb4b18009a6d2e2c9bd5535d70ff";
+            this.HashOverAllExtentViews = "9906be0ef3d5d7a82e323c784fc3951981562283929e24f551294d3c50fb9442";
+            this.ViewCount = 22;
         }
         
         /// <Summary>
@@ -131,55 +131,13 @@ namespace Edm_EntityMappingGeneratedViews
             {
                 return GetView21();
             }
-            if ((index == 22))
-            {
-                return GetView22();
-            }
-            if ((index == 23))
-            {
-                return GetView23();
-            }
             throw new System.IndexOutOfRangeException();
-        }
-        
-        /// <Summary>
-        /// 返回 Landlord2ModelStoreContainer.缴收项目 的视图
-        /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView0()
-        {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.缴收项目", @"
-    SELECT VALUE -- Constructing 缴收项目
-        [Landlord2Model.Store.缴收项目](T1.[缴收项目_项目名], T1.[缴收项目_计量单位])
-    FROM (
-        SELECT 
-            T.[项目名] AS [缴收项目_项目名], 
-            T.[计量单位] AS [缴收项目_计量单位], 
-            True AS _from0
-        FROM Entities.[缴收项目] AS T
-    ) AS T1");
-        }
-        
-        /// <Summary>
-        /// 返回 Entities.缴收项目 的视图
-        /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView1()
-        {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Entities.缴收项目", @"
-    SELECT VALUE -- Constructing 缴收项目
-        [Landlord2Model.缴收项目](T1.[缴收项目_项目名], T1.[缴收项目_计量单位])
-    FROM (
-        SELECT 
-            T.[项目名] AS [缴收项目_项目名], 
-            T.[计量单位] AS [缴收项目_计量单位], 
-            True AS _from0
-        FROM Landlord2ModelStoreContainer.[缴收项目] AS T
-    ) AS T1");
         }
         
         /// <Summary>
         /// 返回 Landlord2ModelStoreContainer.客房 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView2()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView0()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.客房", "\r\n    SELECT VALUE -- Constructing 客房\r\n        [Landlord2Model.Store.客房](T1.[客房_命" +
                     "名], T1.[客房_面积], T1.[客房_含厨房], T1.[客房_含卫生间], T1.[客房_租户], T1.[客房_联系地址], T1.[客房_身份证号" +
@@ -205,7 +163,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Landlord2ModelStoreContainer.客房出租历史记录 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView3()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView1()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.客房出租历史记录", @"
     SELECT VALUE -- Constructing 客房出租历史记录
@@ -233,7 +191,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Landlord2ModelStoreContainer.客房租金明细 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView4()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView2()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.客房租金明细", @"
     SELECT VALUE -- Constructing 客房租金明细
@@ -261,7 +219,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Landlord2ModelStoreContainer.源房 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView5()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView3()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.源房", "\r\n    SELECT VALUE -- Constructing 源房\r\n        [Landlord2Model.Store.源房](T1.[源房_房" +
                     "名], T1.[源房_用途], T1.[源房_结构], T1.[源房_建筑面积], T1.[源房_室], T1.[源房_厅], T1.[源房_卫], T1.[源" +
@@ -293,7 +251,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Landlord2ModelStoreContainer.源房缴费明细 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView6()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView4()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.源房缴费明细", @"
     SELECT VALUE -- Constructing 源房缴费明细
@@ -318,7 +276,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Landlord2ModelStoreContainer.源房水电气核查 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView7()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView5()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.源房水电气核查", @"
     SELECT VALUE -- Constructing 源房水电气核查
@@ -346,7 +304,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Landlord2ModelStoreContainer.源房涨租协定 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView8()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView6()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.源房涨租协定", @"
     SELECT VALUE -- Constructing 源房涨租协定
@@ -366,7 +324,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Landlord2ModelStoreContainer.装修明细 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView9()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView7()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.装修明细", @"
     SELECT VALUE -- Constructing 装修明细
@@ -392,7 +350,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Entities.客房 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView10()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView8()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.客房", "\r\n    SELECT VALUE -- Constructing 客房\r\n        [Landlord2Model.客房](T1.[客房_命名], T1" +
                     ".[客房_面积], T1.[客房_含厨房], T1.[客房_含卫生间], T1.[客房_租户], T1.[客房_联系地址], T1.[客房_身份证号], T1." +
@@ -419,7 +377,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Entities.客房出租历史记录 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView11()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView9()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.客房出租历史记录", @"
     SELECT VALUE -- Constructing 客房出租历史记录
@@ -447,7 +405,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Entities.客房租金明细 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView12()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView10()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.客房租金明细", @"
     SELECT VALUE -- Constructing 客房租金明细
@@ -475,7 +433,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Entities.源房 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView13()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView11()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.源房", "\r\n    SELECT VALUE -- Constructing 源房\r\n        [Landlord2Model.源房](T1.[源房_房名], T1" +
                     ".[源房_用途], T1.[源房_结构], T1.[源房_建筑面积], T1.[源房_室], T1.[源房_厅], T1.[源房_卫], T1.[源房_装修]," +
@@ -507,7 +465,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Entities.源房缴费明细 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView14()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView12()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.源房缴费明细", @"
     SELECT VALUE -- Constructing 源房缴费明细
@@ -532,7 +490,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Entities.源房水电气核查 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView15()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView13()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.源房水电气核查", @"
     SELECT VALUE -- Constructing 源房水电气核查
@@ -560,7 +518,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Entities.源房涨租协定 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView16()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView14()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.源房涨租协定", @"
     SELECT VALUE -- Constructing 源房涨租协定
@@ -580,7 +538,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Entities.装修明细 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView17()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView15()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.装修明细", @"
     SELECT VALUE -- Constructing 装修明细
@@ -606,7 +564,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Landlord2ModelStoreContainer.日常损耗 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView18()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView16()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.日常损耗", @"
     SELECT VALUE -- Constructing 日常损耗
@@ -628,7 +586,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Entities.日常损耗 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView19()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView17()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.日常损耗", @"
     SELECT VALUE -- Constructing 日常损耗
@@ -650,7 +608,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Landlord2ModelStoreContainer.提醒 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView20()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView18()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.提醒", @"
     SELECT VALUE -- Constructing 提醒
@@ -673,7 +631,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Entities.提醒 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView21()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView19()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.提醒", @"
     SELECT VALUE -- Constructing 提醒
@@ -696,7 +654,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Landlord2ModelStoreContainer.装修分类 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView22()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView20()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.装修分类", "\r\n    SELECT VALUE -- Constructing 装修分类\r\n        [Landlord2Model.Store.装修分类](T1.[" +
                     "装修分类_类别])\r\n    FROM (\r\n        SELECT \r\n            T.[类别] AS [装修分类_类别], \r\n     " +
@@ -706,7 +664,7 @@ namespace Edm_EntityMappingGeneratedViews
         /// <Summary>
         /// 返回 Entities.装修分类 的视图
         /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView23()
+        private System.Collections.Generic.KeyValuePair<string, string> GetView21()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.装修分类", "\r\n    SELECT VALUE -- Constructing 装修分类\r\n        [Landlord2Model.装修分类](T1.[装修分类_类" +
                     "别])\r\n    FROM (\r\n        SELECT \r\n            T.[类别] AS [装修分类_类别], \r\n           " +
