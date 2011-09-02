@@ -89,11 +89,6 @@
     <Compile Include="Data\装修明细.cs" />
     <Compile Include="MyDataGridViewDateTimePickerColumn.cs" />
     <Compile Include="Data\实体验证类.cs" />
-    <Compile Include="Data\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="UI\kfForm.cs">
       <SubType>Form</SubType>
@@ -198,16 +193,11 @@
       <DependentUpon>阶梯电价Form.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.Config" />
-    <EntityDeploy Include="Data\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="Data\Model1.Views.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Views.cs</LastGenOutput>
     </None>
     <None Include="Properties\DataSources\Landlord2.Data.Entities.datasource" />
-    <None Include="Properties\DataSources\Landlord2.Data.Landlord2Entities.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.客房.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.提醒.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.源房.datasource" />

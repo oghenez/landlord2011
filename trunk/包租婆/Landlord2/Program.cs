@@ -22,7 +22,7 @@ namespace Landlord2
             File.Delete(path);//删除指定的文件。如果指定的文件不存在，则不引发异常。 
 
             Application.Run(new Main());
-            //Application.Run(new test());
+            //Application.Run(new Landlord2.UI.testForm());
         }
     }
 }
