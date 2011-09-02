@@ -40,11 +40,13 @@ namespace Landlord2.UI
                 Text = "编辑源房";
             }
             uC源房详细1.源房BindingSource.DataSource = yf;
+            uC源房详细1.源房涨租协定BindingSource.DataSource = Main.context.源房涨租协定.Where(m => m.源房ID == yf.ID);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
             uC源房详细1.源房BindingSource.EndEdit();
+            uC源房详细1.源房涨租协定BindingSource.EndEdit();
 
             string check = yf.CheckRules();
             if (!string.IsNullOrEmpty(check))
@@ -54,7 +56,7 @@ namespace Landlord2.UI
             }
             if (isNew)//新增 
             {
-                Main.context.AddTo源房(yf);
+                Main.context.源房.AddObject(yf);
                 string msg;
                 if (Helper.saveData(yf, out msg))
                 {
@@ -65,7 +67,7 @@ namespace Landlord2.UI
                 else
                 {
                     KryptonMessageBox.Show(msg, "失败");
-                    Main.context.Detach(yf);
+                    Main.context.源房.Detach(yf);
                 }
             }
             else //编辑
