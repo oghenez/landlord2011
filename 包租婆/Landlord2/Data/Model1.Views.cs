@@ -14,7 +14,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Data.Mapping.EntityViewGenerationAttribute(typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets6AEA01EBE053A3AE625BB943538D3883AF594A26643F2547E308BA49553C18D3))]
+[assembly: System.Data.Mapping.EntityViewGenerationAttribute(typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets6A878D56C086F2D1A4B227423C056262F9DCD4DCA524217C6A62B0048A847D30))]
 
 namespace Edm_EntityMappingGeneratedViews
 {
@@ -23,18 +23,18 @@ namespace Edm_EntityMappingGeneratedViews
     /// <Summary>
     /// 此类型包含在设计时生成的 EntitySets 和 AssociationSets 的视图。
     /// </Summary>
-    public sealed class ViewsForBaseEntitySets6AEA01EBE053A3AE625BB943538D3883AF594A26643F2547E308BA49553C18D3 : System.Data.Mapping.EntityViewContainer
+    public sealed class ViewsForBaseEntitySets6A878D56C086F2D1A4B227423C056262F9DCD4DCA524217C6A62B0048A847D30 : System.Data.Mapping.EntityViewContainer
     {
         
         /// <Summary>
         /// 构造函数存储各区的视图，以及根据元数据和映射结束和视图生成的哈希值。
         /// </Summary>
-        public ViewsForBaseEntitySets6AEA01EBE053A3AE625BB943538D3883AF594A26643F2547E308BA49553C18D3()
+        public ViewsForBaseEntitySets6A878D56C086F2D1A4B227423C056262F9DCD4DCA524217C6A62B0048A847D30()
         {
             this.EdmEntityContainerName = "Entities";
-            this.StoreEntityContainerName = "Landlord2ModelDataStoreContainer";
-            this.HashOverMappingClosure = "18c5c83c74288d26ba6df90a6eea1ce7b9057c1f97d7489221e7ee1b1ca38cd4";
-            this.HashOverAllExtentViews = "17cdba7132767907165b13848be5bec1107e5393c1b50aace98dd1537ab6258f";
+            this.StoreEntityContainerName = "Landlord2ModelStoreContainer";
+            this.HashOverMappingClosure = "7ba4c2c2db82f21521f775a3b630eb38f24ddccc1e69227c993ecd15b4c82eaf";
+            this.HashOverAllExtentViews = "92d84eadfb69ccc3a98645aa641d81d5124993334b067a0542c9a1ac0c93c912";
             this.ViewCount = 24;
         }
         
@@ -143,13 +143,13 @@ namespace Edm_EntityMappingGeneratedViews
         }
         
         /// <Summary>
-        /// 返回 Landlord2ModelDataStoreContainer.缴收项目 的视图
+        /// 返回 Landlord2ModelStoreContainer.缴收项目 的视图
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView0()
         {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelDataStoreContainer.缴收项目", @"
+            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.缴收项目", @"
     SELECT VALUE -- Constructing 缴收项目
-        [Landlord2Model.Data.Store.缴收项目](T1.[缴收项目_项目名], T1.[缴收项目_计量单位])
+        [Landlord2Model.Store.缴收项目](T1.[缴收项目_项目名], T1.[缴收项目_计量单位])
     FROM (
         SELECT 
             T.[项目名] AS [缴收项目_项目名], 
@@ -166,50 +166,50 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.缴收项目", @"
     SELECT VALUE -- Constructing 缴收项目
-        [Landlord2Model.Data.缴收项目](T1.[缴收项目_项目名], T1.[缴收项目_计量单位])
+        [Landlord2Model.缴收项目](T1.[缴收项目_项目名], T1.[缴收项目_计量单位])
     FROM (
         SELECT 
             T.[项目名] AS [缴收项目_项目名], 
             T.[计量单位] AS [缴收项目_计量单位], 
             True AS _from0
-        FROM Landlord2ModelDataStoreContainer.[缴收项目] AS T
+        FROM Landlord2ModelStoreContainer.[缴收项目] AS T
     ) AS T1");
         }
         
         /// <Summary>
-        /// 返回 Landlord2ModelDataStoreContainer.客房 的视图
+        /// 返回 Landlord2ModelStoreContainer.客房 的视图
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView2()
         {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelDataStoreContainer.客房", "\r\n    SELECT VALUE -- Constructing 客房\r\n        [Landlord2Model.Data.Store.客房](T1." +
-                    "[客房_命名], T1.[客房_面积], T1.[客房_含厨房], T1.[客房_含卫生间], T1.[客房_租户], T1.[客房_联系地址], T1.[客房" +
-                    "_身份证号], T1.[客房_电话1], T1.[客房_电话2], T1.[客房_期始], T1.[客房_期止], T1.[客房_月租金], T1.[客房_押金" +
-                    "], T1.[客房_支付月数], T1.[客房_租赁协议照片1], T1.[客房_租赁协议照片2], T1.[客房_租赁协议照片3], T1.[客房_备注], " +
-                    "T1.[客房_水始码], T1.[客房_电始码], T1.[客房_气始码], T1.[客房_月物业费], T1.[客房_月宽带费], T1.[客房_月厨房费]," +
-                    " T1.[客房_中介费用], T1.[客房_ID], T1.[客房_源房ID])\r\n    FROM (\r\n        SELECT \r\n         " +
-                    "   T.[命名] AS [客房_命名], \r\n            T.[面积] AS [客房_面积], \r\n            T.[含厨房] AS " +
-                    "[客房_含厨房], \r\n            T.[含卫生间] AS [客房_含卫生间], \r\n            T.[租户] AS [客房_租户], " +
-                    "\r\n            T.[联系地址] AS [客房_联系地址], \r\n            T.[身份证号] AS [客房_身份证号], \r\n    " +
-                    "        T.[电话1] AS [客房_电话1], \r\n            T.[电话2] AS [客房_电话2], \r\n            T." +
-                    "[期始] AS [客房_期始], \r\n            T.[期止] AS [客房_期止], \r\n            T.[月租金] AS [客房_月" +
-                    "租金], \r\n            T.[押金] AS [客房_押金], \r\n            T.[支付月数] AS [客房_支付月数], \r\n   " +
-                    "         T.[租赁协议照片1] AS [客房_租赁协议照片1], \r\n            T.[租赁协议照片2] AS [客房_租赁协议照片2]," +
-                    " \r\n            T.[租赁协议照片3] AS [客房_租赁协议照片3], \r\n            T.[备注] AS [客房_备注], \r\n " +
-                    "           T.[水始码] AS [客房_水始码], \r\n            T.[电始码] AS [客房_电始码], \r\n           " +
-                    " T.[气始码] AS [客房_气始码], \r\n            T.[月物业费] AS [客房_月物业费], \r\n            T.[月宽带费" +
-                    "] AS [客房_月宽带费], \r\n            T.[月厨房费] AS [客房_月厨房费], \r\n            T.[中介费用] AS [" +
-                    "客房_中介费用], \r\n            T.ID AS [客房_ID], \r\n            T.[源房ID] AS [客房_源房ID], \r\n" +
-                    "            True AS _from0\r\n        FROM Entities.[客房] AS T\r\n    ) AS T1");
+            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.客房", "\r\n    SELECT VALUE -- Constructing 客房\r\n        [Landlord2Model.Store.客房](T1.[客房_命" +
+                    "名], T1.[客房_面积], T1.[客房_含厨房], T1.[客房_含卫生间], T1.[客房_租户], T1.[客房_联系地址], T1.[客房_身份证号" +
+                    "], T1.[客房_电话1], T1.[客房_电话2], T1.[客房_期始], T1.[客房_期止], T1.[客房_月租金], T1.[客房_押金], T1" +
+                    ".[客房_支付月数], T1.[客房_租赁协议照片1], T1.[客房_租赁协议照片2], T1.[客房_租赁协议照片3], T1.[客房_备注], T1.[客" +
+                    "房_水始码], T1.[客房_电始码], T1.[客房_气始码], T1.[客房_月物业费], T1.[客房_月宽带费], T1.[客房_月厨房费], T1.[" +
+                    "客房_中介费用], T1.[客房_ID], T1.[客房_源房ID])\r\n    FROM (\r\n        SELECT \r\n            T." +
+                    "[命名] AS [客房_命名], \r\n            T.[面积] AS [客房_面积], \r\n            T.[含厨房] AS [客房_含" +
+                    "厨房], \r\n            T.[含卫生间] AS [客房_含卫生间], \r\n            T.[租户] AS [客房_租户], \r\n   " +
+                    "         T.[联系地址] AS [客房_联系地址], \r\n            T.[身份证号] AS [客房_身份证号], \r\n         " +
+                    "   T.[电话1] AS [客房_电话1], \r\n            T.[电话2] AS [客房_电话2], \r\n            T.[期始] " +
+                    "AS [客房_期始], \r\n            T.[期止] AS [客房_期止], \r\n            T.[月租金] AS [客房_月租金], " +
+                    "\r\n            T.[押金] AS [客房_押金], \r\n            T.[支付月数] AS [客房_支付月数], \r\n        " +
+                    "    T.[租赁协议照片1] AS [客房_租赁协议照片1], \r\n            T.[租赁协议照片2] AS [客房_租赁协议照片2], \r\n  " +
+                    "          T.[租赁协议照片3] AS [客房_租赁协议照片3], \r\n            T.[备注] AS [客房_备注], \r\n      " +
+                    "      T.[水始码] AS [客房_水始码], \r\n            T.[电始码] AS [客房_电始码], \r\n            T.[气" +
+                    "始码] AS [客房_气始码], \r\n            T.[月物业费] AS [客房_月物业费], \r\n            T.[月宽带费] AS " +
+                    "[客房_月宽带费], \r\n            T.[月厨房费] AS [客房_月厨房费], \r\n            T.[中介费用] AS [客房_中介" +
+                    "费用], \r\n            T.ID AS [客房_ID], \r\n            T.[源房ID] AS [客房_源房ID], \r\n     " +
+                    "       True AS _from0\r\n        FROM Entities.[客房] AS T\r\n    ) AS T1");
         }
         
         /// <Summary>
-        /// 返回 Landlord2ModelDataStoreContainer.客房出租历史记录 的视图
+        /// 返回 Landlord2ModelStoreContainer.客房出租历史记录 的视图
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView3()
         {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelDataStoreContainer.客房出租历史记录", @"
+            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.客房出租历史记录", @"
     SELECT VALUE -- Constructing 客房出租历史记录
-        [Landlord2Model.Data.Store.客房出租历史记录](T1.[客房出租历史记录_租户], T1.[客房出租历史记录_联系地址], T1.[客房出租历史记录_身份证号], T1.[客房出租历史记录_电话1], T1.[客房出租历史记录_电话2], T1.[客房出租历史记录_期始], T1.[客房出租历史记录_期止], T1.[客房出租历史记录_月租金], T1.[客房出租历史记录_押金], T1.[客房出租历史记录_支付月数], T1.[客房出租历史记录_备注], T1.[客房出租历史记录_客房ID], T1.[客房出租历史记录_ID])
+        [Landlord2Model.Store.客房出租历史记录](T1.[客房出租历史记录_租户], T1.[客房出租历史记录_联系地址], T1.[客房出租历史记录_身份证号], T1.[客房出租历史记录_电话1], T1.[客房出租历史记录_电话2], T1.[客房出租历史记录_期始], T1.[客房出租历史记录_期止], T1.[客房出租历史记录_月租金], T1.[客房出租历史记录_押金], T1.[客房出租历史记录_支付月数], T1.[客房出租历史记录_备注], T1.[客房出租历史记录_客房ID], T1.[客房出租历史记录_ID])
     FROM (
         SELECT 
             T.[租户] AS [客房出租历史记录_租户], 
@@ -231,13 +231,13 @@ namespace Edm_EntityMappingGeneratedViews
         }
         
         /// <Summary>
-        /// 返回 Landlord2ModelDataStoreContainer.客房租金明细 的视图
+        /// 返回 Landlord2ModelStoreContainer.客房租金明细 的视图
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView4()
         {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelDataStoreContainer.客房租金明细", @"
+            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.客房租金明细", @"
     SELECT VALUE -- Constructing 客房租金明细
-        [Landlord2Model.Data.Store.客房租金明细](T1.[客房租金明细_起付日期], T1.[客房租金明细_止付日期], T1.[客房租金明细_付款日期], T1.[客房租金明细_水止码], T1.[客房租金明细_电止码], T1.[客房租金明细_气止码], T1.[客房租金明细_应付金额], T1.[客房租金明细_实付金额], T1.[客房租金明细_付款人], T1.[客房租金明细_收款人], T1.[客房租金明细_备注], T1.[客房租金明细_客房ID], T1.[客房租金明细_ID])
+        [Landlord2Model.Store.客房租金明细](T1.[客房租金明细_起付日期], T1.[客房租金明细_止付日期], T1.[客房租金明细_付款日期], T1.[客房租金明细_水止码], T1.[客房租金明细_电止码], T1.[客房租金明细_气止码], T1.[客房租金明细_应付金额], T1.[客房租金明细_实付金额], T1.[客房租金明细_付款人], T1.[客房租金明细_收款人], T1.[客房租金明细_备注], T1.[客房租金明细_客房ID], T1.[客房租金明细_ID])
     FROM (
         SELECT 
             T.[起付日期] AS [客房租金明细_起付日期], 
@@ -259,45 +259,45 @@ namespace Edm_EntityMappingGeneratedViews
         }
         
         /// <Summary>
-        /// 返回 Landlord2ModelDataStoreContainer.源房 的视图
+        /// 返回 Landlord2ModelStoreContainer.源房 的视图
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView5()
         {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelDataStoreContainer.源房", "\r\n    SELECT VALUE -- Constructing 源房\r\n        [Landlord2Model.Data.Store.源房](T1." +
-                    "[源房_房名], T1.[源房_用途], T1.[源房_结构], T1.[源房_建筑面积], T1.[源房_室], T1.[源房_厅], T1.[源房_卫], " +
-                    "T1.[源房_装修], T1.[源房_权证号], T1.[源房_房东], T1.[源房_联系地址], T1.[源房_身份证号], T1.[源房_电话1], T1" +
-                    ".[源房_电话2], T1.[源房_押金], T1.[源房_支付月数], T1.[源房_租赁协议照片1], T1.[源房_租赁协议照片2], T1.[源房_租赁" +
-                    "协议照片3], T1.[源房_备注], T1.[源房_月物业费], T1.[源房_水始码], T1.[源房_电始码], T1.[源房_气始码], T1.[源房_" +
-                    "中介费用], T1.[源房_月卫生费], T1.[源房_源房东银行卡], T1.[源房_水表编号], T1.[源房_电表编号], T1.[源房_气表编号], T" +
-                    "1.[源房_水务代扣卫生费], T1.[源房_月宽带费], T1.[源房_阶梯水价], T1.[源房_阶梯电价], T1.[源房_气单价], T1.[源房_ID" +
-                    "])\r\n    FROM (\r\n        SELECT \r\n            T.[房名] AS [源房_房名], \r\n            T." +
-                    "[用途] AS [源房_用途], \r\n            T.[结构] AS [源房_结构], \r\n            T.[建筑面积] AS [源房_" +
-                    "建筑面积], \r\n            T.[室] AS [源房_室], \r\n            T.[厅] AS [源房_厅], \r\n         " +
-                    "   T.[卫] AS [源房_卫], \r\n            T.[装修] AS [源房_装修], \r\n            T.[权证号] AS [源" +
-                    "房_权证号], \r\n            T.[房东] AS [源房_房东], \r\n            T.[联系地址] AS [源房_联系地址], \r\n" +
-                    "            T.[身份证号] AS [源房_身份证号], \r\n            T.[电话1] AS [源房_电话1], \r\n        " +
-                    "    T.[电话2] AS [源房_电话2], \r\n            T.[押金] AS [源房_押金], \r\n            T.[支付月数]" +
-                    " AS [源房_支付月数], \r\n            T.[租赁协议照片1] AS [源房_租赁协议照片1], \r\n            T.[租赁协议照" +
-                    "片2] AS [源房_租赁协议照片2], \r\n            T.[租赁协议照片3] AS [源房_租赁协议照片3], \r\n            T." +
-                    "[备注] AS [源房_备注], \r\n            T.[月物业费] AS [源房_月物业费], \r\n            T.[水始码] AS [" +
-                    "源房_水始码], \r\n            T.[电始码] AS [源房_电始码], \r\n            T.[气始码] AS [源房_气始码], \r" +
-                    "\n            T.[中介费用] AS [源房_中介费用], \r\n            T.[月卫生费] AS [源房_月卫生费], \r\n     " +
-                    "       T.[源房东银行卡] AS [源房_源房东银行卡], \r\n            T.[水表编号] AS [源房_水表编号], \r\n       " +
-                    "     T.[电表编号] AS [源房_电表编号], \r\n            T.[气表编号] AS [源房_气表编号], \r\n            T" +
-                    ".[水务代扣卫生费] AS [源房_水务代扣卫生费], \r\n            T.[月宽带费] AS [源房_月宽带费], \r\n            T" +
-                    ".[阶梯水价] AS [源房_阶梯水价], \r\n            T.[阶梯电价] AS [源房_阶梯电价], \r\n            T.[气单价]" +
-                    " AS [源房_气单价], \r\n            T.ID AS [源房_ID], \r\n            True AS _from0\r\n     " +
-                    "   FROM Entities.[源房] AS T\r\n    ) AS T1");
+            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.源房", "\r\n    SELECT VALUE -- Constructing 源房\r\n        [Landlord2Model.Store.源房](T1.[源房_房" +
+                    "名], T1.[源房_用途], T1.[源房_结构], T1.[源房_建筑面积], T1.[源房_室], T1.[源房_厅], T1.[源房_卫], T1.[源" +
+                    "房_装修], T1.[源房_权证号], T1.[源房_房东], T1.[源房_联系地址], T1.[源房_身份证号], T1.[源房_电话1], T1.[源房_" +
+                    "电话2], T1.[源房_押金], T1.[源房_支付月数], T1.[源房_租赁协议照片1], T1.[源房_租赁协议照片2], T1.[源房_租赁协议照片3" +
+                    "], T1.[源房_备注], T1.[源房_月物业费], T1.[源房_水始码], T1.[源房_电始码], T1.[源房_气始码], T1.[源房_中介费用]" +
+                    ", T1.[源房_月卫生费], T1.[源房_源房东银行卡], T1.[源房_水表编号], T1.[源房_电表编号], T1.[源房_气表编号], T1.[源房" +
+                    "_水务代扣卫生费], T1.[源房_月宽带费], T1.[源房_阶梯水价], T1.[源房_阶梯电价], T1.[源房_气单价], T1.[源房_ID])\r\n " +
+                    "   FROM (\r\n        SELECT \r\n            T.[房名] AS [源房_房名], \r\n            T.[用途] " +
+                    "AS [源房_用途], \r\n            T.[结构] AS [源房_结构], \r\n            T.[建筑面积] AS [源房_建筑面积]" +
+                    ", \r\n            T.[室] AS [源房_室], \r\n            T.[厅] AS [源房_厅], \r\n            T." +
+                    "[卫] AS [源房_卫], \r\n            T.[装修] AS [源房_装修], \r\n            T.[权证号] AS [源房_权证号" +
+                    "], \r\n            T.[房东] AS [源房_房东], \r\n            T.[联系地址] AS [源房_联系地址], \r\n     " +
+                    "       T.[身份证号] AS [源房_身份证号], \r\n            T.[电话1] AS [源房_电话1], \r\n            T" +
+                    ".[电话2] AS [源房_电话2], \r\n            T.[押金] AS [源房_押金], \r\n            T.[支付月数] AS [" +
+                    "源房_支付月数], \r\n            T.[租赁协议照片1] AS [源房_租赁协议照片1], \r\n            T.[租赁协议照片2] A" +
+                    "S [源房_租赁协议照片2], \r\n            T.[租赁协议照片3] AS [源房_租赁协议照片3], \r\n            T.[备注] " +
+                    "AS [源房_备注], \r\n            T.[月物业费] AS [源房_月物业费], \r\n            T.[水始码] AS [源房_水始" +
+                    "码], \r\n            T.[电始码] AS [源房_电始码], \r\n            T.[气始码] AS [源房_气始码], \r\n    " +
+                    "        T.[中介费用] AS [源房_中介费用], \r\n            T.[月卫生费] AS [源房_月卫生费], \r\n          " +
+                    "  T.[源房东银行卡] AS [源房_源房东银行卡], \r\n            T.[水表编号] AS [源房_水表编号], \r\n            " +
+                    "T.[电表编号] AS [源房_电表编号], \r\n            T.[气表编号] AS [源房_气表编号], \r\n            T.[水务代" +
+                    "扣卫生费] AS [源房_水务代扣卫生费], \r\n            T.[月宽带费] AS [源房_月宽带费], \r\n            T.[阶梯水" +
+                    "价] AS [源房_阶梯水价], \r\n            T.[阶梯电价] AS [源房_阶梯电价], \r\n            T.[气单价] AS [" +
+                    "源房_气单价], \r\n            T.ID AS [源房_ID], \r\n            True AS _from0\r\n        FR" +
+                    "OM Entities.[源房] AS T\r\n    ) AS T1");
         }
         
         /// <Summary>
-        /// 返回 Landlord2ModelDataStoreContainer.源房缴费明细 的视图
+        /// 返回 Landlord2ModelStoreContainer.源房缴费明细 的视图
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView6()
         {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelDataStoreContainer.源房缴费明细", @"
+            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.源房缴费明细", @"
     SELECT VALUE -- Constructing 源房缴费明细
-        [Landlord2Model.Data.Store.源房缴费明细](T1.[源房缴费明细_缴费时间], T1.[源房缴费明细_缴费金额], T1.[源房缴费明细_期始], T1.[源房缴费明细_期止], T1.[源房缴费明细_付款人], T1.[源房缴费明细_收款人], T1.[源房缴费明细_备注], T1.[源房缴费明细_源房ID], T1.[源房缴费明细_缴费项], T1.[源房缴费明细_ID])
+        [Landlord2Model.Store.源房缴费明细](T1.[源房缴费明细_缴费时间], T1.[源房缴费明细_缴费金额], T1.[源房缴费明细_期始], T1.[源房缴费明细_期止], T1.[源房缴费明细_付款人], T1.[源房缴费明细_收款人], T1.[源房缴费明细_备注], T1.[源房缴费明细_源房ID], T1.[源房缴费明细_缴费项], T1.[源房缴费明细_ID])
     FROM (
         SELECT 
             T.[缴费时间] AS [源房缴费明细_缴费时间], 
@@ -316,13 +316,13 @@ namespace Edm_EntityMappingGeneratedViews
         }
         
         /// <Summary>
-        /// 返回 Landlord2ModelDataStoreContainer.源房水电气核查 的视图
+        /// 返回 Landlord2ModelStoreContainer.源房水电气核查 的视图
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView7()
         {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelDataStoreContainer.源房水电气核查", @"
+            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.源房水电气核查", @"
     SELECT VALUE -- Constructing 源房水电气核查
-        [Landlord2Model.Data.Store.源房水电气核查](T1.[源房水电气核查_抄表日期(水)], T1.[源房水电气核查_水止码], T1.[源房水电气核查_水账户余额], T1.[源房水电气核查_抄表日期(电)], T1.[源房水电气核查_电止码], T1.[源房水电气核查_电账户余额], T1.[源房水电气核查_抄表日期(气)], T1.[源房水电气核查_气表剩余字数], T1.[源房水电气核查_核查人], T1.[源房水电气核查_核查时间], T1.[源房水电气核查_备注], T1.[源房水电气核查_源房ID], T1.[源房水电气核查_ID])
+        [Landlord2Model.Store.源房水电气核查](T1.[源房水电气核查_抄表日期(水)], T1.[源房水电气核查_水止码], T1.[源房水电气核查_水账户余额], T1.[源房水电气核查_抄表日期(电)], T1.[源房水电气核查_电止码], T1.[源房水电气核查_电账户余额], T1.[源房水电气核查_抄表日期(气)], T1.[源房水电气核查_气表剩余字数], T1.[源房水电气核查_核查人], T1.[源房水电气核查_核查时间], T1.[源房水电气核查_备注], T1.[源房水电气核查_源房ID], T1.[源房水电气核查_ID])
     FROM (
         SELECT 
             T.[抄表日期_水_] AS [源房水电气核查_抄表日期(水)], 
@@ -344,13 +344,13 @@ namespace Edm_EntityMappingGeneratedViews
         }
         
         /// <Summary>
-        /// 返回 Landlord2ModelDataStoreContainer.源房涨租协定 的视图
+        /// 返回 Landlord2ModelStoreContainer.源房涨租协定 的视图
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView8()
         {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelDataStoreContainer.源房涨租协定", @"
+            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.源房涨租协定", @"
     SELECT VALUE -- Constructing 源房涨租协定
-        [Landlord2Model.Data.Store.源房涨租协定](T1.[源房涨租协定_期始], T1.[源房涨租协定_期止], T1.[源房涨租协定_月租金], T1.[源房涨租协定_源房ID], T1.[源房涨租协定_ID])
+        [Landlord2Model.Store.源房涨租协定](T1.[源房涨租协定_期始], T1.[源房涨租协定_期止], T1.[源房涨租协定_月租金], T1.[源房涨租协定_源房ID], T1.[源房涨租协定_ID])
     FROM (
         SELECT 
             T.[期始] AS [源房涨租协定_期始], 
@@ -364,13 +364,13 @@ namespace Edm_EntityMappingGeneratedViews
         }
         
         /// <Summary>
-        /// 返回 Landlord2ModelDataStoreContainer.装修明细 的视图
+        /// 返回 Landlord2ModelStoreContainer.装修明细 的视图
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView9()
         {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelDataStoreContainer.装修明细", @"
+            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.装修明细", @"
     SELECT VALUE -- Constructing 装修明细
-        [Landlord2Model.Data.Store.装修明细](T1.[装修明细_日期], T1.[装修明细_项目名称], T1.[装修明细_规格], T1.[装修明细_数量], T1.[装修明细_单位], T1.[装修明细_单价], T1.[装修明细_购买地点], T1.[装修明细_备注], T1.[装修明细_源房ID], T1.[装修明细_装修分类], T1.[装修明细_ID])
+        [Landlord2Model.Store.装修明细](T1.[装修明细_日期], T1.[装修明细_项目名称], T1.[装修明细_规格], T1.[装修明细_数量], T1.[装修明细_单位], T1.[装修明细_单价], T1.[装修明细_购买地点], T1.[装修明细_备注], T1.[装修明细_源房ID], T1.[装修明细_装修分类], T1.[装修明细_ID])
     FROM (
         SELECT 
             T.[日期] AS [装修明细_日期], 
@@ -394,26 +394,26 @@ namespace Edm_EntityMappingGeneratedViews
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView10()
         {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Entities.客房", "\r\n    SELECT VALUE -- Constructing 客房\r\n        [Landlord2Model.Data.客房](T1.[客房_命名" +
-                    "], T1.[客房_面积], T1.[客房_含厨房], T1.[客房_含卫生间], T1.[客房_租户], T1.[客房_联系地址], T1.[客房_身份证号]" +
-                    ", T1.[客房_电话1], T1.[客房_电话2], T1.[客房_期始], T1.[客房_期止], T1.[客房_月租金], T1.[客房_押金], T1." +
-                    "[客房_支付月数], T1.[客房_租赁协议照片1], T1.[客房_租赁协议照片2], T1.[客房_租赁协议照片3], T1.[客房_备注], T1.[客房" +
-                    "_水始码], T1.[客房_电始码], T1.[客房_气始码], T1.[客房_月物业费], T1.[客房_月宽带费], T1.[客房_月厨房费], T1.[客" +
-                    "房_中介费用], T1.[客房_ID], T1.[客房_源房ID])\r\n    FROM (\r\n        SELECT \r\n            T.[" +
-                    "命名] AS [客房_命名], \r\n            T.[面积] AS [客房_面积], \r\n            T.[含厨房] AS [客房_含厨" +
-                    "房], \r\n            T.[含卫生间] AS [客房_含卫生间], \r\n            T.[租户] AS [客房_租户], \r\n    " +
-                    "        T.[联系地址] AS [客房_联系地址], \r\n            T.[身份证号] AS [客房_身份证号], \r\n          " +
-                    "  T.[电话1] AS [客房_电话1], \r\n            T.[电话2] AS [客房_电话2], \r\n            T.[期始] A" +
-                    "S [客房_期始], \r\n            T.[期止] AS [客房_期止], \r\n            T.[月租金] AS [客房_月租金], \r" +
-                    "\n            T.[押金] AS [客房_押金], \r\n            T.[支付月数] AS [客房_支付月数], \r\n         " +
-                    "   T.[租赁协议照片1] AS [客房_租赁协议照片1], \r\n            T.[租赁协议照片2] AS [客房_租赁协议照片2], \r\n   " +
-                    "         T.[租赁协议照片3] AS [客房_租赁协议照片3], \r\n            T.[备注] AS [客房_备注], \r\n       " +
-                    "     T.[水始码] AS [客房_水始码], \r\n            T.[电始码] AS [客房_电始码], \r\n            T.[气始" +
-                    "码] AS [客房_气始码], \r\n            T.[月物业费] AS [客房_月物业费], \r\n            T.[月宽带费] AS [" +
-                    "客房_月宽带费], \r\n            T.[月厨房费] AS [客房_月厨房费], \r\n            T.[中介费用] AS [客房_中介费" +
-                    "用], \r\n            T.ID AS [客房_ID], \r\n            T.[源房ID] AS [客房_源房ID], \r\n      " +
-                    "      True AS _from0\r\n        FROM Landlord2ModelDataStoreContainer.[客房] AS T\r\n " +
-                    "   ) AS T1");
+            return new System.Collections.Generic.KeyValuePair<string, string>("Entities.客房", "\r\n    SELECT VALUE -- Constructing 客房\r\n        [Landlord2Model.客房](T1.[客房_命名], T1" +
+                    ".[客房_面积], T1.[客房_含厨房], T1.[客房_含卫生间], T1.[客房_租户], T1.[客房_联系地址], T1.[客房_身份证号], T1." +
+                    "[客房_电话1], T1.[客房_电话2], T1.[客房_期始], T1.[客房_期止], T1.[客房_月租金], T1.[客房_押金], T1.[客房_支" +
+                    "付月数], T1.[客房_租赁协议照片1], T1.[客房_租赁协议照片2], T1.[客房_租赁协议照片3], T1.[客房_备注], T1.[客房_水始码]" +
+                    ", T1.[客房_电始码], T1.[客房_气始码], T1.[客房_月物业费], T1.[客房_月宽带费], T1.[客房_月厨房费], T1.[客房_中介费" +
+                    "用], T1.[客房_ID], T1.[客房_源房ID])\r\n    FROM (\r\n        SELECT \r\n            T.[命名] A" +
+                    "S [客房_命名], \r\n            T.[面积] AS [客房_面积], \r\n            T.[含厨房] AS [客房_含厨房], \r" +
+                    "\n            T.[含卫生间] AS [客房_含卫生间], \r\n            T.[租户] AS [客房_租户], \r\n         " +
+                    "   T.[联系地址] AS [客房_联系地址], \r\n            T.[身份证号] AS [客房_身份证号], \r\n            T.[" +
+                    "电话1] AS [客房_电话1], \r\n            T.[电话2] AS [客房_电话2], \r\n            T.[期始] AS [客房" +
+                    "_期始], \r\n            T.[期止] AS [客房_期止], \r\n            T.[月租金] AS [客房_月租金], \r\n    " +
+                    "        T.[押金] AS [客房_押金], \r\n            T.[支付月数] AS [客房_支付月数], \r\n            T." +
+                    "[租赁协议照片1] AS [客房_租赁协议照片1], \r\n            T.[租赁协议照片2] AS [客房_租赁协议照片2], \r\n        " +
+                    "    T.[租赁协议照片3] AS [客房_租赁协议照片3], \r\n            T.[备注] AS [客房_备注], \r\n            " +
+                    "T.[水始码] AS [客房_水始码], \r\n            T.[电始码] AS [客房_电始码], \r\n            T.[气始码] AS" +
+                    " [客房_气始码], \r\n            T.[月物业费] AS [客房_月物业费], \r\n            T.[月宽带费] AS [客房_月宽" +
+                    "带费], \r\n            T.[月厨房费] AS [客房_月厨房费], \r\n            T.[中介费用] AS [客房_中介费用], \r" +
+                    "\n            T.ID AS [客房_ID], \r\n            T.[源房ID] AS [客房_源房ID], \r\n           " +
+                    " True AS _from0\r\n        FROM Landlord2ModelStoreContainer.[客房] AS T\r\n    ) AS T" +
+                    "1");
         }
         
         /// <Summary>
@@ -423,7 +423,7 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.客房出租历史记录", @"
     SELECT VALUE -- Constructing 客房出租历史记录
-        [Landlord2Model.Data.客房出租历史记录](T1.[客房出租历史记录_租户], T1.[客房出租历史记录_联系地址], T1.[客房出租历史记录_身份证号], T1.[客房出租历史记录_电话1], T1.[客房出租历史记录_电话2], T1.[客房出租历史记录_期始], T1.[客房出租历史记录_期止], T1.[客房出租历史记录_月租金], T1.[客房出租历史记录_押金], T1.[客房出租历史记录_支付月数], T1.[客房出租历史记录_备注], T1.[客房出租历史记录_客房ID], T1.[客房出租历史记录_ID])
+        [Landlord2Model.客房出租历史记录](T1.[客房出租历史记录_租户], T1.[客房出租历史记录_联系地址], T1.[客房出租历史记录_身份证号], T1.[客房出租历史记录_电话1], T1.[客房出租历史记录_电话2], T1.[客房出租历史记录_期始], T1.[客房出租历史记录_期止], T1.[客房出租历史记录_月租金], T1.[客房出租历史记录_押金], T1.[客房出租历史记录_支付月数], T1.[客房出租历史记录_备注], T1.[客房出租历史记录_客房ID], T1.[客房出租历史记录_ID])
     FROM (
         SELECT 
             T.[租户] AS [客房出租历史记录_租户], 
@@ -440,7 +440,7 @@ namespace Edm_EntityMappingGeneratedViews
             T.[客房ID] AS [客房出租历史记录_客房ID], 
             T.ID AS [客房出租历史记录_ID], 
             True AS _from0
-        FROM Landlord2ModelDataStoreContainer.[客房出租历史记录] AS T
+        FROM Landlord2ModelStoreContainer.[客房出租历史记录] AS T
     ) AS T1");
         }
         
@@ -451,7 +451,7 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.客房租金明细", @"
     SELECT VALUE -- Constructing 客房租金明细
-        [Landlord2Model.Data.客房租金明细](T1.[客房租金明细_起付日期], T1.[客房租金明细_止付日期], T1.[客房租金明细_付款日期], T1.[客房租金明细_水止码], T1.[客房租金明细_电止码], T1.[客房租金明细_气止码], T1.[客房租金明细_应付金额], T1.[客房租金明细_实付金额], T1.[客房租金明细_付款人], T1.[客房租金明细_收款人], T1.[客房租金明细_备注], T1.[客房租金明细_客房ID], T1.[客房租金明细_ID])
+        [Landlord2Model.客房租金明细](T1.[客房租金明细_起付日期], T1.[客房租金明细_止付日期], T1.[客房租金明细_付款日期], T1.[客房租金明细_水止码], T1.[客房租金明细_电止码], T1.[客房租金明细_气止码], T1.[客房租金明细_应付金额], T1.[客房租金明细_实付金额], T1.[客房租金明细_付款人], T1.[客房租金明细_收款人], T1.[客房租金明细_备注], T1.[客房租金明细_客房ID], T1.[客房租金明细_ID])
     FROM (
         SELECT 
             T.[起付日期] AS [客房租金明细_起付日期], 
@@ -468,7 +468,7 @@ namespace Edm_EntityMappingGeneratedViews
             T.[客房ID] AS [客房租金明细_客房ID], 
             T.ID AS [客房租金明细_ID], 
             True AS _from0
-        FROM Landlord2ModelDataStoreContainer.[客房租金明细] AS T
+        FROM Landlord2ModelStoreContainer.[客房租金明细] AS T
     ) AS T1");
         }
         
@@ -477,31 +477,31 @@ namespace Edm_EntityMappingGeneratedViews
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView13()
         {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Entities.源房", "\r\n    SELECT VALUE -- Constructing 源房\r\n        [Landlord2Model.Data.源房](T1.[源房_房名" +
-                    "], T1.[源房_用途], T1.[源房_结构], T1.[源房_建筑面积], T1.[源房_室], T1.[源房_厅], T1.[源房_卫], T1.[源房" +
-                    "_装修], T1.[源房_权证号], T1.[源房_房东], T1.[源房_联系地址], T1.[源房_身份证号], T1.[源房_电话1], T1.[源房_电" +
-                    "话2], T1.[源房_押金], T1.[源房_支付月数], T1.[源房_租赁协议照片1], T1.[源房_租赁协议照片2], T1.[源房_租赁协议照片3]" +
-                    ", T1.[源房_备注], T1.[源房_月物业费], T1.[源房_水始码], T1.[源房_电始码], T1.[源房_气始码], T1.[源房_中介费用]," +
-                    " T1.[源房_月卫生费], T1.[源房_源房东银行卡], T1.[源房_水表编号], T1.[源房_电表编号], T1.[源房_气表编号], T1.[源房_" +
-                    "水务代扣卫生费], T1.[源房_月宽带费], T1.[源房_阶梯水价], T1.[源房_阶梯电价], T1.[源房_气单价], T1.[源房_ID])\r\n  " +
-                    "  FROM (\r\n        SELECT \r\n            T.[房名] AS [源房_房名], \r\n            T.[用途] A" +
-                    "S [源房_用途], \r\n            T.[结构] AS [源房_结构], \r\n            T.[建筑面积] AS [源房_建筑面积]," +
-                    " \r\n            T.[室] AS [源房_室], \r\n            T.[厅] AS [源房_厅], \r\n            T.[" +
-                    "卫] AS [源房_卫], \r\n            T.[装修] AS [源房_装修], \r\n            T.[权证号] AS [源房_权证号]" +
-                    ", \r\n            T.[房东] AS [源房_房东], \r\n            T.[联系地址] AS [源房_联系地址], \r\n      " +
-                    "      T.[身份证号] AS [源房_身份证号], \r\n            T.[电话1] AS [源房_电话1], \r\n            T." +
-                    "[电话2] AS [源房_电话2], \r\n            T.[押金] AS [源房_押金], \r\n            T.[支付月数] AS [源" +
-                    "房_支付月数], \r\n            T.[租赁协议照片1] AS [源房_租赁协议照片1], \r\n            T.[租赁协议照片2] AS" +
-                    " [源房_租赁协议照片2], \r\n            T.[租赁协议照片3] AS [源房_租赁协议照片3], \r\n            T.[备注] A" +
-                    "S [源房_备注], \r\n            T.[月物业费] AS [源房_月物业费], \r\n            T.[水始码] AS [源房_水始码" +
-                    "], \r\n            T.[电始码] AS [源房_电始码], \r\n            T.[气始码] AS [源房_气始码], \r\n     " +
-                    "       T.[中介费用] AS [源房_中介费用], \r\n            T.[月卫生费] AS [源房_月卫生费], \r\n           " +
-                    " T.[源房东银行卡] AS [源房_源房东银行卡], \r\n            T.[水表编号] AS [源房_水表编号], \r\n            T" +
-                    ".[电表编号] AS [源房_电表编号], \r\n            T.[气表编号] AS [源房_气表编号], \r\n            T.[水务代扣" +
-                    "卫生费] AS [源房_水务代扣卫生费], \r\n            T.[月宽带费] AS [源房_月宽带费], \r\n            T.[阶梯水价" +
-                    "] AS [源房_阶梯水价], \r\n            T.[阶梯电价] AS [源房_阶梯电价], \r\n            T.[气单价] AS [源" +
-                    "房_气单价], \r\n            T.ID AS [源房_ID], \r\n            True AS _from0\r\n        FRO" +
-                    "M Landlord2ModelDataStoreContainer.[源房] AS T\r\n    ) AS T1");
+            return new System.Collections.Generic.KeyValuePair<string, string>("Entities.源房", "\r\n    SELECT VALUE -- Constructing 源房\r\n        [Landlord2Model.源房](T1.[源房_房名], T1" +
+                    ".[源房_用途], T1.[源房_结构], T1.[源房_建筑面积], T1.[源房_室], T1.[源房_厅], T1.[源房_卫], T1.[源房_装修]," +
+                    " T1.[源房_权证号], T1.[源房_房东], T1.[源房_联系地址], T1.[源房_身份证号], T1.[源房_电话1], T1.[源房_电话2], " +
+                    "T1.[源房_押金], T1.[源房_支付月数], T1.[源房_租赁协议照片1], T1.[源房_租赁协议照片2], T1.[源房_租赁协议照片3], T1." +
+                    "[源房_备注], T1.[源房_月物业费], T1.[源房_水始码], T1.[源房_电始码], T1.[源房_气始码], T1.[源房_中介费用], T1.[" +
+                    "源房_月卫生费], T1.[源房_源房东银行卡], T1.[源房_水表编号], T1.[源房_电表编号], T1.[源房_气表编号], T1.[源房_水务代扣卫" +
+                    "生费], T1.[源房_月宽带费], T1.[源房_阶梯水价], T1.[源房_阶梯电价], T1.[源房_气单价], T1.[源房_ID])\r\n    FRO" +
+                    "M (\r\n        SELECT \r\n            T.[房名] AS [源房_房名], \r\n            T.[用途] AS [源房" +
+                    "_用途], \r\n            T.[结构] AS [源房_结构], \r\n            T.[建筑面积] AS [源房_建筑面积], \r\n  " +
+                    "          T.[室] AS [源房_室], \r\n            T.[厅] AS [源房_厅], \r\n            T.[卫] AS" +
+                    " [源房_卫], \r\n            T.[装修] AS [源房_装修], \r\n            T.[权证号] AS [源房_权证号], \r\n " +
+                    "           T.[房东] AS [源房_房东], \r\n            T.[联系地址] AS [源房_联系地址], \r\n           " +
+                    " T.[身份证号] AS [源房_身份证号], \r\n            T.[电话1] AS [源房_电话1], \r\n            T.[电话2]" +
+                    " AS [源房_电话2], \r\n            T.[押金] AS [源房_押金], \r\n            T.[支付月数] AS [源房_支付月" +
+                    "数], \r\n            T.[租赁协议照片1] AS [源房_租赁协议照片1], \r\n            T.[租赁协议照片2] AS [源房_" +
+                    "租赁协议照片2], \r\n            T.[租赁协议照片3] AS [源房_租赁协议照片3], \r\n            T.[备注] AS [源房" +
+                    "_备注], \r\n            T.[月物业费] AS [源房_月物业费], \r\n            T.[水始码] AS [源房_水始码], \r\n" +
+                    "            T.[电始码] AS [源房_电始码], \r\n            T.[气始码] AS [源房_气始码], \r\n          " +
+                    "  T.[中介费用] AS [源房_中介费用], \r\n            T.[月卫生费] AS [源房_月卫生费], \r\n            T.[源" +
+                    "房东银行卡] AS [源房_源房东银行卡], \r\n            T.[水表编号] AS [源房_水表编号], \r\n            T.[电表编" +
+                    "号] AS [源房_电表编号], \r\n            T.[气表编号] AS [源房_气表编号], \r\n            T.[水务代扣卫生费] " +
+                    "AS [源房_水务代扣卫生费], \r\n            T.[月宽带费] AS [源房_月宽带费], \r\n            T.[阶梯水价] AS " +
+                    "[源房_阶梯水价], \r\n            T.[阶梯电价] AS [源房_阶梯电价], \r\n            T.[气单价] AS [源房_气单价" +
+                    "], \r\n            T.ID AS [源房_ID], \r\n            True AS _from0\r\n        FROM Lan" +
+                    "dlord2ModelStoreContainer.[源房] AS T\r\n    ) AS T1");
         }
         
         /// <Summary>
@@ -511,7 +511,7 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.源房缴费明细", @"
     SELECT VALUE -- Constructing 源房缴费明细
-        [Landlord2Model.Data.源房缴费明细](T1.[源房缴费明细_缴费时间], T1.[源房缴费明细_缴费金额], T1.[源房缴费明细_期始], T1.[源房缴费明细_期止], T1.[源房缴费明细_付款人], T1.[源房缴费明细_收款人], T1.[源房缴费明细_备注], T1.[源房缴费明细_源房ID], T1.[源房缴费明细_缴费项], T1.[源房缴费明细_ID])
+        [Landlord2Model.源房缴费明细](T1.[源房缴费明细_缴费时间], T1.[源房缴费明细_缴费金额], T1.[源房缴费明细_期始], T1.[源房缴费明细_期止], T1.[源房缴费明细_付款人], T1.[源房缴费明细_收款人], T1.[源房缴费明细_备注], T1.[源房缴费明细_源房ID], T1.[源房缴费明细_缴费项], T1.[源房缴费明细_ID])
     FROM (
         SELECT 
             T.[缴费时间] AS [源房缴费明细_缴费时间], 
@@ -525,7 +525,7 @@ namespace Edm_EntityMappingGeneratedViews
             T.[缴费项] AS [源房缴费明细_缴费项], 
             T.ID AS [源房缴费明细_ID], 
             True AS _from0
-        FROM Landlord2ModelDataStoreContainer.[源房缴费明细] AS T
+        FROM Landlord2ModelStoreContainer.[源房缴费明细] AS T
     ) AS T1");
         }
         
@@ -536,7 +536,7 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.源房水电气核查", @"
     SELECT VALUE -- Constructing 源房水电气核查
-        [Landlord2Model.Data.源房水电气核查](T1.[源房水电气核查.抄表日期_水_], T1.[源房水电气核查_水止码], T1.[源房水电气核查_水账户余额], T1.[源房水电气核查.抄表日期_电_], T1.[源房水电气核查_电止码], T1.[源房水电气核查_电账户余额], T1.[源房水电气核查.抄表日期_气_], T1.[源房水电气核查_气表剩余字数], T1.[源房水电气核查_核查人], T1.[源房水电气核查_核查时间], T1.[源房水电气核查_备注], T1.[源房水电气核查_源房ID], T1.[源房水电气核查_ID])
+        [Landlord2Model.源房水电气核查](T1.[源房水电气核查.抄表日期_水_], T1.[源房水电气核查_水止码], T1.[源房水电气核查_水账户余额], T1.[源房水电气核查.抄表日期_电_], T1.[源房水电气核查_电止码], T1.[源房水电气核查_电账户余额], T1.[源房水电气核查.抄表日期_气_], T1.[源房水电气核查_气表剩余字数], T1.[源房水电气核查_核查人], T1.[源房水电气核查_核查时间], T1.[源房水电气核查_备注], T1.[源房水电气核查_源房ID], T1.[源房水电气核查_ID])
     FROM (
         SELECT 
             T.[抄表日期(水)] AS [源房水电气核查.抄表日期_水_], 
@@ -553,7 +553,7 @@ namespace Edm_EntityMappingGeneratedViews
             T.[源房ID] AS [源房水电气核查_源房ID], 
             T.ID AS [源房水电气核查_ID], 
             True AS _from0
-        FROM Landlord2ModelDataStoreContainer.[源房水电气核查] AS T
+        FROM Landlord2ModelStoreContainer.[源房水电气核查] AS T
     ) AS T1");
         }
         
@@ -564,7 +564,7 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.源房涨租协定", @"
     SELECT VALUE -- Constructing 源房涨租协定
-        [Landlord2Model.Data.源房涨租协定](T1.[源房涨租协定_期始], T1.[源房涨租协定_期止], T1.[源房涨租协定_月租金], T1.[源房涨租协定_源房ID], T1.[源房涨租协定_ID])
+        [Landlord2Model.源房涨租协定](T1.[源房涨租协定_期始], T1.[源房涨租协定_期止], T1.[源房涨租协定_月租金], T1.[源房涨租协定_源房ID], T1.[源房涨租协定_ID])
     FROM (
         SELECT 
             T.[期始] AS [源房涨租协定_期始], 
@@ -573,7 +573,7 @@ namespace Edm_EntityMappingGeneratedViews
             T.[源房ID] AS [源房涨租协定_源房ID], 
             T.ID AS [源房涨租协定_ID], 
             True AS _from0
-        FROM Landlord2ModelDataStoreContainer.[源房涨租协定] AS T
+        FROM Landlord2ModelStoreContainer.[源房涨租协定] AS T
     ) AS T1");
         }
         
@@ -584,7 +584,7 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.装修明细", @"
     SELECT VALUE -- Constructing 装修明细
-        [Landlord2Model.Data.装修明细](T1.[装修明细_日期], T1.[装修明细_项目名称], T1.[装修明细_规格], T1.[装修明细_数量], T1.[装修明细_单位], T1.[装修明细_单价], T1.[装修明细_购买地点], T1.[装修明细_备注], T1.[装修明细_源房ID], T1.[装修明细_装修分类], T1.[装修明细_ID])
+        [Landlord2Model.装修明细](T1.[装修明细_日期], T1.[装修明细_项目名称], T1.[装修明细_规格], T1.[装修明细_数量], T1.[装修明细_单位], T1.[装修明细_单价], T1.[装修明细_购买地点], T1.[装修明细_备注], T1.[装修明细_源房ID], T1.[装修明细_装修分类], T1.[装修明细_ID])
     FROM (
         SELECT 
             T.[日期] AS [装修明细_日期], 
@@ -599,18 +599,18 @@ namespace Edm_EntityMappingGeneratedViews
             T.[装修分类] AS [装修明细_装修分类], 
             T.ID AS [装修明细_ID], 
             True AS _from0
-        FROM Landlord2ModelDataStoreContainer.[装修明细] AS T
+        FROM Landlord2ModelStoreContainer.[装修明细] AS T
     ) AS T1");
         }
         
         /// <Summary>
-        /// 返回 Landlord2ModelDataStoreContainer.日常损耗 的视图
+        /// 返回 Landlord2ModelStoreContainer.日常损耗 的视图
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView18()
         {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelDataStoreContainer.日常损耗", @"
+            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.日常损耗", @"
     SELECT VALUE -- Constructing 日常损耗
-        [Landlord2Model.Data.Store.日常损耗](T1.[日常损耗_源房ID], T1.[日常损耗_客房ID], T1.[日常损耗_项目], T1.[日常损耗_支出金额], T1.[日常损耗_支出日期], T1.[日常损耗_备注], T1.[日常损耗_ID])
+        [Landlord2Model.Store.日常损耗](T1.[日常损耗_源房ID], T1.[日常损耗_客房ID], T1.[日常损耗_项目], T1.[日常损耗_支出金额], T1.[日常损耗_支出日期], T1.[日常损耗_备注], T1.[日常损耗_ID])
     FROM (
         SELECT 
             T.[源房ID] AS [日常损耗_源房ID], 
@@ -632,7 +632,7 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.日常损耗", @"
     SELECT VALUE -- Constructing 日常损耗
-        [Landlord2Model.Data.日常损耗](T1.[日常损耗_源房ID], T1.[日常损耗_客房ID], T1.[日常损耗_项目], T1.[日常损耗_支出金额], T1.[日常损耗_支出日期], T1.[日常损耗_备注], T1.[日常损耗_ID])
+        [Landlord2Model.日常损耗](T1.[日常损耗_源房ID], T1.[日常损耗_客房ID], T1.[日常损耗_项目], T1.[日常损耗_支出金额], T1.[日常损耗_支出日期], T1.[日常损耗_备注], T1.[日常损耗_ID])
     FROM (
         SELECT 
             T.[源房ID] AS [日常损耗_源房ID], 
@@ -643,18 +643,18 @@ namespace Edm_EntityMappingGeneratedViews
             T.[备注] AS [日常损耗_备注], 
             T.ID AS [日常损耗_ID], 
             True AS _from0
-        FROM Landlord2ModelDataStoreContainer.[日常损耗] AS T
+        FROM Landlord2ModelStoreContainer.[日常损耗] AS T
     ) AS T1");
         }
         
         /// <Summary>
-        /// 返回 Landlord2ModelDataStoreContainer.提醒 的视图
+        /// 返回 Landlord2ModelStoreContainer.提醒 的视图
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView20()
         {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelDataStoreContainer.提醒", @"
+            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.提醒", @"
     SELECT VALUE -- Constructing 提醒
-        [Landlord2Model.Data.Store.提醒](T1.[提醒_提醒时间], T1.[提醒_事项], T1.[提醒_已完成], T1.[提醒_创建日期], T1.[提醒_完成日期], T1.[提醒_客房ID], T1.[提醒_源房ID], T1.[提醒_ID])
+        [Landlord2Model.Store.提醒](T1.[提醒_提醒时间], T1.[提醒_事项], T1.[提醒_已完成], T1.[提醒_创建日期], T1.[提醒_完成日期], T1.[提醒_客房ID], T1.[提醒_源房ID], T1.[提醒_ID])
     FROM (
         SELECT 
             T.[提醒时间] AS [提醒_提醒时间], 
@@ -677,7 +677,7 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.提醒", @"
     SELECT VALUE -- Constructing 提醒
-        [Landlord2Model.Data.提醒](T1.[提醒_提醒时间], T1.[提醒_事项], T1.[提醒_已完成], T1.[提醒_创建日期], T1.[提醒_完成日期], T1.[提醒_客房ID], T1.[提醒_源房ID], T1.[提醒_ID])
+        [Landlord2Model.提醒](T1.[提醒_提醒时间], T1.[提醒_事项], T1.[提醒_已完成], T1.[提醒_创建日期], T1.[提醒_完成日期], T1.[提醒_客房ID], T1.[提醒_源房ID], T1.[提醒_ID])
     FROM (
         SELECT 
             T.[提醒时间] AS [提醒_提醒时间], 
@@ -689,18 +689,18 @@ namespace Edm_EntityMappingGeneratedViews
             T.[源房ID] AS [提醒_源房ID], 
             T.ID AS [提醒_ID], 
             True AS _from0
-        FROM Landlord2ModelDataStoreContainer.[提醒] AS T
+        FROM Landlord2ModelStoreContainer.[提醒] AS T
     ) AS T1");
         }
         
         /// <Summary>
-        /// 返回 Landlord2ModelDataStoreContainer.装修分类 的视图
+        /// 返回 Landlord2ModelStoreContainer.装修分类 的视图
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView22()
         {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelDataStoreContainer.装修分类", "\r\n    SELECT VALUE -- Constructing 装修分类\r\n        [Landlord2Model.Data.Store.装修分类]" +
-                    "(T1.[装修分类_类别])\r\n    FROM (\r\n        SELECT \r\n            T.[类别] AS [装修分类_类别], \r\n" +
-                    "            True AS _from0\r\n        FROM Entities.[装修分类] AS T\r\n    ) AS T1");
+            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.装修分类", "\r\n    SELECT VALUE -- Constructing 装修分类\r\n        [Landlord2Model.Store.装修分类](T1.[" +
+                    "装修分类_类别])\r\n    FROM (\r\n        SELECT \r\n            T.[类别] AS [装修分类_类别], \r\n     " +
+                    "       True AS _from0\r\n        FROM Entities.[装修分类] AS T\r\n    ) AS T1");
         }
         
         /// <Summary>
@@ -708,10 +708,10 @@ namespace Edm_EntityMappingGeneratedViews
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView23()
         {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Entities.装修分类", "\r\n    SELECT VALUE -- Constructing 装修分类\r\n        [Landlord2Model.Data.装修分类](T1.[装" +
-                    "修分类_类别])\r\n    FROM (\r\n        SELECT \r\n            T.[类别] AS [装修分类_类别], \r\n      " +
-                    "      True AS _from0\r\n        FROM Landlord2ModelDataStoreContainer.[装修分类] AS T\r" +
-                    "\n    ) AS T1");
+            return new System.Collections.Generic.KeyValuePair<string, string>("Entities.装修分类", "\r\n    SELECT VALUE -- Constructing 装修分类\r\n        [Landlord2Model.装修分类](T1.[装修分类_类" +
+                    "别])\r\n    FROM (\r\n        SELECT \r\n            T.[类别] AS [装修分类_类别], \r\n           " +
+                    " True AS _from0\r\n        FROM Landlord2ModelStoreContainer.[装修分类] AS T\r\n    ) AS" +
+                    " T1");
         }
     }
 }
