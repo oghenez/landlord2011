@@ -47,7 +47,8 @@ namespace Landlord2.UI
                 payDetail = new 源房缴费明细();
                 if (yfID == Guid.Empty)//未指定源房ID的新增
                 {
-                    payDetail.源房 = 源房BindingSource.Current as 源房;
+                    if (cmbYF.SelectedValue != null)
+                        payDetail.源房ID = (Guid)cmbYF.SelectedValue;
                 }
                 else
                 {

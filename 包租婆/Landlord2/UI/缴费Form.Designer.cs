@@ -48,6 +48,7 @@
             this.付款人DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.收款人DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.备注DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.参考历史BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.cmbYF = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -63,7 +64,6 @@
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.BtnOkAndContinue = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.参考历史BindingSource = new System.Windows.Forms.BindingSource(this.components);
             缴费项Label = new System.Windows.Forms.Label();
             缴费时间Label = new System.Windows.Forms.Label();
             缴费金额Label = new System.Windows.Forms.Label();
@@ -75,13 +75,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.源房缴费明细BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.参考历史BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
             this.kryptonGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbYF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.参考历史BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // 缴费项Label
@@ -247,6 +247,10 @@
             this.备注DataGridViewTextBoxColumn.Name = "备注DataGridViewTextBoxColumn";
             this.备注DataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // 参考历史BindingSource
+            // 
+            this.参考历史BindingSource.DataSource = typeof(Landlord2.Data.源房缴费明细);
+            // 
             // kryptonGroupBox1
             // 
             this.kryptonGroupBox1.CaptionStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
@@ -268,6 +272,7 @@
             this.cmbYF.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.源房缴费明细BindingSource, "源房ID", true));
             this.cmbYF.DataSource = this.源房BindingSource;
             this.cmbYF.DisplayMember = "房名";
+            this.cmbYF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbYF.DropDownWidth = 158;
             this.cmbYF.Location = new System.Drawing.Point(90, 26);
             this.cmbYF.Name = "cmbYF";
@@ -289,7 +294,7 @@
             // kryptonComboBox1
             // 
             this.kryptonComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房缴费明细BindingSource, "缴费项", true));
-            this.kryptonComboBox1.DropDownWidth = 158;
+            this.kryptonComboBox1.DropDownWidth = 100;
             this.kryptonComboBox1.Items.AddRange(new object[] {
             "房租",
             "物业费",
@@ -417,10 +422,6 @@
             this.btnOK.Values.Text = "保存";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // 参考历史BindingSource
-            // 
-            this.参考历史BindingSource.DataSource = typeof(Landlord2.Data.源房缴费明细);
-            // 
             // 缴费Form
             // 
             this.AcceptButton = this.btnOK;
@@ -459,13 +460,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.源房缴费明细BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.参考历史BindingSource)).EndInit();
             this.kryptonGroupBox1.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cmbYF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.参考历史BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
