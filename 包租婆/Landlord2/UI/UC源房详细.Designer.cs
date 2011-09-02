@@ -84,6 +84,9 @@
             this.kryptonTextBox21 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox22 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.期始DataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn();
+            this.期止DataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn();
+            this.月租金DataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn();
             this.源房涨租协定BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kryptonTextBox23 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox24 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -124,9 +127,6 @@
             this.kryptonComboBox1 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.kryptonComboBox2 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.kryptonComboBox3 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.期始DataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn();
-            this.期止DataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn();
-            this.月租金DataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn();
             房名Label = new System.Windows.Forms.Label();
             建筑面积Label = new System.Windows.Forms.Label();
             室Label = new System.Windows.Forms.Label();
@@ -802,11 +802,62 @@
             this.kryptonDataGridView1.Size = new System.Drawing.Size(391, 140);
             this.kryptonDataGridView1.TabIndex = 69;
             // 
+            // 期始DataGridViewTextBoxColumn
+            // 
+            this.期始DataGridViewTextBoxColumn.CalendarTodayDate = new System.DateTime(2011, 8, 21, 0, 0, 0, 0);
+            this.期始DataGridViewTextBoxColumn.Checked = false;
+            this.期始DataGridViewTextBoxColumn.DataPropertyName = "期始";
+            this.期始DataGridViewTextBoxColumn.HeaderText = "期始";
+            this.期始DataGridViewTextBoxColumn.MaxDate = new System.DateTime(2030, 12, 31, 23, 59, 0, 0);
+            this.期始DataGridViewTextBoxColumn.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.期始DataGridViewTextBoxColumn.Name = "期始DataGridViewTextBoxColumn";
+            this.期始DataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.期始DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.期始DataGridViewTextBoxColumn.Width = 122;
+            // 
+            // 期止DataGridViewTextBoxColumn
+            // 
+            this.期止DataGridViewTextBoxColumn.CalendarTodayDate = new System.DateTime(2011, 8, 15, 0, 0, 0, 0);
+            this.期止DataGridViewTextBoxColumn.Checked = false;
+            this.期止DataGridViewTextBoxColumn.DataPropertyName = "期止";
+            this.期止DataGridViewTextBoxColumn.HeaderText = "期止";
+            this.期止DataGridViewTextBoxColumn.MaxDate = new System.DateTime(2030, 12, 31, 23, 59, 0, 0);
+            this.期止DataGridViewTextBoxColumn.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.期止DataGridViewTextBoxColumn.Name = "期止DataGridViewTextBoxColumn";
+            this.期止DataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.期止DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.期止DataGridViewTextBoxColumn.Width = 122;
+            // 
+            // 月租金DataGridViewTextBoxColumn
+            // 
+            this.月租金DataGridViewTextBoxColumn.DataPropertyName = "月租金";
+            this.月租金DataGridViewTextBoxColumn.HeaderText = "月租金(元)";
+            this.月租金DataGridViewTextBoxColumn.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.月租金DataGridViewTextBoxColumn.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.月租金DataGridViewTextBoxColumn.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.月租金DataGridViewTextBoxColumn.Name = "月租金DataGridViewTextBoxColumn";
+            this.月租金DataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.月租金DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.月租金DataGridViewTextBoxColumn.ThousandsSeparator = true;
+            this.月租金DataGridViewTextBoxColumn.Width = 122;
+            // 
             // 源房涨租协定BindingSource
             // 
-            this.源房涨租协定BindingSource.DataMember = "源房涨租协定";
-            this.源房涨租协定BindingSource.DataSource = this.源房BindingSource;
-            this.源房涨租协定BindingSource.Sort = "期始";
+            this.源房涨租协定BindingSource.DataSource = typeof(Landlord2.Data.源房涨租协定);
+            this.源房涨租协定BindingSource.Sort = "";
+            this.源房涨租协定BindingSource.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.源房涨租协定BindingSource_AddingNew);
             // 
             // kryptonTextBox23
             // 
@@ -1201,57 +1252,6 @@
             this.kryptonComboBox3.StateDisabled.ComboBox.Content.Color1 = System.Drawing.Color.Black;
             this.kryptonComboBox3.TabIndex = 79;
             // 
-            // 期始DataGridViewTextBoxColumn
-            // 
-            this.期始DataGridViewTextBoxColumn.CalendarTodayDate = new System.DateTime(2011, 8, 21, 0, 0, 0, 0);
-            this.期始DataGridViewTextBoxColumn.Checked = false;
-            this.期始DataGridViewTextBoxColumn.DataPropertyName = "期始";
-            this.期始DataGridViewTextBoxColumn.HeaderText = "期始";
-            this.期始DataGridViewTextBoxColumn.MaxDate = new System.DateTime(2030, 12, 31, 23, 59, 0, 0);
-            this.期始DataGridViewTextBoxColumn.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.期始DataGridViewTextBoxColumn.Name = "期始DataGridViewTextBoxColumn";
-            this.期始DataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.期始DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.期始DataGridViewTextBoxColumn.Width = 122;
-            // 
-            // 期止DataGridViewTextBoxColumn
-            // 
-            this.期止DataGridViewTextBoxColumn.CalendarTodayDate = new System.DateTime(2011, 8, 15, 0, 0, 0, 0);
-            this.期止DataGridViewTextBoxColumn.Checked = false;
-            this.期止DataGridViewTextBoxColumn.DataPropertyName = "期止";
-            this.期止DataGridViewTextBoxColumn.HeaderText = "期止";
-            this.期止DataGridViewTextBoxColumn.MaxDate = new System.DateTime(2030, 12, 31, 23, 59, 0, 0);
-            this.期止DataGridViewTextBoxColumn.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.期止DataGridViewTextBoxColumn.Name = "期止DataGridViewTextBoxColumn";
-            this.期止DataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.期止DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.期止DataGridViewTextBoxColumn.Width = 122;
-            // 
-            // 月租金DataGridViewTextBoxColumn
-            // 
-            this.月租金DataGridViewTextBoxColumn.DataPropertyName = "月租金";
-            this.月租金DataGridViewTextBoxColumn.HeaderText = "月租金(元)";
-            this.月租金DataGridViewTextBoxColumn.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.月租金DataGridViewTextBoxColumn.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.月租金DataGridViewTextBoxColumn.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.月租金DataGridViewTextBoxColumn.Name = "月租金DataGridViewTextBoxColumn";
-            this.月租金DataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.月租金DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.月租金DataGridViewTextBoxColumn.ThousandsSeparator = true;
-            this.月租金DataGridViewTextBoxColumn.Width = 122;
-            // 
             // UC源房详细
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1305,7 +1305,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox21;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox22;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kryptonDataGridView1;
-        private System.Windows.Forms.BindingSource 源房涨租协定BindingSource;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox28;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox27;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox26;
@@ -1347,6 +1346,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn 期始DataGridViewTextBoxColumn;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn 期止DataGridViewTextBoxColumn;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn 月租金DataGridViewTextBoxColumn;
+        public System.Windows.Forms.BindingSource 源房涨租协定BindingSource;
 
     }
 }

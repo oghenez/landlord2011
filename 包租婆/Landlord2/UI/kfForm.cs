@@ -72,7 +72,7 @@ namespace Landlord2.UI
             }
             if (isNew)//新增
             {
-                Main.context.AddTo客房(kf);
+                Main.context.客房.AddObject(kf);
                 string msg;
                 if (Helper.saveData(kf, out msg))
                 {
@@ -83,7 +83,7 @@ namespace Landlord2.UI
                 else
                 {
                     KryptonMessageBox.Show(msg, "失败");
-                    Main.context.Detach(kf);
+                    Main.context.客房.Detach(kf);
                 }
             }
             else//编辑
@@ -124,7 +124,7 @@ namespace Landlord2.UI
             System.Diagnostics.Debug.Assert(isNew);//只有新增状态才有此按钮
 #endif
 
-            Main.context.AddTo客房(kf);
+            Main.context.客房.AddObject(kf);
             string msg;
             if (Helper.saveData(kf, out msg))
             {
@@ -144,7 +144,7 @@ namespace Landlord2.UI
             else
             {
                 KryptonMessageBox.Show(msg, "失败");
-                Main.context.Detach(kf);
+                Main.context.客房.Detach(kf);
             }
             
         } 

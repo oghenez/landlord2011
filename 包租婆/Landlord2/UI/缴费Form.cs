@@ -75,7 +75,7 @@ namespace Landlord2.UI
 
             if (isNew)//新增
             {
-                Main.context.AddTo源房缴费明细(payDetail);
+                Main.context.源房缴费明细.AddObject(payDetail);
                 string msg;
                 if (Helper.saveData(payDetail, out msg))
                 {
@@ -85,7 +85,7 @@ namespace Landlord2.UI
                 else
                 {
                     KryptonMessageBox.Show(msg, "失败");
-                    Main.context.Detach(payDetail);
+                    Main.context.源房缴费明细.Detach(payDetail);
                 }
             }
             else//编辑
@@ -126,7 +126,7 @@ namespace Landlord2.UI
             System.Diagnostics.Debug.Assert(isNew);//只有新增状态才有此按钮
 #endif
            
-            Main.context.AddTo源房缴费明细(payDetail);
+            Main.context.源房缴费明细.AddObject(payDetail);
             string msg;
             if (Helper.saveData(payDetail, out msg))
             {
@@ -142,7 +142,7 @@ namespace Landlord2.UI
             else
             {
                 KryptonMessageBox.Show(msg, "失败");
-                Main.context.Detach(payDetail);
+                Main.context.源房缴费明细.Detach(payDetail);
             }
         }
 

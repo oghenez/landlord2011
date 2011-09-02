@@ -256,12 +256,14 @@ namespace Landlord2
                 if (kryptonHeaderGroup2.Panel.Controls.Count == 0) //初次加载
                 {
                     yfUC.源房BindingSource.DataSource = entity;
+                    yfUC.源房涨租协定BindingSource.DataSource = Main.context.源房涨租协定.Where(m => m.源房ID == ((源房)entity).ID);
                     kryptonHeaderGroup2.Panel.Controls.Add(yfUC);
                 }
                 else if(kryptonHeaderGroup2.Panel.Controls[0] is UC源房详细)//原来加载的是‘源房详细’控件
                 {
                     //仅仅更改绑定实体
                     yfUC.源房BindingSource.DataSource = entity;
+                    yfUC.源房涨租协定BindingSource.DataSource = Main.context.源房涨租协定.Where(m => m.源房ID == ((源房)entity).ID);
                 }
                 else if (kryptonHeaderGroup2.Panel.Controls[0] is UC客房详细)
                 {
@@ -269,6 +271,7 @@ namespace Landlord2
                     kryptonHeaderGroup2.Panel.Controls.RemoveAt(0);
                     //加载
                     yfUC.源房BindingSource.DataSource = entity;
+                    yfUC.源房涨租协定BindingSource.DataSource = Main.context.源房涨租协定.Where(m => m.源房ID == ((源房)entity).ID);
                     kryptonHeaderGroup2.Panel.Controls.Add(yfUC);
                 }
                 kryptonHeaderGroup2.ValuesPrimary.Heading = string.Format("源房：{0}", (entity as 源房).房名);
