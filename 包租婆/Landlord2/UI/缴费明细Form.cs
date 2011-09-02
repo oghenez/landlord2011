@@ -24,7 +24,7 @@ namespace Landlord2.UI
             源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails();//初始情况，针对所有源房
 
             var query2 = Main.context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) > DateTime.Now);
-            bindingSource1.DataSource = 源房.GetYF_Current();// ((ObjectQuery<源房>)query2).Execute(MergeOption.NoTracking);           
+            bindingSource1.DataSource = 源房.GetYF_NoHistory();// ((ObjectQuery<源房>)query2).Execute(MergeOption.NoTracking);           
         }
 
         private void 缴费明细Form_FormClosed(object sender, FormClosedEventArgs e)
@@ -35,8 +35,6 @@ namespace Landlord2.UI
                 Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, Main.context.源房缴费明细);
                 Main.context.AcceptAllChanges();
             }
-
-            kryptonComboBox1.SelectedIndexChanged -= kryptonComboBox1_SelectedIndexChanged;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -125,8 +123,11 @@ namespace Landlord2.UI
 
         private void kryptonComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails((Guid)kryptonComboBox1.SelectedValue);
-            btnFilter.Text = "按 [缴费项] 筛选 - 所有";
+            if (kryptonComboBox1.SelectedValue != null)
+            {
+                源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails((Guid)kryptonComboBox1.SelectedValue);
+                btnFilter.Text = "按 [缴费项] 筛选 - 所有";
+            }
         }
 
         private void 源房缴费明细BindingSource_AddingNew(object sender, AddingNewEventArgs e)

@@ -82,7 +82,7 @@
             this.cmbYF.Size = new System.Drawing.Size(215, 21);
             this.cmbYF.TabIndex = 5;
             this.cmbYF.ValueMember = "ID";
-            this.cmbYF.SelectedIndexChanged += new System.EventHandler(this.kryptonComboBox1_SelectedIndexChanged);
+            this.cmbYF.SelectedIndexChanged += new System.EventHandler(this.cmbYF_SelectedIndexChanged);
             // 
             // 源房BindingSource
             // 

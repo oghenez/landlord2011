@@ -39,7 +39,7 @@ namespace Landlord2.UI
         private void 缴费Form_Load(object sender, EventArgs e)
         {
             Text = string.Format("源房缴费[{0}]",isNew? "新增":"编辑");
-            源房BindingSource.DataSource = 源房.GetYF_Current();
+            源房BindingSource.DataSource = 源房.GetYF_NoHistory().Execute(MergeOption.NoTracking);
 
             if (isNew)//新增
             {
@@ -51,9 +51,10 @@ namespace Landlord2.UI
                 }
                 else
                 {
-                    payDetail.源房ID = yfID;
                     cmbYF.SelectedValue = yfID;
+                    //payDetail.源房ID = yfID;//更改selectedValue,事件会执行
                 }
+                payDetail.缴费时间 = DateTime.Now.Date;//缴费时间默认当前操作日期
             }
             else//编辑
             {
@@ -158,6 +159,12 @@ namespace Landlord2.UI
                 Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, payDetail);
                 Main.context.AcceptAllChanges();
             }
+        }
+
+        private void cmbYF_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbYF.SelectedValue != null)
+                payDetail.源房ID = (Guid)cmbYF.SelectedValue;
         }
 
     }
