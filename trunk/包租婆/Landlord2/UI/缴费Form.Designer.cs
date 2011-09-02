@@ -63,6 +63,7 @@
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.BtnOkAndContinue = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.参考历史BindingSource = new System.Windows.Forms.BindingSource(this.components);
             缴费项Label = new System.Windows.Forms.Label();
             缴费时间Label = new System.Windows.Forms.Label();
             缴费金额Label = new System.Windows.Forms.Label();
@@ -80,6 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbYF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.参考历史BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // 缴费项Label
@@ -178,7 +180,7 @@
             this.付款人DataGridViewTextBoxColumn,
             this.收款人DataGridViewTextBoxColumn,
             this.备注DataGridViewTextBoxColumn});
-            this.kryptonDataGridView1.DataSource = this.源房缴费明细BindingSource;
+            this.kryptonDataGridView1.DataSource = this.参考历史BindingSource;
             this.kryptonDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonDataGridView1.Location = new System.Drawing.Point(0, 0);
             this.kryptonDataGridView1.Name = "kryptonDataGridView1";
@@ -272,6 +274,7 @@
             this.cmbYF.Size = new System.Drawing.Size(369, 21);
             this.cmbYF.TabIndex = 0;
             this.cmbYF.ValueMember = "ID";
+            this.cmbYF.SelectedIndexChanged += new System.EventHandler(this.cmbYF_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -322,7 +325,8 @@
             // kryptonDateTimePicker2
             // 
             this.kryptonDateTimePicker2.Checked = false;
-            this.kryptonDateTimePicker2.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.源房缴费明细BindingSource, "期始", true));
+            this.kryptonDateTimePicker2.CustomNullText = "<无>";
+            this.kryptonDateTimePicker2.DataBindings.Add(new System.Windows.Forms.Binding("ValueNullable", this.源房缴费明细BindingSource, "期始", true));
             this.kryptonDateTimePicker2.Location = new System.Drawing.Point(320, 56);
             this.kryptonDateTimePicker2.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
             this.kryptonDateTimePicker2.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
@@ -334,7 +338,8 @@
             // kryptonDateTimePicker3
             // 
             this.kryptonDateTimePicker3.Checked = false;
-            this.kryptonDateTimePicker3.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.源房缴费明细BindingSource, "期止", true));
+            this.kryptonDateTimePicker3.CustomNullText = "<无>";
+            this.kryptonDateTimePicker3.DataBindings.Add(new System.Windows.Forms.Binding("ValueNullable", this.源房缴费明细BindingSource, "期止", true));
             this.kryptonDateTimePicker3.Location = new System.Drawing.Point(320, 86);
             this.kryptonDateTimePicker3.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
             this.kryptonDateTimePicker3.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
@@ -412,6 +417,10 @@
             this.btnOK.Values.Text = "保存";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // 参考历史BindingSource
+            // 
+            this.参考历史BindingSource.DataSource = typeof(Landlord2.Data.源房缴费明细);
+            // 
             // 缴费Form
             // 
             this.AcceptButton = this.btnOK;
@@ -456,6 +465,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbYF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.参考历史BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -489,5 +499,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
         private ComponentFactory.Krypton.Toolkit.KryptonButton BtnOkAndContinue;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOK;
+        private System.Windows.Forms.BindingSource 参考历史BindingSource;
     }
 }

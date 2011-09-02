@@ -39,7 +39,7 @@ namespace Landlord2.UI
         private void kfForm_Load(object sender, EventArgs e)
         {
             Text = string.Format("{0}客房",isNew? "新增":"编辑");
-            源房BindingSource.DataSource = 源房.GetYF_Current();
+            源房BindingSource.DataSource = 源房.GetYF_NoHistory();
 
             if (isNew)//新增
             {
@@ -162,7 +162,7 @@ namespace Landlord2.UI
             }
         }
 
-        private void kryptonComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbYF_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cmbYF.SelectedValue != null)
                 kf.源房ID = (Guid)cmbYF.SelectedValue;

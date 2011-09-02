@@ -21,13 +21,13 @@ namespace Landlord2.Data
         /// <summary>
         /// 预编译查询0 -- 查询所有
         /// </summary>
-        static readonly Func<Entities, IEnumerable<源房>> compiledQuery0 =
-            CompiledQuery.Compile<Entities, IEnumerable<源房>>(
+        static readonly Func<Entities, ObjectQuery<源房>> compiledQuery0 =
+            CompiledQuery.Compile<Entities, ObjectQuery<源房>>(
             (context) => context.源房);
         /// <summary>
         /// 预编译查询0 -- 查询所有源房
         /// </summary>
-        public static IEnumerable<源房> GetYF()
+        public static ObjectQuery<源房> GetYF()
         {
             return compiledQuery0.Invoke(Main.context);
         }
@@ -35,13 +35,13 @@ namespace Landlord2.Data
         /// <summary>
         /// 预编译查询1 -- 查询非历史源房
         /// </summary>
-        static readonly Func<Entities, IEnumerable<源房>> compiledQuery1 =
-            CompiledQuery.Compile<Entities, IEnumerable<源房>>(
-            (context) => context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) > DateTime.Now));
+        static readonly Func<Entities, ObjectQuery<源房>> compiledQuery1 =
+            CompiledQuery.Compile<Entities, ObjectQuery<源房>>(
+            (context) => (ObjectQuery<源房>)context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) > DateTime.Now));
         /// <summary>
         /// 预编译查询1 -- 查询非历史源房
         /// </summary>
-        public static IEnumerable<源房> GetYF_Current()
+        public static ObjectQuery<源房> GetYF_NoHistory()
         {
             return compiledQuery1.Invoke(Main.context);
         }
@@ -49,13 +49,13 @@ namespace Landlord2.Data
         /// <summary>
         /// 预编译查询1 -- 查询历史源房
         /// </summary>
-        static readonly Func<Entities, IEnumerable<源房>> compiledQuery2 =
-            CompiledQuery.Compile<Entities, IEnumerable<源房>>(
-            (context) => context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) <= DateTime.Now));
+        static readonly Func<Entities, ObjectQuery<源房>> compiledQuery2 =
+            CompiledQuery.Compile<Entities, ObjectQuery<源房>>(
+            (context) => (ObjectQuery<源房>)context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) <= DateTime.Now));
         /// <summary>
         /// 预编译查询0 -- 查询历史源房
         /// </summary>
-        public static IEnumerable<源房> GetYF_History()
+        public static ObjectQuery<源房> GetYF_History()
         {
             return compiledQuery2.Invoke(Main.context);
         }
