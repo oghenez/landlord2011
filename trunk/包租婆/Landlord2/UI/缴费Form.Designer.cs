@@ -269,7 +269,6 @@
             // 
             // cmbYF
             // 
-            this.cmbYF.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.源房缴费明细BindingSource, "源房ID", true));
             this.cmbYF.DataSource = this.源房BindingSource;
             this.cmbYF.DisplayMember = "房名";
             this.cmbYF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -322,9 +321,9 @@
             // kryptonNumericUpDown1
             // 
             this.kryptonNumericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.源房缴费明细BindingSource, "缴费金额", true));
-            this.kryptonNumericUpDown1.Location = new System.Drawing.Point(91, 85);
+            this.kryptonNumericUpDown1.Location = new System.Drawing.Point(90, 85);
             this.kryptonNumericUpDown1.Name = "kryptonNumericUpDown1";
-            this.kryptonNumericUpDown1.Size = new System.Drawing.Size(117, 22);
+            this.kryptonNumericUpDown1.Size = new System.Drawing.Size(118, 22);
             this.kryptonNumericUpDown1.TabIndex = 3;
             // 
             // kryptonDateTimePicker2
