@@ -54,7 +54,11 @@ namespace Landlord2.Data
             return sb.ToString();
         }
 
-        // 校验所有非空属性，如果是int16,int32,float,double,decimal类型，同时进行‘非负’判断。
+        /// <summary>
+        /// 校验所有非空属性; 如果是int16,int32,float,double,decimal类型，同时进行‘非负’判断。
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public static string CheckNullOrEmptyAndABS(EntityObject entity)
         {
            return CheckNullOrEmptyAndABS(entity, true);
