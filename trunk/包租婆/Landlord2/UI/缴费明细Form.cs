@@ -24,7 +24,7 @@ namespace Landlord2.UI
             源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails();//初始情况，针对所有源房
 
             var query2 = Main.context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) > DateTime.Now);
-            bindingSource1.DataSource = 源房.GetYF_NoHistory();// ((ObjectQuery<源房>)query2).Execute(MergeOption.NoTracking);           
+            bindingSource1.DataSource = 源房.GetYF();// ((ObjectQuery<源房>)query2).Execute(MergeOption.NoTracking);           
         }
 
         private void 缴费明细Form_FormClosed(object sender, FormClosedEventArgs e)

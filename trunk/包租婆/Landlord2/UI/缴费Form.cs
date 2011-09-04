@@ -39,7 +39,7 @@ namespace Landlord2.UI
         private void 缴费Form_Load(object sender, EventArgs e)
         {
             Text = string.Format("源房缴费[{0}]",isNew? "新增":"编辑");
-            源房BindingSource.DataSource = 源房.GetYF_NoHistory().Execute(MergeOption.NoTracking);
+            源房BindingSource.DataSource = 源房.GetYF().Execute(MergeOption.NoTracking);
 
             if (isNew)//新增
             {

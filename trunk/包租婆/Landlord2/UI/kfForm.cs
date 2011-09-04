@@ -39,7 +39,7 @@ namespace Landlord2.UI
         private void kfForm_Load(object sender, EventArgs e)
         {
             Text = string.Format("{0}客房",isNew? "新增":"编辑");
-            源房BindingSource.DataSource = 源房.GetYF_NoHistory();
+            源房BindingSource.DataSource = 源房.GetYF();
 
             if (isNew)//新增
             {
