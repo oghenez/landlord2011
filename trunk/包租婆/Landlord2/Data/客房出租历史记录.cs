@@ -1,4 +1,6 @@
 using System;
+using System.Data.Objects;
+using System.Linq;
 
 namespace Landlord2.Data
 {
@@ -13,6 +15,7 @@ namespace Landlord2.Data
         {
             this.ID = Guid.NewGuid();
         }
+
     }
 
    

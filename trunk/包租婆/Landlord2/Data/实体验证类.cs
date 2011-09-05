@@ -87,7 +87,10 @@ namespace Landlord2.Data
 
             //源房缴费明细必须隶属于一个上级的源房
             if (this.源房ID == null || this.源房ID == Guid.Empty)
+            {
                 returnStr += "请指定此缴费明细的源房! " + Environment.NewLine;
+                return returnStr;
+            }
 
             //校验所有非空属性
             returnStr += MyEntityHelper.CheckNullOrEmptyAndABS(this);
@@ -134,7 +137,10 @@ namespace Landlord2.Data
             
             //客房必须隶属于一个上级的源房
             if (this.源房ID == null || this.源房ID == Guid.Empty)
+            {
                 returnStr += "请指定此客房上级的源房! " + Environment.NewLine;
+                return returnStr;
+            }
 
             //校验所有非空属性
             returnStr += MyEntityHelper.CheckNullOrEmptyAndABS(this);
@@ -223,6 +229,14 @@ namespace Landlord2.Data
         public string CheckRules()
         {
             string returnStr = string.Empty;
+
+            //源房涨租协定必须隶属于一个上级的源房
+            if (this.源房ID == null || this.源房ID == Guid.Empty)
+            {
+                returnStr += "请指定源房涨租协定上级的源房! " + Environment.NewLine;
+                return returnStr;
+            }
+
             //校验所有非空属性
             returnStr += MyEntityHelper.CheckNullOrEmptyAndABS(this);
 

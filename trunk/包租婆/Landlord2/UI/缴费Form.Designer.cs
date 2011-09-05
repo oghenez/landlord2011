@@ -37,22 +37,16 @@
             System.Windows.Forms.Label 收款人Label;
             System.Windows.Forms.Label 付款人Label;
             System.Windows.Forms.Label 备注Label;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.源房BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.源房缴费明细BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.缴费时间DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.缴费项DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.缴费金额DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.期始DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.期止DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.付款人DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.收款人DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.备注DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.参考历史BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.cmbYF = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.kryptonComboBox1 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.cmbPayItem = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.kryptonDateTimePicker1 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             this.kryptonNumericUpDown1 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.kryptonDateTimePicker2 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
@@ -64,6 +58,14 @@
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.BtnOkAndContinue = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.缴费时间DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.缴费项DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.缴费金额DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.期始DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.期止DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.付款人DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.收款人DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.备注DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             缴费项Label = new System.Windows.Forms.Label();
             缴费时间Label = new System.Windows.Forms.Label();
             缴费金额Label = new System.Windows.Forms.Label();
@@ -80,7 +82,7 @@
             this.kryptonGroupBox1.Panel.SuspendLayout();
             this.kryptonGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbYF)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbPayItem)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -191,62 +193,6 @@
             this.kryptonDataGridView1.Size = new System.Drawing.Size(692, 202);
             this.kryptonDataGridView1.TabIndex = 1;
             // 
-            // 缴费时间DataGridViewTextBoxColumn
-            // 
-            this.缴费时间DataGridViewTextBoxColumn.DataPropertyName = "缴费时间";
-            this.缴费时间DataGridViewTextBoxColumn.HeaderText = "缴费时间";
-            this.缴费时间DataGridViewTextBoxColumn.Name = "缴费时间DataGridViewTextBoxColumn";
-            this.缴费时间DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 缴费项DataGridViewTextBoxColumn
-            // 
-            this.缴费项DataGridViewTextBoxColumn.DataPropertyName = "缴费项";
-            this.缴费项DataGridViewTextBoxColumn.HeaderText = "缴费项";
-            this.缴费项DataGridViewTextBoxColumn.Name = "缴费项DataGridViewTextBoxColumn";
-            this.缴费项DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 缴费金额DataGridViewTextBoxColumn
-            // 
-            this.缴费金额DataGridViewTextBoxColumn.DataPropertyName = "缴费金额";
-            this.缴费金额DataGridViewTextBoxColumn.HeaderText = "缴费金额";
-            this.缴费金额DataGridViewTextBoxColumn.Name = "缴费金额DataGridViewTextBoxColumn";
-            this.缴费金额DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 期始DataGridViewTextBoxColumn
-            // 
-            this.期始DataGridViewTextBoxColumn.DataPropertyName = "期始";
-            this.期始DataGridViewTextBoxColumn.HeaderText = "期始";
-            this.期始DataGridViewTextBoxColumn.Name = "期始DataGridViewTextBoxColumn";
-            this.期始DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 期止DataGridViewTextBoxColumn
-            // 
-            this.期止DataGridViewTextBoxColumn.DataPropertyName = "期止";
-            this.期止DataGridViewTextBoxColumn.HeaderText = "期止";
-            this.期止DataGridViewTextBoxColumn.Name = "期止DataGridViewTextBoxColumn";
-            this.期止DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 付款人DataGridViewTextBoxColumn
-            // 
-            this.付款人DataGridViewTextBoxColumn.DataPropertyName = "付款人";
-            this.付款人DataGridViewTextBoxColumn.HeaderText = "付款人";
-            this.付款人DataGridViewTextBoxColumn.Name = "付款人DataGridViewTextBoxColumn";
-            this.付款人DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 收款人DataGridViewTextBoxColumn
-            // 
-            this.收款人DataGridViewTextBoxColumn.DataPropertyName = "收款人";
-            this.收款人DataGridViewTextBoxColumn.HeaderText = "收款人";
-            this.收款人DataGridViewTextBoxColumn.Name = "收款人DataGridViewTextBoxColumn";
-            this.收款人DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 备注DataGridViewTextBoxColumn
-            // 
-            this.备注DataGridViewTextBoxColumn.DataPropertyName = "备注";
-            this.备注DataGridViewTextBoxColumn.HeaderText = "备注";
-            this.备注DataGridViewTextBoxColumn.Name = "备注DataGridViewTextBoxColumn";
-            this.备注DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // 参考历史BindingSource
             // 
             this.参考历史BindingSource.DataSource = typeof(Landlord2.Data.源房缴费明细);
@@ -269,6 +215,7 @@
             // 
             // cmbYF
             // 
+            this.cmbYF.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.源房缴费明细BindingSource, "源房ID", true));
             this.cmbYF.DataSource = this.源房BindingSource;
             this.cmbYF.DisplayMember = "房名";
             this.cmbYF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -290,11 +237,11 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "* 源房:";
             // 
-            // kryptonComboBox1
+            // cmbPayItem
             // 
-            this.kryptonComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房缴费明细BindingSource, "缴费项", true));
-            this.kryptonComboBox1.DropDownWidth = 100;
-            this.kryptonComboBox1.Items.AddRange(new object[] {
+            this.cmbPayItem.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房缴费明细BindingSource, "缴费项", true));
+            this.cmbPayItem.DropDownWidth = 100;
+            this.cmbPayItem.Items.AddRange(new object[] {
             "房租",
             "物业费",
             "水",
@@ -303,10 +250,11 @@
             "宽带费",
             "中介费",
             "押金"});
-            this.kryptonComboBox1.Location = new System.Drawing.Point(571, 26);
-            this.kryptonComboBox1.Name = "kryptonComboBox1";
-            this.kryptonComboBox1.Size = new System.Drawing.Size(100, 21);
-            this.kryptonComboBox1.TabIndex = 1;
+            this.cmbPayItem.Location = new System.Drawing.Point(571, 26);
+            this.cmbPayItem.Name = "cmbPayItem";
+            this.cmbPayItem.Size = new System.Drawing.Size(100, 21);
+            this.cmbPayItem.TabIndex = 1;
+            this.cmbPayItem.TextChanged += new System.EventHandler(this.cmbPayItem_TextChanged);
             // 
             // kryptonDateTimePicker1
             // 
@@ -421,6 +369,67 @@
             this.btnOK.Values.Text = "保存";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // 缴费时间DataGridViewTextBoxColumn
+            // 
+            this.缴费时间DataGridViewTextBoxColumn.DataPropertyName = "缴费时间";
+            this.缴费时间DataGridViewTextBoxColumn.HeaderText = "缴费时间";
+            this.缴费时间DataGridViewTextBoxColumn.Name = "缴费时间DataGridViewTextBoxColumn";
+            this.缴费时间DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 缴费项DataGridViewTextBoxColumn
+            // 
+            this.缴费项DataGridViewTextBoxColumn.DataPropertyName = "缴费项";
+            this.缴费项DataGridViewTextBoxColumn.HeaderText = "缴费项";
+            this.缴费项DataGridViewTextBoxColumn.Name = "缴费项DataGridViewTextBoxColumn";
+            this.缴费项DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 缴费金额DataGridViewTextBoxColumn
+            // 
+            this.缴费金额DataGridViewTextBoxColumn.DataPropertyName = "缴费金额";
+            this.缴费金额DataGridViewTextBoxColumn.HeaderText = "缴费金额";
+            this.缴费金额DataGridViewTextBoxColumn.Name = "缴费金额DataGridViewTextBoxColumn";
+            this.缴费金额DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 期始DataGridViewTextBoxColumn
+            // 
+            this.期始DataGridViewTextBoxColumn.DataPropertyName = "期始";
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.期始DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.期始DataGridViewTextBoxColumn.HeaderText = "期始";
+            this.期始DataGridViewTextBoxColumn.Name = "期始DataGridViewTextBoxColumn";
+            this.期始DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 期止DataGridViewTextBoxColumn
+            // 
+            this.期止DataGridViewTextBoxColumn.DataPropertyName = "期止";
+            dataGridViewCellStyle2.Format = "d";
+            this.期止DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.期止DataGridViewTextBoxColumn.HeaderText = "期止";
+            this.期止DataGridViewTextBoxColumn.Name = "期止DataGridViewTextBoxColumn";
+            this.期止DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 付款人DataGridViewTextBoxColumn
+            // 
+            this.付款人DataGridViewTextBoxColumn.DataPropertyName = "付款人";
+            this.付款人DataGridViewTextBoxColumn.HeaderText = "付款人";
+            this.付款人DataGridViewTextBoxColumn.Name = "付款人DataGridViewTextBoxColumn";
+            this.付款人DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 收款人DataGridViewTextBoxColumn
+            // 
+            this.收款人DataGridViewTextBoxColumn.DataPropertyName = "收款人";
+            this.收款人DataGridViewTextBoxColumn.HeaderText = "收款人";
+            this.收款人DataGridViewTextBoxColumn.Name = "收款人DataGridViewTextBoxColumn";
+            this.收款人DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 备注DataGridViewTextBoxColumn
+            // 
+            this.备注DataGridViewTextBoxColumn.DataPropertyName = "备注";
+            this.备注DataGridViewTextBoxColumn.HeaderText = "备注";
+            this.备注DataGridViewTextBoxColumn.Name = "备注DataGridViewTextBoxColumn";
+            this.备注DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // 缴费Form
             // 
             this.AcceptButton = this.btnOK;
@@ -443,7 +452,7 @@
             this.Controls.Add(缴费时间Label);
             this.Controls.Add(缴费项Label);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.kryptonComboBox1);
+            this.Controls.Add(this.cmbPayItem);
             this.Controls.Add(this.cmbYF);
             this.Controls.Add(this.kryptonGroupBox1);
             this.Controls.Add(this.panel1);
@@ -464,7 +473,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cmbYF)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbPayItem)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -476,18 +485,10 @@
         private System.Windows.Forms.BindingSource 源房缴费明细BindingSource;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kryptonDataGridView1;
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 缴费时间DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 缴费项DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 缴费金额DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 期始DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 期止DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 付款人DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 收款人DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 备注DataGridViewTextBoxColumn;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbYF;
         private System.Windows.Forms.BindingSource 源房BindingSource;
         private System.Windows.Forms.Label label1;
-        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbPayItem;
         private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker1;
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown1;
         private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker2;
@@ -500,5 +501,13 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton BtnOkAndContinue;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOK;
         private System.Windows.Forms.BindingSource 参考历史BindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 缴费时间DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 缴费项DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 缴费金额DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 期始DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 期止DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 付款人DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 收款人DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 备注DataGridViewTextBoxColumn;
     }
 }

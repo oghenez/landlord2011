@@ -45,21 +45,12 @@ namespace Landlord2.UI
             {
                 BtnOkAndContinue.Visible = true;//保存并继续按钮可见
                 payDetail = new 源房缴费明细();
-                if (yfID == Guid.Empty)//未指定源房ID的新增
-                {
-                    if (cmbYF.SelectedValue != null)
-                        payDetail.源房ID = (Guid)cmbYF.SelectedValue;
-                }
-                else
-                {
-                    cmbYF.SelectedValue = yfID;
-                    //payDetail.源房ID = yfID;//更改selectedValue,事件会执行
-                }
-                payDetail.缴费时间 = DateTime.Now.Date;//缴费时间默认当前操作日期
+                payDetail.源房ID = this.yfID;
+                Main.context.源房缴费明细.AddObject(payDetail);
             }
             else//编辑
             {
-                cmbYF.SelectedValue = payDetail.源房ID;
+                //cmbYF.SelectedValue = payDetail.源房ID;
             }
             源房缴费明细BindingSource.DataSource = payDetail;
         }
@@ -77,7 +68,7 @@ namespace Landlord2.UI
 
             if (isNew)//新增
             {
-                Main.context.源房缴费明细.AddObject(payDetail);
+                //Main.context.源房缴费明细.AddObject(payDetail);
                 string msg;
                 if (Helper.saveData(payDetail, out msg))
                 {
@@ -128,7 +119,6 @@ namespace Landlord2.UI
             System.Diagnostics.Debug.Assert(isNew);//只有新增状态才有此按钮
 #endif
            
-            Main.context.源房缴费明细.AddObject(payDetail);
             string msg;
             if (Helper.saveData(payDetail, out msg))
             {
@@ -136,7 +126,7 @@ namespace Landlord2.UI
                 源房缴费明细 old = payDetail;
                 payDetail = new 源房缴费明细()
                 {
-                    源房 = old.源房
+                    源房 = old.源房                   
                 };
 
                 源房缴费明细BindingSource.DataSource = payDetail;
@@ -155,6 +145,8 @@ namespace Landlord2.UI
 
         private void 缴费Form_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (isNew)
+                Main.context.源房缴费明细.Detach(payDetail);
             if (!isNew && Main.context.ObjectStateManager.GetObjectStateEntry(payDetail).State == EntityState.Modified)
             {
                 Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, payDetail);
@@ -164,9 +156,22 @@ namespace Landlord2.UI
 
         private void cmbYF_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbYF.SelectedValue != null)
-                payDetail.源房ID = (Guid)cmbYF.SelectedValue;
+            FilterDataGridView();
         }
+        private void cmbPayItem_TextChanged(object sender, EventArgs e)
+        {
+            FilterDataGridView();
+        }
+
+        private void FilterDataGridView()
+        {
+            if (cmbYF.SelectedValue != null)
+            {
+                ObjectQuery<源房缴费明细> result = 源房缴费明细.GetPayDetails((Guid)cmbYF.SelectedValue, cmbPayItem.Text);
+                参考历史BindingSource.DataSource = result.Execute(MergeOption.NoTracking);
+            }
+        }
+
 
     }
 }

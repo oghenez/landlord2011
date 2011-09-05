@@ -21,10 +21,8 @@ namespace Landlord2.UI
 
         private void 缴费Form_Load(object sender, EventArgs e)
         {
-            源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails();//初始情况，针对所有源房
-
-            var query2 = Main.context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) > DateTime.Now);
-            bindingSource1.DataSource = 源房.GetYF();// ((ObjectQuery<源房>)query2).Execute(MergeOption.NoTracking);           
+            源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(null, null).Execute(MergeOption.AppendOnly);//初始情况，针对所有源房
+            源房BindingSource.DataSource = 源房.GetYF().Execute(MergeOption.NoTracking);           
         }
 
         private void 缴费明细Form_FormClosed(object sender, FormClosedEventArgs e)
@@ -44,7 +42,19 @@ namespace Landlord2.UI
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
+            if(raBtnOne.Checked && cmbYF.SelectedValue != null)
+                using (缴费Form jf = new 缴费Form((Guid)cmbYF.SelectedValue))
+                {
+                    jf.ShowDialog(this);
+                }
+            else
+                using (缴费Form jf = new 缴费Form())
+                {
+                    jf.ShowDialog(this);
+                }
 
+            //最后，不管有没有更新，刷新DataGridView
+            raBtn_CheckedChanged(null, null);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -106,112 +116,52 @@ namespace Landlord2.UI
         }
         private void raBtn_CheckedChanged(object sender, EventArgs e)
         {
-            BtnAdd.Enabled = raBtnOne.Checked;//选中单个源房时，允许添加。
-            kryptonComboBox1.Enabled = raBtnOne.Checked;
+            cmbYF.Enabled = raBtnOne.Checked;
 
             if (raBtnAll.Checked)
             {
-                源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails();
+                源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(null, null).Execute(MergeOption.AppendOnly);
             }
             else if (raBtnOne.Checked)
             {
-                源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails((Guid)kryptonComboBox1.SelectedValue);
+                源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails((Guid)cmbYF.SelectedValue, null).Execute(MergeOption.AppendOnly);
             }
-            
-            btnFilter.Text = "按 [缴费项] 筛选 - 所有";
+            btnFilter.Text = "按 [缴费项] 筛选 - 所有缴费项";
         }
 
-        private void kryptonComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbYF_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (kryptonComboBox1.SelectedValue != null)
+            if (cmbYF.SelectedValue != null)
             {
-                源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails((Guid)kryptonComboBox1.SelectedValue);
-                btnFilter.Text = "按 [缴费项] 筛选 - 所有";
+                源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails((Guid?)cmbYF.SelectedValue, null).Execute(MergeOption.AppendOnly);
+                btnFilter.Text = "按 [缴费项] 筛选 - 所有缴费项";
             }
-        }
-
-        private void 源房缴费明细BindingSource_AddingNew(object sender, AddingNewEventArgs e)
-        {
-#if DEBUG
-            System.Diagnostics.Debug.Assert(raBtnOne.Checked);
-#endif
-            源房缴费明细 yfPay = new 源房缴费明细();
-            yfPay.源房ID = (Guid)kryptonComboBox1.SelectedValue;
-            yfPay.缴费时间 = DateTime.Now.Date;
-            e.NewObject = yfPay;
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = sender as ToolStripMenuItem;
             string txt = item.Text;
-            Guid guid = (Guid)kryptonComboBox1.SelectedValue;
+            Guid? guid = raBtnOne.Checked ? (Guid?)cmbYF.SelectedValue : null;
+
+            btnFilter.Text = string.Format("按 [缴费项] 筛选 - {0}",txt);
             switch (txt)
             {
                 case "所有缴费项":
-                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? 源房缴费明细.GetPayDetails(guid) : 源房缴费明细.GetPayDetails();
-                    btnFilter.Text = "按 [缴费项] 筛选 - 所有";
-                    break;
-                case "房租":
-                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? 源房缴费明细.GetPayDetails(guid, "房租") : 源房缴费明细.GetPayDetails("房租");
-                    btnFilter.Text = "按 [缴费项] 筛选 - 房租";
-                    break;
-                case "物业费":
-                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? 源房缴费明细.GetPayDetails(guid, "物业费") : 源房缴费明细.GetPayDetails("物业费");
-                    btnFilter.Text = "按 [缴费项] 筛选 - 物业费";
-                    break;
-                case "水":
-                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? 源房缴费明细.GetPayDetails(guid, "水") : 源房缴费明细.GetPayDetails("水");
-                    btnFilter.Text = "按 [缴费项] 筛选 - 水";
-                    break;
-                case "电":
-                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? 源房缴费明细.GetPayDetails(guid, "电") : 源房缴费明细.GetPayDetails("电");
-                    btnFilter.Text = "按 [缴费项] 筛选 - 电";
-                    break;
-                case "气":
-                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? 源房缴费明细.GetPayDetails(guid, "气") : 源房缴费明细.GetPayDetails("气");
-                    btnFilter.Text = "按 [缴费项] 筛选 - 气";
-                    break;
-                case "宽带费":
-                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? 源房缴费明细.GetPayDetails(guid, "宽带费") : 源房缴费明细.GetPayDetails("宽带费");
-                    btnFilter.Text = "按 [缴费项] 筛选 - 宽带费";
-                    break;
-                case "中介费":
-                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? 源房缴费明细.GetPayDetails(guid, "中介费") : 源房缴费明细.GetPayDetails("中介费");
-                    btnFilter.Text = "按 [缴费项] 筛选 - 中介费";
-                    break;
-                case "押金":
-                    源房缴费明细BindingSource.DataSource = raBtnOne.Checked ? 源房缴费明细.GetPayDetails(guid, "押金") : 源房缴费明细.GetPayDetails("押金");
-                    btnFilter.Text = "按 [缴费项] 筛选 - 押金";
+                    源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(guid,null).Execute(MergeOption.AppendOnly);
                     break;
                 case "其他":
                     {
-                        var query = from p in raBtnOne.Checked ? 源房缴费明细.GetPayDetails(guid) : 源房缴费明细.GetPayDetails()
+                        var query = (from p in 源房缴费明细.GetPayDetails(guid,null)
                                     where !(new[] { "房租", "物业费", "水", "电", "气", "宽带费", "中介费", "押金" }.Contains(p.缴费项))
-                                    select p;
-                        源房缴费明细BindingSource.DataSource = query;
-                        btnFilter.Text = "按 [缴费项] 筛选 - 其他";
+                                    select p) as ObjectQuery<源房缴费明细>;
+                        源房缴费明细BindingSource.DataSource = query.Execute(MergeOption.AppendOnly);
                     }
                     break;
                 default:
+                    源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(guid, txt).Execute(MergeOption.AppendOnly);
                     break;
             }
         }
-
-        private void 源房缴费明细BindingSource_ListChanged(object sender, ListChangedEventArgs e)
-        {
-            //var source = 源房缴费明细BindingSource.DataSource as ObjectQuery<源房缴费明细>;
-            //if (source == null) 
-            //    return;
-            //var query = from o in source
-            //            select new { o.缴费金额 };
-            //decimal sum = source.Sum(m => m.缴费金额);
-            //labCountMoney.Text = string.Format("当前合计金额： {0} 元", sum);
-        }
-
-
-
-
-
     }
 }
