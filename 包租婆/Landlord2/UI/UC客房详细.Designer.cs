@@ -95,8 +95,8 @@
             this.kryptonTextBox17 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox18 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.labReadOnly = new System.Windows.Forms.Label();
-            this.kryptonMaskedTextBox1 = new ComponentFactory.Krypton.Toolkit.KryptonMaskedTextBox();
-            this.kryptonMaskedTextBox2 = new ComponentFactory.Krypton.Toolkit.KryptonMaskedTextBox();
+            this.kryptonDateTimePicker1 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
+            this.kryptonDateTimePicker2 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             命名Label = new System.Windows.Forms.Label();
             面积Label = new System.Windows.Forms.Label();
             租户Label = new System.Windows.Forms.Label();
@@ -132,9 +132,9 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonDateTimePicker2);
+            this.kryptonPanel1.Controls.Add(this.kryptonDateTimePicker1);
             this.kryptonPanel1.Controls.Add(备注Label);
-            this.kryptonPanel1.Controls.Add(this.kryptonMaskedTextBox2);
-            this.kryptonPanel1.Controls.Add(this.kryptonMaskedTextBox1);
             this.kryptonPanel1.Controls.Add(this.labReadOnly);
             this.kryptonPanel1.Controls.Add(this.btnOpenFile3);
             this.kryptonPanel1.Controls.Add(this.btnOpenFile2);
@@ -235,9 +235,9 @@
             this.kryptonPanel1.Controls.SetChildIndex(this.btnOpenFile2, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.btnOpenFile3, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.labReadOnly, 0);
-            this.kryptonPanel1.Controls.SetChildIndex(this.kryptonMaskedTextBox1, 0);
-            this.kryptonPanel1.Controls.SetChildIndex(this.kryptonMaskedTextBox2, 0);
             this.kryptonPanel1.Controls.SetChildIndex(备注Label, 0);
+            this.kryptonPanel1.Controls.SetChildIndex(this.kryptonDateTimePicker1, 0);
+            this.kryptonPanel1.Controls.SetChildIndex(this.kryptonDateTimePicker2, 0);
             // 
             // 命名Label
             // 
@@ -831,25 +831,41 @@
             this.labReadOnly.Text = "* 非编辑状态，仅显示信息。";
             this.labReadOnly.Visible = false;
             // 
-            // kryptonMaskedTextBox1
+            // kryptonDateTimePicker1
             // 
-            this.kryptonMaskedTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "期始", true));
-            this.kryptonMaskedTextBox1.Location = new System.Drawing.Point(74, 110);
-            this.kryptonMaskedTextBox1.Mask = " 0000 年 00 月 00 日";
-            this.kryptonMaskedTextBox1.Name = "kryptonMaskedTextBox1";
-            this.kryptonMaskedTextBox1.Size = new System.Drawing.Size(128, 20);
-            this.kryptonMaskedTextBox1.TabIndex = 9;
-            this.kryptonMaskedTextBox1.Text = "      年    月    日";
+            this.kryptonDateTimePicker1.Checked = false;
+            this.kryptonDateTimePicker1.CustomNullText = "<无>";
+            this.kryptonDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("ValueNullable", this.客房BindingSource, "期始", true));
+            this.kryptonDateTimePicker1.Location = new System.Drawing.Point(74, 110);
+            this.kryptonDateTimePicker1.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
+            this.kryptonDateTimePicker1.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.kryptonDateTimePicker1.Name = "kryptonDateTimePicker1";
+            this.kryptonDateTimePicker1.ShowCheckBox = true;
+            this.kryptonDateTimePicker1.Size = new System.Drawing.Size(128, 21);
+            this.kryptonDateTimePicker1.StateDisabled.Border.Color1 = System.Drawing.Color.Black;
+            this.kryptonDateTimePicker1.StateDisabled.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonDateTimePicker1.StateDisabled.Content.Color1 = System.Drawing.Color.Black;
+            this.kryptonDateTimePicker1.TabIndex = 82;
             // 
-            // kryptonMaskedTextBox2
+            // kryptonDateTimePicker2
             // 
-            this.kryptonMaskedTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "期止", true));
-            this.kryptonMaskedTextBox2.Location = new System.Drawing.Point(231, 110);
-            this.kryptonMaskedTextBox2.Mask = " 0000 年 00 月 00 日";
-            this.kryptonMaskedTextBox2.Name = "kryptonMaskedTextBox2";
-            this.kryptonMaskedTextBox2.Size = new System.Drawing.Size(125, 20);
-            this.kryptonMaskedTextBox2.TabIndex = 10;
-            this.kryptonMaskedTextBox2.Text = "      年    月    日";
+            this.kryptonDateTimePicker2.Checked = false;
+            this.kryptonDateTimePicker2.CustomNullText = "<无>";
+            this.kryptonDateTimePicker2.DataBindings.Add(new System.Windows.Forms.Binding("ValueNullable", this.客房BindingSource, "期止", true));
+            this.kryptonDateTimePicker2.Location = new System.Drawing.Point(228, 110);
+            this.kryptonDateTimePicker2.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
+            this.kryptonDateTimePicker2.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.kryptonDateTimePicker2.Name = "kryptonDateTimePicker2";
+            this.kryptonDateTimePicker2.ShowCheckBox = true;
+            this.kryptonDateTimePicker2.Size = new System.Drawing.Size(128, 21);
+            this.kryptonDateTimePicker2.StateDisabled.Border.Color1 = System.Drawing.Color.Black;
+            this.kryptonDateTimePicker2.StateDisabled.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonDateTimePicker2.StateDisabled.Content.Color1 = System.Drawing.Color.Black;
+            this.kryptonDateTimePicker2.TabIndex = 82;
             // 
             // UC客房详细
             // 
@@ -920,7 +936,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOpenFile2;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOpenFile1;
         private System.Windows.Forms.Label labReadOnly;
-        private ComponentFactory.Krypton.Toolkit.KryptonMaskedTextBox kryptonMaskedTextBox2;
-        private ComponentFactory.Krypton.Toolkit.KryptonMaskedTextBox kryptonMaskedTextBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker1;
+        private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker2;
     }
 }

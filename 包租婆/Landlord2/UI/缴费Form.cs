@@ -50,7 +50,7 @@ namespace Landlord2.UI
             }
             else//编辑
             {
-                //cmbYF.SelectedValue = payDetail.源房ID;
+                //cmbYF.SelectedValue = payDetail.源房ID;//已经直接绑定了
             }
             源房缴费明细BindingSource.DataSource = payDetail;
         }
@@ -68,7 +68,6 @@ namespace Landlord2.UI
 
             if (isNew)//新增
             {
-                //Main.context.源房缴费明细.AddObject(payDetail);
                 string msg;
                 if (Helper.saveData(payDetail, out msg))
                 {
@@ -78,7 +77,6 @@ namespace Landlord2.UI
                 else
                 {
                     KryptonMessageBox.Show(msg, "失败");
-                    Main.context.源房缴费明细.Detach(payDetail);
                 }
             }
             else//编辑
@@ -124,17 +122,15 @@ namespace Landlord2.UI
             {
                 KryptonMessageBox.Show(string.Format("成功新增缴费信息。您可以继续添加！"), "成功新增缴费信息");
                 源房缴费明细 old = payDetail;
-                payDetail = new 源房缴费明细()
-                {
-                    源房 = old.源房                   
-                };
+                payDetail = new 源房缴费明细();
+                payDetail.源房ID = old.源房ID;
+                Main.context.源房缴费明细.AddObject(payDetail);
 
                 源房缴费明细BindingSource.DataSource = payDetail;
             }
             else
             {
                 KryptonMessageBox.Show(msg, "失败");
-                Main.context.源房缴费明细.Detach(payDetail);
             }
         }
 
@@ -145,8 +141,9 @@ namespace Landlord2.UI
 
         private void 缴费Form_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (isNew)
+            if (isNew && Main.context.ObjectStateManager.GetObjectStateEntry(payDetail).State == EntityState.Added)
                 Main.context.源房缴费明细.Detach(payDetail);
+            
             if (!isNew && Main.context.ObjectStateManager.GetObjectStateEntry(payDetail).State == EntityState.Modified)
             {
                 Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, payDetail);

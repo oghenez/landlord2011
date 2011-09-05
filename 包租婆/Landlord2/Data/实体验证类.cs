@@ -116,13 +116,22 @@ namespace Landlord2.Data
                 else
                 {
                     //判断是否连续
-                    var entities = this.源房.源房缴费明细.Where(m => m.缴费项 == this.缴费项).ToList();
-                    entities.Remove(this);//this肯定包含在其中
-                    DateTime? max = entities.Max(n => n.期止);
-                    if (max.HasValue && max.Value.Date.AddDays(1) != this.期始.Value.Date)
+                    DateTime temp = DateTime.MinValue;
+                    List<源房缴费明细> list = this.源房.源房缴费明细.Where(m => m.缴费项 == this.缴费项 && m.期始.HasValue).OrderBy(n => n.期始).ToList();
+                    int index = list.IndexOf(this);//得到this在此序列中的位置，然后判断前后的对象即可。
+                    if (index > 0)//this不排首位
                     {
-                        returnStr += string.Format("期始时间和上次此源房同类型缴费的期止时间应该连续，请检查[期止{0}]和[期始{1}]!",
-                                                   max.Value.ToShortDateString(), this.期始.Value.ToShortDateString()) + Environment.NewLine;
+                        if (list[index - 1].期止.Value.Date.AddDays(1) != this.期始.Value.Date)
+                            returnStr += string.Format("期始时间和上次此源房同类型缴费的期止时间应该连续，请检查[期止{0}]和[期始{1}]!",
+                                                  list[index - 1].期止.Value.ToShortDateString(), 
+                                                  this.期始.Value.ToShortDateString()) + Environment.NewLine;
+                    }
+                    if (index < list.Count-1)//this不排在末尾
+                    {
+                        if(this.期止.Value.Date.AddDays(1) != list[index+1].期始.Value.Date)
+                            returnStr += string.Format("期止时间和下次此源房同类型缴费的期始时间应该连续，请检查[期止{0}]和[期始{1}]!",
+                                                  this.期止.Value.ToShortDateString(),
+                                                  list[index + 1].期始.Value.ToShortDateString()) + Environment.NewLine;
                     }
                 }
             }     
@@ -223,6 +232,7 @@ namespace Landlord2.Data
 
             return returnStr;
         }
+
     }
     public partial class 源房涨租协定 :ICheck
     {

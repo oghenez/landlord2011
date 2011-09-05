@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using Landlord2.Data;
+using System.Data.Objects;
 
 namespace Landlord2.UI
 {
@@ -17,30 +18,31 @@ namespace Landlord2.UI
         private bool isNew;//是否是新增
 
         /// <summary>
-        /// 新增源房、编辑源房面板
+        /// 新增源房 
         /// </summary>
-        /// <param name="yf">yf=null则为新增操作</param>
+        public yfForm()
+        {
+            InitializeComponent();
+            isNew = true;
+            this.yf = new 源房();
+            Main.context.源房.AddObject(yf);
+        }
+        /// <summary>
+        /// 编辑源房 
+        /// </summary>
         public yfForm(源房 yf)
         {
-            this.yf = yf;
             InitializeComponent();
+            isNew = false;
+            this.yf = yf;
         }
 
         private void YF_Load(object sender, EventArgs e)
         {
-            if (yf == null)
-            {
-                isNew = true;
-                Text = "新增源房";
-                yf = new 源房();                
-            }
-            else
-            {
-                isNew = false;
-                Text = "编辑源房";
-            }
+            Text = string.Format("{0}源房", isNew ? "新增" : "编辑");
+
             uC源房详细1.源房BindingSource.DataSource = yf;
-            uC源房详细1.源房涨租协定BindingSource.DataSource = Main.context.源房涨租协定.Where(m => m.源房ID == yf.ID);
+            uC源房详细1.源房涨租协定BindingSource.DataSource = 源房涨租协定.GetByYFid(yf.ID).Execute(MergeOption.AppendOnly);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -55,8 +57,7 @@ namespace Landlord2.UI
                 return;
             }
             if (isNew)//新增 
-            {
-                Main.context.源房.AddObject(yf);
+            {                
                 string msg;
                 if (Helper.saveData(yf, out msg))
                 {
@@ -67,7 +68,6 @@ namespace Landlord2.UI
                 else
                 {
                     KryptonMessageBox.Show(msg, "失败");
-                    Main.context.源房.Detach(yf);
                 }
             }
             else //编辑
@@ -89,7 +89,6 @@ namespace Landlord2.UI
                     else
                     {
                         KryptonMessageBox.Show(msg, "失败");
-                        //Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, yf);失败后这里不处理，关闭窗体时处理更改
                     }
                 }
             }
@@ -102,6 +101,9 @@ namespace Landlord2.UI
 
         private void yfForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (isNew && Main.context.ObjectStateManager.GetObjectStateEntry(yf).State == EntityState.Added)
+                Main.context.源房.Detach(yf);
+
             if (!isNew && Main.context.ObjectStateManager.GetObjectStateEntry(yf).State == EntityState.Modified)
             {
                 Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, yf);

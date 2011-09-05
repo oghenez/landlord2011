@@ -11,6 +11,8 @@ using Landlord2.UI;
 using Landlord2.Data;
 using Landlord2.Properties;
 using System.Data.Objects.DataClasses;
+using System.Threading;
+using System.Data.Objects;
 
 namespace Landlord2
 {
@@ -52,10 +54,21 @@ namespace Landlord2
 
         #endregion
 
+        private System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadTreeView(null);
+            ThreadPool.QueueUserWorkItem(delegate
+                    {
+                        DoThreadSafe(delegate
+                        {
+                            sw.Start();
+                            LoadTreeView(null);
+                            sw.Stop(); 
+                            MessageBox.Show(sw.ElapsedMilliseconds.ToString());//1047-1227
+                        });
+                    });
+            //LoadTreeView(null);
             AlarmTimer1.Enabled = true; //-- 测试闪动提醒图标
         }
 
@@ -83,44 +96,25 @@ namespace Landlord2
             treeView1.Nodes.Clear();
             if (context.源房.Count() > 0)
             {
-                var yfGroups = from o in context.源房
-                               group o by o.源房涨租协定.Max(m => m.期止) > DateTime.Now into temp
-                               orderby temp.Key descending
-                               select temp;
-                foreach (var yfGroup in yfGroups)
-                {
-                    if (yfGroup.Key == true) // 满足 '期止 > DateTime.Now'
-                    {
-                        TreeNode root1 = new TreeNode("当前源房信息");
-                        root1.ToolTipText = "当前源房按照期止时间自动排序";
-                        root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
-                        root1.ImageIndex = 0;
-                        treeView1.Nodes.Add(root1);
+                TreeNode root1 = new TreeNode("当前源房信息");
+                root1.ToolTipText = "当前源房按照签约时间自动排序";
+                root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
+                root1.ImageIndex = 0;
+                treeView1.Nodes.Add(root1);
+                foreach (var yf in 源房.GetYF_NoHistory())
+                    AddYuanFangToTree(root1, yf, false, obj); 
+                root1.ExpandAll();
 
-                        //var kkk = yfGroup.OrderBy(m => m.源房涨租协定.Max(n => n.期止));
-                        //foreach (var yf in kkk)
-                        //    AddYuanFangToTree(root1, yf, false, obj);
+                TreeNode root2 = new TreeNode("历史源房信息");
+                root2.ToolTipText = "历史源房按照签约时间自动排序";
+                root2.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
+                root2.ForeColor = Color.DimGray;
+                root2.ImageIndex = 1;
+                treeView1.Nodes.Add(root2);
+                foreach (var yf in 源房.GetYF_History())
+                    AddYuanFangToTree(root2, yf, true, obj);
 
-
-                        foreach (var yf in yfGroup.OrderBy(m=>m.源房涨租协定.Max(n=>n.期止)))
-                            AddYuanFangToTree(root1, yf,false,obj);
-
-                        root1.ExpandAll();
-                    }
-                    else
-                    {
-                        TreeNode root2 = new TreeNode("历史源房信息");
-                        root2.ToolTipText = "历史源房按照期止时间自动排序";
-                        root2.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
-                        root2.ForeColor = Color.DimGray;
-                        root2.ImageIndex = 1;
-                        treeView1.Nodes.Add(root2);
-                        foreach (var yf in yfGroup.OrderBy(m => m.源房涨租协定.Max(n => n.期止)))
-                            AddYuanFangToTree(root2, yf,true,obj);
-
-                        root2.ExpandAll();
-                    }
-                }
+                root2.ExpandAll();
             }
             else
             {
@@ -262,14 +256,14 @@ namespace Landlord2
                 if (kryptonHeaderGroup2.Panel.Controls.Count == 0) //初次加载
                 {
                     yfUC.源房BindingSource.DataSource = entity;
-                    yfUC.源房涨租协定BindingSource.DataSource = Main.context.源房涨租协定.Where(m => m.源房ID == ((源房)entity).ID);
+                    yfUC.源房涨租协定BindingSource.DataSource = 源房涨租协定.GetByYFid(((源房)entity).ID).Execute(MergeOption.AppendOnly); 
                     kryptonHeaderGroup2.Panel.Controls.Add(yfUC);
                 }
                 else if(kryptonHeaderGroup2.Panel.Controls[0] is UC源房详细)//原来加载的是‘源房详细’控件
                 {
                     //仅仅更改绑定实体
                     yfUC.源房BindingSource.DataSource = entity;
-                    yfUC.源房涨租协定BindingSource.DataSource = Main.context.源房涨租协定.Where(m => m.源房ID == ((源房)entity).ID);
+                    yfUC.源房涨租协定BindingSource.DataSource = 源房涨租协定.GetByYFid(((源房)entity).ID).Execute(MergeOption.AppendOnly); 
                 }
                 else if (kryptonHeaderGroup2.Panel.Controls[0] is UC客房详细)
                 {
@@ -277,7 +271,7 @@ namespace Landlord2
                     kryptonHeaderGroup2.Panel.Controls.RemoveAt(0);
                     //加载
                     yfUC.源房BindingSource.DataSource = entity;
-                    yfUC.源房涨租协定BindingSource.DataSource = Main.context.源房涨租协定.Where(m => m.源房ID == ((源房)entity).ID);
+                    yfUC.源房涨租协定BindingSource.DataSource = 源房涨租协定.GetByYFid(((源房)entity).ID).Execute(MergeOption.AppendOnly); 
                     kryptonHeaderGroup2.Panel.Controls.Add(yfUC);
                 }
                 kryptonHeaderGroup2.ValuesPrimary.Heading = string.Format("源房：{0}", (entity as 源房).房名);
@@ -327,7 +321,7 @@ namespace Landlord2
         private void yfBtnAdd_Click(object sender, EventArgs e)
         {
             //新增源房
-            using (yfForm yF = new yfForm(null))
+            using (yfForm yF = new yfForm())
             {
                 yF.ShowDialog(this);
             }

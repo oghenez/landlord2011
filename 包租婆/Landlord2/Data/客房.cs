@@ -13,7 +13,6 @@ namespace Landlord2.Data
         public 客房()
         {
             this.ID = Guid.NewGuid();
-            this.期始 = DateTime.Now.Date;
         }
 
     }

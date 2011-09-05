@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using Landlord2.Data;
+using System.Data.Objects;
 
 namespace Landlord2.UI
 {
@@ -39,19 +40,15 @@ namespace Landlord2.UI
         private void kfForm_Load(object sender, EventArgs e)
         {
             Text = string.Format("{0}客房",isNew? "新增":"编辑");
-            源房BindingSource.DataSource = 源房.GetYF();
+            源房BindingSource.DataSource = 源房.GetYF().Execute(MergeOption.AppendOnly); 
 
             if (isNew)//新增
             {
                 BtnOkAndContinue.Visible = true;//保存并继续按钮可见
                 kf = new 客房();
-                if (yfID == Guid.Empty)
-                    kf.源房 = 源房BindingSource.Current as 源房;
-                else
-                {
-                    kf.源房ID = yfID;
-                    cmbYF.SelectedValue = yfID;
-                }
+                kf.源房ID = this.yfID;
+                cmbYF.SelectedValue = this.yfID;
+                Main.context.客房.AddObject(kf);
             }
             else//编辑
             {
@@ -72,7 +69,7 @@ namespace Landlord2.UI
             }
             if (isNew)//新增
             {
-                Main.context.客房.AddObject(kf);
+                
                 string msg;
                 if (Helper.saveData(kf, out msg))
                 {
@@ -83,7 +80,6 @@ namespace Landlord2.UI
                 else
                 {
                     KryptonMessageBox.Show(msg, "失败");
-                    Main.context.客房.Detach(kf);
                 }
             }
             else//编辑
@@ -104,7 +100,6 @@ namespace Landlord2.UI
                     else
                     {
                         KryptonMessageBox.Show(msg, "失败");
-                        //Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, yf);失败后这里不处理，关闭窗体时处理更改
                     }
                 }
             }
@@ -124,7 +119,6 @@ namespace Landlord2.UI
             System.Diagnostics.Debug.Assert(isNew);//只有新增状态才有此按钮
 #endif
 
-            Main.context.客房.AddObject(kf);
             string msg;
             if (Helper.saveData(kf, out msg))
             {
@@ -136,15 +130,16 @@ namespace Landlord2.UI
                     面积=old.面积,
                     含厨房 = old.含厨房,
                     含卫生间=old.含卫生间,
-                    源房=old.源房
+                    源房=old.源房,
+                    源房ID = old.源房ID
                 };
-                
+                Main.context.客房.AddObject(kf);
+
                 uC客房详细1.客房BindingSource.DataSource = kf;
             }
             else
             {
                 KryptonMessageBox.Show(msg, "失败");
-                Main.context.客房.Detach(kf);
             }
             
         } 
@@ -155,6 +150,9 @@ namespace Landlord2.UI
 
         private void kfForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (isNew && Main.context.ObjectStateManager.GetObjectStateEntry(kf).State == EntityState.Added)
+                Main.context.客房.Detach(kf);
+
             if (!isNew && Main.context.ObjectStateManager.GetObjectStateEntry(kf).State == EntityState.Modified)
             {
                 Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, kf);
