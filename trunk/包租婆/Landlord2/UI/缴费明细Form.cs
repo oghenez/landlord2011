@@ -61,12 +61,12 @@ namespace Landlord2.UI
         {
             源房缴费明细BindingSource.EndEdit();
 
-            var changes = Main.context.ObjectStateManager.GetObjectStateEntries(EntityState.Added | EntityState.Deleted | EntityState.Modified);
+            var changes = Main.context.ObjectStateManager.GetObjectStateEntries(EntityState.Modified);
             if (changes.Count() > 0)
             {
                 //校验
                 StringBuilder sb = new StringBuilder();
-                List<Guid> errorIDs = new List<Guid>();//错误记录的ID号，高亮显示。
+                Dictionary<Guid, string> errors = new Dictionary<Guid, string>();//记录错误的ID号，和对应错误信息。
                 foreach (ObjectStateEntry change in changes)
                 {
                     //校验每一条更改的实体，最后联合显示错误信息。
@@ -74,14 +74,15 @@ namespace Landlord2.UI
                     string result = entity.CheckRules();
                     if (!string.IsNullOrEmpty(result))//证明有错误
                     {
-                        sb.Append(string.Format("-----[{0}][{1}][{2}]：该记录有误-----", entity.源房.房名, entity.缴费时间.ToShortDateString(), entity.缴费项) + Environment.NewLine);
-                        sb.Append(result);
-                        errorIDs.Add(entity.ID);
+                        string err = string.Format("-----[{0}][{1}][{2}]：该记录有误-----\r\n{3}", 
+                            entity.源房.房名, entity.缴费时间.ToShortDateString(), entity.缴费项,result);
+                        sb.Append(err);
+                        errors.Add(entity.ID,err);
                     }
                 }
                 if (!string.IsNullOrEmpty(sb.ToString()))
                 {
-                    highLightRow(errorIDs);//高亮错误行
+                    highLightRow(errors);//高亮错误行
                     KryptonMessageBox.Show(sb.ToString(), "数据校验失败");
                     return;
                 }
@@ -103,15 +104,21 @@ namespace Landlord2.UI
             }
         }
         //高亮错误行
-        private void highLightRow(List<Guid> guids)
+        private void highLightRow(Dictionary<Guid, string> errors)
         { 
             //kryptonDataGridView1中有一个隐藏列“ID”
             foreach (DataGridViewRow row in kryptonDataGridView1.Rows)
             {
-                if (guids.Contains((Guid)row.Cells["ID"].Value))
+                if (errors.Keys.Contains((Guid)row.Cells["ID"].Value))
+                {
                     row.DefaultCellStyle.BackColor = Color.Pink;
+                    row.ErrorText = errors[(Guid)row.Cells["ID"].Value];
+                }
                 else
-                    row.DefaultCellStyle = kryptonDataGridView1.RowTemplate.DefaultCellStyle;
+                {
+                    row.DefaultCellStyle.BackColor = kryptonDataGridView1.RowsDefaultCellStyle.BackColor;
+                    row.ErrorText = string.Empty;
+                }
             }
         }
         private void raBtn_CheckedChanged(object sender, EventArgs e)

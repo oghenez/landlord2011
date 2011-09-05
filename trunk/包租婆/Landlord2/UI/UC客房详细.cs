@@ -40,8 +40,8 @@ namespace Landlord2.UI
                 {
                     if (con is KryptonTextBox)
                         (con as KryptonTextBox).ReadOnly = true;
-                    else if (con is KryptonMaskedTextBox)
-                        (con as KryptonMaskedTextBox).ReadOnly = true;
+                    else if (con is KryptonDateTimePicker)
+                        (con as KryptonDateTimePicker).Enabled = false;
                     else if (con is KryptonCheckBox)
                         (con as KryptonCheckBox).Enabled = false;
                     else if (con is KryptonButton)
