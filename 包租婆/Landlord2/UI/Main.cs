@@ -298,8 +298,6 @@ namespace Landlord2
                 }
                 kryptonHeaderGroup2.ValuesPrimary.Heading = string.Format("客房：{0} <隶属于：{1}>", (entity as 客房).命名,(entity as 客房).源房.房名) ;
             }
-
-
         }
         #endregion
 
