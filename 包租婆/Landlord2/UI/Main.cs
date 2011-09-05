@@ -96,6 +96,12 @@ namespace Landlord2
                         root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
                         root1.ImageIndex = 0;
                         treeView1.Nodes.Add(root1);
+
+                        //var kkk = yfGroup.OrderBy(m => m.源房涨租协定.Max(n => n.期止));
+                        //foreach (var yf in kkk)
+                        //    AddYuanFangToTree(root1, yf, false, obj);
+
+
                         foreach (var yf in yfGroup.OrderBy(m=>m.源房涨租协定.Max(n=>n.期止)))
                             AddYuanFangToTree(root1, yf,false,obj);
 
