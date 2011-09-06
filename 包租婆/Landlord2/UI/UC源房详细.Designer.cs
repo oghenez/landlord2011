@@ -1150,8 +1150,8 @@
             this.toolStripButton7.Image = global::Landlord2.Properties.Resources.缴费24;
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(59, 28);
-            this.toolStripButton7.Text = "缴费";
+            this.toolStripButton7.Size = new System.Drawing.Size(83, 28);
+            this.toolStripButton7.Text = "源房缴费";
             this.toolStripButton7.ToolTipText = "为当前选中的源房缴费\\r\\n例如：缴纳房租、水电等";
             // 
             // toolStripButton6
