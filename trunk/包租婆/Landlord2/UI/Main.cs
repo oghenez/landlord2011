@@ -20,8 +20,8 @@ namespace Landlord2
     {
         private int _widthLeftRight, _heightUpDown;
         public static Entities context;
-        private UC源房详细 yfUC = new UC源房详细(true) { Dock = DockStyle.Fill };
-        private UC客房详细 kfUC = new UC客房详细(true) { Dock = DockStyle.Fill };
+        private UC源房详细 yfUC;
+        private UC客房详细 kfUC;
 
         public Main()
         {
@@ -54,21 +54,21 @@ namespace Landlord2
 
         #endregion
 
-        private System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-
         private void Form1_Load(object sender, EventArgs e)
         {
             ThreadPool.QueueUserWorkItem(delegate
-                    {
-                        DoThreadSafe(delegate
-                        {
-                            sw.Start();
-                            LoadTreeView(null);
-                            sw.Stop(); 
-                            MessageBox.Show(sw.ElapsedMilliseconds.ToString());//1047-1227
-                        });
-                    });
-            //LoadTreeView(null);
+            {
+                DoThreadSafe(delegate{yfUC = new UC源房详细(true) { Dock = DockStyle.Fill };});
+            });
+            ThreadPool.QueueUserWorkItem(delegate
+            {
+                DoThreadSafe(delegate{kfUC = new UC客房详细(true) { Dock = DockStyle.Fill };});
+            });
+            ThreadPool.QueueUserWorkItem(delegate
+            {
+                DoThreadSafe(delegate{LoadTreeView(null);});
+            });
+
             AlarmTimer1.Enabled = true; //-- 测试闪动提醒图标
         }
 
@@ -92,18 +92,18 @@ namespace Landlord2
         /// </summary>
         private void LoadTreeView(EntityObject obj)
         {
-            treeView1.BeginUpdate();
-            treeView1.Nodes.Clear();
             if (context.源房.Count() > 0)
             {
+                treeView1.BeginUpdate();
+                treeView1.Nodes.Clear();
+
                 TreeNode root1 = new TreeNode("当前源房信息");
                 root1.ToolTipText = "当前源房按照签约时间自动排序";
                 root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
                 root1.ImageIndex = 0;
                 treeView1.Nodes.Add(root1);
                 foreach (var yf in 源房.GetYF_NoHistory())
-                    AddYuanFangToTree(root1, yf, false, obj); 
-                root1.ExpandAll();
+                    AddYuanFangToTree(root1, yf, false, obj);
 
                 TreeNode root2 = new TreeNode("历史源房信息");
                 root2.ToolTipText = "历史源房按照签约时间自动排序";
@@ -114,14 +114,15 @@ namespace Landlord2
                 foreach (var yf in 源房.GetYF_History())
                     AddYuanFangToTree(root2, yf, true, obj);
 
-                root2.ExpandAll();
+                treeView1.ExpandAll();
+                treeView1.EndUpdate();                                
             }
             else
             {
                 treeView1.Nodes.Add("当前没有源房、客房信息");
             }
-            treeView1.EndUpdate();
         }
+
         /// <summary>
         /// 加入一个树节点
         /// </summary>
@@ -245,6 +246,7 @@ namespace Landlord2
         #region 加载或刷新用户控件（例如：上次和当前都是点击的‘源房’，那么仅仅刷新而不重复加载）
         private void LoadOrRefreshUC(object entity)
         {
+            kryptonHeaderGroup2.SuspendLayout();
             if (entity == null)
             {
                 kryptonHeaderGroup2.Panel.Controls.Clear();
@@ -256,7 +258,7 @@ namespace Landlord2
                 if (kryptonHeaderGroup2.Panel.Controls.Count == 0) //初次加载
                 {
                     yfUC.源房BindingSource.DataSource = entity;
-                    yfUC.源房涨租协定BindingSource.DataSource = 源房涨租协定.GetByYFid(((源房)entity).ID).Execute(MergeOption.AppendOnly); 
+                    yfUC.源房涨租协定BindingSource.DataSource = 源房涨租协定.GetByYFid(((源房)entity).ID).Execute(MergeOption.AppendOnly);                    
                     kryptonHeaderGroup2.Panel.Controls.Add(yfUC);
                 }
                 else if(kryptonHeaderGroup2.Panel.Controls[0] is UC源房详细)//原来加载的是‘源房详细’控件
@@ -298,6 +300,7 @@ namespace Landlord2
                 }
                 kryptonHeaderGroup2.ValuesPrimary.Heading = string.Format("客房：{0} <隶属于：{1}>", (entity as 客房).命名,(entity as 客房).源房.房名) ;
             }
+            kryptonHeaderGroup2.ResumeLayout(false);
         }
         #endregion
 
