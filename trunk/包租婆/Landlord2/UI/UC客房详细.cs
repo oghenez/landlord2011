@@ -19,6 +19,8 @@ namespace Landlord2.UI
         {
             InitializeComponent();
             Controls.Remove(toolStrip1);
+            Height -= kryptonDataGridView1.Height;
+            Controls.Remove(kryptonDataGridView1);
         }
         public UC客房详细(bool isReadOnly)
         {
