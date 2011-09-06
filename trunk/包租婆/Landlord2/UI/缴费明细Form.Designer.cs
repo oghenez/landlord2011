@@ -318,6 +318,7 @@
             this.kryptonDataGridView1.RowTemplate.Height = 23;
             this.kryptonDataGridView1.Size = new System.Drawing.Size(844, 352);
             this.kryptonDataGridView1.TabIndex = 0;
+            this.kryptonDataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.kryptonDataGridView1_CellMouseDoubleClick);
             // 
             // 源房Column
             // 

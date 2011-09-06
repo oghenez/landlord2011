@@ -184,5 +184,21 @@ namespace Landlord2.UI
                 labCountMoney.Text = string.Format("当前合计：{0} 元", total);
             }
         }
+
+        private void kryptonDataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //双击，编辑
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                源房缴费明细 cur = 源房缴费明细BindingSource.Current as 源房缴费明细;
+                if (cur != null)
+                {
+                    using (缴费Form jf = new 缴费Form(cur))
+                    {
+                        jf.ShowDialog(this);
+                    }
+                }
+            }
+        }
     }
 }
