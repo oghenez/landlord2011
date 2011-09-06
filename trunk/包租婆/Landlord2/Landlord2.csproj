@@ -232,6 +232,7 @@
     <Content Include="Data\Landlord2.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Readme.txt" />
     <Content Include="Resources\Ball_Gray.png" />
     <Content Include="Resources\Ball_Green.png" />
     <Content Include="Resources\Ball_Yellow.png" />

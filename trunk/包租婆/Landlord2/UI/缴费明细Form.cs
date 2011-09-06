@@ -170,5 +170,19 @@ namespace Landlord2.UI
                     break;
             }
         }
+
+        private void 源房缴费明细BindingSource_CurrentItemChanged(object sender, EventArgs e)
+        {
+            if (源房缴费明细BindingSource.DataSource != null)
+            {
+                decimal total = 0.00M;
+                foreach (DataGridViewRow row in kryptonDataGridView1.Rows)
+                {
+                    object obj = row.Cells["缴费金额DataGridViewTextBoxColumn"].Value;
+                    total += (decimal)obj;
+                }
+                labCountMoney.Text = string.Format("当前合计：{0} 元", total);
+            }
+        }
     }
 }
