@@ -208,6 +208,7 @@
     </None>
     <None Include="Properties\DataSources\Landlord2.Data.Entities.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.客房.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.客房租金明细.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.提醒.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.源房.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.源房涨租协定.datasource" />
