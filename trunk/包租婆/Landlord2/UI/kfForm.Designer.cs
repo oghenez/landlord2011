@@ -45,7 +45,7 @@
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.CausesValidation = false;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(651, 265);
+            this.btnCancel.Location = new System.Drawing.Point(684, 265);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 25);
             this.btnCancel.TabIndex = 3;
@@ -55,7 +55,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(521, 265);
+            this.btnOK.Location = new System.Drawing.Point(554, 265);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(90, 25);
             this.btnOK.TabIndex = 2;
@@ -91,7 +91,7 @@
             // BtnOkAndContinue
             // 
             this.BtnOkAndContinue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnOkAndContinue.Location = new System.Drawing.Point(391, 265);
+            this.BtnOkAndContinue.Location = new System.Drawing.Point(424, 265);
             this.BtnOkAndContinue.Name = "BtnOkAndContinue";
             this.BtnOkAndContinue.Size = new System.Drawing.Size(90, 25);
             this.BtnOkAndContinue.TabIndex = 2;
@@ -104,7 +104,7 @@
             this.uC客房详细1.BackColor = System.Drawing.Color.Transparent;
             this.uC客房详细1.Location = new System.Drawing.Point(10, 10);
             this.uC客房详细1.Name = "uC客房详细1";
-            this.uC客房详细1.Size = new System.Drawing.Size(749, 240);
+            this.uC客房详细1.Size = new System.Drawing.Size(783, 240);
             this.uC客房详细1.TabIndex = 0;
             // 
             // kfForm
@@ -112,7 +112,7 @@
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 302);
+            this.ClientSize = new System.Drawing.Size(801, 302);
             this.Controls.Add(this.cmbYF);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancel);
