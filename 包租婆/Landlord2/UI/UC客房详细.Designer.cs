@@ -110,6 +110,8 @@
             this.收款人DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.备注DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.客房租金明细BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             命名Label = new System.Windows.Forms.Label();
             面积Label = new System.Windows.Forms.Label();
             租户Label = new System.Windows.Forms.Label();
@@ -473,6 +475,8 @@
             this.toolStripButton1,
             this.toolStripButton3,
             this.toolStripSeparator1,
+            this.toolStripButton10,
+            this.toolStripButton9,
             this.toolStripButton4,
             this.toolStripButton7,
             this.toolStripSeparator2,
@@ -528,8 +532,8 @@
             // 
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(59, 28);
-            this.toolStripButton4.Text = "客房出租";
+            this.toolStripButton4.Size = new System.Drawing.Size(35, 28);
+            this.toolStripButton4.Text = "续租";
             // 
             // toolStripButton7
             // 
@@ -993,6 +997,20 @@
             // 
             this.客房租金明细BindingSource.DataSource = typeof(Landlord2.Data.客房租金明细);
             // 
+            // toolStripButton9
+            // 
+            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton9.Name = "toolStripButton9";
+            this.toolStripButton9.Size = new System.Drawing.Size(35, 28);
+            this.toolStripButton9.Text = "停租";
+            // 
+            // toolStripButton10
+            // 
+            this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton10.Name = "toolStripButton10";
+            this.toolStripButton10.Size = new System.Drawing.Size(35, 28);
+            this.toolStripButton10.Text = "出租";
+            // 
             // UC客房详细
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1079,5 +1097,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 收款人DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 备注DataGridViewTextBoxColumn;
         public System.Windows.Forms.BindingSource 客房租金明细BindingSource;
+        private System.Windows.Forms.ToolStripButton toolStripButton10;
+        private System.Windows.Forms.ToolStripButton toolStripButton9;
     }
 }
