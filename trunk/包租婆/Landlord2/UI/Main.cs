@@ -376,10 +376,11 @@ namespace Landlord2
             kfForm kF = null;
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag != null)
             {
-                if (treeView1.SelectedNode.Tag is 源房)
-                    kF = new kfForm((treeView1.SelectedNode.Tag as 源房).ID);
-                else if(treeView1.SelectedNode.Tag is 客房)
-                    kF = new kfForm((treeView1.SelectedNode.Tag as 客房).源房ID);
+                object entity = treeView1.SelectedNode.Tag;
+                if (entity is 源房)
+                    kF = new kfForm((entity as 源房).ID);
+                else if (entity is 客房)
+                    kF = new kfForm((entity as 客房).源房ID);
             }
             else
                 kF = new kfForm();
@@ -430,10 +431,27 @@ namespace Landlord2
         private void yfBtnPay_Click(object sender, EventArgs e)
         {
             //源房缴费
-            using (缴费Form jf = new 缴费Form())
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag != null)
             {
-                jf.ShowDialog(this);
+                object entity = treeView1.SelectedNode.Tag;
+                Guid yfID = Guid.Empty ;
+                if (entity is 源房)
+                    yfID = (entity as 源房).ID;
+                else if (entity is 客房)
+                    yfID = (entity as 客房).源房ID;
+
+                using (缴费Form jf = new 缴费Form(yfID))
+                {
+                    jf.ShowDialog(this);
+                }
             }
+            else
+            {
+                using (缴费Form jf = new 缴费Form())
+                {
+                    jf.ShowDialog(this);
+                }
+            }            
         }
         private void yfBtnPayDetail_Click(object sender, EventArgs e)
         {
