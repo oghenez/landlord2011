@@ -58,6 +58,8 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -110,8 +112,6 @@
             this.收款人DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.备注DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.客房租金明细BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             命名Label = new System.Windows.Forms.Label();
             面积Label = new System.Windows.Forms.Label();
             租户Label = new System.Windows.Forms.Label();
@@ -459,7 +459,7 @@
             // 备注Label
             // 
             备注Label.AutoSize = true;
-            备注Label.Location = new System.Drawing.Point(709, 207);
+            备注Label.Location = new System.Drawing.Point(720, 207);
             备注Label.Name = "备注Label";
             备注Label.Size = new System.Drawing.Size(41, 12);
             备注Label.TabIndex = 50;
@@ -527,6 +527,20 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            // 
+            // toolStripButton10
+            // 
+            this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton10.Name = "toolStripButton10";
+            this.toolStripButton10.Size = new System.Drawing.Size(35, 28);
+            this.toolStripButton10.Text = "出租";
+            // 
+            // toolStripButton9
+            // 
+            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton9.Name = "toolStripButton9";
+            this.toolStripButton9.Size = new System.Drawing.Size(35, 28);
+            this.toolStripButton9.Text = "停租";
             // 
             // toolStripButton4
             // 
@@ -996,20 +1010,6 @@
             // 客房租金明细BindingSource
             // 
             this.客房租金明细BindingSource.DataSource = typeof(Landlord2.Data.客房租金明细);
-            // 
-            // toolStripButton9
-            // 
-            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(35, 28);
-            this.toolStripButton9.Text = "停租";
-            // 
-            // toolStripButton10
-            // 
-            this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Size = new System.Drawing.Size(35, 28);
-            this.toolStripButton10.Text = "出租";
             // 
             // UC客房详细
             // 
