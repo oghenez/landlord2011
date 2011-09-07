@@ -56,18 +56,29 @@ namespace Landlord2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ThreadPool.QueueUserWorkItem(delegate
+            System.Timers.Timer t = new System.Timers.Timer();
+            t.Interval = 1000;
+            t.Elapsed += delegate
             {
-                DoThreadSafe(delegate{yfUC = new UC源房详细(true) { Dock = DockStyle.Fill };});
-            });
-            ThreadPool.QueueUserWorkItem(delegate
-            {
-                DoThreadSafe(delegate{kfUC = new UC客房详细(true) { Dock = DockStyle.Fill };});
-            });
-            ThreadPool.QueueUserWorkItem(delegate
-            {
-                DoThreadSafe(delegate{LoadTreeView(null);});
-            });
+                DoThreadSafe(delegate { yfUC = new UC源房详细(true) { Dock = DockStyle.Fill }; });
+                DoThreadSafe(delegate { kfUC = new UC客房详细(true) { Dock = DockStyle.Fill }; });
+                DoThreadSafe(delegate { LoadTreeView(null); });
+            };
+            t.AutoReset = false;
+            t.Start();
+
+            //ThreadPool.QueueUserWorkItem(delegate
+            //{
+            //    DoThreadSafe(delegate { yfUC = new UC源房详细(true) { Dock = DockStyle.Fill }; });
+            //});
+            //ThreadPool.QueueUserWorkItem(delegate
+            //{
+            //    DoThreadSafe(delegate { kfUC = new UC客房详细(true) { Dock = DockStyle.Fill }; });
+            //});
+            //ThreadPool.QueueUserWorkItem(delegate
+            //{
+            //    DoThreadSafe(delegate { LoadTreeView(null); });
+            //});
 
             AlarmTimer1.Enabled = true; //-- 测试闪动提醒图标
         }
@@ -442,6 +453,7 @@ namespace Landlord2
             }
         }
         #endregion
+
 
 
 

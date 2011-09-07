@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("加载信息，请稍后．．．");
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -441,6 +442,11 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
+            treeNode1.ImageIndex = 7;
+            treeNode1.Name = "节点0";
+            treeNode1.Text = "加载信息，请稍后．．．";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1});
             this.treeView1.SelectedImageIndex = 7;
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.ShowRootLines = false;
@@ -596,7 +602,7 @@
             this.toolStripSeparator8});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(533, 70);
+            this.toolStrip1.Size = new System.Drawing.Size(502, 70);
             this.toolStrip1.TabIndex = 0;
             // 
             // yfBtnAdd
