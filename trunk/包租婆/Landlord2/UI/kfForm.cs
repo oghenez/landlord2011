@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using Landlord2.Data;
@@ -127,11 +122,20 @@ namespace Landlord2.UI
                 客房 old = kf;
                 kf = new 客房()
                 {
-                    面积=old.面积,
+                    面积 = old.面积,
                     含厨房 = old.含厨房,
-                    含卫生间=old.含卫生间,
-                    源房=old.源房,
-                    源房ID = old.源房ID
+                    含卫生间 = old.含卫生间,
+                    源房ID = old.源房ID,
+                    押金 = old.押金,
+                    月租金 = old.月租金,
+                    支付月数 = old.支付月数,
+                    水始码 = old.水始码,
+                    电始码 = old.电始码,
+                    气始码 = old.气始码,
+                    月宽带费 = old.月宽带费,
+                    月物业费 = old.月物业费,
+                    月厨房费 = old.月厨房费,
+                    备注 = old.备注
                 };
                 Main.context.客房.AddObject(kf);
 

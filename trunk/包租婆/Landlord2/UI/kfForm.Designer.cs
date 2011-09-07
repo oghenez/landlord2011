@@ -102,7 +102,7 @@
             // uC客房详细1
             // 
             this.uC客房详细1.BackColor = System.Drawing.Color.Transparent;
-            this.uC客房详细1.Location = new System.Drawing.Point(10, 10);
+            this.uC客房详细1.Location = new System.Drawing.Point(9, 10);
             this.uC客房详细1.Name = "uC客房详细1";
             this.uC客房详细1.Size = new System.Drawing.Size(783, 240);
             this.uC客房详细1.TabIndex = 0;

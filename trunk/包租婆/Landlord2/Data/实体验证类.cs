@@ -147,12 +147,16 @@ namespace Landlord2.Data
             //客房必须隶属于一个上级的源房
             if (this.源房ID == null || this.源房ID == Guid.Empty)
             {
-                returnStr += "请指定此客房上级的源房! " + Environment.NewLine;
+                returnStr += "请指定此客房上级的源房!" + Environment.NewLine;
                 return returnStr;
             }
 
             //校验所有非空属性
             returnStr += MyEntityHelper.CheckNullOrEmptyAndABS(this);
+
+            //检测重名
+            if (this.源房.客房.Count(m => m.命名 == this.命名) > 1)
+                returnStr += "客房命名重复，请重新指定!" + Environment.NewLine;
 
             #region  时间校验
             //1、当存在‘租户’时，必须有期止、期始值，必须有电话1、联系地址、身份证号、
@@ -236,9 +240,11 @@ namespace Landlord2.Data
             foreach (var o in this.客房.Where(m => !string.IsNullOrEmpty(m.租户)))
             {
                 if (o.期始 < start)
-                    returnStr += string.Format("客房期始时间不能在源房期始时间之前！请检查源房起始租期[{0}]与客房[{1}]的期始时间{2}。", start.ToShortDateString(), o.命名, o.期始.Value.ToShortDateString());
+                    returnStr += string.Format("客房期始时间不能在源房期始时间之前！请检查源房起始租期[{0}]与客房[{1}]的期始时间{2}。",
+                        start.ToShortDateString(), o.命名, o.期始.Value.ToShortDateString()) + Environment.NewLine;
                 if (o.期止 > end)
-                    returnStr += string.Format("客房期止时间不能在源房期止时间之后！请检查源房期止时间[{0}]与客房[{1}]的期止时间{2}。", end.ToShortDateString(), o.命名, o.期止.Value.ToShortDateString());
+                    returnStr += string.Format("客房期止时间不能在源房期止时间之后！请检查源房期止时间[{0}]与客房[{1}]的期止时间{2}。",
+                        end.ToShortDateString(), o.命名, o.期止.Value.ToShortDateString()) + Environment.NewLine;
             }
 
             return returnStr;

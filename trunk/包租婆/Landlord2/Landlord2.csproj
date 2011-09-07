@@ -133,6 +133,18 @@
     <Compile Include="UI\yfForm.Designer.cs">
       <DependentUpon>yfForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\出租Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\出租Form.Designer.cs">
+      <DependentUpon>出租Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\可出租客房Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\可出租客房Form.Designer.cs">
+      <DependentUpon>可出租客房Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\缴费Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +196,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\yfForm.resx">
       <DependentUpon>yfForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\出租Form.resx">
+      <DependentUpon>出租Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\可出租客房Form.resx">
+      <DependentUpon>可出租客房Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\缴费Form.resx">
       <DependentUpon>缴费Form.cs</DependentUpon>
