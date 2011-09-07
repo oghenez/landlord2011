@@ -20,8 +20,8 @@ namespace Landlord2
     {
         private int _widthLeftRight, _heightUpDown;
         public static Entities context;
-        private UC源房详细 yfUC;
-        private UC客房详细 kfUC;
+        private UC源房详细 yfUC = new UC源房详细(true) { Dock = DockStyle.Fill };
+        private UC客房详细 kfUC = new UC客房详细(true) { Dock = DockStyle.Fill };
 
         public Main()
         {
@@ -56,30 +56,10 @@ namespace Landlord2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            System.Timers.Timer t = new System.Timers.Timer();
-            t.Interval = 1000;
-            t.Elapsed += delegate
+            ThreadPool.QueueUserWorkItem(delegate
             {
-                DoThreadSafe(delegate { yfUC = new UC源房详细(true) { Dock = DockStyle.Fill }; });
-                DoThreadSafe(delegate { kfUC = new UC客房详细(true) { Dock = DockStyle.Fill }; });
-                DoThreadSafe(delegate { LoadTreeView(null); });
-            };
-            t.AutoReset = false;
-            t.Start();
-
-            //ThreadPool.QueueUserWorkItem(delegate
-            //{
-            //    DoThreadSafe(delegate { yfUC = new UC源房详细(true) { Dock = DockStyle.Fill }; });
-            //});
-            //ThreadPool.QueueUserWorkItem(delegate
-            //{
-            //    DoThreadSafe(delegate { kfUC = new UC客房详细(true) { Dock = DockStyle.Fill }; });
-            //});
-            //ThreadPool.QueueUserWorkItem(delegate
-            //{
-            //    DoThreadSafe(delegate { LoadTreeView(null); });
-            //});
-
+                LoadTreeView(null);
+            });
             AlarmTimer1.Enabled = true; //-- 测试闪动提醒图标
         }
 
@@ -105,14 +85,17 @@ namespace Landlord2
         {
             if (context.源房.Count() > 0)
             {
-                treeView1.BeginUpdate();
-                treeView1.Nodes.Clear();
+                DoThreadSafe(delegate {
+                    treeView1.BeginUpdate();
+                    treeView1.Nodes.Clear(); 
+                });
+                
 
                 TreeNode root1 = new TreeNode("当前源房信息");
                 root1.ToolTipText = "当前源房按照签约时间自动排序";
                 root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
                 root1.ImageIndex = 0;
-                treeView1.Nodes.Add(root1);
+                DoThreadSafe(delegate { treeView1.Nodes.Add(root1); });                
                 foreach (var yf in 源房.GetYF_NoHistory())
                     AddYuanFangToTree(root1, yf, false, obj);
 
@@ -121,16 +104,18 @@ namespace Landlord2
                 root2.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
                 root2.ForeColor = Color.DimGray;
                 root2.ImageIndex = 1;
-                treeView1.Nodes.Add(root2);
+                DoThreadSafe(delegate { treeView1.Nodes.Add(root2); });                  
                 foreach (var yf in 源房.GetYF_History())
                     AddYuanFangToTree(root2, yf, true, obj);
 
-                treeView1.ExpandAll();
-                treeView1.EndUpdate();                                
+                DoThreadSafe(delegate {
+                    treeView1.ExpandAll();
+                    treeView1.EndUpdate();
+                });           
             }
             else
             {
-                treeView1.Nodes.Add("当前没有源房、客房信息");
+                DoThreadSafe(delegate { treeView1.Nodes.Add("当前没有源房、客房信息"); }); 
             }
         }
 
@@ -146,9 +131,11 @@ namespace Landlord2
             yfNode.Text = yf.房名;
             yfNode.Tag = yf;
             yfNode.ImageIndex = isHistory ? 5 : 2;//历史源房5：当前有效源房2
-            parent.Nodes.Add(yfNode);
-            if (yf == obj)                
-                yfNode.TreeView.SelectedNode = yfNode ;
+            DoThreadSafe(delegate {
+                parent.Nodes.Add(yfNode);
+                if (yf == obj)
+                    yfNode.TreeView.SelectedNode = yfNode;
+            });             
 
             var kfs = yf.客房;
             foreach (var kf in kfs)
@@ -165,9 +152,11 @@ namespace Landlord2
                     else
                         kfNode.ImageIndex = (kf.期止 < DateTime.Now) ? 4 : 3;//已租3：未租4
                 }
-                yfNode.Nodes.Add(kfNode);
-                if (kf == obj)
-                    kfNode.TreeView.SelectedNode = kfNode;
+                DoThreadSafe(delegate {
+                    yfNode.Nodes.Add(kfNode);
+                    if (kf == obj)
+                        kfNode.TreeView.SelectedNode = kfNode;
+                });   
             }
         }
         #region 左侧自动缩近、扩展
