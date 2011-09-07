@@ -20,8 +20,8 @@ namespace Landlord2
     {
         private int _widthLeftRight, _heightUpDown;
         public static Entities context;
-        private UC源房详细 yfUC = new UC源房详细(true) { Dock = DockStyle.Fill };
-        private UC客房详细 kfUC = new UC客房详细(true) { Dock = DockStyle.Fill };
+        private UC源房详细 yfUC ;//= new UC源房详细(true) { Dock = DockStyle.Fill };
+        private UC客房详细 kfUC ;//= new UC客房详细(true) { Dock = DockStyle.Fill };
 
         public Main()
         {
@@ -59,6 +59,8 @@ namespace Landlord2
             ThreadPool.QueueUserWorkItem(delegate
             {
                 LoadTreeView(null);
+                DoThreadSafe(delegate { yfUC = new UC源房详细(true) { Dock = DockStyle.Fill }; });
+                DoThreadSafe(delegate { kfUC = new UC客房详细(true) { Dock = DockStyle.Fill }; });
             });
             AlarmTimer1.Enabled = true; //-- 测试闪动提醒图标
         }
