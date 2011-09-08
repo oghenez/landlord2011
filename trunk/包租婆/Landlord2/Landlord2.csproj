@@ -145,6 +145,12 @@
     <Compile Include="UI\可出租客房Form.Designer.cs">
       <DependentUpon>可出租客房Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\客房退租Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\客房退租Form.Designer.cs">
+      <DependentUpon>客房退租Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\缴费Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,9 @@
     <EmbeddedResource Include="UI\可出租客房Form.resx">
       <DependentUpon>可出租客房Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\客房退租Form.resx">
+      <DependentUpon>客房退租Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\缴费Form.resx">
       <DependentUpon>缴费Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -259,8 +268,8 @@
     <None Include="Resources\客房续租48.png" />
     <None Include="Resources\客房出租24.png" />
     <None Include="Resources\客房出租48.png" />
-    <None Include="Resources\客房停租24.png" />
-    <None Include="Resources\客房停租48.png" />
+    <None Include="Resources\客房退租24.png" />
+    <None Include="Resources\客房退租48.png" />
     <Content Include="Resources\缴费24.png" />
     <Content Include="Resources\缴费48.png" />
     <Content Include="Resources\缴费明细24.png" />

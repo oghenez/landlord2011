@@ -538,11 +538,11 @@
             // 
             // toolStripButton9
             // 
-            this.toolStripButton9.Image = global::Landlord2.Properties.Resources.客房停租24;
+            this.toolStripButton9.Image = global::Landlord2.Properties.Resources.客房退租24;
             this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton9.Name = "toolStripButton9";
             this.toolStripButton9.Size = new System.Drawing.Size(59, 28);
-            this.toolStripButton9.Text = "停租";
+            this.toolStripButton9.Text = "退租";
             // 
             // toolStripButton4
             // 

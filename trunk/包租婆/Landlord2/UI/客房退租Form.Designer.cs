@@ -1,6 +1,6 @@
 ﻿namespace Landlord2.UI
 {
-    partial class 出租Form
+    partial class 客房退租Form
     {
         /// <summary>
         /// Required designer variable.
@@ -28,37 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.BtnSelectKF = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.uC客房详细1 = new Landlord2.UI.UC客房详细();
+            this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.CausesValidation = false;
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(684, 304);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(90, 25);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Values.Text = "取消";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnOK
-            // 
-            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(554, 304);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(90, 25);
-            this.btnOK.TabIndex = 2;
-            this.btnOK.Values.Text = "保存";
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // kryptonPanel1
             // 
@@ -69,8 +46,8 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Padding = new System.Windows.Forms.Padding(5);
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ControlToolTip;
-            this.kryptonPanel1.Size = new System.Drawing.Size(801, 40);
-            this.kryptonPanel1.TabIndex = 0;
+            this.kryptonPanel1.Size = new System.Drawing.Size(597, 40);
+            this.kryptonPanel1.TabIndex = 10;
             // 
             // kryptonLabel1
             // 
@@ -95,40 +72,48 @@
             // BtnSelectKF
             // 
             this.BtnSelectKF.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BtnSelectKF.Location = new System.Drawing.Point(665, 5);
+            this.BtnSelectKF.Location = new System.Drawing.Point(461, 5);
             this.BtnSelectKF.Name = "BtnSelectKF";
             this.BtnSelectKF.Size = new System.Drawing.Size(131, 30);
             this.BtnSelectKF.TabIndex = 0;
             this.BtnSelectKF.Values.Text = "选择可出租客房";
-            this.BtnSelectKF.Click += new System.EventHandler(this.BtnSelectKF_Click);
             // 
-            // uC客房详细1
+            // btnCancel
             // 
-            this.uC客房详细1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.uC客房详细1.BackColor = System.Drawing.Color.Transparent;
-            this.uC客房详细1.Location = new System.Drawing.Point(9, 51);
-            this.uC客房详细1.Name = "uC客房详细1";
-            this.uC客房详细1.Size = new System.Drawing.Size(783, 240);
-            this.uC客房详细1.TabIndex = 1;
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.CausesValidation = false;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(492, 299);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(90, 25);
+            this.btnCancel.TabIndex = 9;
+            this.btnCancel.Values.Text = "取消";
             // 
-            // 出租Form
+            // btnOK
+            // 
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOK.Location = new System.Drawing.Point(362, 299);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(90, 25);
+            this.btnOK.TabIndex = 8;
+            this.btnOK.Values.Text = "保存";
+            // 
+            // 客房退租Form
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(801, 341);
+            this.ClientSize = new System.Drawing.Size(597, 336);
             this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.uC客房详细1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "出租Form";
+            this.Name = "客房退租Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "客房出租";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.出租Form_FormClosed);
-            this.Load += new System.EventHandler(this.出租Form_Load);
+            this.Text = "客房退租";
+            this.Load += new System.EventHandler(this.客房退租Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
@@ -138,11 +123,10 @@
 
         #endregion
 
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnOK;
-        private UC客房详细 uC客房详细1;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private ComponentFactory.Krypton.Toolkit.KryptonButton BtnSelectKF;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnOK;
     }
 }
