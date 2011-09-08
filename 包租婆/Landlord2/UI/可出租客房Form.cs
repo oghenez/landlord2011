@@ -45,19 +45,17 @@ namespace Landlord2.UI
                 treeView1.Nodes.Clear();
             });
 
-            TreeNode root1 = new TreeNode("当前源房信息");
-            root1.ToolTipText = "当前源房按照签约时间自动排序";
-            root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
-            DoThreadSafe(delegate { treeView1.Nodes.Add(root1); }); 
             foreach (var yf in 源房.GetYF_NoHistory())
             {
                 if (yf.客房.Count(m => string.IsNullOrEmpty(m.租户)) == 0)//无客房或全租完
                     continue;
 
                 TreeNode yfNode = new TreeNode();
+                yfNode.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
+                yfNode.ImageIndex = 0;
                 yfNode.Text = yf.房名;
                 yfNode.Tag = yf;
-                DoThreadSafe(delegate { root1.Nodes.Add(yfNode); });
+                DoThreadSafe(delegate { treeView1.Nodes.Add(yfNode); });
 
                 var kfs = yf.客房;
                 foreach (var kf in kfs)
@@ -66,6 +64,8 @@ namespace Landlord2.UI
                         continue;
 
                     TreeNode kfNode = new TreeNode();
+                    kfNode.NodeFont = new System.Drawing.Font("宋体", 10);
+                    kfNode.ImageIndex = 1;
                     kfNode.Text = kf.命名;
                     kfNode.Tag = kf;
                     DoThreadSafe(delegate { yfNode.Nodes.Add(kfNode); });  
@@ -80,6 +80,8 @@ namespace Landlord2.UI
         }
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            e.Node.SelectedImageIndex = e.Node.ImageIndex;//不变更选定的树节点图标
+
             object entity = e.Node.Tag;
             if (entity is 客房)
             {
