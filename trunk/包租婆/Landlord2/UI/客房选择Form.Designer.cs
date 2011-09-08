@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("正在查询可出租客房，请稍候．．．");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("正在查询客房信息，请稍候．．．");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(客房选择Form));
             this.kryptonHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.buttonSpecHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
@@ -57,7 +57,7 @@
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.treeView1);
             this.kryptonHeaderGroup1.Size = new System.Drawing.Size(319, 444);
             this.kryptonHeaderGroup1.TabIndex = 0;
-            this.kryptonHeaderGroup1.ValuesPrimary.Heading = "可出租客房";
+            this.kryptonHeaderGroup1.ValuesPrimary.Heading = "筛选客房";
             this.kryptonHeaderGroup1.ValuesSecondary.Heading = "当前选择：<无>";
             // 
             // buttonSpecHeaderGroup1
@@ -93,14 +93,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.treeView1.HideSelection = false;
-            this.treeView1.ImageIndex = 0;
+            this.treeView1.ImageIndex = 7;
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(11, 13);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "节点0";
-            treeNode1.Text = "正在查询可出租客房，请稍候．．．";
+            treeNode2.Name = "节点0";
+            treeNode2.Text = "正在查询客房信息，请稍候．．．";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.Size = new System.Drawing.Size(295, 336);
@@ -111,10 +111,16 @@
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "源房24.png");
-            this.imageList1.Images.SetKeyName(1, "客房-未租24.png");
+            this.imageList1.Images.SetKeyName(0, "Ball_Green.png");
+            this.imageList1.Images.SetKeyName(1, "Ball_Gray.png");
+            this.imageList1.Images.SetKeyName(2, "源房24.png");
+            this.imageList1.Images.SetKeyName(3, "客房-已租24.png");
+            this.imageList1.Images.SetKeyName(4, "客房-未租24.png");
+            this.imageList1.Images.SetKeyName(5, "源房-历史24.png");
+            this.imageList1.Images.SetKeyName(6, "客房-历史24.png");
+            this.imageList1.Images.SetKeyName(7, "Ball_Yellow.png");
             // 
-            // 可出租客房Form
+            // 客房选择Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -122,7 +128,7 @@
             this.ClientSize = new System.Drawing.Size(319, 444);
             this.Controls.Add(this.kryptonHeaderGroup1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "可出租客房Form";
+            this.Name = "客房选择Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "可出租客房";
             this.Load += new System.EventHandler(this.可出租客房Form_Load);
