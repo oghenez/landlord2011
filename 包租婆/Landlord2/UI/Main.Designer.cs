@@ -729,13 +729,13 @@
             // 
             // kfBtnStopRent
             // 
-            this.kfBtnStopRent.Image = global::Landlord2.Properties.Resources.客房停租48;
+            this.kfBtnStopRent.Image = global::Landlord2.Properties.Resources.客房退租48;
             this.kfBtnStopRent.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.kfBtnStopRent.Name = "kfBtnStopRent";
             this.kfBtnStopRent.Size = new System.Drawing.Size(59, 67);
-            this.kfBtnStopRent.Text = "客房停租";
+            this.kfBtnStopRent.Text = "客房退租";
             this.kfBtnStopRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.kfBtnStopRent.ToolTipText = "客房停租";
+            this.kfBtnStopRent.ToolTipText = "客房退租";
             // 
             // kfBtnContinueRent
             // 
