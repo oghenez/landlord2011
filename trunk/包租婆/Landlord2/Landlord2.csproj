@@ -127,6 +127,18 @@
     <Compile Include="UI\UC源房详细.Designer.cs">
       <DependentUpon>UC源房详细.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\客房收租Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\客房收租Form.Designer.cs">
+      <DependentUpon>客房收租Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\客房收租明细Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\客房收租明细Form.Designer.cs">
+      <DependentUpon>客房收租明细Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\源房Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,11 +151,11 @@
     <Compile Include="UI\客房出租Form.Designer.cs">
       <DependentUpon>客房出租Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\可出租客房Form.cs">
+    <Compile Include="UI\客房选择Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\可出租客房Form.Designer.cs">
-      <DependentUpon>可出租客房Form.cs</DependentUpon>
+    <Compile Include="UI\客房选择Form.Designer.cs">
+      <DependentUpon>客房选择Form.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\客房退租Form.cs">
       <SubType>Form</SubType>
@@ -200,14 +212,20 @@
     <EmbeddedResource Include="UI\UC源房详细.resx">
       <DependentUpon>UC源房详细.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\客房收租Form.resx">
+      <DependentUpon>客房收租Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\客房收租明细Form.resx">
+      <DependentUpon>客房收租明细Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\源房Form.resx">
       <DependentUpon>源房Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\客房出租Form.resx">
       <DependentUpon>客房出租Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\可出租客房Form.resx">
-      <DependentUpon>可出租客房Form.cs</DependentUpon>
+    <EmbeddedResource Include="UI\客房选择Form.resx">
+      <DependentUpon>客房选择Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\客房退租Form.resx">
       <DependentUpon>客房退租Form.cs</DependentUpon>

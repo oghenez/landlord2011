@@ -12,10 +12,10 @@ using System.Threading;
 
 namespace Landlord2.UI
 {
-    public partial class 可出租客房Form : Form
+    public partial class 客房选择Form : Form
     {
         public 客房 selectedKF;//最后选定的客房
-        public 可出租客房Form()
+        public 客房选择Form()
         {
             InitializeComponent();
         }
