@@ -77,20 +77,14 @@
             this.kryptonLabel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.kryptonLabel1.Location = new System.Drawing.Point(5, 5);
             this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(218, 30);
-            this.kryptonLabel1.StateNormal.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.kryptonLabel1.StateNormal.LongText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.kryptonLabel1.StateNormal.LongText.ColorAngle = 45F;
-            this.kryptonLabel1.StateNormal.LongText.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Sigma;
+            this.kryptonLabel1.Size = new System.Drawing.Size(185, 30);
+            this.kryptonLabel1.StateNormal.LongText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.kryptonLabel1.StateNormal.LongText.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel1.StateNormal.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.kryptonLabel1.StateNormal.ShortText.Color2 = System.Drawing.Color.Blue;
-            this.kryptonLabel1.StateNormal.ShortText.ColorAngle = 45F;
-            this.kryptonLabel1.StateNormal.ShortText.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Sigma;
+            this.kryptonLabel1.StateNormal.ShortText.Color1 = System.Drawing.Color.Blue;
             this.kryptonLabel1.StateNormal.ShortText.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.kryptonLabel1.TabIndex = 0;
-            this.kryptonLabel1.Values.ExtraText = "客房名";
-            this.kryptonLabel1.Values.Text = "当前选择的源房名";
+            this.kryptonLabel1.Values.ExtraText = "客房";
+            this.kryptonLabel1.Values.Text = "当前选择的源房";
             // 
             // BtnSelectKF
             // 
@@ -111,7 +105,7 @@
             this.uC客房详细1.Size = new System.Drawing.Size(783, 240);
             this.uC客房详细1.TabIndex = 1;
             // 
-            // 出租Form
+            // 客房出租Form
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -124,7 +118,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "出租Form";
+            this.Name = "客房出租Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "客房出租";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.出租Form_FormClosed);
