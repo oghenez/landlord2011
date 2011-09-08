@@ -25,7 +25,7 @@ namespace Landlord2.UI
 
         private void BtnSelectKF_Click(object sender, EventArgs e)
         {
-            using (客房选择Form form = new 客房选择Form())
+            using (客房选择Form form = new 客房选择Form(客房筛选.客房出租))
             {
                 var result = form.ShowDialog(this);
                 if (result == System.Windows.Forms.DialogResult.OK)

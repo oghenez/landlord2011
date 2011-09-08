@@ -93,7 +93,7 @@
             this.BtnSelectKF.Name = "BtnSelectKF";
             this.BtnSelectKF.Size = new System.Drawing.Size(131, 30);
             this.BtnSelectKF.TabIndex = 0;
-            this.BtnSelectKF.Values.Text = "选择可出租客房";
+            this.BtnSelectKF.Values.Text = "选择未租客房";
             this.BtnSelectKF.Click += new System.EventHandler(this.BtnSelectKF_Click);
             // 
             // uC客房详细1

@@ -150,7 +150,7 @@ namespace Landlord2
                 else
                 {
                     if (!kf.期止.HasValue)
-                        kfNode.ImageIndex = 4;//未租（无前任租客）
+                        kfNode.ImageIndex = 4;//未租
                     else
                         kfNode.ImageIndex = (kf.期止 < DateTime.Now) ? 4 : 3;//已租3：未租4
                 }
