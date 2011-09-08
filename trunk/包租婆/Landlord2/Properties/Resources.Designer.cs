@@ -144,6 +144,48 @@ namespace Landlord2.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap 客房停租24 {
+            get {
+                object obj = ResourceManager.GetObject("客房停租24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 客房停租48 {
+            get {
+                object obj = ResourceManager.GetObject("客房停租48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 客房出租24 {
+            get {
+                object obj = ResourceManager.GetObject("客房出租24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 客房出租48 {
+            get {
+                object obj = ResourceManager.GetObject("客房出租48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 客房续租24 {
+            get {
+                object obj = ResourceManager.GetObject("客房续租24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 客房续租48 {
+            get {
+                object obj = ResourceManager.GetObject("客房续租48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   查找类似 http://www.whwater.gov.cn/3637.html 的本地化字符串。
         /// </summary>

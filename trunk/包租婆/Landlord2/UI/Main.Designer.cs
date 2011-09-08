@@ -91,13 +91,16 @@
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.yfBtnPay = new System.Windows.Forms.ToolStripButton();
             this.yfBtnPayDetail = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.kfBtnRent = new System.Windows.Forms.ToolStripButton();
+            this.kfBtnStopRent = new System.Windows.Forms.ToolStripButton();
+            this.kfBtnContinueRent = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
             this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.kfBtnRent = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -600,11 +603,14 @@
             this.toolStripSeparator7,
             this.yfBtnPay,
             this.yfBtnPayDetail,
+            this.toolStripSeparator9,
             this.kfBtnRent,
+            this.kfBtnStopRent,
+            this.kfBtnContinueRent,
             this.toolStripSeparator8});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(585, 70);
+            this.toolStrip1.Size = new System.Drawing.Size(685, 70);
             this.toolStrip1.TabIndex = 0;
             // 
             // yfBtnAdd
@@ -705,6 +711,42 @@
             this.yfBtnPayDetail.ToolTipText = "所有源房相关缴费的明细";
             this.yfBtnPayDetail.Click += new System.EventHandler(this.yfBtnPayDetail_Click);
             // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 70);
+            // 
+            // kfBtnRent
+            // 
+            this.kfBtnRent.Image = global::Landlord2.Properties.Resources.客房出租48;
+            this.kfBtnRent.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnRent.Name = "kfBtnRent";
+            this.kfBtnRent.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnRent.Text = "客房出租";
+            this.kfBtnRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnRent.ToolTipText = "客房出租";
+            this.kfBtnRent.Click += new System.EventHandler(this.kfBtnRent_Click);
+            // 
+            // kfBtnStopRent
+            // 
+            this.kfBtnStopRent.Image = global::Landlord2.Properties.Resources.客房停租48;
+            this.kfBtnStopRent.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnStopRent.Name = "kfBtnStopRent";
+            this.kfBtnStopRent.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnStopRent.Text = "客房停租";
+            this.kfBtnStopRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnStopRent.ToolTipText = "客房停租";
+            // 
+            // kfBtnContinueRent
+            // 
+            this.kfBtnContinueRent.Image = global::Landlord2.Properties.Resources.客房续租48;
+            this.kfBtnContinueRent.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnContinueRent.Name = "kfBtnContinueRent";
+            this.kfBtnContinueRent.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnContinueRent.Text = "客房续租";
+            this.kfBtnContinueRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnContinueRent.ToolTipText = "客房续租";
+            // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
@@ -749,17 +791,6 @@
             // 
             this.AlarmTimer1.Interval = 500;
             this.AlarmTimer1.Tick += new System.EventHandler(this.AlarmTimer1_Tick);
-            // 
-            // kfBtnRent
-            // 
-            this.kfBtnRent.Image = global::Landlord2.Properties.Resources.info;
-            this.kfBtnRent.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.kfBtnRent.Name = "kfBtnRent";
-            this.kfBtnRent.Size = new System.Drawing.Size(52, 67);
-            this.kfBtnRent.Text = "出租";
-            this.kfBtnRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.kfBtnRent.ToolTipText = "所有源房相关缴费的明细";
-            this.kfBtnRent.Click += new System.EventHandler(this.kfBtnRent_Click);
             // 
             // Main
             // 
@@ -877,6 +908,9 @@
         private System.Windows.Forms.ToolStripButton yfBtnPayDetail;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripButton kfBtnRent;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripButton kfBtnStopRent;
+        private System.Windows.Forms.ToolStripButton kfBtnContinueRent;
     }
 }
 
