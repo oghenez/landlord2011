@@ -530,23 +530,26 @@
             // 
             // toolStripButton10
             // 
+            this.toolStripButton10.Image = global::Landlord2.Properties.Resources.客房出租24;
             this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Size = new System.Drawing.Size(35, 28);
+            this.toolStripButton10.Size = new System.Drawing.Size(59, 28);
             this.toolStripButton10.Text = "出租";
             // 
             // toolStripButton9
             // 
+            this.toolStripButton9.Image = global::Landlord2.Properties.Resources.客房停租24;
             this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(35, 28);
+            this.toolStripButton9.Size = new System.Drawing.Size(59, 28);
             this.toolStripButton9.Text = "停租";
             // 
             // toolStripButton4
             // 
+            this.toolStripButton4.Image = global::Landlord2.Properties.Resources.客房续租24;
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(35, 28);
+            this.toolStripButton4.Size = new System.Drawing.Size(59, 28);
             this.toolStripButton4.Text = "续租";
             // 
             // toolStripButton7

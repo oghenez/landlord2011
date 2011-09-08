@@ -252,11 +252,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Readme.txt" />
-    <Content Include="Resources\Ball_Gray.png" />
-    <Content Include="Resources\Ball_Green.png" />
-    <Content Include="Resources\Ball_Yellow.png" />
     <Content Include="Resources\Filter.png" />
+    <Content Include="Resources\idea_16.png" />
     <Content Include="Resources\info.png" />
+    <None Include="Resources\客房续租24.png" />
+    <None Include="Resources\客房续租48.png" />
+    <None Include="Resources\客房出租24.png" />
+    <None Include="Resources\客房出租48.png" />
+    <None Include="Resources\客房停租24.png" />
+    <None Include="Resources\客房停租48.png" />
     <Content Include="Resources\缴费24.png" />
     <Content Include="Resources\缴费48.png" />
     <Content Include="Resources\缴费明细24.png" />
@@ -266,21 +270,14 @@
     <None Include="Resources\源房24Edit.png" />
     <None Include="Resources\源房24Del.png" />
     <None Include="Resources\源房24Add.png" />
-    <None Include="Resources\源房-历史24.png" />
     <None Include="Resources\客房48Edit.png" />
     <None Include="Resources\客房48Del.png" />
     <None Include="Resources\客房48Add.png" />
     <None Include="Resources\客房24Edit.png" />
     <None Include="Resources\客房24Del.png" />
     <None Include="Resources\客房24Add.png" />
-    <None Include="Resources\客房-已租24.png" />
-    <None Include="Resources\客房-未租24.png" />
-    <None Include="Resources\客房24.png" />
-    <None Include="Resources\源房24.png" />
     <None Include="Resources\源房48Edit.png" />
-    <None Include="Resources\客房-历史24.png" />
     <None Include="Resources\attach_16_dis.png" />
-    <Content Include="Resources\idea_16.png" />
     <Content Include="Resources\idea_16_dis.png" />
     <Content Include="Resources\idea_16_hot.png" />
   </ItemGroup>
