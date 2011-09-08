@@ -1,6 +1,6 @@
 ﻿namespace Landlord2.UI
 {
-    partial class 缴费明细Form
+    partial class 源房缴费明细Form
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(缴费明细Form));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(源房缴费明细Form));
             this.源房BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.源房缴费明细BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();

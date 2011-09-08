@@ -12,24 +12,24 @@ using System.Data.Objects;
 
 namespace Landlord2.UI
 {
-    public partial class 缴费Form : KryptonForm
+    public partial class 源房缴费Form : KryptonForm
     {
         private Guid yfID;//源房ID
         private 源房缴费明细 payDetail;//编辑状态 - 传入源房缴费明细
         private bool isNew;//是否新增标志，保存时，会涉及不同提示。
 
-        public 缴费Form()
+        public 源房缴费Form()
         {
             InitializeComponent();
             isNew = true;
         }
-        public 缴费Form(Guid yfID)
+        public 源房缴费Form(Guid yfID)
         {
             InitializeComponent();
             isNew = true;
             this.yfID = yfID;
         }
-        public 缴费Form(源房缴费明细 payDetail)
+        public 源房缴费Form(源房缴费明细 payDetail)
         {
             InitializeComponent();
             isNew = false;

@@ -12,7 +12,7 @@ using System.Data.Objects;
 
 namespace Landlord2.UI
 {
-    public partial class yfForm : KryptonForm
+    public partial class 源房Form : KryptonForm
     {
         private 源房 yf;
         private bool isNew;//是否是新增
@@ -20,7 +20,7 @@ namespace Landlord2.UI
         /// <summary>
         /// 新增源房 
         /// </summary>
-        public yfForm()
+        public 源房Form()
         {
             InitializeComponent();
             isNew = true;
@@ -30,7 +30,7 @@ namespace Landlord2.UI
         /// <summary>
         /// 编辑源房 
         /// </summary>
-        public yfForm(源房 yf)
+        public 源房Form(源房 yf)
         {
             InitializeComponent();
             isNew = false;

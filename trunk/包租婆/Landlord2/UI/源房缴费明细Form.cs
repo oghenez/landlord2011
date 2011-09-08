@@ -12,9 +12,9 @@ using System.Data.Objects;
 
 namespace Landlord2.UI
 {
-    public partial class 缴费明细Form : KryptonForm
+    public partial class 源房缴费明细Form : KryptonForm
     {
-        public 缴费明细Form()
+        public 源房缴费明细Form()
         {
             InitializeComponent();
         }
@@ -43,12 +43,12 @@ namespace Landlord2.UI
         private void BtnAdd_Click(object sender, EventArgs e)
         {
             if(raBtnOne.Checked && cmbYF.SelectedValue != null)
-                using (缴费Form jf = new 缴费Form((Guid)cmbYF.SelectedValue))
+                using (源房缴费Form jf = new 源房缴费Form((Guid)cmbYF.SelectedValue))
                 {
                     jf.ShowDialog(this);
                 }
             else
-                using (缴费Form jf = new 缴费Form())
+                using (源房缴费Form jf = new 源房缴费Form())
                 {
                     jf.ShowDialog(this);
                 }
@@ -193,7 +193,7 @@ namespace Landlord2.UI
                 源房缴费明细 cur = 源房缴费明细BindingSource.Current as 源房缴费明细;
                 if (cur != null)
                 {
-                    using (缴费Form jf = new 缴费Form(cur))
+                    using (源房缴费Form jf = new 源房缴费Form(cur))
                     {
                         jf.ShowDialog(this);
                     }

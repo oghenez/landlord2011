@@ -1,6 +1,6 @@
 ﻿namespace Landlord2.UI
 {
-    partial class kfForm
+    partial class 客房Form
     {
         /// <summary>
         /// Required designer variable.

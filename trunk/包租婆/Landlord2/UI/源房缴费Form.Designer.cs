@@ -1,6 +1,6 @@
 ﻿namespace Landlord2.UI
 {
-    partial class 缴费Form
+    partial class 源房缴费Form
     {
         /// <summary>
         /// Required designer variable.
