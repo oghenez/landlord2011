@@ -7,10 +7,10 @@ using System.Data.Objects;
 
 namespace Landlord2.UI
 {
-    public partial class 出租Form : KryptonForm
+    public partial class 客房出租Form : KryptonForm
     {
         private 客房 kf;
-        public 出租Form(客房 kf)
+        public 客房出租Form(客房 kf)
         {
             InitializeComponent();
             this.kf = kf;

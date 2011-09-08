@@ -470,7 +470,7 @@ namespace Landlord2
                 if (!string.IsNullOrEmpty(kf.租户))
                     return;
 
-                using (出租Form rent = new 出租Form(kf))
+                using (客房出租Form rent = new 客房出租Form(kf))
                 {
                     rent.ShowDialog(this);
                 }
