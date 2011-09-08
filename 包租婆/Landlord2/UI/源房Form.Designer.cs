@@ -1,6 +1,6 @@
 ﻿namespace Landlord2.UI
 {
-    partial class yfForm
+    partial class 源房Form
     {
         /// <summary>
         /// Required designer variable.

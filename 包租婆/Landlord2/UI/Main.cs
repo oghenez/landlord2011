@@ -324,7 +324,7 @@ namespace Landlord2
         private void yfBtnAdd_Click(object sender, EventArgs e)
         {
             //新增源房
-            using (yfForm yF = new yfForm())
+            using (源房Form yF = new 源房Form())
             {
                 yF.ShowDialog(this);
             }
@@ -363,7 +363,7 @@ namespace Landlord2
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 源房)
             {
                 源房 yf = treeView1.SelectedNode.Tag as 源房;
-                using (yfForm yF = new yfForm(yf))
+                using (源房Form yF = new 源房Form(yf))
                 {
                     yF.ShowDialog(this);
                 }
@@ -373,17 +373,17 @@ namespace Landlord2
         private void kfBtnAdd_Click(object sender, EventArgs e)
         {
             //新增客房
-            kfForm kF = null;
+            客房Form kF = null;
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag != null)
             {
                 object entity = treeView1.SelectedNode.Tag;
                 if (entity is 源房)
-                    kF = new kfForm((entity as 源房).ID);
+                    kF = new 客房Form((entity as 源房).ID);
                 else if (entity is 客房)
-                    kF = new kfForm((entity as 客房).源房ID);
+                    kF = new 客房Form((entity as 客房).源房ID);
             }
             else
-                kF = new kfForm();
+                kF = new 客房Form();
             kF.ShowDialog(this);
             kF.Dispose();
         }
@@ -421,7 +421,7 @@ namespace Landlord2
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
             {
                 客房 kf = treeView1.SelectedNode.Tag as 客房;
-                using (kfForm kF = new kfForm(kf))
+                using (客房Form kF = new 客房Form(kf))
                 {
                     kF.ShowDialog(this);
                 }
@@ -440,14 +440,14 @@ namespace Landlord2
                 else if (entity is 客房)
                     yfID = (entity as 客房).源房ID;
 
-                using (缴费Form jf = new 缴费Form(yfID))
+                using (源房缴费Form jf = new 源房缴费Form(yfID))
                 {
                     jf.ShowDialog(this);
                 }
             }
             else
             {
-                using (缴费Form jf = new 缴费Form())
+                using (源房缴费Form jf = new 源房缴费Form())
                 {
                     jf.ShowDialog(this);
                 }
@@ -456,7 +456,7 @@ namespace Landlord2
         private void yfBtnPayDetail_Click(object sender, EventArgs e)
         {
             //源房缴费明细
-            using (缴费明细Form jF = new 缴费明细Form())
+            using (源房缴费明细Form jF = new 源房缴费明细Form())
             {
                 jF.ShowDialog(this);
             }

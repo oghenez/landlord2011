@@ -95,11 +95,11 @@
     <Compile Include="MyDataGridViewDateTimePickerColumn.cs" />
     <Compile Include="Data\实体验证类.cs" />
     <Compile Include="Helper.cs" />
-    <Compile Include="UI\kfForm.cs">
+    <Compile Include="UI\客房Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\kfForm.Designer.cs">
-      <DependentUpon>kfForm.cs</DependentUpon>
+    <Compile Include="UI\客房Form.Designer.cs">
+      <DependentUpon>客房Form.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Main.cs">
       <SubType>Form</SubType>
@@ -127,11 +127,11 @@
     <Compile Include="UI\UC源房详细.Designer.cs">
       <DependentUpon>UC源房详细.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\yfForm.cs">
+    <Compile Include="UI\源房Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\yfForm.Designer.cs">
-      <DependentUpon>yfForm.cs</DependentUpon>
+    <Compile Include="UI\源房Form.Designer.cs">
+      <DependentUpon>源房Form.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\客房出租Form.cs">
       <SubType>Form</SubType>
@@ -151,17 +151,17 @@
     <Compile Include="UI\客房退租Form.Designer.cs">
       <DependentUpon>客房退租Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\缴费Form.cs">
+    <Compile Include="UI\源房缴费Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\缴费Form.Designer.cs">
-      <DependentUpon>缴费Form.cs</DependentUpon>
+    <Compile Include="UI\源房缴费Form.Designer.cs">
+      <DependentUpon>源房缴费Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\缴费明细Form.cs">
+    <Compile Include="UI\源房缴费明细Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\缴费明细Form.Designer.cs">
-      <DependentUpon>缴费明细Form.cs</DependentUpon>
+    <Compile Include="UI\源房缴费明细Form.Designer.cs">
+      <DependentUpon>源房缴费明细Form.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\阶梯水价Form.cs">
       <SubType>Form</SubType>
@@ -175,8 +175,8 @@
     <Compile Include="UI\阶梯电价Form.Designer.cs">
       <DependentUpon>阶梯电价Form.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\kfForm.resx">
-      <DependentUpon>kfForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\客房Form.resx">
+      <DependentUpon>客房Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -200,8 +200,8 @@
     <EmbeddedResource Include="UI\UC源房详细.resx">
       <DependentUpon>UC源房详细.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\yfForm.resx">
-      <DependentUpon>yfForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\源房Form.resx">
+      <DependentUpon>源房Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\客房出租Form.resx">
       <DependentUpon>客房出租Form.cs</DependentUpon>
@@ -212,11 +212,11 @@
     <EmbeddedResource Include="UI\客房退租Form.resx">
       <DependentUpon>客房退租Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\缴费Form.resx">
-      <DependentUpon>缴费Form.cs</DependentUpon>
+    <EmbeddedResource Include="UI\源房缴费Form.resx">
+      <DependentUpon>源房缴费Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\缴费明细Form.resx">
-      <DependentUpon>缴费明细Form.cs</DependentUpon>
+    <EmbeddedResource Include="UI\源房缴费明细Form.resx">
+      <DependentUpon>源房缴费明细Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\阶梯水价Form.resx">
       <DependentUpon>阶梯水价Form.cs</DependentUpon>

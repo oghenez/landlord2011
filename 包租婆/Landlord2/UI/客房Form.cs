@@ -7,25 +7,25 @@ using System.Data.Objects;
 
 namespace Landlord2.UI
 {
-    public partial class kfForm : KryptonForm
+    public partial class 客房Form : KryptonForm
     {
         private 客房 kf;
         private Guid yfID;//客房隶属的源房id
         private bool isNew;//是否新增操作
 
-        public kfForm()
+        public 客房Form()
         {
             InitializeComponent();
             isNew = true;
         }
-        public kfForm(客房 kf)
+        public 客房Form(客房 kf)
         {
             InitializeComponent();
             isNew = false;
             this.kf = kf;
         }
 
-        public kfForm(Guid yfGuid)
+        public 客房Form(Guid yfGuid)
         {
             InitializeComponent();
             isNew = true;
