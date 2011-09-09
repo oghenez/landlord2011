@@ -196,6 +196,15 @@ namespace Landlord2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 2.53 的本地化字符串。
+        /// </summary>
+        internal static string 武汉市天然气价默认值 {
+            get {
+                return ResourceManager.GetString("武汉市天然气价默认值", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 1.90,0,25;2.45,25,33;3.00,33 的本地化字符串。
         /// </summary>
         internal static string 武汉市阶梯水价默认值 {

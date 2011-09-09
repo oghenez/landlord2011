@@ -19,8 +19,8 @@ namespace Landlord2.UI
         private void 出租Form_Load(object sender, EventArgs e)
         {
             uC客房详细1.客房BindingSource.DataSource = kf;
-            kryptonLabel1.Values.Text = kf.源房.房名;
-            kryptonLabel1.Values.ExtraText = kf.命名;
+            kryptonHeader1.Values.Heading = kf.源房.房名;
+            kryptonHeader1.Values.Description = kf.命名;
         }
 
         private void BtnSelectKF_Click(object sender, EventArgs e)
@@ -32,8 +32,8 @@ namespace Landlord2.UI
                 {
                     kf = form.selectedKF;
                     uC客房详细1.客房BindingSource.DataSource = kf;
-                    kryptonLabel1.Values.Text = kf.源房.房名;
-                    kryptonLabel1.Values.ExtraText = kf.命名;
+                    kryptonHeader1.Values.Heading = kf.源房.房名;
+                    kryptonHeader1.Values.Description = kf.命名;
                 }
             }
         }
