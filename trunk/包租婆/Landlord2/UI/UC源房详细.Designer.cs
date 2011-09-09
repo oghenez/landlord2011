@@ -98,6 +98,7 @@
             this.kryptonTextBox30 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.buttonSpecAny阶梯电价 = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
             this.kryptonTextBox31 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.buttonSpecAny气单价 = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
             this.kryptonCheckBox1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.kryptonTextBox19 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.btnOpenFile1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -946,11 +947,21 @@
             // 
             // kryptonTextBox31
             // 
+            this.kryptonTextBox31.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecAny[] {
+            this.buttonSpecAny气单价});
             this.kryptonTextBox31.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房BindingSource, "气单价", true));
             this.kryptonTextBox31.Location = new System.Drawing.Point(440, 350);
             this.kryptonTextBox31.Name = "kryptonTextBox31";
-            this.kryptonTextBox31.Size = new System.Drawing.Size(172, 20);
+            this.kryptonTextBox31.Size = new System.Drawing.Size(172, 21);
             this.kryptonTextBox31.TabIndex = 30;
+            this.toolTip1.SetToolTip(this.kryptonTextBox31, "单击右侧图标载入默认值...");
+            // 
+            // buttonSpecAny气单价
+            // 
+            this.buttonSpecAny气单价.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Standalone;
+            this.buttonSpecAny气单价.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.ArrowRight;
+            this.buttonSpecAny气单价.UniqueName = "B3A0F08FD14440753DB1C3410605488B";
+            this.buttonSpecAny气单价.Click += new System.EventHandler(this.buttonSpecAny气单价_Click);
             // 
             // kryptonCheckBox1
             // 
@@ -1346,6 +1357,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn 期止DataGridViewTextBoxColumn;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn 月租金DataGridViewTextBoxColumn;
         public System.Windows.Forms.BindingSource 源房涨租协定BindingSource;
+        private ComponentFactory.Krypton.Toolkit.ButtonSpecAny buttonSpecAny气单价;
 
     }
 }

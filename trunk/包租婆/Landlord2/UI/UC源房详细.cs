@@ -48,6 +48,7 @@ namespace Landlord2.UI
                 }
                 buttonSpecAny阶梯电价.Enabled = ButtonEnabled.False;
                 buttonSpecAny阶梯水价.Enabled = ButtonEnabled.False;
+                buttonSpecAny气单价.Enabled = ButtonEnabled.False;
                 kryptonDataGridView1.ReadOnly = true;
                 kryptonDataGridView1.AllowUserToAddRows = false;
                 kryptonDataGridView1.AllowUserToDeleteRows = false;
@@ -226,12 +227,19 @@ namespace Landlord2.UI
             }
         }
 
+        private void buttonSpecAny气单价_Click(object sender, EventArgs e)
+        {
+            源房 yf = 源房BindingSource.DataSource as 源房;
+            yf.气单价 = Convert.ToDecimal(Landlord2.Properties.Resources.武汉市天然气价默认值);
+        }
+
         private void 源房涨租协定BindingSource_AddingNew(object sender, System.ComponentModel.AddingNewEventArgs e)
         {
             源房涨租协定 obj = new 源房涨租协定();
             obj.源房ID = (源房BindingSource.DataSource as 源房).ID;
             e.NewObject = obj;
         }
+
 
 
 
