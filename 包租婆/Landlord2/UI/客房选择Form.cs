@@ -80,7 +80,55 @@ namespace Landlord2.UI
         private void LoadTreeView客房退租()
         { }
         private void LoadTreeView客房收租()
-        { }
+        {
+            TreeNode root1 = new TreeNode("所有已租客房");
+            root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
+            root1.ImageIndex = 0;
+            DoThreadSafe(delegate { treeView1.Nodes.Add(root1); });
+            foreach (var yf in 源房.GetYF_NoHistory())
+            {
+                if (yf.客房.Count(m => !string.IsNullOrEmpty(m.租户)) == 0)//无客房或全未租
+                    continue;
+
+                TreeNode yfNode = new TreeNode();
+                yfNode.NodeFont = new System.Drawing.Font("宋体", 10);
+                yfNode.ImageIndex = 2;//当前有效源房2
+                yfNode.Text = yf.房名;
+                yfNode.Tag = yf;
+                DoThreadSafe(delegate { root1.Nodes.Add(yfNode); });
+
+                var kfs = yf.客房;
+                foreach (var kf in kfs)
+                {
+                    if (string.IsNullOrEmpty(kf.租户))
+                        continue;
+
+                    TreeNode kfNode = new TreeNode();
+                    kfNode.NodeFont = new System.Drawing.Font("宋体", 9);
+                    kfNode.ImageIndex = 3;//已租3
+                    kfNode.Text = kf.命名;
+                    kfNode.Tag = kf;
+
+                    if (kf.期止 < DateTime.Now)//已租，协议到期，请续租或退租
+                    {
+                        kfNode.Text += "[协议到期]";
+                        kfNode.ToolTipText = "协议到期，请[续租]或[退租]。";
+                        kfNode.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        if (kf.客房租金明细.Count == 0 || kf.客房租金明细.Max(m => m.止付日期) < DateTime.Now)//已租，协议未到期，逾期交租
+                        {
+                            kfNode.Text += "[逾期交租]";
+                            kfNode.ToolTipText = "逾期交租，请[收租]或[退租]。";
+                            kfNode.ForeColor = Color.Magenta;
+                        }
+                    }
+
+                    DoThreadSafe(delegate { yfNode.Nodes.Add(kfNode); });
+                }
+            }
+        }
         private void LoadTreeView客房出租()
         {
             TreeNode root1 = new TreeNode("所有未租客房");

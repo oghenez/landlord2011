@@ -236,7 +236,9 @@ namespace Landlord2.UI
         private void 源房涨租协定BindingSource_AddingNew(object sender, System.ComponentModel.AddingNewEventArgs e)
         {
             源房涨租协定 obj = new 源房涨租协定();
-            obj.源房ID = (源房BindingSource.DataSource as 源房).ID;
+            源房 temp = 源房BindingSource.DataSource as 源房;
+            obj.源房ID = temp.ID;
+            obj.源房 = temp;
             e.NewObject = obj;
         }
 

@@ -14,7 +14,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Data.Mapping.EntityViewGenerationAttribute(typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets04A0A9CBE5847E7BF2F959D7F8036EEC58BF4EEDDB2687FBE094D3F5A277C43C))]
+[assembly: System.Data.Mapping.EntityViewGenerationAttribute(typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySetsF48B3BC3CAC58907969FDE62F39EF71AC590826B0F242E10129375D5FE4419B7))]
 
 namespace Edm_EntityMappingGeneratedViews
 {
@@ -23,17 +23,17 @@ namespace Edm_EntityMappingGeneratedViews
     /// <Summary>
     /// 此类型包含在设计时生成的 EntitySets 和 AssociationSets 的视图。
     /// </Summary>
-    public sealed class ViewsForBaseEntitySets04A0A9CBE5847E7BF2F959D7F8036EEC58BF4EEDDB2687FBE094D3F5A277C43C : System.Data.Mapping.EntityViewContainer
+    public sealed class ViewsForBaseEntitySetsF48B3BC3CAC58907969FDE62F39EF71AC590826B0F242E10129375D5FE4419B7 : System.Data.Mapping.EntityViewContainer
     {
         
         /// <Summary>
         /// 构造函数存储各区的视图，以及根据元数据和映射结束和视图生成的哈希值。
         /// </Summary>
-        public ViewsForBaseEntitySets04A0A9CBE5847E7BF2F959D7F8036EEC58BF4EEDDB2687FBE094D3F5A277C43C()
+        public ViewsForBaseEntitySetsF48B3BC3CAC58907969FDE62F39EF71AC590826B0F242E10129375D5FE4419B7()
         {
             this.EdmEntityContainerName = "Entities";
             this.StoreEntityContainerName = "Landlord2ModelStoreContainer";
-            this.HashOverMappingClosure = "d3f97429a9cf722c801cb797acf14bb7f23939ed68432cdf2adfa58b6797a65d";
+            this.HashOverMappingClosure = "e7916018a45b05084626d87e3e51439dc28a6cf19e5cb3acb8dc8883a59b8ae5";
             this.HashOverAllExtentViews = "f4d1868a861264f0ded34fdbf3892446bdbe5687d621b6b14137361e793efe31";
             this.ViewCount = 22;
         }
