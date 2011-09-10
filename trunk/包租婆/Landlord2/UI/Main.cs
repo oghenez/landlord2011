@@ -149,10 +149,28 @@ namespace Landlord2
                     kfNode.ImageIndex = 6;//历史客房
                 else
                 {
-                    if (!kf.期止.HasValue)
-                        kfNode.ImageIndex = 4;//未租
+                    if (string.IsNullOrEmpty(kf.租户))
+                        kfNode.ImageIndex = 4;//未租4
                     else
-                        kfNode.ImageIndex = (kf.期止 < DateTime.Now) ? 4 : 3;//已租3：未租4
+                    {
+                        kfNode.ImageIndex = 3;//已租3
+
+                        if (kf.期止 < DateTime.Now)//已租，协议到期，请续租或退租
+                        {
+                            kfNode.Text += "[协议到期]";
+                            kfNode.ToolTipText = "协议到期，请[续租]或[退租]。";
+                            kfNode.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            if (kf.客房租金明细.Count == 0 || kf.客房租金明细.Max(m => m.止付日期) < DateTime.Now)//已租，协议未到期，逾期交租
+                            {
+                                kfNode.Text += "[逾期交租]";
+                                kfNode.ToolTipText = "逾期交租，请[收租]或[退租]。";
+                                kfNode.ForeColor = Color.Magenta;
+                            }                            
+                        }
+                    }                    
                 }
                 DoThreadSafe(delegate {
                     yfNode.Nodes.Add(kfNode);
@@ -472,12 +490,38 @@ namespace Landlord2
 
                 using (客房出租Form rent = new 客房出租Form(kf))
                 {
-                    rent.ShowDialog(this);
+                    DialogResult result = rent.ShowDialog(this);
+                    if (result == DialogResult.OK)
+                    {
+                        if (KryptonMessageBox.Show("客房已成功出租，是否立即进行首期收租？", "首期收租询问", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            using (客房收租Form collectRent = new 客房收租Form(kf))
+                            {
+                                collectRent.ShowDialog(this);
+                            } 
+                        }
+                    }
                 }
             }
         }        
-        
+
+        private void kfBtnCollectRent_Click(object sender, EventArgs e)
+        {
+            //收租
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
+            {
+                客房 kf = treeView1.SelectedNode.Tag as 客房;
+                if (string.IsNullOrEmpty(kf.租户))
+                    return;
+
+                using (客房收租Form collectRent = new 客房收租Form(kf))
+                {
+                    collectRent.ShowDialog(this);
+                }
+            }
+        }        
         #endregion
+
 
 
 

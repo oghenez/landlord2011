@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,6 +101,8 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
             this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
+            this.kfBtnCollectRentDetail = new System.Windows.Forms.ToolStripButton();
+            this.kfBtnCollectRent = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -381,11 +383,11 @@
             this.toolStripContainer1.ContentPanel.Controls.Add(this.kryptonSplitContainer1);
             this.toolStripContainer1.ContentPanel.Padding = new System.Windows.Forms.Padding(5);
             this.toolStripContainer1.ContentPanel.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1008, 614);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1008, 617);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 24);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(1008, 684);
+            this.toolStripContainer1.Size = new System.Drawing.Size(1008, 687);
             this.toolStripContainer1.TabIndex = 2;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -408,7 +410,7 @@
             // kryptonSplitContainer1.Panel2
             // 
             this.kryptonSplitContainer1.Panel2.Controls.Add(this.kryptonSplitContainer2);
-            this.kryptonSplitContainer1.Size = new System.Drawing.Size(998, 604);
+            this.kryptonSplitContainer1.Size = new System.Drawing.Size(998, 607);
             this.kryptonSplitContainer1.SplitterDistance = 200;
             this.kryptonSplitContainer1.TabIndex = 0;
             // 
@@ -427,7 +429,7 @@
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonCheckButton3);
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonCheckButton2);
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonCheckButton1);
-            this.kryptonHeaderGroup1.Size = new System.Drawing.Size(200, 604);
+            this.kryptonHeaderGroup1.Size = new System.Drawing.Size(200, 607);
             this.kryptonHeaderGroup1.TabIndex = 0;
             this.kryptonHeaderGroup1.ValuesPrimary.Heading = " ";
             this.kryptonHeaderGroup1.ValuesPrimary.Image = null;
@@ -446,15 +448,15 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.ImageIndex = 7;
-            treeNode1.Name = "节点0";
-            treeNode1.Text = "加载信息，请稍候．．．";
+            treeNode2.ImageIndex = 7;
+            treeNode2.Name = "节点0";
+            treeNode2.Text = "加载信息，请稍候．．．";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.treeView1.SelectedImageIndex = 7;
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.ShowRootLines = false;
-            this.treeView1.Size = new System.Drawing.Size(198, 495);
+            this.treeView1.Size = new System.Drawing.Size(198, 498);
             this.treeView1.TabIndex = 3;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
@@ -476,7 +478,7 @@
             // 
             this.kryptonCheckButton3.Checked = true;
             this.kryptonCheckButton3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonCheckButton3.Location = new System.Drawing.Point(0, 495);
+            this.kryptonCheckButton3.Location = new System.Drawing.Point(0, 498);
             this.kryptonCheckButton3.Name = "kryptonCheckButton3";
             this.kryptonCheckButton3.Size = new System.Drawing.Size(198, 25);
             this.kryptonCheckButton3.TabIndex = 2;
@@ -485,7 +487,7 @@
             // kryptonCheckButton2
             // 
             this.kryptonCheckButton2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonCheckButton2.Location = new System.Drawing.Point(0, 520);
+            this.kryptonCheckButton2.Location = new System.Drawing.Point(0, 523);
             this.kryptonCheckButton2.Name = "kryptonCheckButton2";
             this.kryptonCheckButton2.Size = new System.Drawing.Size(198, 25);
             this.kryptonCheckButton2.TabIndex = 1;
@@ -494,7 +496,7 @@
             // kryptonCheckButton1
             // 
             this.kryptonCheckButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonCheckButton1.Location = new System.Drawing.Point(0, 545);
+            this.kryptonCheckButton1.Location = new System.Drawing.Point(0, 548);
             this.kryptonCheckButton1.Name = "kryptonCheckButton1";
             this.kryptonCheckButton1.Size = new System.Drawing.Size(198, 25);
             this.kryptonCheckButton1.TabIndex = 0;
@@ -516,8 +518,8 @@
             // kryptonSplitContainer2.Panel2
             // 
             this.kryptonSplitContainer2.Panel2.Controls.Add(this.kryptonHeaderGroup3);
-            this.kryptonSplitContainer2.Size = new System.Drawing.Size(793, 604);
-            this.kryptonSplitContainer2.SplitterDistance = 507;
+            this.kryptonSplitContainer2.Size = new System.Drawing.Size(793, 607);
+            this.kryptonSplitContainer2.SplitterDistance = 497;
             this.kryptonSplitContainer2.TabIndex = 0;
             // 
             // kryptonHeaderGroup2
@@ -529,7 +531,7 @@
             this.kryptonHeaderGroup2.HeaderVisibleSecondary = false;
             this.kryptonHeaderGroup2.Location = new System.Drawing.Point(0, 0);
             this.kryptonHeaderGroup2.Name = "kryptonHeaderGroup2";
-            this.kryptonHeaderGroup2.Size = new System.Drawing.Size(793, 507);
+            this.kryptonHeaderGroup2.Size = new System.Drawing.Size(793, 497);
             this.kryptonHeaderGroup2.TabIndex = 0;
             this.kryptonHeaderGroup2.ValuesPrimary.Heading = " ";
             this.kryptonHeaderGroup2.ValuesSecondary.Heading = "操作：";
@@ -553,7 +555,7 @@
             this.kryptonHeaderGroup3.HeaderVisibleSecondary = false;
             this.kryptonHeaderGroup3.Location = new System.Drawing.Point(0, 0);
             this.kryptonHeaderGroup3.Name = "kryptonHeaderGroup3";
-            this.kryptonHeaderGroup3.Size = new System.Drawing.Size(793, 92);
+            this.kryptonHeaderGroup3.Size = new System.Drawing.Size(793, 105);
             this.kryptonHeaderGroup3.TabIndex = 0;
             this.kryptonHeaderGroup3.ValuesPrimary.Heading = "提醒";
             this.kryptonHeaderGroup3.ValuesPrimary.Image = global::Landlord2.Properties.Resources.idea_16;
@@ -607,10 +609,12 @@
             this.kfBtnRent,
             this.kfBtnStopRent,
             this.kfBtnContinueRent,
-            this.toolStripSeparator8});
+            this.toolStripSeparator8,
+            this.kfBtnCollectRent,
+            this.kfBtnCollectRentDetail});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(685, 70);
+            this.toolStrip1.Size = new System.Drawing.Size(834, 70);
             this.toolStrip1.TabIndex = 0;
             // 
             // yfBtnAdd
@@ -758,7 +762,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 708);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 711);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
             this.statusStrip1.Size = new System.Drawing.Size(1008, 22);
@@ -792,11 +796,32 @@
             this.AlarmTimer1.Interval = 500;
             this.AlarmTimer1.Tick += new System.EventHandler(this.AlarmTimer1_Tick);
             // 
+            // kfBtnCollectRentDetail
+            // 
+            this.kfBtnCollectRentDetail.Image = global::Landlord2.Properties.Resources.info;
+            this.kfBtnCollectRentDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnCollectRentDetail.Name = "kfBtnCollectRentDetail";
+            this.kfBtnCollectRentDetail.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnCollectRentDetail.Text = "收租明细";
+            this.kfBtnCollectRentDetail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnCollectRentDetail.ToolTipText = "客房出租";
+            // 
+            // kfBtnCollectRent
+            // 
+            this.kfBtnCollectRent.Image = global::Landlord2.Properties.Resources.info;
+            this.kfBtnCollectRent.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnCollectRent.Name = "kfBtnCollectRent";
+            this.kfBtnCollectRent.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnCollectRent.Text = "客房收租";
+            this.kfBtnCollectRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnCollectRent.ToolTipText = "客房出租";
+            this.kfBtnCollectRent.Click += new System.EventHandler(this.kfBtnCollectRent_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 730);
+            this.ClientSize = new System.Drawing.Size(1008, 733);
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -911,6 +936,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripButton kfBtnStopRent;
         private System.Windows.Forms.ToolStripButton kfBtnContinueRent;
+        private System.Windows.Forms.ToolStripButton kfBtnCollectRent;
+        private System.Windows.Forms.ToolStripButton kfBtnCollectRentDetail;
     }
 }
 

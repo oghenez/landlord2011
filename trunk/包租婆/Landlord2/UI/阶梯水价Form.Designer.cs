@@ -186,6 +186,7 @@
             // 
             this.kryptonNumericUpDown10.Location = new System.Drawing.Point(130, 22);
             this.kryptonNumericUpDown10.Name = "kryptonNumericUpDown10";
+            this.kryptonNumericUpDown10.ReadOnly = true;
             this.kryptonNumericUpDown10.Size = new System.Drawing.Size(55, 22);
             this.kryptonNumericUpDown10.TabIndex = 1;
             // 

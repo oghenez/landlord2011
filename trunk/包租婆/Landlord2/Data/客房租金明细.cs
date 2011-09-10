@@ -14,7 +14,7 @@ namespace Landlord2.Data
         public 客房租金明细()
         {
             this.ID = Guid.NewGuid();
-            this.付款日期 = DateTime.Now.Date;
+            this.付款日期 = DateTime.Today;
         }
 
     }

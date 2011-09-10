@@ -6,6 +6,8 @@ using System.Data.EntityClient;
 using System.Data;
 using System.Data.Objects;
 using System.IO;
+using System.Data.Objects.DataClasses;
+using System.Reflection;
 
 namespace Landlord2
 {
@@ -32,7 +34,7 @@ namespace Landlord2
             return entityBuilder.ToString();
         }
         #endregion
-
+              
         /// <summary>
         /// 本地查询[Added,Modified,Unchanged对象]（基于ObjectSet的扩展方法）
         /// 因为“实体框架执行的查询根据数据源中的数据进行计算，且结果将不反映对象上下文中的新对象。http://msdn.microsoft.com/zh-cn/library/bb896241.aspx ”
@@ -158,6 +160,48 @@ namespace Landlord2
                 dic.Add("k30", Convert.ToDecimal(s[7]));
             }
             return dic;
+        }
+
+        /// <summary>
+        /// 根据用水吨数和水价计算水费
+        /// </summary>
+        /// <param name="value">阶梯水价</param>
+        /// <param name="number">用水吨数</param>
+        /// <returns></returns>
+        public static decimal calculate水费(string value, decimal number)
+        {
+            decimal returnVal = 0.00M;
+            Dictionary<string, decimal> dic = trans阶梯水价(value);
+            if (dic.Count == 1)//不使用阶梯水价
+            {
+                returnVal = dic["k1"] * number;
+            }
+            else
+            {
+                if (number > dic["k30"])
+                    returnVal = (number - dic["k30"]) * dic["k3"] +
+                                (dic["k21"] - dic["k20"]) * dic["k2"] +
+                                (dic["k11"] - dic["k10"]) * dic["k1"];
+                else if (number > dic["k20"])
+                    returnVal = (number - dic["k20"]) * dic["k2"] +
+                                (dic["k11"] - dic["k10"]) * dic["k1"];
+                else
+                    returnVal = (number - dic["k10"]) * dic["k1"];
+            }
+            return returnVal;
+        }
+
+        /// <summary>
+        /// 根据用电量数和电价计算电费（暂时不考虑阶梯电价）
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        public static decimal calculate电费(string value, decimal number)
+        {
+            decimal returnVal = 0.00M;
+            returnVal = Convert.ToDecimal(value) * number;
+            return returnVal;
         }
     }
 }

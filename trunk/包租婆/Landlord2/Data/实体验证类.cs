@@ -158,6 +158,10 @@ namespace Landlord2.Data
             if (this.源房.客房.Count(m => m.命名 == this.命名) > 1)
                 returnStr += "客房命名重复，请重新指定!" + Environment.NewLine;
 
+            //支付月数 >= 1
+            if(this.支付月数 < 1)
+                returnStr += "客房支付月数必须大于等于1个月!" + Environment.NewLine;
+
             #region  时间校验
             //1、当存在‘租户’时，必须有期止、期始值，必须有电话1、联系地址、身份证号、
             if (!string.IsNullOrEmpty(this.租户))
@@ -235,16 +239,19 @@ namespace Landlord2.Data
             }
 
             //调整‘源房涨租协定表’时，也许存在已租状态的客房，那么此时调整后的最后期始期止时间必须‘包含’所有客房租期的期始期止时间段
-            DateTime start = this.源房涨租协定.Min(m => m.期始);
-            DateTime end = this.源房涨租协定.Max(m => m.期止);
-            foreach (var o in this.客房.Where(m => !string.IsNullOrEmpty(m.租户)))
+            if (this.源房涨租协定.Count > 0)
             {
-                if (o.期始 < start)
-                    returnStr += string.Format("客房期始时间不能在源房期始时间之前！请检查源房起始租期[{0}]与客房[{1}]的期始时间{2}。",
-                        start.ToShortDateString(), o.命名, o.期始.Value.ToShortDateString()) + Environment.NewLine;
-                if (o.期止 > end)
-                    returnStr += string.Format("客房期止时间不能在源房期止时间之后！请检查源房期止时间[{0}]与客房[{1}]的期止时间{2}。",
-                        end.ToShortDateString(), o.命名, o.期止.Value.ToShortDateString()) + Environment.NewLine;
+                DateTime start = this.源房涨租协定.Min(m => m.期始);
+                DateTime end = this.源房涨租协定.Max(m => m.期止);
+                foreach (var o in this.客房.Where(m => !string.IsNullOrEmpty(m.租户)))
+                {
+                    if (o.期始 < start)
+                        returnStr += string.Format("客房期始时间不能在源房期始时间之前！请检查源房起始租期[{0}]与客房[{1}]的期始时间{2}。",
+                            start.ToShortDateString(), o.命名, o.期始.Value.ToShortDateString()) + Environment.NewLine;
+                    if (o.期止 > end)
+                        returnStr += string.Format("客房期止时间不能在源房期止时间之后！请检查源房期止时间[{0}]与客房[{1}]的期止时间{2}。",
+                            end.ToShortDateString(), o.命名, o.期止.Value.ToShortDateString()) + Environment.NewLine;
+                } 
             }
 
             return returnStr;

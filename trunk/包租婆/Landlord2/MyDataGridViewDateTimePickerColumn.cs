@@ -121,7 +121,7 @@ namespace Landlord2
             this._calendarCloseOnTodayClick = false;
             this._calendarShowTodayCircle = true;
             this._calendarShowWeekNumbers = false;
-            this._calendarTodayDate = DateTime.Now.Date;
+            this._calendarTodayDate = DateTime.Today;
         }
 
         public override object Clone()
@@ -375,7 +375,7 @@ namespace Landlord2
 
         private void ResetCalendarTodayDate()
         {
-            this.CalendarTodayDate = DateTime.Now.Date;
+            this.CalendarTodayDate = DateTime.Today;
         }
 
         private void ResetMaxDate()
@@ -543,7 +543,7 @@ namespace Landlord2
 
         private bool ShouldSerializeCalendarTodayDate()
         {
-            return (this.CalendarTodayDate != DateTime.Now.Date);
+            return (this.CalendarTodayDate != DateTime.Today);
         }
 
         public bool ShouldSerializeMaxDate()
@@ -1111,7 +1111,7 @@ namespace Landlord2
 
         private void ResetCalendarTodayDate()
         {
-            this.CalendarTodayDate = DateTime.Now.Date;
+            this.CalendarTodayDate = DateTime.Today;
         }
 
         public void ResetCalendarTodayText()
@@ -1146,7 +1146,7 @@ namespace Landlord2
 
         private bool ShouldSerializeCalendarTodayDate()
         {
-            return (this.CalendarTodayDate != DateTime.Now.Date);
+            return (this.CalendarTodayDate != DateTime.Today);
         }
 
         public bool ShouldSerializeMaxDate()
