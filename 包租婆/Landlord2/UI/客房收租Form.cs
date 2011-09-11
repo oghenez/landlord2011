@@ -22,7 +22,11 @@ namespace Landlord2.UI
 
         private void BindingData()
         {
-            客房BindingSource.DataSource = kf;
+            月租金Label1.Text = (kf.月租金 * kf.支付月数).ToString();
+            月宽带费Label1.Text = (kf.月宽带费 * kf.支付月数).ToString();
+            月物业费Label1.Text = (kf.月物业费 * kf.支付月数).ToString();
+            月厨房费Label1.Text = (kf.月厨房费 * kf.支付月数).ToString();
+
             List<客房租金明细> orderedList = kf.客房租金明细.OrderByDescending(m => m.起付日期).ToList();
             参考历史BindingSource.DataSource = orderedList;
 
@@ -51,7 +55,7 @@ namespace Landlord2.UI
             气始码Label1.Text = collectRent.气止码.ToString();
             CaculateSum();
 
-            Main.context.客房租金明细.AddObject(collectRent);
+            Main.context.客房租金明细.AddObject(collectRent);//此操作后可实现外键同步
             客房租金明细BindingSource.DataSource = collectRent;
         }
 
@@ -73,6 +77,8 @@ namespace Landlord2.UI
             sum += temp;
 
             temp = (decimal)kf.源房.气单价 * ((decimal)collectRent.气止码 - Convert.ToDecimal(气始码Label1.Text));
+            lbl气费.Text = temp.ToString();
+            sum += temp;
             collectRent.应付金额 = sum;
         }
         private void 客房收租Form_Load(object sender, EventArgs e)
@@ -84,7 +90,8 @@ namespace Landlord2.UI
 
         private void 客房收租Form_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+            if (Main.context.ObjectStateManager.GetObjectStateEntry(collectRent).State == EntityState.Added)
+                Main.context.客房租金明细.Detach(collectRent);
         }
 
         private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
@@ -108,22 +115,62 @@ namespace Landlord2.UI
 
         private void BtnSelectKF_Click(object sender, EventArgs e)
         {
-            Main.context.客房租金明细.DeleteObject(collectRent);
+            
             using (客房选择Form form = new 客房选择Form(客房筛选.客房收租))
             {
                 var result = form.ShowDialog(this);
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {
-                    kf = form.selectedKF;
-                    kryptonHeader1.Values.Heading = kf.源房.房名;
-                    kryptonHeader1.Values.Description = kf.命名;
+                    if (kf != form.selectedKF)
+                    {
+                        Main.context.客房租金明细.DeleteObject(collectRent);
+                        kf = form.selectedKF;
+                        kryptonHeader1.Values.Heading = kf.源房.房名;
+                        kryptonHeader1.Values.Description = kf.命名;
+                        BindingData();
+                    }                    
                 }
-            } 
-            BindingData();
+            }             
         }
 
         private void kryptonNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
+            if(sender.Equals(kryptonNumericUpDown1))
+                collectRent.水止码 = (double)kryptonNumericUpDown1.Value;
+            if (sender.Equals(kryptonNumericUpDown2))
+                collectRent.电止码 = (double)kryptonNumericUpDown2.Value;
+            if (sender.Equals(kryptonNumericUpDown3))
+                collectRent.气止码 = (double)kryptonNumericUpDown3.Value; 
+            CaculateSum(); 
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            客房租金明细BindingSource.EndEdit();
+
+            string check = collectRent.CheckRules();
+            if (!string.IsNullOrEmpty(check))
+            {
+                KryptonMessageBox.Show(check, "数据校验失败");
+                return;
+            }
+
+            string msg;
+            if (Helper.saveData(collectRent, out msg))
+            {
+                KryptonMessageBox.Show(msg, "成功收租");
+                (this.Owner as Main).RefreshAndLocateTree(kf);//刷新TreeView，并定位到kf节点。
+                Close();
+            }
+            else
+            {
+                KryptonMessageBox.Show(msg, "失败");
+            }
 
         }
     

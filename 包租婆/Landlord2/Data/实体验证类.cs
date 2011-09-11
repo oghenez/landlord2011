@@ -78,6 +78,43 @@ namespace Landlord2.Data
         string CheckRules();
     } 
     #endregion
+    public partial class 客房租金明细 : ICheck
+    {
+        public string CheckRules()
+        {
+            string returnStr = string.Empty;
+
+            //客房租金明细必须隶属于一个上级的客房
+            if (this.客房ID == null || this.客房ID == Guid.Empty)
+            {
+                returnStr += "请指定此租金明细的客房! " + Environment.NewLine;
+                return returnStr;
+            }
+
+            //校验所有非空属性
+            returnStr += MyEntityHelper.CheckNullOrEmptyAndABS(this);
+
+            //时间校验            
+            //期止>期始，并且期始时间和上次此源房同类型缴费的期止时间应该连续
+            if (this.止付日期.Date < this.起付日期.Date)
+            {
+                returnStr += string.Format("止付日期[{0}]不能小于起付日期[{1}]!",
+                 this.止付日期.ToShortDateString(), this.起付日期.ToShortDateString()) + Environment.NewLine;
+            }
+            else
+            {
+                //支付期是否在协议时间段内
+                if (this.起付日期.Date < this.客房.期始.Value.Date)
+                    returnStr += string.Format("起付日期[{0}]不能小于客房协议租期的期始日期[{1}]!",
+                        this.起付日期.ToShortDateString(), this.客房.期始.Value.ToShortDateString()) + Environment.NewLine;
+
+                if(this.止付日期.Date > this.客房.期止.Value.Date)
+                    returnStr += string.Format("止付日期[{0}]不能大于客房协议租期的期止日期[{1}]!",
+                        this.止付日期.ToShortDateString(), this.客房.期止.Value.ToShortDateString()) + Environment.NewLine;
+            }
+            return returnStr;
+        }
+    }
     public partial class 源房缴费明细 : ICheck
     {
 

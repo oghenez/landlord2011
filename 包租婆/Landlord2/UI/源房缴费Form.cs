@@ -46,7 +46,7 @@ namespace Landlord2.UI
                 BtnOkAndContinue.Visible = true;//保存并继续按钮可见
                 payDetail = new 源房缴费明细();
                 payDetail.源房ID = this.yfID;
-                Main.context.源房缴费明细.AddObject(payDetail);
+                Main.context.源房缴费明细.AddObject(payDetail);//此操作后可实现外键同步
             }
             else//编辑
             {
@@ -124,7 +124,7 @@ namespace Landlord2.UI
                 源房缴费明细 old = payDetail;
                 payDetail = new 源房缴费明细();
                 payDetail.源房ID = old.源房ID;
-                Main.context.源房缴费明细.AddObject(payDetail);
+                Main.context.源房缴费明细.AddObject(payDetail);//此操作后可实现外键同步
 
                 源房缴费明细BindingSource.DataSource = payDetail;
             }

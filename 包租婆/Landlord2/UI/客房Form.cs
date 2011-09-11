@@ -43,7 +43,7 @@ namespace Landlord2.UI
                 kf = new 客房();
                 kf.源房ID = this.yfID;
                 cmbYF.SelectedValue = this.yfID;
-                Main.context.客房.AddObject(kf);
+                Main.context.客房.AddObject(kf);//此操作后可实现外键同步
             }
             else//编辑
             {
@@ -137,7 +137,7 @@ namespace Landlord2.UI
                     月厨房费 = old.月厨房费,
                     备注 = old.备注
                 };
-                Main.context.客房.AddObject(kf);
+                Main.context.客房.AddObject(kf);//此操作后可实现外键同步
 
                 uC客房详细1.客房BindingSource.DataSource = kf;
             }
