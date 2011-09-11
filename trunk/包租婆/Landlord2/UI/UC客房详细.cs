@@ -29,7 +29,7 @@ namespace Landlord2.UI
         }
 
         private void UC客房详细_Load(object sender, EventArgs e)
-        {
+        {          
             租赁协议照片1PictureBox.DataBindings["Image"].Format += new ConvertEventHandler(ByteArray2Image_Format);
             租赁协议照片2PictureBox.DataBindings["Image"].Format += new ConvertEventHandler(ByteArray2Image_Format);
             租赁协议照片3PictureBox.DataBindings["Image"].Format += new ConvertEventHandler(ByteArray2Image_Format);
@@ -196,6 +196,11 @@ namespace Landlord2.UI
                     }
                 }
             }
+        }
+
+        private void 客房BindingSource_DataSourceChanged(object sender, EventArgs e)
+        {
+            客房租金明细BindingSource.DataSource = (客房BindingSource.DataSource as 客房).客房租金明细;
         }
 
     }

@@ -237,8 +237,8 @@ namespace Landlord2.UI
         {
             源房涨租协定 obj = new 源房涨租协定();
             源房 temp = 源房BindingSource.DataSource as 源房;
-            obj.源房ID = temp.ID;
-            obj.源房 = temp;
+            //obj.源房ID = temp.ID;
+            obj.源房 = temp;//同步外键引用
             e.NewObject = obj;
         }
 
