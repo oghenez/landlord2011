@@ -62,7 +62,8 @@ namespace Landlord2.UI
                 if (Helper.saveData(yf, out msg))
                 {
                     KryptonMessageBox.Show(msg, "成功新增源房");
-                    (this.Owner as Main).RefreshAndLocateTree(yf);//刷新TreeView，并定位到yf节点。
+                    if (this.Owner is Main)
+                        (this.Owner as Main).RefreshAndLocateTree(yf);//刷新TreeView，并定位到yf节点。
                     Close();
                 }
                 else
@@ -83,7 +84,8 @@ namespace Landlord2.UI
                     if (Helper.saveData(yf, out msg))
                     {
                         KryptonMessageBox.Show(msg, "成功编辑源房");
-                        (this.Owner as Main).RefreshAndLocateTree(yf);//刷新TreeView，并定位到yf节点。
+                        if (this.Owner is Main)
+                            (this.Owner as Main).RefreshAndLocateTree(yf);//刷新TreeView，并定位到yf节点。
                         Close();
                     }
                     else

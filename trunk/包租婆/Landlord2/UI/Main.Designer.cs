@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,13 +96,13 @@
             this.kfBtnStopRent = new System.Windows.Forms.ToolStripButton();
             this.kfBtnContinueRent = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.kfBtnCollectRent = new System.Windows.Forms.ToolStripButton();
+            this.kfBtnCollectRentDetail = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
             this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.kfBtnCollectRentDetail = new System.Windows.Forms.ToolStripButton();
-            this.kfBtnCollectRent = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -448,11 +448,11 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode2.ImageIndex = 7;
-            treeNode2.Name = "节点0";
-            treeNode2.Text = "加载信息，请稍候．．．";
+            treeNode1.ImageIndex = 7;
+            treeNode1.Name = "节点0";
+            treeNode1.Text = "加载信息，请稍候．．．";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode1});
             this.treeView1.SelectedImageIndex = 7;
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.ShowRootLines = false;
@@ -756,6 +756,28 @@
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(6, 70);
             // 
+            // kfBtnCollectRent
+            // 
+            this.kfBtnCollectRent.Image = global::Landlord2.Properties.Resources.info;
+            this.kfBtnCollectRent.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnCollectRent.Name = "kfBtnCollectRent";
+            this.kfBtnCollectRent.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnCollectRent.Text = "客房收租";
+            this.kfBtnCollectRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnCollectRent.ToolTipText = "客房出租";
+            this.kfBtnCollectRent.Click += new System.EventHandler(this.kfBtnCollectRent_Click);
+            // 
+            // kfBtnCollectRentDetail
+            // 
+            this.kfBtnCollectRentDetail.Image = global::Landlord2.Properties.Resources.info;
+            this.kfBtnCollectRentDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnCollectRentDetail.Name = "kfBtnCollectRentDetail";
+            this.kfBtnCollectRentDetail.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnCollectRentDetail.Text = "收租明细";
+            this.kfBtnCollectRentDetail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnCollectRentDetail.ToolTipText = "客房出租";
+            this.kfBtnCollectRentDetail.Click += new System.EventHandler(this.kfBtnCollectRentDetail_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -795,27 +817,6 @@
             // 
             this.AlarmTimer1.Interval = 500;
             this.AlarmTimer1.Tick += new System.EventHandler(this.AlarmTimer1_Tick);
-            // 
-            // kfBtnCollectRentDetail
-            // 
-            this.kfBtnCollectRentDetail.Image = global::Landlord2.Properties.Resources.info;
-            this.kfBtnCollectRentDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.kfBtnCollectRentDetail.Name = "kfBtnCollectRentDetail";
-            this.kfBtnCollectRentDetail.Size = new System.Drawing.Size(59, 67);
-            this.kfBtnCollectRentDetail.Text = "收租明细";
-            this.kfBtnCollectRentDetail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.kfBtnCollectRentDetail.ToolTipText = "客房出租";
-            // 
-            // kfBtnCollectRent
-            // 
-            this.kfBtnCollectRent.Image = global::Landlord2.Properties.Resources.info;
-            this.kfBtnCollectRent.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.kfBtnCollectRent.Name = "kfBtnCollectRent";
-            this.kfBtnCollectRent.Size = new System.Drawing.Size(59, 67);
-            this.kfBtnCollectRent.Text = "客房收租";
-            this.kfBtnCollectRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.kfBtnCollectRent.ToolTipText = "客房出租";
-            this.kfBtnCollectRent.Click += new System.EventHandler(this.kfBtnCollectRent_Click);
             // 
             // Main
             // 

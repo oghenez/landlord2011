@@ -12,7 +12,7 @@ namespace Landlord2.UI
 {
     public partial class 客房收租Form : KryptonForm
     {
-        private 客房 kf;
+        public 客房 kf;
         private 客房租金明细 collectRent;
         public 客房收租Form(客房 kf)
         {
@@ -164,7 +164,8 @@ namespace Landlord2.UI
             if (Helper.saveData(collectRent, out msg))
             {
                 KryptonMessageBox.Show(msg, "成功收租");
-                (this.Owner as Main).RefreshAndLocateTree(kf);//刷新TreeView，并定位到kf节点。
+                if (this.Owner is Main)
+                    (this.Owner as Main).RefreshAndLocateTree(kf);//刷新TreeView，并定位到kf节点。
                 Close();
             }
             else

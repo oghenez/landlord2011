@@ -520,7 +520,18 @@ namespace Landlord2
                 }
             }
         }        
+        private void kfBtnCollectRentDetail_Click(object sender, EventArgs e)
+        {
+            //收租明细
+            using (客房收租明细Form sz = new 客房收租明细Form())
+            {
+                sz.ShowDialog(this);
+            }
+        }     
+        
         #endregion
+
+
 
 
 

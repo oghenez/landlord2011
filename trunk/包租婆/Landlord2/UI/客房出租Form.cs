@@ -67,7 +67,8 @@ namespace Landlord2.UI
                 {
                     DialogResult = DialogResult.OK;//传出成功标志，主界面会提示是否马上进行首期收租。
                     KryptonMessageBox.Show(msg, "成功出租客房");
-                    (this.Owner as Main).RefreshAndLocateTree(kf);//刷新TreeView，并定位到kf节点。
+                    if(this.Owner is Main)
+                        (this.Owner as Main).RefreshAndLocateTree(kf);//刷新TreeView，并定位到kf节点。
                     Close();
                 }
                 else
