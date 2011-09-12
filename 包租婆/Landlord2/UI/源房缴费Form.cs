@@ -72,6 +72,8 @@ namespace Landlord2.UI
                 if (Helper.saveData(payDetail, out msg))
                 {
                     KryptonMessageBox.Show(msg, "成功新增缴费信息");
+                    if (this.Owner is Main)
+                        (this.Owner as Main).RefreshAndLocateTree(payDetail.源房);//刷新TreeView，并定位到kf节点。
                     Close();
                 }
                 else
@@ -91,6 +93,8 @@ namespace Landlord2.UI
                     if (Helper.saveData(payDetail, out msg))
                     {
                         KryptonMessageBox.Show(msg, "成功编辑缴费信息");
+                        if (this.Owner is Main)
+                            (this.Owner as Main).RefreshAndLocateTree(payDetail.源房);//刷新TreeView，并定位到kf节点。
                         Close();
                     }
                     else
@@ -121,6 +125,8 @@ namespace Landlord2.UI
             if (Helper.saveData(payDetail, out msg))
             {
                 KryptonMessageBox.Show(string.Format("成功新增缴费信息。您可以继续添加！"), "成功新增缴费信息");
+                if (this.Owner is Main)
+                    (this.Owner as Main).RefreshAndLocateTree(payDetail.源房);//刷新TreeView，并定位到kf节点。
                 源房缴费明细 old = payDetail;
                 payDetail = new 源房缴费明细();
                 payDetail.源房ID = old.源房ID;

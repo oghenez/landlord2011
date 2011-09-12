@@ -14,6 +14,7 @@ namespace Landlord2
         [STAThread]
         static void Main()
         {
+            MessageBox.Show("客房收租里，首次收租加上押金！首次收租不计算水电气！");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

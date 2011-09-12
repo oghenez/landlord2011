@@ -13,6 +13,7 @@ namespace Landlord2.Data
         public 客房()
         {
             this.ID = Guid.NewGuid();
+            this.支付月数 = 3;//默认3月一付
         }
 
     }

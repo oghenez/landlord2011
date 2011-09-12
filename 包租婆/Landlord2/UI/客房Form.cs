@@ -69,7 +69,8 @@ namespace Landlord2.UI
                 if (Helper.saveData(kf, out msg))
                 {
                     KryptonMessageBox.Show(msg, "成功新增客房");
-                    (this.Owner as Main).RefreshAndLocateTree(kf);//刷新TreeView，并定位到kf节点。
+                    if (this.Owner is Main)
+                        (this.Owner as Main).RefreshAndLocateTree(kf);//刷新TreeView，并定位到kf节点。
                     Close();
                 }
                 else
@@ -89,7 +90,8 @@ namespace Landlord2.UI
                     if (Helper.saveData(kf, out msg))
                     {
                         KryptonMessageBox.Show(msg, "成功编辑客房");
-                        (this.Owner as Main).RefreshAndLocateTree(kf);//刷新TreeView，并定位到kf节点。
+                        if (this.Owner is Main)
+                            (this.Owner as Main).RefreshAndLocateTree(kf);//刷新TreeView，并定位到kf节点。
                         Close();
                     }
                     else
@@ -118,7 +120,8 @@ namespace Landlord2.UI
             if (Helper.saveData(kf, out msg))
             {
                 KryptonMessageBox.Show(string.Format("成功新增客房[{0}]。您可以继续添加客房！", kf.命名), "成功新增客房");
-                (this.Owner as Main).RefreshAndLocateTree(kf);//刷新TreeView，并定位到kf节点。
+                if (this.Owner is Main)
+                    (this.Owner as Main).RefreshAndLocateTree(kf);//刷新TreeView，并定位到kf节点。
                 客房 old = kf;
                 kf = new 客房()
                 {

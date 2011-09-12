@@ -61,7 +61,7 @@ namespace Landlord2.UI
         {
             源房缴费明细BindingSource.EndEdit();
 
-            var changes = Main.context.ObjectStateManager.GetObjectStateEntries(EntityState.Modified);
+            var changes = Main.context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted | EntityState.Modified);
             if (changes.Count() > 0)
             {
                 //校验
@@ -183,6 +183,8 @@ namespace Landlord2.UI
                 }
                 labCountMoney.Text = string.Format("当前合计：{0} 元", total);
             }
+            else
+                labCountMoney.Text = string.Empty;
         }
 
         private void kryptonDataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
