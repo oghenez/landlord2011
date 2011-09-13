@@ -73,6 +73,8 @@ namespace Landlord2.UI
                 if (Helper.saveData(Main.context.客房租金明细, out msg))
                 {
                     KryptonMessageBox.Show(msg, "成功保存");
+                    if (this.Owner is Main)
+                        (this.Owner as Main).RefreshAndLocateTree(kf);//刷新TreeView，并定位到kf节点。
                     Close();
                 }
                 else
@@ -147,6 +149,27 @@ namespace Landlord2.UI
             {
                 客房 k = e.Value as 客房;
                 e.Value = string.Format("[{0}] - {1}", k.源房.房名, k.命名);
+            }
+        }
+
+        private void kryptonDataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            //只允许删除---该租户协议租期内，最近的一条记录
+            客房租金明细 entity = 客房租金明细BindingSource.Current as 客房租金明细;
+            DateTime recentTime = 客房租金明细.GetRentDetails(entity.客房ID).Max(n => n.起付日期);
+            if (recentTime <= entity.客房.期始)
+            {
+                //不属于该租户的缴租记录
+                KryptonMessageBox.Show("此条[收租明细信息]非当前租户协议期内记录，无法删除！");
+                e.Cancel = true;
+                return;
+            }
+            if (entity.起付日期 != recentTime)
+            {
+                //非当前租户最近记录
+                KryptonMessageBox.Show("此条[收租明细信息]非当前租户最近一条记录，无法删除！");
+                e.Cancel = true;
+                return;
             }
         }
     }

@@ -26,8 +26,10 @@ namespace Landlord2.UI
             月宽带费Label1.Text = (kf.月宽带费 * kf.支付月数).ToString();
             月物业费Label1.Text = (kf.月物业费 * kf.支付月数).ToString();
             月厨房费Label1.Text = (kf.月厨房费 * kf.支付月数).ToString();
+            押金Label1.Text = kf.押金.ToString();
 
-            List<客房租金明细> orderedList = kf.客房租金明细.OrderByDescending(m => m.起付日期).ToList();
+            List<客房租金明细> orderedList = kf.客房租金明细.Where(m=>m.起付日期 > kf.期始)
+                .OrderByDescending(m => m.起付日期).ToList();//这里只针对当前租户
             参考历史BindingSource.DataSource = orderedList;
 
             //新对象，根据情况赋予初始值
@@ -35,38 +37,49 @@ namespace Landlord2.UI
             collectRent.付款人 = kf.租户;
             collectRent.客房ID = kf.ID;
             //新对象的‘起付时间’与之前的‘止付时间’连续
-            if (orderedList.Count == 0)//改租户第一次交租
+            if (orderedList.Count == 0)//该租户第一次交租
             {
                 collectRent.起付日期 = kf.期始.Value.AddDays(1).Date;
                 collectRent.水止码 = kf.水始码;//止码设置为始码值，相当于没有用
                 collectRent.电止码 = kf.电始码;
                 collectRent.气止码 = kf.气始码;
+                nud水费.Enabled = false;//首次收租，不需要调整水电气
+                nud电费.Enabled = false;
+                nud气费.Enabled = false;
+                toolTip1.SetToolTip(tableLayoutPanel1, "首次收租不涉及水电气费用，如需调整始码，请进行[客房编辑]操作。");
             }
             else
             {
                 collectRent.起付日期 = kf.客房租金明细.Max(m => m.止付日期).AddDays(1).Date;
                 collectRent.水止码 = kf.客房租金明细.Max(m => m.水止码);//止码设置为始码值，相当于没有用
                 collectRent.电止码 = kf.客房租金明细.Max(m => m.电止码);
-                collectRent.气止码 = kf.客房租金明细.Max(m => m.气止码);
+                collectRent.气止码 = kf.客房租金明细.Max(m => m.气止码);                
+                押金Label1.Enabled = false;//非首次收租，押金置灰。
+                toolTip1.SetToolTip(tableLayoutPanel1, "非首次收租不涉及押金。");
             }
             collectRent.止付日期 = collectRent.起付日期.AddMonths(kf.支付月数).AddDays(-1);
             水始码Label1.Text = collectRent.水止码.ToString();
             电始码Label1.Text = collectRent.电止码.ToString();
             气始码Label1.Text = collectRent.气止码.ToString();
-            CaculateSum();
+            CaculateSum(押金Label1.Enabled);
 
             Main.context.客房租金明细.AddObject(collectRent);//此操作后可实现外键同步
             客房租金明细BindingSource.DataSource = collectRent;
         }
 
-        //计算合计应付金额
-        private void CaculateSum()
+        /// <summary>
+        /// 计算合计应付金额
+        /// </summary>
+        /// <param name="isFirstTime">是否首次收租，首次收租要交押金</param>
+        private void CaculateSum(bool isFirstTime)
         {
             decimal sum = 0.00M;
             sum += kf.月租金 * kf.支付月数;
             sum += kf.月宽带费 * kf.支付月数;
             sum += kf.月物业费 * kf.支付月数;
             sum += kf.月厨房费 * kf.支付月数;
+            if (isFirstTime)
+                sum += kf.押金;//首次收租要交押金
             //...........
             decimal temp= Helper.calculate水费(kf.源房.阶梯水价, ((decimal)collectRent.水止码 - Convert.ToDecimal(水始码Label1.Text)));
             lbl水费.Text = temp.ToString();
@@ -135,13 +148,14 @@ namespace Landlord2.UI
 
         private void kryptonNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            if(sender.Equals(kryptonNumericUpDown1))
-                collectRent.水止码 = (double)kryptonNumericUpDown1.Value;
-            if (sender.Equals(kryptonNumericUpDown2))
-                collectRent.电止码 = (double)kryptonNumericUpDown2.Value;
-            if (sender.Equals(kryptonNumericUpDown3))
-                collectRent.气止码 = (double)kryptonNumericUpDown3.Value; 
-            CaculateSum(); 
+            //System.Diagnostics.Debug.Assert(押金Label1.Enabled == false);//只有非首次收租状态才会触发
+            if(sender.Equals(nud水费))
+                collectRent.水止码 = (double)nud水费.Value;
+            if (sender.Equals(nud电费))
+                collectRent.电止码 = (double)nud电费.Value;
+            if (sender.Equals(nud气费))
+                collectRent.气止码 = (double)nud气费.Value;
+            CaculateSum(押金Label1.Enabled);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

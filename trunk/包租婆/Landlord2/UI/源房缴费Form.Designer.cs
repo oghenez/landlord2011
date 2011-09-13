@@ -464,7 +464,7 @@
             this.Name = "源房缴费Form";
             this.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "缴费";
+            this.Text = "源房缴费";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.缴费Form_FormClosed);
             this.Load += new System.EventHandler(this.缴费Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).EndInit();

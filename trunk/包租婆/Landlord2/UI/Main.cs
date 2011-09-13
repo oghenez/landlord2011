@@ -74,9 +74,14 @@ namespace Landlord2
         } 
         #endregion
 
-        //根据数据源，刷新数，并定位到指定对象所对应的节点。（新增、修改、删除等操作后）
+        //根据数据源，刷新TreeView，并定位到指定对象所对应的节点。（新增、修改、删除等操作后）
+        //如果obj传入null，那么如果原来选择的是源房或客房节点，继续选择它。
         public void RefreshAndLocateTree(EntityObject obj)
         {
+            if (obj == null && treeView1.SelectedNode != null && treeView1.SelectedNode.Tag != null)
+            {
+                obj = treeView1.SelectedNode.Tag as EntityObject;//tag只可能是源房或客房实体
+            }
             LoadTreeView(obj);
         }
         /// <summary>
@@ -161,15 +166,12 @@ namespace Landlord2
                             kfNode.ToolTipText = "协议到期，请[续租]或[退租]。";
                             kfNode.ForeColor = Color.Red;
                         }
-                        else
+                        else if (kf.客房租金明细.Count == 0 || kf.客房租金明细.Max(m => m.止付日期) < DateTime.Now)//已租，协议未到期，逾期交租
                         {
-                            if (kf.客房租金明细.Count == 0 || kf.客房租金明细.Max(m => m.止付日期) < DateTime.Now)//已租，协议未到期，逾期交租
-                            {
-                                kfNode.Text += "[逾期交租]";
-                                kfNode.ToolTipText = "逾期交租，请[收租]或[退租]。";
-                                kfNode.ForeColor = Color.Magenta;
-                            }                            
-                        }
+                            kfNode.Text += "[逾期交租]";
+                            kfNode.ToolTipText = "逾期交租，请[收租]或[退租]。";
+                            kfNode.ForeColor = Color.Magenta;
+                        }       
                     }                    
                 }
                 DoThreadSafe(delegate {
@@ -275,47 +277,44 @@ namespace Landlord2
             
             if (entity is 源房)
             {
+                yfUC.源房BindingSource.DataSource = entity;
+                yfUC.源房涨租协定BindingSource.DataSource = 源房涨租协定.GetByYFid(((源房)entity).ID).Execute(MergeOption.NoTracking);                    
+
                 if (kryptonHeaderGroup2.Panel.Controls.Count == 0) //初次加载
                 {
-                    yfUC.源房BindingSource.DataSource = entity;
-                    yfUC.源房涨租协定BindingSource.DataSource = 源房涨租协定.GetByYFid(((源房)entity).ID).Execute(MergeOption.AppendOnly);                    
                     kryptonHeaderGroup2.Panel.Controls.Add(yfUC);
                 }
                 else if(kryptonHeaderGroup2.Panel.Controls[0] is UC源房详细)//原来加载的是‘源房详细’控件
                 {
                     //仅仅更改绑定实体
-                    yfUC.源房BindingSource.DataSource = entity;
-                    yfUC.源房涨租协定BindingSource.DataSource = 源房涨租协定.GetByYFid(((源房)entity).ID).Execute(MergeOption.AppendOnly); 
                 }
                 else if (kryptonHeaderGroup2.Panel.Controls[0] is UC客房详细)
                 {
                     //删除控件
                     kryptonHeaderGroup2.Panel.Controls.RemoveAt(0);
                     //加载
-                    yfUC.源房BindingSource.DataSource = entity;
-                    yfUC.源房涨租协定BindingSource.DataSource = 源房涨租协定.GetByYFid(((源房)entity).ID).Execute(MergeOption.AppendOnly); 
                     kryptonHeaderGroup2.Panel.Controls.Add(yfUC);
                 }
                 kryptonHeaderGroup2.ValuesPrimary.Heading = string.Format("源房：{0}", (entity as 源房).房名);
             }
             else if (entity is 客房)
             {
+                kfUC.客房BindingSource.DataSource = entity;
+                kfUC.客房租金明细BindingSource.DataSource = 客房租金明细.GetRentDetails((entity as 客房).ID).Execute(MergeOption.NoTracking);
+
                 if (kryptonHeaderGroup2.Panel.Controls.Count == 0) //初次加载
                 {
-                    kfUC.客房BindingSource.DataSource = entity;
                     kryptonHeaderGroup2.Panel.Controls.Add(kfUC);
                 }
                 else if (kryptonHeaderGroup2.Panel.Controls[0] is UC客房详细)
                 {
                     //仅仅更改绑定实体
-                    kfUC.客房BindingSource.DataSource = entity;
                 }
                 else if (kryptonHeaderGroup2.Panel.Controls[0] is UC源房详细)
                 {
                     //删除控件
                     kryptonHeaderGroup2.Panel.Controls.RemoveAt(0);
                     //加载
-                    kfUC.客房BindingSource.DataSource = entity;
                     kryptonHeaderGroup2.Panel.Controls.Add(kfUC);
                 }
                 kryptonHeaderGroup2.ValuesPrimary.Heading = string.Format("客房：{0} <隶属于：{1}>", (entity as 客房).命名,(entity as 客房).源房.房名) ;
@@ -513,6 +512,11 @@ namespace Landlord2
                 客房 kf = treeView1.SelectedNode.Tag as 客房;
                 if (string.IsNullOrEmpty(kf.租户))
                     return;
+                if (kf.期止 < DateTime.Now)//已租，协议到期，请续租或退租
+                {
+                    KryptonMessageBox.Show("协议到期，请续租或退租");
+                    return;
+                }
 
                 using (客房收租Form collectRent = new 客房收租Form(kf))
                 {
