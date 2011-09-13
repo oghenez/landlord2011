@@ -100,7 +100,6 @@
             this.kryptonDateTimePicker1 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             this.kryptonDateTimePicker2 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.客房租金明细BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.起付日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.止付日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.付款日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -112,6 +111,7 @@
             this.付款人DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.收款人DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.备注DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.客房租金明细BindingSource = new System.Windows.Forms.BindingSource(this.components);
             命名Label = new System.Windows.Forms.Label();
             面积Label = new System.Windows.Forms.Label();
             租户Label = new System.Windows.Forms.Label();
@@ -593,7 +593,6 @@
             // 客房BindingSource
             // 
             this.客房BindingSource.DataSource = typeof(Landlord2.Data.客房);
-            this.客房BindingSource.DataSourceChanged += new System.EventHandler(this.客房BindingSource_DataSourceChanged);
             // 
             // errorProvider1
             // 
@@ -934,10 +933,6 @@
             this.kryptonDataGridView1.Size = new System.Drawing.Size(781, 150);
             this.kryptonDataGridView1.TabIndex = 83;
             // 
-            // 客房租金明细BindingSource
-            // 
-            this.客房租金明细BindingSource.DataSource = typeof(Landlord2.Data.客房租金明细);
-            // 
             // 起付日期DataGridViewTextBoxColumn
             // 
             this.起付日期DataGridViewTextBoxColumn.DataPropertyName = "起付日期";
@@ -1026,6 +1021,10 @@
             this.备注DataGridViewTextBoxColumn.Name = "备注DataGridViewTextBoxColumn";
             this.备注DataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // 客房租金明细BindingSource
+            // 
+            this.客房租金明细BindingSource.DataSource = typeof(Landlord2.Data.客房租金明细);
+            // 
             // UC客房详细
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1102,7 +1101,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kryptonDataGridView1;
         private System.Windows.Forms.ToolStripButton toolStripButton10;
         private System.Windows.Forms.ToolStripButton toolStripButton9;
-        private System.Windows.Forms.BindingSource 客房租金明细BindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn 起付日期DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 止付日期DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 付款日期DataGridViewTextBoxColumn;
@@ -1114,5 +1112,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 付款人DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 收款人DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 备注DataGridViewTextBoxColumn;
+        public System.Windows.Forms.BindingSource 客房租金明细BindingSource;
     }
 }

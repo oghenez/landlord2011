@@ -32,6 +32,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.起付日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.止付日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.付款日期DataGridViewTextBoxColumn = new Landlord2.MyDataGridViewDateTimePickerColumn();
+            this.水止码DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.电止码DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.气止码DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.应付金额DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.实付金额DataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn();
+            this.付款人DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.收款人DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.备注DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.客房租金明细BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.llbKF = new ComponentFactory.Krypton.Toolkit.KryptonLinkLabel();
@@ -47,18 +59,6 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.客房BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.起付日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.止付日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.付款日期DataGridViewTextBoxColumn = new Landlord2.MyDataGridViewDateTimePickerColumn();
-            this.水止码DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.电止码DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.气止码DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.应付金额DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.实付金额DataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn();
-            this.付款人DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.收款人DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.备注DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.客房租金明细BindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -86,12 +86,123 @@
             this.kryptonDataGridView1.DataSource = this.客房租金明细BindingSource;
             this.kryptonDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonDataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonDataGridView1.MultiSelect = false;
             this.kryptonDataGridView1.Name = "kryptonDataGridView1";
             this.kryptonDataGridView1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.kryptonDataGridView1.RowTemplate.Height = 23;
+            this.kryptonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.kryptonDataGridView1.Size = new System.Drawing.Size(844, 352);
             this.kryptonDataGridView1.TabIndex = 2;
             this.kryptonDataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.kryptonDataGridView1_CellFormatting);
+            this.kryptonDataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.kryptonDataGridView1_UserDeletingRow);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "客房";
+            this.Column1.HeaderText = "客房";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 200;
+            // 
+            // 起付日期DataGridViewTextBoxColumn
+            // 
+            this.起付日期DataGridViewTextBoxColumn.DataPropertyName = "起付日期";
+            dataGridViewCellStyle1.Format = "d";
+            this.起付日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.起付日期DataGridViewTextBoxColumn.HeaderText = "起付日期";
+            this.起付日期DataGridViewTextBoxColumn.Name = "起付日期DataGridViewTextBoxColumn";
+            this.起付日期DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 止付日期DataGridViewTextBoxColumn
+            // 
+            this.止付日期DataGridViewTextBoxColumn.DataPropertyName = "止付日期";
+            dataGridViewCellStyle2.Format = "d";
+            this.止付日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.止付日期DataGridViewTextBoxColumn.HeaderText = "止付日期";
+            this.止付日期DataGridViewTextBoxColumn.Name = "止付日期DataGridViewTextBoxColumn";
+            this.止付日期DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 付款日期DataGridViewTextBoxColumn
+            // 
+            this.付款日期DataGridViewTextBoxColumn.CalendarTodayDate = new System.DateTime(2011, 9, 12, 0, 0, 0, 0);
+            this.付款日期DataGridViewTextBoxColumn.Checked = false;
+            this.付款日期DataGridViewTextBoxColumn.DataPropertyName = "付款日期";
+            this.付款日期DataGridViewTextBoxColumn.HeaderText = "付款日期";
+            this.付款日期DataGridViewTextBoxColumn.Name = "付款日期DataGridViewTextBoxColumn";
+            this.付款日期DataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.付款日期DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.付款日期DataGridViewTextBoxColumn.Width = 100;
+            // 
+            // 水止码DataGridViewTextBoxColumn
+            // 
+            this.水止码DataGridViewTextBoxColumn.DataPropertyName = "水止码";
+            this.水止码DataGridViewTextBoxColumn.HeaderText = "水止码";
+            this.水止码DataGridViewTextBoxColumn.Name = "水止码DataGridViewTextBoxColumn";
+            this.水止码DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 电止码DataGridViewTextBoxColumn
+            // 
+            this.电止码DataGridViewTextBoxColumn.DataPropertyName = "电止码";
+            this.电止码DataGridViewTextBoxColumn.HeaderText = "电止码";
+            this.电止码DataGridViewTextBoxColumn.Name = "电止码DataGridViewTextBoxColumn";
+            this.电止码DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 气止码DataGridViewTextBoxColumn
+            // 
+            this.气止码DataGridViewTextBoxColumn.DataPropertyName = "气止码";
+            this.气止码DataGridViewTextBoxColumn.HeaderText = "气止码";
+            this.气止码DataGridViewTextBoxColumn.Name = "气止码DataGridViewTextBoxColumn";
+            this.气止码DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 应付金额DataGridViewTextBoxColumn
+            // 
+            this.应付金额DataGridViewTextBoxColumn.DataPropertyName = "应付金额";
+            this.应付金额DataGridViewTextBoxColumn.HeaderText = "应付金额";
+            this.应付金额DataGridViewTextBoxColumn.Name = "应付金额DataGridViewTextBoxColumn";
+            this.应付金额DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 实付金额DataGridViewTextBoxColumn
+            // 
+            this.实付金额DataGridViewTextBoxColumn.DataPropertyName = "实付金额";
+            this.实付金额DataGridViewTextBoxColumn.DecimalPlaces = 2;
+            this.实付金额DataGridViewTextBoxColumn.HeaderText = "实付金额";
+            this.实付金额DataGridViewTextBoxColumn.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.实付金额DataGridViewTextBoxColumn.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.实付金额DataGridViewTextBoxColumn.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.实付金额DataGridViewTextBoxColumn.Name = "实付金额DataGridViewTextBoxColumn";
+            this.实付金额DataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.实付金额DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.实付金额DataGridViewTextBoxColumn.Width = 100;
+            // 
+            // 付款人DataGridViewTextBoxColumn
+            // 
+            this.付款人DataGridViewTextBoxColumn.DataPropertyName = "付款人";
+            this.付款人DataGridViewTextBoxColumn.HeaderText = "付款人";
+            this.付款人DataGridViewTextBoxColumn.Name = "付款人DataGridViewTextBoxColumn";
+            // 
+            // 收款人DataGridViewTextBoxColumn
+            // 
+            this.收款人DataGridViewTextBoxColumn.DataPropertyName = "收款人";
+            this.收款人DataGridViewTextBoxColumn.HeaderText = "收款人";
+            this.收款人DataGridViewTextBoxColumn.Name = "收款人DataGridViewTextBoxColumn";
+            // 
+            // 备注DataGridViewTextBoxColumn
+            // 
+            this.备注DataGridViewTextBoxColumn.DataPropertyName = "备注";
+            this.备注DataGridViewTextBoxColumn.HeaderText = "备注";
+            this.备注DataGridViewTextBoxColumn.Name = "备注DataGridViewTextBoxColumn";
             // 
             // 客房租金明细BindingSource
             // 
@@ -246,114 +357,6 @@
             // 客房BindingSource
             // 
             this.客房BindingSource.DataSource = typeof(Landlord2.Data.客房);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "客房";
-            this.Column1.HeaderText = "客房";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 200;
-            // 
-            // 起付日期DataGridViewTextBoxColumn
-            // 
-            this.起付日期DataGridViewTextBoxColumn.DataPropertyName = "起付日期";
-            dataGridViewCellStyle1.Format = "d";
-            this.起付日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.起付日期DataGridViewTextBoxColumn.HeaderText = "起付日期";
-            this.起付日期DataGridViewTextBoxColumn.Name = "起付日期DataGridViewTextBoxColumn";
-            this.起付日期DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 止付日期DataGridViewTextBoxColumn
-            // 
-            this.止付日期DataGridViewTextBoxColumn.DataPropertyName = "止付日期";
-            dataGridViewCellStyle2.Format = "d";
-            this.止付日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.止付日期DataGridViewTextBoxColumn.HeaderText = "止付日期";
-            this.止付日期DataGridViewTextBoxColumn.Name = "止付日期DataGridViewTextBoxColumn";
-            this.止付日期DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 付款日期DataGridViewTextBoxColumn
-            // 
-            this.付款日期DataGridViewTextBoxColumn.CalendarTodayDate = new System.DateTime(2011, 9, 12, 0, 0, 0, 0);
-            this.付款日期DataGridViewTextBoxColumn.Checked = false;
-            this.付款日期DataGridViewTextBoxColumn.DataPropertyName = "付款日期";
-            this.付款日期DataGridViewTextBoxColumn.HeaderText = "付款日期";
-            this.付款日期DataGridViewTextBoxColumn.Name = "付款日期DataGridViewTextBoxColumn";
-            this.付款日期DataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.付款日期DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.付款日期DataGridViewTextBoxColumn.Width = 100;
-            // 
-            // 水止码DataGridViewTextBoxColumn
-            // 
-            this.水止码DataGridViewTextBoxColumn.DataPropertyName = "水止码";
-            this.水止码DataGridViewTextBoxColumn.HeaderText = "水止码";
-            this.水止码DataGridViewTextBoxColumn.Name = "水止码DataGridViewTextBoxColumn";
-            this.水止码DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 电止码DataGridViewTextBoxColumn
-            // 
-            this.电止码DataGridViewTextBoxColumn.DataPropertyName = "电止码";
-            this.电止码DataGridViewTextBoxColumn.HeaderText = "电止码";
-            this.电止码DataGridViewTextBoxColumn.Name = "电止码DataGridViewTextBoxColumn";
-            this.电止码DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 气止码DataGridViewTextBoxColumn
-            // 
-            this.气止码DataGridViewTextBoxColumn.DataPropertyName = "气止码";
-            this.气止码DataGridViewTextBoxColumn.HeaderText = "气止码";
-            this.气止码DataGridViewTextBoxColumn.Name = "气止码DataGridViewTextBoxColumn";
-            this.气止码DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 应付金额DataGridViewTextBoxColumn
-            // 
-            this.应付金额DataGridViewTextBoxColumn.DataPropertyName = "应付金额";
-            this.应付金额DataGridViewTextBoxColumn.HeaderText = "应付金额";
-            this.应付金额DataGridViewTextBoxColumn.Name = "应付金额DataGridViewTextBoxColumn";
-            this.应付金额DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 实付金额DataGridViewTextBoxColumn
-            // 
-            this.实付金额DataGridViewTextBoxColumn.DataPropertyName = "实付金额";
-            this.实付金额DataGridViewTextBoxColumn.DecimalPlaces = 2;
-            this.实付金额DataGridViewTextBoxColumn.HeaderText = "实付金额";
-            this.实付金额DataGridViewTextBoxColumn.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.实付金额DataGridViewTextBoxColumn.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.实付金额DataGridViewTextBoxColumn.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.实付金额DataGridViewTextBoxColumn.Name = "实付金额DataGridViewTextBoxColumn";
-            this.实付金额DataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.实付金额DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.实付金额DataGridViewTextBoxColumn.Width = 100;
-            // 
-            // 付款人DataGridViewTextBoxColumn
-            // 
-            this.付款人DataGridViewTextBoxColumn.DataPropertyName = "付款人";
-            this.付款人DataGridViewTextBoxColumn.HeaderText = "付款人";
-            this.付款人DataGridViewTextBoxColumn.Name = "付款人DataGridViewTextBoxColumn";
-            // 
-            // 收款人DataGridViewTextBoxColumn
-            // 
-            this.收款人DataGridViewTextBoxColumn.DataPropertyName = "收款人";
-            this.收款人DataGridViewTextBoxColumn.HeaderText = "收款人";
-            this.收款人DataGridViewTextBoxColumn.Name = "收款人DataGridViewTextBoxColumn";
-            // 
-            // 备注DataGridViewTextBoxColumn
-            // 
-            this.备注DataGridViewTextBoxColumn.DataPropertyName = "备注";
-            this.备注DataGridViewTextBoxColumn.HeaderText = "备注";
-            this.备注DataGridViewTextBoxColumn.Name = "备注DataGridViewTextBoxColumn";
             // 
             // 客房收租明细Form
             // 

@@ -6,6 +6,8 @@ using System.CodeDom.Compiler;
 using System.Drawing.Drawing2D;
 using System.IO;
 using Landlord2.Data;
+using System.Linq;
+using System.Data.Objects;
 
 namespace Landlord2.UI
 {
@@ -196,11 +198,6 @@ namespace Landlord2.UI
                     }
                 }
             }
-        }
-
-        private void 客房BindingSource_DataSourceChanged(object sender, EventArgs e)
-        {
-            客房租金明细BindingSource.DataSource = (客房BindingSource.DataSource as 客房).客房租金明细;
         }
 
     }

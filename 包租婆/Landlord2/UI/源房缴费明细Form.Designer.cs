@@ -313,9 +313,11 @@
             this.kryptonDataGridView1.DataSource = this.源房缴费明细BindingSource;
             this.kryptonDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonDataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonDataGridView1.MultiSelect = false;
             this.kryptonDataGridView1.Name = "kryptonDataGridView1";
             this.kryptonDataGridView1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.kryptonDataGridView1.RowTemplate.Height = 23;
+            this.kryptonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.kryptonDataGridView1.Size = new System.Drawing.Size(844, 352);
             this.kryptonDataGridView1.TabIndex = 0;
             this.kryptonDataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.kryptonDataGridView1_CellMouseDoubleClick);
@@ -480,7 +482,7 @@
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.Visible = false;
             // 
-            // 缴费明细Form
+            // 源房缴费明细Form
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -489,7 +491,7 @@
             this.Controls.Add(this.kryptonDataGridView1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
-            this.Name = "缴费明细Form";
+            this.Name = "源房缴费明细Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "源房缴费明细";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.缴费明细Form_FormClosed);
