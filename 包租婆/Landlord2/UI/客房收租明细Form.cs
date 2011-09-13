@@ -160,14 +160,14 @@ namespace Landlord2.UI
             if (recentTime <= entity.客房.期始)
             {
                 //不属于该租户的缴租记录
-                KryptonMessageBox.Show("此条[收租明细信息]非当前租户协议期内记录，无法删除！");
+                KryptonMessageBox.Show("此条[收租明细信息]非当前租户协议期内记录，无法删除！\r\n<历史租户的收租明细记录无法直接删除，只有先删除相关的历史出租记录，那么相关历史协议期内的收租明细会自动清除。>");
                 e.Cancel = true;
                 return;
             }
             if (entity.起付日期 != recentTime)
             {
                 //非当前租户最近记录
-                KryptonMessageBox.Show("此条[收租明细信息]非当前租户最近一条记录，无法删除！");
+                KryptonMessageBox.Show("此条[收租明细信息]非当前租户最近一条记录，无法删除！\r\n<收租明细里的记录和之前的记录会相互关联并影响统计结果（例如：水电气止码、相关费用、应付金额等信息），所以只能针对当前租户的最近一次记录进行依次删除。>");
                 e.Cancel = true;
                 return;
             }
