@@ -117,9 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="kryptonWrapLabel1.Text" xml:space="preserve">
-    <value>1、【客房】包含当前租户相关信息（协议期内不能调租），【退租】和【续租】后当前租户相关信息转到【客房出租历史记录】里（一般周期性缴租不会），供日后查阅、数据分析用。
-2、【客房出租历史记录】的“状态”指哪种状态下，转入历史记录的。分为：“续租”、“正常退租”、“提前退租”、“逾期退租”。
-3、下面的【客房出租历史记录】，仅能作“删除”操作，删除某条出租历史记录后，相关的【客房收租明细】信息也自动删除。</value>
-  </data>
+  <metadata name="客房出租历史记录BindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="客房.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>
