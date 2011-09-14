@@ -510,7 +510,7 @@ namespace Landlord2
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
             {
                 客房 kf = treeView1.SelectedNode.Tag as 客房;
-                if (string.IsNullOrEmpty(kf.租户))
+                if (string.IsNullOrEmpty(kf.租户))//未租
                     return;
                 if (kf.期止 < DateTime.Now)//已租，协议到期，请续租或退租
                 {

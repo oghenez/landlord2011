@@ -82,10 +82,16 @@ namespace Landlord2.UI
 
         private void kryptonDataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            //只允许删除
             客房出租历史记录 entity = 客房出租历史记录BindingSource.Current as 客房出租历史记录;
             客房 kf = entity.客房;
+            /*只允许删除“历史”客户的记录。因为[续租]后当前租户相关租房信息转到‘客房出租历史记录’表里，那么如果
+              欲删除的记录是当前客户上次续租的合约记录的话，以后的退租操作无法正常进行（退租时要计算该客户整个
+              签约期内的款项、押金等等，多退少补）。*/
+            //1.
 
+
+            //删除某条出租历史记录后，相关的【客房收租明细】信息也自动删除。
+            
         }
     }
 }

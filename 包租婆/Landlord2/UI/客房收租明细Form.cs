@@ -157,7 +157,7 @@ namespace Landlord2.UI
             //只允许删除---该租户协议租期内，最近的一条记录
             客房租金明细 entity = 客房租金明细BindingSource.Current as 客房租金明细;
             DateTime recentTime = 客房租金明细.GetRentDetails(entity.客房ID).Max(n => n.起付日期);
-            if (recentTime <= entity.客房.期始)
+            if (recentTime <= entity.客房.期始)//-----有问题：假设此时客房没租户，意味着没期始时间。
             {
                 //不属于该租户的缴租记录
                 KryptonMessageBox.Show("此条[收租明细信息]非当前租户协议期内记录，无法删除！\r\n<历史租户的收租明细记录无法直接删除，只有先删除相关的历史出租记录，那么相关历史协议期内的收租明细会自动清除。>");
