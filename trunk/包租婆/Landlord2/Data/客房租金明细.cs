@@ -1,6 +1,7 @@
 using System;
 using System.Data.Objects;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Landlord2.Data
 {
@@ -54,6 +55,24 @@ namespace Landlord2.Data
                 result = compiledQuery1.Invoke(Main.context, (Guid)客房ID);
             }
             return result;
+        }
+
+        /// <summary>
+        /// 查询当前客房租户的所有租金明细,按起付日期逆序排列（包括之前续租的）
+        /// </summary>
+        /// <param name="客房"></param>
+        /// <returns></returns>
+        public static List<客房租金明细> GetRentDetails_Current(客房 kf)
+        {
+            if(string.IsNullOrEmpty(kf.租户))
+                return new List<客房租金明细>();
+            
+            //找到该客户最初的协议期始时间（最开始交租时间）
+            DateTime begin = kf.客房出租历史记录.
+                Where(m=>m.租户 == kf.租户 && m.身份证号 == kf.身份证号).
+                Min(n=>n.期始);
+            return kf.客房租金明细.Where(m=>m.起付日期 >= begin.Date).
+                OrderByDescending(m => m.起付日期).ToList();
         }
         #endregion
     }

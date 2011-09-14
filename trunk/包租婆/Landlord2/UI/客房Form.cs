@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using Landlord2.Data;
 using System.Data.Objects;
+using System.Linq;
 
 namespace Landlord2.UI
 {
@@ -86,6 +87,28 @@ namespace Landlord2.UI
                 }
                 else
                 {
+                    //-----如果客房租户名或身份证变更，那么需同时更改[客房出租历史记录]里相关项。（判断同一个租户的关键依据<租户有可能同名同姓>）----------
+                    var kfModifies = Main.context.ObjectStateManager.GetObjectStateEntries(EntityState.Modified).First(m=>m.Entity.Equals(kf));
+                    string origin租户 = null;
+                    string origin身份证号 = null;
+                    if (kfModifies.GetModifiedProperties().Contains("租户"))
+                        origin租户 = kfModifies.OriginalValues["租户"].ToString();
+                    if (kfModifies.GetModifiedProperties().Contains("身份证号"))
+                        origin身份证号 = kfModifies.OriginalValues["身份证号"].ToString();
+                    if (origin租户 != null || origin身份证号 != null)//客房租户名或身份证有变动
+                    {
+                        if (origin租户 == null) //租户未更改
+                            origin租户 = kf.租户;
+                        if (origin身份证号 == null) //身份证号未更改
+                            origin身份证号 = kf.身份证号;
+                        //通过origin值查询历史记录，看有无此租户对应记录
+                        foreach (var history in kf.客房出租历史记录.Where(m => m.租户 == origin租户 && m.身份证号 == origin身份证号))
+                        {
+                            history.身份证号 = kf.身份证号;
+                            history.租户 = kf.租户;
+                        }
+                    }
+                                        
                     string msg;
                     if (Helper.saveData(kf, out msg))
                     {
