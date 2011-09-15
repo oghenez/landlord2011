@@ -68,9 +68,10 @@ namespace Landlord2.Data
                 return new List<客房租金明细>();
             
             //找到该客户最初的协议期始时间（最开始交租时间）
-            DateTime begin = kf.客房出租历史记录.
-                Where(m=>m.租户 == kf.租户 && m.身份证号 == kf.身份证号).
-                Min(n=>n.期始);
+            var histories = kf.客房出租历史记录.
+                Where(m => m.租户 == kf.租户 && m.身份证号 == kf.身份证号);
+            DateTime begin = histories.Count() == 0 ? kf.期始.Value : histories.Min(n => n.期始); 
+
             return kf.客房租金明细.Where(m=>m.起付日期 >= begin.Date).
                 OrderByDescending(m => m.起付日期).ToList();
         }
