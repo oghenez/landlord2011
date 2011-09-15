@@ -531,9 +531,18 @@ namespace Landlord2
             {
                 sz.ShowDialog(this);
             }
-        }     
-        
+        }
+
+        private void kfBtnRentHistory_Click(object sender, EventArgs e)
+        {
+            //客房出租历史记录
+            using (客房出租历史记录Form collectRent = new 客房出租历史记录Form())
+            {
+                collectRent.ShowDialog(this);
+            }
+        }
         #endregion
+
 
 
 
