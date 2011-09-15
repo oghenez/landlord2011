@@ -95,6 +95,7 @@
             this.kfBtnRent = new System.Windows.Forms.ToolStripButton();
             this.kfBtnStopRent = new System.Windows.Forms.ToolStripButton();
             this.kfBtnContinueRent = new System.Windows.Forms.ToolStripButton();
+            this.kfBtnRentHistory = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.kfBtnCollectRent = new System.Windows.Forms.ToolStripButton();
             this.kfBtnCollectRentDetail = new System.Windows.Forms.ToolStripButton();
@@ -103,7 +104,6 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
             this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.kfBtnRentHistory = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -131,12 +131,15 @@
             // kryptonManager1
             // 
             this.kryptonManager1.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.SparkleBlue;
+            this.kryptonManager1.GlobalStrings.Abort = "退出";
             this.kryptonManager1.GlobalStrings.Cancel = "取消";
             this.kryptonManager1.GlobalStrings.Close = "关闭";
             this.kryptonManager1.GlobalStrings.Ignore = "忽略";
+            this.kryptonManager1.GlobalStrings.No = "否";
             this.kryptonManager1.GlobalStrings.OK = "确定";
             this.kryptonManager1.GlobalStrings.Retry = "重试";
             this.kryptonManager1.GlobalStrings.Today = "今日";
+            this.kryptonManager1.GlobalStrings.Yes = "是";
             // 
             // menuStrip1
             // 
@@ -616,7 +619,7 @@
             this.kfBtnCollectRentDetail});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(893, 70);
+            this.toolStrip1.Size = new System.Drawing.Size(862, 70);
             this.toolStrip1.TabIndex = 0;
             // 
             // yfBtnAdd
@@ -753,6 +756,17 @@
             this.kfBtnContinueRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.kfBtnContinueRent.ToolTipText = "客房续租";
             // 
+            // kfBtnRentHistory
+            // 
+            this.kfBtnRentHistory.Image = global::Landlord2.Properties.Resources.info;
+            this.kfBtnRentHistory.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnRentHistory.Name = "kfBtnRentHistory";
+            this.kfBtnRentHistory.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnRentHistory.Text = "出租历史";
+            this.kfBtnRentHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnRentHistory.ToolTipText = "所有源房相关缴费的明细";
+            this.kfBtnRentHistory.Click += new System.EventHandler(this.kfBtnRentHistory_Click);
+            // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
@@ -819,17 +833,6 @@
             // 
             this.AlarmTimer1.Interval = 500;
             this.AlarmTimer1.Tick += new System.EventHandler(this.AlarmTimer1_Tick);
-            // 
-            // kfBtnRentHistory
-            // 
-            this.kfBtnRentHistory.Image = global::Landlord2.Properties.Resources.info;
-            this.kfBtnRentHistory.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.kfBtnRentHistory.Name = "kfBtnRentHistory";
-            this.kfBtnRentHistory.Size = new System.Drawing.Size(59, 67);
-            this.kfBtnRentHistory.Text = "出租历史";
-            this.kfBtnRentHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.kfBtnRentHistory.ToolTipText = "所有源房相关缴费的明细";
-            this.kfBtnRentHistory.Click += new System.EventHandler(this.kfBtnRentHistory_Click);
             // 
             // Main
             // 

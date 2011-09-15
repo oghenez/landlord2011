@@ -148,7 +148,8 @@ namespace Landlord2.UI
             if (e.ColumnIndex == 0)//首列
             {
                 客房 k = e.Value as 客房;
-                e.Value = string.Format("[{0}] - {1}", k.源房.房名, k.命名);
+                if (k != null) 
+                    e.Value = string.Format("[{0}] - {1}", k.源房.房名, k.命名);
             }
         }
 

@@ -23,6 +23,12 @@ namespace Landlord2.UI
         /// 是否首次收租，首次收租要交押金
         /// </summary>
         private bool isFirstTime;
+
+        /// <summary>
+        /// 当前客房租户所有余款（实付金额-应付金额），正数表示‘租户多付’，负数表示‘欠款’。
+        /// </summary>
+        private decimal balancePayment = 0.00M;
+
         public 客房收租Form(客房 kf)
         {
             InitializeComponent();
@@ -66,6 +72,12 @@ namespace Landlord2.UI
                 collectRent.气止码 = kf.客房租金明细.Max(m => m.气止码);
                 押金Label1.ForeColor = Color.Gray ;//非首次收租，押金置灰。
                 toolTip1.SetToolTip(押金Label1, "非首次收租不涉及押金。");
+
+                //非初次交租，计算该租户历史余款
+                foreach (var rent in orderedList)
+                {
+                    balancePayment += rent.实付金额 - rent.应付金额;
+                }
             }
             collectRent.止付日期 = collectRent.起付日期.AddMonths(kf.支付月数).AddDays(-1);
             //当协议的期止并非刚好间隔支付月数时，协议期内最后一次收租的止付日期需要调整，再计算租金
@@ -82,9 +94,14 @@ namespace Landlord2.UI
                     //剩余天数不足一个月的，按1个月收租。
                     realMonthNum++;
                     collectRent.止付日期 = kf.期止.Value.Date;
+                    止付日期Label1.ForeColor = Color.Red;
+                    toolTip1.SetToolTip(止付日期Label1, "尾期天数不足1个月，按1个月计算。实收租金可与租户协商而定。");
                 }
             }
             //----------
+            nud水费.Minimum = (decimal)collectRent.水止码;
+            nud电费.Minimum = (decimal)collectRent.电止码;
+            nud气费.Minimum = (decimal)collectRent.气止码;
             水始码Label1.Text = collectRent.水止码.ToString();
             电始码Label1.Text = collectRent.电止码.ToString();
             气始码Label1.Text = collectRent.气止码.ToString();
@@ -93,6 +110,7 @@ namespace Landlord2.UI
             月物业费Label1.Text = (kf.月物业费 * realMonthNum).ToString("F2");
             月厨房费Label1.Text = (kf.月厨房费 * realMonthNum).ToString("F2");
             押金Label1.Text = kf.押金.ToString("F2");
+            lblBalance.Text = balancePayment.ToString("F2");
 
             CaculateSum();
 
@@ -114,16 +132,19 @@ namespace Landlord2.UI
                 sum += kf.押金;//首次收租要交押金
             //...........
             decimal temp= Helper.calculate水费(kf.源房.阶梯水价, ((decimal)collectRent.水止码 - Convert.ToDecimal(水始码Label1.Text)));
-            lbl水费.Text = temp.ToString();
+            lbl水费.Text = temp.ToString("F2");
             sum += temp;
 
             temp = Helper.calculate电费(kf.源房.阶梯电价, ((decimal)collectRent.电止码 - Convert.ToDecimal(电始码Label1.Text)));
-            lbl电费.Text = temp.ToString();
+            lbl电费.Text = temp.ToString("F2");
             sum += temp;
 
             temp = (decimal)kf.源房.气单价 * ((decimal)collectRent.气止码 - Convert.ToDecimal(气始码Label1.Text));
-            lbl气费.Text = temp.ToString();
+            lbl气费.Text = temp.ToString("F2");
             sum += temp;
+
+            //考虑历史余额
+            sum -= balancePayment;
             collectRent.应付金额 = sum;
         }
         private void 客房收租Form_Load(object sender, EventArgs e)
@@ -143,7 +164,7 @@ namespace Landlord2.UI
         {
             Rectangle r = e.CellBounds;
 
-            using (Pen pen = new Pen(Color.DarkGray, 1))
+            using (Pen pen = new Pen(Color.DimGray, 1))
             {
                 pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
 
@@ -218,6 +239,15 @@ namespace Landlord2.UI
                 KryptonMessageBox.Show(msg, "失败");
             }
 
+        }
+
+        private void 客房收租Form_Shown(object sender, EventArgs e)
+        {
+            if (collectRent.起付日期 > kf.期止.Value.Date)
+            {
+                KryptonMessageBox.Show("租户协议期内租金已全部收讫，请先【续租】！");
+                Close();
+            }
         }
     
 

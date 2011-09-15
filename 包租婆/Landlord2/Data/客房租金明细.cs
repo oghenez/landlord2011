@@ -75,6 +75,7 @@ namespace Landlord2.Data
             return kf.客房租金明细.Where(m=>m.起付日期 >= begin.Date).
                 OrderByDescending(m => m.起付日期).ToList();
         }
+
         #endregion
     }
 
