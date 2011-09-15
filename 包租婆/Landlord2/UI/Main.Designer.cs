@@ -103,6 +103,7 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
             this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
+            this.kfBtnRentHistory = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -609,12 +610,13 @@
             this.kfBtnRent,
             this.kfBtnStopRent,
             this.kfBtnContinueRent,
+            this.kfBtnRentHistory,
             this.toolStripSeparator8,
             this.kfBtnCollectRent,
             this.kfBtnCollectRentDetail});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(834, 70);
+            this.toolStrip1.Size = new System.Drawing.Size(893, 70);
             this.toolStrip1.TabIndex = 0;
             // 
             // yfBtnAdd
@@ -818,6 +820,17 @@
             this.AlarmTimer1.Interval = 500;
             this.AlarmTimer1.Tick += new System.EventHandler(this.AlarmTimer1_Tick);
             // 
+            // kfBtnRentHistory
+            // 
+            this.kfBtnRentHistory.Image = global::Landlord2.Properties.Resources.info;
+            this.kfBtnRentHistory.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnRentHistory.Name = "kfBtnRentHistory";
+            this.kfBtnRentHistory.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnRentHistory.Text = "出租历史";
+            this.kfBtnRentHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnRentHistory.ToolTipText = "所有源房相关缴费的明细";
+            this.kfBtnRentHistory.Click += new System.EventHandler(this.kfBtnRentHistory_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -939,6 +952,7 @@
         private System.Windows.Forms.ToolStripButton kfBtnContinueRent;
         private System.Windows.Forms.ToolStripButton kfBtnCollectRent;
         private System.Windows.Forms.ToolStripButton kfBtnCollectRentDetail;
+        private System.Windows.Forms.ToolStripButton kfBtnRentHistory;
     }
 }
 
