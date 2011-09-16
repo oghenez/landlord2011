@@ -38,7 +38,7 @@ namespace Landlord2.Data
 
         /// <summary>
         ///  [调用预编译查询]查询客房租金明细 - 默认按起付日期逆序排列
-        ///  1.查询所有源房缴费明细 - GetRentDetails(null)
+        ///  1.查询所有客房租金明细 - GetRentDetails(null)
         ///  2.根据客房ID过滤 - GetRentDetails(客房ID, null)
         /// </summary>
         /// <param name="客房ID"></param>
@@ -76,6 +76,22 @@ namespace Landlord2.Data
                 OrderByDescending(m => m.起付日期).ToList();
         }
 
+        /// <summary>
+        /// 查询当前客房租户的当前协议期内的所有租金明细,按起付日期逆序排列（不包括之前续租的）
+        /// </summary>
+        /// <param name="客房"></param>
+        /// <returns></returns>
+        public static List<客房租金明细> GetRentDetails_Current2(客房 kf)
+        {
+            if (string.IsNullOrEmpty(kf.租户))
+                return new List<客房租金明细>();
+
+            //找到该客户当前协议期始时间（当前协议期最开始交租时间）
+            DateTime begin = kf.期始.Value;
+
+            return kf.客房租金明细.Where(m => m.起付日期 >= begin.Date).
+                OrderByDescending(m => m.起付日期).ToList();
+        }
         #endregion
     }
 

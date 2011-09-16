@@ -147,7 +147,7 @@
             // 
             付款日期Label.AutoSize = true;
             付款日期Label.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            付款日期Label.Location = new System.Drawing.Point(516, 46);
+            付款日期Label.Location = new System.Drawing.Point(523, 46);
             付款日期Label.Name = "付款日期Label";
             付款日期Label.Size = new System.Drawing.Size(70, 14);
             付款日期Label.TabIndex = 7;
@@ -180,7 +180,7 @@
             // 付款人Label
             // 
             付款人Label.AutoSize = true;
-            付款人Label.Location = new System.Drawing.Point(41, 211);
+            付款人Label.Location = new System.Drawing.Point(30, 211);
             付款人Label.Name = "付款人Label";
             付款人Label.Size = new System.Drawing.Size(47, 12);
             付款人Label.TabIndex = 19;
@@ -305,7 +305,7 @@
             // 
             租户Label.AutoSize = true;
             租户Label.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            租户Label.Location = new System.Drawing.Point(46, 46);
+            租户Label.Location = new System.Drawing.Point(35, 46);
             租户Label.Name = "租户Label";
             租户Label.Size = new System.Drawing.Size(42, 14);
             租户Label.TabIndex = 38;
@@ -363,7 +363,7 @@
             // kryptonDateTimePicker2
             // 
             this.kryptonDateTimePicker2.CalendarTodayDate = new System.DateTime(2011, 9, 10, 0, 0, 0, 0);
-            this.kryptonDateTimePicker2.Location = new System.Drawing.Point(588, 42);
+            this.kryptonDateTimePicker2.Location = new System.Drawing.Point(595, 42);
             this.kryptonDateTimePicker2.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
             this.kryptonDateTimePicker2.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.kryptonDateTimePicker2.Name = "kryptonDateTimePicker2";
@@ -439,7 +439,7 @@
             // kryptonTextBox1
             // 
             this.kryptonTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房租金明细BindingSource, "付款人", true));
-            this.kryptonTextBox1.Location = new System.Drawing.Point(92, 207);
+            this.kryptonTextBox1.Location = new System.Drawing.Point(82, 207);
             this.kryptonTextBox1.Name = "kryptonTextBox1";
             this.kryptonTextBox1.Size = new System.Drawing.Size(80, 20);
             this.kryptonTextBox1.TabIndex = 1;
@@ -908,7 +908,7 @@
             // 
             this.租户Label1.AutoSize = true;
             this.租户Label1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.租户Label1.Location = new System.Drawing.Point(89, 46);
+            this.租户Label1.Location = new System.Drawing.Point(80, 46);
             this.租户Label1.Name = "租户Label1";
             this.租户Label1.Size = new System.Drawing.Size(63, 14);
             this.租户Label1.TabIndex = 39;
