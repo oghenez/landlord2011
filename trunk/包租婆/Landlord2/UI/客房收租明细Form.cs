@@ -139,22 +139,34 @@ namespace Landlord2.UI
 
         private void kryptonDataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            //只允许删除---该租户协议租期内，最近的一条记录
+            //只允许删除---只能针对当前租户，删除某条记录，则该记录起的后续记录都将被删除！
             客房租金明细 entity = 客房租金明细BindingSource.Current as 客房租金明细;
-            DateTime recentTime = 客房租金明细.GetRentDetails(entity.客房ID).Max(n => n.起付日期);
-            if (recentTime <= entity.客房.期始)//-----有问题：假设此时客房没租户，意味着没期始时间。
+            List<客房租金明细> currentList = 客房租金明细.GetRentDetails_Current2(entity.客房);
+            if (!currentList.Contains(entity))
             {
-                //不属于该租户的缴租记录
-                KryptonMessageBox.Show("此条[收租明细信息]非当前租户协议期内记录，无法删除！\r\n<历史租户的收租明细记录无法直接删除，只有先删除相关的历史出租记录，那么相关历史协议期内的收租明细会自动清除。>");
+                string msg;
+                if (string.IsNullOrEmpty(entity.客房.租户))
+                    msg = "此条【收租明细信息】属于历史租户历史协议期内信息，无法删除！（详见上方操作说明）";
+                else
+                    msg = string.Format("此条【收租明细信息】非‘当前租户[{0}]、当前协议期内[{1}]’的记录，无法删除！",
+                        entity.客房.租户, 
+                        entity.客房.期始.Value.ToShortDateString() + "~" + entity.客房.期止.Value.ToShortDateString());
+                KryptonMessageBox.Show(msg);
                 e.Cancel = true;
-                return;
             }
-            if (entity.起付日期 != recentTime)
+            else
             {
-                //非当前租户最近记录
-                KryptonMessageBox.Show("此条[收租明细信息]非当前租户最近一条记录，无法删除！\r\n<收租明细里的记录和之前的记录会相互关联并影响统计结果（例如：水电气止码、相关费用、应付金额等信息），所以只能针对当前租户的最近一次记录进行依次删除。>");
-                e.Cancel = true;
-                return;
+                int num = currentList.Count(m => m.起付日期 > entity.起付日期);
+                string msg = string.Format("删除此条记录，该记录的后续记录[{0}条]都将被删除！(详见上方操作说明)\r\n是否删除？",num);
+                if (KryptonMessageBox.Show(msg,"删除确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, 
+                    MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    //////////////////////////////////////////
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
             }
         }
         
