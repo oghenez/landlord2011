@@ -88,17 +88,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.月厨房费Label1 = new System.Windows.Forms.Label();
             this.月宽带费Label1 = new System.Windows.Forms.Label();
-            this.押金Label1 = new System.Windows.Forms.Label();
             this.电始码Label1 = new System.Windows.Forms.Label();
             this.lbl电费 = new System.Windows.Forms.Label();
             this.月物业费Label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.lblBalance = new System.Windows.Forms.Label();
             this.气始码Label1 = new System.Windows.Forms.Label();
             this.lbl气费 = new System.Windows.Forms.Label();
-            this.txtSum = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonSeparator1 = new ComponentFactory.Krypton.Toolkit.KryptonSeparator();
+            this.月厨房费Label1 = new System.Windows.Forms.Label();
+            this.押金Label1 = new System.Windows.Forms.Label();
             this.起付日期Label1 = new System.Windows.Forms.Label();
             this.止付日期Label1 = new System.Windows.Forms.Label();
             this.租户Label1 = new System.Windows.Forms.Label();
@@ -159,11 +159,11 @@
             应付金额Label.AutoSize = true;
             应付金额Label.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             应付金额Label.ForeColor = System.Drawing.Color.Red;
-            应付金额Label.Location = new System.Drawing.Point(333, 106);
+            应付金额Label.Location = new System.Drawing.Point(506, 42);
             应付金额Label.Name = "应付金额Label";
             应付金额Label.Size = new System.Drawing.Size(64, 12);
             应付金额Label.TabIndex = 15;
-            应付金额Label.Text = "应付金额:";
+            应付金额Label.Text = "本期应付:";
             // 
             // 实付金额Label
             // 
@@ -171,7 +171,7 @@
             实付金额Label.AutoSize = true;
             实付金额Label.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             实付金额Label.ForeColor = System.Drawing.Color.Red;
-            实付金额Label.Location = new System.Drawing.Point(513, 106);
+            实付金额Label.Location = new System.Drawing.Point(506, 106);
             实付金额Label.Name = "实付金额Label";
             实付金额Label.Size = new System.Drawing.Size(64, 12);
             实付金额Label.TabIndex = 17;
@@ -209,7 +209,7 @@
             月租金Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
             月租金Label.AutoSize = true;
             月租金Label.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            月租金Label.Location = new System.Drawing.Point(352, 9);
+            月租金Label.Location = new System.Drawing.Point(345, 9);
             月租金Label.Name = "月租金Label";
             月租金Label.Size = new System.Drawing.Size(45, 14);
             月租金Label.TabIndex = 28;
@@ -220,7 +220,7 @@
             月宽带费Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
             月宽带费Label.AutoSize = true;
             月宽带费Label.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            月宽带费Label.Location = new System.Drawing.Point(337, 41);
+            月宽带费Label.Location = new System.Drawing.Point(330, 41);
             月宽带费Label.Name = "月宽带费Label";
             月宽带费Label.Size = new System.Drawing.Size(60, 14);
             月宽带费Label.TabIndex = 28;
@@ -231,7 +231,7 @@
             月物业费Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
             月物业费Label.AutoSize = true;
             月物业费Label.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            月物业费Label.Location = new System.Drawing.Point(337, 73);
+            月物业费Label.Location = new System.Drawing.Point(330, 73);
             月物业费Label.Name = "月物业费Label";
             月物业费Label.Size = new System.Drawing.Size(60, 14);
             月物业费Label.TabIndex = 28;
@@ -242,7 +242,7 @@
             月厨房费Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
             月厨房费Label.AutoSize = true;
             月厨房费Label.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            月厨房费Label.Location = new System.Drawing.Point(517, 9);
+            月厨房费Label.Location = new System.Drawing.Point(330, 105);
             月厨房费Label.Name = "月厨房费Label";
             月厨房费Label.Size = new System.Drawing.Size(60, 14);
             月厨房费Label.TabIndex = 28;
@@ -316,7 +316,7 @@
             押金Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
             押金Label.AutoSize = true;
             押金Label.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold);
-            押金Label.Location = new System.Drawing.Point(532, 41);
+            押金Label.Location = new System.Drawing.Point(525, 9);
             押金Label.Name = "押金Label";
             押金Label.Size = new System.Drawing.Size(45, 14);
             押金Label.TabIndex = 39;
@@ -326,10 +326,11 @@
             // 
             历史余额label.Anchor = System.Windows.Forms.AnchorStyles.Right;
             历史余额label.AutoSize = true;
-            历史余额label.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold);
-            历史余额label.Location = new System.Drawing.Point(502, 73);
+            历史余额label.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            历史余额label.ForeColor = System.Drawing.Color.Green;
+            历史余额label.Location = new System.Drawing.Point(506, 74);
             历史余额label.Name = "历史余额label";
-            历史余额label.Size = new System.Drawing.Size(75, 14);
+            历史余额label.Size = new System.Drawing.Size(64, 12);
             历史余额label.TabIndex = 39;
             历史余额label.Text = "历史余额:";
             // 
@@ -419,17 +420,17 @@
             // 
             // kryptonNumericUpDown5
             // 
-            this.kryptonNumericUpDown5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.kryptonNumericUpDown5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonNumericUpDown5.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.客房租金明细BindingSource, "实付金额", true));
             this.kryptonNumericUpDown5.DecimalPlaces = 2;
-            this.kryptonNumericUpDown5.Location = new System.Drawing.Point(583, 101);
+            this.kryptonNumericUpDown5.Location = new System.Drawing.Point(576, 101);
             this.kryptonNumericUpDown5.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.kryptonNumericUpDown5.Name = "kryptonNumericUpDown5";
-            this.kryptonNumericUpDown5.Size = new System.Drawing.Size(80, 21);
+            this.kryptonNumericUpDown5.Size = new System.Drawing.Size(91, 21);
             this.kryptonNumericUpDown5.StateCommon.Content.Color1 = System.Drawing.Color.Red;
             this.kryptonNumericUpDown5.StateCommon.Content.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonNumericUpDown5.TabIndex = 3;
@@ -640,12 +641,11 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.tableLayoutPanel1.Controls.Add(月厨房费Label, 7, 0);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
             this.tableLayoutPanel1.Controls.Add(月租金Label, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.月租金Label1, 6, 0);
             this.tableLayoutPanel1.Controls.Add(水始码Label, 0, 1);
@@ -655,11 +655,8 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.月厨房费Label1, 8, 0);
             this.tableLayoutPanel1.Controls.Add(月宽带费Label, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.月宽带费Label1, 6, 1);
-            this.tableLayoutPanel1.Controls.Add(押金Label, 7, 1);
-            this.tableLayoutPanel1.Controls.Add(this.押金Label1, 8, 1);
             this.tableLayoutPanel1.Controls.Add(电始码Label, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.电始码Label1, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.nud电费, 2, 2);
@@ -667,16 +664,20 @@
             this.tableLayoutPanel1.Controls.Add(月物业费Label, 5, 2);
             this.tableLayoutPanel1.Controls.Add(this.月物业费Label1, 6, 2);
             this.tableLayoutPanel1.Controls.Add(历史余额label, 7, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 8, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblBalance, 8, 2);
             this.tableLayoutPanel1.Controls.Add(气始码Label, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.气始码Label1, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.nud气费, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.lbl气费, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(应付金额Label, 5, 3);
-            this.tableLayoutPanel1.Controls.Add(this.txtSum, 6, 3);
             this.tableLayoutPanel1.Controls.Add(实付金额Label, 7, 3);
             this.tableLayoutPanel1.Controls.Add(this.kryptonNumericUpDown5, 8, 3);
             this.tableLayoutPanel1.Controls.Add(this.kryptonSeparator1, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.月厨房费Label1, 6, 3);
+            this.tableLayoutPanel1.Controls.Add(月厨房费Label, 5, 3);
+            this.tableLayoutPanel1.Controls.Add(押金Label, 7, 0);
+            this.tableLayoutPanel1.Controls.Add(应付金额Label, 7, 1);
+            this.tableLayoutPanel1.Controls.Add(this.押金Label1, 8, 0);
             this.tableLayoutPanel1.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(35, 69);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -695,7 +696,7 @@
             this.月租金Label1.AutoSize = true;
             this.月租金Label1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.月租金Label1.ForeColor = System.Drawing.Color.Blue;
-            this.月租金Label1.Location = new System.Drawing.Point(472, 9);
+            this.月租金Label1.Location = new System.Drawing.Point(465, 9);
             this.月租金Label1.Name = "月租金Label1";
             this.月租金Label1.Size = new System.Drawing.Size(15, 14);
             this.月租金Label1.TabIndex = 29;
@@ -753,41 +754,17 @@
             this.label3.TabIndex = 33;
             this.label3.Text = "金额";
             // 
-            // 月厨房费Label1
-            // 
-            this.月厨房费Label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.月厨房费Label1.AutoSize = true;
-            this.月厨房费Label1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.月厨房费Label1.ForeColor = System.Drawing.Color.Blue;
-            this.月厨房费Label1.Location = new System.Drawing.Point(652, 9);
-            this.月厨房费Label1.Name = "月厨房费Label1";
-            this.月厨房费Label1.Size = new System.Drawing.Size(15, 14);
-            this.月厨房费Label1.TabIndex = 29;
-            this.月厨房费Label1.Text = "0";
-            // 
             // 月宽带费Label1
             // 
             this.月宽带费Label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.月宽带费Label1.AutoSize = true;
             this.月宽带费Label1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.月宽带费Label1.ForeColor = System.Drawing.Color.Blue;
-            this.月宽带费Label1.Location = new System.Drawing.Point(472, 41);
+            this.月宽带费Label1.Location = new System.Drawing.Point(465, 41);
             this.月宽带费Label1.Name = "月宽带费Label1";
             this.月宽带费Label1.Size = new System.Drawing.Size(15, 14);
             this.月宽带费Label1.TabIndex = 29;
             this.月宽带费Label1.Text = "0";
-            // 
-            // 押金Label1
-            // 
-            this.押金Label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.押金Label1.AutoSize = true;
-            this.押金Label1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold);
-            this.押金Label1.ForeColor = System.Drawing.Color.Blue;
-            this.押金Label1.Location = new System.Drawing.Point(652, 41);
-            this.押金Label1.Name = "押金Label1";
-            this.押金Label1.Size = new System.Drawing.Size(15, 14);
-            this.押金Label1.TabIndex = 40;
-            this.押金Label1.Text = "0";
             // 
             // 电始码Label1
             // 
@@ -817,21 +794,35 @@
             this.月物业费Label1.AutoSize = true;
             this.月物业费Label1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.月物业费Label1.ForeColor = System.Drawing.Color.Blue;
-            this.月物业费Label1.Location = new System.Drawing.Point(472, 73);
+            this.月物业费Label1.Location = new System.Drawing.Point(465, 73);
             this.月物业费Label1.Name = "月物业费Label1";
             this.月物业费Label1.Size = new System.Drawing.Size(15, 14);
             this.月物业费Label1.TabIndex = 29;
             this.月物业费Label1.Text = "0";
             // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label4.AutoSize = true;
+            this.label4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房租金明细BindingSource, "应付金额", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "F2"));
+            this.label4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(615, 41);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(52, 14);
+            this.label4.TabIndex = 32;
+            this.label4.Text = "12345";
+            this.toolTip1.SetToolTip(this.label4, "[历史余额]不计算在内");
+            // 
             // lblBalance
             // 
             this.lblBalance.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblBalance.AutoSize = true;
-            this.lblBalance.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold);
+            this.lblBalance.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
             this.lblBalance.ForeColor = System.Drawing.Color.Green;
-            this.lblBalance.Location = new System.Drawing.Point(652, 73);
+            this.lblBalance.Location = new System.Drawing.Point(651, 73);
             this.lblBalance.Name = "lblBalance";
-            this.lblBalance.Size = new System.Drawing.Size(15, 14);
+            this.lblBalance.Size = new System.Drawing.Size(16, 14);
             this.lblBalance.TabIndex = 40;
             this.lblBalance.Text = "0";
             // 
@@ -857,26 +848,39 @@
             this.lbl气费.TabIndex = 36;
             this.lbl气费.Text = "0";
             // 
-            // txtSum
-            // 
-            this.txtSum.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtSum.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房租金明细BindingSource, "应付金额", true));
-            this.txtSum.Location = new System.Drawing.Point(403, 102);
-            this.txtSum.Name = "txtSum";
-            this.txtSum.ReadOnly = true;
-            this.txtSum.Size = new System.Drawing.Size(80, 19);
-            this.txtSum.StateCommon.Content.Color1 = System.Drawing.Color.Red;
-            this.txtSum.StateCommon.Content.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSum.TabIndex = 20;
-            // 
             // kryptonSeparator1
             // 
-            this.kryptonSeparator1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.kryptonSeparator1.Location = new System.Drawing.Point(298, 3);
+            this.kryptonSeparator1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonSeparator1.Location = new System.Drawing.Point(295, 0);
+            this.kryptonSeparator1.Margin = new System.Windows.Forms.Padding(0);
             this.kryptonSeparator1.Name = "kryptonSeparator1";
             this.tableLayoutPanel1.SetRowSpan(this.kryptonSeparator1, 4);
-            this.kryptonSeparator1.Size = new System.Drawing.Size(9, 122);
+            this.kryptonSeparator1.Size = new System.Drawing.Size(8, 128);
             this.kryptonSeparator1.TabIndex = 41;
+            // 
+            // 月厨房费Label1
+            // 
+            this.月厨房费Label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.月厨房费Label1.AutoSize = true;
+            this.月厨房费Label1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.月厨房费Label1.ForeColor = System.Drawing.Color.Blue;
+            this.月厨房费Label1.Location = new System.Drawing.Point(465, 105);
+            this.月厨房费Label1.Name = "月厨房费Label1";
+            this.月厨房费Label1.Size = new System.Drawing.Size(15, 14);
+            this.月厨房费Label1.TabIndex = 29;
+            this.月厨房费Label1.Text = "0";
+            // 
+            // 押金Label1
+            // 
+            this.押金Label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.押金Label1.AutoSize = true;
+            this.押金Label1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold);
+            this.押金Label1.ForeColor = System.Drawing.Color.Blue;
+            this.押金Label1.Location = new System.Drawing.Point(652, 9);
+            this.押金Label1.Name = "押金Label1";
+            this.押金Label1.Size = new System.Drawing.Size(15, 14);
+            this.押金Label1.TabIndex = 40;
+            this.押金Label1.Text = "0";
             // 
             // 起付日期Label1
             // 
@@ -1118,7 +1122,6 @@
         private System.Windows.Forms.Label 起付日期Label1;
         private System.Windows.Forms.Label 止付日期Label1;
         private System.Windows.Forms.Label 租户Label1;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtSum;
         private System.Windows.Forms.DataGridViewTextBoxColumn 起付日期DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 止付日期DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 付款日期DataGridViewTextBoxColumn;
@@ -1134,5 +1137,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label lblBalance;
         private ComponentFactory.Krypton.Toolkit.KryptonSeparator kryptonSeparator1;
+        private System.Windows.Forms.Label label4;
     }
 }

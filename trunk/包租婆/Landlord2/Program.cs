@@ -14,7 +14,7 @@ namespace Landlord2
         [STAThread]
         static void Main()
         {
-            MessageBox.Show("BindingSource_CurrentItemChanged 调用次数过多");
+            MessageBox.Show("客房收租明细Form");
             //MessageBox.Show("当协议的期止并非刚好间隔支付月数时，协议期内最后一次收租的止付日期需要调整，再计算租金！");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
