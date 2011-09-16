@@ -105,22 +105,6 @@ namespace Landlord2.UI
             }
         }
 
-        private void 客房租金明细BindingSource_CurrentItemChanged(object sender, EventArgs e)
-        {
-            if (客房租金明细BindingSource.DataSource != null)
-            {
-                decimal total = 0.00M;
-                foreach (DataGridViewRow row in kryptonDataGridView1.Rows)
-                {
-                    object obj = row.Cells["实付金额DataGridViewTextBoxColumn"].Value;
-                    total += (decimal)obj;
-                }
-                labCountMoney.Text = string.Format("当前[实付金额] 合计：{0} 元", total);
-            }
-            else
-                labCountMoney.Text = string.Empty;
-        }
-
         private void llbKF_LinkClicked(object sender, EventArgs e)
         {
             using (客房选择Form form = new 客房选择Form(客房筛选.客房收租))
@@ -171,6 +155,40 @@ namespace Landlord2.UI
                 KryptonMessageBox.Show("此条[收租明细信息]非当前租户最近一条记录，无法删除！\r\n<收租明细里的记录和之前的记录会相互关联并影响统计结果（例如：水电气止码、相关费用、应付金额等信息），所以只能针对当前租户的最近一次记录进行依次删除。>");
                 e.Cancel = true;
                 return;
+            }
+        }
+        
+        private void CaculateSumMoney()
+        {
+            if (客房租金明细BindingSource.DataSource != null)
+            {
+                decimal total = 0.00M;
+                foreach (DataGridViewRow row in kryptonDataGridView1.Rows)
+                {
+                    object obj = row.Cells["实付金额DataGridViewTextBoxColumn"].Value;
+                    total += (decimal)obj;
+                }
+                labCountMoney.Text = string.Format("当前【实付金额】合计：{0} 元", total);
+            }
+            else
+                labCountMoney.Text = string.Empty;
+        }
+
+        private void 客房租金明细BindingSource_DataSourceChanged(object sender, EventArgs e)
+        {
+            CaculateSumMoney();
+        }
+
+        private void kryptonDataGridView1_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            CaculateSumMoney();
+        }
+
+        private void kryptonDataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 8)//实付金额更改
+            {
+                CaculateSumMoney();
             }
         }
     }

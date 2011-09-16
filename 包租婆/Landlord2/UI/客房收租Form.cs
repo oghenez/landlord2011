@@ -111,6 +111,7 @@ namespace Landlord2.UI
             月厨房费Label1.Text = (kf.月厨房费 * realMonthNum).ToString("F2");
             押金Label1.Text = kf.押金.ToString("F2");
             lblBalance.Text = balancePayment.ToString("F2");
+            lblBalance.ForeColor = balancePayment >= 0 ? Color.Green : Color.Red;//历史欠款的话，红色
 
             CaculateSum();
 
@@ -143,9 +144,10 @@ namespace Landlord2.UI
             lbl气费.Text = temp.ToString("F2");
             sum += temp;
 
-            //考虑历史余额
-            sum -= balancePayment;
             collectRent.应付金额 = sum;
+                        
+            //考虑历史余额
+            collectRent.实付金额 = sum - balancePayment;
         }
         private void 客房收租Form_Load(object sender, EventArgs e)
         {
@@ -245,6 +247,7 @@ namespace Landlord2.UI
         {
             if (collectRent.起付日期 > kf.期止.Value.Date)
             {
+                collectRent.止付日期 = DateTime.MaxValue;//这里显示最大值，以免造成误会。
                 KryptonMessageBox.Show("租户协议期内租金已全部收讫，请先【续租】！");
                 Close();
             }
