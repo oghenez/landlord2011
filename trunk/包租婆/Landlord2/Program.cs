@@ -14,8 +14,8 @@ namespace Landlord2
         [STAThread]
         static void Main()
         {
-            //MessageBox.Show("客房收租明细Form");
-            //MessageBox.Show("当协议的期止并非刚好间隔支付月数时，协议期内最后一次收租的止付日期需要调整，再计算租金！");
+            //MessageBox.Show("客房租金明细 基本搞定，同样调整缴费明细");
+            //MessageBox.Show("对于状态为deleted的实体，第二次查询同样会绑定到datagridview。（难道非要用local数据？或者每次savechanges前不能第二次查询？？？）");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

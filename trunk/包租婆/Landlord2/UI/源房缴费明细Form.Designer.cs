@@ -84,7 +84,7 @@
             // 
             this.源房缴费明细BindingSource.DataSource = typeof(Landlord2.Data.源房缴费明细);
             this.源房缴费明细BindingSource.Sort = "";
-            this.源房缴费明细BindingSource.CurrentItemChanged += new System.EventHandler(this.源房缴费明细BindingSource_CurrentItemChanged);
+            this.源房缴费明细BindingSource.DataSourceChanged += new System.EventHandler(this.源房缴费明细BindingSource_DataSourceChanged);
             // 
             // statusStrip1
             // 
@@ -321,7 +321,9 @@
             this.kryptonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.kryptonDataGridView1.Size = new System.Drawing.Size(844, 352);
             this.kryptonDataGridView1.TabIndex = 0;
+            this.kryptonDataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.kryptonDataGridView1_CellEndEdit);
             this.kryptonDataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.kryptonDataGridView1_CellMouseDoubleClick);
+            this.kryptonDataGridView1.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.kryptonDataGridView1_UserDeletedRow);
             // 
             // 源房Column
             // 

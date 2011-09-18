@@ -171,22 +171,6 @@ namespace Landlord2.UI
             }
         }
 
-        private void 源房缴费明细BindingSource_CurrentItemChanged(object sender, EventArgs e)
-        {
-            if (源房缴费明细BindingSource.DataSource != null)
-            {
-                decimal total = 0.00M;
-                foreach (DataGridViewRow row in kryptonDataGridView1.Rows)
-                {
-                    object obj = row.Cells["缴费金额DataGridViewTextBoxColumn"].Value;
-                    total += (decimal)obj;
-                }
-                labCountMoney.Text = string.Format("当前合计：{0} 元", total);
-            }
-            else
-                labCountMoney.Text = string.Empty;
-        }
-
         private void kryptonDataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //双击，编辑
@@ -202,5 +186,40 @@ namespace Landlord2.UI
                 }
             }
         }
+
+        private void CaculateSumMoney()
+        {
+            if (源房缴费明细BindingSource.DataSource != null)
+            {
+                decimal total = 0.00M;
+                foreach (DataGridViewRow row in kryptonDataGridView1.Rows)
+                {
+                    object obj = row.Cells["缴费金额DataGridViewTextBoxColumn"].Value;
+                    total += (decimal)obj;
+                }
+                labCountMoney.Text = string.Format("当前合计：{0} 元", total);
+            }
+            else
+                labCountMoney.Text = string.Empty;
+        }
+
+        private void 源房缴费明细BindingSource_DataSourceChanged(object sender, EventArgs e)
+        {
+            CaculateSumMoney();
+        }
+
+        private void kryptonDataGridView1_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            CaculateSumMoney();
+        }
+
+        private void kryptonDataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 3)//缴费金额更改
+            {
+                CaculateSumMoney();
+            }
+        }
+
     }
 }

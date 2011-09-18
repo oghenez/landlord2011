@@ -15,6 +15,7 @@ namespace Landlord2.UI
     public partial class 客房收租明细Form : KryptonForm
     {
         private 客房 kf;//当选择单套客房时所选择的客房
+        private IEnumerable<客房租金明细> willBeDeletedList;//临时存储，在用户删除某条记录后，该记录之前的欲删除记录集合
 
         public 客房收租明细Form()
         {
@@ -156,12 +157,17 @@ namespace Landlord2.UI
             }
             else
             {
-                int num = currentList.Count(m => m.起付日期 > entity.起付日期);
+                willBeDeletedList = currentList.Where(m => m.起付日期 > entity.起付日期);
+                int num = willBeDeletedList.Count();
                 string msg = string.Format("删除此条记录，该记录的后续记录[{0}条]都将被删除！(详见上方操作说明)\r\n是否删除？",num);
                 if (KryptonMessageBox.Show(msg,"删除确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, 
                     MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    //////////////////////////////////////////
+                    //删除后续记录不能写在这里，会又一次引发UserDeletingRow事件，将其放在UserDeletedRow中处理。
+                    //foreach (var o in laterList)
+                    //{
+                    //    //Main.context.客房租金明细.DeleteObject(o);
+                    //}
                 }
                 else
                 {
@@ -193,6 +199,14 @@ namespace Landlord2.UI
 
         private void kryptonDataGridView1_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
+            if (willBeDeletedList != null)
+            {
+                foreach (var o in willBeDeletedList)
+                {
+                    Main.context.客房租金明细.DeleteObject(o);
+                }
+                willBeDeletedList = null;//删除后置空
+            }
             CaculateSumMoney();
         }
 
