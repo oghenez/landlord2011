@@ -13,32 +13,33 @@ using Landlord2.Properties;
 using System.Data.Objects.DataClasses;
 using System.Threading;
 using System.Data.Objects;
+using System.Data.Entity;
 
 namespace Landlord2
 {
     public partial class Main : KryptonForm
     {
         private int _widthLeftRight, _heightUpDown;
-        public static Entities context;
+        public Entities context = new Entities();
+
         private UC源房详细 yfUC ;//= new UC源房详细(true) { Dock = DockStyle.Fill };
         private UC客房详细 kfUC ;//= new UC客房详细(true) { Dock = DockStyle.Fill };
 
         public Main()
         {
             InitializeComponent();
-            context = new Entities(Helper.CreateConnectString());
 
-            #region 调试代码
-#if DEBUG
-            context.ObjectStateManager.ObjectStateManagerChanged += (sender, e) =>
-            {
-                Console.WriteLine(string.Format(
-                "ObjectStateManager.ObjectStateManagerChanged | Action:{0} Object:{1}"
-                , e.Action
-                , e.Element));
-            };
-#endif
-            #endregion
+//            #region 调试代码
+//#if DEBUG
+//            context.ObjectStateManager.ObjectStateManagerChanged += (sender, e) =>
+//            {
+//                Console.WriteLine(string.Format(
+//                "ObjectStateManager.ObjectStateManagerChanged | Action:{0} Object:{1}"
+//                , e.Action
+//                , e.Element));
+//            };
+//#endif
+//            #endregion
 
         }
         #region 线程安全的访问UI控件的方法

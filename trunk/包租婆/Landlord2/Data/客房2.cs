@@ -10,10 +10,9 @@ namespace Landlord2.Data
 
     public partial class 客房
     {
-        public 客房()
+        public static 客房 MyCreate()
         {
-            this.ID = Guid.NewGuid();
-            this.支付月数 = 3;//默认3月一付
+            return new 客房() { ID = Guid.NewGuid(), 支付月数 = 3 };
         }
 
     }

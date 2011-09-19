@@ -12,58 +12,58 @@ namespace Landlord2.Data
 
     public partial class 源房
     {
-        public 源房()
+        public static 源房 MyCreate()
         {
-            this.ID = Guid.NewGuid();
+            return new 源房() { ID = Guid.NewGuid() };
         }
 
-        #region 预编译查询
-        /// <summary>
-        /// 预编译查询0 -- 查询所有
-        /// </summary>
-        static readonly Func<Entities, ObjectQuery<源房>> compiledQuery0 =
-            CompiledQuery.Compile<Entities, ObjectQuery<源房>>(
-            (context) => (ObjectQuery<源房>)context.源房.
-                OrderByDescending(m => m.源房涨租协定.Min(n => n.期始)));
-        /// <summary>
-        /// 预编译查询0 -- 查询所有源房，最近签约的排最前
-        /// </summary>
-        public static ObjectQuery<源房> GetYF()
-        {
-            return compiledQuery0.Invoke(Main.context);
-        }
+        //#region 预编译查询
+        ///// <summary>
+        ///// 预编译查询0 -- 查询所有
+        ///// </summary>
+        //static readonly Func<Entities, ObjectQuery<源房>> compiledQuery0 =
+        //    CompiledQuery.Compile<Entities, ObjectQuery<源房>>(
+        //    (context) => (ObjectQuery<源房>)context.源房.
+        //        OrderByDescending(m => m.源房涨租协定.Min(n => n.期始)));
+        ///// <summary>
+        ///// 预编译查询0 -- 查询所有源房，最近签约的排最前
+        ///// </summary>
+        //public static ObjectQuery<源房> GetYF()
+        //{
+        //    return compiledQuery0.Invoke(Main.context);
+        //}
 
-        /// <summary>
-        /// 预编译查询1 -- 查询非历史源房
-        /// </summary>
-        static readonly Func<Entities, ObjectQuery<源房>> compiledQuery1 =
-            CompiledQuery.Compile<Entities, ObjectQuery<源房>>(
-            (context) => (ObjectQuery<源房>)context.源房.
-                Where(m => m.源房涨租协定.Max(n => n.期止) > DateTime.Now).
-                OrderByDescending(m => m.源房涨租协定.Min(n => n.期始)));
-        /// <summary>
-        /// 预编译查询1 -- 查询非历史源房，最近签约的排最前
-        /// </summary>
-        public static ObjectQuery<源房> GetYF_NoHistory()
-        {
-            return compiledQuery1.Invoke(Main.context);
-        }
+        ///// <summary>
+        ///// 预编译查询1 -- 查询非历史源房
+        ///// </summary>
+        //static readonly Func<Entities, ObjectQuery<源房>> compiledQuery1 =
+        //    CompiledQuery.Compile<Entities, ObjectQuery<源房>>(
+        //    (context) => (ObjectQuery<源房>)context.源房.
+        //        Where(m => m.源房涨租协定.Max(n => n.期止) > DateTime.Now).
+        //        OrderByDescending(m => m.源房涨租协定.Min(n => n.期始)));
+        ///// <summary>
+        ///// 预编译查询1 -- 查询非历史源房，最近签约的排最前
+        ///// </summary>
+        //public static ObjectQuery<源房> GetYF_NoHistory()
+        //{
+        //    return compiledQuery1.Invoke(Main.context);
+        //}
 
-        /// <summary>
-        /// 预编译查询1 -- 查询历史源房
-        /// </summary>
-        static readonly Func<Entities, ObjectQuery<源房>> compiledQuery2 =
-            CompiledQuery.Compile<Entities, ObjectQuery<源房>>(
-            (context) => (ObjectQuery<源房>)context.源房.
-                Where(m => m.源房涨租协定.Max(n => n.期止) <= DateTime.Now).
-                OrderByDescending(m => m.源房涨租协定.Min(n => n.期始)));
-        /// <summary>
-        /// 预编译查询0 -- 查询历史源房，最近签约的排最前
-        /// </summary>
-        public static ObjectQuery<源房> GetYF_History()
-        {
-            return compiledQuery2.Invoke(Main.context);
-        }
-        #endregion
+        ///// <summary>
+        ///// 预编译查询1 -- 查询历史源房
+        ///// </summary>
+        //static readonly Func<Entities, ObjectQuery<源房>> compiledQuery2 =
+        //    CompiledQuery.Compile<Entities, ObjectQuery<源房>>(
+        //    (context) => (ObjectQuery<源房>)context.源房.
+        //        Where(m => m.源房涨租协定.Max(n => n.期止) <= DateTime.Now).
+        //        OrderByDescending(m => m.源房涨租协定.Min(n => n.期始)));
+        ///// <summary>
+        ///// 预编译查询0 -- 查询历史源房，最近签约的排最前
+        ///// </summary>
+        //public static ObjectQuery<源房> GetYF_History()
+        //{
+        //    return compiledQuery2.Invoke(Main.context);
+        //}
+        //#endregion
     }
 }

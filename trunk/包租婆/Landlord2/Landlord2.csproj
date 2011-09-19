@@ -77,6 +77,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -87,33 +97,64 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Views.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\实体验证类.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\客房.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\客房2.cs" />
+    <Compile Include="Data\客房出租历史记录.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\客房出租历史记录2.cs" />
+    <Compile Include="Data\客房租金明细.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\客房租金明细2.cs" />
+    <Compile Include="Data\提醒.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\提醒2.cs" />
+    <Compile Include="Data\日常损耗.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\日常损耗2.cs" />
+    <Compile Include="Data\源房.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\源房2.cs" />
+    <Compile Include="Data\源房水电气核查.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\源房水电气核查2.cs" />
+    <Compile Include="Data\源房涨租协定.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\源房涨租协定2.cs" />
+    <Compile Include="Data\源房缴费明细.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\源房缴费明细2.cs" />
+    <Compile Include="Data\装修分类.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\装修明细.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\装修明细2.cs" />
+    <Compile Include="Helper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MyDataGridViewDateTimePickerColumn.cs" />
-    <Compile Include="Data\实体验证类.cs" />
-    <Compile Include="Helper.cs" />
-    <Compile Include="UI\客房Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\客房Form.Designer.cs">
-      <DependentUpon>客房Form.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\UCBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -131,6 +172,18 @@
     </Compile>
     <Compile Include="UI\UC源房详细.Designer.cs">
       <DependentUpon>UC源房详细.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\客房Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\客房Form.Designer.cs">
+      <DependentUpon>客房Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\客房出租Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\客房出租Form.Designer.cs">
+      <DependentUpon>客房出租Form.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\客房出租历史记录Form.cs">
       <SubType>Form</SubType>
@@ -150,17 +203,11 @@
     <Compile Include="UI\客房收租明细Form.Designer.cs">
       <DependentUpon>客房收租明细Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\源房Form.cs">
+    <Compile Include="UI\客房退租Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\源房Form.Designer.cs">
-      <DependentUpon>源房Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\客房出租Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\客房出租Form.Designer.cs">
-      <DependentUpon>客房出租Form.cs</DependentUpon>
+    <Compile Include="UI\客房退租Form.Designer.cs">
+      <DependentUpon>客房退租Form.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\客房选择Form.cs">
       <SubType>Form</SubType>
@@ -168,11 +215,11 @@
     <Compile Include="UI\客房选择Form.Designer.cs">
       <DependentUpon>客房选择Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\客房退租Form.cs">
+    <Compile Include="UI\源房Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\客房退租Form.Designer.cs">
-      <DependentUpon>客房退租Form.cs</DependentUpon>
+    <Compile Include="UI\源房Form.Designer.cs">
+      <DependentUpon>源房Form.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\源房缴费Form.cs">
       <SubType>Form</SubType>
@@ -198,12 +245,6 @@
     <Compile Include="UI\阶梯电价Form.Designer.cs">
       <DependentUpon>阶梯电价Form.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\客房Form.resx">
-      <DependentUpon>客房Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -214,6 +255,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UCBase.resx">
       <DependentUpon>UCBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,6 +266,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UC源房详细.resx">
       <DependentUpon>UC源房详细.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\客房Form.resx">
+      <DependentUpon>客房Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\客房出租Form.resx">
+      <DependentUpon>客房出租Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\客房出租历史记录Form.resx">
       <DependentUpon>客房出租历史记录Form.cs</DependentUpon>
@@ -232,17 +282,14 @@
     <EmbeddedResource Include="UI\客房收租明细Form.resx">
       <DependentUpon>客房收租明细Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\源房Form.resx">
-      <DependentUpon>源房Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\客房出租Form.resx">
-      <DependentUpon>客房出租Form.cs</DependentUpon>
+    <EmbeddedResource Include="UI\客房退租Form.resx">
+      <DependentUpon>客房退租Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\客房选择Form.resx">
       <DependentUpon>客房选择Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\客房退租Form.resx">
-      <DependentUpon>客房退租Form.cs</DependentUpon>
+    <EmbeddedResource Include="UI\源房Form.resx">
+      <DependentUpon>源房Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\源房缴费Form.resx">
       <DependentUpon>源房缴费Form.cs</DependentUpon>
@@ -261,6 +308,14 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Data\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Data\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </None>
     <None Include="Data\Model1.Views.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Views.cs</LastGenOutput>
@@ -271,9 +326,13 @@
     <None Include="Properties\DataSources\Landlord2.Data.客房出租历史记录.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.客房租金明细.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.提醒.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.日常损耗.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.源房.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.源房水电气核查.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.源房涨租协定.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.源房缴费明细.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.装修分类.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.装修明细.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -354,6 +413,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

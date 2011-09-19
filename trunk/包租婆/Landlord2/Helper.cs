@@ -8,6 +8,8 @@ using System.Data.Objects;
 using System.IO;
 using System.Data.Objects.DataClasses;
 using System.Reflection;
+using Landlord2.Data;
+using System.Data.Entity.Infrastructure;
 
 namespace Landlord2
 {
@@ -35,41 +37,42 @@ namespace Landlord2
         }
         #endregion
               
-        /// <summary>
-        /// 本地查询[Added,Modified,Unchanged对象]（基于ObjectSet的扩展方法）
-        /// 因为“实体框架执行的查询根据数据源中的数据进行计算，且结果将不反映对象上下文中的新对象。http://msdn.microsoft.com/zh-cn/library/bb896241.aspx ”
-        /// 那么本地新增对象未保存时，下次查询不包括这些新对象。所以增加此本地查询[Added,Modified,Unchanged对象]功能。http://blogs.msdn.com/b/dsimmons/archive/2009/02/21/local-queries.aspx
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="objectSet"></param>
-        /// <returns></returns>
-        public static IEnumerable<T> Local<T>(this ObjectSet<T> objectSet) where T : class
-        {
-            return from stateEntry in objectSet.Context.ObjectStateManager
-                                               .GetObjectStateEntries(EntityState.Added |
-                                                                      EntityState.Modified |
-                                                                      EntityState.Unchanged)
-                   where stateEntry.Entity != null && stateEntry.EntitySet == objectSet.EntitySet
-                   select stateEntry.Entity as T;
-        }
+        //=========EF4.1自带本地查询机制==========
+        ///// <summary>
+        ///// 本地查询[Added,Modified,Unchanged对象]（基于ObjectSet的扩展方法）
+        ///// 因为“实体框架执行的查询根据数据源中的数据进行计算，且结果将不反映对象上下文中的新对象。http://msdn.microsoft.com/zh-cn/library/bb896241.aspx ”
+        ///// 那么本地新增对象未保存时，下次查询不包括这些新对象。所以增加此本地查询[Added,Modified,Unchanged对象]功能。http://blogs.msdn.com/b/dsimmons/archive/2009/02/21/local-queries.aspx
+        ///// </summary>
+        ///// <typeparam name="T"></typeparam>
+        ///// <param name="objectSet"></param>
+        ///// <returns></returns>
+        //public static IEnumerable<T> Local<T>(this ObjectSet<T> objectSet) where T : class
+        //{
+        //    return from stateEntry in objectSet.Context.ObjectStateManager
+        //                                       .GetObjectStateEntries(EntityState.Added |
+        //                                                              EntityState.Modified |
+        //                                                              EntityState.Unchanged)
+        //           where stateEntry.Entity != null && stateEntry.EntitySet == objectSet.EntitySet
+        //           select stateEntry.Entity as T;
+        //}
 
-        /// <summary>
-        /// 是否有Added状态对象（基于ObjectSet的扩展方法）
-        /// 如果有的话，那么查询时应该调用Local扩展方法得到本地对象；否则可以调用‘预编译’查询加速
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="objectSet"></param>
-        /// <returns></returns>
-        public static bool HasAddedObject<T>(this ObjectSet<T> objectSet) where T : class
-        {
-            var objectStateEntries = objectSet.Context.ObjectStateManager.GetObjectStateEntries(EntityState.Added);
-            foreach (var entity in objectStateEntries)
-            {
-                if (entity.EntitySet == objectSet.EntitySet)// T 类型对象有Added
-                    return true;
-            }
-            return false;
-        }
+        /////// <summary>
+        /////// 是否有Added状态对象（基于ObjectSet的扩展方法）
+        /////// 如果有的话，那么查询时应该调用Local扩展方法得到本地对象；否则可以调用‘预编译’查询加速
+        /////// </summary>
+        /////// <typeparam name="T"></typeparam>
+        /////// <param name="objectSet"></param>
+        /////// <returns></returns>
+        ////public static bool HasAddedObject<T>(this ObjectSet<T> objectSet) where T : class
+        ////{
+        ////    var objectStateEntries = objectSet.Context.ObjectStateManager.GetObjectStateEntries(EntityState.Added);
+        ////    foreach (var entity in objectStateEntries)
+        ////    {
+        ////        if (entity.EntitySet == objectSet.EntitySet)// T 类型对象有Added
+        ////            return true;
+        ////    }
+        ////    return false;
+        ////}
 
 
         /// <summary>
@@ -78,13 +81,13 @@ namespace Landlord2
         /// <param name="entity">针对的实体对象</param>
         /// <param name="ResultMsg">返回的消息</param>
         /// <returns>返回是否成功标志</returns>
-        public static bool saveData(object entity, out string ResultMsg)
+        public static bool saveData(Entities context, object entity, out string ResultMsg)
         {
             bool flag = false;
             int num;
             try
             {
-                num = Main.context.SaveChanges();
+                num = context.SaveChanges();
                 flag = true;
                 
 #if DEBUG
@@ -95,8 +98,8 @@ namespace Landlord2
             }
             catch (OptimisticConcurrencyException)
             {
-                Main.context.Refresh(RefreshMode.ClientWins, entity);
-                num = Main.context.SaveChanges();
+                ((IObjectContextAdapter)context).ObjectContext.Refresh(RefreshMode.ClientWins, entity);
+                num = context.SaveChanges();
                 flag = true;
                 
 #if DEBUG
@@ -128,7 +131,7 @@ namespace Landlord2
             string path = Directory.GetCurrentDirectory();
             using (StreamWriter sw = File.AppendText(Path.Combine(path, "log.txt")))
             {
-                sw.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss ") +msg);
+                sw.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss ") + msg + Environment.NewLine) ;
             }
         }
 
