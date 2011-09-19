@@ -57,7 +57,12 @@
       <HintPath>dll\ComponentFactory.Krypton.Toolkit.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.4.1.10715.0\lib\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -82,16 +87,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Views.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\客房.cs" />
-    <Compile Include="Data\客房出租历史记录.cs" />
-    <Compile Include="Data\客房租金明细.cs" />
-    <Compile Include="Data\提醒.cs" />
-    <Compile Include="Data\日常损耗.cs" />
-    <Compile Include="Data\源房.cs" />
-    <Compile Include="Data\源房水电气核查.cs" />
-    <Compile Include="Data\源房涨租协定.cs" />
-    <Compile Include="Data\源房缴费明细.cs" />
-    <Compile Include="Data\装修明细.cs" />
+    <Compile Include="Data\客房2.cs" />
+    <Compile Include="Data\客房出租历史记录2.cs" />
+    <Compile Include="Data\客房租金明细2.cs" />
+    <Compile Include="Data\提醒2.cs" />
+    <Compile Include="Data\日常损耗2.cs" />
+    <Compile Include="Data\源房2.cs" />
+    <Compile Include="Data\源房水电气核查2.cs" />
+    <Compile Include="Data\源房涨租协定2.cs" />
+    <Compile Include="Data\源房缴费明细2.cs" />
+    <Compile Include="Data\装修明细2.cs" />
     <Compile Include="MyDataGridViewDateTimePickerColumn.cs" />
     <Compile Include="Data\实体验证类.cs" />
     <Compile Include="Helper.cs" />
@@ -260,6 +265,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Views.cs</LastGenOutput>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\Landlord2.Data.Entities.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.客房.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.客房出租历史记录.datasource" />
