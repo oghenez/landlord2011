@@ -3,6 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landlord2", "Landlord2\Landlord2.csproj", "{78845175-88FF-4D51-AF00-A472A3256F54}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "packages", "packages", "{84B8795F-19B7-4149-B84F-3ECD0287B08E}"
+	ProjectSection(SolutionItems) = preProject
+		packages\ComponentFactory.Krypton.Toolkit.dll = packages\ComponentFactory.Krypton.Toolkit.dll
+		packages\EntityFramework.4.1.10715.0\lib\EntityFramework.dll = packages\EntityFramework.4.1.10715.0\lib\EntityFramework.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
