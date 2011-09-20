@@ -1,14 +1,12 @@
 using System;
 using System.Data.Objects;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Landlord2.Data
 {
-    ///////////////////////////////////////////////////////////
-    /// EF4的实体框架对GUID列的支持还不好，这里在构造函数里初始化GUID
-    ///////////////////////////////////////////////////////////
-
-    public partial class 源房涨租协定
+    public partial class 源房涨租协定 : IValidatableObject
     {
         public 源房涨租协定()
         {
@@ -32,5 +30,27 @@ namespace Landlord2.Data
         //    return compiledQuery0.Invoke(Main.context, 源房ID);
         //}
         //#endregion
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            List<ValidationResult> result = new List<ValidationResult>();
+
+            //源房涨租协定必须隶属于一个上级的源房
+            if (this.源房ID == null || this.源房ID == Guid.Empty)
+            {
+                result.Add(new ValidationResult("请指定源房涨租协定上级的源房! "));
+                return result;
+            }
+
+            //校验所有非空属性
+            //....................
+
+            //时间校验
+            if (this.期止.Date < this.期始.Date)
+                result.Add(new ValidationResult(string.Format("期止时间[{0}]不能小于期始时间[{1}]!",
+                    this.期止.ToShortDateString(), this.期始.ToShortDateString())));           
+
+            return result;
+        }
     }
 }

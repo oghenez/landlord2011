@@ -35,6 +35,7 @@ namespace Landlord2
 
             return entityBuilder.ToString();
         }
+
         #endregion
               
         //=========EF4.1自带本地查询机制==========

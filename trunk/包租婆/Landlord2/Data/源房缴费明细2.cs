@@ -1,14 +1,12 @@
 using System;
 using System.Data.Objects;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Landlord2.Data
 {
-    ///////////////////////////////////////////////////////////
-    /// EF4的实体框架对GUID列的支持还不好，这里在构造函数里初始化GUID
-    ///////////////////////////////////////////////////////////
-
-    public partial class 源房缴费明细
+    public partial class 源房缴费明细 : IValidatableObject
     {
         public 源房缴费明细()
         {
@@ -95,5 +93,63 @@ namespace Landlord2.Data
 
         //#endregion
 
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            List<ValidationResult> result = new List<ValidationResult>();
+
+            //源房缴费明细必须隶属于一个上级的源房
+            if (this.源房ID == null || this.源房ID == Guid.Empty)
+            {
+                result.Add(new ValidationResult("请指定此缴费明细的源房! "));
+                return result;
+            }
+
+            //校验所有非空属性
+            //..................
+
+            //时间校验
+            //不可仅有单边值
+            if (this.期始.HasValue && !this.期止.HasValue)
+            {
+                result.Add(new ValidationResult("缺少期止时间!"));
+            }
+            else if (!this.期始.HasValue && this.期止.HasValue)
+            {
+                result.Add(new ValidationResult("缺少期始时间!"));
+            }
+            //期止>期始，并且期始时间和上次此源房同类型缴费的期止时间应该连续
+            if (this.期始.HasValue && this.期止.HasValue)
+            {
+                if (this.期止.Value.Date < this.期始.Value.Date)
+                {
+                    result.Add(new ValidationResult(string.Format("期止时间[{0}]不能小于期始时间[{1}]!",
+                     this.期止.Value.ToShortDateString(), this.期始.Value.ToShortDateString())));
+                }
+                else
+                {
+                    //判断是否连续
+                    DateTime temp = DateTime.MinValue;
+                    List<源房缴费明细> list = this.源房.源房缴费明细.Where(m => m.缴费项 == this.缴费项 && m.期始.HasValue).OrderBy(n => n.期始).ToList();
+                    int index = list.IndexOf(this);//得到this在此序列中的位置，然后判断前后的对象即可。
+                    if (index > 0)//this不排首位
+                    {
+                        if (list[index - 1].期止.Value.Date.AddDays(1) != this.期始.Value.Date)
+                            result.Add(new ValidationResult(string.Format("期始时间和上次此源房同类型缴费的期止时间应该连续，请检查[期止{0}]和[期始{1}]!",
+                                                  list[index - 1].期止.Value.ToShortDateString(),
+                                                  this.期始.Value.ToShortDateString())));
+                    }
+                    if (index < list.Count - 1)//this不排在末尾
+                    {
+                        if (this.期止.Value.Date.AddDays(1) != list[index + 1].期始.Value.Date)
+                            result.Add(new ValidationResult(string.Format("期止时间和下次此源房同类型缴费的期始时间应该连续，请检查[期止{0}]和[期始{1}]!",
+                                                  this.期止.Value.ToShortDateString(),
+                                                  list[index + 1].期始.Value.ToShortDateString())));
+                    }
+                }
+            }
+
+            return result;
+        }
     }
 }

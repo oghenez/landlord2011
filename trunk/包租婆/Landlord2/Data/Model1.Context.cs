@@ -15,13 +15,7 @@ namespace Landlord2.Data
     
     public partial class Entities : DbContext
     {
-        public Entities()
-            : base("name=Entities")
-        {
-            //手动添加
-            this.Database.Connection.ConnectionString = Helper.CreateConnectString();            
-        }
-    
+       
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
