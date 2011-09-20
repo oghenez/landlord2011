@@ -1,16 +1,13 @@
 using System;
 using System.Data.Objects;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
 namespace Landlord2.Data
 {
-    ///////////////////////////////////////////////////////////
-    /// EF4的实体框架对GUID列的支持还不好，这里在构造函数里初始化GUID
-    ///////////////////////////////////////////////////////////
 
-
-    public partial class 客房租金明细
+    public partial class 客房租金明细 : IValidatableObject
     {
         public 客房租金明细()
         {
@@ -93,6 +90,42 @@ namespace Landlord2.Data
         //        OrderByDescending(m => m.起付日期).ToList();
         //}
         //#endregion
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            List<ValidationResult> result = new List<ValidationResult>();
+
+            //客房租金明细必须隶属于一个上级的客房
+            if (this.客房ID == null || this.客房ID == Guid.Empty)
+            {
+                result.Add(new ValidationResult("请指定此租金明细的客房! "));
+                return result;
+            }
+
+            //校验所有非空属性
+            //.............
+
+            //时间校验            
+            //期止>期始，并且期始时间和上次此源房同类型缴费的期止时间应该连续
+            if (this.止付日期.Date < this.起付日期.Date)
+            {
+                result.Add(new ValidationResult(string.Format("止付日期[{0}]不能小于起付日期[{1}]!",
+                 this.止付日期.ToShortDateString(), this.起付日期.ToShortDateString())));
+            }
+            else
+            {
+                //支付期是否在协议时间段内
+                if (this.起付日期.Date < this.客房.期始.Value.Date)
+                    result.Add(new ValidationResult(string.Format("起付日期[{0}]不能小于客房协议租期的期始日期[{1}]!",
+                        this.起付日期.ToShortDateString(), this.客房.期始.Value.ToShortDateString())));
+
+                if (this.止付日期.Date > this.客房.期止.Value.Date)
+                    result.Add(new ValidationResult(string.Format("止付日期[{0}]不能大于客房协议租期的期止日期[{1}]!",
+                        this.止付日期.ToShortDateString(), this.客房.期止.Value.ToShortDateString())));
+            }
+
+            return result;
+        }
     }
 
    

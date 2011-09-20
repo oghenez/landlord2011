@@ -14,13 +14,14 @@ using System.Data.Objects.DataClasses;
 using System.Threading;
 using System.Data.Objects;
 using System.Data.Entity;
+using System.Data.EntityClient;
 
 namespace Landlord2
 {
     public partial class Main : KryptonForm
     {
         private int _widthLeftRight, _heightUpDown;
-        public Entities context = new Entities();
+        public Entities context ;
 
         private UC源房详细 yfUC ;//= new UC源房详细(true) { Dock = DockStyle.Fill };
         private UC客房详细 kfUC ;//= new UC客房详细(true) { Dock = DockStyle.Fill };
@@ -55,8 +56,13 @@ namespace Landlord2
 
         #endregion
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Main_Load(object sender, EventArgs e)
         {
+            context = new Entities();
+            EntityConnection conn = context.Database.Connection as EntityConnection;
+            if(conn.State != ConnectionState.Open)
+                context.Database.Connection.Open();
+
             ThreadPool.QueueUserWorkItem(delegate
             {
                 LoadTreeView(null);
@@ -66,6 +72,11 @@ namespace Landlord2
             AlarmTimer1.Enabled = true; //-- 测试闪动提醒图标
         }
 
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            context.Database.Connection.Dispose();
+            context.Dispose();
+        }
         #region 闪动提醒图标
         private bool flag = false;
         private void AlarmTimer1_Tick(object sender, EventArgs e)
@@ -543,6 +554,7 @@ namespace Landlord2
             }
         }
         #endregion
+
 
 
 
