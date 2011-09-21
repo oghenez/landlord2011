@@ -3,9 +3,9 @@ using System;
 namespace Landlord2.Data
 {
 
-    public partial class 装修明细
+    public partial class DecorationDetail
     {
-        public 装修明细()
+        public DecorationDetail()
         {
             this.ID = Guid.NewGuid();
         }

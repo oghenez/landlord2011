@@ -12,15 +12,15 @@ namespace Landlord2.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class 源房
+    public partial class SourceRoom
     {
-        public 源房()
+        public SourceRoom()
         {
-            this.客房 = new HashSet<客房>();
-            this.源房缴费明细 = new HashSet<源房缴费明细>();
-            this.源房水电气核查 = new HashSet<源房水电气核查>();
-            this.源房涨租协定 = new HashSet<源房涨租协定>();
-            this.装修明细 = new HashSet<装修明细>();
+            this.DecorationDetail = new HashSet<DecorationDetail>();
+            this.GuestRoom = new HashSet<GuestRoom>();
+            this.SourceRoomPaymentDetail = new HashSet<SourceRoomPaymentDetail>();
+            this.SourceRoomCheck = new HashSet<SourceRoomCheck>();
+            this.SourceRoomUpRentalAgreement = new HashSet<SourceRoomUpRentalAgreement>();
         }
     
         public string 房名 { get; set; }
@@ -60,10 +60,10 @@ namespace Landlord2.Data
         public decimal 气单价 { get; set; }
         public System.Guid ID { get; set; }
     
-        public virtual ICollection<客房> 客房 { get; set; }
-        public virtual ICollection<源房缴费明细> 源房缴费明细 { get; set; }
-        public virtual ICollection<源房水电气核查> 源房水电气核查 { get; set; }
-        public virtual ICollection<源房涨租协定> 源房涨租协定 { get; set; }
-        public virtual ICollection<装修明细> 装修明细 { get; set; }
+        public virtual ICollection<DecorationDetail> DecorationDetail { get; set; }
+        public virtual ICollection<GuestRoom> GuestRoom { get; set; }
+        public virtual ICollection<SourceRoomPaymentDetail> SourceRoomPaymentDetail { get; set; }
+        public virtual ICollection<SourceRoomCheck> SourceRoomCheck { get; set; }
+        public virtual ICollection<SourceRoomUpRentalAgreement> SourceRoomUpRentalAgreement { get; set; }
     }
 }

@@ -1,0 +1,15 @@
+﻿因为EF4.1 update1版本有bug，不能识别数据库中非拉丁文表名，所以必须更改。
+----------------------------------------
+原表名					更改后
+-----					-------
+客房--------------------	GuestRoom
+客房出租历史记录----------	GuestRoomRentHistory
+客房租金明细-------------	GuestRoomRentalDetail
+日常损耗-----------------	DailyLosses
+提醒--------------------	Remind
+源房--------------------	SourceRoom
+源房缴费明细-------------	SourceRoomPaymentDetail
+源房水电气核查-----------	SourceRoomCheck
+源房涨租协定-------------	SourceRoomUpRentalAgreement
+装修分类----------------	DecorationType
+装修明细----------------	DecorationDetail

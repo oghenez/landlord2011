@@ -4,9 +4,9 @@ namespace Landlord2.Data
 {
 
 
-    public partial class Ьсаб
+    public partial class Remind
     {
-        public Ьсаб()
+        public Remind()
         {
             this.ID = Guid.NewGuid();
         }

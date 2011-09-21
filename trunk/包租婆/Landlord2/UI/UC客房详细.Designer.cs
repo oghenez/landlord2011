@@ -592,7 +592,7 @@
             // 
             // 客房BindingSource
             // 
-            this.客房BindingSource.DataSource = typeof(Landlord2.Data.客房);
+            this.客房BindingSource.DataSource = typeof(Landlord2.Data.GuestRoom);
             // 
             // errorProvider1
             // 
@@ -1023,7 +1023,7 @@
             // 
             // 客房租金明细BindingSource
             // 
-            this.客房租金明细BindingSource.DataSource = typeof(Landlord2.Data.客房租金明细);
+            this.客房租金明细BindingSource.DataSource = typeof(Landlord2.Data.GuestRoomRentalDetail);
             // 
             // UC客房详细
             // 

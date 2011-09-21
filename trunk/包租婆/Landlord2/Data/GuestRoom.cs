@@ -12,24 +12,32 @@ namespace Landlord2.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class 客房出租历史记录
+    public partial class GuestRoom
     {
+        public GuestRoom()
+        {
+            this.GuestRoomRentHistory = new HashSet<GuestRoomRentHistory>();
+            this.GuestRoomRentalDetail = new HashSet<GuestRoomRentalDetail>();
+        }
+    
+        public string 命名 { get; set; }
+        public double 面积 { get; set; }
+        public bool 含厨房 { get; set; }
+        public bool 含卫生间 { get; set; }
         public string 租户 { get; set; }
         public string 联系地址 { get; set; }
         public string 身份证号 { get; set; }
         public string 电话1 { get; set; }
         public string 电话2 { get; set; }
-        public System.DateTime 期始 { get; set; }
-        public System.DateTime 期止 { get; set; }
+        public Nullable<System.DateTime> 期始 { get; set; }
+        public Nullable<System.DateTime> 期止 { get; set; }
         public decimal 月租金 { get; set; }
         public decimal 押金 { get; set; }
         public short 支付月数 { get; set; }
-        public string 备注 { get; set; }
-        public System.Guid 客房ID { get; set; }
-        public System.Guid ID { get; set; }
         public byte[] 租赁协议照片1 { get; set; }
         public byte[] 租赁协议照片2 { get; set; }
         public byte[] 租赁协议照片3 { get; set; }
+        public string 备注 { get; set; }
         public double 水始码 { get; set; }
         public double 电始码 { get; set; }
         public double 气始码 { get; set; }
@@ -37,9 +45,11 @@ namespace Landlord2.Data
         public decimal 月宽带费 { get; set; }
         public decimal 月厨房费 { get; set; }
         public decimal 中介费用 { get; set; }
-        public string 状态 { get; set; }
-        public System.DateTime 操作日期 { get; set; }
+        public System.Guid ID { get; set; }
+        public System.Guid 源房ID { get; set; }
     
-        public virtual 客房 客房 { get; set; }
+        public virtual ICollection<GuestRoomRentHistory> GuestRoomRentHistory { get; set; }
+        public virtual ICollection<GuestRoomRentalDetail> GuestRoomRentalDetail { get; set; }
+        public virtual SourceRoom SourceRoom { get; set; }
     }
 }

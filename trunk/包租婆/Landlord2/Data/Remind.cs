@@ -12,7 +12,7 @@ namespace Landlord2.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class 提醒
+    public partial class Remind
     {
         public System.DateTime 提醒时间 { get; set; }
         public string 事项 { get; set; }

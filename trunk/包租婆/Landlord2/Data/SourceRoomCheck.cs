@@ -12,7 +12,7 @@ namespace Landlord2.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class 源房水电气核查
+    public partial class SourceRoomCheck
     {
         public Nullable<System.DateTime> 抄表日期_水_ { get; set; }
         public Nullable<double> 水止码 { get; set; }
@@ -28,6 +28,6 @@ namespace Landlord2.Data
         public System.Guid 源房ID { get; set; }
         public System.Guid ID { get; set; }
     
-        public virtual 源房 源房 { get; set; }
+        public virtual SourceRoom SourceRoom { get; set; }
     }
 }

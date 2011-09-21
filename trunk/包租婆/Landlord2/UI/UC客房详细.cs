@@ -89,7 +89,7 @@ namespace Landlord2.UI
                     using (MemoryStream ms = new MemoryStream())
                     {
                         img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        (客房BindingSource.DataSource as 客房).租赁协议照片1 = ms.ToArray();
+                        (客房BindingSource.DataSource as GuestRoom).租赁协议照片1 = ms.ToArray();
                     }
                 }
                 else if (sender == btnOpenFile2)
@@ -97,7 +97,7 @@ namespace Landlord2.UI
                     using (MemoryStream ms = new MemoryStream())
                     {
                         img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        (客房BindingSource.DataSource as 客房).租赁协议照片2 = ms.ToArray();
+                        (客房BindingSource.DataSource as GuestRoom).租赁协议照片2 = ms.ToArray();
                     }
                 }
                 else if (sender == btnOpenFile3)
@@ -105,7 +105,7 @@ namespace Landlord2.UI
                     using (MemoryStream ms = new MemoryStream())
                     {
                         img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        (客房BindingSource.DataSource as 客房).租赁协议照片3 = ms.ToArray();
+                        (客房BindingSource.DataSource as GuestRoom).租赁协议照片3 = ms.ToArray();
                     }
                 }
             }

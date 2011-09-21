@@ -7,11 +7,11 @@ using System.Data.Entity;
 
 namespace Landlord2.Data
 {
-    public partial class 源房 : IValidatableObject
+    public partial class SourceRoom : IValidatableObject
     {
-        public static 源房 MyCreate()
+        public static SourceRoom MyCreate()
         {
-            return new 源房() { ID = Guid.NewGuid() };
+            return new SourceRoom() { ID = Guid.NewGuid() };
         }
 
         //#region 预编译查询
@@ -45,10 +45,10 @@ namespace Landlord2.Data
         //{
         //    return compiledQuery1.Invoke(Main.context);
         //}
-        public static List<源房> GetYF_NoHistory(Entities context)
+        public static List<SourceRoom> GetYF_NoHistory(Landlord2Entities context)
         {
-            return context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) > DateTime.Now)
-                .OrderByDescending(m => m.源房涨租协定.Min(n => n.期始)).ToList();
+            return context.SourceRoom.Where(m => m.SourceRoomUpRentalAgreement.Max(n => n.期止) > DateTime.Now)
+                .OrderByDescending(m => m.SourceRoomUpRentalAgreement.Min(n => n.期始)).ToList();
         }
         ///// <summary>
         ///// 预编译查询1 -- 查询历史源房
@@ -65,10 +65,10 @@ namespace Landlord2.Data
         //{
         //    return compiledQuery2.Invoke(Main.context);
         //}
-        public static List<源房> GetYF_History(Entities context)
+        public static List<SourceRoom> GetYF_History(Landlord2Entities context)
         {
-            return context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) <= DateTime.Now)
-                .OrderByDescending(m => m.源房涨租协定.Min(n => n.期始)).ToList();
+            return context.SourceRoom.Where(m => m.SourceRoomUpRentalAgreement.Max(n => n.期止) <= DateTime.Now)
+                .OrderByDescending(m => m.SourceRoomUpRentalAgreement.Min(n => n.期始)).ToList();
         }
         //#endregion
 
@@ -80,12 +80,12 @@ namespace Landlord2.Data
             //...................
 
             //源房必须有‘源房涨租协定表’
-            if (this.源房涨租协定.Count() == 0)
+            if (this.SourceRoomUpRentalAgreement.Count() == 0)
                 result.Add(new ValidationResult("请填写协议租期!"));
 
             //校验源房下的‘源房涨租协定’表
             DateTime temp = DateTime.MinValue;
-            foreach (var o in this.源房涨租协定.OrderBy(m => m.期始))
+            foreach (var o in this.SourceRoomUpRentalAgreement.OrderBy(m => m.期始))
             {
                 result.AddRange(o.Validate(validationContext));//时间校验
                 //判断是否连续
@@ -101,11 +101,11 @@ namespace Landlord2.Data
             }
 
             //调整‘源房涨租协定表’时，也许存在已租状态的客房，那么此时调整后的最后期始期止时间必须‘包含’所有客房租期的期始期止时间段
-            if (this.源房涨租协定.Count > 0)
+            if (this.SourceRoomUpRentalAgreement.Count > 0)
             {
-                DateTime start = this.源房涨租协定.Min(m => m.期始);
-                DateTime end = this.源房涨租协定.Max(m => m.期止);
-                foreach (var o in this.客房.Where(m => !string.IsNullOrEmpty(m.租户)))
+                DateTime start = this.SourceRoomUpRentalAgreement.Min(m => m.期始);
+                DateTime end = this.SourceRoomUpRentalAgreement.Max(m => m.期止);
+                foreach (var o in this.GuestRoom.Where(m => !string.IsNullOrEmpty(m.租户)))
                 {
                     if (o.期始 < start)
                         result.Add(new ValidationResult(string.Format("客房期始时间不能在源房期始时间之前！请检查源房起始租期[{0}]与客房[{1}]的期始时间{2}。",

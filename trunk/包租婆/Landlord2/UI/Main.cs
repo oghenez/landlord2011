@@ -21,7 +21,7 @@ namespace Landlord2
     public partial class Main : KryptonForm
     {
         private int _widthLeftRight, _heightUpDown;
-        public Entities context = new Entities();
+        public Landlord2Entities context = new Landlord2Entities();
 
         private UC源房详细 yfUC ;//= new UC源房详细(true) { Dock = DockStyle.Fill };
         private UC客房详细 kfUC ;//= new UC客房详细(true) { Dock = DockStyle.Fill };
@@ -97,7 +97,7 @@ namespace Landlord2
         /// </summary>
         private void LoadTreeView(Object obj)
         {
-            if (context.源房.Count() > 0)
+            if (context.SourceRoom.Count() > 0)
             {
                 DoThreadSafe(delegate {
                     treeView1.BeginUpdate();
@@ -109,8 +109,8 @@ namespace Landlord2
                 root1.ToolTipText = "当前源房按照签约时间自动排序";
                 root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
                 root1.ImageIndex = 0;
-                DoThreadSafe(delegate { treeView1.Nodes.Add(root1); });                
-                foreach (var yf in 源房.GetYF_NoHistory(context))
+                DoThreadSafe(delegate { treeView1.Nodes.Add(root1); });
+                foreach (var yf in SourceRoom.GetYF_NoHistory(context))
                     AddYuanFangToTree(root1, yf, false, obj);
 
                 TreeNode root2 = new TreeNode("历史源房信息");
@@ -118,8 +118,8 @@ namespace Landlord2
                 root2.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
                 root2.ForeColor = Color.DimGray;
                 root2.ImageIndex = 1;
-                DoThreadSafe(delegate { treeView1.Nodes.Add(root2); });                  
-                foreach (var yf in 源房.GetYF_History(context))
+                DoThreadSafe(delegate { treeView1.Nodes.Add(root2); });
+                foreach (var yf in SourceRoom.GetYF_History(context))
                     AddYuanFangToTree(root2, yf, true, obj);
 
                 DoThreadSafe(delegate {
@@ -139,7 +139,7 @@ namespace Landlord2
         /// <param name="parent"></param>
         /// <param name="yf"></param>
         /// <param name="isHistory">是否是历史源房（历史源房下的客房不管到期与否都置灰）</param>
-        private void AddYuanFangToTree(TreeNode parent, 源房 yf, bool isHistory,Object obj)
+        private void AddYuanFangToTree(TreeNode parent, SourceRoom yf, bool isHistory, Object obj)
         {
             TreeNode yfNode = new TreeNode();
             yfNode.Text = yf.房名;
@@ -151,7 +151,7 @@ namespace Landlord2
                     yfNode.TreeView.SelectedNode = yfNode;
             });             
 
-            var kfs = yf.客房;
+            var kfs = yf.GuestRoom;
             foreach (var kf in kfs)
             {
                 TreeNode kfNode = new TreeNode();
@@ -173,7 +173,7 @@ namespace Landlord2
                             kfNode.ToolTipText = "协议到期，请[续租]或[退租]。";
                             kfNode.ForeColor = Color.Red;
                         }
-                        else if (kf.客房租金明细.Count == 0 || kf.客房租金明细.Max(m => m.止付日期) < DateTime.Now)//已租，协议未到期，逾期交租
+                        else if (kf.GuestRoomRentalDetail.Count == 0 || kf.GuestRoomRentalDetail.Max(m => m.止付日期) < DateTime.Now)//已租，协议未到期，逾期交租
                         {
                             kfNode.Text += "[逾期交租]";
                             kfNode.ToolTipText = "逾期交租，请[收租]或[退租]。";
@@ -281,8 +281,8 @@ namespace Landlord2
                 kryptonHeaderGroup2.Panel.Controls.Clear();
                 kryptonHeaderGroup2.ValuesPrimary.Heading = " ";//加个空格，避免控件高度自动减少
             }
-            
-            if (entity is 源房)
+
+            if (entity is SourceRoom)
             {
                 yfUC.源房BindingSource.DataSource = entity;
 
@@ -301,9 +301,9 @@ namespace Landlord2
                     //加载
                     kryptonHeaderGroup2.Panel.Controls.Add(yfUC);
                 }
-                kryptonHeaderGroup2.ValuesPrimary.Heading = string.Format("源房：{0}", (entity as 源房).房名);
+                kryptonHeaderGroup2.ValuesPrimary.Heading = string.Format("源房：{0}", (entity as SourceRoom).房名);
             }
-            else if (entity is 客房)
+            else if (entity is GuestRoom)
             {
                 kfUC.客房BindingSource.DataSource = entity;
 
@@ -322,7 +322,7 @@ namespace Landlord2
                     //加载
                     kryptonHeaderGroup2.Panel.Controls.Add(kfUC);
                 }
-                kryptonHeaderGroup2.ValuesPrimary.Heading = string.Format("客房：{0} <隶属于：{1}>", (entity as 客房).命名,(entity as 客房).源房.房名) ;
+                kryptonHeaderGroup2.ValuesPrimary.Heading = string.Format("客房：{0} <隶属于：{1}>", (entity as GuestRoom).命名, (entity as GuestRoom).SourceRoom.房名);
             }
             kryptonHeaderGroup2.ResumeLayout(false);
         }

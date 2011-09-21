@@ -12,8 +12,14 @@ namespace Landlord2.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class 装修分类
+    public partial class DailyLosses
     {
-        public string 类别 { get; set; }
+        public Nullable<System.Guid> 源房ID { get; set; }
+        public Nullable<System.Guid> 客房ID { get; set; }
+        public string 项目 { get; set; }
+        public Nullable<decimal> 支出金额 { get; set; }
+        public Nullable<System.DateTime> 支出日期 { get; set; }
+        public string 备注 { get; set; }
+        public System.Guid ID { get; set; }
     }
 }

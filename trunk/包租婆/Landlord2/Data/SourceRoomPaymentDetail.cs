@@ -12,22 +12,19 @@ namespace Landlord2.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class 客房租金明细
+    public partial class SourceRoomPaymentDetail
     {
-        public System.DateTime 起付日期 { get; set; }
-        public System.DateTime 止付日期 { get; set; }
-        public System.DateTime 付款日期 { get; set; }
-        public double 水止码 { get; set; }
-        public double 电止码 { get; set; }
-        public double 气止码 { get; set; }
-        public decimal 应付金额 { get; set; }
-        public decimal 实付金额 { get; set; }
+        public System.DateTime 缴费时间 { get; set; }
+        public decimal 缴费金额 { get; set; }
+        public Nullable<System.DateTime> 期始 { get; set; }
+        public Nullable<System.DateTime> 期止 { get; set; }
         public string 付款人 { get; set; }
         public string 收款人 { get; set; }
         public string 备注 { get; set; }
-        public System.Guid 客房ID { get; set; }
+        public System.Guid 源房ID { get; set; }
+        public string 缴费项 { get; set; }
         public System.Guid ID { get; set; }
     
-        public virtual 客房 客房 { get; set; }
+        public virtual SourceRoom SourceRoom { get; set; }
     }
 }

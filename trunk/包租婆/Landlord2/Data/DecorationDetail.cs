@@ -12,19 +12,20 @@ namespace Landlord2.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class 源房缴费明细
+    public partial class DecorationDetail
     {
-        public System.DateTime 缴费时间 { get; set; }
-        public decimal 缴费金额 { get; set; }
-        public Nullable<System.DateTime> 期始 { get; set; }
-        public Nullable<System.DateTime> 期止 { get; set; }
-        public string 付款人 { get; set; }
-        public string 收款人 { get; set; }
+        public System.DateTime 日期 { get; set; }
+        public string 项目名称 { get; set; }
+        public string 规格 { get; set; }
+        public short 数量 { get; set; }
+        public string 单位 { get; set; }
+        public decimal 单价 { get; set; }
+        public string 购买地点 { get; set; }
         public string 备注 { get; set; }
         public System.Guid 源房ID { get; set; }
-        public string 缴费项 { get; set; }
+        public string 装修分类 { get; set; }
         public System.Guid ID { get; set; }
     
-        public virtual 源房 源房 { get; set; }
+        public virtual SourceRoom SourceRoom { get; set; }
     }
 }

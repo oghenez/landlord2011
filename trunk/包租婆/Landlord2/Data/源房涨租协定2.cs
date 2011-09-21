@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace Landlord2.Data
 {
-    public partial class 源房涨租协定 : IValidatableObject
+    public partial class SourceRoomUpRentalAgreement : IValidatableObject
     {
-        public 源房涨租协定()
+        public SourceRoomUpRentalAgreement()
         {
             this.ID = Guid.NewGuid();
         }
