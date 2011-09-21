@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Objects;
 using System.Linq;
 using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace Landlord2.Data
 {
@@ -45,9 +45,10 @@ namespace Landlord2.Data
         //{
         //    return compiledQuery1.Invoke(Main.context);
         //}
-        public static ObjectQuery<源房> GetYF_NoHistory(Entities context)
+        public static List<源房> GetYF_NoHistory(Entities context)
         {
-            return compiledQuery1.Invoke(Main.context);
+            return context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) > DateTime.Now)
+                .OrderByDescending(m => m.源房涨租协定.Min(n => n.期始)).ToList();
         }
         ///// <summary>
         ///// 预编译查询1 -- 查询历史源房
@@ -64,6 +65,11 @@ namespace Landlord2.Data
         //{
         //    return compiledQuery2.Invoke(Main.context);
         //}
+        public static List<源房> GetYF_History(Entities context)
+        {
+            return context.源房.Where(m => m.源房涨租协定.Max(n => n.期止) <= DateTime.Now)
+                .OrderByDescending(m => m.源房涨租协定.Min(n => n.期始)).ToList();
+        }
         //#endregion
 
         public System.Collections.Generic.IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
