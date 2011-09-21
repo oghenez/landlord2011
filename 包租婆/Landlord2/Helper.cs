@@ -30,7 +30,7 @@ namespace Landlord2
 
             // Set the Metadata location.
             //entityBuilder.Metadata = @"res://*/Data.Model1.csdl|res://*/Data.Model1.ssdl|res://*/Data.Model1.msl";
-            entityBuilder.Metadata = @"|DataDirectory|\Data\Model1.csdl||DataDirectory|\Data\Model1.ssdl||DataDirectory|\Data\Model1.msl";
+            entityBuilder.Metadata = @"|DataDirectory|\Data\Landlord2.csdl||DataDirectory|\Data\Landlord2.ssdl||DataDirectory|\Data\Landlord2.msl";
 
 
             return entityBuilder.ToString();
@@ -82,7 +82,7 @@ namespace Landlord2
         /// <param name="entity">针对的实体对象</param>
         /// <param name="ResultMsg">返回的消息</param>
         /// <returns>返回是否成功标志</returns>
-        public static bool saveData(Entities context, object entity, out string ResultMsg)
+        public static bool saveData(Landlord2Entities context, object entity, out string ResultMsg)
         {
             bool flag = false;
             int num;

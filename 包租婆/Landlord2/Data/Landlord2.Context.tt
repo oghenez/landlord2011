@@ -4,7 +4,7 @@
 
 var loader = new MetadataLoader(this);
 var region = new CodeRegion(this);
-var inputFile = @"Model1.edmx";
+var inputFile = @"Landlord2.edmx";
 var ItemCollection = loader.CreateEdmItemCollection(inputFile);
 
 Code = new CodeGenerationTools(this);

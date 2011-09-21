@@ -6,11 +6,11 @@ using System.Collections.Generic;
 
 namespace Landlord2.Data
 {
-    public partial class 客房 : IValidatableObject
+    public partial class GuestRoom : IValidatableObject
     {
-        public static 客房 MyCreate()
+        public static GuestRoom MyCreate()
         {
-            return new 客房() { ID = Guid.NewGuid(), 支付月数 = 3 };
+            return new GuestRoom() { ID = Guid.NewGuid(), 支付月数 = 3 };
         }
 
 
@@ -30,7 +30,7 @@ namespace Landlord2.Data
             //。。。。。。。。。。。。。。
 
             //检测重名
-            if (this.源房.客房.Count(m => m.命名 == this.命名) > 1)
+            if (this.SourceRoom.GuestRoom.Count(m => m.命名 == this.命名) > 1)
                 result.Add(new ValidationResult("客房命名重复，请重新指定!"));
             //支付月数 >= 1
             if (this.支付月数 < 1)
@@ -68,8 +68,8 @@ namespace Landlord2.Data
                 }
                 else
                 {
-                    DateTime min源房期始 = this.源房.源房涨租协定.Min(m => m.期始);
-                    DateTime max源房期止 = this.源房.源房涨租协定.Max(m => m.期止);
+                    DateTime min源房期始 = this.SourceRoom.SourceRoomUpRentalAgreement.Min(m => m.期始);
+                    DateTime max源房期止 = this.SourceRoom.SourceRoomUpRentalAgreement.Max(m => m.期止);
                     if (this.期始.Value.Date < min源房期始)
                         result.Add(new ValidationResult(string.Format("期始时间[{0}]不能小于所隶属的源房的期始时间[{1}]!",
                             this.期始.Value.ToShortDateString(), min源房期始.ToShortDateString())));

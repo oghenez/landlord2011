@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace Landlord2.Data
 {
-    public partial class 源房缴费明细 : IValidatableObject
+    public partial class SourceRoomPaymentDetail : IValidatableObject
     {
-        public 源房缴费明细()
+        public SourceRoomPaymentDetail()
         {
             this.ID = Guid.NewGuid();
             this.缴费时间 = DateTime.Today;//缴费时间默认当前操作日期
@@ -130,7 +130,7 @@ namespace Landlord2.Data
                 {
                     //判断是否连续
                     DateTime temp = DateTime.MinValue;
-                    List<源房缴费明细> list = this.源房.源房缴费明细.Where(m => m.缴费项 == this.缴费项 && m.期始.HasValue).OrderBy(n => n.期始).ToList();
+                    List<SourceRoomPaymentDetail> list = this.SourceRoom.SourceRoomPaymentDetail.Where(m => m.缴费项 == this.缴费项 && m.期始.HasValue).OrderBy(n => n.期始).ToList();
                     int index = list.IndexOf(this);//得到this在此序列中的位置，然后判断前后的对象即可。
                     if (index > 0)//this不排首位
                     {

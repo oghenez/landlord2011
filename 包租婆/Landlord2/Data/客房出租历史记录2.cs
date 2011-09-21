@@ -5,9 +5,9 @@ using System.Linq;
 namespace Landlord2.Data
 {
 
-    public partial class 客房出租历史记录
+    public partial class GuestRoomRentHistory
     {
-        public 客房出租历史记录()
+        public GuestRoomRentHistory()
         {
             this.ID = Guid.NewGuid();
         }

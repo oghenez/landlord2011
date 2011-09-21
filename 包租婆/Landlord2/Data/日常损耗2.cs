@@ -2,9 +2,9 @@ using System;
 
 namespace Landlord2.Data
 {
-    public partial class 日常损耗
+    public partial class DailyLosses
     {
-        public 日常损耗()
+        public DailyLosses()
         {
             this.ID = Guid.NewGuid();
             this.支出日期 = DateTime.Today;

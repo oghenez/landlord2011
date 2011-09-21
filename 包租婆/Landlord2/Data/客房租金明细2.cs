@@ -7,9 +7,9 @@ using System.Collections.Generic;
 namespace Landlord2.Data
 {
 
-    public partial class 客房租金明细 : IValidatableObject
+    public partial class GuestRoomRentalDetail : IValidatableObject
     {
-        public 客房租金明细()
+        public GuestRoomRentalDetail()
         {
             this.ID = Guid.NewGuid();
             this.付款日期 = DateTime.Today;
@@ -115,13 +115,13 @@ namespace Landlord2.Data
             else
             {
                 //支付期是否在协议时间段内
-                if (this.起付日期.Date < this.客房.期始.Value.Date)
+                if (this.起付日期.Date < this.GuestRoom.期始.Value.Date)
                     result.Add(new ValidationResult(string.Format("起付日期[{0}]不能小于客房协议租期的期始日期[{1}]!",
-                        this.起付日期.ToShortDateString(), this.客房.期始.Value.ToShortDateString())));
+                        this.起付日期.ToShortDateString(), this.GuestRoom.期始.Value.ToShortDateString())));
 
-                if (this.止付日期.Date > this.客房.期止.Value.Date)
+                if (this.止付日期.Date > this.GuestRoom.期止.Value.Date)
                     result.Add(new ValidationResult(string.Format("止付日期[{0}]不能大于客房协议租期的期止日期[{1}]!",
-                        this.止付日期.ToShortDateString(), this.客房.期止.Value.ToShortDateString())));
+                        this.止付日期.ToShortDateString(), this.GuestRoom.期止.Value.ToShortDateString())));
             }
 
             return result;

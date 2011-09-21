@@ -646,7 +646,7 @@
             // 
             // 源房BindingSource
             // 
-            this.源房BindingSource.DataSource = typeof(Landlord2.Data.源房);
+            this.源房BindingSource.DataSource = typeof(Landlord2.Data.SourceRoom);
             // 
             // kryptonTextBox2
             // 
@@ -856,7 +856,7 @@
             // 
             // 源房涨租协定BindingSource
             // 
-            this.源房涨租协定BindingSource.DataSource = typeof(Landlord2.Data.源房涨租协定);
+            this.源房涨租协定BindingSource.DataSource = typeof(Landlord2.Data.SourceRoomUpRentalAgreement);
             this.源房涨租协定BindingSource.Sort = "";
             this.源房涨租协定BindingSource.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.源房涨租协定BindingSource_AddingNew);
             // 

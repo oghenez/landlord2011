@@ -12,7 +12,7 @@ namespace Landlord2.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class 源房涨租协定
+    public partial class SourceRoomUpRentalAgreement
     {
         public System.DateTime 期始 { get; set; }
         public System.DateTime 期止 { get; set; }
@@ -20,6 +20,6 @@ namespace Landlord2.Data
         public System.Guid 源房ID { get; set; }
         public System.Guid ID { get; set; }
     
-        public virtual 源房 源房 { get; set; }
+        public virtual SourceRoom SourceRoom { get; set; }
     }
 }

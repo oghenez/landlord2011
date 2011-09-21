@@ -3,9 +3,9 @@ using System;
 namespace Landlord2.Data
 {
 
-    public partial class 源房水电气核查
+    public partial class SourceRoomCheck
     {
-        public 源房水电气核查()
+        public SourceRoomCheck()
         {
             this.ID = Guid.NewGuid();
         }

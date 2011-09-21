@@ -90,7 +90,7 @@ namespace Landlord2.UI
                     using (MemoryStream ms = new MemoryStream())
                     {
                         img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        (源房BindingSource.DataSource as 源房).租赁协议照片1 = ms.ToArray();
+                        (源房BindingSource.DataSource as SourceRoom).租赁协议照片1 = ms.ToArray();
                     }
                 }
                 else if (sender == btnOpenFile2)
@@ -98,7 +98,7 @@ namespace Landlord2.UI
                     using (MemoryStream ms = new MemoryStream())
                     {
                         img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        (源房BindingSource.DataSource as 源房).租赁协议照片2 = ms.ToArray();
+                        (源房BindingSource.DataSource as SourceRoom).租赁协议照片2 = ms.ToArray();
                     }
                 }
                 else if (sender == btnOpenFile3)
@@ -106,7 +106,7 @@ namespace Landlord2.UI
                     using (MemoryStream ms = new MemoryStream())
                     {
                         img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        (源房BindingSource.DataSource as 源房).租赁协议照片3 = ms.ToArray();
+                        (源房BindingSource.DataSource as SourceRoom).租赁协议照片3 = ms.ToArray();
                     }
                 }
             }
@@ -203,7 +203,7 @@ namespace Landlord2.UI
 
         private void buttonSpecAny阶梯水价_Click(object sender, EventArgs e)
         {
-            源房 yf = 源房BindingSource.DataSource as 源房;
+            SourceRoom yf = 源房BindingSource.DataSource as SourceRoom;
             using (阶梯水价Form form = new 阶梯水价Form(yf.阶梯水价))
             {
                 DialogResult dr = form.ShowDialog(this);
@@ -216,7 +216,7 @@ namespace Landlord2.UI
 
         private void buttonSpecAny阶梯电价_Click(object sender, EventArgs e)
         {
-            源房 yf = 源房BindingSource.DataSource as 源房;
+            SourceRoom yf = 源房BindingSource.DataSource as SourceRoom;
             using (阶梯电价Form f = new 阶梯电价Form(yf.阶梯电价))
             {
                 DialogResult dr = f.ShowDialog(this);
@@ -229,16 +229,16 @@ namespace Landlord2.UI
 
         private void buttonSpecAny气单价_Click(object sender, EventArgs e)
         {
-            源房 yf = 源房BindingSource.DataSource as 源房;
+            SourceRoom yf = 源房BindingSource.DataSource as SourceRoom;
             yf.气单价 = Convert.ToDecimal(Landlord2.Properties.Resources.武汉市天然气价默认值);
         }
 
         private void 源房涨租协定BindingSource_AddingNew(object sender, System.ComponentModel.AddingNewEventArgs e)
         {
-            源房涨租协定 obj = new 源房涨租协定();
-            源房 temp = 源房BindingSource.DataSource as 源房;
+            SourceRoomUpRentalAgreement obj = new SourceRoomUpRentalAgreement();
+            SourceRoom temp = 源房BindingSource.DataSource as SourceRoom;
             //obj.源房ID = temp.ID;
-            obj.源房 = temp;//同步外键引用
+            obj.SourceRoom = temp;//同步外键引用
             e.NewObject = obj;
         }
 
