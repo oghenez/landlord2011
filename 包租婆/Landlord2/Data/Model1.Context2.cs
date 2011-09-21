@@ -8,7 +8,7 @@ namespace Landlord2.Data
     public partial class Entities
     {
         public Entities()
-            : base(AppRoot.MyConnection, true)
+            : base(AppRoot.MyConnection, ! AppRoot.IsAllInOneConnection)
         {
             //自定义了连接
         }
