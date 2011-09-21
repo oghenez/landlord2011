@@ -647,6 +647,7 @@
             // 源房BindingSource
             // 
             this.源房BindingSource.DataSource = typeof(Landlord2.Data.SourceRoom);
+            this.源房BindingSource.DataSourceChanged += new System.EventHandler(this.源房BindingSource_DataSourceChanged);
             // 
             // kryptonTextBox2
             // 
@@ -1333,7 +1334,6 @@
         private System.Windows.Forms.PictureBox 租赁协议照片1PictureBox;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOpenFile3;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOpenFile2;
-        public System.Windows.Forms.BindingSource 源房BindingSource;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStrip toolStrip1;
@@ -1359,6 +1359,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn 月租金DataGridViewTextBoxColumn;
         public System.Windows.Forms.BindingSource 源房涨租协定BindingSource;
         private ComponentFactory.Krypton.Toolkit.ButtonSpecAny buttonSpecAny气单价;
+        public System.Windows.Forms.BindingSource 源房BindingSource;
 
     }
 }

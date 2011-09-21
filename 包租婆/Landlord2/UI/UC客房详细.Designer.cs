@@ -593,6 +593,7 @@
             // 客房BindingSource
             // 
             this.客房BindingSource.DataSource = typeof(Landlord2.Data.GuestRoom);
+            this.客房BindingSource.DataSourceChanged += new System.EventHandler(this.客房BindingSource_DataSourceChanged);
             // 
             // errorProvider1
             // 
@@ -1112,6 +1113,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 付款人DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 收款人DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 备注DataGridViewTextBoxColumn;
-        public System.Windows.Forms.BindingSource 客房租金明细BindingSource;
+        private System.Windows.Forms.BindingSource 客房租金明细BindingSource;
     }
 }

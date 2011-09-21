@@ -6,12 +6,16 @@ using ComponentFactory.Krypton.Toolkit;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.CodeDom.Compiler;
+using System.Linq;
+using System.Data.Entity;
 
 namespace Landlord2.UI
 {
     public partial class UC源房详细 : Landlord2.UI.UCBase
     {
         private bool IsReadOnly = false;
+        private Landlord2Entities parentContext;
+
         /// <summary>
         /// 此构造函数仅编辑器调用
         /// </summary>
@@ -20,10 +24,11 @@ namespace Landlord2.UI
             InitializeComponent();
             Controls.Remove(toolStrip1);
         }
-        public UC源房详细(bool isReadOnly)
+        public UC源房详细(bool isReadOnly, Landlord2Entities context)
         {
             InitializeComponent();
             IsReadOnly = isReadOnly;
+            parentContext = context;
         }
         private void UC源房详细_Load(object sender, EventArgs e)
         {
@@ -240,6 +245,15 @@ namespace Landlord2.UI
             //obj.源房ID = temp.ID;
             obj.SourceRoom = temp;//同步外键引用
             e.NewObject = obj;
+        }
+
+        private void 源房BindingSource_DataSourceChanged(object sender, EventArgs e)
+        {
+            SourceRoom yf = 源房BindingSource.DataSource as SourceRoom;
+            parentContext.SourceRoomUpRentalAgreement.Where(m => m.源房ID == yf.ID).Load();
+
+            源房涨租协定BindingSource.DataSource = parentContext.SourceRoomUpRentalAgreement
+                .Local.Where(m => m.源房ID == yf.ID).OrderBy(m => m.期始);
         }
 
 

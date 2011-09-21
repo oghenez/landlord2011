@@ -10,6 +10,8 @@ using System.Data.Objects.DataClasses;
 using System.Reflection;
 using Landlord2.Data;
 using System.Data.Entity.Infrastructure;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Validation;
 
 namespace Landlord2
 {
@@ -75,6 +77,23 @@ namespace Landlord2
         ////    return false;
         ////}
 
+        /// <summary>
+        /// 将实体模型的校验结果转换成字符串，方便MessageBox显示。
+        /// </summary>
+        /// <param name="results"></param>
+        /// <returns></returns>
+        public static string ValidationResult2String(IEnumerable<DbEntityValidationResult> results)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (DbEntityValidationResult result in results)
+            {
+                foreach (var error in result.ValidationErrors)
+                {
+                    sb.AppendLine(string.Format("● {0}",error.ErrorMessage));
+                }                
+            }
+            return sb.ToString();
+        }
 
         /// <summary>
         /// 保存到数据库

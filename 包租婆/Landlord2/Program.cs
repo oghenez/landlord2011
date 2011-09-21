@@ -15,7 +15,7 @@ namespace Landlord2
         static void Main()
         {
             MessageBox.Show("暂时先省略非空属性的校验！待测试");
-            //MessageBox.Show("对于状态为deleted的实体，第二次查询同样会绑定到datagridview。（难道非要用local数据？或者每次savechanges前不能第二次查询？？？）");
+            MessageBox.Show("源房Form，注意因为每个窗体有context，不要传实体引用，传ID值");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
