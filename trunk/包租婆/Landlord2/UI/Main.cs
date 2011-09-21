@@ -61,8 +61,8 @@ namespace Landlord2
             ThreadPool.QueueUserWorkItem(delegate
             {
                 LoadTreeView(null);
-                DoThreadSafe(delegate { yfUC = new UC源房详细(true) { Dock = DockStyle.Fill }; });
-                DoThreadSafe(delegate { kfUC = new UC客房详细(true) { Dock = DockStyle.Fill }; });
+                DoThreadSafe(delegate { yfUC = new UC源房详细(true,context) { Dock = DockStyle.Fill }; });
+                DoThreadSafe(delegate { kfUC = new UC客房详细(true,context) { Dock = DockStyle.Fill }; });
             });
             AlarmTimer1.Enabled = true; //-- 测试闪动提醒图标
         }
@@ -345,51 +345,51 @@ namespace Landlord2
         #region 菜单按钮
         private void yfBtnAdd_Click(object sender, EventArgs e)
         {
-            ////新增源房
-            //using (源房Form yF = new 源房Form())
-            //{
-            //    yF.ShowDialog(this);
-            //}
+            //新增源房
+            using (源房Form yF = new 源房Form())
+            {
+                yF.ShowDialog(this);
+            }
         }
         private void yfBtnDel_Click(object sender, EventArgs e)
         {
-            ////删除源房
-            //if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 源房)
-            //{
-            //    源房 yf = treeView1.SelectedNode.Tag as 源房;
-            //    string txt = string.Format("确定要删除源房 [{0}] 吗？\r\n（将同时删除此源房下面的所有客房及所有关联的信息）", yf.房名);
-            //    var result = KryptonMessageBox.Show(txt, "源房删除确认",
-            //        MessageBoxButtons.OKCancel, MessageBoxIcon.Warning,
-            //        MessageBoxDefaultButton.Button2);
-            //    if (result == DialogResult.OK)
-            //    {
-            //        context.DeleteObject(yf);
-            //        string msg;
-            //        if (Helper.saveData(yf, out msg))
-            //        {
-            //            KryptonMessageBox.Show(msg, "成功删除源房");
-            //            RefreshAndLocateTree(null);
-            //            LoadOrRefreshUC(null);
-            //        }
-            //        else
-            //        {
-            //            KryptonMessageBox.Show(msg, "失败");
-            //            context.Refresh(System.Data.Objects.RefreshMode.StoreWins, yf);
-            //        }
-            //    }
-            //}
+            //删除源房
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is SourceRoom)
+            {
+                SourceRoom yf = treeView1.SelectedNode.Tag as SourceRoom;
+                string txt = string.Format("确定要删除源房 [{0}] 吗？\r\n（将同时删除此源房下面的所有客房及所有关联的信息）", yf.房名);
+                var result = KryptonMessageBox.Show(txt, "源房删除确认",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.OK)
+                {
+                    context.SourceRoom.Remove(yf);
+                    string msg;
+                    if (Helper.saveData(context, yf, out msg))
+                    {
+                        KryptonMessageBox.Show(msg, "成功删除源房");
+                        RefreshAndLocateTree(null);
+                        LoadOrRefreshUC(null);
+                    }
+                    else
+                    {
+                        KryptonMessageBox.Show(msg, "失败");
+                        context.Entry(yf).Reload();//重新从数据库加载
+                    }
+                }
+            }
         }
         private void yfBtnEdit_Click(object sender, EventArgs e)
         {
-            ////编辑源房
-            //if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 源房)
-            //{
-            //    源房 yf = treeView1.SelectedNode.Tag as 源房;
-            //    using (源房Form yF = new 源房Form(yf))
-            //    {
-            //        yF.ShowDialog(this);
-            //    }
-            //}
+            //编辑源房
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is SourceRoom)
+            {
+                SourceRoom yf = treeView1.SelectedNode.Tag as SourceRoom;
+                using (源房Form yF = new 源房Form(yf))
+                {
+                    yF.ShowDialog(this);
+                }
+            }
         }
 
         private void kfBtnAdd_Click(object sender, EventArgs e)

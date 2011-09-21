@@ -9,12 +9,13 @@ using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using Landlord2.Data;
 using System.Data.Objects;
+using System.ComponentModel.DataAnnotations;
 
 namespace Landlord2.UI
 {
-    public partial class 源房Form : KryptonForm
+    public partial class 源房Form : FormBase
     {
-        private 源房 yf;
+        private SourceRoom yf;
         private bool isNew;//是否是新增
 
         /// <summary>
@@ -24,13 +25,13 @@ namespace Landlord2.UI
         {
             InitializeComponent();
             isNew = true;
-            this.yf = new 源房();
-            Main.context.源房.AddObject(yf);
+            this.yf = SourceRoom.MyCreate();
+            context.SourceRoom.Add(yf);
         }
         /// <summary>
         /// 编辑源房 
         /// </summary>
-        public 源房Form(源房 yf)
+        public 源房Form(SourceRoom yf)
         {
             InitializeComponent();
             isNew = false;
@@ -42,15 +43,13 @@ namespace Landlord2.UI
             Text = string.Format("{0}源房", isNew ? "新增" : "编辑");
 
             uC源房详细1.源房BindingSource.DataSource = yf;
-            uC源房详细1.源房涨租协定BindingSource.DataSource = 源房涨租协定.GetByYFid(yf.ID).Execute(MergeOption.AppendOnly);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            uC源房详细1.源房BindingSource.EndEdit();
-            uC源房详细1.源房涨租协定BindingSource.EndEdit();
+            Validate();
 
-            string check = yf.CheckRules();
+            string check = Helper.ValidationResult2String(context.GetValidationErrors());
             if (!string.IsNullOrEmpty(check))
             {
                 KryptonMessageBox.Show(check, "数据校验失败");
@@ -59,7 +58,7 @@ namespace Landlord2.UI
             if (isNew)//新增 
             {                
                 string msg;
-                if (Helper.saveData(yf, out msg))
+                if (Helper.saveData(context,yf, out msg))
                 {
                     KryptonMessageBox.Show(msg, "成功新增源房");
                     if (this.Owner is Main)
@@ -74,14 +73,14 @@ namespace Landlord2.UI
             else //编辑
             {
                 //如果编辑状态下，未做任何修改，则直接退出
-                if (Main.context.ObjectStateManager.GetObjectStateEntry(yf).State == EntityState.Unchanged)
+                if (context.Entry(yf).State == EntityState.Unchanged)
                 {
                     Close(); //如果编辑状态下，未做任何修改，则直接退出
                 }
                 else
                 {
                     string msg;
-                    if (Helper.saveData(yf, out msg))
+                    if (Helper.saveData(context, yf, out msg))
                     {
                         KryptonMessageBox.Show(msg, "成功编辑源房");
                         if (this.Owner is Main)
@@ -99,18 +98,6 @@ namespace Landlord2.UI
         private void btnCancel_Click(object sender, EventArgs e)
         {            
             Close();
-        }
-
-        private void yfForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (isNew && Main.context.ObjectStateManager.GetObjectStateEntry(yf).State == EntityState.Added)
-                Main.context.源房.Detach(yf);
-
-            if (!isNew && Main.context.ObjectStateManager.GetObjectStateEntry(yf).State == EntityState.Modified)
-            {
-                Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, yf);
-                Main.context.AcceptAllChanges();
-            }
         }
     }
 }

@@ -63,7 +63,7 @@
             this.uC源房详细1.Size = new System.Drawing.Size(783, 390);
             this.uC源房详细1.TabIndex = 0;
             // 
-            // yfForm
+            // 源房Form
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -72,13 +72,8 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.uC源房详细1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "yfForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Name = "源房Form";
             this.Text = "源房";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.yfForm_FormClosed);
             this.Load += new System.EventHandler(this.YF_Load);
             this.ResumeLayout(false);
 

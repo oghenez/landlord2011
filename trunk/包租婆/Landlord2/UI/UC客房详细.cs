@@ -8,11 +8,13 @@ using System.IO;
 using Landlord2.Data;
 using System.Linq;
 using System.Data.Objects;
+using System.Data.Entity;
 
 namespace Landlord2.UI
 {
     public partial class UC客房详细 : Landlord2.UI.UCBase
     {
+        private Landlord2Entities parentContext;
         private bool IsReadOnly = false;
         /// <summary>
         ///  此构造函数仅编辑器调用
@@ -24,10 +26,11 @@ namespace Landlord2.UI
             kryptonPanel1.Controls.Remove(kryptonDataGridView1);
             kryptonPanel1.Height -= kryptonDataGridView1.Height;
         }
-        public UC客房详细(bool isReadOnly)
+        public UC客房详细(bool isReadOnly,Landlord2Entities context)
         {
             InitializeComponent();
             IsReadOnly = isReadOnly;
+            parentContext = context;
         }
 
         private void UC客房详细_Load(object sender, EventArgs e)
@@ -198,6 +201,15 @@ namespace Landlord2.UI
                     }
                 }
             }
+        }
+
+        private void 客房BindingSource_DataSourceChanged(object sender, EventArgs e)
+        {
+            GuestRoom kf = 客房BindingSource.DataSource as GuestRoom;
+            parentContext.GuestRoomRentalDetail.Where(m => m.客房ID == kf.ID).Load();
+
+            客房租金明细BindingSource.DataSource = parentContext.GuestRoomRentalDetail
+                .Local.Where(m=>m.客房ID==kf.ID).OrderByDescending(m => m.起付日期);
         }
 
     }
