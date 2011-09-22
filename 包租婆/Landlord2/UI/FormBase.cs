@@ -16,7 +16,7 @@ namespace Landlord2.UI
         /// <summary>
         /// 每个窗体有一个Context ，基类中Load时初始化，FormClosing中销毁。
         /// </summary>
-        protected Landlord2Entities context;
+        protected Landlord2Entities context = new Landlord2Entities();
         public FormBase()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace Landlord2.UI
 
         private void FormBase_Load(object sender, EventArgs e)
         {
-            context = new Landlord2Entities();
+            
         }
 
         private void FormBase_FormClosing(object sender, FormClosingEventArgs e)

@@ -249,18 +249,17 @@
       <LastGenOutput>Landlord2.Views.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\Landlord2.Data.Entities.datasource" />
-    <None Include="Properties\DataSources\Landlord2.Data.客房.datasource" />
-    <None Include="Properties\DataSources\Landlord2.Data.客房出租历史记录.datasource" />
-    <None Include="Properties\DataSources\Landlord2.Data.客房租金明细.datasource" />
-    <None Include="Properties\DataSources\Landlord2.Data.提醒.datasource" />
-    <None Include="Properties\DataSources\Landlord2.Data.日常损耗.datasource" />
-    <None Include="Properties\DataSources\Landlord2.Data.源房.datasource" />
-    <None Include="Properties\DataSources\Landlord2.Data.源房水电气核查.datasource" />
-    <None Include="Properties\DataSources\Landlord2.Data.源房涨租协定.datasource" />
-    <None Include="Properties\DataSources\Landlord2.Data.源房缴费明细.datasource" />
-    <None Include="Properties\DataSources\Landlord2.Data.装修分类.datasource" />
-    <None Include="Properties\DataSources\Landlord2.Data.装修明细.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.DailyLosses.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.DecorationDetail.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.DecorationType.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.GuestRoom.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.GuestRoomRentalDetail.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.GuestRoomRentHistory.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.Remind.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.SourceRoom.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.SourceRoomCheck.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.SourceRoomPaymentDetail.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.SourceRoomUpRentalAgreement.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -274,7 +273,7 @@
   <ItemGroup>
     <Content Include="App.ico" />
     <Content Include="Data\Landlord2.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Readme.txt" />
     <Content Include="Resources\Filter.png" />

@@ -206,8 +206,7 @@ namespace Landlord2.UI
         private void 客房BindingSource_DataSourceChanged(object sender, EventArgs e)
         {
             GuestRoom kf = 客房BindingSource.DataSource as GuestRoom;
-            parentContext.GuestRoomRentalDetail.Where(m => m.客房ID == kf.ID).Load();
-
+            kf.GuestRoomRentalDetail.AsQueryable().Load();
             客房租金明细BindingSource.DataSource = parentContext.GuestRoomRentalDetail
                 .Local.Where(m=>m.客房ID==kf.ID).OrderByDescending(m => m.起付日期);
         }
