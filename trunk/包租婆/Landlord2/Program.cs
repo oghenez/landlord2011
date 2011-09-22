@@ -14,8 +14,8 @@ namespace Landlord2
         [STAThread]
         static void Main()
         {
-            MessageBox.Show("暂时先省略非空属性的校验！待测试");
-            MessageBox.Show("源房Form，注意因为每个窗体有context，不要传实体引用，传ID值");
+            //MessageBox.Show("暂时先省略非空属性的校验！待测试");
+            //MessageBox.Show("源房Form，注意因为每个窗体有context，不要传实体引用，传ID值");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

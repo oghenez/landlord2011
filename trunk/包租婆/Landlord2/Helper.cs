@@ -87,10 +87,11 @@ namespace Landlord2
             StringBuilder sb = new StringBuilder();
             foreach (DbEntityValidationResult result in results)
             {
-                foreach (var error in result.ValidationErrors)
-                {
-                    sb.AppendLine(string.Format("● {0}",error.ErrorMessage));
-                }                
+                if(!result.IsValid)
+                    foreach (var error in result.ValidationErrors)
+                    {
+                        sb.AppendLine(string.Format("● {0}",error.ErrorMessage));
+                    }                
             }
             return sb.ToString();
         }

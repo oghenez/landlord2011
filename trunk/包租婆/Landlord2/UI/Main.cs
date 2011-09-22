@@ -385,7 +385,7 @@ namespace Landlord2
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is SourceRoom)
             {
                 SourceRoom yf = treeView1.SelectedNode.Tag as SourceRoom;
-                using (源房Form yF = new 源房Form(yf))
+                using (源房Form yF = new 源房Form(yf.ID))
                 {
                     yF.ShowDialog(this);
                 }

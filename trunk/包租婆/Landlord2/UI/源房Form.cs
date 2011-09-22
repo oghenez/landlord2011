@@ -31,17 +31,18 @@ namespace Landlord2.UI
         /// <summary>
         /// 编辑源房 
         /// </summary>
-        public 源房Form(SourceRoom yf)
+        public 源房Form(Guid yfID)
         {
             InitializeComponent();
             isNew = false;
-            this.yf = yf;
+            this.yf = context.SourceRoom.Find(yfID);
         }
 
         private void YF_Load(object sender, EventArgs e)
         {
             Text = string.Format("{0}源房", isNew ? "新增" : "编辑");
 
+            uC源房详细1.parentContext = context;
             uC源房详细1.源房BindingSource.DataSource = yf;
         }
 

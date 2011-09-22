@@ -14,7 +14,7 @@ namespace Landlord2.UI
     public partial class UC源房详细 : Landlord2.UI.UCBase
     {
         private bool IsReadOnly = false;
-        private Landlord2Entities parentContext;
+        public Landlord2Entities parentContext;
 
         /// <summary>
         /// 此构造函数仅编辑器调用
@@ -250,10 +250,15 @@ namespace Landlord2.UI
         private void 源房BindingSource_DataSourceChanged(object sender, EventArgs e)
         {
             SourceRoom yf = 源房BindingSource.DataSource as SourceRoom;
-            parentContext.SourceRoomUpRentalAgreement.Where(m => m.源房ID == yf.ID).Load();
+            yf.SourceRoomUpRentalAgreement.AsQueryable().Load();
+            源房涨租协定BindingSource.DataSource = parentContext.SourceRoomUpRentalAgreement.Local.ToBindingList();
+            var kkk = 源房涨租协定BindingSource.DataSource;
+            源房涨租协定BindingSource.Filter = string.Format("'源房ID'='{0}'", yf.ID);
+            源房涨租协定BindingSource.Sort = "期始";
+            //.Where(m => m.源房ID == yf.ID).OrderBy(m => m.期始);
 
-            源房涨租协定BindingSource.DataSource = parentContext.SourceRoomUpRentalAgreement
-                .Local.Where(m => m.源房ID == yf.ID).OrderBy(m => m.期始);
+
+
         }
 
 
