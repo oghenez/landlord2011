@@ -8,6 +8,7 @@ using System.IO;
 using System.CodeDom.Compiler;
 using System.Linq;
 using System.Data.Entity;
+using System.Collections.ObjectModel;
 
 namespace Landlord2.UI
 {
@@ -250,15 +251,14 @@ namespace Landlord2.UI
         private void 源房BindingSource_DataSourceChanged(object sender, EventArgs e)
         {
             SourceRoom yf = 源房BindingSource.DataSource as SourceRoom;
+            //临时Detach现有的所有SourceRoomUpRentalAgreement本地对象
+            foreach(var o in parentContext.SourceRoomUpRentalAgreement.Local.ToList())
+            {
+                parentContext.Entry(o).State = System.Data.EntityState.Detached;
+            }
+
             yf.SourceRoomUpRentalAgreement.AsQueryable().Load();
             源房涨租协定BindingSource.DataSource = parentContext.SourceRoomUpRentalAgreement.Local.ToBindingList();
-            var kkk = 源房涨租协定BindingSource.DataSource;
-            源房涨租协定BindingSource.Filter = string.Format("'源房ID'='{0}'", yf.ID);
-            源房涨租协定BindingSource.Sort = "期始";
-            //.Where(m => m.源房ID == yf.ID).OrderBy(m => m.期始);
-
-
-
         }
 
 

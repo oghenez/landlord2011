@@ -206,9 +206,13 @@ namespace Landlord2.UI
         private void 客房BindingSource_DataSourceChanged(object sender, EventArgs e)
         {
             GuestRoom kf = 客房BindingSource.DataSource as GuestRoom;
+            //临时Detach现有的所有GuestRoomRentalDetail本地对象
+            foreach (var o in parentContext.GuestRoomRentalDetail.Local.ToList())
+            {
+                parentContext.Entry(o).State = System.Data.EntityState.Detached;
+            }
             kf.GuestRoomRentalDetail.AsQueryable().Load();
-            客房租金明细BindingSource.DataSource = parentContext.GuestRoomRentalDetail
-                .Local.Where(m=>m.客房ID==kf.ID).OrderByDescending(m => m.起付日期);
+            客房租金明细BindingSource.DataSource = parentContext.GuestRoomRentalDetail.Local.ToBindingList();
         }
 
     }
