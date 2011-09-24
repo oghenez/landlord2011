@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{78845175-88FF-4D51-AF00-A472A3256F54}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Landlord2</RootNamespace>
+    <AssemblyName>Landlord2</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.3.2.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Model1.Views.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Views.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\客房.cs" />
+    <Compile Include="Data\客房出租历史记录.cs" />
+    <Compile Include="Data\客房租金明细.cs" />
+    <Compile Include="Data\提醒.cs" />
+    <Compile Include="Data\日常损耗.cs" />
+    <Compile Include="Data\源房.cs" />
+    <Compile Include="Data\源房水电气核查.cs" />
+    <Compile Include="Data\源房涨租协定.cs" />
+    <Compile Include="Data\源房缴费明细.cs" />
+    <Compile Include="Data\装修明细.cs" />
+    <Compile Include="MyDataGridViewDateTimePickerColumn.cs" />
+    <Compile Include="Data\实体验证类.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="UI\客房Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\客房Form.Designer.cs">
+      <DependentUpon>客房Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\UCBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UCBase.Designer.cs">
+      <DependentUpon>UCBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UC客房详细.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UC客房详细.Designer.cs">
+      <DependentUpon>UC客房详细.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UC源房详细.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UC源房详细.Designer.cs">
+      <DependentUpon>UC源房详细.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\客房出租历史记录Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\客房出租历史记录Form.Designer.cs">
+      <DependentUpon>客房出租历史记录Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\客房收租Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\客房收租Form.Designer.cs">
+      <DependentUpon>客房收租Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\客房收租明细Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\客房收租明细Form.Designer.cs">
+      <DependentUpon>客房收租明细Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\源房Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\源房Form.Designer.cs">
+      <DependentUpon>源房Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\客房出租Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\客房出租Form.Designer.cs">
+      <DependentUpon>客房出租Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\客房选择Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\客房选择Form.Designer.cs">
+      <DependentUpon>客房选择Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\客房退租Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\客房退租Form.Designer.cs">
+      <DependentUpon>客房退租Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\源房缴费Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\源房缴费Form.Designer.cs">
+      <DependentUpon>源房缴费Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\源房缴费明细Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\源房缴费明细Form.Designer.cs">
+      <DependentUpon>源房缴费明细Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\阶梯水价Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\阶梯水价Form.Designer.cs">
+      <DependentUpon>阶梯水价Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\阶梯电价Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\阶梯电价Form.Designer.cs">
+      <DependentUpon>阶梯电价Form.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\客房Form.resx">
+      <DependentUpon>客房Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\UCBase.resx">
+      <DependentUpon>UCBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UC客房详细.resx">
+      <DependentUpon>UC客房详细.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UC源房详细.resx">
+      <DependentUpon>UC源房详细.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\客房出租历史记录Form.resx">
+      <DependentUpon>客房出租历史记录Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\客房收租Form.resx">
+      <DependentUpon>客房收租Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\客房收租明细Form.resx">
+      <DependentUpon>客房收租明细Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\源房Form.resx">
+      <DependentUpon>源房Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\客房出租Form.resx">
+      <DependentUpon>客房出租Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\客房选择Form.resx">
+      <DependentUpon>客房选择Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\客房退租Form.resx">
+      <DependentUpon>客房退租Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\源房缴费Form.resx">
+      <DependentUpon>源房缴费Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\源房缴费明细Form.resx">
+      <DependentUpon>源房缴费明细Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\阶梯水价Form.resx">
+      <DependentUpon>阶梯水价Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\阶梯电价Form.resx">
+      <DependentUpon>阶梯电价Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Data\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\Model1.Views.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Views.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\DataSources\Landlord2.Data.Entities.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.客房.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.客房出租历史记录.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.客房租金明细.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.提醒.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.源房.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.源房涨租协定.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.源房缴费明细.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ComponentFactory.Krypton.Toolkit.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.ico" />
+    <Content Include="Data\Landlord2.sdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Readme.txt" />
+    <Content Include="Resources\Filter.png" />
+    <Content Include="Resources\idea_16.png" />
+    <Content Include="Resources\info.png" />
+    <None Include="Resources\客房续租24.png" />
+    <None Include="Resources\客房续租48.png" />
+    <None Include="Resources\客房出租24.png" />
+    <None Include="Resources\客房出租48.png" />
+    <None Include="Resources\客房退租24.png" />
+    <None Include="Resources\客房退租48.png" />
+    <Content Include="Resources\缴费24.png" />
+    <Content Include="Resources\缴费48.png" />
+    <Content Include="Resources\缴费明细24.png" />
+    <Content Include="Resources\缴费明细48.png" />
+    <None Include="Resources\源房48Del.png" />
+    <None Include="Resources\源房48Add.png" />
+    <None Include="Resources\源房24Edit.png" />
+    <None Include="Resources\源房24Del.png" />
+    <None Include="Resources\源房24Add.png" />
+    <None Include="Resources\客房48Edit.png" />
+    <None Include="Resources\客房48Del.png" />
+    <None Include="Resources\客房48Add.png" />
+    <None Include="Resources\客房24Edit.png" />
+    <None Include="Resources\客房24Del.png" />
+    <None Include="Resources\客房24Add.png" />
+    <None Include="Resources\源房48Edit.png" />
+    <None Include="Resources\attach_16_dis.png" />
+    <Content Include="Resources\idea_16_dis.png" />
+    <Content Include="Resources\idea_16_hot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.3.5">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 3.5 SP2</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
