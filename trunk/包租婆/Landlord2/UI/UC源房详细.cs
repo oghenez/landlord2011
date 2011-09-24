@@ -257,7 +257,7 @@ namespace Landlord2.UI
                 parentContext.Entry(o).State = System.Data.EntityState.Detached;
             }
 
-            yf.SourceRoomUpRentalAgreement.AsQueryable().Load();
+            yf.SourceRoomUpRentalAgreement.OrderBy(m=>m.期始).AsQueryable().Load();
             源房涨租协定BindingSource.DataSource = parentContext.SourceRoomUpRentalAgreement.Local.ToBindingList();
         }
 

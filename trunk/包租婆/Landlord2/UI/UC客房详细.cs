@@ -211,7 +211,7 @@ namespace Landlord2.UI
             {
                 parentContext.Entry(o).State = System.Data.EntityState.Detached;
             }
-            kf.GuestRoomRentalDetail.AsQueryable().Load();
+            kf.GuestRoomRentalDetail.OrderByDescending(m=>m.起付日期).AsQueryable().Load();
             客房租金明细BindingSource.DataSource = parentContext.GuestRoomRentalDetail.Local.ToBindingList();
         }
 
