@@ -1,6 +1,6 @@
-﻿namespace Landlord.GUI
+﻿namespace Landlord2.UI
 {
-    partial class test
+    partial class FormBase
     {
         /// <summary>
         /// Required designer variable.
@@ -28,32 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.客房BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.客房BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // 客房BindingSource
-            // 
-            this.客房BindingSource.DataSource = typeof(Landlord.客房);
-            // 
-            // test
+            // FormBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(707, 423);
-            this.Name = "test";
-            this.Text = "test";
-            this.Load += new System.EventHandler(this.test_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.客房BindingSource)).EndInit();
+            this.ClientSize = new System.Drawing.Size(679, 470);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "FormBase";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "FormBase";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBase_FormClosing);
+            this.Load += new System.EventHandler(this.FormBase_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.BindingSource 客房BindingSource;
-
     }
 }
