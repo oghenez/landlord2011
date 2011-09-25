@@ -23,6 +23,7 @@ namespace Landlord2
             //string path = Path.Combine(Directory.GetCurrentDirectory(),"log.txt");
             //File.Delete(path);//删除指定的文件。如果指定的文件不存在，则不引发异常。 
 
+            AppRoot.Inital();//根对象初始化
             Application.Run(new Main());
             //Application.Run(new Landlord2.UI.testForm());
         }
