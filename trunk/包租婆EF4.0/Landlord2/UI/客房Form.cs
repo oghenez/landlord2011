@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Landlord2.UI
 {
-    public partial class 客房Form : KryptonForm
+    public partial class 客房Form : FormBase
     {
         private 客房 kf;
         private Guid yfID;//客房隶属的源房id
@@ -23,7 +23,7 @@ namespace Landlord2.UI
         {
             InitializeComponent();
             isNew = false;
-            this.kf = kf;
+            this.kf = context.客房.FirstOrDefault(m=>m.ID == kf.ID);
         }
 
         public 客房Form(Guid yfGuid)
@@ -36,7 +36,7 @@ namespace Landlord2.UI
         private void kfForm_Load(object sender, EventArgs e)
         {
             Text = string.Format("{0}客房",isNew? "新增":"编辑");
-            源房BindingSource.DataSource = 源房.GetYF().Execute(MergeOption.AppendOnly); 
+            源房BindingSource.DataSource = 源房.GetYF(context).Execute(MergeOption.AppendOnly); 
 
             if (isNew)//新增
             {
@@ -44,7 +44,7 @@ namespace Landlord2.UI
                 kf = new 客房();
                 kf.源房ID = this.yfID;
                 cmbYF.SelectedValue = this.yfID;
-                Main.context.客房.AddObject(kf);//此操作后可实现外键同步
+                context.客房.AddObject(kf);//此操作后可实现外键同步
             }
             else//编辑
             {
@@ -67,7 +67,7 @@ namespace Landlord2.UI
             {
                 
                 string msg;
-                if (Helper.saveData(kf, out msg))
+                if (Helper.saveData(context, kf, out msg))
                 {
                     KryptonMessageBox.Show(msg, "成功新增客房");
                     if (this.Owner is Main)
@@ -81,14 +81,14 @@ namespace Landlord2.UI
             }
             else//编辑
             {                
-                if (Main.context.ObjectStateManager.GetObjectStateEntry(kf).State == EntityState.Unchanged)
+                if (context.ObjectStateManager.GetObjectStateEntry(kf).State == EntityState.Unchanged)
                 {
                     Close(); //如果编辑状态下，未做任何修改，则直接退出
                 }
                 else
                 {
                     //-----如果客房租户名或身份证变更，那么需同时更改[客房出租历史记录]里相关项。（判断同一个租户的关键依据<租户有可能同名同姓>）----------
-                    var kfModifies = Main.context.ObjectStateManager.GetObjectStateEntries(EntityState.Modified).First(m=>m.Entity.Equals(kf));
+                    var kfModifies = context.ObjectStateManager.GetObjectStateEntries(EntityState.Modified).First(m=>m.Entity.Equals(kf));
                     string origin租户 = null;
                     string origin身份证号 = null;
                     if (kfModifies.GetModifiedProperties().Contains("租户"))
@@ -110,7 +110,7 @@ namespace Landlord2.UI
                     }
                                         
                     string msg;
-                    if (Helper.saveData(kf, out msg))
+                    if (Helper.saveData(context, kf, out msg))
                     {
                         KryptonMessageBox.Show(msg, "成功编辑客房");
                         if (this.Owner is Main)
@@ -140,7 +140,7 @@ namespace Landlord2.UI
 #endif
 
             string msg;
-            if (Helper.saveData(kf, out msg))
+            if (Helper.saveData(context, kf, out msg))
             {
                 KryptonMessageBox.Show(string.Format("成功新增客房[{0}]。您可以继续添加客房！", kf.命名), "成功新增客房");
                 if (this.Owner is Main)
@@ -163,7 +163,7 @@ namespace Landlord2.UI
                     月厨房费 = old.月厨房费,
                     备注 = old.备注
                 };
-                Main.context.客房.AddObject(kf);//此操作后可实现外键同步
+                context.客房.AddObject(kf);//此操作后可实现外键同步
 
                 uC客房详细1.客房BindingSource.DataSource = kf;
             }
@@ -176,18 +176,6 @@ namespace Landlord2.UI
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void kfForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (isNew && Main.context.ObjectStateManager.GetObjectStateEntry(kf).State == EntityState.Added)
-                Main.context.客房.Detach(kf);
-
-            if (!isNew && Main.context.ObjectStateManager.GetObjectStateEntry(kf).State == EntityState.Modified)
-            {
-                Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, kf);
-                Main.context.AcceptAllChanges();
-            }
         }
 
         private void cmbYF_SelectedIndexChanged(object sender, EventArgs e)

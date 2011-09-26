@@ -12,7 +12,7 @@ using System.Data.Objects;
 
 namespace Landlord2.UI
 {
-    public partial class 源房缴费Form : KryptonForm
+    public partial class 源房缴费Form : FormBase
     {
         private Guid yfID;//源房ID
         private 源房缴费明细 payDetail;//编辑状态 - 传入源房缴费明细
@@ -33,20 +33,20 @@ namespace Landlord2.UI
         {
             InitializeComponent();
             isNew = false;
-            this.payDetail = payDetail;
+            this.payDetail = context.源房缴费明细.FirstOrDefault(m=>m.ID == payDetail.ID);
         } 
 
         private void 缴费Form_Load(object sender, EventArgs e)
         {
             Text = string.Format("源房缴费[{0}]",isNew? "新增":"编辑");
-            源房BindingSource.DataSource = 源房.GetYF().Execute(MergeOption.NoTracking);
+            源房BindingSource.DataSource = 源房.GetYF(context).Execute(MergeOption.NoTracking);
 
             if (isNew)//新增
             {
                 BtnOkAndContinue.Visible = true;//保存并继续按钮可见
                 payDetail = new 源房缴费明细();
                 payDetail.源房ID = this.yfID;
-                Main.context.源房缴费明细.AddObject(payDetail);//此操作后可实现外键同步
+                context.源房缴费明细.AddObject(payDetail);//此操作后可实现外键同步
             }
             else//编辑
             {
@@ -69,11 +69,11 @@ namespace Landlord2.UI
             if (isNew)//新增
             {
                 string msg;
-                if (Helper.saveData(payDetail, out msg))
+                if (Helper.saveData(context, payDetail, out msg))
                 {
                     KryptonMessageBox.Show(msg, "成功新增缴费信息");
                     if (this.Owner is Main)
-                        (this.Owner as Main).RefreshAndLocateTree(payDetail.源房);//刷新TreeView，并定位到kf节点。
+                        (this.Owner as Main).RefreshAndLocateTree(payDetail.源房);//刷新TreeView，并定位到yf节点。
                     Close();
                 }
                 else
@@ -83,18 +83,18 @@ namespace Landlord2.UI
             }
             else//编辑
             {
-                if (Main.context.ObjectStateManager.GetObjectStateEntry(payDetail).State == EntityState.Unchanged)
+                if (context.ObjectStateManager.GetObjectStateEntry(payDetail).State == EntityState.Unchanged)
                 {
                     Close(); //如果编辑状态下，未做任何修改，则直接退出
                 }
                 else
                 {
                     string msg;
-                    if (Helper.saveData(payDetail, out msg))
+                    if (Helper.saveData(context, payDetail, out msg))
                     {
                         KryptonMessageBox.Show(msg, "成功编辑缴费信息");
                         if (this.Owner is Main)
-                            (this.Owner as Main).RefreshAndLocateTree(payDetail.源房);//刷新TreeView，并定位到kf节点。
+                            (this.Owner as Main).RefreshAndLocateTree(payDetail.源房);//刷新TreeView，并定位到yf节点。
                         Close();
                     }
                     else
@@ -122,7 +122,7 @@ namespace Landlord2.UI
 #endif
            
             string msg;
-            if (Helper.saveData(payDetail, out msg))
+            if (Helper.saveData(context, payDetail, out msg))
             {
                 KryptonMessageBox.Show(string.Format("成功新增缴费信息。您可以继续添加！"), "成功新增缴费信息");
                 if (this.Owner is Main)
@@ -130,7 +130,7 @@ namespace Landlord2.UI
                 源房缴费明细 old = payDetail;
                 payDetail = new 源房缴费明细();
                 payDetail.源房ID = old.源房ID;
-                Main.context.源房缴费明细.AddObject(payDetail);//此操作后可实现外键同步
+                context.源房缴费明细.AddObject(payDetail);//此操作后可实现外键同步
 
                 源房缴费明细BindingSource.DataSource = payDetail;
             }
@@ -143,18 +143,6 @@ namespace Landlord2.UI
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void 缴费Form_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (isNew && Main.context.ObjectStateManager.GetObjectStateEntry(payDetail).State == EntityState.Added)
-                Main.context.源房缴费明细.Detach(payDetail);
-            
-            if (!isNew && Main.context.ObjectStateManager.GetObjectStateEntry(payDetail).State == EntityState.Modified)
-            {
-                Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, payDetail);
-                Main.context.AcceptAllChanges();
-            }
         }
 
         private void cmbYF_SelectedIndexChanged(object sender, EventArgs e)
@@ -170,7 +158,7 @@ namespace Landlord2.UI
         {
             if (cmbYF.SelectedValue != null)
             {
-                ObjectQuery<源房缴费明细> result = 源房缴费明细.GetPayDetails((Guid)cmbYF.SelectedValue, cmbPayItem.Text);
+                ObjectQuery<源房缴费明细> result = 源房缴费明细.GetPayDetails(context, (Guid)cmbYF.SelectedValue, cmbPayItem.Text);
                 参考历史BindingSource.DataSource = result.Execute(MergeOption.NoTracking);
             }
         }

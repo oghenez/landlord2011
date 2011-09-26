@@ -495,9 +495,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
             this.Name = "源房缴费明细Form";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "源房缴费明细";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.缴费明细Form_FormClosed);
             this.Load += new System.EventHandler(this.缴费Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.源房缴费明细BindingSource)).EndInit();

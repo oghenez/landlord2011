@@ -107,7 +107,7 @@
             this.uC客房详细1.Size = new System.Drawing.Size(783, 240);
             this.uC客房详细1.TabIndex = 0;
             // 
-            // kfForm
+            // 客房Form
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -119,13 +119,8 @@
             this.Controls.Add(this.BtnOkAndContinue);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.uC客房详细1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "kfForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Name = "客房Form";
             this.Text = "客房";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.kfForm_FormClosed);
             this.Load += new System.EventHandler(this.kfForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cmbYF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).EndInit();

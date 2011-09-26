@@ -97,6 +97,12 @@
     <Compile Include="MyDataGridViewDateTimePickerColumn.cs" />
     <Compile Include="Data\实体验证类.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="UI\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,11 +135,29 @@
     <Compile Include="UI\UC源房详细.Designer.cs">
       <DependentUpon>UC源房详细.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\客房Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\客房Form.Designer.cs">
+      <DependentUpon>客房Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\源房Form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\源房Form.Designer.cs">
       <DependentUpon>源房Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\源房缴费Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\源房缴费Form.Designer.cs">
+      <DependentUpon>源房缴费Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\源房缴费明细Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\源房缴费明细Form.Designer.cs">
+      <DependentUpon>源房缴费明细Form.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\阶梯水价Form.cs">
       <SubType>Form</SubType>
@@ -147,6 +171,9 @@
     <Compile Include="UI\阶梯电价Form.Designer.cs">
       <DependentUpon>阶梯电价Form.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,8 +199,17 @@
     <EmbeddedResource Include="UI\UC源房详细.resx">
       <DependentUpon>UC源房详细.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\客房Form.resx">
+      <DependentUpon>客房Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\源房Form.resx">
       <DependentUpon>源房Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\源房缴费Form.resx">
+      <DependentUpon>源房缴费Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\源房缴费明细Form.resx">
+      <DependentUpon>源房缴费明细Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\阶梯水价Form.resx">
       <DependentUpon>阶梯水价Form.cs</DependentUpon>
