@@ -43,16 +43,16 @@ namespace Landlord2.Data
         /// </summary>
         /// <param name="客房ID"></param>
         /// <returns></returns>
-        public static ObjectQuery<客房租金明细> GetRentDetails(Guid? 客房ID)
+        public static ObjectQuery<客房租金明细> GetRentDetails(MyContext context, Guid? 客房ID)
         {
             ObjectQuery<客房租金明细> result = null;
             if (客房ID == null || 客房ID == Guid.Empty)
             {
-                result = compiledQuery0.Invoke(Main.context);
+                result = compiledQuery0.Invoke(context);
             }
             else
             {
-                result = compiledQuery1.Invoke(Main.context, (Guid)客房ID);
+                result = compiledQuery1.Invoke(context, (Guid)客房ID);
             }
             return result;
         }

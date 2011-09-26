@@ -65,29 +65,29 @@ namespace Landlord2.Data
         /// <param name="源房ID"></param>
         /// <param name="缴费项"></param>
         /// <returns></returns>
-        public static ObjectQuery<源房缴费明细> GetPayDetails(Guid? 源房ID, string 缴费项)
+        public static ObjectQuery<源房缴费明细> GetPayDetails(MyContext context, Guid? 源房ID, string 缴费项)
         {
             ObjectQuery<源房缴费明细> result = null;
             if (源房ID == null || 源房ID == Guid.Empty)
             {
                 if(string.IsNullOrEmpty(缴费项))
                 {
-                    result = compiledQuery0.Invoke(Main.context);
+                    result = compiledQuery0.Invoke(context);
                 }
                 else
                 {
-                    result = compiledQuery3.Invoke(Main.context, 缴费项);
+                    result = compiledQuery3.Invoke(context, 缴费项);
                 }
             }
             else
             { 
                 if(string.IsNullOrEmpty(缴费项))
                 {
-                    result = compiledQuery2.Invoke(Main.context, (Guid)源房ID);
+                    result = compiledQuery2.Invoke(context, (Guid)源房ID);
                 }
                 else
                 {
-                    result = compiledQuery1.Invoke(Main.context, (Guid)源房ID, 缴费项);
+                    result = compiledQuery1.Invoke(context, (Guid)源房ID, 缴费项);
                 }
             }
             return result;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.EntityClient;
+using System.Threading;
 
 namespace Landlord2
 {
@@ -16,6 +17,7 @@ namespace Landlord2
 		/// False ：初始构造一个连接，并常开。其他窗体用各自新建的连接（默认情况下， EF的context根据需要开关连接）。整个应用结束时销毁初始打开的连接。
 		/// True ：整个应用使用同一个连接，初始构造并常开，应用结束销毁。
 		/// </summary>
+		//x 这里主要是针对EF4.1的DBContext构造函数的,当前EF4.0之ObjectContext不需要
 		public static bool IsAllInOneConnection = false; //默认false
 
 		/// <summary>
@@ -32,7 +34,7 @@ namespace Landlord2
 			{
 				if (IsAllInOneConnection == false)
 				{
-					if (connection == null)
+					if (connection == null)//! 默认第一个Context会常开连接，项目初始会创建
 					{
 						connection = new EntityConnection(Helper.CreateConnectString());
 						connection.Open();
@@ -75,10 +77,13 @@ namespace Landlord2
 			instance = new AppRoot();
 
 			//连接初始化
-			if (connection != null)
-				connection.Dispose();
-			connection = new EntityConnection(Helper.CreateConnectString());
-			connection.Open();
+			ThreadPool.QueueUserWorkItem(delegate
+		   {
+			   if (connection != null)
+				   connection.Dispose();
+			   connection = new EntityConnection(Helper.CreateConnectString());
+			   connection.Open();
+		   });
 		}  
 	}
 }

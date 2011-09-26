@@ -8,6 +8,7 @@ using System.Data.Objects;
 using System.IO;
 using System.Data.Objects.DataClasses;
 using System.Reflection;
+using Landlord2.Data;
 
 namespace Landlord2
 {
@@ -29,7 +30,6 @@ namespace Landlord2
             // Set the Metadata location.
             //entityBuilder.Metadata = @"res://*/Data.Model1.csdl|res://*/Data.Model1.ssdl|res://*/Data.Model1.msl";
             entityBuilder.Metadata = @"|DataDirectory|\Data\Model1.csdl||DataDirectory|\Data\Model1.ssdl||DataDirectory|\Data\Model1.msl";
-
 
             return entityBuilder.ToString();
         }
@@ -78,13 +78,13 @@ namespace Landlord2
         /// <param name="entity">针对的实体对象</param>
         /// <param name="ResultMsg">返回的消息</param>
         /// <returns>返回是否成功标志</returns>
-        public static bool saveData(object entity, out string ResultMsg)
+        public static bool saveData(MyContext context, object entity, out string ResultMsg)
         {
             bool flag = false;
             int num;
             try
             {
-                num = Main.context.SaveChanges();
+                num = context.SaveChanges();
                 flag = true;
                 
 #if DEBUG
@@ -95,8 +95,8 @@ namespace Landlord2
             }
             catch (OptimisticConcurrencyException)
             {
-                Main.context.Refresh(RefreshMode.ClientWins, entity);
-                num = Main.context.SaveChanges();
+                context.Refresh(RefreshMode.ClientWins, entity);
+                num = context.SaveChanges();
                 flag = true;
                 
 #if DEBUG

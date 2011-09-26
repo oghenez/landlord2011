@@ -28,9 +28,9 @@ namespace Landlord2.Data
         /// <summary>
         /// 预编译查询0 -- 查询所有源房，最近签约的排最前
         /// </summary>
-        public static ObjectQuery<源房> GetYF()
+        public static ObjectQuery<源房> GetYF(MyContext context)
         {
-            return compiledQuery0.Invoke(Main.context);
+            return compiledQuery0.Invoke(context);
         }
 
         /// <summary>
@@ -44,9 +44,9 @@ namespace Landlord2.Data
         /// <summary>
         /// 预编译查询1 -- 查询非历史源房，最近签约的排最前
         /// </summary>
-        public static ObjectQuery<源房> GetYF_NoHistory()
+        public static ObjectQuery<源房> GetYF_NoHistory(MyContext context)
         {
-            return compiledQuery1.Invoke(Main.context);
+            return compiledQuery1.Invoke(context);
         }
 
         /// <summary>
@@ -60,9 +60,9 @@ namespace Landlord2.Data
         /// <summary>
         /// 预编译查询0 -- 查询历史源房，最近签约的排最前
         /// </summary>
-        public static ObjectQuery<源房> GetYF_History()
+        public static ObjectQuery<源房> GetYF_History(MyContext context)
         {
-            return compiledQuery2.Invoke(Main.context);
+            return compiledQuery2.Invoke(context);
         }
         #endregion
     }

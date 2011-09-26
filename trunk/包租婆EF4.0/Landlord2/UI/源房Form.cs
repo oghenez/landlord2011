@@ -12,7 +12,7 @@ using System.Data.Objects;
 
 namespace Landlord2.UI
 {
-    public partial class 源房Form : KryptonForm
+    public partial class 源房Form : FormBase
     {
         private 源房 yf;
         private bool isNew;//是否是新增
@@ -25,16 +25,16 @@ namespace Landlord2.UI
             InitializeComponent();
             isNew = true;
             this.yf = new 源房();
-            Main.context.源房.AddObject(yf);
+            context.源房.AddObject(yf);
         }
         /// <summary>
         /// 编辑源房 
         /// </summary>
-        public 源房Form(源房 yf)
+        public 源房Form(Guid yfID)
         {
             InitializeComponent();
             isNew = false;
-            this.yf = yf;
+            this.yf = context.源房.FirstOrDefault(m=>m.ID == yfID);
         }
 
         private void YF_Load(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace Landlord2.UI
             Text = string.Format("{0}源房", isNew ? "新增" : "编辑");
 
             uC源房详细1.源房BindingSource.DataSource = yf;
-            uC源房详细1.源房涨租协定BindingSource.DataSource = 源房涨租协定.GetByYFid(yf.ID).Execute(MergeOption.AppendOnly);
+            uC源房详细1.源房涨租协定BindingSource.DataSource = 源房涨租协定.GetByYFid(context, yf.ID).Execute(MergeOption.AppendOnly);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace Landlord2.UI
             if (isNew)//新增 
             {                
                 string msg;
-                if (Helper.saveData(yf, out msg))
+                if (Helper.saveData(context, yf, out msg))
                 {
                     KryptonMessageBox.Show(msg, "成功新增源房");
                     if (this.Owner is Main)
@@ -74,14 +74,14 @@ namespace Landlord2.UI
             else //编辑
             {
                 //如果编辑状态下，未做任何修改，则直接退出
-                if (Main.context.ObjectStateManager.GetObjectStateEntry(yf).State == EntityState.Unchanged)
+                if (context.ObjectStateManager.GetObjectStateEntry(yf).State == EntityState.Unchanged)
                 {
                     Close(); //如果编辑状态下，未做任何修改，则直接退出
                 }
                 else
                 {
                     string msg;
-                    if (Helper.saveData(yf, out msg))
+                    if (Helper.saveData(context, yf, out msg))
                     {
                         KryptonMessageBox.Show(msg, "成功编辑源房");
                         if (this.Owner is Main)
@@ -101,16 +101,5 @@ namespace Landlord2.UI
             Close();
         }
 
-        private void yfForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (isNew && Main.context.ObjectStateManager.GetObjectStateEntry(yf).State == EntityState.Added)
-                Main.context.源房.Detach(yf);
-
-            if (!isNew && Main.context.ObjectStateManager.GetObjectStateEntry(yf).State == EntityState.Modified)
-            {
-                Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, yf);
-                Main.context.AcceptAllChanges();
-            }
-        }
     }
 }

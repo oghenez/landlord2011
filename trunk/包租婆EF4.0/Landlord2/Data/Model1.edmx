@@ -932,7 +932,7 @@
         <EntityTypeShape EntityType="Landlord2Model.客房" Width="1.5" PointX="3" PointY="4" Height="6.74552490234375" IsExpanded="true" />
         <EntityTypeShape EntityType="Landlord2Model.客房出租历史记录" Width="1.5" PointX="5.25" PointY="2.125" Height="5.9814461263020817" IsExpanded="true" />
         <EntityTypeShape EntityType="Landlord2Model.客房租金明细" Width="1.5" PointX="5.25" PointY="8.875" Height="3.6892097981770817" IsExpanded="true" />
-        <EntityTypeShape EntityType="Landlord2Model.日常损耗" Width="1.5" PointX="0.75" PointY="0.75" Height="2.3520719401041656" IsExpanded="true" />
+        <EntityTypeShape EntityType="Landlord2Model.日常损耗" Width="1.5" PointX="1.125" PointY="0.75" Height="2.3520719401041656" IsExpanded="true" />
         <EntityTypeShape EntityType="Landlord2Model.提醒" Width="1.5" PointX="7.75" PointY="0.75" Height="2.5430916341145835" IsExpanded="true" />
         <EntityTypeShape EntityType="Landlord2Model.源房" Width="1.5" PointX="0.75" PointY="10.5" Height="8.8467415364583353" IsExpanded="true" />
         <EntityTypeShape EntityType="Landlord2Model.源房缴费明细" Width="1.5" PointX="3" PointY="13.25" Height="3.1161507161458317" IsExpanded="true" />
