@@ -12,7 +12,7 @@ using System.Data.Objects;
 
 namespace Landlord2.UI
 {
-    public partial class 源房缴费明细Form : KryptonForm
+    public partial class 源房缴费明细Form : FormBase
     {
         public 源房缴费明细Form()
         {
@@ -21,18 +21,8 @@ namespace Landlord2.UI
 
         private void 缴费Form_Load(object sender, EventArgs e)
         {
-            源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(null, null).Execute(MergeOption.AppendOnly);//初始情况，针对所有源房
-            源房BindingSource.DataSource = 源房.GetYF().Execute(MergeOption.NoTracking);           
-        }
-
-        private void 缴费明细Form_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            var changes = Main.context.ObjectStateManager.GetObjectStateEntries(EntityState.Added | EntityState.Deleted | EntityState.Modified);
-            if (changes.Count() > 0)
-            {
-                Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, Main.context.源房缴费明细);
-                Main.context.AcceptAllChanges();
-            }
+            源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(context, null, null).Execute(MergeOption.AppendOnly);//初始情况，针对所有源房
+            源房BindingSource.DataSource = 源房.GetYF(context).Execute(MergeOption.NoTracking);           
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -61,7 +51,7 @@ namespace Landlord2.UI
         {
             源房缴费明细BindingSource.EndEdit();
 
-            var changes = Main.context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted | EntityState.Modified);
+            var changes = context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted | EntityState.Modified);
             if (changes.Count() > 0)
             {
                 //校验
@@ -88,7 +78,7 @@ namespace Landlord2.UI
                 }
 
                 string msg;
-                if (Helper.saveData(Main.context.源房缴费明细, out msg))
+                if (Helper.saveData(context, context.源房缴费明细, out msg))
                 {
                     KryptonMessageBox.Show(msg, "成功保存");
                     Close();
@@ -127,11 +117,11 @@ namespace Landlord2.UI
 
             if (raBtnAll.Checked)
             {
-                源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(null, null).Execute(MergeOption.AppendOnly);
+                源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(context, null, null).Execute(MergeOption.AppendOnly);
             }
             else if (raBtnOne.Checked)
             {
-                源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails((Guid)cmbYF.SelectedValue, null).Execute(MergeOption.AppendOnly);
+                源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(context, (Guid)cmbYF.SelectedValue, null).Execute(MergeOption.AppendOnly);
             }
             btnFilter.Text = "按 [缴费项] 筛选 - 所有缴费项";
         }
@@ -140,7 +130,7 @@ namespace Landlord2.UI
         {
             if (cmbYF.SelectedValue != null)
             {
-                源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails((Guid?)cmbYF.SelectedValue, null).Execute(MergeOption.AppendOnly);
+                源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(context, (Guid?)cmbYF.SelectedValue, null).Execute(MergeOption.AppendOnly);
                 btnFilter.Text = "按 [缴费项] 筛选 - 所有缴费项";
             }
         }
@@ -155,18 +145,18 @@ namespace Landlord2.UI
             switch (txt)
             {
                 case "所有缴费项":
-                    源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(guid,null).Execute(MergeOption.AppendOnly);
+                    源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(context, guid, null).Execute(MergeOption.AppendOnly);
                     break;
                 case "其他":
                     {
-                        var query = (from p in 源房缴费明细.GetPayDetails(guid,null)
+                        var query = (from p in 源房缴费明细.GetPayDetails(context, guid, null)
                                     where !(new[] { "房租", "物业费", "水", "电", "气", "宽带费", "中介费", "押金" }.Contains(p.缴费项))
                                     select p) as ObjectQuery<源房缴费明细>;
                         源房缴费明细BindingSource.DataSource = query.Execute(MergeOption.AppendOnly);
                     }
                     break;
                 default:
-                    源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(guid, txt).Execute(MergeOption.AppendOnly);
+                    源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(context, guid, txt).Execute(MergeOption.AppendOnly);
                     break;
             }
         }

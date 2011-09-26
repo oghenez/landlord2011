@@ -458,14 +458,9 @@
             this.Controls.Add(this.cmbYF);
             this.Controls.Add(this.kryptonGroupBox1);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "源房缴费Form";
             this.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "源房缴费";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.缴费Form_FormClosed);
             this.Load += new System.EventHandler(this.缴费Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.源房缴费明细BindingSource)).EndInit();

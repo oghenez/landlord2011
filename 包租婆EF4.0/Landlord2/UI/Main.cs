@@ -88,7 +88,7 @@ namespace Landlord2
         /// <summary>
         /// 加载源房、客房信息到TreeView控件。
         /// 同时如果传入了EntityObject[例如：某个源房、客房对象]，加载后则选中之。
-        //! 注意：这里每次都是读取数据源最新值。[MergeOption.OverwriteChanges]
+        //! 注意：这里每次都是读取数据源最新值-[MergeOption.OverwriteChanges]；并采用Include预先加载[客房]信息。
         /// </summary>
         private void LoadTreeView(EntityObject obj)
         {
@@ -105,7 +105,7 @@ namespace Landlord2
                 root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
                 root1.ImageIndex = 0;
                 DoThreadSafe(delegate { treeView1.Nodes.Add(root1); });
-                foreach (var yf in 源房.GetYF_NoHistory(context).Execute(MergeOption.OverwriteChanges))
+                foreach (var yf in 源房.GetYF_NoHistory(context).Include("客房").Execute(MergeOption.OverwriteChanges))
                     AddYuanFangToTree(root1, yf, false, obj);
 
                 TreeNode root2 = new TreeNode("历史源房信息");
@@ -113,8 +113,8 @@ namespace Landlord2
                 root2.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
                 root2.ForeColor = Color.DimGray;
                 root2.ImageIndex = 1;
-                DoThreadSafe(delegate { treeView1.Nodes.Add(root2); });                  
-                foreach (var yf in 源房.GetYF_History(context).Execute(MergeOption.OverwriteChanges))
+                DoThreadSafe(delegate { treeView1.Nodes.Add(root2); });
+                foreach (var yf in 源房.GetYF_History(context).Include("客房").Execute(MergeOption.OverwriteChanges))
                     AddYuanFangToTree(root2, yf, true, obj);
 
                 DoThreadSafe(delegate {
@@ -366,7 +366,7 @@ namespace Landlord2
                     {
                         KryptonMessageBox.Show(msg, "成功删除源房");
                         RefreshAndLocateTree(null);
-                        //LoadOrRefreshUC(null);
+                        LoadOrRefreshUC(null);
                     }
                     else
                     {
@@ -391,94 +391,94 @@ namespace Landlord2
 
         private void kfBtnAdd_Click(object sender, EventArgs e)
         {
-            ////新增客房
-            //客房Form kF = null;
-            //if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag != null)
-            //{
-            //    object entity = treeView1.SelectedNode.Tag;
-            //    if (entity is 源房)
-            //        kF = new 客房Form((entity as 源房).ID);
-            //    else if (entity is 客房)
-            //        kF = new 客房Form((entity as 客房).源房ID);
-            //}
-            //else
-            //    kF = new 客房Form();
-            //kF.ShowDialog(this);
-            //kF.Dispose();
+            //新增客房
+            客房Form kF = null;
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag != null)
+            {
+                object entity = treeView1.SelectedNode.Tag;
+                if (entity is 源房)
+                    kF = new 客房Form((entity as 源房).ID);
+                else if (entity is 客房)
+                    kF = new 客房Form((entity as 客房).源房ID);
+            }
+            else
+                kF = new 客房Form();
+            kF.ShowDialog(this);
+            kF.Dispose();
         }
         private void kfBtnDel_Click(object sender, EventArgs e)
         {
-            ////删除客房
-            //if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
-            //{
-            //    客房 kf = treeView1.SelectedNode.Tag as 客房;
-            //    string txt = string.Format("确定要删除客房 [{0}] 吗？\r\n（将同时删除此客房下所有关联的信息）", kf.命名);
-            //    var result = KryptonMessageBox.Show(txt, "客房删除确认",
-            //        MessageBoxButtons.OKCancel, MessageBoxIcon.Warning,
-            //        MessageBoxDefaultButton.Button2);
-            //    if (result == DialogResult.OK)
-            //    {
-            //        context.DeleteObject(kf);
-            //        string msg;
-            //        if (Helper.saveData(kf, out msg))
-            //        {
-            //            KryptonMessageBox.Show(msg, "成功删除客房");
-            //            RefreshAndLocateTree(null);
-            //            LoadOrRefreshUC(null);
-            //        }
-            //        else
-            //        {
-            //            KryptonMessageBox.Show(msg, "失败");
-            //            context.Refresh(System.Data.Objects.RefreshMode.StoreWins, kf);
-            //        }
-            //    }
-            //}
+            //删除客房
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
+            {
+                客房 kf = treeView1.SelectedNode.Tag as 客房;
+                string txt = string.Format("确定要删除客房 [{0}] 吗？\r\n（将同时删除此客房下所有关联的信息）", kf.命名);
+                var result = KryptonMessageBox.Show(txt, "客房删除确认",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.OK)
+                {
+                    context.DeleteObject(kf);
+                    string msg;
+                    if (Helper.saveData(context, kf, out msg))
+                    {
+                        KryptonMessageBox.Show(msg, "成功删除客房");
+                        RefreshAndLocateTree(null);
+                        LoadOrRefreshUC(null);
+                    }
+                    else
+                    {
+                        KryptonMessageBox.Show(msg, "失败");
+                        context.Refresh(System.Data.Objects.RefreshMode.StoreWins, kf);
+                    }
+                }
+            }
         }
         private void kfBtnEdit_Click(object sender, EventArgs e)
         {
-            ////编辑客房
-            //if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
-            //{
-            //    客房 kf = treeView1.SelectedNode.Tag as 客房;
-            //    using (客房Form kF = new 客房Form(kf))
-            //    {
-            //        kF.ShowDialog(this);
-            //    }
-            //}
+            //编辑客房
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
+            {
+                客房 kf = treeView1.SelectedNode.Tag as 客房;
+                using (客房Form kF = new 客房Form(kf))
+                {
+                    kF.ShowDialog(this);
+                }
+            }
         }
 
         private void yfBtnPay_Click(object sender, EventArgs e)
         {
-            ////源房缴费
-            //if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag != null)
-            //{
-            //    object entity = treeView1.SelectedNode.Tag;
-            //    Guid yfID = Guid.Empty ;
-            //    if (entity is 源房)
-            //        yfID = (entity as 源房).ID;
-            //    else if (entity is 客房)
-            //        yfID = (entity as 客房).源房ID;
+            //源房缴费
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag != null)
+            {
+                object entity = treeView1.SelectedNode.Tag;
+                Guid yfID = Guid.Empty;
+                if (entity is 源房)
+                    yfID = (entity as 源房).ID;
+                else if (entity is 客房)
+                    yfID = (entity as 客房).源房ID;
 
-            //    using (源房缴费Form jf = new 源房缴费Form(yfID))
-            //    {
-            //        jf.ShowDialog(this);
-            //    }
-            //}
-            //else
-            //{
-            //    using (源房缴费Form jf = new 源房缴费Form())
-            //    {
-            //        jf.ShowDialog(this);
-            //    }
-            //}            
+                using (源房缴费Form jf = new 源房缴费Form(yfID))
+                {
+                    jf.ShowDialog(this);
+                }
+            }
+            else
+            {
+                using (源房缴费Form jf = new 源房缴费Form())
+                {
+                    jf.ShowDialog(this);
+                }
+            }            
         }
         private void yfBtnPayDetail_Click(object sender, EventArgs e)
         {
-            ////源房缴费明细
-            //using (源房缴费明细Form jF = new 源房缴费明细Form())
-            //{
-            //    jF.ShowDialog(this);
-            //}
+            //源房缴费明细
+            using (源房缴费明细Form jF = new 源房缴费明细Form())
+            {
+                jF.ShowDialog(this);
+            }
         }
         private void kfBtnRent_Click(object sender, EventArgs e)
         {
