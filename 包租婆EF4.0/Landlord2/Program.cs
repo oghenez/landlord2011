@@ -25,7 +25,7 @@ namespace Landlord2
 
             AppRoot.Inital();//根对象初始化
             Application.Run(new Main());
-            //Application.Run(new Landlord2.UI.testForm());
+            //Application.Run(new Landlord2.UI.Form1());
         }
     }
 }

@@ -161,22 +161,6 @@ namespace Landlord2.UI
             }
         }
 
-        private void kryptonDataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            //双击，编辑
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                源房缴费明细 cur = 源房缴费明细BindingSource.Current as 源房缴费明细;
-                if (cur != null)
-                {
-                    using (源房缴费Form jf = new 源房缴费Form(cur))
-                    {
-                        jf.ShowDialog(this);
-                    }
-                }
-            }
-        }
-
         private void CaculateSumMoney()
         {
             if (源房缴费明细BindingSource.DataSource != null)
@@ -208,6 +192,15 @@ namespace Landlord2.UI
             if (e.ColumnIndex == 3)//缴费金额更改
             {
                 CaculateSumMoney();
+            }
+        }
+
+        private void BtnDel_Click(object sender, EventArgs e)
+        {
+            var current = 源房缴费明细BindingSource.Current;
+            if (current != null)
+            {
+                源房缴费明细BindingSource.RemoveCurrent();
             }
         }
 

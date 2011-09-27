@@ -68,6 +68,7 @@
             this.myDataGridViewDateTimePickerColumn1 = new Landlord2.MyDataGridViewDateTimePickerColumn();
             this.myDataGridViewDateTimePickerColumn2 = new Landlord2.MyDataGridViewDateTimePickerColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnDel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.源房缴费明细BindingSource)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -94,7 +95,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnFilter,
             this.labCountMoney});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 352);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 344);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
             this.statusStrip1.ShowItemToolTips = true;
@@ -214,7 +215,7 @@
             this.cmbYF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbYF.DropDownWidth = 215;
             this.cmbYF.Enabled = false;
-            this.cmbYF.Location = new System.Drawing.Point(180, 20);
+            this.cmbYF.Location = new System.Drawing.Point(90, 29);
             this.cmbYF.Name = "cmbYF";
             this.cmbYF.Size = new System.Drawing.Size(215, 21);
             this.cmbYF.TabIndex = 9;
@@ -225,7 +226,7 @@
             // raBtnOne
             // 
             this.raBtnOne.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.raBtnOne.Location = new System.Drawing.Point(102, 20);
+            this.raBtnOne.Location = new System.Drawing.Point(12, 30);
             this.raBtnOne.Name = "raBtnOne";
             this.raBtnOne.Size = new System.Drawing.Size(85, 20);
             this.raBtnOne.TabIndex = 1;
@@ -236,7 +237,7 @@
             // 
             this.raBtnAll.Checked = true;
             this.raBtnAll.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.raBtnAll.Location = new System.Drawing.Point(12, 20);
+            this.raBtnAll.Location = new System.Drawing.Point(12, 10);
             this.raBtnAll.Name = "raBtnAll";
             this.raBtnAll.Size = new System.Drawing.Size(72, 20);
             this.raBtnAll.TabIndex = 0;
@@ -248,7 +249,7 @@
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.CausesValidation = false;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(717, 18);
+            this.btnCancel.Location = new System.Drawing.Point(715, 26);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 25);
             this.btnCancel.TabIndex = 4;
@@ -258,7 +259,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(582, 18);
+            this.btnOK.Location = new System.Drawing.Point(594, 26);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(90, 25);
             this.btnOK.TabIndex = 3;
@@ -276,22 +277,24 @@
             this.panel1.Controls.Add(this.cmbYF);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.raBtnOne);
+            this.panel1.Controls.Add(this.BtnDel);
             this.panel1.Controls.Add(this.BtnAdd);
             this.panel1.Controls.Add(this.btnOK);
             this.panel1.Controls.Add(this.raBtnAll);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 384);
+            this.panel1.Location = new System.Drawing.Point(0, 376);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(844, 60);
+            this.panel1.Size = new System.Drawing.Size(844, 68);
             this.panel1.TabIndex = 1;
             // 
             // BtnAdd
             // 
             this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAdd.Location = new System.Drawing.Point(447, 18);
+            this.BtnAdd.Location = new System.Drawing.Point(352, 26);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(90, 25);
             this.BtnAdd.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.BtnAdd, "新增[源房缴费]信息");
             this.BtnAdd.Values.Text = "新增";
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
@@ -319,10 +322,9 @@
             this.kryptonDataGridView1.RowHeadersWidth = 24;
             this.kryptonDataGridView1.RowTemplate.Height = 23;
             this.kryptonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.kryptonDataGridView1.Size = new System.Drawing.Size(844, 352);
+            this.kryptonDataGridView1.Size = new System.Drawing.Size(844, 344);
             this.kryptonDataGridView1.TabIndex = 0;
             this.kryptonDataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.kryptonDataGridView1_CellEndEdit);
-            this.kryptonDataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.kryptonDataGridView1_CellMouseDoubleClick);
             this.kryptonDataGridView1.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.kryptonDataGridView1_UserDeletedRow);
             // 
             // 源房Column
@@ -485,6 +487,17 @@
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.Visible = false;
             // 
+            // BtnDel
+            // 
+            this.BtnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnDel.Location = new System.Drawing.Point(473, 26);
+            this.BtnDel.Name = "BtnDel";
+            this.BtnDel.Size = new System.Drawing.Size(90, 25);
+            this.BtnDel.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.BtnDel, "删除当前选定的条目");
+            this.BtnDel.Values.Text = "删除";
+            this.BtnDel.Click += new System.EventHandler(this.BtnDel_Click);
+            // 
             // 源房缴费明细Form
             // 
             this.AcceptButton = this.btnOK;
@@ -549,5 +562,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn 收款人DataGridViewTextBoxColumn;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn 备注DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton BtnDel;
     }
 }
