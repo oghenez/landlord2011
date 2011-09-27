@@ -44,7 +44,7 @@ namespace Landlord2
         /// <typeparam name="T"></typeparam>
         /// <param name="objectSet"></param>
         /// <returns></returns>
-        public static IEnumerable<T> Local<T>(this ObjectSet<T> objectSet) where T : class
+        public static IEnumerable<T> Local999<T>(this ObjectSet<T> objectSet) where T : class
         {
             return from stateEntry in objectSet.Context.ObjectStateManager
                                                .GetObjectStateEntries(EntityState.Added |
@@ -54,11 +54,15 @@ namespace Landlord2
                    select stateEntry.Entity as T;
         }
 
-        public static BindingList<T> Local2<T>(this ObjectSet<T> objectSet) where T : class
+        /// <summary>
+        /// 将IEnumerable集合转换为SortableBindingList集合，便于数据绑定、排序。
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static SortableBindingList<T> IEnumerable2SortableBindingList<T>(IEnumerable<T> source) where T : class
         {
-            IEnumerable<T> temp = objectSet.Local();
-            BindingList<T> returnVal = new BindingList<T>(temp.ToList());
-            return returnVal;            
+            return new SortableBindingList<T>(source.ToList());
         }
 
         /// <summary>
@@ -213,8 +217,14 @@ namespace Landlord2
         }
     }
 
-    public class SortableBindingList<T> : BindingList<T>
+    public class SortableBindingList<T> : BindingList<T>, IBindingListView
     {
+        public SortableBindingList()
+            : base()
+        { }
+        public SortableBindingList(IList<T> list)
+            : base(list)
+        { }
         protected override bool SupportsSortingCore
         {
             get
@@ -233,12 +243,54 @@ namespace Landlord2
                 {
                     var aVal = prop.GetValue(a) as IComparable;
                     var bVal = prop.GetValue(b) as IComparable;
+
+                    if (aVal == null ^ bVal == null)
+                        return (aVal == null) ? -1 * modifier : modifier;
+                    if (aVal == null && bVal == null)
+                        return 0;
                     return aVal.CompareTo(bVal) * modifier;
                 }));
                 Items.Clear();
                 foreach (var i in items)
                     Items.Add(i);
             }
+        }
+
+        public void ApplySort(ListSortDescriptionCollection sorts)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Filter
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public void RemoveFilter()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ListSortDescriptionCollection SortDescriptions
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool SupportsAdvancedSorting
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool SupportsFiltering
+        {
+            get { throw new NotImplementedException(); }
         }
     }
 }

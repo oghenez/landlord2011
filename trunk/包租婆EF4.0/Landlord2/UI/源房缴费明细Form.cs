@@ -14,6 +14,7 @@ namespace Landlord2.UI
 {
     public partial class 源房缴费明细Form : FormBase
     {
+        private IEnumerable<源房缴费明细> LocalData; //本地数据源
         public 源房缴费明细Form()
         {
             InitializeComponent();
@@ -21,7 +22,8 @@ namespace Landlord2.UI
 
         private void 缴费Form_Load(object sender, EventArgs e)
         {
-            源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(context, null, null).Execute(MergeOption.AppendOnly);//初始情况，针对所有源房
+            LocalData = 源房缴费明细.GetPayDetails(context, null, null).Execute(MergeOption.AppendOnly);//初始情况，针对所有源房
+            源房缴费明细BindingSource.DataSource = Helper.IEnumerable2SortableBindingList(LocalData);
             源房BindingSource.DataSource = 源房.GetYF(context).Execute(MergeOption.NoTracking);           
         }
 
@@ -117,7 +119,7 @@ namespace Landlord2.UI
 
             if (raBtnAll.Checked)
             {
-                源房缴费明细BindingSource.DataSource = context.源房缴费明细.Local2();//源房缴费明细.GetPayDetails(context, null, null).Execute(MergeOption.AppendOnly);
+                源房缴费明细BindingSource.DataSource = context.源房缴费明细.Local();//源房缴费明细.GetPayDetails(context, null, null).Execute(MergeOption.AppendOnly);
             }
             else if (raBtnOne.Checked)
             {
