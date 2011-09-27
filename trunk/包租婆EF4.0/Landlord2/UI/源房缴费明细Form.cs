@@ -117,11 +117,11 @@ namespace Landlord2.UI
 
             if (raBtnAll.Checked)
             {
-                源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(context, null, null).Execute(MergeOption.AppendOnly);
+                源房缴费明细BindingSource.DataSource = context.源房缴费明细.Local2();//源房缴费明细.GetPayDetails(context, null, null).Execute(MergeOption.AppendOnly);
             }
             else if (raBtnOne.Checked)
             {
-                源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(context, (Guid)cmbYF.SelectedValue, null).Execute(MergeOption.AppendOnly);
+                源房缴费明细BindingSource.DataSource = context.源房缴费明细.Local().Where(m => m.源房ID == (Guid)cmbYF.SelectedValue); //源房缴费明细.GetPayDetails(context, (Guid)cmbYF.SelectedValue, null).Execute(MergeOption.AppendOnly);
             }
             btnFilter.Text = "按 [缴费项] 筛选 - 所有缴费项";
         }
@@ -130,7 +130,7 @@ namespace Landlord2.UI
         {
             if (cmbYF.SelectedValue != null)
             {
-                源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(context, (Guid?)cmbYF.SelectedValue, null).Execute(MergeOption.AppendOnly);
+                源房缴费明细BindingSource.DataSource = context.源房缴费明细.Local().Where(m => m.源房ID == (Guid)cmbYF.SelectedValue); //源房缴费明细.GetPayDetails(context, (Guid?)cmbYF.SelectedValue, null).Execute(MergeOption.AppendOnly);
                 btnFilter.Text = "按 [缴费项] 筛选 - 所有缴费项";
             }
         }
@@ -142,28 +142,30 @@ namespace Landlord2.UI
             Guid? guid = raBtnOne.Checked ? (Guid?)cmbYF.SelectedValue : null;
 
             btnFilter.Text = string.Format("按 [缴费项] 筛选 - {0}",txt);
+            //先过滤是否针对某个源房ID
+            var filterGuid = guid.HasValue ? context.源房缴费明细.Local().Where(m => m.源房ID == guid) : context.源房缴费明细.Local();
             switch (txt)
             {
                 case "所有缴费项":
-                    源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(context, guid, null).Execute(MergeOption.AppendOnly);
+                    源房缴费明细BindingSource.DataSource = filterGuid; //源房缴费明细.GetPayDetails(context, guid, null).Execute(MergeOption.AppendOnly);
                     break;
                 case "其他":
                     {
-                        var query = (from p in 源房缴费明细.GetPayDetails(context, guid, null)
+                        var query = from p in filterGuid//源房缴费明细.GetPayDetails(context, guid, null)
                                     where !(new[] { "房租", "物业费", "水", "电", "气", "宽带费", "中介费", "押金" }.Contains(p.缴费项))
-                                    select p) as ObjectQuery<源房缴费明细>;
-                        源房缴费明细BindingSource.DataSource = query.Execute(MergeOption.AppendOnly);
+                                    select p;
+                        源房缴费明细BindingSource.DataSource = query;
                     }
                     break;
                 default:
-                    源房缴费明细BindingSource.DataSource = 源房缴费明细.GetPayDetails(context, guid, txt).Execute(MergeOption.AppendOnly);
+                    源房缴费明细BindingSource.DataSource = filterGuid.Where(m=>m.缴费项 == txt);//源房缴费明细.GetPayDetails(context, guid, txt).Execute(MergeOption.AppendOnly);
                     break;
             }
         }
 
         private void CaculateSumMoney()
         {
-            if (源房缴费明细BindingSource.DataSource != null)
+            if (源房缴费明细BindingSource.DataSource != null && 源房缴费明细BindingSource.Count > 0)
             {
                 decimal total = 0.00M;
                 foreach (DataGridViewRow row in kryptonDataGridView1.Rows)

@@ -9,6 +9,7 @@ using System.IO;
 using System.Data.Objects.DataClasses;
 using System.Reflection;
 using Landlord2.Data;
+using System.ComponentModel;
 
 namespace Landlord2
 {
@@ -51,6 +52,13 @@ namespace Landlord2
                                                                       EntityState.Unchanged)
                    where stateEntry.Entity != null && stateEntry.EntitySet == objectSet.EntitySet
                    select stateEntry.Entity as T;
+        }
+
+        public static BindingList<T> Local2<T>(this ObjectSet<T> objectSet) where T : class
+        {
+            IEnumerable<T> temp = objectSet.Local();
+            BindingList<T> returnVal = new BindingList<T>(temp.ToList());
+            return returnVal;            
         }
 
         /// <summary>
@@ -202,6 +210,35 @@ namespace Landlord2
             decimal returnVal = 0.00M;
             returnVal = Convert.ToDecimal(value) * number;
             return returnVal;
+        }
+    }
+
+    public class SortableBindingList<T> : BindingList<T>
+    {
+        protected override bool SupportsSortingCore
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        protected override void ApplySortCore(PropertyDescriptor prop, ListSortDirection direction)
+        {
+            var modifier = direction == ListSortDirection.Ascending ? 1 : -1;
+            if (prop.PropertyType.GetInterface("IComparable") != null)
+            {
+                var items = Items.ToList();
+                items.Sort(new Comparison<T>((a, b) =>
+                {
+                    var aVal = prop.GetValue(a) as IComparable;
+                    var bVal = prop.GetValue(b) as IComparable;
+                    return aVal.CompareTo(bVal) * modifier;
+                }));
+                Items.Clear();
+                foreach (var i in items)
+                    Items.Add(i);
+            }
         }
     }
 }
