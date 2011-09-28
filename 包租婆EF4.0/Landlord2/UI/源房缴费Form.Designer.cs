@@ -332,6 +332,11 @@
             this.kryptonNumericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.源房缴费明细BindingSource, "缴费金额", true));
             this.kryptonNumericUpDown1.DecimalPlaces = 2;
             this.kryptonNumericUpDown1.Location = new System.Drawing.Point(90, 85);
+            this.kryptonNumericUpDown1.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.kryptonNumericUpDown1.Name = "kryptonNumericUpDown1";
             this.kryptonNumericUpDown1.Size = new System.Drawing.Size(118, 22);
             this.kryptonNumericUpDown1.TabIndex = 3;

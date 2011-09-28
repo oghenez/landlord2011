@@ -25,10 +25,13 @@ namespace Landlord2.UI
     {
         public 客房 selectedKF;//最后选定的客房
         private 客房筛选 kfFilter;
-        public 客房选择Form(客房筛选 kfFilter)
+        private MyContext context;
+
+        public 客房选择Form(MyContext parentContext, 客房筛选 kfFilter)
         {
             InitializeComponent();
             this.kfFilter = kfFilter;
+            this.context = parentContext;
         }
         #region 线程安全的访问UI控件的方法
 
@@ -85,7 +88,7 @@ namespace Landlord2.UI
             root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
             root1.ImageIndex = 0;
             DoThreadSafe(delegate { treeView1.Nodes.Add(root1); });
-            foreach (var yf in 源房.GetYF_NoHistory())
+            foreach (var yf in 源房.GetYF_NoHistory(context))
             {
                 if (yf.客房.Count(m => !string.IsNullOrEmpty(m.租户)) == 0)//无客房或全未租
                     continue;
@@ -135,7 +138,7 @@ namespace Landlord2.UI
             root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
             root1.ImageIndex = 0;
             DoThreadSafe(delegate { treeView1.Nodes.Add(root1); });
-            foreach (var yf in 源房.GetYF_NoHistory())
+            foreach (var yf in 源房.GetYF_NoHistory(context))
             {
                 if (yf.客房.Count(m => string.IsNullOrEmpty(m.租户)) == 0)//无客房或全租完
                     continue;

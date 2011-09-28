@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace Landlord2.UI
 {
-    public partial class 客房收租Form : KryptonForm
+    public partial class 客房收租Form : FormBase
     {
         public 客房 kf;
         private 客房租金明细 collectRent;
@@ -29,15 +29,14 @@ namespace Landlord2.UI
         /// </summary>
         private decimal balancePayment = 0.00M;
 
-        public 客房收租Form(客房 kf)
+        public 客房收租Form(Guid kfID)
         {
             InitializeComponent();
-            this.kf = kf;            
+            this.kf = context.客房.FirstOrDefault(m=>m.ID == kfID);            
         }
 
         private void BindingData()
         {
-
             //进入此界面，理论上客房应该出租了，有租户信息
 #if DEBUG
             System.Diagnostics.Debug.Assert(!string.IsNullOrEmpty(kf.租户));
@@ -115,7 +114,7 @@ namespace Landlord2.UI
 
             CaculateSum();
 
-            Main.context.客房租金明细.AddObject(collectRent);//此操作后可实现外键同步
+            context.客房租金明细.AddObject(collectRent);//此操作后可实现外键同步
             客房租金明细BindingSource.DataSource = collectRent;
         }
 
@@ -156,12 +155,6 @@ namespace Landlord2.UI
             BindingData();
         }
 
-        private void 客房收租Form_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (Main.context.ObjectStateManager.GetObjectStateEntry(collectRent).State == EntityState.Added)
-                Main.context.客房租金明细.Detach(collectRent);
-        }
-
         private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
             Rectangle r = e.CellBounds;
@@ -182,16 +175,15 @@ namespace Landlord2.UI
         }
 
         private void BtnSelectKF_Click(object sender, EventArgs e)
-        {
-            
-            using (客房选择Form form = new 客房选择Form(客房筛选.客房收租))
+        {            
+            using (客房选择Form form = new 客房选择Form(context, 客房筛选.客房收租))
             {
                 var result = form.ShowDialog(this);
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {
                     if (kf != form.selectedKF)
                     {
-                        Main.context.客房租金明细.DeleteObject(collectRent);
+                        context.客房租金明细.DeleteObject(collectRent);
                         kf = form.selectedKF;
                         kryptonHeader1.Values.Heading = kf.源房.房名;
                         kryptonHeader1.Values.Description = kf.命名;
@@ -229,7 +221,7 @@ namespace Landlord2.UI
             }
 
             string msg;
-            if (Helper.saveData(collectRent, out msg))
+            if (Helper.saveData(context, collectRent, out msg))
             {
                 KryptonMessageBox.Show(msg, "成功收租");
                 if (this.Owner is Main)

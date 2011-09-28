@@ -12,7 +12,7 @@ using System.Data.Objects;
 
 namespace Landlord2.UI
 {
-    public partial class 客房出租历史记录Form : KryptonForm
+    public partial class 客房出租历史记录Form : FormBase
     {
         private 客房 kf;//当选择单套客房时所选择的客房
         public 客房出租历史记录Form()
@@ -22,7 +22,7 @@ namespace Landlord2.UI
 
         private void 客房出租历史记录Form_Load(object sender, EventArgs e)
         {
-            客房出租历史记录BindingSource.DataSource = (Main.context.客房出租历史记录.OrderByDescending(m => m.操作日期) as ObjectQuery<客房出租历史记录>).Execute(MergeOption.AppendOnly);
+            客房出租历史记录BindingSource.DataSource = (context.客房出租历史记录.OrderByDescending(m => m.操作日期) as ObjectQuery<客房出租历史记录>).Execute(MergeOption.AppendOnly);
         }
 
         private void kryptonDataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -31,16 +31,6 @@ namespace Landlord2.UI
             {
                 客房 k = e.Value as 客房;
                 e.Value = string.Format("[{0}] - {1}", k.源房.房名, k.命名);
-            }
-        }
-
-        private void 客房出租历史记录Form_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            var changes = Main.context.ObjectStateManager.GetObjectStateEntries(EntityState.Added | EntityState.Deleted | EntityState.Modified);
-            if (changes.Count() > 0)
-            {
-                Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, Main.context.客房出租历史记录);
-                Main.context.AcceptAllChanges();
             }
         }
 
@@ -53,7 +43,7 @@ namespace Landlord2.UI
         {
             客房出租历史记录BindingSource.EndEdit();
 
-            var changes = Main.context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted);
+            var changes = context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted);
             if (changes.Count() > 0)
             {
                 //校验
@@ -62,7 +52,7 @@ namespace Landlord2.UI
                 string msg1=string.Empty;
                 string msg2=string.Empty;
                 //删除某条出租历史记录后，相关的【客房收租明细】信息也自动删除。
-                if (Helper.saveData(Main.context.客房出租历史记录, out msg1) && Helper.saveData(Main.context.客房租金明细, out msg2))
+                if (Helper.saveData(context, context.客房出租历史记录, out msg1) && Helper.saveData(context, context.客房租金明细, out msg2))
                 {
                     KryptonMessageBox.Show(msg1 + Environment.NewLine + msg2, "成功保存"); 
                     if (this.Owner is Main)

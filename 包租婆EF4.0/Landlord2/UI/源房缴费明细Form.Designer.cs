@@ -217,7 +217,7 @@
             this.cmbYF.Location = new System.Drawing.Point(90, 29);
             this.cmbYF.Name = "cmbYF";
             this.cmbYF.Size = new System.Drawing.Size(215, 21);
-            this.cmbYF.TabIndex = 9;
+            this.cmbYF.TabIndex = 2;
             this.toolTip1.SetToolTip(this.cmbYF, "指定单套源房后，可直接进行‘添加’操作。");
             this.cmbYF.ValueMember = "ID";
             this.cmbYF.SelectedIndexChanged += new System.EventHandler(this.cmbYF_SelectedIndexChanged);
@@ -251,7 +251,7 @@
             this.btnCancel.Location = new System.Drawing.Point(715, 26);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 25);
-            this.btnCancel.TabIndex = 4;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Values.Text = "取消";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -261,7 +261,7 @@
             this.btnOK.Location = new System.Drawing.Point(594, 26);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(90, 25);
-            this.btnOK.TabIndex = 3;
+            this.btnOK.TabIndex = 5;
             this.btnOK.Values.Text = "保存";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
@@ -277,7 +277,7 @@
             this.BtnAdd.Location = new System.Drawing.Point(352, 26);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(90, 25);
-            this.BtnAdd.TabIndex = 2;
+            this.BtnAdd.TabIndex = 3;
             this.toolTip1.SetToolTip(this.BtnAdd, "新增[源房缴费]信息");
             this.BtnAdd.Values.Text = "新增";
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
@@ -288,7 +288,7 @@
             this.BtnDel.Location = new System.Drawing.Point(473, 26);
             this.BtnDel.Name = "BtnDel";
             this.BtnDel.Size = new System.Drawing.Size(90, 25);
-            this.BtnDel.TabIndex = 2;
+            this.BtnDel.TabIndex = 4;
             this.toolTip1.SetToolTip(this.BtnDel, "删除当前选定的条目");
             this.BtnDel.Values.Text = "删除";
             this.BtnDel.Click += new System.EventHandler(this.BtnDel_Click);
@@ -306,11 +306,12 @@
             this.panel1.Location = new System.Drawing.Point(0, 376);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(844, 68);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 0;
             // 
             // kryptonDataGridView1
             // 
             this.kryptonDataGridView1.AllowUserToAddRows = false;
+            this.kryptonDataGridView1.AllowUserToDeleteRows = false;
             this.kryptonDataGridView1.AutoGenerateColumns = false;
             this.kryptonDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.源房Column,
@@ -335,7 +336,6 @@
             this.kryptonDataGridView1.Size = new System.Drawing.Size(844, 344);
             this.kryptonDataGridView1.TabIndex = 0;
             this.kryptonDataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.kryptonDataGridView1_CellEndEdit);
-            this.kryptonDataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.kryptonDataGridView1_UserDeletingRow);
             // 
             // 源房Column
             // 
@@ -506,6 +506,9 @@
             this.Controls.Add(this.kryptonDataGridView1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            this.MaximizeBox = true;
+            this.MinimizeBox = true;
             this.Name = "源房缴费明细Form";
             this.Text = "源房缴费明细";
             this.Load += new System.EventHandler(this.缴费Form_Load);

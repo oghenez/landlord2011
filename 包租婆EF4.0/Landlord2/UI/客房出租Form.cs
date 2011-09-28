@@ -4,16 +4,17 @@ using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using Landlord2.Data;
 using System.Data.Objects;
+using System.Linq;
 
 namespace Landlord2.UI
 {
-    public partial class 客房出租Form : KryptonForm
+    public partial class 客房出租Form : FormBase
     {
         private 客房 kf;
-        public 客房出租Form(客房 kf)
+        public 客房出租Form(Guid kfID)
         {
             InitializeComponent();
-            this.kf = kf;
+            this.kf = context.客房.FirstOrDefault(m=>m.ID == kfID);
         }
 
         private void 出租Form_Load(object sender, EventArgs e)
@@ -25,7 +26,7 @@ namespace Landlord2.UI
 
         private void BtnSelectKF_Click(object sender, EventArgs e)
         {
-            using (客房选择Form form = new 客房选择Form(客房筛选.客房出租))
+            using (客房选择Form form = new 客房选择Form(context, 客房筛选.客房出租))
             {
                 var result = form.ShowDialog(this);
                 if (result == System.Windows.Forms.DialogResult.OK)
@@ -56,14 +57,14 @@ namespace Landlord2.UI
                 return;
             }
 
-            if (Main.context.ObjectStateManager.GetObjectStateEntry(kf).State == EntityState.Unchanged)
+            if (context.ObjectStateManager.GetObjectStateEntry(kf).State == EntityState.Unchanged)
             {
                 Close(); //如果编辑状态下，未做任何修改，则直接退出
             }
             else
             {
                 string msg;
-                if (Helper.saveData(kf, out msg))
+                if (Helper.saveData(context, kf, out msg))
                 {
                     DialogResult = DialogResult.OK;//传出成功标志，主界面会提示是否马上进行首期收租。
                     KryptonMessageBox.Show(msg, "成功出租客房");
@@ -83,13 +84,5 @@ namespace Landlord2.UI
             Close();
         }
 
-        private void 出租Form_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (Main.context.ObjectStateManager.GetObjectStateEntry(kf).State == EntityState.Modified)
-            {
-                Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, kf);
-                Main.context.AcceptAllChanges();
-            }
-        }
     }
 }

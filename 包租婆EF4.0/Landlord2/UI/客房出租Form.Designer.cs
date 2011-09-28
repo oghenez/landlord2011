@@ -95,13 +95,8 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.uC客房详细1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "客房出租Form";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "客房出租";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.出租Form_FormClosed);
             this.Load += new System.EventHandler(this.出租Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
