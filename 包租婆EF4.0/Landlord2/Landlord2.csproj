@@ -73,6 +73,38 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppRoot.cs" />
+    <Compile Include="BindingListView\AggregateBindingListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BindingListView\BindingListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BindingListView\CompositeItemFilter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingListView\IItemFilter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingListView\INotifyingEditableObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingListView\InvalidSourceListException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingListView\MultiSourceIndexList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingListView\ObjectView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BindingListView\Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="BindingListView\ProvidedViewPropertyDescriptor.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Data\MyContext.cs" />
     <Compile Include="Data\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -165,6 +197,10 @@
     <Compile Include="UI\阶梯电价Form.Designer.cs">
       <DependentUpon>阶梯电价Form.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BindingListView\Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -305,12 +341,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BindingListView\BindingListView.csproj">
-      <Project>{75AF36A8-7797-4023-B183-5B63D448420A}</Project>
-      <Name>BindingListView</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
