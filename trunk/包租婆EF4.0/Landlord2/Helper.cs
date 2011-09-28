@@ -45,7 +45,7 @@ namespace Landlord2
         /// <typeparam name="T"></typeparam>
         /// <param name="objectSet"></param>
         /// <returns></returns>
-        public static IEnumerable<T> Local999<T>(this ObjectSet<T> objectSet) where T : class
+        public static IEnumerable<T> Local<T>(this ObjectSet<T> objectSet) where T : class
         {
             return from stateEntry in objectSet.Context.ObjectStateManager
                                                .GetObjectStateEntries(EntityState.Added |

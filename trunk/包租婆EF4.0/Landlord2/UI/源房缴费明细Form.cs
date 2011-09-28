@@ -49,7 +49,10 @@ namespace Landlord2.UI
                 }
 
             //最后，不管有没有更新，更新view
-            view.SourceLists = 源房缴费明细.GetPayDetails(context, null, null).Execute(MergeOption.AppendOnly).ToBindingListView().SourceLists;
+            //1.获取新增的对象
+            var objects = 源房缴费明细.GetPayDetails(context, null, null).Execute(MergeOption.AppendOnly).ToList();
+            //2.获取本地对象（不考虑之前本地删除的）
+            view.SourceLists = context.源房缴费明细.Local().ToBindingListView().SourceLists;
             raBtn_CheckedChanged(null, null);
         }
 
@@ -207,31 +210,21 @@ namespace Landlord2.UI
             CaculateSumMoney();
         }
 
-        #region 删除操作
-        private void DeleteContextItem()
+        private void BtnDel_Click(object sender, EventArgs e)
         {
             var current = 源房缴费明细BindingSource.Current;
             if (current != null)
             {
                 //因为绑定数据源和context 之间没有消息订阅，所以必须手动删除对应项。
                 源房缴费明细 delItem = (current as ObjectView<源房缴费明细>).Object; //! 注意，这里获取方式有点特别。http://blw.sourceforge.net/
-                context.源房缴费明细.DeleteObject(delItem);
-
-                CaculateSumMoney();
+                context.源房缴费明细.DeleteObject(delItem);                
             }
-        }
 
-        private void kryptonDataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            DeleteContextItem(); 
-        }
-        private void BtnDel_Click(object sender, EventArgs e)
-        {
             if (源房缴费明细BindingSource.Current != null) 
                 源房缴费明细BindingSource.RemoveCurrent();
-            DeleteContextItem();
+
+            CaculateSumMoney();
         } 
-        #endregion
 
         private void kryptonDataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -256,6 +249,7 @@ namespace Landlord2.UI
             else
                 labCountMoney.Text = string.Empty;
         }
+
 
 
     }

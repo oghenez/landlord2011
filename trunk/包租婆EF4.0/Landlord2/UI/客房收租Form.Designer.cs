@@ -1051,13 +1051,8 @@
             this.Controls.Add(this.kryptonTextBox1);
             this.Controls.Add(收款人Label);
             this.Controls.Add(this.txt备注);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "客房收租Form";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "客房收租";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.客房收租Form_FormClosed);
             this.Load += new System.EventHandler(this.客房收租Form_Load);
             this.Shown += new System.EventHandler(this.客房收租Form_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.客房租金明细BindingSource)).EndInit();

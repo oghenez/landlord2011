@@ -42,7 +42,8 @@ namespace Landlord2.UI
             Text = string.Format("{0}源房", isNew ? "新增" : "编辑");
 
             uC源房详细1.源房BindingSource.DataSource = yf;
-            uC源房详细1.源房涨租协定BindingSource.DataSource = 源房涨租协定.GetByYFid(context, yf.ID).Execute(MergeOption.AppendOnly);
+            uC源房详细1.源房涨租协定BindingSource.DataSource = 源房涨租协定.GetByYFid(context, yf.ID)
+                .Execute(MergeOption.AppendOnly);
         }
 
         private void btnOK_Click(object sender, EventArgs e)

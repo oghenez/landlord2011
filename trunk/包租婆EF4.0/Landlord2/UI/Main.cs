@@ -482,49 +482,49 @@ namespace Landlord2
         }
         private void kfBtnRent_Click(object sender, EventArgs e)
         {
-            ////出租
-            //if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
-            //{
-            //    客房 kf = treeView1.SelectedNode.Tag as 客房;
-            //    if (!string.IsNullOrEmpty(kf.租户))
-            //        return;
+            //出租
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
+            {
+                客房 kf = treeView1.SelectedNode.Tag as 客房;
+                if (!string.IsNullOrEmpty(kf.租户))
+                    return;
 
-            //    using (客房出租Form rent = new 客房出租Form(kf))
-            //    {
-            //        DialogResult result = rent.ShowDialog(this);
-            //        if (result == DialogResult.OK)
-            //        {
-            //            if (KryptonMessageBox.Show("客房已成功出租，是否立即进行首期收租？", "首期收租询问", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            //            {
-            //                using (客房收租Form collectRent = new 客房收租Form(kf))
-            //                {
-            //                    collectRent.ShowDialog(this);
-            //                } 
-            //            }
-            //        }
-            //    }
-            //}
+                using (客房出租Form rent = new 客房出租Form(kf.ID))
+                {
+                    DialogResult result = rent.ShowDialog(this);
+                    if (result == DialogResult.OK)
+                    {
+                        if (KryptonMessageBox.Show("客房已成功出租，是否立即进行首期收租？", "首期收租询问", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            using (客房收租Form collectRent = new 客房收租Form(kf))
+                            {
+                                collectRent.ShowDialog(this);
+                            }
+                        }
+                    }
+                }
+            }
         }        
 
         private void kfBtnCollectRent_Click(object sender, EventArgs e)
         {
-            ////收租
-            //if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
-            //{
-            //    客房 kf = treeView1.SelectedNode.Tag as 客房;
-            //    if (string.IsNullOrEmpty(kf.租户))//未租
-            //        return;
-            //    if (kf.期止 < DateTime.Now)//已租，协议到期，请续租或退租
-            //    {
-            //        KryptonMessageBox.Show("协议到期，请续租或退租");
-            //        return;
-            //    }
+            //收租
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
+            {
+                客房 kf = treeView1.SelectedNode.Tag as 客房;
+                if (string.IsNullOrEmpty(kf.租户))//未租
+                    return;
+                if (kf.期止 < DateTime.Now)//已租，协议到期，请续租或退租
+                {
+                    KryptonMessageBox.Show("协议到期，请续租或退租");
+                    return;
+                }
 
-            //    using (客房收租Form collectRent = new 客房收租Form(kf))
-            //    {
-            //        collectRent.ShowDialog(this);
-            //    }
-            //}
+                using (客房收租Form collectRent = new 客房收租Form(kf))
+                {
+                    collectRent.ShowDialog(this);
+                }
+            }
         }        
         private void kfBtnCollectRentDetail_Click(object sender, EventArgs e)
         {
