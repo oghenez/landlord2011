@@ -9,12 +9,13 @@ using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using Landlord2.Data;
 using System.Data.Objects;
+using Equin.ApplicationFramework;
 
 namespace Landlord2.UI
 {
     public partial class 源房缴费明细Form : FormBase
     {
-        private IEnumerable<源房缴费明细> LocalData; //本地数据源
+        private BindingListView<源房缴费明细> view;
         public 源房缴费明细Form()
         {
             InitializeComponent();
@@ -22,9 +23,11 @@ namespace Landlord2.UI
 
         private void 缴费Form_Load(object sender, EventArgs e)
         {
-            LocalData = 源房缴费明细.GetPayDetails(context, null, null).Execute(MergeOption.AppendOnly);//初始情况，针对所有源房
-            源房缴费明细BindingSource.DataSource = Helper.IEnumerable2SortableBindingList(LocalData);
-            源房BindingSource.DataSource = 源房.GetYF(context).Execute(MergeOption.NoTracking);           
+            view = 源房缴费明细.GetPayDetails(context, null, null).Execute(MergeOption.AppendOnly).ToBindingListView();//初始情况，针对所有源房
+            源房缴费明细BindingSource.DataSource = view;
+            源房BindingSource.DataSource = 源房.GetYF(context).Execute(MergeOption.NoTracking);
+
+            CaculateSumMoney();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -45,7 +48,8 @@ namespace Landlord2.UI
                     jf.ShowDialog(this);
                 }
 
-            //最后，不管有没有更新，刷新DataGridView
+            //最后，不管有没有更新，更新view
+            view.SourceLists = 源房缴费明细.GetPayDetails(context, null, null).Execute(MergeOption.AppendOnly).ToBindingListView().SourceLists;
             raBtn_CheckedChanged(null, null);
         }
 
@@ -119,49 +123,121 @@ namespace Landlord2.UI
 
             if (raBtnAll.Checked)
             {
-                源房缴费明细BindingSource.DataSource = context.源房缴费明细.Local();//源房缴费明细.GetPayDetails(context, null, null).Execute(MergeOption.AppendOnly);
+                view.Filter = null;
             }
             else if (raBtnOne.Checked)
             {
-                源房缴费明细BindingSource.DataSource = context.源房缴费明细.Local().Where(m => m.源房ID == (Guid)cmbYF.SelectedValue); //源房缴费明细.GetPayDetails(context, (Guid)cmbYF.SelectedValue, null).Execute(MergeOption.AppendOnly);
+                view.ApplyFilter(delegate(源房缴费明细 item)
+                {
+                    return item.源房ID == (Guid)cmbYF.SelectedValue;
+                });
             }
             btnFilter.Text = "按 [缴费项] 筛选 - 所有缴费项";
+
+            CaculateSumMoney();
         }
 
         private void cmbYF_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbYF.SelectedValue != null)
             {
-                源房缴费明细BindingSource.DataSource = context.源房缴费明细.Local().Where(m => m.源房ID == (Guid)cmbYF.SelectedValue); //源房缴费明细.GetPayDetails(context, (Guid?)cmbYF.SelectedValue, null).Execute(MergeOption.AppendOnly);
+                view.ApplyFilter(delegate(源房缴费明细 item)
+                {
+                    return item.源房ID == (Guid)cmbYF.SelectedValue;
+                });
                 btnFilter.Text = "按 [缴费项] 筛选 - 所有缴费项";
+
+                CaculateSumMoney();
             }
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            ToolStripMenuItem item = sender as ToolStripMenuItem;
-            string txt = item.Text;
+            string txt = (sender as ToolStripMenuItem).Text;
             Guid? guid = raBtnOne.Checked ? (Guid?)cmbYF.SelectedValue : null;
 
-            btnFilter.Text = string.Format("按 [缴费项] 筛选 - {0}",txt);
-            //先过滤是否针对某个源房ID
-            var filterGuid = guid.HasValue ? context.源房缴费明细.Local().Where(m => m.源房ID == guid) : context.源房缴费明细.Local();
-            switch (txt)
+            btnFilter.Text = string.Format("按 [缴费项] 筛选 - {0}", txt);
+
+            if (guid.HasValue)
             {
-                case "所有缴费项":
-                    源房缴费明细BindingSource.DataSource = filterGuid; //源房缴费明细.GetPayDetails(context, guid, null).Execute(MergeOption.AppendOnly);
-                    break;
-                case "其他":
-                    {
-                        var query = from p in filterGuid//源房缴费明细.GetPayDetails(context, guid, null)
-                                    where !(new[] { "房租", "物业费", "水", "电", "气", "宽带费", "中介费", "押金" }.Contains(p.缴费项))
-                                    select p;
-                        源房缴费明细BindingSource.DataSource = query;
-                    }
-                    break;
-                default:
-                    源房缴费明细BindingSource.DataSource = filterGuid.Where(m=>m.缴费项 == txt);//源房缴费明细.GetPayDetails(context, guid, txt).Execute(MergeOption.AppendOnly);
-                    break;
+                switch (txt)
+                {
+                    case "所有缴费项":
+                        view.ApplyFilter(delegate(源房缴费明细 item)
+                        {
+                            return item.源房ID == (Guid)cmbYF.SelectedValue;
+                        });
+                        break;
+                    case "其他":
+                        view.ApplyFilter(delegate(源房缴费明细 item)
+                        {
+                            return item.源房ID == (Guid)cmbYF.SelectedValue && !(new[] { "房租", "物业费", "水", "电", "气", "宽带费", "中介费", "押金" }.Contains(item.缴费项));
+                        });
+                        break;
+                    default:
+                        view.ApplyFilter(delegate(源房缴费明细 item)
+                        {
+                            return item.源房ID == (Guid)cmbYF.SelectedValue && item.缴费项 == txt;
+                        });
+                        break;
+                }
+            }
+            else //所有源房
+            {
+                switch (txt)
+                {
+                    case "所有缴费项":
+                        view.Filter = null;
+                        break;
+                    case "其他":
+                        view.ApplyFilter(delegate(源房缴费明细 item)
+                        {
+                            return !(new[] { "房租", "物业费", "水", "电", "气", "宽带费", "中介费", "押金" }.Contains(item.缴费项));//item.缴费项 == (Guid)cmbYF.SelectedValue;
+                        });
+                        break;
+                    default:
+                        view.ApplyFilter(delegate(源房缴费明细 item)
+                        {
+                            return item.缴费项 == txt;
+                        });
+                        break;
+                }
+            }
+
+            CaculateSumMoney();
+        }
+
+        #region 删除操作
+        private void DeleteContextItem()
+        {
+            var current = 源房缴费明细BindingSource.Current;
+            if (current != null)
+            {
+                //因为绑定数据源和context 之间没有消息订阅，所以必须手动删除对应项。
+                源房缴费明细 delItem = (current as ObjectView<源房缴费明细>).Object; //! 注意，这里获取方式有点特别。http://blw.sourceforge.net/
+                context.源房缴费明细.DeleteObject(delItem);
+
+                CaculateSumMoney();
+            }
+        }
+
+        private void kryptonDataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            DeleteContextItem(); 
+        }
+        private void BtnDel_Click(object sender, EventArgs e)
+        {
+            if (源房缴费明细BindingSource.Current != null) 
+                源房缴费明细BindingSource.RemoveCurrent();
+            DeleteContextItem();
+        } 
+        #endregion
+
+        private void kryptonDataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 3)//缴费金额更改
+            {
+                CaculateSumMoney();
             }
         }
 
@@ -181,32 +257,6 @@ namespace Landlord2.UI
                 labCountMoney.Text = string.Empty;
         }
 
-        private void 源房缴费明细BindingSource_DataSourceChanged(object sender, EventArgs e)
-        {
-            CaculateSumMoney();
-        }
-
-        private void kryptonDataGridView1_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
-        {
-            CaculateSumMoney();
-        }
-
-        private void kryptonDataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 3)//缴费金额更改
-            {
-                CaculateSumMoney();
-            }
-        }
-
-        private void BtnDel_Click(object sender, EventArgs e)
-        {
-            var current = 源房缴费明细BindingSource.Current;
-            if (current != null)
-            {
-                源房缴费明细BindingSource.RemoveCurrent();
-            }
-        }
 
     }
 }

@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landlord2", "Landlord2\Landlord2.csproj", "{78845175-88FF-4D51-AF00-A472A3256F54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingListView", "BindingListView\BindingListView.csproj", "{75AF36A8-7797-4023-B183-5B63D448420A}"
-EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -29,15 +27,6 @@ Global
 		{78845175-88FF-4D51-AF00-A472A3256F54}.Release|Mixed Platforms.Build.0 = Release|x86
 		{78845175-88FF-4D51-AF00-A472A3256F54}.Release|x86.ActiveCfg = Release|x86
 		{78845175-88FF-4D51-AF00-A472A3256F54}.Release|x86.Build.0 = Release|x86
-		{75AF36A8-7797-4023-B183-5B63D448420A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{75AF36A8-7797-4023-B183-5B63D448420A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{75AF36A8-7797-4023-B183-5B63D448420A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{75AF36A8-7797-4023-B183-5B63D448420A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{75AF36A8-7797-4023-B183-5B63D448420A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{75AF36A8-7797-4023-B183-5B63D448420A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{75AF36A8-7797-4023-B183-5B63D448420A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{75AF36A8-7797-4023-B183-5B63D448420A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{75AF36A8-7797-4023-B183-5B63D448420A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
