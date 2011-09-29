@@ -99,13 +99,12 @@ namespace Landlord2
                     treeView1.Nodes.Clear(); 
                 });
                 
-
                 TreeNode root1 = new TreeNode("当前源房信息");
                 root1.ToolTipText = "当前源房按照签约时间自动排序";
                 root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
                 root1.ImageIndex = 0;
                 DoThreadSafe(delegate { treeView1.Nodes.Add(root1); });
-                foreach (var yf in 源房.GetYF_NoHistory(context).Include("客房").Execute(MergeOption.OverwriteChanges))
+                foreach (var yf in 源房.GetYF_NoHistory(context).Include("客房.客房租金明细").Execute(MergeOption.OverwriteChanges))
                     AddYuanFangToTree(root1, yf, false, obj);
 
                 TreeNode root2 = new TreeNode("历史源房信息");
@@ -114,7 +113,7 @@ namespace Landlord2
                 root2.ForeColor = Color.DimGray;
                 root2.ImageIndex = 1;
                 DoThreadSafe(delegate { treeView1.Nodes.Add(root2); });
-                foreach (var yf in 源房.GetYF_History(context).Include("客房").Execute(MergeOption.OverwriteChanges))
+                foreach (var yf in 源房.GetYF_History(context).Include("客房.客房租金明细").Execute(MergeOption.OverwriteChanges))
                     AddYuanFangToTree(root2, yf, true, obj);
 
                 DoThreadSafe(delegate {
@@ -496,7 +495,7 @@ namespace Landlord2
                     {
                         if (KryptonMessageBox.Show("客房已成功出租，是否立即进行首期收租？", "首期收租询问", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            using (客房收租Form collectRent = new 客房收租Form(kf))
+                            using (客房收租Form collectRent = new 客房收租Form(kf.ID))
                             {
                                 collectRent.ShowDialog(this);
                             }
@@ -520,7 +519,7 @@ namespace Landlord2
                     return;
                 }
 
-                using (客房收租Form collectRent = new 客房收租Form(kf))
+                using (客房收租Form collectRent = new 客房收租Form(kf.ID))
                 {
                     collectRent.ShowDialog(this);
                 }
@@ -528,20 +527,20 @@ namespace Landlord2
         }        
         private void kfBtnCollectRentDetail_Click(object sender, EventArgs e)
         {
-            ////收租明细
-            //using (客房收租明细Form sz = new 客房收租明细Form())
-            //{
-            //    sz.ShowDialog(this);
-            //}
+            //收租明细
+            using (客房收租明细Form sz = new 客房收租明细Form())
+            {
+                sz.ShowDialog(this);
+            }
         }
 
         private void kfBtnRentHistory_Click(object sender, EventArgs e)
         {
-            ////客房出租历史记录
-            //using (客房出租历史记录Form collectRent = new 客房出租历史记录Form())
-            //{
-            //    collectRent.ShowDialog(this);
-            //}
+            //客房出租历史记录
+            using (客房出租历史记录Form collectRent = new 客房出租历史记录Form())
+            {
+                collectRent.ShowDialog(this);
+            }
         }
         #endregion
 

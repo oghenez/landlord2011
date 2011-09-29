@@ -176,13 +176,12 @@
             this.kryptonWrapLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonWrapLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.kryptonWrapLabel1.ForeColor = System.Drawing.Color.Black;
-            this.kryptonWrapLabel1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.kryptonWrapLabel1.Location = new System.Drawing.Point(61, 5);
             this.kryptonWrapLabel1.Name = "kryptonWrapLabel1";
             this.kryptonWrapLabel1.Size = new System.Drawing.Size(778, 62);
             this.kryptonWrapLabel1.Text = "1、【退租】和【续租】后当前租户相关信息从【客房】转到【客房出租历史记录】里（一般周期性缴租不会），供日后查阅、数据分析用。\r\n2、【客房出租历史记录】的“状态”" +
-    "指哪种状态下，转入历史记录的。分为：“续租”、“正常退租”、“提前退租”、“逾期退租”。\r\n3、下面的【客房出租历史记录】，仅能作“删除”操作，删除某条出租历史" +
-    "记录后，相关的【客房收租明细】信息也自动删除。";
+    "指：哪种状态下转入历史记录的。分为：“续租”、“正常退租”、“提前退租”、“逾期退租”。\r\n3、【客房出租历史记录】仅能作“删除”操作，删除某条出租历史记录后，" +
+    "相关的【客房收租明细】信息也自动删除。";
             this.kryptonWrapLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // kryptonLabel1
@@ -236,6 +235,7 @@
             this.kryptonDataGridView1.Name = "kryptonDataGridView1";
             this.kryptonDataGridView1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.kryptonDataGridView1.ReadOnly = true;
+            this.kryptonDataGridView1.RowHeadersWidth = 24;
             this.kryptonDataGridView1.RowTemplate.Height = 23;
             this.kryptonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.kryptonDataGridView1.Size = new System.Drawing.Size(844, 312);
@@ -246,6 +246,7 @@
             // 客房
             // 
             this.客房.DataPropertyName = "客房";
+            this.客房.Frozen = true;
             this.客房.HeaderText = "客房";
             this.客房.Name = "客房";
             this.客房.ReadOnly = true;
