@@ -128,40 +128,6 @@ namespace Landlord2.UI
                     e.Value = string.Format("[{0}] - {1}", k.源房.房名, k.命名);
             }
         }
-
-        private void kryptonDataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            //只允许删除---只能针对当前租户，删除某条记录，则该记录起的后续记录都将被删除！
-            客房租金明细 entity = 客房租金明细BindingSource.Current as 客房租金明细;
-            List<客房租金明细> currentList = 客房租金明细.GetRentDetails_Current2(entity.客房);
-            if (!currentList.Contains(entity))
-            {
-                string msg;
-                if (string.IsNullOrEmpty(entity.客房.租户))
-                    msg = "此条【收租明细信息】属于历史租户历史协议期内信息，无法删除！（详见上方操作说明）";
-                else
-                    msg = string.Format("此条【收租明细信息】非‘当前租户[{0}]、当前协议期内[{1}]’的记录，无法删除！",
-                        entity.客房.租户, 
-                        entity.客房.期始.Value.ToShortDateString() + "~" + entity.客房.期止.Value.ToShortDateString());
-                KryptonMessageBox.Show(msg);
-                e.Cancel = true;
-            }
-            else
-            {
-                willBeDeletedList = currentList.Where(m => m.起付日期 > entity.起付日期);
-                int num = willBeDeletedList.Count();
-                string msg = string.Format("删除此条记录，该记录的后续记录[{0}条]都将被删除！(详见上方操作说明)\r\n是否删除？",num);
-                if (KryptonMessageBox.Show(msg,"删除确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, 
-                    MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
-                {
-                    //删除后续记录不能写在这里，会又一次引发UserDeletingRow事件，将其放在UserDeletedRow中处理。
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
         
         private void CaculateSumMoney()
         {
@@ -184,25 +150,53 @@ namespace Landlord2.UI
             CaculateSumMoney();
         }
 
-        private void kryptonDataGridView1_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
-        {
-            if (willBeDeletedList != null)
-            {
-                foreach (var o in willBeDeletedList)
-                {
-                    context.客房租金明细.DeleteObject(o);
-                }
-                willBeDeletedList = null;//删除后置空
-            }
-            CaculateSumMoney();
-        }
-
         private void kryptonDataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 8)//实付金额更改
             {
                 CaculateSumMoney();
             }
+        }
+
+        private void BtnDel_Click(object sender, EventArgs e)
+        {
+            //只允许删除---只能针对当前租户，删除某条记录，则该记录起的后续记录都将被删除！
+            客房租金明细 current = 客房租金明细BindingSource.Current as 客房租金明细;
+            if (current == null)
+                return;
+
+            List<客房租金明细> currentList = 客房租金明细.GetRentDetails_Current2(current.客房);
+            if (!currentList.Contains(current))
+            {
+                string msg;
+                if (string.IsNullOrEmpty(current.客房.租户))
+                    msg = "此条【收租明细信息】属于历史租户历史协议期内信息，无法删除！（详见上方操作说明）";
+                else
+                    msg = string.Format("此条【收租明细信息】非‘当前租户[{0}]、当前协议期内[{1}]’的记录，无法删除！",
+                        current.客房.租户,
+                        current.客房.期始.Value.ToShortDateString() + "~" + current.客房.期止.Value.ToShortDateString());
+                KryptonMessageBox.Show(msg);
+                return;
+            }
+            else
+            {
+                willBeDeletedList = currentList.Where(m => m.起付日期 > current.起付日期);
+                int num = willBeDeletedList.Count();
+                string msg = string.Format("删除此条记录，该记录的后续记录[{0}条]都将被删除！(详见上方操作说明)\r\n是否删除？", num);
+                if (KryptonMessageBox.Show(msg, "删除确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    //删除当前选中
+                    客房租金明细BindingSource.RemoveCurrent();
+                    //删除涉及到的
+                    foreach (var o in willBeDeletedList)
+                    {
+                        context.客房租金明细.DeleteObject(o);
+                    }
+                    willBeDeletedList = null;//删除后置空
+                    CaculateSumMoney();
+                }
+            }            
         }
     }
 }

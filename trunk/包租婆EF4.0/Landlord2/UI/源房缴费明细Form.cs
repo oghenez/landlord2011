@@ -217,11 +217,9 @@ namespace Landlord2.UI
             {
                 //因为绑定数据源和context 之间没有消息订阅，所以必须手动删除对应项。
                 源房缴费明细 delItem = (current as ObjectView<源房缴费明细>).Object; //! 注意，这里获取方式有点特别。http://blw.sourceforge.net/
-                context.源房缴费明细.DeleteObject(delItem);                
-            }
-
-            if (源房缴费明细BindingSource.Current != null) 
+                context.源房缴费明细.DeleteObject(delItem);
                 源房缴费明细BindingSource.RemoveCurrent();
+            }            
 
             CaculateSumMoney();
         } 
