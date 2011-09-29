@@ -50,6 +50,7 @@
             this.llbKF = new ComponentFactory.Krypton.Toolkit.KryptonLinkLabel();
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.raBtnOne = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
+            this.BtnDel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.BtnAdd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.raBtnAll = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
@@ -61,8 +62,8 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.客房BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonWrapLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonWrapLabel();
+            this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.客房租金明细BindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -75,6 +76,7 @@
             // kryptonDataGridView1
             // 
             this.kryptonDataGridView1.AllowUserToAddRows = false;
+            this.kryptonDataGridView1.AllowUserToDeleteRows = false;
             this.kryptonDataGridView1.AutoGenerateColumns = false;
             this.kryptonDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -98,12 +100,10 @@
             this.kryptonDataGridView1.RowHeadersWidth = 24;
             this.kryptonDataGridView1.RowTemplate.Height = 23;
             this.kryptonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.kryptonDataGridView1.Size = new System.Drawing.Size(844, 278);
+            this.kryptonDataGridView1.Size = new System.Drawing.Size(844, 270);
             this.kryptonDataGridView1.TabIndex = 2;
             this.kryptonDataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.kryptonDataGridView1_CellEndEdit);
             this.kryptonDataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.kryptonDataGridView1_CellFormatting);
-            this.kryptonDataGridView1.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.kryptonDataGridView1_UserDeletedRow);
-            this.kryptonDataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.kryptonDataGridView1_UserDeletingRow);
             // 
             // Column1
             // 
@@ -225,13 +225,14 @@
             this.panel1.Controls.Add(this.llbKF);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.raBtnOne);
+            this.panel1.Controls.Add(this.BtnDel);
             this.panel1.Controls.Add(this.BtnAdd);
             this.panel1.Controls.Add(this.btnOK);
             this.panel1.Controls.Add(this.raBtnAll);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 384);
+            this.panel1.Location = new System.Drawing.Point(0, 376);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(844, 60);
+            this.panel1.Size = new System.Drawing.Size(844, 68);
             this.panel1.TabIndex = 0;
             // 
             // llbKF
@@ -239,7 +240,7 @@
             this.llbKF.Cursor = System.Windows.Forms.Cursors.Hand;
             this.llbKF.Enabled = false;
             this.llbKF.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.llbKF.Location = new System.Drawing.Point(114, 20);
+            this.llbKF.Location = new System.Drawing.Point(25, 36);
             this.llbKF.Name = "llbKF";
             this.llbKF.Size = new System.Drawing.Size(133, 20);
             this.llbKF.TabIndex = 2;
@@ -252,27 +253,37 @@
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.CausesValidation = false;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(717, 18);
+            this.btnCancel.Location = new System.Drawing.Point(715, 26);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 25);
-            this.btnCancel.TabIndex = 5;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Values.Text = "取消";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // raBtnOne
             // 
             this.raBtnOne.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.raBtnOne.Location = new System.Drawing.Point(102, 24);
+            this.raBtnOne.Location = new System.Drawing.Point(12, 40);
             this.raBtnOne.Name = "raBtnOne";
             this.raBtnOne.Size = new System.Drawing.Size(18, 12);
             this.raBtnOne.TabIndex = 1;
             this.raBtnOne.Values.Text = "";
             this.raBtnOne.CheckedChanged += new System.EventHandler(this.raBtn_CheckedChanged);
             // 
+            // BtnDel
+            // 
+            this.BtnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnDel.Location = new System.Drawing.Point(473, 26);
+            this.BtnDel.Name = "BtnDel";
+            this.BtnDel.Size = new System.Drawing.Size(90, 25);
+            this.BtnDel.TabIndex = 4;
+            this.BtnDel.Values.Text = "删除";
+            this.BtnDel.Click += new System.EventHandler(this.BtnDel_Click);
+            // 
             // BtnAdd
             // 
             this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAdd.Location = new System.Drawing.Point(447, 18);
+            this.BtnAdd.Location = new System.Drawing.Point(352, 26);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(90, 25);
             this.BtnAdd.TabIndex = 3;
@@ -283,10 +294,10 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(582, 18);
+            this.btnOK.Location = new System.Drawing.Point(594, 26);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(90, 25);
-            this.btnOK.TabIndex = 4;
+            this.btnOK.TabIndex = 5;
             this.btnOK.Values.Text = "保存";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
@@ -294,7 +305,7 @@
             // 
             this.raBtnAll.Checked = true;
             this.raBtnAll.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.raBtnAll.Location = new System.Drawing.Point(12, 20);
+            this.raBtnAll.Location = new System.Drawing.Point(12, 13);
             this.raBtnAll.Name = "raBtnAll";
             this.raBtnAll.Size = new System.Drawing.Size(72, 20);
             this.raBtnAll.TabIndex = 0;
@@ -334,7 +345,7 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.labCountMoney});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 352);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 344);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
             this.statusStrip1.ShowItemToolTips = true;
@@ -380,17 +391,6 @@
             this.kryptonPanel1.Size = new System.Drawing.Size(844, 74);
             this.kryptonPanel1.TabIndex = 4;
             // 
-            // kryptonLabel1
-            // 
-            this.kryptonLabel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.kryptonLabel1.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
-            this.kryptonLabel1.Location = new System.Drawing.Point(5, 5);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(56, 64);
-            this.kryptonLabel1.TabIndex = 1;
-            this.kryptonLabel1.Values.Image = global::Landlord2.Properties.Resources.info;
-            this.kryptonLabel1.Values.Text = "";
-            // 
             // kryptonWrapLabel1
             // 
             this.kryptonWrapLabel1.AutoSize = false;
@@ -402,6 +402,17 @@
             this.kryptonWrapLabel1.Size = new System.Drawing.Size(778, 64);
             this.kryptonWrapLabel1.Text = resources.GetString("kryptonWrapLabel1.Text");
             this.kryptonWrapLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // kryptonLabel1
+            // 
+            this.kryptonLabel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.kryptonLabel1.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
+            this.kryptonLabel1.Location = new System.Drawing.Point(5, 5);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(56, 64);
+            this.kryptonLabel1.TabIndex = 1;
+            this.kryptonLabel1.Values.Image = global::Landlord2.Properties.Resources.info;
+            this.kryptonLabel1.Values.Text = "";
             // 
             // 客房收租明细Form
             // 
@@ -466,5 +477,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private ComponentFactory.Krypton.Toolkit.KryptonWrapLabel kryptonWrapLabel1;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton BtnDel;
     }
 }
