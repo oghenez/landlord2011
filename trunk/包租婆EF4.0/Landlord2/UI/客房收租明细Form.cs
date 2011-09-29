@@ -12,7 +12,7 @@ using System.Data.Objects;
 
 namespace Landlord2.UI
 {
-    public partial class 客房收租明细Form : KryptonForm
+    public partial class 客房收租明细Form : FormBase
     {
         private 客房 kf;//当选择单套客房时所选择的客房
         private IEnumerable<客房租金明细> willBeDeletedList;//临时存储，在用户删除某条记录后，该记录之前的欲删除记录集合
@@ -24,17 +24,7 @@ namespace Landlord2.UI
 
         private void 客房收租明细Form_Load(object sender, EventArgs e)
         {
-            客房租金明细BindingSource.DataSource = 客房租金明细.GetRentDetails(null).Execute(MergeOption.AppendOnly); 
-        }
-
-        private void 客房收租明细Form_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            var changes = Main.context.ObjectStateManager.GetObjectStateEntries(EntityState.Added | EntityState.Deleted | EntityState.Modified);
-            if (changes.Count() > 0)
-            {
-                Main.context.Refresh(System.Data.Objects.RefreshMode.StoreWins, Main.context.客房租金明细);
-                Main.context.AcceptAllChanges();
-            }
+            客房租金明细BindingSource.DataSource = 客房租金明细.GetRentDetails(context, null).Execute(MergeOption.AppendOnly); 
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -50,28 +40,29 @@ namespace Landlord2.UI
                 return;
             }
 
-            using (客房收租Form sz = new 客房收租Form(kf))
+            Guid kfID;
+            using (客房收租Form sz = new 客房收租Form(kf.ID))
             {
                 sz.ShowDialog(this);
-                kf = sz.kf;//也许用户在新增收租里有一次更改了kf，此时回传
+                kfID = sz.kf.ID;//也许用户在新增收租里又一次更改了kf，此时回传
             }
 
             //最后，不管有没有更新，刷新DataGridView
-            ChangeKF();
+            ChangeKF(kfID);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
             客房租金明细BindingSource.EndEdit();
 
-            var changes = Main.context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted | EntityState.Modified);
+            var changes = context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted | EntityState.Modified);
             if (changes.Count() > 0)
             {
                 //校验
                 //此处省略校验逻辑，因为UI修改时只能修改“付款日期、实付金额、付款人、收款人、备注”，其他信息不可更改。
 
                 string msg;
-                if (Helper.saveData(Main.context.客房租金明细, out msg))
+                if (Helper.saveData(context, context.客房租金明细, out msg))
                 {
                     KryptonMessageBox.Show(msg, "成功保存");
                     if (this.Owner is Main)
@@ -96,7 +87,7 @@ namespace Landlord2.UI
 
             if (raBtnAll.Checked)
             {
-                客房租金明细BindingSource.DataSource = 客房租金明细.GetRentDetails(null).Execute(MergeOption.AppendOnly); 
+                客房租金明细BindingSource.DataSource = 客房租金明细.GetRentDetails(context, null).Execute(MergeOption.AppendOnly); 
                 llbKF.Values.ExtraText = "<请选择>";
                 kf = null;
             }
@@ -108,7 +99,7 @@ namespace Landlord2.UI
 
         private void llbKF_LinkClicked(object sender, EventArgs e)
         {
-            using (客房选择Form form = new 客房选择Form(客房筛选.客房收租))
+            using (客房选择Form form = new 客房选择Form(context, 客房筛选.客房收租))
             {
                 var result = form.ShowDialog(this);
                 if (result == System.Windows.Forms.DialogResult.OK)
@@ -116,16 +107,16 @@ namespace Landlord2.UI
                     if (kf != form.selectedKF)
                     {
                         kf = form.selectedKF;
-                        ChangeKF();
+                        ChangeKF(kf.ID);
                     }
                 }
             }      
         }
 
-        private void ChangeKF()
+        private void ChangeKF(Guid kfID)
         {
             llbKF.Values.ExtraText = string.Format("[{0}] - {1}", kf.源房.房名, kf.命名);
-            客房租金明细BindingSource.DataSource = 客房租金明细.GetRentDetails(kf.ID).Execute(MergeOption.AppendOnly); 
+            客房租金明细BindingSource.DataSource = 客房租金明细.GetRentDetails(context, kfID).Execute(MergeOption.AppendOnly); 
         }
 
         private void kryptonDataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -164,10 +155,6 @@ namespace Landlord2.UI
                     MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
                 {
                     //删除后续记录不能写在这里，会又一次引发UserDeletingRow事件，将其放在UserDeletedRow中处理。
-                    //foreach (var o in laterList)
-                    //{
-                    //    //Main.context.客房租金明细.DeleteObject(o);
-                    //}
                 }
                 else
                 {
@@ -203,7 +190,7 @@ namespace Landlord2.UI
             {
                 foreach (var o in willBeDeletedList)
                 {
-                    Main.context.客房租金明细.DeleteObject(o);
+                    context.客房租金明细.DeleteObject(o);
                 }
                 willBeDeletedList = null;//删除后置空
             }

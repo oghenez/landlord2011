@@ -37,6 +37,10 @@ namespace Landlord2.UI
 
         private void BindingData()
         {
+            kryptonHeader1.Values.Heading = kf.源房.房名;
+            kryptonHeader1.Values.Description = kf.命名;
+            租户Label1.Text = kf.租户;
+
             //进入此界面，理论上客房应该出租了，有租户信息
 #if DEBUG
             System.Diagnostics.Debug.Assert(!string.IsNullOrEmpty(kf.租户));
@@ -83,19 +87,22 @@ namespace Landlord2.UI
             realMonthNum = kf.支付月数;
             if (collectRent.止付日期 > kf.期止.Value.Date)
             {
-                while (collectRent.止付日期 > kf.期止.Value.Date)
+                realMonthNum = 0;//先置0
+                DateTime tempBegin = collectRent.起付日期;
+                DateTime tempEnd = tempBegin.AddMonths(1).AddDays(-1);//支付1个月
+                while (tempEnd <= kf.期止.Value.Date)
                 {
-                    realMonthNum--;
-                    collectRent.止付日期 = collectRent.止付日期.AddMonths(-1);
-                }
-                if (collectRent.止付日期 < kf.期止.Value.Date)
-                {
-                    //剩余天数不足一个月的，按1个月收租。
+                    tempBegin = tempEnd.AddDays(1);
+                    tempEnd = tempBegin.AddMonths(1).AddDays(-1);
                     realMonthNum++;
-                    collectRent.止付日期 = kf.期止.Value.Date;
-                    止付日期Label1.ForeColor = Color.Red;
-                    toolTip1.SetToolTip(止付日期Label1, "尾期天数不足1个月，按1个月计算。实收租金可与租户协商而定。");
                 }
+                //-->得到应缴月数(有可能最后一个月尾期天数不足一个月)
+                int extraDays = (kf.期止.Value.Date - tempBegin).Days + 1 ; //尾期天数
+                collectRent.止付日期 = kf.期止.Value.Date;
+                止付日期Label1.ForeColor = Color.Red;
+                if(extraDays > 0)
+                    toolTip1.SetToolTip(止付日期Label1, string.Format("尾期天数不足1个月[{0}天]，按1个月计算。实收租金可与租户协商而定。",extraDays));
+
             }
             //----------
             nud水费.Minimum = (decimal)collectRent.水止码;
@@ -150,8 +157,6 @@ namespace Landlord2.UI
         }
         private void 客房收租Form_Load(object sender, EventArgs e)
         {
-            kryptonHeader1.Values.Heading = kf.源房.房名;
-            kryptonHeader1.Values.Description = kf.命名;
             BindingData();
         }
 
@@ -185,8 +190,7 @@ namespace Landlord2.UI
                     {
                         context.客房租金明细.DeleteObject(collectRent);
                         kf = form.selectedKF;
-                        kryptonHeader1.Values.Heading = kf.源房.房名;
-                        kryptonHeader1.Values.Description = kf.命名;
+
                         BindingData();
                     }                    
                 }

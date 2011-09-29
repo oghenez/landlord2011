@@ -132,10 +132,7 @@
   <metadata name="客房BindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>451, 14</value>
   </metadata>
-  <metadata name="kryptonLabel1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="kryptonLabel1.Values.ExtraText" xml:space="preserve">
+  <data name="kryptonWrapLabel1.Text" xml:space="preserve">
     <value>1、修改时只能修改“付款日期、实付金额、付款人、收款人、备注”，其他信息不可更改。
 2、删除时只能针对“当前租户当前协议期内”的记录。同时，该记录的后续记录都将被删除！原因如下：
      ① 历史协议期内的收租明细记录无法直接删除，只有先删除相关的历史出租记录，那么相关历史协议期内的收租明细会自动清除。
