@@ -139,7 +139,7 @@ namespace Landlord2
         public static void PrintLog(string msg)
         {
             string path = Directory.GetCurrentDirectory();
-            using (StreamWriter sw = File.AppendText(Path.Combine(path, "log.txt")))
+            using (StreamWriter sw = File.AppendText(Path.Combine(path, "Landlord2.log")))
             {
                 sw.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss ") +msg);
             }

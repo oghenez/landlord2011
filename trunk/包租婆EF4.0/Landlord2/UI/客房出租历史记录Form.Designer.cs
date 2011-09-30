@@ -202,6 +202,7 @@
             // kryptonDataGridView1
             // 
             this.kryptonDataGridView1.AllowUserToAddRows = false;
+            this.kryptonDataGridView1.AllowUserToDeleteRows = false;
             this.kryptonDataGridView1.AutoGenerateColumns = false;
             this.kryptonDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.客房,
@@ -548,6 +549,9 @@
             this.Controls.Add(this.kryptonDataGridView1);
             this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            this.MaximizeBox = true;
+            this.MinimizeBox = true;
             this.Name = "客房出租历史记录Form";
             this.Text = "客房出租历史记录";
             this.Load += new System.EventHandler(this.客房出租历史记录Form_Load);
