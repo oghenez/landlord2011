@@ -7,7 +7,7 @@ using System.Data.Objects;
 
 namespace Landlord2.UI
 {
-    public partial class 客房退租Form : KryptonForm
+    public partial class 客房退租Form : FormBase
     {
         public 客房退租Form()
         {

@@ -619,7 +619,7 @@
             this.kfBtnCollectRentDetail});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(862, 70);
+            this.toolStrip1.Size = new System.Drawing.Size(893, 70);
             this.toolStrip1.TabIndex = 0;
             // 
             // yfBtnAdd
@@ -755,6 +755,7 @@
             this.kfBtnContinueRent.Text = "客房续租";
             this.kfBtnContinueRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.kfBtnContinueRent.ToolTipText = "客房续租";
+            this.kfBtnContinueRent.Click += new System.EventHandler(this.kfBtnContinueRent_Click);
             // 
             // kfBtnRentHistory
             // 

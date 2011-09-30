@@ -37,7 +37,7 @@ namespace Landlord2
                 , e.Action
                 , e.Element));
                 MessageBox.Show(string.Format(
-                    "刚刚检测到改动--Action:{0} Object:{1}\r\n目前本地缓存实体数量：\r\n\tAdded-{2}\r\n\tDeleted-{3}\r\n\tModified-{4}\r\n\tUnchanged-{5}"
+                    "MainContext刚刚检测到缓存改动--Action:{0} Object:{1}\r\n目前本地缓存实体数量：\r\n\tAdded-{2}\r\n\tDeleted-{3}\r\n\tModified-{4}\r\n\tUnchanged-{5}"
                     , e.Action
                     , e.Element
                     , context.ObjectStateManager.GetObjectStateEntries(EntityState.Added).Count()
@@ -516,8 +516,11 @@ namespace Landlord2
                     }
                 }
             }
-        }        
-
+        }
+        private void kfBtnContinueRent_Click(object sender, EventArgs e)
+        {
+            //客房续租
+        }
         private void kfBtnCollectRent_Click(object sender, EventArgs e)
         {
             //收租
@@ -556,6 +559,8 @@ namespace Landlord2
             }
         }
         #endregion
+
+    
 
 
 
