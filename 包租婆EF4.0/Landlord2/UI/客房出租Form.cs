@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using Landlord2.Data;
-using System.Data.Objects;
-using System.Linq;
 
 namespace Landlord2.UI
 {
@@ -14,6 +14,8 @@ namespace Landlord2.UI
         public 客房出租Form(Guid kfID)
         {
             InitializeComponent();
+            uC客房详细1.tbKfName.ReadOnly = true;//客房名字不许更改
+            uC客房详细1.tbKfName.ForeColor = Color.Red;
             this.kf = context.客房.FirstOrDefault(m=>m.ID == kfID);
         }
 

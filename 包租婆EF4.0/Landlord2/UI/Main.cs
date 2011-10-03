@@ -520,6 +520,17 @@ namespace Landlord2
         private void kfBtnContinueRent_Click(object sender, EventArgs e)
         {
             //客房续租
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
+            {
+                客房 kf = treeView1.SelectedNode.Tag as 客房;
+                if (string.IsNullOrEmpty(kf.租户))//未租
+                    return;
+
+                using (客房续租Form xz = new 客房续租Form(kf.ID))
+                {
+                    xz.ShowDialog(this);
+                }
+            }
         }
         private void kfBtnCollectRent_Click(object sender, EventArgs e)
         {
