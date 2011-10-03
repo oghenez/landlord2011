@@ -88,16 +88,19 @@ namespace Landlord2.UI
             if (collectRent.止付日期 > kf.期止.Value.Date)
             {
                 realMonthNum = 0;//先置0
-                DateTime tempBegin = collectRent.起付日期;
-                DateTime tempEnd = tempBegin.AddMonths(1).AddDays(-1);//支付1个月
-                while (tempEnd <= kf.期止.Value.Date)
+                DateTime tempBegin ;
+                DateTime tempEnd = collectRent.起付日期.AddDays(-1);//初始置为起付日期头一天，do-while至少会执行一次的。
+                do
                 {
                     tempBegin = tempEnd.AddDays(1);
-                    tempEnd = tempBegin.AddMonths(1).AddDays(-1);
+                    tempEnd = tempBegin.AddMonths(1).AddDays(-1);//支付1个月
                     realMonthNum++;
-                }
+                } while (tempEnd < kf.期止.Value.Date);
                 //-->得到应缴月数(有可能最后一个月尾期天数不足一个月)
-                int extraDays = (kf.期止.Value.Date - tempBegin).Days + 1 ; //尾期天数
+                
+                int extraDays = (tempEnd == kf.期止.Value.Date)?
+                    0:
+                    (kf.期止.Value.Date - tempBegin).Days + 1 ; //尾期天数
                 collectRent.止付日期 = kf.期止.Value.Date;
                 止付日期Label1.ForeColor = Color.Red;
                 if(extraDays > 0)

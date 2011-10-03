@@ -14,10 +14,9 @@ namespace Landlord2
         [STAThread]
         static void Main()
         {
-            MessageBox.Show("客房出租历史记录---未完成");
-            MessageBox.Show("客房续租---未完成");
-            MessageBox.Show("客房退租---未完成");
-            //MessageBox.Show("对于状态为deleted的实体，第二次查询同样会绑定到datagridview。（难道非要用local数据？或者每次savechanges前不能第二次查询？？？）");
+            //MessageBox.Show("客房出租历史记录---未完成");
+            //MessageBox.Show("客房续租---未完成");
+            //MessageBox.Show("客房退租---未完成");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

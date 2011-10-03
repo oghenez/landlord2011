@@ -76,7 +76,7 @@
             this.租赁协议照片1PictureBox = new System.Windows.Forms.PictureBox();
             this.租赁协议照片2PictureBox = new System.Windows.Forms.PictureBox();
             this.租赁协议照片3PictureBox = new System.Windows.Forms.PictureBox();
-            this.kryptonTextBox1 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.tbKfName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox2 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonCheckBox1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.kryptonCheckBox2 = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
@@ -200,12 +200,12 @@
             this.kryptonPanel1.Controls.Add(this.kryptonTextBox10);
             this.kryptonPanel1.Controls.Add(this.kryptonTextBox6);
             this.kryptonPanel1.Controls.Add(this.kryptonTextBox3);
-            this.kryptonPanel1.Controls.Add(this.kryptonTextBox1);
+            this.kryptonPanel1.Controls.Add(this.tbKfName);
             this.kryptonPanel1.Controls.Add(命名Label);
             this.kryptonPanel1.Location = new System.Drawing.Point(16, 45);
             this.kryptonPanel1.Size = new System.Drawing.Size(783, 390);
             this.kryptonPanel1.Controls.SetChildIndex(命名Label, 0);
-            this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox1, 0);
+            this.kryptonPanel1.Controls.SetChildIndex(this.tbKfName, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox3, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox6, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox10, 0);
@@ -689,13 +689,13 @@
             this.toolTip1.SetToolTip(this.租赁协议照片3PictureBox, "无图像");
             this.租赁协议照片3PictureBox.DoubleClick += new System.EventHandler(this.PictureBox_DoubleClick);
             // 
-            // kryptonTextBox1
+            // tbKfName
             // 
-            this.kryptonTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "命名", true));
-            this.kryptonTextBox1.Location = new System.Drawing.Point(85, 20);
-            this.kryptonTextBox1.Name = "kryptonTextBox1";
-            this.kryptonTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.kryptonTextBox1.TabIndex = 0;
+            this.tbKfName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "命名", true));
+            this.tbKfName.Location = new System.Drawing.Point(85, 20);
+            this.tbKfName.Name = "tbKfName";
+            this.tbKfName.Size = new System.Drawing.Size(100, 20);
+            this.tbKfName.TabIndex = 0;
             // 
             // kryptonTextBox2
             // 
@@ -1069,7 +1069,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ToolTip toolTip1;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox1;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox2;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryptonCheckBox2;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryptonCheckBox1;
@@ -1113,5 +1112,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 收款人DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 备注DataGridViewTextBoxColumn;
         public System.Windows.Forms.BindingSource 客房租金明细BindingSource;
+        public ComponentFactory.Krypton.Toolkit.KryptonTextBox tbKfName;
     }
 }
