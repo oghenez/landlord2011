@@ -363,6 +363,7 @@
             // kryptonDateTimePicker2
             // 
             this.kryptonDateTimePicker2.CalendarTodayDate = new System.DateTime(2011, 9, 10, 0, 0, 0, 0);
+            this.kryptonDateTimePicker2.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.客房租金明细BindingSource, "付款日期", true));
             this.kryptonDateTimePicker2.Location = new System.Drawing.Point(595, 42);
             this.kryptonDateTimePicker2.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
             this.kryptonDateTimePicker2.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);

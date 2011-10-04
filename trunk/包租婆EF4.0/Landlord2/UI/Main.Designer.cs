@@ -745,6 +745,7 @@
             this.kfBtnStopRent.Text = "客房退租";
             this.kfBtnStopRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.kfBtnStopRent.ToolTipText = "客房退租";
+            this.kfBtnStopRent.Click += new System.EventHandler(this.kfBtnStopRent_Click);
             // 
             // kfBtnContinueRent
             // 

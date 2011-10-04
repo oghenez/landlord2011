@@ -532,6 +532,21 @@ namespace Landlord2
                 }
             }
         }
+        private void kfBtnStopRent_Click(object sender, EventArgs e)
+        {
+            //客房退租
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
+            {
+                客房 kf = treeView1.SelectedNode.Tag as 客房;
+                if (string.IsNullOrEmpty(kf.租户))//未租
+                    return;
+
+                using (客房退租Form tz = new 客房退租Form(kf.ID))
+                {
+                    tz.ShowDialog(this);
+                }
+            }
+        }
         private void kfBtnCollectRent_Click(object sender, EventArgs e)
         {
             //收租
@@ -570,6 +585,8 @@ namespace Landlord2
             }
         }
         #endregion
+
+
 
     
 
