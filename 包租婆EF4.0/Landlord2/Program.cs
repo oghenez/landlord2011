@@ -15,7 +15,6 @@ namespace Landlord2
         static void Main()
         {
             //MessageBox.Show("客房出租历史记录---未完成");
-            //MessageBox.Show("客房续租---未完成");
             //MessageBox.Show("客房退租---未完成");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
