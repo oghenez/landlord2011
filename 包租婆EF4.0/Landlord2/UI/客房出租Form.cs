@@ -15,7 +15,7 @@ namespace Landlord2.UI
         {
             InitializeComponent();
             uC客房详细1.tbKfName.ReadOnly = true;//客房名字不许更改
-            uC客房详细1.tbKfName.ForeColor = Color.Red;
+            uC客房详细1.tbKfName.StateCommon.Content.Color1 = Color.Red;
             this.kf = context.客房.FirstOrDefault(m=>m.ID == kfID);
         }
 

@@ -97,10 +97,8 @@ namespace Landlord2.UI
                     realMonthNum++;
                 } while (tempEnd < kf.期止.Value.Date);
                 //-->得到应缴月数(有可能最后一个月尾期天数不足一个月)
-                
-                int extraDays = (tempEnd == kf.期止.Value.Date)?
-                    0:
-                    (kf.期止.Value.Date - tempBegin).Days + 1 ; //尾期天数
+
+                int extraDays = (tempEnd == kf.期止.Value.Date) ? 0 : (kf.期止.Value.Date - tempBegin).Days + 1 ; //尾期天数
                 collectRent.止付日期 = kf.期止.Value.Date;
                 止付日期Label1.ForeColor = Color.Red;
                 if(extraDays > 0)
