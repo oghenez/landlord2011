@@ -47,14 +47,14 @@
             System.Windows.Forms.Label 备注Label;
             System.Windows.Forms.Label 付款人Label;
             System.Windows.Forms.Label 收款人Label;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label6;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.月租金Label1 = new System.Windows.Forms.Label();
             this.水始码Label1 = new System.Windows.Forms.Label();
             this.lbl水费 = new System.Windows.Forms.Label();
@@ -342,6 +342,26 @@
             收款人Label.Size = new System.Drawing.Size(47, 12);
             收款人Label.TabIndex = 48;
             收款人Label.Text = "收款人:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            label5.Location = new System.Drawing.Point(342, 50);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(21, 14);
+            label5.TabIndex = 54;
+            label5.Text = "～";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            label6.Location = new System.Drawing.Point(211, 50);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(56, 14);
+            label6.TabIndex = 52;
+            label6.Text = "协议期:";
             // 
             // 月租金Label1
             // 
@@ -762,8 +782,8 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "付款日期";
-            dataGridViewCellStyle7.Format = "d";
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Format = "d";
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn3.FillWeight = 86F;
             this.dataGridViewTextBoxColumn3.HeaderText = "付款日期";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -782,8 +802,8 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "止付日期";
-            dataGridViewCellStyle8.Format = "d";
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Format = "d";
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn2.FillWeight = 84F;
             this.dataGridViewTextBoxColumn2.HeaderText = "止付日期";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
@@ -793,8 +813,8 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "起付日期";
-            dataGridViewCellStyle9.Format = "d";
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Format = "d";
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn1.FillWeight = 85F;
             this.dataGridViewTextBoxColumn1.HeaderText = "起付日期";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -917,8 +937,8 @@
             // 起付日期DataGridViewTextBoxColumn
             // 
             this.起付日期DataGridViewTextBoxColumn.DataPropertyName = "起付日期";
-            dataGridViewCellStyle10.Format = "d";
-            this.起付日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Format = "d";
+            this.起付日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.起付日期DataGridViewTextBoxColumn.FillWeight = 90F;
             this.起付日期DataGridViewTextBoxColumn.HeaderText = "起付日期";
             this.起付日期DataGridViewTextBoxColumn.Name = "起付日期DataGridViewTextBoxColumn";
@@ -927,8 +947,8 @@
             // 止付日期DataGridViewTextBoxColumn
             // 
             this.止付日期DataGridViewTextBoxColumn.DataPropertyName = "止付日期";
-            dataGridViewCellStyle11.Format = "d";
-            this.止付日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Format = "d";
+            this.止付日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.止付日期DataGridViewTextBoxColumn.FillWeight = 90F;
             this.止付日期DataGridViewTextBoxColumn.HeaderText = "止付日期";
             this.止付日期DataGridViewTextBoxColumn.Name = "止付日期DataGridViewTextBoxColumn";
@@ -937,8 +957,8 @@
             // 付款日期DataGridViewTextBoxColumn
             // 
             this.付款日期DataGridViewTextBoxColumn.DataPropertyName = "付款日期";
-            dataGridViewCellStyle12.Format = "d";
-            this.付款日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Format = "d";
+            this.付款日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.付款日期DataGridViewTextBoxColumn.FillWeight = 90F;
             this.付款日期DataGridViewTextBoxColumn.HeaderText = "付款日期";
             this.付款日期DataGridViewTextBoxColumn.Name = "付款日期DataGridViewTextBoxColumn";
@@ -1039,7 +1059,7 @@
             // 
             this.kryptonWrapLabel1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.kryptonWrapLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.kryptonWrapLabel1.ForeColor = System.Drawing.Color.Black;
+            this.kryptonWrapLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.kryptonWrapLabel1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.kryptonWrapLabel1.Location = new System.Drawing.Point(38, 87);
             this.kryptonWrapLabel1.Name = "kryptonWrapLabel1";
@@ -1058,26 +1078,6 @@
             this.kryptonDateTimePicker1.Size = new System.Drawing.Size(110, 21);
             this.kryptonDateTimePicker1.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.kryptonDateTimePicker1.TabIndex = 40;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            label5.Location = new System.Drawing.Point(342, 50);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(21, 14);
-            label5.TabIndex = 54;
-            label5.Text = "～";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            label6.Location = new System.Drawing.Point(211, 50);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(56, 14);
-            label6.TabIndex = 52;
-            label6.Text = "协议期:";
             // 
             // 协议期label2
             // 
