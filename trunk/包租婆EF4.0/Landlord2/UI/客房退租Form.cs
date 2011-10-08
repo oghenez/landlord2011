@@ -104,9 +104,9 @@ namespace Landlord2.UI
 
                 int extraDays = (tempEnd == kf.期止.Value.Date) ? 0 : (kf.期止.Value.Date - tempBegin).Days + 1; //尾期天数
                 collectRent.止付日期 = kf.期止.Value.Date;
-                止付日期Label1.ForeColor = Color.Red;
-                if (extraDays > 0)
-                    toolTip1.SetToolTip(止付日期Label1, string.Format("尾期天数不足1个月[{0}天]，按1个月计算。实收租金可与租户协商而定。", extraDays));
+                //止付日期Label1.ForeColor = Color.Red;
+                //if (extraDays > 0)
+                //    toolTip1.SetToolTip(止付日期Label1, string.Format("尾期天数不足1个月[{0}天]，按1个月计算。实收租金可与租户协商而定。", extraDays));
 
             }
             //----------

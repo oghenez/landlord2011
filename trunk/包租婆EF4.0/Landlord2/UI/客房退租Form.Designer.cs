@@ -42,8 +42,6 @@
             System.Windows.Forms.Label 押金Label;
             System.Windows.Forms.Label 应付金额Label;
             System.Windows.Forms.Label 租户Label;
-            System.Windows.Forms.Label 起付日期Label;
-            System.Windows.Forms.Label 止付日期Label;
             System.Windows.Forms.Label 备注Label;
             System.Windows.Forms.Label 付款人Label;
             System.Windows.Forms.Label 收款人Label;
@@ -95,8 +93,6 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.租户Label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.起付日期Label1 = new System.Windows.Forms.Label();
-            this.止付日期Label1 = new System.Windows.Forms.Label();
             this.实付金额DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.应付金额DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.气止码DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -121,6 +117,8 @@
             this.协议期label2 = new System.Windows.Forms.Label();
             this.协议期label1 = new System.Windows.Forms.Label();
             this.kryptonRichTextBox1 = new ComponentFactory.Krypton.Toolkit.KryptonRichTextBox();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.cmbDayMonth = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             付款日期Label = new System.Windows.Forms.Label();
             月租金Label = new System.Windows.Forms.Label();
             水始码Label = new System.Windows.Forms.Label();
@@ -134,8 +132,6 @@
             押金Label = new System.Windows.Forms.Label();
             应付金额Label = new System.Windows.Forms.Label();
             租户Label = new System.Windows.Forms.Label();
-            起付日期Label = new System.Windows.Forms.Label();
-            止付日期Label = new System.Windows.Forms.Label();
             备注Label = new System.Windows.Forms.Label();
             付款人Label = new System.Windows.Forms.Label();
             收款人Label = new System.Windows.Forms.Label();
@@ -150,13 +146,14 @@
             this.kryptonGroupBox1.Panel.SuspendLayout();
             this.kryptonGroupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbDayMonth)).BeginInit();
             this.SuspendLayout();
             // 
             // 付款日期Label
             // 
             付款日期Label.AutoSize = true;
             付款日期Label.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            付款日期Label.Location = new System.Drawing.Point(521, 47);
+            付款日期Label.Location = new System.Drawing.Point(521, 50);
             付款日期Label.Name = "付款日期Label";
             付款日期Label.Size = new System.Drawing.Size(70, 14);
             付款日期Label.TabIndex = 46;
@@ -284,7 +281,7 @@
             应付金额Label.Name = "应付金额Label";
             应付金额Label.Size = new System.Drawing.Size(64, 12);
             应付金额Label.TabIndex = 15;
-            应付金额Label.Text = "本期应付:";
+            应付金额Label.Text = "结算应付:";
             // 
             // 租户Label
             // 
@@ -295,26 +292,6 @@
             租户Label.Size = new System.Drawing.Size(42, 14);
             租户Label.TabIndex = 55;
             租户Label.Text = "租户:";
-            // 
-            // 起付日期Label
-            // 
-            起付日期Label.AutoSize = true;
-            起付日期Label.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            起付日期Label.Location = new System.Drawing.Point(42, 119);
-            起付日期Label.Name = "起付日期Label";
-            起付日期Label.Size = new System.Drawing.Size(56, 14);
-            起付日期Label.TabIndex = 52;
-            起付日期Label.Text = "支付期:";
-            // 
-            // 止付日期Label
-            // 
-            止付日期Label.AutoSize = true;
-            止付日期Label.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            止付日期Label.Location = new System.Drawing.Point(173, 119);
-            止付日期Label.Name = "止付日期Label";
-            止付日期Label.Size = new System.Drawing.Size(21, 14);
-            止付日期Label.TabIndex = 54;
-            止付日期Label.Text = "～";
             // 
             // 备注Label
             // 
@@ -347,7 +324,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            label5.Location = new System.Drawing.Point(342, 50);
+            label5.Location = new System.Drawing.Point(363, 50);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(21, 14);
             label5.TabIndex = 54;
@@ -357,7 +334,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            label6.Location = new System.Drawing.Point(211, 50);
+            label6.Location = new System.Drawing.Point(232, 50);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(56, 14);
             label6.TabIndex = 52;
@@ -415,7 +392,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 33;
-            this.label2.Text = "本期止码";
+            this.label2.Text = "结算止码";
             // 
             // label3
             // 
@@ -837,28 +814,6 @@
             this.toolTip1.InitialDelay = 50;
             this.toolTip1.ReshowDelay = 10;
             // 
-            // 起付日期Label1
-            // 
-            this.起付日期Label1.AutoSize = true;
-            this.起付日期Label1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房租金明细BindingSource, "起付日期", true));
-            this.起付日期Label1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.起付日期Label1.Location = new System.Drawing.Point(98, 119);
-            this.起付日期Label1.Name = "起付日期Label1";
-            this.起付日期Label1.Size = new System.Drawing.Size(77, 14);
-            this.起付日期Label1.TabIndex = 53;
-            this.起付日期Label1.Text = "2010-10-10";
-            // 
-            // 止付日期Label1
-            // 
-            this.止付日期Label1.AutoSize = true;
-            this.止付日期Label1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房租金明细BindingSource, "止付日期", true));
-            this.止付日期Label1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.止付日期Label1.Location = new System.Drawing.Point(190, 119);
-            this.止付日期Label1.Name = "止付日期Label1";
-            this.止付日期Label1.Size = new System.Drawing.Size(77, 14);
-            this.止付日期Label1.TabIndex = 56;
-            this.止付日期Label1.Text = "2010-10-10";
-            // 
             // 实付金额DataGridViewTextBoxColumn
             // 
             this.实付金额DataGridViewTextBoxColumn.DataPropertyName = "实付金额";
@@ -1014,7 +969,7 @@
             // 
             this.kryptonDateTimePicker2.CalendarTodayDate = new System.DateTime(2011, 9, 10, 0, 0, 0, 0);
             this.kryptonDateTimePicker2.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.客房租金明细BindingSource, "付款日期", true));
-            this.kryptonDateTimePicker2.Location = new System.Drawing.Point(593, 43);
+            this.kryptonDateTimePicker2.Location = new System.Drawing.Point(593, 47);
             this.kryptonDateTimePicker2.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
             this.kryptonDateTimePicker2.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.kryptonDateTimePicker2.Name = "kryptonDateTimePicker2";
@@ -1059,9 +1014,9 @@
             // 
             this.kryptonWrapLabel1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.kryptonWrapLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.kryptonWrapLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kryptonWrapLabel1.ForeColor = System.Drawing.Color.Black;
             this.kryptonWrapLabel1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.kryptonWrapLabel1.Location = new System.Drawing.Point(38, 87);
+            this.kryptonWrapLabel1.Location = new System.Drawing.Point(38, 80);
             this.kryptonWrapLabel1.Name = "kryptonWrapLabel1";
             this.kryptonWrapLabel1.Size = new System.Drawing.Size(103, 15);
             this.kryptonWrapLabel1.Text = "退租日期结算至：";
@@ -1071,7 +1026,7 @@
             // kryptonDateTimePicker1
             // 
             this.kryptonDateTimePicker1.CalendarTodayDate = new System.DateTime(2011, 9, 10, 0, 0, 0, 0);
-            this.kryptonDateTimePicker1.Location = new System.Drawing.Point(134, 81);
+            this.kryptonDateTimePicker1.Location = new System.Drawing.Point(138, 77);
             this.kryptonDateTimePicker1.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
             this.kryptonDateTimePicker1.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.kryptonDateTimePicker1.Name = "kryptonDateTimePicker1";
@@ -1083,7 +1038,7 @@
             // 
             this.协议期label2.AutoSize = true;
             this.协议期label2.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.协议期label2.Location = new System.Drawing.Point(359, 50);
+            this.协议期label2.Location = new System.Drawing.Point(380, 50);
             this.协议期label2.Name = "协议期label2";
             this.协议期label2.Size = new System.Drawing.Size(77, 14);
             this.协议期label2.TabIndex = 56;
@@ -1093,7 +1048,7 @@
             // 
             this.协议期label1.AutoSize = true;
             this.协议期label1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.协议期label1.Location = new System.Drawing.Point(267, 50);
+            this.协议期label1.Location = new System.Drawing.Point(288, 50);
             this.协议期label1.Name = "协议期label1";
             this.协议期label1.Size = new System.Drawing.Size(77, 14);
             this.协议期label1.TabIndex = 53;
@@ -1101,13 +1056,37 @@
             // 
             // kryptonRichTextBox1
             // 
-            this.kryptonRichTextBox1.AlwaysActive = false;
             this.kryptonRichTextBox1.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon;
-            this.kryptonRichTextBox1.Location = new System.Drawing.Point(291, 87);
+            this.kryptonRichTextBox1.Location = new System.Drawing.Point(38, 110);
             this.kryptonRichTextBox1.Name = "kryptonRichTextBox1";
-            this.kryptonRichTextBox1.Size = new System.Drawing.Size(412, 96);
+            this.kryptonRichTextBox1.Size = new System.Drawing.Size(670, 79);
             this.kryptonRichTextBox1.TabIndex = 58;
             this.kryptonRichTextBox1.Text = "kryptonRichTextBox1";
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.Font = new System.Drawing.Font("宋体", 10F);
+            this.lbl1.ForeColor = System.Drawing.Color.Red;
+            this.lbl1.Location = new System.Drawing.Point(256, 80);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(378, 14);
+            this.lbl1.TabIndex = 60;
+            this.lbl1.Text = "* 末期2010-10-10～2010-10-10不足月，按“天/月”计算。";
+            // 
+            // cmbDayMonth
+            // 
+            this.cmbDayMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDayMonth.DropDownWidth = 54;
+            this.cmbDayMonth.Items.AddRange(new object[] {
+            "天",
+            "月"});
+            this.cmbDayMonth.Location = new System.Drawing.Point(531, 77);
+            this.cmbDayMonth.Name = "cmbDayMonth";
+            this.cmbDayMonth.Size = new System.Drawing.Size(54, 21);
+            this.cmbDayMonth.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.cmbDayMonth.TabIndex = 61;
+            this.cmbDayMonth.Text = "天";
             // 
             // 客房退租Form
             // 
@@ -1115,6 +1094,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(740, 578);
+            this.Controls.Add(this.cmbDayMonth);
+            this.Controls.Add(this.lbl1);
             this.Controls.Add(this.kryptonRichTextBox1);
             this.Controls.Add(this.kryptonDateTimePicker1);
             this.Controls.Add(this.kryptonWrapLabel1);
@@ -1123,14 +1104,10 @@
             this.Controls.Add(this.kryptonHeader1);
             this.Controls.Add(this.租户Label1);
             this.Controls.Add(this.协议期label1);
-            this.Controls.Add(this.起付日期Label1);
             this.Controls.Add(this.协议期label2);
-            this.Controls.Add(this.止付日期Label1);
             this.Controls.Add(租户Label);
             this.Controls.Add(label6);
             this.Controls.Add(label5);
-            this.Controls.Add(起付日期Label);
-            this.Controls.Add(止付日期Label);
             this.Controls.Add(备注Label);
             this.Controls.Add(付款人Label);
             this.Controls.Add(收款人Label);
@@ -1153,6 +1130,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cmbDayMonth)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1200,8 +1178,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label 租户Label1;
-        private System.Windows.Forms.Label 起付日期Label1;
-        private System.Windows.Forms.Label 止付日期Label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn 实付金额DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 应付金额DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 气止码DataGridViewTextBoxColumn;
@@ -1226,6 +1202,8 @@
         private System.Windows.Forms.Label 协议期label2;
         private System.Windows.Forms.Label 协议期label1;
         private ComponentFactory.Krypton.Toolkit.KryptonRichTextBox kryptonRichTextBox1;
+        private System.Windows.Forms.Label lbl1;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbDayMonth;
 
 
     }
