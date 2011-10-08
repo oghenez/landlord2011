@@ -16,6 +16,7 @@ namespace Landlord2
         {
             //MessageBox.Show("客房出租历史记录---未完成");
             //MessageBox.Show("客房退租---未完成");
+            //MessageBox.Show("客房收租，按天收尾期的选择");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

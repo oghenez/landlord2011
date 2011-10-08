@@ -540,7 +540,7 @@ namespace Landlord2
                 客房 kf = treeView1.SelectedNode.Tag as 客房;
                 if (string.IsNullOrEmpty(kf.租户))//未租
                     return;
-
+                
                 using (客房退租Form tz = new 客房退租Form(kf.ID))
                 {
                     tz.ShowDialog(this);
@@ -557,7 +557,7 @@ namespace Landlord2
                     return;
                 if (kf.期止 < DateTime.Now)//已租，协议到期，请续租或退租
                 {
-                    KryptonMessageBox.Show("协议到期，请续租或退租");
+                    KryptonMessageBox.Show("协议到期，请续租或退租。");
                     return;
                 }
 
