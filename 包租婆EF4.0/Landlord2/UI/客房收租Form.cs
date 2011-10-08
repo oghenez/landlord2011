@@ -193,6 +193,7 @@ namespace Landlord2.UI
                         kf = form.selectedKF;
 
                         BindingData();
+                        Check();
                     }                    
                 }
             }             
@@ -242,12 +243,22 @@ namespace Landlord2.UI
 
         private void 客房收租Form_Shown(object sender, EventArgs e)
         {
+            Check();
+        }
+
+        /// <summary>
+        /// 校验是否租户协议期内租金已全部收讫
+        /// </summary>
+        private void Check()
+        {
             if (collectRent.起付日期 > kf.期止.Value.Date)
             {
-                collectRent.止付日期 = DateTime.MaxValue;//这里显示最大值，以免造成误会。
+                collectRent.止付日期 = DateTime.MaxValue.Date;//这里显示最大值，以免造成误会。
                 KryptonMessageBox.Show("租户协议期内租金已全部收讫，请先【续租】！");
-                Close();
+                btnOK.Enabled = false;
             }
+            else
+                btnOK.Enabled = true;
         }
     
 
