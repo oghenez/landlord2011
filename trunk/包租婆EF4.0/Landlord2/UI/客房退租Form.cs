@@ -16,9 +16,9 @@ namespace Landlord2.UI
         public 客房 kf;
         private 客房租金明细 collectRent;
         /// <summary>
-        /// 实际支付月数（也许协议期内最后一次收租月数小于[客房的支付月数]）
+        /// 实际支付月数（也许协议期内最后一次收租月数小于[客房的支付月数]，2位小数计算‘按天’收取的费用）
         /// </summary>
-        private int realMonthNum;
+        private float realMonthNum;
 
 
         /// <summary>
@@ -33,14 +33,19 @@ namespace Landlord2.UI
 
         private void 客房退租Form_Load(object sender, EventArgs e)
         {
+            dtpDateEnd.Value = DateTime.Now.Date; //自动引发Bindingdata();            
+        }
+        private void dtpDateEnd_ValueChanged(object sender, EventArgs e)
+        {
             BindingData();
         }
-
         private void BindingData()
         {
             kryptonHeader1.Values.Heading = kf.源房.房名;
             kryptonHeader1.Values.Description = kf.命名;
             租户Label1.Text = kf.租户;
+            协议期label1.Text = kf.期始.Value.ToShortDateString();
+            协议期label2.Text = kf.期止.Value.ToShortDateString();
 
             //进入此界面，理论上客房应该出租了，有租户信息
 #if DEBUG
@@ -58,9 +63,11 @@ namespace Landlord2.UI
             if (orderedList.Count == 0)//该租户第一次交租
             {
                 var result = KryptonMessageBox.Show("该租户没有交租记录，是否直接清除租户信息？\r\n（客房将转为【未出租】状态）",
-                    "清除租户信息",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                    "清除租户信息", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == System.Windows.Forms.DialogResult.Yes)
-                { }
+                {
+                    //! ......
+                }
                 else
                 {
                     Close();//!++ 需改善体验。。。。。
@@ -69,61 +76,90 @@ namespace Landlord2.UI
             }
             else
             {
+                if (dtpDateEnd.Value.Date == kf.期止.Value.Date)
+                {
+                    //正常退租
+
+                }
+                else if (dtpDateEnd.Value.Date > kf.期止.Value.Date)
+                {
+                    //逾期退租
+                }
+                else
+                {
+                    //提前退租
+                }
+
                 collectRent.起付日期 = kf.客房租金明细.Max(m => m.止付日期).AddDays(1).Date;
                 collectRent.水止码 = kf.客房租金明细.Max(m => m.水止码);//止码设置为始码值，相当于没有用(用户会自行修改)
                 collectRent.电止码 = kf.客房租金明细.Max(m => m.电止码);
                 collectRent.气止码 = kf.客房租金明细.Max(m => m.气止码);
-                押金Label1.ForeColor = Color.Gray;//非首次收租，押金置灰。
-                toolTip1.SetToolTip(押金Label1, "非首次收租不涉及押金。");
 
-                //非初次交租，计算该租户历史余款
+                //计算该租户历史余款
                 foreach (var rent in orderedList)
                 {
                     balancePayment += rent.实付金额 - rent.应付金额;
                 }
-            }
-            collectRent.止付日期 = collectRent.起付日期.AddMonths(kf.支付月数).AddDays(-1);
-            //当协议的期止并非刚好间隔支付月数时，协议期内最后一次收租的止付日期需要调整，再计算租金
-            realMonthNum = kf.支付月数;
-            if (collectRent.止付日期 > kf.期止.Value.Date)
-            {
-                realMonthNum = 0;//先置0
+                collectRent.止付日期 = dtpDateEnd.Value.Date;
+                //计算支付月数
+                realMonthNum = 0;
                 DateTime tempBegin;
                 DateTime tempEnd = collectRent.起付日期.AddDays(-1);//初始置为起付日期头一天，do-while至少会执行一次的。
                 do
                 {
                     tempBegin = tempEnd.AddDays(1);
-                    tempEnd = tempBegin.AddMonths(1).AddDays(-1);//支付1个月
+                    tempEnd = tempBegin.AddMonths(1).AddDays(-1);//支付一个月
                     realMonthNum++;
-                } while (tempEnd < kf.期止.Value.Date);
+                }while(tempEnd < collectRent.止付日期);
                 //-->得到应缴月数(有可能最后一个月尾期天数不足一个月)
 
-                int extraDays = (tempEnd == kf.期止.Value.Date) ? 0 : (kf.期止.Value.Date - tempBegin).Days + 1; //尾期天数
-                collectRent.止付日期 = kf.期止.Value.Date;
-                //止付日期Label1.ForeColor = Color.Red;
-                //if (extraDays > 0)
-                //    toolTip1.SetToolTip(止付日期Label1, string.Format("尾期天数不足1个月[{0}天]，按1个月计算。实收租金可与租户协商而定。", extraDays));
+                if (tempEnd == collectRent.止付日期)//正好足月
+                { }
+                else//最后一个月尾期天数不足一个月，且
+                { }
 
+                ////当协议的期止并非刚好间隔支付月数时，协议期内最后一次收租的止付日期需要调整，再计算租金
+                //realMonthNum = kf.支付月数;
+                //if (collectRent.止付日期 > kf.期止.Value.Date)
+                //{
+                //    realMonthNum = 0;//先置0
+                //    DateTime tempBegin;
+                //    DateTime tempEnd = collectRent.起付日期.AddDays(-1);//初始置为起付日期头一天，do-while至少会执行一次的。
+                //    do
+                //    {
+                //        tempBegin = tempEnd.AddDays(1);
+                //        tempEnd = tempBegin.AddMonths(1).AddDays(-1);//支付1个月
+                //        realMonthNum++;
+                //    } while (tempEnd < kf.期止.Value.Date);
+                //    //-->得到应缴月数(有可能最后一个月尾期天数不足一个月)
+
+                //    int extraDays = (tempEnd == kf.期止.Value.Date) ? 0 : (kf.期止.Value.Date - tempBegin).Days + 1; //尾期天数
+                //    collectRent.止付日期 = kf.期止.Value.Date;
+                //    //止付日期Label1.ForeColor = Color.Red;
+                //    //if (extraDays > 0)
+                //    //    toolTip1.SetToolTip(止付日期Label1, string.Format("尾期天数不足1个月[{0}天]，按1个月计算。实收租金可与租户协商而定。", extraDays));
+
+                //}
+                //----------
+                nud水费.Minimum = (decimal)collectRent.水止码;
+                nud电费.Minimum = (decimal)collectRent.电止码;
+                nud气费.Minimum = (decimal)collectRent.气止码;
+                水始码Label1.Text = collectRent.水止码.ToString();
+                电始码Label1.Text = collectRent.电止码.ToString();
+                气始码Label1.Text = collectRent.气止码.ToString();
+                月租金Label1.Text = (kf.月租金 * realMonthNum).ToString("F2");
+                月宽带费Label1.Text = (kf.月宽带费 * realMonthNum).ToString("F2");
+                月物业费Label1.Text = (kf.月物业费 * realMonthNum).ToString("F2");
+                月厨房费Label1.Text = (kf.月厨房费 * realMonthNum).ToString("F2");
+                押金Label1.Text = kf.押金.ToString("F2");
+                lblBalance.Text = balancePayment.ToString("F2");
+                lblBalance.ForeColor = balancePayment >= 0 ? Color.Green : Color.Red;//历史欠款的话，红色
+
+                CaculateSum();
+
+                context.客房租金明细.AddObject(collectRent);//此操作后可实现外键同步
+                客房租金明细BindingSource.DataSource = collectRent;
             }
-            //----------
-            nud水费.Minimum = (decimal)collectRent.水止码;
-            nud电费.Minimum = (decimal)collectRent.电止码;
-            nud气费.Minimum = (decimal)collectRent.气止码;
-            水始码Label1.Text = collectRent.水止码.ToString();
-            电始码Label1.Text = collectRent.电止码.ToString();
-            气始码Label1.Text = collectRent.气止码.ToString();
-            月租金Label1.Text = (kf.月租金 * realMonthNum).ToString("F2");
-            月宽带费Label1.Text = (kf.月宽带费 * realMonthNum).ToString("F2");
-            月物业费Label1.Text = (kf.月物业费 * realMonthNum).ToString("F2");
-            月厨房费Label1.Text = (kf.月厨房费 * realMonthNum).ToString("F2");
-            押金Label1.Text = kf.押金.ToString("F2");
-            lblBalance.Text = balancePayment.ToString("F2");
-            lblBalance.ForeColor = balancePayment >= 0 ? Color.Green : Color.Red;//历史欠款的话，红色
-
-            CaculateSum();
-
-            context.客房租金明细.AddObject(collectRent);//此操作后可实现外键同步
-            客房租金明细BindingSource.DataSource = collectRent;
         }
         /// <summary>
         /// 计算合计应付金额
@@ -256,5 +292,7 @@ namespace Landlord2.UI
         }
         
         #endregion
+
+
     }
 }
