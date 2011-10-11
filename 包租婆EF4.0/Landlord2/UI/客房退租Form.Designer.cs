@@ -47,16 +47,16 @@
             System.Windows.Forms.Label 收款人Label;
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label6;
+            ComponentFactory.Krypton.Toolkit.KryptonWrapLabel kryptonWrapLabel1;
+            ComponentFactory.Krypton.Toolkit.KryptonWrapLabel kryptonWrapLabel2;
+            ComponentFactory.Krypton.Toolkit.KryptonWrapLabel kryptonWrapLabel3;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            ComponentFactory.Krypton.Toolkit.KryptonWrapLabel kryptonWrapLabel1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(客房退租Form));
-            ComponentFactory.Krypton.Toolkit.KryptonWrapLabel kryptonWrapLabel2;
-            ComponentFactory.Krypton.Toolkit.KryptonWrapLabel kryptonWrapLabel3;
             this.月租金Label1 = new System.Windows.Forms.Label();
             this.水始码Label1 = new System.Windows.Forms.Label();
             this.lbl水费 = new System.Windows.Forms.Label();
@@ -348,6 +348,45 @@
             label6.Size = new System.Drawing.Size(56, 14);
             label6.TabIndex = 52;
             label6.Text = "协议期:";
+            // 
+            // kryptonWrapLabel1
+            // 
+            kryptonWrapLabel1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            kryptonWrapLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            kryptonWrapLabel1.ForeColor = System.Drawing.Color.Black;
+            kryptonWrapLabel1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            kryptonWrapLabel1.Location = new System.Drawing.Point(38, 80);
+            kryptonWrapLabel1.Name = "kryptonWrapLabel1";
+            kryptonWrapLabel1.Size = new System.Drawing.Size(103, 15);
+            kryptonWrapLabel1.Text = "退租日期结算至：";
+            kryptonWrapLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            kryptonWrapLabel1.UseMnemonic = false;
+            // 
+            // kryptonWrapLabel2
+            // 
+            kryptonWrapLabel2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            kryptonWrapLabel2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            kryptonWrapLabel2.ForeColor = System.Drawing.Color.Black;
+            kryptonWrapLabel2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            kryptonWrapLabel2.Location = new System.Drawing.Point(317, 80);
+            kryptonWrapLabel2.Name = "kryptonWrapLabel2";
+            kryptonWrapLabel2.Size = new System.Drawing.Size(160, 15);
+            kryptonWrapLabel2.Text = "尾期不足月按：               计算";
+            kryptonWrapLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            kryptonWrapLabel2.UseMnemonic = false;
+            // 
+            // kryptonWrapLabel3
+            // 
+            kryptonWrapLabel3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            kryptonWrapLabel3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            kryptonWrapLabel3.ForeColor = System.Drawing.Color.Black;
+            kryptonWrapLabel3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            kryptonWrapLabel3.Location = new System.Drawing.Point(546, 80);
+            kryptonWrapLabel3.Name = "kryptonWrapLabel3";
+            kryptonWrapLabel3.Size = new System.Drawing.Size(79, 15);
+            kryptonWrapLabel3.Text = "租户违约金：";
+            kryptonWrapLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            kryptonWrapLabel3.UseMnemonic = false;
             // 
             // 月租金Label1
             // 
@@ -1023,19 +1062,6 @@
             this.kryptonTextBox1.Size = new System.Drawing.Size(80, 20);
             this.kryptonTextBox1.TabIndex = 42;
             // 
-            // kryptonWrapLabel1
-            // 
-            kryptonWrapLabel1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            kryptonWrapLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            kryptonWrapLabel1.ForeColor = System.Drawing.Color.Black;
-            kryptonWrapLabel1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            kryptonWrapLabel1.Location = new System.Drawing.Point(38, 80);
-            kryptonWrapLabel1.Name = "kryptonWrapLabel1";
-            kryptonWrapLabel1.Size = new System.Drawing.Size(103, 15);
-            kryptonWrapLabel1.Text = "退租日期结算至：";
-            kryptonWrapLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            kryptonWrapLabel1.UseMnemonic = false;
-            // 
             // dtpDateEnd
             // 
             this.dtpDateEnd.CalendarTodayDate = new System.DateTime(2011, 9, 10, 0, 0, 0, 0);
@@ -1043,9 +1069,10 @@
             this.dtpDateEnd.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
             this.dtpDateEnd.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtpDateEnd.Name = "dtpDateEnd";
-            this.dtpDateEnd.Size = new System.Drawing.Size(110, 21);
+            this.dtpDateEnd.Size = new System.Drawing.Size(117, 21);
             this.dtpDateEnd.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.dtpDateEnd.TabIndex = 40;
+            this.dtpDateEnd.ValueChanged += new System.EventHandler(this.dtpDateEnd_ValueChanged);
             // 
             // 协议期label2
             // 
@@ -1089,32 +1116,6 @@
             this.cmbDayMonth.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.cmbDayMonth.TabIndex = 61;
             this.cmbDayMonth.Text = "天";
-            // 
-            // kryptonWrapLabel2
-            // 
-            kryptonWrapLabel2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            kryptonWrapLabel2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            kryptonWrapLabel2.ForeColor = System.Drawing.Color.Black;
-            kryptonWrapLabel2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            kryptonWrapLabel2.Location = new System.Drawing.Point(317, 80);
-            kryptonWrapLabel2.Name = "kryptonWrapLabel2";
-            kryptonWrapLabel2.Size = new System.Drawing.Size(160, 15);
-            kryptonWrapLabel2.Text = "尾期不足月按：               计算";
-            kryptonWrapLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            kryptonWrapLabel2.UseMnemonic = false;
-            // 
-            // kryptonWrapLabel3
-            // 
-            kryptonWrapLabel3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            kryptonWrapLabel3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            kryptonWrapLabel3.ForeColor = System.Drawing.Color.Black;
-            kryptonWrapLabel3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            kryptonWrapLabel3.Location = new System.Drawing.Point(546, 80);
-            kryptonWrapLabel3.Name = "kryptonWrapLabel3";
-            kryptonWrapLabel3.Size = new System.Drawing.Size(79, 15);
-            kryptonWrapLabel3.Text = "租户违约金：";
-            kryptonWrapLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            kryptonWrapLabel3.UseMnemonic = false;
             // 
             // nud违约金
             // 
