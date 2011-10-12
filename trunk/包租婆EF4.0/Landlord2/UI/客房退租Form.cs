@@ -18,8 +18,8 @@ namespace Landlord2.UI
         /// <summary>
         /// 实际支付月数（也许协议期内最后一次收租月数小于[客房的支付月数]，2位小数计算‘按天’收取的费用）
         /// </summary>
-        private float realMonthNum;
-
+        private decimal realMonthNum;
+        private MyRtf myRtf = new MyRtf();
 
         /// <summary>
         /// 当前客房租户所有余款（实付金额-应付金额），正数表示‘租户多付’，负数表示‘欠款’。
@@ -76,20 +76,6 @@ namespace Landlord2.UI
             }
             else
             {
-                if (dtpDateEnd.Value.Date == kf.期止.Value.Date)
-                {
-                    //正常退租
-
-                }
-                else if (dtpDateEnd.Value.Date > kf.期止.Value.Date)
-                {
-                    //逾期退租
-                }
-                else
-                {
-                    //提前退租
-                }
-
                 collectRent.起付日期 = kf.客房租金明细.Max(m => m.止付日期).AddDays(1).Date;
                 collectRent.水止码 = kf.客房租金明细.Max(m => m.水止码);//止码设置为始码值，相当于没有用(用户会自行修改)
                 collectRent.电止码 = kf.客房租金明细.Max(m => m.电止码);
@@ -101,6 +87,24 @@ namespace Landlord2.UI
                     balancePayment += rent.实付金额 - rent.应付金额;
                 }
                 collectRent.止付日期 = dtpDateEnd.Value.Date;
+
+                myRtf.退租支付期Begin = collectRent.起付日期.ToShortDateString();
+                myRtf.退租支付期End = collectRent.止付日期.ToShortDateString();
+                if (collectRent.止付日期 == kf.期止.Value.Date)
+                {
+                    myRtf.结算日期VS协议期止日期 = "等于";
+                    myRtf.退租类型 = "正常退租";
+                }
+                else if (collectRent.止付日期 > kf.期止.Value.Date)
+                {
+                    myRtf.结算日期VS协议期止日期 = "大于";
+                    myRtf.退租类型 = "逾期退租";
+                }
+                else
+                {
+                    myRtf.结算日期VS协议期止日期 = "小于";
+                    myRtf.退租类型 = "提前退租";
+                }
                 //计算支付月数
                 realMonthNum = 0;
                 DateTime tempBegin;
@@ -113,35 +117,22 @@ namespace Landlord2.UI
                 }while(tempEnd < collectRent.止付日期);
                 //-->得到应缴月数(有可能最后一个月尾期天数不足一个月)
 
+                realMonthNum--;
                 if (tempEnd == collectRent.止付日期)//正好足月
                 {
- 
+                    myRtf.尾期不足月 = false;
                 }
                 else//最后一个月尾期天数不足一个月，且通过前面的do...while此时应该是tempEnd > collectRent.止付日期
-                { }
+                {
+                    decimal extraDays = (collectRent.止付日期 - tempBegin).Days + 1;
+                    decimal monthDays = (tempEnd - tempBegin).Days;
+                    realMonthNum += extraDays / monthDays; //将额外天数变化为‘小数月’
 
-                ////当协议的期止并非刚好间隔支付月数时，协议期内最后一次收租的止付日期需要调整，再计算租金
-                //realMonthNum = kf.支付月数;
-                //if (collectRent.止付日期 > kf.期止.Value.Date)
-                //{
-                //    realMonthNum = 0;//先置0
-                //    DateTime tempBegin;
-                //    DateTime tempEnd = collectRent.起付日期.AddDays(-1);//初始置为起付日期头一天，do-while至少会执行一次的。
-                //    do
-                //    {
-                //        tempBegin = tempEnd.AddDays(1);
-                //        tempEnd = tempBegin.AddMonths(1).AddDays(-1);//支付1个月
-                //        realMonthNum++;
-                //    } while (tempEnd < kf.期止.Value.Date);
-                //    //-->得到应缴月数(有可能最后一个月尾期天数不足一个月)
+                    myRtf.尾期不足月 = true;
+                    myRtf.尾期不足月天数 = extraDays.ToString("D");
+                    //!++ here.....
+                }
 
-                //    int extraDays = (tempEnd == kf.期止.Value.Date) ? 0 : (kf.期止.Value.Date - tempBegin).Days + 1; //尾期天数
-                //    collectRent.止付日期 = kf.期止.Value.Date;
-                //    //止付日期Label1.ForeColor = Color.Red;
-                //    //if (extraDays > 0)
-                //    //    toolTip1.SetToolTip(止付日期Label1, string.Format("尾期天数不足1个月[{0}天]，按1个月计算。实收租金可与租户协商而定。", extraDays));
-
-                //}
                 //----------
                 nud水费.Minimum = (decimal)collectRent.水止码;
                 nud电费.Minimum = (decimal)collectRent.电止码;
@@ -173,8 +164,8 @@ namespace Landlord2.UI
             sum += kf.月宽带费 * realMonthNum;
             sum += kf.月物业费 * realMonthNum;
             sum += kf.月厨房费 * realMonthNum;
-            //if (isFirstTime)
-            //    sum += kf.押金;//首次收租要交押金
+            sum += kf.押金;
+
             //...........
             decimal temp = Helper.calculate水费(kf.源房.阶梯水价, ((decimal)collectRent.水止码 - Convert.ToDecimal(水始码Label1.Text)));
             lbl水费.Text = temp.ToString("F2");
@@ -192,6 +183,9 @@ namespace Landlord2.UI
 
             //考虑历史余额
             collectRent.实付金额 = sum - balancePayment;
+
+            //更新RichTextBox
+
         }
         private void BtnSelectKF_Click(object sender, EventArgs e)
         {
@@ -272,25 +266,59 @@ namespace Landlord2.UI
 
 
         #region 处理RTF文档
-        private const string rtfHead = @"{\rtf1\ansi\ansicpg936\deff0\deflang1033\deflangfe2052{\fonttbl{\f0\fnil\fcharset134 \'cb\'ce\'cc\'e5;}}{\colortbl ;\red255\green0\blue0;\red0\green77\blue187;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang2052\f0\fs18 ";
-        private const string rtfEnd = @"}";
-
-        //▶退租支付期：2010-10-10★～2010-10-10★ （结算日期等于★协议期止日期，属【正常退租★】）
-        private const string rtf1 = @"\u9654?\'cd\'cb\'d7\'e2\'d6\'a7\'b8\'b6\'c6\'da\'a3\'ba\cf1\b\{{0}\'a1\'ab{1}\} \cf0\b0\'a3\'a8\'bd\'e1\'cb\'e3\'c8\'d5\'c6\'da\cf1\b {2}\cf0\b0\'d0\'ad\'d2\'e9\'c6\'da\'d6\'b9\'c8\'d5\'c6\'da\'a3\'ac\'ca\'f4\cf1\'a1\'be{3}\'a1\'bf\cf0\'a3\'a9\'a1\'a3\par ";
-
-        //▶尾期不足月天数18★天（2010-10-10★～2010-10-10★），按‘天★’计算：
-        ////租金（XXXX.XX★元）、宽带费（XXX.XX★元）、物业费（XXX.XX★元）、厨房费（XXX.XX★元），共计XXXX.XX★元。
-        private const string rtf2 = @"\u9654?\'ce\'b2\'c6\'da\'b2\'bb\'d7\'e3\'d4\'c2\'cc\'ec\'ca\'fd\cf1 {0}\cf0\'cc\'ec\'a3\'a8{1}\'a1\'ab{2}\'a3\'a9\'a3\'ac\'b0\'b4\cf1\b\lquote {3}\rquote\cf0\b0\'bc\'c6\'cb\'e3\'a3\'ba\par \'d7\'e2\'bd\'f0\'a3\'a8\cf2\b {4}\cf0\b0\'d4\'aa\'a3\'a9\'a1\'a2\'bf\'ed\'b4\'f8\'b7\'d1\'a3\'a8\cf2\b {5}\cf0\b0\'d4\'aa\'a3\'a9\'a1\'a2\'ce\'ef\'d2\'b5\'b7\'d1\'a3\'a8\cf2\b {6}\cf0\b0\'d4\'aa\'a3\'a9\'a1\'a2\'b3\'f8\'b7\'bf\'b7\'d1\'a3\'a8\cf2\b {7}\cf0\b0\'d4\'aa\'a3\'a9\'a3\'ac\'b9\'b2\'bc\'c6\cf1\b {8}\cf0\b0\'d4\'aa\'a1\'a3\par ";
-
-        //▶因租户提前退租且已缴纳2010-10-10★～2010-10-10★费用，需退回租户：
-        ////租金（XXXX.XX★元）、宽带费（XXX.XX★元）、物业费（XXX.XX★元）、厨房费（XXX.XX★元），共计XXXX.XX★元。
-        private const string rtf3 = @"\u9654?\'d2\'f2\'d7\'e2\'bb\'a7\'cc\'e1\'c7\'b0\'cd\'cb\'d7\'e2\'c7\'d2\'d2\'d1\'bd\'c9\'c4\'c9{0}\'a1\'ab{1}\'b7\'d1\'d3\'c3\'a3\'ac\'d0\'e8\'cd\'cb\'bb\'d8\'d7\'e2\'bb\'a7\'a3\'ba\par \'d7\'e2\'bd\'f0\'a3\'a8\cf2\b {2}\cf0\b0\'d4\'aa\'a3\'a9\'a1\'a2\'bf\'ed\'b4\'f8\'b7\'d1\'a3\'a8\cf2\b {3}\cf0\b0\'d4\'aa\'a3\'a9\'a1\'a2\'ce\'ef\'d2\'b5\'b7\'d1\'a3\'a8\cf2\b {4}\cf0\b0\'d4\'aa\'a3\'a9\'a1\'a2\'b3\'f8\'b7\'bf\'b7\'d1\'a3\'a8\cf2\b {5}\cf0\b0\'d4\'aa\'a3\'a9\'a3\'ac\'b9\'b2\'bc\'c6\cf1\b {6}\cf0\b0\'d4\'aa\'a1\'a3\par ";
-
-        private string getRTF()
+        public class MyRtf
         {
-            StringBuilder sb = new StringBuilder();
+            public string 退租支付期Begin { get; set; }
+            public string 退租支付期End { get; set; }
+            public string 结算日期VS协议期止日期 { get; set; }
+            public string 退租类型 { get; set; }
 
-            return sb.ToString();
+            public bool 尾期不足月 { get; set; }
+            public string 尾期不足月天数 { get; set; }
+            public string 尾期不足月天数Begin { get; set; }
+            public string 尾期不足月天数End { get; set; }
+            public string DayOrMonth { get; set; }
+            public string 租金 { get; set; }
+            public string 宽带 { get; set; }
+            public string 物业 { get; set; }
+            public string 厨房 { get; set; }
+            public string 共计 { get; set; }
+
+            public bool 需退尾期 { get; set; }
+            public string 退租尾期Begin { get; set; }
+            public string 退租尾期End { get; set; }
+            public string 退租金 { get; set; }
+            public string 退宽带 { get; set; }
+            public string 退物业 { get; set; }
+            public string 退厨房 { get; set; }
+            public string 退共计 { get; set; }
+
+            private const string rtfHead = @"{\rtf1\ansi\ansicpg936\deff0\deflang1033\deflangfe2052{\fonttbl{\f0\fnil\fcharset134 \'cb\'ce\'cc\'e5;}}{\colortbl ;\red255\green0\blue0;\red0\green77\blue187;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang2052\f0\fs18 ";
+            private const string rtfEnd = @"}";
+
+            //▶退租支付期：2010-10-10★～2010-10-10★ （结算日期等于★协议期止日期，属【正常退租★】）
+            private const string rtf1 = @"\u9654?\'cd\'cb\'d7\'e2\'d6\'a7\'b8\'b6\'c6\'da\'a3\'ba\cf1\b\{{0}\'a1\'ab{1}\} \cf0\b0\'a3\'a8\'bd\'e1\'cb\'e3\'c8\'d5\'c6\'da\cf1\b {2}\cf0\b0\'d0\'ad\'d2\'e9\'c6\'da\'d6\'b9\'c8\'d5\'c6\'da\'a3\'ac\'ca\'f4\cf1\'a1\'be{3}\'a1\'bf\cf0\'a3\'a9\'a1\'a3\par ";
+
+            //▶尾期不足月天数18★天（2010-10-10★～2010-10-10★），按‘天★’计算：
+            ////租金（XXXX.XX★元）、宽带费（XXX.XX★元）、物业费（XXX.XX★元）、厨房费（XXX.XX★元），共计XXXX.XX★元。
+            private const string rtf2 = @"\u9654?\'ce\'b2\'c6\'da\'b2\'bb\'d7\'e3\'d4\'c2\'cc\'ec\'ca\'fd\cf1 {0}\cf0\'cc\'ec\'a3\'a8{1}\'a1\'ab{2}\'a3\'a9\'a3\'ac\'b0\'b4\cf1\b\lquote {3}\rquote\cf0\b0\'bc\'c6\'cb\'e3\'a3\'ba\par \'d7\'e2\'bd\'f0\'a3\'a8\cf2\b {4}\cf0\b0\'d4\'aa\'a3\'a9\'a1\'a2\'bf\'ed\'b4\'f8\'b7\'d1\'a3\'a8\cf2\b {5}\cf0\b0\'d4\'aa\'a3\'a9\'a1\'a2\'ce\'ef\'d2\'b5\'b7\'d1\'a3\'a8\cf2\b {6}\cf0\b0\'d4\'aa\'a3\'a9\'a1\'a2\'b3\'f8\'b7\'bf\'b7\'d1\'a3\'a8\cf2\b {7}\cf0\b0\'d4\'aa\'a3\'a9\'a3\'ac\'b9\'b2\'bc\'c6\cf1\b {8}\cf0\b0\'d4\'aa\'a1\'a3\par ";
+
+            //▶因租户提前退租且已缴纳2010-10-10★～2010-10-10★费用，需退回租户：
+            ////租金（XXXX.XX★元）、宽带费（XXX.XX★元）、物业费（XXX.XX★元）、厨房费（XXX.XX★元），共计XXXX.XX★元。
+            private const string rtf3 = @"\u9654?\'d2\'f2\'d7\'e2\'bb\'a7\'cc\'e1\'c7\'b0\'cd\'cb\'d7\'e2\'c7\'d2\'d2\'d1\'bd\'c9\'c4\'c9{0}\'a1\'ab{1}\'b7\'d1\'d3\'c3\'a3\'ac\'d0\'e8\'cd\'cb\'bb\'d8\'d7\'e2\'bb\'a7\'a3\'ba\par \'d7\'e2\'bd\'f0\'a3\'a8\cf2\b {2}\cf0\b0\'d4\'aa\'a3\'a9\'a1\'a2\'bf\'ed\'b4\'f8\'b7\'d1\'a3\'a8\cf2\b {3}\cf0\b0\'d4\'aa\'a3\'a9\'a1\'a2\'ce\'ef\'d2\'b5\'b7\'d1\'a3\'a8\cf2\b {4}\cf0\b0\'d4\'aa\'a3\'a9\'a1\'a2\'b3\'f8\'b7\'bf\'b7\'d1\'a3\'a8\cf2\b {5}\cf0\b0\'d4\'aa\'a3\'a9\'a3\'ac\'b9\'b2\'bc\'c6\cf1\b {6}\cf0\b0\'d4\'aa\'a1\'a3\par ";
+
+            public string getRTF()
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append(rtfHead);
+                sb.Append(string.Format(rtf1, 退租尾期Begin, 退租支付期End, 结算日期VS协议期止日期, 退租类型));
+                if (尾期不足月)
+                    sb.Append(string.Format(rtf2, 尾期不足月天数, 尾期不足月天数Begin, 尾期不足月天数End, DayOrMonth, 租金, 宽带, 物业, 厨房, 共计));
+                if (需退尾期)
+                    sb.Append(string.Format(rtf3, 退租尾期Begin, 退租尾期End, 退租金, 退宽带, 退物业, 退厨房, 退共计));
+                sb.Append(rtfEnd);
+                return sb.ToString();
+            }
         }
         
         #endregion
