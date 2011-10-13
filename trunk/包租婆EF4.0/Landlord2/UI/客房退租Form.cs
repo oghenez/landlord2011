@@ -68,7 +68,7 @@ namespace Landlord2.UI
                     "清除租户信息", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
-                    //! ......
+                    //! delete......
                 }
                 else
                 {
