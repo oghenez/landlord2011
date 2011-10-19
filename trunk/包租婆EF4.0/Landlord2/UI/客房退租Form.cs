@@ -41,6 +41,7 @@ namespace Landlord2.UI
         }
         private void BindingData()
         {
+            btnOK.Enabled = true;//这里先置true，后续判断该租户没有交租记录会置false的。
             dtpDateEnd.MinDate = kf.期始.Value.Date;//供用户可调整的结算日期，限定最小值。
 
             kryptonHeader1.Values.Heading = kf.源房.房名;
@@ -57,32 +58,58 @@ namespace Landlord2.UI
             List<客房租金明细> orderedList = 客房租金明细.GetRentDetails_Current(kf);
             参考历史BindingSource.DataSource = orderedList;
 
-            //新对象，根据情况赋予初始值
-            collectRent = new 客房租金明细();
-            collectRent.付款人 = kf.租户;
-            collectRent.客房ID = kf.ID;
-            //新对象的‘起付时间’与之前的‘止付时间’连续
             if (orderedList.Count == 0)//该租户第一次交租
             {
                 var result = KryptonMessageBox.Show("该租户没有交租记录，是否直接清除租户信息？\r\n（客房将转为【未出租】状态）",
                     "清除租户信息", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
-                    //! delete......
+                    kf.移除租户信息();
+                    string msg;
+                    if (Helper.saveData(context, kf, out msg))
+                    {
+                        KryptonMessageBox.Show(msg, "成功清除租户信息");
+                        if (this.Owner is Main)
+                            (this.Owner as Main).RefreshAndLocateTree(kf);//刷新TreeView，并定位到kf节点。
+                        Close();
+                    }
+                    else
+                    {
+                        KryptonMessageBox.Show(msg, "失败");
+                    }
                 }
                 else
                 {
-                    Close();//!++ 需改善体验。。。。。
+                    btnOK.Enabled = false;//保存按钮不可用，用户可以在此界面更改欲操作客房。
                     return;
                 }
             }
-            else
+            else//非第一次交租情况下的退租：（有可能结算日期小于上次交租的期止时间，这时需要计算的是‘退款’）
             {
-                collectRent.起付日期 = kf.客房租金明细.Max(m => m.止付日期).AddDays(1).Date;
+                bool IsDrawback;//是否为‘退款’
+                客房租金明细 lastCollectRent = orderedList[0];//最近交租明细记录
+                if (dtpDateEnd.Value.Date <= lastCollectRent.止付日期.Date)//需退款
+                {
+                    IsDrawback = true;
+                    //需退款情况下，无需新建‘客房租金明细’对象，仅修改最近的明细对象即可
+                    collectRent = lastCollectRent;
+
+                }
+                else//需收款
+                {
+                    IsDrawback = false;
+                    //新对象，根据情况赋予初始值
+                    collectRent = new 客房租金明细();
+                    collectRent.付款人 = kf.租户;
+                    collectRent.客房ID = kf.ID;
+                    //新对象的‘起付时间’与之前的‘止付时间’连续
+                    collectRent.起付日期 = lastCollectRent.止付日期.AddDays(1).Date;
+                }
+                
                 collectRent.止付日期 = dtpDateEnd.Value.Date;
-                collectRent.水止码 = kf.客房租金明细.Max(m => m.水止码);//止码设置为始码值，相当于没有用(用户会自行修改)
-                collectRent.电止码 = kf.客房租金明细.Max(m => m.电止码);
-                collectRent.气止码 = kf.客房租金明细.Max(m => m.气止码);
+                collectRent.水止码 = lastCollectRent.水止码;//止码设置为始码值，相当于没有用(用户会自行修改)
+                collectRent.电止码 = lastCollectRent.电止码;
+                collectRent.气止码 = lastCollectRent.气止码;
 
                 //计算该租户历史余款
                 foreach (var rent in orderedList)
@@ -116,7 +143,7 @@ namespace Landlord2.UI
                     tempBegin = tempEnd.AddDays(1);
                     tempEnd = tempBegin.AddMonths(1).AddDays(-1);//支付一个月
                     realMonthNum++;
-                }while(tempEnd < collectRent.止付日期);
+                } while (tempEnd < collectRent.止付日期);
                 //-->得到应缴月数(有可能最后一个月尾期天数不足一个月)
 
                 realMonthNum--;
@@ -137,7 +164,7 @@ namespace Landlord2.UI
                     else
                     {
                         realMonthNum++;
-                    }                    
+                    }
 
                     myRtf.尾期不足月 = true;
                     myRtf.尾期不足月天数 = extraDays.ToString("D");
@@ -158,6 +185,7 @@ namespace Landlord2.UI
                 水始码Label1.Text = collectRent.水止码.ToString();
                 电始码Label1.Text = collectRent.电止码.ToString();
                 气始码Label1.Text = collectRent.气止码.ToString();
+               //!++ here。。。。。。。
                 月租金Label1.Text = (kf.月租金 * realMonthNum).ToString("F2");
                 月宽带费Label1.Text = (kf.月宽带费 * realMonthNum).ToString("F2");
                 月物业费Label1.Text = (kf.月物业费 * realMonthNum).ToString("F2");
@@ -170,6 +198,7 @@ namespace Landlord2.UI
 
                 context.客房租金明细.AddObject(collectRent);//此操作后可实现外键同步
                 客房租金明细BindingSource.DataSource = collectRent;
+                                
             }
         }
         /// <summary>
@@ -182,7 +211,7 @@ namespace Landlord2.UI
             sum += kf.月宽带费 * realMonthNum;
             sum += kf.月物业费 * realMonthNum;
             sum += kf.月厨房费 * realMonthNum;
-            sum += kf.押金;
+            sum -= kf.押金;
 
             //...........
             decimal temp = Helper.calculate水费(kf.源房.阶梯水价, ((decimal)collectRent.水止码 - Convert.ToDecimal(水始码Label1.Text)));
@@ -198,6 +227,7 @@ namespace Landlord2.UI
             sum += temp;
 
             collectRent.应付金额 = sum;
+            toolTip1.SetToolTip(应付金额Label, "历史余额未计算在内");
 
             //考虑历史余额
             collectRent.实付金额 = sum - balancePayment;
