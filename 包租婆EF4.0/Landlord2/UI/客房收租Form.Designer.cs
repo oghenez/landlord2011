@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label 付款日期Label;
-            System.Windows.Forms.Label 应付金额Label;
             System.Windows.Forms.Label 实付金额Label;
             System.Windows.Forms.Label 付款人Label;
             System.Windows.Forms.Label 收款人Label;
@@ -47,12 +46,13 @@
             System.Windows.Forms.Label 租户Label;
             System.Windows.Forms.Label 押金Label;
             System.Windows.Forms.Label 历史余额label;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.应付金额Label = new System.Windows.Forms.Label();
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.客房租金明细BindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -115,7 +115,6 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             付款日期Label = new System.Windows.Forms.Label();
-            应付金额Label = new System.Windows.Forms.Label();
             实付金额Label = new System.Windows.Forms.Label();
             付款人Label = new System.Windows.Forms.Label();
             收款人Label = new System.Windows.Forms.Label();
@@ -155,15 +154,15 @@
             // 
             // 应付金额Label
             // 
-            应付金额Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            应付金额Label.AutoSize = true;
-            应付金额Label.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            应付金额Label.ForeColor = System.Drawing.Color.Red;
-            应付金额Label.Location = new System.Drawing.Point(506, 42);
-            应付金额Label.Name = "应付金额Label";
-            应付金额Label.Size = new System.Drawing.Size(64, 12);
-            应付金额Label.TabIndex = 15;
-            应付金额Label.Text = "本期应付:";
+            this.应付金额Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.应付金额Label.AutoSize = true;
+            this.应付金额Label.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.应付金额Label.ForeColor = System.Drawing.Color.Red;
+            this.应付金额Label.Location = new System.Drawing.Point(506, 42);
+            this.应付金额Label.Name = "应付金额Label";
+            this.应付金额Label.Size = new System.Drawing.Size(64, 12);
+            this.应付金额Label.TabIndex = 15;
+            this.应付金额Label.Text = "本期应付:";
             // 
             // 实付金额Label
             // 
@@ -524,8 +523,8 @@
             // 起付日期DataGridViewTextBoxColumn
             // 
             this.起付日期DataGridViewTextBoxColumn.DataPropertyName = "起付日期";
-            dataGridViewCellStyle1.Format = "d";
-            this.起付日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Format = "d";
+            this.起付日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
             this.起付日期DataGridViewTextBoxColumn.FillWeight = 90F;
             this.起付日期DataGridViewTextBoxColumn.HeaderText = "起付日期";
             this.起付日期DataGridViewTextBoxColumn.Name = "起付日期DataGridViewTextBoxColumn";
@@ -534,8 +533,8 @@
             // 止付日期DataGridViewTextBoxColumn
             // 
             this.止付日期DataGridViewTextBoxColumn.DataPropertyName = "止付日期";
-            dataGridViewCellStyle2.Format = "d";
-            this.止付日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Format = "d";
+            this.止付日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
             this.止付日期DataGridViewTextBoxColumn.FillWeight = 90F;
             this.止付日期DataGridViewTextBoxColumn.HeaderText = "止付日期";
             this.止付日期DataGridViewTextBoxColumn.Name = "止付日期DataGridViewTextBoxColumn";
@@ -544,8 +543,8 @@
             // 付款日期DataGridViewTextBoxColumn
             // 
             this.付款日期DataGridViewTextBoxColumn.DataPropertyName = "付款日期";
-            dataGridViewCellStyle3.Format = "d";
-            this.付款日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Format = "d";
+            this.付款日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
             this.付款日期DataGridViewTextBoxColumn.FillWeight = 90F;
             this.付款日期DataGridViewTextBoxColumn.HeaderText = "付款日期";
             this.付款日期DataGridViewTextBoxColumn.Name = "付款日期DataGridViewTextBoxColumn";
@@ -677,7 +676,7 @@
             this.tableLayoutPanel1.Controls.Add(this.月厨房费Label1, 6, 3);
             this.tableLayoutPanel1.Controls.Add(月厨房费Label, 5, 3);
             this.tableLayoutPanel1.Controls.Add(押金Label, 7, 0);
-            this.tableLayoutPanel1.Controls.Add(应付金额Label, 7, 1);
+            this.tableLayoutPanel1.Controls.Add(this.应付金额Label, 7, 1);
             this.tableLayoutPanel1.Controls.Add(this.押金Label1, 8, 0);
             this.tableLayoutPanel1.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(35, 69);
@@ -924,8 +923,8 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "起付日期";
-            dataGridViewCellStyle4.Format = "d";
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Format = "d";
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewTextBoxColumn1.FillWeight = 85F;
             this.dataGridViewTextBoxColumn1.HeaderText = "起付日期";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -935,8 +934,8 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "止付日期";
-            dataGridViewCellStyle5.Format = "d";
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Format = "d";
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewTextBoxColumn2.FillWeight = 84F;
             this.dataGridViewTextBoxColumn2.HeaderText = "止付日期";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
@@ -946,8 +945,8 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "付款日期";
-            dataGridViewCellStyle6.Format = "d";
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Format = "d";
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewTextBoxColumn3.FillWeight = 86F;
             this.dataGridViewTextBoxColumn3.HeaderText = "付款日期";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -1134,5 +1133,6 @@
         private System.Windows.Forms.Label lblBalance;
         private ComponentFactory.Krypton.Toolkit.KryptonSeparator kryptonSeparator1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label 应付金额Label;
     }
 }

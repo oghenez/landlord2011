@@ -68,11 +68,12 @@ namespace Landlord2.UI
             }
             else
             {
+                客房租金明细 lastCollectRent = orderedList[0];//最近交租明细记录
                 isFirstTime = false;
-                collectRent.起付日期 = kf.客房租金明细.Max(m => m.止付日期).AddDays(1).Date;
-                collectRent.水止码 = kf.客房租金明细.Max(m => m.水止码);//止码设置为始码值，相当于没有用(用户会自行修改)
-                collectRent.电止码 = kf.客房租金明细.Max(m => m.电止码);
-                collectRent.气止码 = kf.客房租金明细.Max(m => m.气止码);
+                collectRent.起付日期 = lastCollectRent.止付日期.AddDays(1).Date;
+                collectRent.水止码 = lastCollectRent.水止码;//止码设置为始码值，相当于没有用(用户会自行修改)
+                collectRent.电止码 = lastCollectRent.电止码;
+                collectRent.气止码 = lastCollectRent.气止码;
                 押金Label1.ForeColor = Color.Gray ;//非首次收租，押金置灰。
                 toolTip1.SetToolTip(押金Label1, "非首次收租不涉及押金。");
 
@@ -152,7 +153,8 @@ namespace Landlord2.UI
             sum += temp;
 
             collectRent.应付金额 = sum;
-                        
+            toolTip1.SetToolTip(应付金额Label, "历史余额未计算在内");        
+    
             //考虑历史余额
             collectRent.实付金额 = sum - balancePayment;
         }
