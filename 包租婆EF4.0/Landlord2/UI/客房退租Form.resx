@@ -183,15 +183,6 @@
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>229, 17</value>
   </metadata>
-  <metadata name="客房租金明细BindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>229, 17</value>
-  </metadata>
-  <metadata name="参考历史BindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>330, 17</value>
-  </metadata>
   <metadata name="参考历史BindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>330, 17</value>
   </metadata>
@@ -199,8 +190,8 @@
     <value>▶退租支付期：2010-10-10～2010-10-10 （结算日期等于协议期止日期，属【正常退租】）
 ▶尾期不足月天数18天（2010-10-10～2010-10-10），按‘天’计算：
  租金（XXXX.XX元）、宽带费（XXX.XX元）、物业费（XXX.XX元）、厨房费（XXX.XX元），共计XXXX.XX元。
-▶因租户提前退租且已缴纳2010-10-10～2010-10-10费用，需退回租户：
- 租金（XXXX.XX元）、宽带费（XXX.XX元）、物业费（XXX.XX元）、厨房费（XXX.XX元），共计XXXX.XX元。</value>
+▶因租户提前退租且已缴纳2010-10-10～2010-10-10费用（实收XXXX.XX元）：
+ 扣除前期应缴水电气XXXX.XX元，余款XXXX.XX元并入【历史余额】进行结算。</value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>46</value>
