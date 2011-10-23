@@ -340,7 +340,7 @@
             // 
             kryptonWrapLabel1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             kryptonWrapLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            kryptonWrapLabel1.ForeColor = System.Drawing.Color.Black;
+            kryptonWrapLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             kryptonWrapLabel1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             kryptonWrapLabel1.Location = new System.Drawing.Point(38, 80);
             kryptonWrapLabel1.Name = "kryptonWrapLabel1";
@@ -353,7 +353,7 @@
             // 
             kryptonWrapLabel2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             kryptonWrapLabel2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            kryptonWrapLabel2.ForeColor = System.Drawing.Color.Black;
+            kryptonWrapLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             kryptonWrapLabel2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             kryptonWrapLabel2.Location = new System.Drawing.Point(317, 80);
             kryptonWrapLabel2.Name = "kryptonWrapLabel2";
@@ -366,7 +366,7 @@
             // 
             kryptonWrapLabel3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             kryptonWrapLabel3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            kryptonWrapLabel3.ForeColor = System.Drawing.Color.Black;
+            kryptonWrapLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             kryptonWrapLabel3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             kryptonWrapLabel3.Location = new System.Drawing.Point(546, 80);
             kryptonWrapLabel3.Name = "kryptonWrapLabel3";
@@ -730,7 +730,7 @@
             this.kryptonHeader1.Dock = System.Windows.Forms.DockStyle.Top;
             this.kryptonHeader1.Location = new System.Drawing.Point(0, 0);
             this.kryptonHeader1.Name = "kryptonHeader1";
-            this.kryptonHeader1.Size = new System.Drawing.Size(740, 33);
+            this.kryptonHeader1.Size = new System.Drawing.Size(740, 31);
             this.kryptonHeader1.StateCommon.Content.LongText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kryptonHeader1.TabIndex = 51;
             this.kryptonHeader1.Values.Description = "客房";
