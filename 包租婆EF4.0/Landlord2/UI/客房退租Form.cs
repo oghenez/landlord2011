@@ -86,24 +86,36 @@ namespace Landlord2.UI
             }
             else//非第一次交租情况下的退租：（有可能结算日期小于上次交租的期止时间，这时需要计算的是‘退款’）
             {
-                bool IsDrawback;//是否为‘退款’
+                bool IsDrawback = false;//是否为‘退款’
                 客房租金明细 lastCollectRent = orderedList[0];//最近交租明细记录
-                if (dtpDateEnd.Value.Date <= lastCollectRent.止付日期.Date)//需退款
-                {
-                    IsDrawback = true;
-                    //需退款情况下，无需新建‘客房租金明细’对象，仅修改最近的明细对象即可
-                    collectRent = lastCollectRent;
 
-                }
-                else//需收款
+                //新对象，根据情况赋予初始值
+                collectRent = new 客房租金明细();
+                collectRent.付款人 = kf.租户;
+                collectRent.客房ID = kf.ID;
+                //新对象的‘起付时间’与之前的‘止付时间’连续
+                collectRent.起付日期 = lastCollectRent.止付日期.AddDays(1).Date;
+
+                if (dtpDateEnd.Value.Date == kf.期止.Value.Date)
                 {
-                    IsDrawback = false;
-                    //新对象，根据情况赋予初始值
-                    collectRent = new 客房租金明细();
-                    collectRent.付款人 = kf.租户;
-                    collectRent.客房ID = kf.ID;
-                    //新对象的‘起付时间’与之前的‘止付时间’连续
-                    collectRent.起付日期 = lastCollectRent.止付日期.AddDays(1).Date;
+                    myRtf.结算日期VS协议期止日期 = "等于";
+                    myRtf.退租类型 = "正常退租";
+                }
+                else if (dtpDateEnd.Value.Date > kf.期止.Value.Date)
+                {
+                    myRtf.结算日期VS协议期止日期 = "大于";
+                    myRtf.退租类型 = "逾期退租";
+                }
+                else
+                {
+                    myRtf.结算日期VS协议期止日期 = "小于";
+                    myRtf.退租类型 = "提前退租";
+
+                    if (dtpDateEnd.Value.Date <= lastCollectRent.止付日期.Date)//需退款
+                    {
+                        IsDrawback = true;                        
+                        collectRent = lastCollectRent;//需退款情况下，无需新建‘客房租金明细’对象，仅修改最近的明细对象即可
+                    }
                 }
                 
                 collectRent.止付日期 = dtpDateEnd.Value.Date;
@@ -119,63 +131,52 @@ namespace Landlord2.UI
 
                 myRtf.退租支付期Begin = collectRent.起付日期.ToShortDateString();
                 myRtf.退租支付期End = collectRent.止付日期.ToShortDateString();
-                if (collectRent.止付日期 == kf.期止.Value.Date)
-                {
-                    myRtf.结算日期VS协议期止日期 = "等于";
-                    myRtf.退租类型 = "正常退租";
-                }
-                else if (collectRent.止付日期 > kf.期止.Value.Date)
-                {
-                    myRtf.结算日期VS协议期止日期 = "大于";
-                    myRtf.退租类型 = "逾期退租";
-                }
-                else
-                {
-                    myRtf.结算日期VS协议期止日期 = "小于";
-                    myRtf.退租类型 = "提前退租";
-                }
+
                 //计算支付月数
                 realMonthNum = 0;
-                DateTime tempBegin;
-                DateTime tempEnd = collectRent.起付日期.AddDays(-1);//初始置为起付日期头一天，do-while至少会执行一次的。
-                do
+                if (true)
                 {
-                    tempBegin = tempEnd.AddDays(1);
-                    tempEnd = tempBegin.AddMonths(1).AddDays(-1);//支付一个月
-                    realMonthNum++;
-                } while (tempEnd < collectRent.止付日期);
-                //-->得到应缴月数(有可能最后一个月尾期天数不足一个月)
-
-                realMonthNum--;
-                if (tempEnd == collectRent.止付日期)//正好足月
-                {
-                    myRtf.尾期不足月 = false;
-                }
-                else//最后一个月尾期天数不足一个月，且通过前面的do...while此时应该是tempEnd > collectRent.止付日期
-                {
-                    decimal extraDays = (collectRent.止付日期 - tempBegin).Days + 1;
-                    decimal monthDays = (tempEnd - tempBegin).Days;
-                    decimal extraMonth = extraDays / monthDays; //将额外天数变化为‘小数月’
-                    string dayOrMonth = cmbDayMonth.SelectedValue.ToString();
-                    if (dayOrMonth == "天")
+                    DateTime tempBegin;
+                    DateTime tempEnd = collectRent.起付日期.AddDays(-1);//初始置为起付日期头一天，do-while至少会执行一次的。
+                    do
                     {
-                        realMonthNum += extraMonth;
-                    }
-                    else
-                    {
+                        tempBegin = tempEnd.AddDays(1);
+                        tempEnd = tempBegin.AddMonths(1).AddDays(-1);//支付一个月
                         realMonthNum++;
-                    }
+                    } while (tempEnd < collectRent.止付日期);
+                    //-->得到应缴月数(有可能最后一个月尾期天数不足一个月)
 
-                    myRtf.尾期不足月 = true;
-                    myRtf.尾期不足月天数 = extraDays.ToString("D");
-                    myRtf.尾期不足月天数Begin = tempBegin.ToShortDateString();
-                    myRtf.尾期不足月天数End = collectRent.止付日期.ToShortDateString();
-                    myRtf.DayOrMonth = dayOrMonth;
-                    myRtf.租金 = (kf.月租金 * extraMonth).ToString("F2");
-                    myRtf.宽带 = (kf.月宽带费 * extraMonth).ToString("F2");
-                    myRtf.物业 = (kf.月物业费 * extraMonth).ToString("F2");
-                    myRtf.厨房 = (kf.月厨房费 * extraMonth).ToString("F2");
-                    myRtf.共计 = ((kf.月租金 + kf.月宽带费 + kf.月物业费 + kf.月厨房费) * extraMonth).ToString("F2");
+                    realMonthNum--;
+                    if (tempEnd == collectRent.止付日期)//正好足月
+                    {
+                        myRtf.尾期不足月 = false;
+                    }
+                    else//最后一个月尾期天数不足一个月，且通过前面的do...while此时应该是tempEnd > collectRent.止付日期
+                    {
+                        decimal extraDays = (collectRent.止付日期 - tempBegin).Days + 1;
+                        decimal monthDays = (tempEnd - tempBegin).Days;
+                        decimal extraMonth = extraDays / monthDays; //将额外天数变化为‘小数月’
+                        string dayOrMonth = cmbDayMonth.SelectedValue.ToString();
+                        if (dayOrMonth == "天")
+                        {
+                            realMonthNum += extraMonth;
+                        }
+                        else
+                        {
+                            realMonthNum++;
+                        }
+
+                        myRtf.尾期不足月 = true;
+                        myRtf.尾期不足月天数 = extraDays.ToString("D");
+                        myRtf.尾期不足月天数Begin = tempBegin.ToShortDateString();
+                        myRtf.尾期不足月天数End = collectRent.止付日期.ToShortDateString();
+                        myRtf.DayOrMonth = dayOrMonth;
+                        myRtf.租金 = (kf.月租金 * extraMonth).ToString("F2");
+                        myRtf.宽带 = (kf.月宽带费 * extraMonth).ToString("F2");
+                        myRtf.物业 = (kf.月物业费 * extraMonth).ToString("F2");
+                        myRtf.厨房 = (kf.月厨房费 * extraMonth).ToString("F2");
+                        myRtf.共计 = ((kf.月租金 + kf.月宽带费 + kf.月物业费 + kf.月厨房费) * extraMonth).ToString("F2");
+                    } 
                 }
 
                 //----------
