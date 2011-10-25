@@ -109,7 +109,7 @@ namespace Landlord2.UI
 
                     if (lastCollectRent.止付日期.Date == kf.期止.Value.Date)//协议租金已全部收讫
                     {
-                        collectRent.起付日期 = dtpDateEnd.Value.Date;
+                        collectRent.起付日期 = dtpDateEnd.Value.Date;//这种情况，接下来只计算水电气费用
                     }
                 }
                 else if (dtpDateEnd.Value.Date > kf.期止.Value.Date)
