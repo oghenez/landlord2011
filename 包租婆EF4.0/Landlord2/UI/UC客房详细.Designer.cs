@@ -87,9 +87,9 @@
             this.kryptonTextBox7 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox8 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox9 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.kryptonTextBox10 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.kryptonTextBox11 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.kryptonTextBox12 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.tbKF水始码 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.tbKF电始码 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.tbKF气始码 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox13 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox14 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox15 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -190,14 +190,14 @@
             this.kryptonPanel1.Controls.Add(this.kryptonTextBox8);
             this.kryptonPanel1.Controls.Add(this.kryptonTextBox7);
             this.kryptonPanel1.Controls.Add(this.kryptonTextBox17);
-            this.kryptonPanel1.Controls.Add(this.kryptonTextBox12);
-            this.kryptonPanel1.Controls.Add(this.kryptonTextBox11);
+            this.kryptonPanel1.Controls.Add(this.tbKF气始码);
+            this.kryptonPanel1.Controls.Add(this.tbKF电始码);
             this.kryptonPanel1.Controls.Add(this.kryptonTextBox14);
             this.kryptonPanel1.Controls.Add(this.kryptonTextBox16);
             this.kryptonPanel1.Controls.Add(this.kryptonTextBox18);
             this.kryptonPanel1.Controls.Add(this.kryptonTextBox15);
             this.kryptonPanel1.Controls.Add(this.kryptonTextBox13);
-            this.kryptonPanel1.Controls.Add(this.kryptonTextBox10);
+            this.kryptonPanel1.Controls.Add(this.tbKF水始码);
             this.kryptonPanel1.Controls.Add(this.kryptonTextBox6);
             this.kryptonPanel1.Controls.Add(this.kryptonTextBox3);
             this.kryptonPanel1.Controls.Add(this.tbKfName);
@@ -208,14 +208,14 @@
             this.kryptonPanel1.Controls.SetChildIndex(this.tbKfName, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox3, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox6, 0);
-            this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox10, 0);
+            this.kryptonPanel1.Controls.SetChildIndex(this.tbKF水始码, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox13, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox15, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox18, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox16, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox14, 0);
-            this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox11, 0);
-            this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox12, 0);
+            this.kryptonPanel1.Controls.SetChildIndex(this.tbKF电始码, 0);
+            this.kryptonPanel1.Controls.SetChildIndex(this.tbKF气始码, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox17, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox7, 0);
             this.kryptonPanel1.Controls.SetChildIndex(this.kryptonTextBox8, 0);
@@ -605,6 +605,7 @@
             this.toolTip1.InitialDelay = 50;
             this.toolTip1.OwnerDraw = true;
             this.toolTip1.ReshowDelay = 10;
+            this.toolTip1.ShowAlways = true;
             this.toolTip1.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTip1_Draw);
             this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
@@ -695,6 +696,10 @@
             this.tbKfName.Location = new System.Drawing.Point(85, 20);
             this.tbKfName.Name = "tbKfName";
             this.tbKfName.Size = new System.Drawing.Size(100, 20);
+            this.tbKfName.StateDisabled.Border.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.False;
+            this.tbKfName.StateDisabled.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.tbKfName.TabIndex = 0;
             // 
             // kryptonTextBox2
@@ -785,29 +790,29 @@
             this.kryptonTextBox9.Size = new System.Drawing.Size(100, 20);
             this.kryptonTextBox9.TabIndex = 12;
             // 
-            // kryptonTextBox10
+            // tbKF水始码
             // 
-            this.kryptonTextBox10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "水始码", true));
-            this.kryptonTextBox10.Location = new System.Drawing.Point(267, 140);
-            this.kryptonTextBox10.Name = "kryptonTextBox10";
-            this.kryptonTextBox10.Size = new System.Drawing.Size(100, 20);
-            this.kryptonTextBox10.TabIndex = 15;
+            this.tbKF水始码.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "水始码", true));
+            this.tbKF水始码.Location = new System.Drawing.Point(267, 140);
+            this.tbKF水始码.Name = "tbKF水始码";
+            this.tbKF水始码.Size = new System.Drawing.Size(100, 20);
+            this.tbKF水始码.TabIndex = 15;
             // 
-            // kryptonTextBox11
+            // tbKF电始码
             // 
-            this.kryptonTextBox11.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "电始码", true));
-            this.kryptonTextBox11.Location = new System.Drawing.Point(267, 170);
-            this.kryptonTextBox11.Name = "kryptonTextBox11";
-            this.kryptonTextBox11.Size = new System.Drawing.Size(100, 20);
-            this.kryptonTextBox11.TabIndex = 16;
+            this.tbKF电始码.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "电始码", true));
+            this.tbKF电始码.Location = new System.Drawing.Point(267, 170);
+            this.tbKF电始码.Name = "tbKF电始码";
+            this.tbKF电始码.Size = new System.Drawing.Size(100, 20);
+            this.tbKF电始码.TabIndex = 16;
             // 
-            // kryptonTextBox12
+            // tbKF气始码
             // 
-            this.kryptonTextBox12.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "气始码", true));
-            this.kryptonTextBox12.Location = new System.Drawing.Point(267, 200);
-            this.kryptonTextBox12.Name = "kryptonTextBox12";
-            this.kryptonTextBox12.Size = new System.Drawing.Size(100, 20);
-            this.kryptonTextBox12.TabIndex = 17;
+            this.tbKF气始码.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.客房BindingSource, "气始码", true));
+            this.tbKF气始码.Location = new System.Drawing.Point(267, 200);
+            this.tbKF气始码.Name = "tbKF气始码";
+            this.tbKF气始码.Size = new System.Drawing.Size(100, 20);
+            this.tbKF气始码.TabIndex = 17;
             // 
             // kryptonTextBox13
             // 
@@ -1068,7 +1073,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton8;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.ToolTip toolTip1;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox2;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryptonCheckBox2;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryptonCheckBox1;
@@ -1082,9 +1086,6 @@
         private System.Windows.Forms.PictureBox 租赁协议照片1PictureBox;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox8;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox9;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox12;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox11;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox10;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox17;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox14;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox16;
@@ -1113,5 +1114,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 备注DataGridViewTextBoxColumn;
         public System.Windows.Forms.BindingSource 客房租金明细BindingSource;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox tbKfName;
+        public ComponentFactory.Krypton.Toolkit.KryptonTextBox tbKF水始码;
+        public ComponentFactory.Krypton.Toolkit.KryptonTextBox tbKF电始码;
+        public ComponentFactory.Krypton.Toolkit.KryptonTextBox tbKF气始码;
+        public System.Windows.Forms.ToolTip toolTip1;
     }
 }
