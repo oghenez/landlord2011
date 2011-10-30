@@ -49,6 +49,14 @@ namespace Landlord2.UI
             else//编辑
             {
                 cmbYF.SelectedValue = kf.源房ID;
+
+                //如果存在交租记录，那么不允许编辑水电气始码
+                if (kf.客房租金明细.Count > 0)
+                {
+                    uC客房详细1.tbKF水始码.Enabled = false;
+                    uC客房详细1.tbKF电始码.Enabled = false;
+                    uC客房详细1.tbKF气始码.Enabled = false;
+                }
             }
             uC客房详细1.客房BindingSource.DataSource = kf;
         }

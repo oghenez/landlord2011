@@ -190,7 +190,7 @@
     <value>▶退租支付期：2010-10-10～2010-10-10 （结算日期等于协议期止日期，属【正常退租】）
 ▶尾期不足月天数18天（2010-10-10～2010-10-10），按‘天’计算：
  租金（XXXX.XX元）、宽带费（XXX.XX元）、物业费（XXX.XX元）、厨房费（XXX.XX元），共计XXXX.XX元。
-▶因租户提前退租且已缴纳2010-10-10～2010-10-10费用，需退回租户：
+▶因租户提前退租且已缴费至2010-10-10，需退回租户：
  租金（XXXX.XX元）、宽带费（XXX.XX元）、物业费（XXX.XX元）、厨房费（XXX.XX元），共计XXXX.XX元。</value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

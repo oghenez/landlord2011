@@ -17,6 +17,10 @@ namespace Landlord2.UI
             InitializeComponent();
             uC客房详细1.tbKfName.ReadOnly = true;//客房名字不许更改
             uC客房详细1.tbKfName.StateCommon.Content.Color1 = Color.Red;
+            uC客房详细1.toolTip1.SetToolTip(uC客房详细1.tbKfName, "客房名字不允许更改");
+            uC客房详细1.tbKF水始码.Enabled = false;//续租时水电气始码不许更改
+            uC客房详细1.tbKF电始码.Enabled = false;
+            uC客房详细1.tbKF气始码.Enabled = false;
             this.kf = context.客房.FirstOrDefault(m => m.ID == kfID);
         }
 
@@ -68,6 +72,10 @@ namespace Landlord2.UI
                 //调整新的期始、期止时间
                 kf.期始 = history.期止.AddDays(1).Date;
                 kf.期止 = null;//等待用户输入
+                kf.中介费用 = 0;
+                kf.租赁协议照片1 = null;
+                kf.租赁协议照片2 = null;
+                kf.租赁协议照片3 = null;
             }
             else
             {
@@ -102,7 +110,7 @@ namespace Landlord2.UI
             //协议时间必须连续
             if (kf.期始.Value.Date != history.期止.AddDays(1).Date)
             {
-                KryptonMessageBox.Show("【续租】时，协议时间必须和之前协议时间连续。", "数据校验失败");
+                KryptonMessageBox.Show(string.Format("【续租】时，协议时间必须和之前协议时间连续。\r\n（上次协议期止时间为{0}）",history.期止.ToShortDateString()), "数据校验失败");
                 return;
             }
 
