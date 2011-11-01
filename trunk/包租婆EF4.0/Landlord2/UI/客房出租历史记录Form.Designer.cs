@@ -85,6 +85,7 @@
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnDel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -94,6 +95,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.BtnDel);
             this.panel1.Controls.Add(this.llbKF);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.raBtnOne);
@@ -242,7 +244,6 @@
             this.kryptonDataGridView1.Size = new System.Drawing.Size(844, 312);
             this.kryptonDataGridView1.TabIndex = 3;
             this.kryptonDataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.kryptonDataGridView1_CellFormatting);
-            this.kryptonDataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.kryptonDataGridView1_UserDeletingRow);
             // 
             // 客房
             // 
@@ -541,6 +542,16 @@
             this.dataGridViewTextBoxColumn21.HeaderText = "电话2";
             this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
             // 
+            // BtnDel
+            // 
+            this.BtnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnDel.Location = new System.Drawing.Point(446, 18);
+            this.BtnDel.Name = "BtnDel";
+            this.BtnDel.Size = new System.Drawing.Size(90, 25);
+            this.BtnDel.TabIndex = 6;
+            this.BtnDel.Values.Text = "删除";
+            this.BtnDel.Click += new System.EventHandler(this.BtnDel_Click);
+            // 
             // 客房出租历史记录Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -624,5 +635,6 @@
         private System.Windows.Forms.DataGridViewImageColumn 租赁协议照片1DataGridViewImageColumn;
         private System.Windows.Forms.DataGridViewImageColumn 租赁协议照片2DataGridViewImageColumn;
         private System.Windows.Forms.DataGridViewImageColumn 租赁协议照片3DataGridViewImageColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton BtnDel;
     }
 }

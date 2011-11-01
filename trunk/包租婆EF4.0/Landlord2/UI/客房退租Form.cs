@@ -15,6 +15,8 @@ namespace Landlord2.UI
     {
         public 客房 kf;
         private 客房租金明细 collectRent;
+        private 客房出租历史记录 history;//【客房出租历史记录】对象
+
         /// <summary>
         /// 实际支付月数（也许协议期内最后一次收租月数小于[客房的支付月数]，2位小数计算‘按天’收取的费用）
         /// </summary>
@@ -41,6 +43,33 @@ namespace Landlord2.UI
         }
         private void BindingData()
         {
+            //拷贝数据到新的【客房出租历史记录】对象
+            history = new 客房出租历史记录();//构造一个新的【客房出租历史记录】对象
+            history.备注 = kf.备注;
+            history.操作日期 = DateTime.Now;
+            history.电话1 = kf.电话1;
+            history.电话2 = kf.电话2;
+            history.电始码 = kf.电始码;
+            history.客房ID = kf.ID; //此时因为还未加入context中，所以不会同步客房引用。
+            history.联系地址 = kf.联系地址;
+            history.期始 = kf.期始.Value;
+            history.期止 = kf.期止.Value;
+            history.气始码 = kf.气始码;
+            history.身份证号 = kf.身份证号;
+            history.水始码 = kf.水始码;
+            history.押金 = kf.押金;
+            history.月厨房费 = kf.月厨房费;
+            history.月宽带费 = kf.月宽带费;
+            history.月物业费 = kf.月物业费;
+            history.月租金 = kf.月租金;
+            history.支付月数 = kf.支付月数;
+            history.中介费用 = kf.中介费用;
+            history.租户 = kf.租户;
+            history.租赁协议照片1 = kf.租赁协议照片1;
+            history.租赁协议照片2 = kf.租赁协议照片2;
+            history.租赁协议照片3 = kf.租赁协议照片3;
+
+
             if(collectRent != null)
                 context.客房租金明细.DeleteObject(collectRent);//删除前次新增的对象
 
@@ -111,6 +140,7 @@ namespace Landlord2.UI
                 {
                     myRtf.结算日期VS协议期止日期 = "等于";
                     myRtf.退租类型 = "正常退租";
+                    history.状态 = "正常退租"; //正常退租状态下，转入历史记录的
 
                     if (lastCollectRent.止付日期.Date == kf.期止.Value.Date)//协议租金已全部收讫
                     {
@@ -121,11 +151,14 @@ namespace Landlord2.UI
                 {
                     myRtf.结算日期VS协议期止日期 = "大于";
                     myRtf.退租类型 = "逾期退租";
+                    history.状态 = "逾期退租"; //逾期退租状态下，转入历史记录的
+
                 }
                 else
                 {
                     myRtf.结算日期VS协议期止日期 = "小于";
                     myRtf.退租类型 = "提前退租";
+                    history.状态 = "提前退租"; //提前退租状态下，转入历史记录的
 
                     if (dtpDateEnd.Value.Date < lastCollectRent.止付日期.Date)//需退款
                     {
@@ -336,6 +369,11 @@ namespace Landlord2.UI
             //    return;
             //}
 
+            //此时加入新的【客房出租历史记录】对象
+            context.客房出租历史记录.AddObject(history);
+            //客房删除租户等相关信息，转为‘未出租’状态
+            kf.移除租户信息();
+
             string msg;
             if (Helper.saveData(context, collectRent, out msg))
             {
@@ -347,6 +385,9 @@ namespace Landlord2.UI
             else
             {
                 KryptonMessageBox.Show(msg, "失败");
+                context.客房出租历史记录.DeleteObject(history);//失败移除
+                //恢复kf的租户信息
+                kf = context.客房.FirstOrDefault(m => m.ID == kf.ID);
             }
         }
 
