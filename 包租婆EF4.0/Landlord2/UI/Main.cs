@@ -28,26 +28,26 @@ namespace Landlord2
             InitializeComponent();
             context = new MyContext();
 
-            #region 调试代码
-#if DEBUG
-            context.ObjectStateManager.ObjectStateManagerChanged += (sender, e) =>
-            {
-                Console.WriteLine(string.Format(
-                "ObjectStateManager.ObjectStateManagerChanged | Action:{0} Object:{1}"
-                , e.Action
-                , e.Element));
-                MessageBox.Show(string.Format(
-                    "MainContext刚刚检测到缓存改动--Action:{0} Object:{1}\r\n目前本地缓存实体数量：\r\n\tAdded-{2}\r\n\tDeleted-{3}\r\n\tModified-{4}\r\n\tUnchanged-{5}"
-                    , e.Action
-                    , e.Element
-                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Added).Count()
-                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted).Count()
-                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Modified).Count()
-                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Unchanged).Count()
-                    ));
-            };
-#endif
-            #endregion
+//            #region 调试代码
+//#if DEBUG
+//            context.ObjectStateManager.ObjectStateManagerChanged += (sender, e) =>
+//            {
+//                Console.WriteLine(string.Format(
+//                "ObjectStateManager.ObjectStateManagerChanged | Action:{0} Object:{1}"
+//                , e.Action
+//                , e.Element));
+//                MessageBox.Show(string.Format(
+//                    "MainContext刚刚检测到缓存改动--Action:{0} Object:{1}\r\n目前本地缓存实体数量：\r\n\tAdded-{2}\r\n\tDeleted-{3}\r\n\tModified-{4}\r\n\tUnchanged-{5}"
+//                    , e.Action
+//                    , e.Element
+//                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Added).Count()
+//                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted).Count()
+//                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Modified).Count()
+//                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Unchanged).Count()
+//                    ));
+//            };
+//#endif
+//            #endregion
 
         }
         #region 线程安全的访问UI控件的方法
@@ -346,7 +346,16 @@ namespace Landlord2
 
             }
         }
-
+        /// <summary>
+        /// 从上下文中删除所有源房（关联的客房也会自动删除）
+        /// </summary>
+        private void clearObjectManagement()
+        {
+            foreach (源房 entity in context.源房.ToList())
+                context.源房.Detach(entity);
+            foreach (var entity in context.客房.ToList())
+                context.客房.Detach(entity);
+        }
         #region 菜单按钮
         private void yfBtnAdd_Click(object sender, EventArgs e)
         {
@@ -383,6 +392,7 @@ namespace Landlord2
                         KryptonMessageBox.Show(msg, "失败");
                         context.Refresh(System.Data.Objects.RefreshMode.StoreWins, yf);
                     }
+                    clearObjectManagement();
                 }
             }
         }
@@ -443,6 +453,7 @@ namespace Landlord2
                         KryptonMessageBox.Show(msg, "失败");
                         context.Refresh(System.Data.Objects.RefreshMode.StoreWins, kf);
                     }
+                    clearObjectManagement();
                 }
             }
         }
