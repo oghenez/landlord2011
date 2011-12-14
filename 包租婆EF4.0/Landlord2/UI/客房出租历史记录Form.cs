@@ -23,7 +23,6 @@ namespace Landlord2.UI
         private void 客房出租历史记录Form_Load(object sender, EventArgs e)
         {
             客房出租历史记录BindingSource.DataSource = (context.客房出租历史记录.OrderByDescending(m => m.操作日期) as ObjectQuery<客房出租历史记录>).Execute(MergeOption.AppendOnly);
-            MessageBox.Show("部分功能还在调整...");
         }
 
         private void kryptonDataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
