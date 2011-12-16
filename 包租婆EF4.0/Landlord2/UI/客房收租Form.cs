@@ -182,25 +182,6 @@ namespace Landlord2.UI
 
         }
 
-        private void BtnSelectKF_Click(object sender, EventArgs e)
-        {            
-            using (客房选择Form form = new 客房选择Form(context, 客房筛选.客房收租))
-            {
-                var result = form.ShowDialog(this);
-                if (result == System.Windows.Forms.DialogResult.OK)
-                {
-                    if (kf != form.selectedKF)
-                    {
-                        context.客房租金明细.DeleteObject(collectRent);
-                        kf = form.selectedKF;
-
-                        BindingData();
-                        Check();
-                    }                    
-                }
-            }             
-        }
-
         private void kryptonNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             if(sender.Equals(nud水费))

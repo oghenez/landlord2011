@@ -32,25 +32,6 @@ namespace Landlord2.UI
             Close();
         }
 
-        private void BtnAdd_Click(object sender, EventArgs e)
-        {
-            if (kf == null)
-            {
-                KryptonMessageBox.Show("请先选择欲收租的客房!");
-                return;
-            }
-
-            Guid kfID;
-            using (客房收租Form sz = new 客房收租Form(kf.ID))
-            {
-                sz.ShowDialog(this);
-                kfID = sz.kf.ID;//也许用户在新增收租里又一次更改了kf，此时回传
-            }
-
-            //最后，不管有没有更新，刷新DataGridView
-            ChangeKF(kfID);
-        }
-
         private void btnOK_Click(object sender, EventArgs e)
         {
             客房租金明细BindingSource.EndEdit();
@@ -83,7 +64,6 @@ namespace Landlord2.UI
         private void raBtn_CheckedChanged(object sender, EventArgs e)
         {
             llbKF.Enabled = raBtnOne.Checked;
-            BtnAdd.Visible = raBtnOne.Checked;
 
             if (raBtnAll.Checked)
             {

@@ -84,19 +84,6 @@ namespace Landlord2.UI
             }
         }
 
-        private void BtnSelectKF_Click(object sender, EventArgs e)
-        {
-            using (客房选择Form form = new 客房选择Form(context, 客房筛选.客房续租))
-            {
-                var result = form.ShowDialog(this);
-                if (result == System.Windows.Forms.DialogResult.OK)
-                {
-                    kf = form.selectedKF;
-                    BindingData();
-                }
-            }
-        }
-
         private void btnOK_Click(object sender, EventArgs e)
         {
             uC客房详细1.客房BindingSource.EndEdit();                  
