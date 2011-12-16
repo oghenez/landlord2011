@@ -26,21 +26,6 @@ namespace Landlord2.UI
             kryptonHeader1.Values.Description = kf.命名;
         }
 
-        private void BtnSelectKF_Click(object sender, EventArgs e)
-        {
-            using (客房选择Form form = new 客房选择Form(context, 客房筛选.客房出租))
-            {
-                var result = form.ShowDialog(this);
-                if (result == System.Windows.Forms.DialogResult.OK)
-                {
-                    kf = form.selectedKF;
-                    uC客房详细1.客房BindingSource.DataSource = kf;
-                    kryptonHeader1.Values.Heading = kf.源房.房名;
-                    kryptonHeader1.Values.Description = kf.命名;
-                }
-            }
-        }
-
         private void btnOK_Click(object sender, EventArgs e)
         {
             uC客房详细1.客房BindingSource.EndEdit();

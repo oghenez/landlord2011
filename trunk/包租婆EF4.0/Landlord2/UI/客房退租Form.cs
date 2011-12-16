@@ -311,23 +311,7 @@ namespace Landlord2.UI
             collectRent.实付金额 = sum - balancePayment;
 
         }
-        private void BtnSelectKF_Click(object sender, EventArgs e)
-        {
-            using (客房选择Form form = new 客房选择Form(context, 客房筛选.客房退租))
-            {
-                var result = form.ShowDialog(this);
-                if (result == System.Windows.Forms.DialogResult.OK)
-                {
-                    if (kf != form.selectedKF)
-                    {
-                        context.客房租金明细.DeleteObject(collectRent);
-                        kf = form.selectedKF;
 
-                        BindingData();
-                    }
-                }
-            }
-        }
         private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
             Rectangle r = e.CellBounds;

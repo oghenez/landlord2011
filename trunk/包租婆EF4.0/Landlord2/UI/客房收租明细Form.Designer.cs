@@ -51,7 +51,6 @@
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.raBtnOne = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
             this.BtnDel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.BtnAdd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.raBtnAll = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
             this.myDataGridViewDateTimePickerColumn1 = new Landlord2.MyDataGridViewDateTimePickerColumn();
@@ -226,7 +225,6 @@
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.raBtnOne);
             this.panel1.Controls.Add(this.BtnDel);
-            this.panel1.Controls.Add(this.BtnAdd);
             this.panel1.Controls.Add(this.btnOK);
             this.panel1.Controls.Add(this.raBtnAll);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -279,17 +277,6 @@
             this.BtnDel.TabIndex = 4;
             this.BtnDel.Values.Text = "删除";
             this.BtnDel.Click += new System.EventHandler(this.BtnDel_Click);
-            // 
-            // BtnAdd
-            // 
-            this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAdd.Location = new System.Drawing.Point(352, 26);
-            this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Size = new System.Drawing.Size(90, 25);
-            this.BtnAdd.TabIndex = 3;
-            this.BtnAdd.Values.Text = "新增";
-            this.BtnAdd.Visible = false;
-            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // btnOK
             // 
@@ -451,7 +438,6 @@
         private System.Windows.Forms.Panel panel1;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
         private ComponentFactory.Krypton.Toolkit.KryptonRadioButton raBtnOne;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton BtnAdd;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOK;
         private ComponentFactory.Krypton.Toolkit.KryptonRadioButton raBtnAll;
         private MyDataGridViewDateTimePickerColumn myDataGridViewDateTimePickerColumn1;

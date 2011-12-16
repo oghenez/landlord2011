@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.kryptonHeader1 = new ComponentFactory.Krypton.Toolkit.KryptonHeader();
-            this.BtnSelectKF = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.uC客房详细1 = new Landlord2.UI.UC客房详细();
@@ -38,8 +37,6 @@
             // 
             // kryptonHeader1
             // 
-            this.kryptonHeader1.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecAny[] {
-            this.BtnSelectKF});
             this.kryptonHeader1.Dock = System.Windows.Forms.DockStyle.Top;
             this.kryptonHeader1.Location = new System.Drawing.Point(0, 0);
             this.kryptonHeader1.Name = "kryptonHeader1";
@@ -48,12 +45,6 @@
             this.kryptonHeader1.TabIndex = 31;
             this.kryptonHeader1.Values.Description = "客房";
             this.kryptonHeader1.Values.Heading = "当前选择的源房";
-            // 
-            // BtnSelectKF
-            // 
-            this.BtnSelectKF.Text = "选择其他可续租客房";
-            this.BtnSelectKF.UniqueName = "55232C85CD564FB20FB4160860C045DF";
-            this.BtnSelectKF.Click += new System.EventHandler(this.BtnSelectKF_Click);
             // 
             // btnCancel
             // 
@@ -121,7 +112,6 @@
         #endregion
 
         private ComponentFactory.Krypton.Toolkit.KryptonHeader kryptonHeader1;
-        private ComponentFactory.Krypton.Toolkit.ButtonSpecAny BtnSelectKF;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOK;
         private UC客房详细 uC客房详细1;
