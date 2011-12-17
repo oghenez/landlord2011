@@ -22,7 +22,7 @@ namespace Landlord2.UI
 
         private void 客房出租历史记录Form_Load(object sender, EventArgs e)
         {
-            客房出租历史记录BindingSource.DataSource = (context.客房出租历史记录.OrderByDescending(m => m.操作日期) as ObjectQuery<客房出租历史记录>).Execute(MergeOption.AppendOnly);
+            客房出租历史记录BindingSource.DataSource = 客房出租历史记录.GetKfHistoryDetails(context, null).Execute(MergeOption.AppendOnly);
         }
 
         private void kryptonDataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -87,6 +87,40 @@ namespace Landlord2.UI
             //删除某条出租历史记录后，相关的【客房收租明细】信息也自动删除。
 
         }
+        private void raBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            llbKF.Enabled = raBtnOne.Checked;
 
+            if (raBtnAll.Checked)
+            {
+                客房出租历史记录BindingSource.DataSource = 客房出租历史记录.GetKfHistoryDetails(context, null).Execute(MergeOption.AppendOnly); 
+                llbKF.Values.ExtraText = "<请选择>";
+                kf = null;
+            }
+            else if (raBtnOne.Checked)
+            {
+                客房出租历史记录BindingSource.DataSource = null;
+            }
+        }
+        private void llbKF_LinkClicked(object sender, EventArgs e)
+        {
+            using (客房选择Form form = new 客房选择Form(context, 客房筛选.客房收租))
+            {
+                var result = form.ShowDialog(this);
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    if (kf != form.selectedKF)
+                    {
+                        kf = form.selectedKF;
+                        ChangeKF(kf.ID);
+                    }
+                }
+            }
+        }
+        private void ChangeKF(Guid kfID)
+        {
+            llbKF.Values.ExtraText = string.Format("[{0}] - {1}", kf.源房.房名, kf.命名);
+            客房出租历史记录BindingSource.DataSource = 客房出租历史记录.GetKfHistoryDetails(context, kfID).Execute(MergeOption.AppendOnly);
+        }
     }
 }

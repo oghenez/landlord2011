@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnDel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.llbKF = new ComponentFactory.Krypton.Toolkit.KryptonLinkLabel();
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.raBtnOne = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
@@ -85,7 +86,6 @@
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BtnDel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -105,7 +105,17 @@
             this.panel1.Location = new System.Drawing.Point(0, 384);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(844, 60);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 0;
+            // 
+            // BtnDel
+            // 
+            this.BtnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnDel.Location = new System.Drawing.Point(473, 18);
+            this.BtnDel.Name = "BtnDel";
+            this.BtnDel.Size = new System.Drawing.Size(90, 25);
+            this.BtnDel.TabIndex = 3;
+            this.BtnDel.Values.Text = "删除";
+            this.BtnDel.Click += new System.EventHandler(this.BtnDel_Click);
             // 
             // llbKF
             // 
@@ -118,13 +128,14 @@
             this.llbKF.TabIndex = 2;
             this.llbKF.Values.ExtraText = "<请选择>";
             this.llbKF.Values.Text = "单套客房：";
+            this.llbKF.LinkClicked += new System.EventHandler(this.llbKF_LinkClicked);
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.CausesValidation = false;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(717, 18);
+            this.btnCancel.Location = new System.Drawing.Point(715, 18);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 25);
             this.btnCancel.TabIndex = 5;
@@ -139,11 +150,12 @@
             this.raBtnOne.Size = new System.Drawing.Size(18, 12);
             this.raBtnOne.TabIndex = 1;
             this.raBtnOne.Values.Text = "";
+            this.raBtnOne.CheckedChanged += new System.EventHandler(this.raBtn_CheckedChanged);
             // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(582, 18);
+            this.btnOK.Location = new System.Drawing.Point(594, 18);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(90, 25);
             this.btnOK.TabIndex = 4;
@@ -159,6 +171,7 @@
             this.raBtnAll.Size = new System.Drawing.Size(72, 20);
             this.raBtnAll.TabIndex = 0;
             this.raBtnAll.Values.Text = "全部客房";
+            this.raBtnAll.CheckedChanged += new System.EventHandler(this.raBtn_CheckedChanged);
             // 
             // kryptonPanel1
             // 
@@ -542,18 +555,9 @@
             this.dataGridViewTextBoxColumn21.HeaderText = "电话2";
             this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
             // 
-            // BtnDel
-            // 
-            this.BtnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnDel.Location = new System.Drawing.Point(446, 18);
-            this.BtnDel.Name = "BtnDel";
-            this.BtnDel.Size = new System.Drawing.Size(90, 25);
-            this.BtnDel.TabIndex = 6;
-            this.BtnDel.Values.Text = "删除";
-            this.BtnDel.Click += new System.EventHandler(this.BtnDel_Click);
-            // 
             // 客房出租历史记录Form
             // 
+            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(844, 444);
