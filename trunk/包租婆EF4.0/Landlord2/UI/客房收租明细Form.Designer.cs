@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(客房收租明细Form));
             this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,7 +99,7 @@
             this.kryptonDataGridView1.RowHeadersWidth = 24;
             this.kryptonDataGridView1.RowTemplate.Height = 23;
             this.kryptonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.kryptonDataGridView1.Size = new System.Drawing.Size(844, 270);
+            this.kryptonDataGridView1.Size = new System.Drawing.Size(844, 278);
             this.kryptonDataGridView1.TabIndex = 2;
             this.kryptonDataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.kryptonDataGridView1_CellEndEdit);
             this.kryptonDataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.kryptonDataGridView1_CellFormatting);
@@ -116,8 +116,8 @@
             // 起付日期DataGridViewTextBoxColumn
             // 
             this.起付日期DataGridViewTextBoxColumn.DataPropertyName = "起付日期";
-            dataGridViewCellStyle1.Format = "d";
-            this.起付日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Format = "d";
+            this.起付日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
             this.起付日期DataGridViewTextBoxColumn.HeaderText = "起付日期";
             this.起付日期DataGridViewTextBoxColumn.Name = "起付日期DataGridViewTextBoxColumn";
             this.起付日期DataGridViewTextBoxColumn.ReadOnly = true;
@@ -125,8 +125,8 @@
             // 止付日期DataGridViewTextBoxColumn
             // 
             this.止付日期DataGridViewTextBoxColumn.DataPropertyName = "止付日期";
-            dataGridViewCellStyle2.Format = "d";
-            this.止付日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Format = "d";
+            this.止付日期DataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
             this.止付日期DataGridViewTextBoxColumn.HeaderText = "止付日期";
             this.止付日期DataGridViewTextBoxColumn.Name = "止付日期DataGridViewTextBoxColumn";
             this.止付日期DataGridViewTextBoxColumn.ReadOnly = true;
@@ -228,9 +228,9 @@
             this.panel1.Controls.Add(this.btnOK);
             this.panel1.Controls.Add(this.raBtnAll);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 376);
+            this.panel1.Location = new System.Drawing.Point(0, 384);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(844, 68);
+            this.panel1.Size = new System.Drawing.Size(844, 60);
             this.panel1.TabIndex = 0;
             // 
             // llbKF
@@ -238,7 +238,7 @@
             this.llbKF.Cursor = System.Windows.Forms.Cursors.Hand;
             this.llbKF.Enabled = false;
             this.llbKF.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.llbKF.Location = new System.Drawing.Point(25, 36);
+            this.llbKF.Location = new System.Drawing.Point(114, 20);
             this.llbKF.Name = "llbKF";
             this.llbKF.Size = new System.Drawing.Size(133, 20);
             this.llbKF.TabIndex = 2;
@@ -251,7 +251,7 @@
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.CausesValidation = false;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(715, 26);
+            this.btnCancel.Location = new System.Drawing.Point(715, 18);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 25);
             this.btnCancel.TabIndex = 6;
@@ -261,7 +261,7 @@
             // raBtnOne
             // 
             this.raBtnOne.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.raBtnOne.Location = new System.Drawing.Point(12, 40);
+            this.raBtnOne.Location = new System.Drawing.Point(102, 24);
             this.raBtnOne.Name = "raBtnOne";
             this.raBtnOne.Size = new System.Drawing.Size(18, 12);
             this.raBtnOne.TabIndex = 1;
@@ -271,7 +271,7 @@
             // BtnDel
             // 
             this.BtnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnDel.Location = new System.Drawing.Point(473, 26);
+            this.BtnDel.Location = new System.Drawing.Point(473, 18);
             this.BtnDel.Name = "BtnDel";
             this.BtnDel.Size = new System.Drawing.Size(90, 25);
             this.BtnDel.TabIndex = 4;
@@ -281,7 +281,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(594, 26);
+            this.btnOK.Location = new System.Drawing.Point(594, 18);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(90, 25);
             this.btnOK.TabIndex = 5;
@@ -292,7 +292,7 @@
             // 
             this.raBtnAll.Checked = true;
             this.raBtnAll.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.raBtnAll.Location = new System.Drawing.Point(12, 13);
+            this.raBtnAll.Location = new System.Drawing.Point(12, 20);
             this.raBtnAll.Name = "raBtnAll";
             this.raBtnAll.Size = new System.Drawing.Size(72, 20);
             this.raBtnAll.TabIndex = 0;
@@ -332,7 +332,7 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.labCountMoney});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 344);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 352);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
             this.statusStrip1.ShowItemToolTips = true;
