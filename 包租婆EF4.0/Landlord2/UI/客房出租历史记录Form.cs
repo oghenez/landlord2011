@@ -73,6 +73,9 @@ namespace Landlord2.UI
         private void BtnDel_Click(object sender, EventArgs e)
         {
             客房出租历史记录 entity = 客房出租历史记录BindingSource.Current as 客房出租历史记录;
+            if (entity == null)
+                return;
+
             客房 tempKF = entity.客房;
 
             ////只允许删除“历史”客户的记录。因为[续租]后当前租户相关租房信息转到‘客房出租历史记录’表里，那么如果
@@ -80,11 +83,15 @@ namespace Landlord2.UI
             ////签约期内的款项、押金等等，多退少补）。*/
             if (tempKF.租户 == entity.租户 && tempKF.身份证号 == entity.身份证号)
             {
-                KryptonMessageBox.Show("此条【客房出租历史记录】相关信息涉及到当前租户，无法删除。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                KryptonMessageBox.Show("此条【客房出租历史记录】相关信息涉及到当前租户，无法删除。\r\n（当前租户退租后，才能删除此租户相关的【客房出租历史记录】。）", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }      
+            }
+            else//删除某条出租历史记录后，相关的【客房收租明细】信息也自动删除。
+            {
 
-            //删除某条出租历史记录后，相关的【客房收租明细】信息也自动删除。
+                //删除当前选中的‘客房出租历史记录’
+                //删除关联的‘客房收租明细’
+            }
 
         }
         private void raBtn_CheckedChanged(object sender, EventArgs e)
