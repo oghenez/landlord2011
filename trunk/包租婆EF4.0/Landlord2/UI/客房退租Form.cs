@@ -16,6 +16,7 @@ namespace Landlord2.UI
         public 客房 kf;
         private 客房租金明细 collectRent;
         private 客房出租历史记录 history;//【客房出租历史记录】对象
+        private bool IsFirstLoad;//是否初次加载，优化初次启动时间，避免多次触发计算函数
 
         /// <summary>
         /// 实际支付月数（也许协议期内最后一次收租月数小于[客房的支付月数]，2位小数计算‘按天’收取的费用）
@@ -31,11 +32,15 @@ namespace Landlord2.UI
         {
             InitializeComponent();
             this.kf = context.客房.FirstOrDefault(m => m.ID == kfID);
+            IsFirstLoad = true;
         }
 
         private void 客房退租Form_Load(object sender, EventArgs e)
-        {            
-            dtpDateEnd.Value = DateTime.Now.Date; //自动引发Bindingdata();            
+        {
+            //dtpDateEnd.MinDate = kf.期始.Value.Date;//供用户可调整的结算日期，限定最小值。并
+            dtpDateEnd.Value = DateTime.Now.Date; //自动引发Bindingdata();   
+
+            IsFirstLoad = false;//第一次加载结束
         }
         private void dtpDateEnd_ValueChanged(object sender, EventArgs e)
         {
@@ -73,8 +78,7 @@ namespace Landlord2.UI
             if(collectRent != null)
                 context.客房租金明细.DeleteObject(collectRent);//删除前次新增的对象
 
-            btnOK.Enabled = true;//这里先置true，后续判断该租户没有交租记录会置false的。
-            dtpDateEnd.MinDate = kf.期始.Value.Date;//供用户可调整的结算日期，限定最小值。
+            btnOK.Enabled = true;//这里先置true，后续判断该租户没有交租记录会置false的。            
 
             kryptonHeader1.Values.Heading = kf.源房.房名;
             kryptonHeader1.Values.Description = kf.命名;
@@ -340,7 +344,9 @@ namespace Landlord2.UI
                 collectRent.电止码 = (double)nud电费.Value;
             if (sender.Equals(nud气费))
                 collectRent.气止码 = (double)nud气费.Value;
-            CaculateSum();
+            
+            if(!IsFirstLoad)
+                CaculateSum();
         }
         private void btnOK_Click(object sender, EventArgs e)
         {
