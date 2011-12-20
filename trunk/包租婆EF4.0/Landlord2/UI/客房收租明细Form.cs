@@ -162,7 +162,7 @@ namespace Landlord2.UI
             {
                 willBeDeletedList = currentList.Where(m => m.起付日期 > current.起付日期);
                 int num = willBeDeletedList.Count();
-                string msg = string.Format("删除此条记录，该记录的后续记录[{0}条]都将被删除！(详见上方操作说明)\r\n是否删除？", num);
+                string msg = string.Format("删除此条记录，该记录的后续收租明细信息[{0}条]都将被删除！\r\n(详见上方操作说明)\r\n是否删除？", num);
                 if (KryptonMessageBox.Show(msg, "删除确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning,
                     MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
                 {

@@ -87,10 +87,21 @@ namespace Landlord2.UI
                 return;
             }
             else//删除某条出租历史记录后，相关的【客房收租明细】信息也自动删除。
-            {
-
-                //删除当前选中的‘客房出租历史记录’
-                //删除关联的‘客房收租明细’
+            {                
+                List<客房租金明细> willBeDeletedList = 客房出租历史记录.GetHistoryRentDetails(entity);
+                int num = willBeDeletedList.Count();
+                string msg = string.Format("删除此条记录，该记录包含的收租明细信息[{0}条]都将被删除！\r\n(详见上方操作说明)\r\n是否删除？", num);
+                if (KryptonMessageBox.Show(msg, "删除确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    //删除当前选中的‘客房出租历史记录’
+                    客房出租历史记录BindingSource.RemoveCurrent();
+                    //删除关联的‘客房收租明细’
+                    foreach (var o in willBeDeletedList)
+                    {
+                        context.客房租金明细.DeleteObject(o);
+                    }
+                }
             }
 
         }
