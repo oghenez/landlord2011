@@ -308,11 +308,11 @@ namespace Landlord2.UI
             lbl气费.Text = temp.ToString("F2");
             sum += temp;
 
-            collectRent.应付金额 = sum;
+            collectRent.应付金额 = decimal.Round(sum, 2);
             toolTip1.SetToolTip(应付金额Label, "历史余额未计算在内");
 
             //考虑历史余额
-            collectRent.实付金额 = sum - balancePayment;
+            collectRent.实付金额 = decimal.Round(sum - balancePayment, 2);
 
         }
 

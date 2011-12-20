@@ -46,6 +46,7 @@
             System.Windows.Forms.Label 租户Label;
             System.Windows.Forms.Label 押金Label;
             System.Windows.Forms.Label 历史余额label;
+            ComponentFactory.Krypton.Toolkit.KryptonWrapLabel kryptonWrapLabel2;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -65,6 +66,9 @@
             this.kryptonTextBox2 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txt备注 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbDayMonth = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.lblDayMonth = new System.Windows.Forms.Label();
             this.参考历史BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
@@ -130,8 +134,11 @@
             租户Label = new System.Windows.Forms.Label();
             押金Label = new System.Windows.Forms.Label();
             历史余额label = new System.Windows.Forms.Label();
+            kryptonWrapLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonWrapLabel();
             ((System.ComponentModel.ISupportInitialize)(this.客房租金明细BindingSource)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbDayMonth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.参考历史BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
@@ -320,6 +327,18 @@
             历史余额label.TabIndex = 39;
             历史余额label.Text = "历史余额:";
             // 
+            // kryptonWrapLabel2
+            // 
+            kryptonWrapLabel2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            kryptonWrapLabel2.ForeColor = System.Drawing.Color.Black;
+            kryptonWrapLabel2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            kryptonWrapLabel2.Location = new System.Drawing.Point(6, 17);
+            kryptonWrapLabel2.Name = "kryptonWrapLabel2";
+            kryptonWrapLabel2.Size = new System.Drawing.Size(160, 15);
+            kryptonWrapLabel2.Text = "尾期不足月按：               计算";
+            kryptonWrapLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            kryptonWrapLabel2.UseMnemonic = false;
+            // 
             // 应付金额Label
             // 
             this.应付金额Label.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -428,12 +447,16 @@
             0,
             0,
             0});
+            this.kryptonNumericUpDown5.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
             this.kryptonNumericUpDown5.Name = "kryptonNumericUpDown5";
             this.kryptonNumericUpDown5.Size = new System.Drawing.Size(91, 21);
             this.kryptonNumericUpDown5.StateCommon.Content.Color1 = System.Drawing.Color.Red;
             this.kryptonNumericUpDown5.StateCommon.Content.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonNumericUpDown5.TabIndex = 3;
-            this.kryptonNumericUpDown5.ThousandsSeparator = true;
             // 
             // kryptonTextBox1
             // 
@@ -462,6 +485,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.btnOK);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -469,6 +493,43 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(740, 60);
             this.panel1.TabIndex = 5;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cmbDayMonth);
+            this.groupBox1.Controls.Add(kryptonWrapLabel2);
+            this.groupBox1.Controls.Add(this.lblDayMonth);
+            this.groupBox1.Location = new System.Drawing.Point(19, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(418, 42);
+            this.groupBox1.TabIndex = 66;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Visible = false;
+            // 
+            // cmbDayMonth
+            // 
+            this.cmbDayMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDayMonth.DropDownWidth = 54;
+            this.cmbDayMonth.Items.AddRange(new object[] {
+            "月",
+            "天"});
+            this.cmbDayMonth.Location = new System.Drawing.Point(95, 14);
+            this.cmbDayMonth.Name = "cmbDayMonth";
+            this.cmbDayMonth.Size = new System.Drawing.Size(41, 21);
+            this.cmbDayMonth.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.cmbDayMonth.TabIndex = 63;
+            this.cmbDayMonth.Text = "月";
+            this.cmbDayMonth.SelectedIndexChanged += new System.EventHandler(this.cmbDayMonth_Changed);
+            // 
+            // lblDayMonth
+            // 
+            this.lblDayMonth.AutoSize = true;
+            this.lblDayMonth.ForeColor = System.Drawing.Color.Red;
+            this.lblDayMonth.Location = new System.Drawing.Point(172, 19);
+            this.lblDayMonth.Name = "lblDayMonth";
+            this.lblDayMonth.Size = new System.Drawing.Size(155, 12);
+            this.lblDayMonth.TabIndex = 65;
+            this.lblDayMonth.Text = "尾期{0}～{1}不足月({2}天)";
             // 
             // 参考历史BindingSource
             // 
@@ -1048,6 +1109,9 @@
             this.Shown += new System.EventHandler(this.客房收租Form_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.客房租金明细BindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbDayMonth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.参考历史BindingSource)).EndInit();
             this.kryptonGroupBox1.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
@@ -1124,5 +1188,8 @@
         private ComponentFactory.Krypton.Toolkit.KryptonSeparator kryptonSeparator1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label 应付金额Label;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbDayMonth;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblDayMonth;
     }
 }

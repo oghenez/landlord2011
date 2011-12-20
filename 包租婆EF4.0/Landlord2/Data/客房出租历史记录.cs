@@ -63,14 +63,16 @@ namespace Landlord2.Data
         /// <returns></returns>
         public static List<客房租金明细> GetHistoryRentDetails(客房出租历史记录 history)
         {
-            //if (string.IsNullOrEmpty(kf.租户))
-            return new List<客房租金明细>();
+            客房 kf = history.客房;
+            if (kf == null || kf.客房租金明细.Count == 0)
+                return new List<客房租金明细>();
 
-            ////找到该客户当前协议期始时间（当前协议期最开始交租时间）
-            //DateTime begin = kf.期始.Value;
+            //找到该客户当前协议期始时间（当前协议期最开始交租时间）
+            DateTime begin = history.期始;
+            DateTime end = history.期止;
 
-            //return kf.客房租金明细.Where(m => m.起付日期 >= begin.Date).
-            //    OrderByDescending(m => m.起付日期).ToList();
+            return kf.客房租金明细.Where(m => m.起付日期 >= begin.Date && m.止付日期<=end.Date).
+                OrderByDescending(m => m.起付日期).ToList();
         }
         #endregion
 
