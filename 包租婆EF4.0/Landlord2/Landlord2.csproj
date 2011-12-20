@@ -354,6 +354,12 @@
     <None Include="Resources\客房出租48.png" />
     <None Include="Resources\客房退租24.png" />
     <None Include="Resources\客房退租48.png" />
+    <None Include="Resources\客房出租历史48.png" />
+    <None Include="Resources\客房出租历史24.png" />
+    <None Include="Resources\收租48.png" />
+    <None Include="Resources\收租明细48.png" />
+    <None Include="Resources\收租明细24.png" />
+    <None Include="Resources\收租24.png" />
     <Content Include="Resources\缴费24.png" />
     <Content Include="Resources\缴费48.png" />
     <Content Include="Resources\缴费明细24.png" />

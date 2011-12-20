@@ -94,8 +94,6 @@ namespace Landlord2.UI
             }
             collectRent.止付日期 = collectRent.起付日期.AddMonths(kf.支付月数).AddDays(-1);
             
-            ////////////////////////////////////////////
-            
             //当协议的期止并非刚好间隔支付月数时，协议期内最后一次收租的止付日期需要调整，再计算租金
             realMonthNum = kf.支付月数;
             if (collectRent.止付日期 > kf.期止.Value.Date)
@@ -103,25 +101,10 @@ namespace Landlord2.UI
                 collectRent.止付日期 = kf.期止.Value.Date;//赋值，后续将进入‘计算月数’函数
 
                 //计算支付月数
-                CaculateMonth();
-                //----------------
-                //realMonthNum = 0;//先置0
-                //DateTime tempBegin ;
-                //DateTime tempEnd = collectRent.起付日期.AddDays(-1);//初始置为起付日期头一天，do-while至少会执行一次的。
-                //do
-                //{
-                //    tempBegin = tempEnd.AddDays(1);
-                //    tempEnd = tempBegin.AddMonths(1).AddDays(-1);//支付1个月
-                //    realMonthNum++;
-                //} while (tempEnd < kf.期止.Value.Date);
-                ////-->得到应缴月数(有可能最后一个月尾期天数不足一个月)
-
-                //int extraDays = (tempEnd == kf.期止.Value.Date) ? 0 : (kf.期止.Value.Date - tempBegin).Days + 1 ; //尾期天数
-                //collectRent.止付日期 = kf.期止.Value.Date;
-                //止付日期Label1.ForeColor = Color.Red;
-                //if(extraDays > 0)
-                //    toolTip1.SetToolTip(止付日期Label1, string.Format("尾期天数不足1个月[{0}天]，按1个月计算。实收租金可与租户协商而定。",extraDays));
-
+                if (collectRent.起付日期 > kf.期止.Value.Date)
+                    realMonthNum = 0;
+                else
+                    CaculateMonth();
             }
             //----------
             nud水费.Minimum = (decimal)collectRent.水止码;
@@ -299,7 +282,6 @@ namespace Landlord2.UI
                 collectRent.止付日期 = DateTime.MaxValue.Date;//这里显示最大值，以免造成误会。
                 KryptonMessageBox.Show("租户协议期内租金已全部收讫，请先【续租】！");
                 btnOK.Enabled = false;
-                groupBox1.Visible = false;
             }
             else
                 btnOK.Enabled = true;

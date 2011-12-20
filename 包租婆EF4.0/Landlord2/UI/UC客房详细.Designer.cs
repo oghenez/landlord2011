@@ -554,9 +554,10 @@
             // 
             // toolStripButton7
             // 
+            this.toolStripButton7.Image = global::Landlord2.Properties.Resources.客房出租历史24;
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(59, 28);
+            this.toolStripButton7.Size = new System.Drawing.Size(83, 28);
             this.toolStripButton7.Text = "出租历史";
             // 
             // toolStripSeparator2
@@ -566,16 +567,18 @@
             // 
             // toolStripButton5
             // 
+            this.toolStripButton5.Image = global::Landlord2.Properties.Resources.收租24;
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(35, 28);
+            this.toolStripButton5.Size = new System.Drawing.Size(59, 28);
             this.toolStripButton5.Text = "收租";
             // 
             // toolStripButton8
             // 
+            this.toolStripButton8.Image = global::Landlord2.Properties.Resources.收租明细24;
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(59, 28);
+            this.toolStripButton8.Size = new System.Drawing.Size(83, 28);
             this.toolStripButton8.Text = "收租明细";
             // 
             // toolStripSeparator3
@@ -587,7 +590,7 @@
             // 
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(59, 28);
+            this.toolStripButton6.Size = new System.Drawing.Size(59, 19);
             this.toolStripButton6.Text = "日常损耗";
             // 
             // 客房BindingSource
