@@ -217,4 +217,22 @@
   <data name="武汉市天然气价默认值" xml:space="preserve">
     <value>2.53</value>
   </data>
+  <data name="客房出租历史24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\客房出租历史24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="客房出租历史48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\客房出租历史48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="收租48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\收租48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="收租明细48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\收租明细48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="收租24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\收租24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="收租明细24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\收租明细24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

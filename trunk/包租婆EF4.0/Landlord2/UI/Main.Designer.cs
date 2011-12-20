@@ -59,8 +59,8 @@
             this.客房出租ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.客房退租ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.客房续租ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.出租历史记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.出租历史记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收租明细记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.装修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.装修分类ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -307,76 +307,76 @@
             // 客房收租ToolStripMenuItem
             // 
             this.客房收租ToolStripMenuItem.Name = "客房收租ToolStripMenuItem";
-            this.客房收租ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.客房收租ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.客房收租ToolStripMenuItem.Text = "客房收租";
             // 
             // 日常损耗ToolStripMenuItem
             // 
             this.日常损耗ToolStripMenuItem.Name = "日常损耗ToolStripMenuItem";
-            this.日常损耗ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.日常损耗ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.日常损耗ToolStripMenuItem.Text = "日常损耗";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(143, 6);
             // 
             // 新增客房ToolStripMenuItem
             // 
             this.新增客房ToolStripMenuItem.Name = "新增客房ToolStripMenuItem";
-            this.新增客房ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.新增客房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.新增客房ToolStripMenuItem.Text = "新增客房";
             // 
             // 删除客房ToolStripMenuItem
             // 
             this.删除客房ToolStripMenuItem.Name = "删除客房ToolStripMenuItem";
-            this.删除客房ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除客房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.删除客房ToolStripMenuItem.Text = "删除客房";
             // 
             // 编辑客房ToolStripMenuItem
             // 
             this.编辑客房ToolStripMenuItem.Name = "编辑客房ToolStripMenuItem";
-            this.编辑客房ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.编辑客房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.编辑客房ToolStripMenuItem.Text = "编辑客房";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(143, 6);
             // 
             // 客房出租ToolStripMenuItem
             // 
             this.客房出租ToolStripMenuItem.Name = "客房出租ToolStripMenuItem";
-            this.客房出租ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.客房出租ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.客房出租ToolStripMenuItem.Text = "客房出租";
             // 
             // 客房退租ToolStripMenuItem
             // 
             this.客房退租ToolStripMenuItem.Name = "客房退租ToolStripMenuItem";
-            this.客房退租ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.客房退租ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.客房退租ToolStripMenuItem.Text = "客房退租";
             // 
             // 客房续租ToolStripMenuItem
             // 
             this.客房续租ToolStripMenuItem.Name = "客房续租ToolStripMenuItem";
-            this.客房续租ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.客房续租ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.客房续租ToolStripMenuItem.Text = "客房续租";
-            // 
-            // 出租历史记录ToolStripMenuItem
-            // 
-            this.出租历史记录ToolStripMenuItem.Name = "出租历史记录ToolStripMenuItem";
-            this.出租历史记录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.出租历史记录ToolStripMenuItem.Text = "出租历史记录";
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(143, 6);
+            // 
+            // 出租历史记录ToolStripMenuItem
+            // 
+            this.出租历史记录ToolStripMenuItem.Name = "出租历史记录ToolStripMenuItem";
+            this.出租历史记录ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.出租历史记录ToolStripMenuItem.Text = "出租历史记录";
             // 
             // 收租明细记录ToolStripMenuItem
             // 
             this.收租明细记录ToolStripMenuItem.Name = "收租明细记录ToolStripMenuItem";
-            this.收租明细记录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.收租明细记录ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.收租明细记录ToolStripMenuItem.Text = "收租明细记录";
             // 
             // 装修ToolStripMenuItem
@@ -922,7 +922,7 @@
             // 
             // kfBtnRentHistory
             // 
-            this.kfBtnRentHistory.Image = global::Landlord2.Properties.Resources.info;
+            this.kfBtnRentHistory.Image = global::Landlord2.Properties.Resources.客房出租历史48;
             this.kfBtnRentHistory.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.kfBtnRentHistory.Name = "kfBtnRentHistory";
             this.kfBtnRentHistory.Size = new System.Drawing.Size(59, 67);
@@ -938,7 +938,7 @@
             // 
             // kfBtnCollectRent
             // 
-            this.kfBtnCollectRent.Image = global::Landlord2.Properties.Resources.info;
+            this.kfBtnCollectRent.Image = global::Landlord2.Properties.Resources.收租48;
             this.kfBtnCollectRent.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.kfBtnCollectRent.Name = "kfBtnCollectRent";
             this.kfBtnCollectRent.Size = new System.Drawing.Size(59, 67);
@@ -949,7 +949,7 @@
             // 
             // kfBtnCollectRentDetail
             // 
-            this.kfBtnCollectRentDetail.Image = global::Landlord2.Properties.Resources.info;
+            this.kfBtnCollectRentDetail.Image = global::Landlord2.Properties.Resources.收租明细48;
             this.kfBtnCollectRentDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.kfBtnCollectRentDetail.Name = "kfBtnCollectRentDetail";
             this.kfBtnCollectRentDetail.Size = new System.Drawing.Size(59, 67);
