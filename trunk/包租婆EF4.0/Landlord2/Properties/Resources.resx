@@ -235,4 +235,13 @@
   <data name="收租明细24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\收租明细24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="add_16_hot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add_16_hot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete_16_hot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete_16_hot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_16_hot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit_16_hot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
