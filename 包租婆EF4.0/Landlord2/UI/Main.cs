@@ -595,6 +595,23 @@ namespace Landlord2
                 collectRent.ShowDialog(this);
             }
         }
+
+        private void 装修分类_Click(object sender, EventArgs e)
+        {
+            //装修分类
+            using (装修分类Form decorate = new 装修分类Form())
+            {
+                decorate.ShowDialog(this);
+            }
+        }
+        private void 装修明细_Click(object sender, EventArgs e)
+        {
+            //装修明细
+            using (装修明细Form deForm = new 装修明细Form())
+            {
+                deForm.ShowDialog(this);
+            }
+        }
         #endregion
 
 

@@ -227,6 +227,18 @@
     <Compile Include="UI\源房缴费明细Form.Designer.cs">
       <DependentUpon>源房缴费明细Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\装修分类Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\装修分类Form.Designer.cs">
+      <DependentUpon>装修分类Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\装修明细Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\装修明细Form.Designer.cs">
+      <DependentUpon>装修明细Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\阶梯水价Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -301,6 +313,12 @@
     <EmbeddedResource Include="UI\源房缴费明细Form.resx">
       <DependentUpon>源房缴费明细Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\装修分类Form.resx">
+      <DependentUpon>装修分类Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\装修明细Form.resx">
+      <DependentUpon>装修明细Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\阶梯水价Form.resx">
       <DependentUpon>阶梯水价Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -324,6 +342,8 @@
     <None Include="Properties\DataSources\Landlord2.Data.源房.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.源房涨租协定.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.源房缴费明细.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.装修分类.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.装修明细.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -345,6 +365,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Readme.txt" />
+    <None Include="Resources\add_16_hot.png" />
+    <None Include="Resources\delete_16_hot.png" />
+    <None Include="Resources\edit_16_hot.png" />
     <Content Include="Resources\Filter.png" />
     <Content Include="Resources\idea_16.png" />
     <Content Include="Resources\info.png" />

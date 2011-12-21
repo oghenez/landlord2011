@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -39,6 +39,8 @@
             this.数据备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据还原ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据初始化ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+            this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.源房ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.源房缴费ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.水电气核查ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,6 +81,7 @@
             this.电子地图ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.网上银行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.生活助手ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.租赁网站ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.使用手册ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.注册产品ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -189,7 +192,9 @@
             this.toolStripSeparator1,
             this.数据备份ToolStripMenuItem,
             this.数据还原ToolStripMenuItem,
-            this.数据初始化ToolStripMenuItem});
+            this.数据初始化ToolStripMenuItem,
+            this.toolStripSeparator12,
+            this.退出ToolStripMenuItem});
             this.系统ToolStripMenuItem.Name = "系统ToolStripMenuItem";
             this.系统ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.系统ToolStripMenuItem.Text = "系统";
@@ -222,6 +227,17 @@
             this.数据初始化ToolStripMenuItem.Name = "数据初始化ToolStripMenuItem";
             this.数据初始化ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.数据初始化ToolStripMenuItem.Text = "数据初始化";
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(131, 6);
+            // 
+            // 退出ToolStripMenuItem
+            // 
+            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.退出ToolStripMenuItem.Text = "退出";
             // 
             // 源房ToolStripMenuItem
             // 
@@ -391,14 +407,16 @@
             // 装修分类ToolStripMenuItem
             // 
             this.装修分类ToolStripMenuItem.Name = "装修分类ToolStripMenuItem";
-            this.装修分类ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.装修分类ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.装修分类ToolStripMenuItem.Text = "装修分类";
+            this.装修分类ToolStripMenuItem.Click += new System.EventHandler(this.装修分类_Click);
             // 
             // 装修明细ToolStripMenuItem
             // 
             this.装修明细ToolStripMenuItem.Name = "装修明细ToolStripMenuItem";
-            this.装修明细ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.装修明细ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.装修明细ToolStripMenuItem.Text = "装修明细";
+            this.装修明细ToolStripMenuItem.Click += new System.EventHandler(this.装修明细_Click);
             // 
             // 提醒ToolStripMenuItem
             // 
@@ -468,7 +486,8 @@
             this.计算器ToolStripMenuItem,
             this.电子地图ToolStripMenuItem,
             this.网上银行ToolStripMenuItem,
-            this.生活助手ToolStripMenuItem});
+            this.生活助手ToolStripMenuItem,
+            this.租赁网站ToolStripMenuItem});
             this.辅助工具ToolStripMenuItem.Name = "辅助工具ToolStripMenuItem";
             this.辅助工具ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.辅助工具ToolStripMenuItem.Text = "辅助工具";
@@ -496,6 +515,12 @@
             this.生活助手ToolStripMenuItem.Name = "生活助手ToolStripMenuItem";
             this.生活助手ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.生活助手ToolStripMenuItem.Text = "生活助手";
+            // 
+            // 租赁网站ToolStripMenuItem
+            // 
+            this.租赁网站ToolStripMenuItem.Name = "租赁网站ToolStripMenuItem";
+            this.租赁网站ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.租赁网站ToolStripMenuItem.Text = "租赁网站";
             // 
             // 帮助ToolStripMenuItem
             // 
@@ -614,11 +639,11 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.ImageIndex = 7;
-            treeNode1.Name = "节点0";
-            treeNode1.Text = "加载信息，请稍候．．．";
+            treeNode2.ImageIndex = 7;
+            treeNode2.Name = "节点0";
+            treeNode2.Text = "加载信息，请稍候．．．";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.treeView1.SelectedImageIndex = 7;
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.ShowRootLines = false;
@@ -1143,6 +1168,9 @@
         private System.Windows.Forms.ToolStripMenuItem 检查更新ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 用户反馈ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 租赁网站ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
+        private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
     }
 }
 

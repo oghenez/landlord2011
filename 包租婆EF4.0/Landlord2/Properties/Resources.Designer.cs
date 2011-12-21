@@ -60,9 +60,30 @@ namespace Landlord2.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap add_16_hot {
+            get {
+                object obj = ResourceManager.GetObject("add_16_hot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap attach_16_dis {
             get {
                 object obj = ResourceManager.GetObject("attach_16_dis", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap delete_16_hot {
+            get {
+                object obj = ResourceManager.GetObject("delete_16_hot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap edit_16_hot {
+            get {
+                object obj = ResourceManager.GetObject("edit_16_hot", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
