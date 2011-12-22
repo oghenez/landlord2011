@@ -242,6 +242,7 @@
             // kryptonNumericUpDown1
             // 
             this.kryptonNumericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.装修明细BindingSource, "数量", true));
+            this.kryptonNumericUpDown1.DecimalPlaces = 1;
             this.kryptonNumericUpDown1.Location = new System.Drawing.Point(62, 90);
             this.kryptonNumericUpDown1.Maximum = new decimal(new int[] {
             1000000,
@@ -251,6 +252,7 @@
             this.kryptonNumericUpDown1.Name = "kryptonNumericUpDown1";
             this.kryptonNumericUpDown1.Size = new System.Drawing.Size(94, 22);
             this.kryptonNumericUpDown1.TabIndex = 6;
+            this.kryptonNumericUpDown1.ValueChanged += new System.EventHandler(this.kryptonNumericUpDown1_ValueChanged);
             // 
             // kryptonTextBox3
             // 
@@ -263,6 +265,7 @@
             // kryptonNumericUpDown2
             // 
             this.kryptonNumericUpDown2.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.装修明细BindingSource, "单价", true));
+            this.kryptonNumericUpDown2.DecimalPlaces = 2;
             this.kryptonNumericUpDown2.Location = new System.Drawing.Point(416, 90);
             this.kryptonNumericUpDown2.Maximum = new decimal(new int[] {
             1000000,
@@ -272,6 +275,7 @@
             this.kryptonNumericUpDown2.Name = "kryptonNumericUpDown2";
             this.kryptonNumericUpDown2.Size = new System.Drawing.Size(100, 22);
             this.kryptonNumericUpDown2.TabIndex = 8;
+            this.kryptonNumericUpDown2.ValueChanged += new System.EventHandler(this.kryptonNumericUpDown1_ValueChanged);
             // 
             // kryptonTextBox4
             // 
