@@ -14,7 +14,7 @@ namespace Landlord2
         [STAThread]
         static void Main()
         {
-            //MessageBox.Show("客房收租，按天收尾期的选择");
+            MessageBox.Show("装修分类主键无法编辑问题");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

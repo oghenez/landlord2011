@@ -31,7 +31,7 @@ namespace Landlord2.UI
         }
         public void Refresh装修分类()
         {
-            装修分类BindingSource.DataSource = context.装修分类.Execute(System.Data.Objects.MergeOption.NoTracking);
+            装修分类BindingSource.DataSource = context.装修分类.Execute(System.Data.Objects.MergeOption.AppendOnly);
         }
         private void 装修明细详情Form_Load(object sender, EventArgs e)
         {
@@ -50,7 +50,7 @@ namespace Landlord2.UI
         private void btn装修分类_Click(object sender, EventArgs e)
         {
             //装修分类
-            using (装修分类Form decorate = new 装修分类Form(context))
+            using (装修分类Form decorate = new 装修分类Form())
             {
                 DialogResult result = decorate.ShowDialog(this);
                 if (result == System.Windows.Forms.DialogResult.OK)
@@ -153,5 +153,21 @@ namespace Landlord2.UI
                 context.装修明细.DeleteObject(entity);
             }
         }
+
+        /// <summary>
+        /// 计算小计金额
+        /// </summary>
+        private void Caculate()
+        {
+            decimal sum = kryptonNumericUpDown1.Value * kryptonNumericUpDown2.Value;
+            lbl小计.Text = decimal.Round(sum, 2).ToString("F2");
+        }
+
+        private void kryptonNumericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            Caculate();
+        }
+
+
     }
 }
