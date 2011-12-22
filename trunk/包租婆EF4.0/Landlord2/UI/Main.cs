@@ -596,14 +596,6 @@ namespace Landlord2
             }
         }
 
-        private void 装修分类_Click(object sender, EventArgs e)
-        {
-            //装修分类
-            using (装修分类Form decorate = new 装修分类Form())
-            {
-                decorate.ShowDialog(this);
-            }
-        }
         private void 装修明细_Click(object sender, EventArgs e)
         {
             //装修明细
