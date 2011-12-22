@@ -11,6 +11,7 @@ namespace Landlord2.Data
         public 装修明细()
         {
             this.ID = Guid.NewGuid();
+            this.日期 = DateTime.Today;
         }
     }
 }

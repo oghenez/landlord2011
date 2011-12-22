@@ -47,6 +47,9 @@
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.源房IDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.源房BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.装修分类DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.项目名称DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.规格DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.数量DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,10 +57,6 @@
             this.单价DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.购买地点DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.备注DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.源房IDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.装修分类DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.源房DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.buttonSpecHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.kryptonNumericUpDown1 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
@@ -87,6 +86,7 @@
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup1)).BeginInit();
             this.kryptonHeaderGroup1.Panel.SuspendLayout();
             this.kryptonHeaderGroup1.SuspendLayout();
@@ -99,6 +99,8 @@
             // 装修明细BindingSource
             // 
             this.装修明细BindingSource.DataSource = typeof(Landlord2.Data.装修明细);
+            this.装修明细BindingSource.DataSourceChanged += new System.EventHandler(this.装修明细BindingSource_DataSourceChanged);
+            this.装修明细BindingSource.CurrentChanged += new System.EventHandler(this.装修明细BindingSource_CurrentChanged);
             // 
             // 装修明细BindingNavigator
             // 
@@ -217,6 +219,7 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(51, 22);
             this.bindingNavigatorAddNewItem.Text = "新增";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // bindingNavigatorEditItem
             // 
@@ -225,6 +228,7 @@
             this.bindingNavigatorEditItem.Name = "bindingNavigatorEditItem";
             this.bindingNavigatorEditItem.Size = new System.Drawing.Size(51, 22);
             this.bindingNavigatorEditItem.Text = "编辑";
+            this.bindingNavigatorEditItem.Click += new System.EventHandler(this.bindingNavigatorEditItem_Click);
             // 
             // toolStripContainer1
             // 
@@ -256,17 +260,15 @@
             this.kryptonDataGridView1.AutoGenerateColumns = false;
             this.kryptonDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.日期DataGridViewTextBoxColumn,
+            this.源房IDDataGridViewTextBoxColumn,
+            this.装修分类DataGridViewTextBoxColumn,
             this.项目名称DataGridViewTextBoxColumn,
             this.规格DataGridViewTextBoxColumn,
             this.数量DataGridViewTextBoxColumn,
             this.单位DataGridViewTextBoxColumn,
             this.单价DataGridViewTextBoxColumn,
             this.购买地点DataGridViewTextBoxColumn,
-            this.备注DataGridViewTextBoxColumn,
-            this.源房IDDataGridViewTextBoxColumn,
-            this.装修分类DataGridViewTextBoxColumn,
-            this.iDDataGridViewTextBoxColumn,
-            this.源房DataGridViewTextBoxColumn});
+            this.备注DataGridViewTextBoxColumn});
             this.kryptonDataGridView1.DataSource = this.装修明细BindingSource;
             this.kryptonDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonDataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -275,8 +277,10 @@
             this.kryptonDataGridView1.ReadOnly = true;
             this.kryptonDataGridView1.RowHeadersWidth = 24;
             this.kryptonDataGridView1.RowTemplate.Height = 23;
+            this.kryptonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.kryptonDataGridView1.Size = new System.Drawing.Size(764, 337);
             this.kryptonDataGridView1.TabIndex = 0;
+            this.kryptonDataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.kryptonDataGridView1_CellMouseDoubleClick);
             // 
             // 日期DataGridViewTextBoxColumn
             // 
@@ -284,6 +288,31 @@
             this.日期DataGridViewTextBoxColumn.HeaderText = "日期";
             this.日期DataGridViewTextBoxColumn.Name = "日期DataGridViewTextBoxColumn";
             this.日期DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 源房IDDataGridViewTextBoxColumn
+            // 
+            this.源房IDDataGridViewTextBoxColumn.DataPropertyName = "源房ID";
+            this.源房IDDataGridViewTextBoxColumn.DataSource = this.源房BindingSource;
+            this.源房IDDataGridViewTextBoxColumn.DisplayMember = "房名";
+            this.源房IDDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.源房IDDataGridViewTextBoxColumn.HeaderText = "源房";
+            this.源房IDDataGridViewTextBoxColumn.Name = "源房IDDataGridViewTextBoxColumn";
+            this.源房IDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.源房IDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.源房IDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.源房IDDataGridViewTextBoxColumn.ValueMember = "ID";
+            this.源房IDDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // 源房BindingSource
+            // 
+            this.源房BindingSource.DataSource = typeof(Landlord2.Data.源房);
+            // 
+            // 装修分类DataGridViewTextBoxColumn
+            // 
+            this.装修分类DataGridViewTextBoxColumn.DataPropertyName = "装修分类";
+            this.装修分类DataGridViewTextBoxColumn.HeaderText = "装修分类";
+            this.装修分类DataGridViewTextBoxColumn.Name = "装修分类DataGridViewTextBoxColumn";
+            this.装修分类DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // 项目名称DataGridViewTextBoxColumn
             // 
@@ -334,34 +363,6 @@
             this.备注DataGridViewTextBoxColumn.Name = "备注DataGridViewTextBoxColumn";
             this.备注DataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // 源房IDDataGridViewTextBoxColumn
-            // 
-            this.源房IDDataGridViewTextBoxColumn.DataPropertyName = "源房ID";
-            this.源房IDDataGridViewTextBoxColumn.HeaderText = "源房ID";
-            this.源房IDDataGridViewTextBoxColumn.Name = "源房IDDataGridViewTextBoxColumn";
-            this.源房IDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 装修分类DataGridViewTextBoxColumn
-            // 
-            this.装修分类DataGridViewTextBoxColumn.DataPropertyName = "装修分类";
-            this.装修分类DataGridViewTextBoxColumn.HeaderText = "装修分类";
-            this.装修分类DataGridViewTextBoxColumn.Name = "装修分类DataGridViewTextBoxColumn";
-            this.装修分类DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 源房DataGridViewTextBoxColumn
-            // 
-            this.源房DataGridViewTextBoxColumn.DataPropertyName = "源房";
-            this.源房DataGridViewTextBoxColumn.HeaderText = "源房";
-            this.源房DataGridViewTextBoxColumn.Name = "源房DataGridViewTextBoxColumn";
-            this.源房DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // kryptonHeaderGroup1
             // 
             this.kryptonHeaderGroup1.AutoSize = true;
@@ -395,8 +396,8 @@
             this.kryptonHeaderGroup1.Panel.Padding = new System.Windows.Forms.Padding(5);
             this.kryptonHeaderGroup1.Size = new System.Drawing.Size(764, 97);
             this.kryptonHeaderGroup1.StateCommon.HeaderPrimary.Content.LongText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kryptonHeaderGroup1.StateCommon.HeaderSecondary.Content.LongText.Color1 = System.Drawing.Color.Red;
-            this.kryptonHeaderGroup1.StateCommon.HeaderSecondary.Content.LongText.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonHeaderGroup1.StateCommon.HeaderSecondary.Content.LongText.Color1 = System.Drawing.Color.Yellow;
+            this.kryptonHeaderGroup1.StateCommon.HeaderSecondary.Content.LongText.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.kryptonHeaderGroup1.StateCommon.HeaderSecondary.Content.LongText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kryptonHeaderGroup1.TabIndex = 0;
             this.kryptonHeaderGroup1.ValuesPrimary.Description = "无过滤条件";
@@ -634,6 +635,7 @@
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).EndInit();
             this.kryptonHeaderGroup1.Panel.ResumeLayout(false);
             this.kryptonHeaderGroup1.Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup1)).EndInit();
@@ -677,18 +679,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 日期DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 项目名称DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 规格DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 数量DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 单位DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 单价DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 购买地点DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 备注DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 源房IDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 装修分类DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 源房DataGridViewTextBoxColumn;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox2;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox1;
@@ -698,5 +688,16 @@
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 日期DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn 源房IDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource 源房BindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 装修分类DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 项目名称DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 规格DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 数量DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 单位DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 单价DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 购买地点DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 备注DataGridViewTextBoxColumn;
     }
 }

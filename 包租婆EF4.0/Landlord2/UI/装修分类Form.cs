@@ -8,14 +8,16 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.Objects;
 using ComponentFactory.Krypton.Toolkit;
+using Landlord2.Data;
 
 namespace Landlord2.UI
 {
     public partial class 装修分类Form : FormBase
     {
-        public 装修分类Form()
+        public 装修分类Form(MyContext context)
         {
             InitializeComponent();
+            this.context = context;//覆盖掉基类的context，这样修改或新增后不用刷新父窗体
         }
 
         private void 装修分类Form_Load(object sender, EventArgs e)
