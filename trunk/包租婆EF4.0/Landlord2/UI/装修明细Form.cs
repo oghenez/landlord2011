@@ -28,7 +28,7 @@ namespace Landlord2.UI
         }
         public void RefreshAndLocate装修明细(Guid? entityID)
         {
-            blv =  context.装修明细.Execute(System.Data.Objects.MergeOption.AppendOnly).ToBindingListView();
+            blv =  context.装修明细.Execute(System.Data.Objects.MergeOption.OverwriteChanges).ToBindingListView();//这里用NoTracking那么无法删除（因为context未保存对应记录）；用AppendOnly那么当编辑后无法刷新
             装修明细BindingSource.DataSource = blv;
             FilterData();
 

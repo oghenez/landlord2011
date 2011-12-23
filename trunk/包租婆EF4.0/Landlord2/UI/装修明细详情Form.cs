@@ -26,12 +26,12 @@ namespace Landlord2.UI
         public 装修明细详情Form( 装修明细 entity)//编辑操作
         {
             InitializeComponent();
-            this.entity = entity;
+            this.entity = context.装修明细.FirstOrDefault(m => m.ID == entity.ID);            
             isNew = false;
         }
         public void Refresh装修分类()
         {
-            装修分类BindingSource.DataSource = context.装修分类.Execute(System.Data.Objects.MergeOption.AppendOnly);
+            装修分类BindingSource.DataSource = context.装修分类.Execute(System.Data.Objects.MergeOption.NoTracking);
         }
         private void 装修明细详情Form_Load(object sender, EventArgs e)
         {

@@ -4661,10 +4661,12 @@ namespace Landlord2.Data
         /// 创建新的 装修分类 对象。
         /// </summary>
         /// <param name="类别">类别 属性的初始值。</param>
-        public static 装修分类 Create装修分类(global::System.String 类别)
+        /// <param name="id">ID 属性的初始值。</param>
+        public static 装修分类 Create装修分类(global::System.String 类别, global::System.Guid id)
         {
             装修分类 装修分类 = new 装修分类();
             装修分类.类别 = 类别;
+            装修分类.ID = id;
             return 装修分类;
         }
 
@@ -4674,7 +4676,7 @@ namespace Landlord2.Data
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String 类别
         {
@@ -4684,19 +4686,43 @@ namespace Landlord2.Data
             }
             set
             {
-                if (_类别 != value)
-                {
-                    On类别Changing(value);
-                    ReportPropertyChanging("类别");
-                    _类别 = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("类别");
-                    On类别Changed();
-                }
+                On类别Changing(value);
+                ReportPropertyChanging("类别");
+                _类别 = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("类别");
+                On类别Changed();
             }
         }
         private global::System.String _类别;
         partial void On类别Changing(global::System.String value);
         partial void On类别Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Guid _ID;
+        partial void OnIDChanging(global::System.Guid value);
+        partial void OnIDChanged();
 
         #endregion
     
