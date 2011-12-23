@@ -105,6 +105,7 @@
     <Compile Include="BindingListView\ProvidedViewPropertyDescriptor.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Data\装修分类.cs" />
     <Compile Include="Data\MyContext.cs" />
     <Compile Include="Data\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
