@@ -23,8 +23,65 @@ namespace Landlord2.UI
         /// 根据条件过滤
         /// </summary>
         private void FilterData()
-        { 
+        {
+            List<Predicate<装修明细>> predicateList = new List<Predicate<装修明细>>();
+
+            if(cmbFilter源房.SelectedItem!=null && !string.IsNullOrEmpty(cmbFilter源房.SelectedItem.ToString()))
+                predicateList.Add(m => m.源房.房名 == cmbFilter源房.SelectedItem.ToString());
             
+            if (cmbFilter装修分类.SelectedItem!=null && !string.IsNullOrEmpty(cmbFilter装修分类.SelectedItem.ToString()))
+                predicateList.Add(m => m.装修分类 == cmbFilter装修分类.SelectedItem.ToString());
+
+            if (!string.IsNullOrEmpty(tbFilter规格.Text))
+                predicateList.Add(m => m.规格!=null && m.规格.Contains(tbFilter规格.Text.Trim()));
+
+            if (!string.IsNullOrEmpty(tbFilter地点.Text))
+                predicateList.Add(m => m.购买地点!=null && m.购买地点.Contains(tbFilter地点.Text.Trim()));
+
+            if (dtpFilterBegin.Checked)
+                predicateList.Add(m => m.日期.Date >= dtpFilterBegin.Value.Date);
+
+            if (dtpFilterEnd.Checked)
+                predicateList.Add(m => m.日期.Date <= dtpFilterEnd.Value.Date);
+
+            if (nudFilterBegin.Value > 0)
+                predicateList.Add(m => m.单价 * m.数量 >= nudFilterBegin.Value);
+
+            if (nudFilterEnd.Value < 999999)
+                predicateList.Add(m => m.单价 * m.数量 <= nudFilterEnd.Value);
+
+            //将多个条件合并成最终的一个条件：delegate bool Predicate<in T>
+            Predicate<装修明细> filter = (m) =>
+            {
+                foreach (Predicate<装修明细> predicate in predicateList)
+                {
+                    if (!predicate(m))
+                        return false;
+                }
+                return true;
+            };
+
+            blv.ApplyFilter(filter);
+        }
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            FilterData();
+            CaculateSumMoney();
+        }
+
+        private void btnClearFilter_Click(object sender, EventArgs e)
+        {
+            cmbFilter源房.SelectedIndex = 0;
+            cmbFilter装修分类.SelectedIndex = 0;
+            tbFilter规格.Text = "";
+            tbFilter地点.Text = "";
+            dtpFilterBegin.Checked = false;
+            dtpFilterEnd.Checked = false;
+            nudFilterBegin.Value = 0;
+            nudFilterEnd.Value = 999999;
+            //FilterData(); 
+            blv.RemoveFilter();
+            CaculateSumMoney();
         }
         public void RefreshAndLocate装修明细(Guid? entityID)
         {
@@ -37,14 +94,23 @@ namespace Landlord2.UI
         }
         private void 装修明细Form_Load(object sender, EventArgs e)
         {
-            源房BindingSource.DataSource = 源房.GetYF(context).Execute(System.Data.Objects.MergeOption.NoTracking);
+            源房[] yuanFang = 源房.GetYF(context).Execute(System.Data.Objects.MergeOption.NoTracking).ToArray();
+            源房BindingSource.DataSource = yuanFang;
             RefreshAndLocate装修明细(null);
+
+            cmbFilter源房.Items.Add("");//先加一个空行
+            cmbFilter源房.Items.AddRange(yuanFang.Select(m => m.房名).ToArray());
+
+            cmbFilter装修分类.Items.Add("");
+            cmbFilter装修分类.Items.AddRange(context.装修分类.Execute(System.Data.Objects.MergeOption.NoTracking).Select(m => m.类别).ToArray());
+                      
         }
 
         private void 装修明细BindingSource_CurrentChanged(object sender, EventArgs e)
         {
             bindingNavigatorEditItem.Enabled = 装修明细BindingSource.Current != null;
             bindingNavigatorDeleteItem.Enabled = 装修明细BindingSource.Current != null;
+            CaculateSumMoney();
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
@@ -59,6 +125,7 @@ namespace Landlord2.UI
         {
             bindingNavigatorEditItem.Enabled = 装修明细BindingSource.Current != null;
             bindingNavigatorDeleteItem.Enabled = 装修明细BindingSource.Current != null;
+            CaculateSumMoney();
         }
 
         private void bindingNavigatorEditItem_Click(object sender, EventArgs e)
@@ -105,5 +172,24 @@ namespace Landlord2.UI
                 }
             }
         }
+
+        private void CaculateSumMoney()
+        {
+            if (装修明细BindingSource.DataSource != null)
+            {
+                decimal total = 0.00M;
+                foreach (DataGridViewRow row in kryptonDataGridView1.Rows)
+                {
+                    object obj = row.Cells["数量DataGridViewTextBoxColumn"].Value;
+                    object obj2 = row.Cells["单价DataGridViewTextBoxColumn"].Value;
+                    total += Convert.ToDecimal(obj) * Convert.ToDecimal(obj2);
+                }
+                kryptonHeaderGroup1.ValuesSecondary.Description = string.Format("{0} 元", decimal.Round(total,2));
+            }
+            else
+                kryptonHeaderGroup1.ValuesSecondary.Description = "0.00 元";
+        }
+
+
     }
 }

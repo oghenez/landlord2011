@@ -33,7 +33,6 @@
             this.装修明细BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.装修明细BindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -43,6 +42,7 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorEditItem = new System.Windows.Forms.ToolStripButton();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
@@ -59,23 +59,24 @@
             this.备注DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.buttonSpecHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
-            this.kryptonNumericUpDown1 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.kryptonComboBox2 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.kryptonTextBox2 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.kryptonTextBox1 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.nudFilterBegin = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
+            this.cmbFilter装修分类 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.btnFilter = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.tbFilter地点 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.tbFilter规格 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.kryptonDateTimePicker1 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
+            this.dtpFilterBegin = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.kryptonComboBox1 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.cmbFilter源房 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.kryptonDateTimePicker2 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
+            this.dtpFilterEnd = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.kryptonNumericUpDown2 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
+            this.nudFilterEnd = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnClearFilter = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.装修明细BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.装修明细BindingNavigator)).BeginInit();
             this.装修明细BindingNavigator.SuspendLayout();
@@ -87,8 +88,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup1)).BeginInit();
             this.kryptonHeaderGroup1.Panel.SuspendLayout();
             this.kryptonHeaderGroup1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFilter装修分类)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFilter源房)).BeginInit();
             this.SuspendLayout();
             // 
             // 装修明细BindingSource
@@ -126,7 +127,7 @@
             this.装修明细BindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.装修明细BindingNavigator.Name = "装修明细BindingNavigator";
             this.装修明细BindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.装修明细BindingNavigator.Size = new System.Drawing.Size(764, 25);
+            this.装修明细BindingNavigator.Size = new System.Drawing.Size(783, 25);
             this.装修明细BindingNavigator.Stretch = true;
             this.装修明细BindingNavigator.TabIndex = 2;
             this.装修明细BindingNavigator.Text = "bindingNavigator1";
@@ -137,15 +138,6 @@
             this.bindingNavigatorCountItem.Size = new System.Drawing.Size(29, 22);
             this.bindingNavigatorCountItem.Text = "/ {0}";
             this.bindingNavigatorCountItem.ToolTipText = "总项数";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.Image = global::Landlord2.Properties.Resources.delete_16_hot;
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(51, 22);
-            this.bindingNavigatorDeleteItem.Text = "删除";
-            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -217,6 +209,15 @@
             this.bindingNavigatorAddNewItem.Text = "新增";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.Image = global::Landlord2.Properties.Resources.delete_16_hot;
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(51, 22);
+            this.bindingNavigatorDeleteItem.Text = "删除";
+            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
+            // 
             // bindingNavigatorEditItem
             // 
             this.bindingNavigatorEditItem.Image = global::Landlord2.Properties.Resources.edit_16_hot;
@@ -234,13 +235,13 @@
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.kryptonDataGridView1);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.kryptonHeaderGroup1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(764, 485);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(783, 485);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.RightToolStripPanelVisible = false;
-            this.toolStripContainer1.Size = new System.Drawing.Size(764, 510);
+            this.toolStripContainer1.Size = new System.Drawing.Size(783, 510);
             this.toolStripContainer1.TabIndex = 11;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -274,7 +275,7 @@
             this.kryptonDataGridView1.RowHeadersWidth = 24;
             this.kryptonDataGridView1.RowTemplate.Height = 23;
             this.kryptonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.kryptonDataGridView1.Size = new System.Drawing.Size(764, 388);
+            this.kryptonDataGridView1.Size = new System.Drawing.Size(783, 386);
             this.kryptonDataGridView1.TabIndex = 0;
             this.kryptonDataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.kryptonDataGridView1_CellMouseDoubleClick);
             // 
@@ -367,30 +368,31 @@
             this.kryptonHeaderGroup1.CollapseTarget = ComponentFactory.Krypton.Toolkit.HeaderGroupCollapsedTarget.CollapsedToSecondary;
             this.kryptonHeaderGroup1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kryptonHeaderGroup1.HeaderVisiblePrimary = false;
-            this.kryptonHeaderGroup1.Location = new System.Drawing.Point(0, 388);
+            this.kryptonHeaderGroup1.Location = new System.Drawing.Point(0, 386);
             this.kryptonHeaderGroup1.Name = "kryptonHeaderGroup1";
             // 
             // kryptonHeaderGroup1.Panel
             // 
-            this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonNumericUpDown1);
-            this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonComboBox2);
-            this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonButton1);
-            this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonTextBox2);
-            this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonTextBox1);
+            this.kryptonHeaderGroup1.Panel.Controls.Add(this.nudFilterBegin);
+            this.kryptonHeaderGroup1.Panel.Controls.Add(this.cmbFilter装修分类);
+            this.kryptonHeaderGroup1.Panel.Controls.Add(this.btnClearFilter);
+            this.kryptonHeaderGroup1.Panel.Controls.Add(this.btnFilter);
+            this.kryptonHeaderGroup1.Panel.Controls.Add(this.tbFilter地点);
+            this.kryptonHeaderGroup1.Panel.Controls.Add(this.tbFilter规格);
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.label2);
-            this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonDateTimePicker1);
+            this.kryptonHeaderGroup1.Panel.Controls.Add(this.dtpFilterBegin);
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.label8);
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.label6);
-            this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonComboBox1);
+            this.kryptonHeaderGroup1.Panel.Controls.Add(this.cmbFilter源房);
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.label4);
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.label7);
-            this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonDateTimePicker2);
+            this.kryptonHeaderGroup1.Panel.Controls.Add(this.dtpFilterEnd);
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.label1);
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.label5);
-            this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonNumericUpDown2);
+            this.kryptonHeaderGroup1.Panel.Controls.Add(this.nudFilterEnd);
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.label3);
             this.kryptonHeaderGroup1.Panel.Padding = new System.Windows.Forms.Padding(5);
-            this.kryptonHeaderGroup1.Size = new System.Drawing.Size(764, 97);
+            this.kryptonHeaderGroup1.Size = new System.Drawing.Size(783, 99);
             this.kryptonHeaderGroup1.StateCommon.HeaderPrimary.Content.LongText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kryptonHeaderGroup1.StateCommon.HeaderSecondary.Content.LongText.Color1 = System.Drawing.Color.Yellow;
             this.kryptonHeaderGroup1.StateCommon.HeaderSecondary.Content.LongText.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
@@ -408,48 +410,50 @@
             this.buttonSpecHeaderGroup1.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.ArrowDown;
             this.buttonSpecHeaderGroup1.UniqueName = "6C057C3535974483B2874F123D341863";
             // 
-            // kryptonNumericUpDown1
+            // nudFilterBegin
             // 
-            this.kryptonNumericUpDown1.Location = new System.Drawing.Point(526, 39);
-            this.kryptonNumericUpDown1.Maximum = new decimal(new int[] {
+            this.nudFilterBegin.Location = new System.Drawing.Point(526, 39);
+            this.nudFilterBegin.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.kryptonNumericUpDown1.Name = "kryptonNumericUpDown1";
-            this.kryptonNumericUpDown1.Size = new System.Drawing.Size(65, 22);
-            this.kryptonNumericUpDown1.TabIndex = 3;
+            this.nudFilterBegin.Name = "nudFilterBegin";
+            this.nudFilterBegin.Size = new System.Drawing.Size(65, 22);
+            this.nudFilterBegin.TabIndex = 3;
             // 
-            // kryptonComboBox2
+            // cmbFilter装修分类
             // 
-            this.kryptonComboBox2.DropDownWidth = 121;
-            this.kryptonComboBox2.Location = new System.Drawing.Point(72, 40);
-            this.kryptonComboBox2.Name = "kryptonComboBox2";
-            this.kryptonComboBox2.Size = new System.Drawing.Size(136, 21);
-            this.kryptonComboBox2.TabIndex = 0;
+            this.cmbFilter装修分类.DropDownWidth = 121;
+            this.cmbFilter装修分类.Location = new System.Drawing.Point(72, 40);
+            this.cmbFilter装修分类.Name = "cmbFilter装修分类";
+            this.cmbFilter装修分类.Size = new System.Drawing.Size(136, 21);
+            this.cmbFilter装修分类.TabIndex = 0;
             // 
-            // kryptonButton1
+            // btnFilter
             // 
-            this.kryptonButton1.Location = new System.Drawing.Point(690, 16);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(62, 37);
-            this.kryptonButton1.TabIndex = 5;
-            this.kryptonButton1.Values.Image = global::Landlord2.Properties.Resources.Filter;
-            this.kryptonButton1.Values.Text = "筛选";
+            this.btnFilter.AutoSize = true;
+            this.btnFilter.Location = new System.Drawing.Point(704, 4);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(62, 30);
+            this.btnFilter.TabIndex = 5;
+            this.btnFilter.Values.Image = global::Landlord2.Properties.Resources.Filter;
+            this.btnFilter.Values.Text = "筛选";
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
-            // kryptonTextBox2
+            // tbFilter地点
             // 
-            this.kryptonTextBox2.Location = new System.Drawing.Point(278, 40);
-            this.kryptonTextBox2.Name = "kryptonTextBox2";
-            this.kryptonTextBox2.Size = new System.Drawing.Size(100, 20);
-            this.kryptonTextBox2.TabIndex = 4;
+            this.tbFilter地点.Location = new System.Drawing.Point(278, 40);
+            this.tbFilter地点.Name = "tbFilter地点";
+            this.tbFilter地点.Size = new System.Drawing.Size(100, 20);
+            this.tbFilter地点.TabIndex = 4;
             // 
-            // kryptonTextBox1
+            // tbFilter规格
             // 
-            this.kryptonTextBox1.Location = new System.Drawing.Point(278, 9);
-            this.kryptonTextBox1.Name = "kryptonTextBox1";
-            this.kryptonTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.kryptonTextBox1.TabIndex = 4;
+            this.tbFilter规格.Location = new System.Drawing.Point(278, 9);
+            this.tbFilter规格.Name = "tbFilter规格";
+            this.tbFilter规格.Size = new System.Drawing.Size(100, 20);
+            this.tbFilter规格.TabIndex = 4;
             // 
             // label2
             // 
@@ -461,15 +465,15 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "装修分类：";
             // 
-            // kryptonDateTimePicker1
+            // dtpFilterBegin
             // 
-            this.kryptonDateTimePicker1.Checked = false;
-            this.kryptonDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.kryptonDateTimePicker1.Location = new System.Drawing.Point(431, 9);
-            this.kryptonDateTimePicker1.Name = "kryptonDateTimePicker1";
-            this.kryptonDateTimePicker1.ShowCheckBox = true;
-            this.kryptonDateTimePicker1.Size = new System.Drawing.Size(115, 21);
-            this.kryptonDateTimePicker1.TabIndex = 2;
+            this.dtpFilterBegin.Checked = false;
+            this.dtpFilterBegin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFilterBegin.Location = new System.Drawing.Point(431, 9);
+            this.dtpFilterBegin.Name = "dtpFilterBegin";
+            this.dtpFilterBegin.ShowCheckBox = true;
+            this.dtpFilterBegin.Size = new System.Drawing.Size(115, 21);
+            this.dtpFilterBegin.TabIndex = 2;
             // 
             // label8
             // 
@@ -491,13 +495,13 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "～";
             // 
-            // kryptonComboBox1
+            // cmbFilter源房
             // 
-            this.kryptonComboBox1.DropDownWidth = 121;
-            this.kryptonComboBox1.Location = new System.Drawing.Point(72, 9);
-            this.kryptonComboBox1.Name = "kryptonComboBox1";
-            this.kryptonComboBox1.Size = new System.Drawing.Size(136, 21);
-            this.kryptonComboBox1.TabIndex = 0;
+            this.cmbFilter源房.DropDownWidth = 121;
+            this.cmbFilter源房.Location = new System.Drawing.Point(72, 9);
+            this.cmbFilter源房.Name = "cmbFilter源房";
+            this.cmbFilter源房.Size = new System.Drawing.Size(136, 21);
+            this.cmbFilter源房.TabIndex = 0;
             // 
             // label4
             // 
@@ -519,15 +523,15 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "规格：";
             // 
-            // kryptonDateTimePicker2
+            // dtpFilterEnd
             // 
-            this.kryptonDateTimePicker2.Checked = false;
-            this.kryptonDateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.kryptonDateTimePicker2.Location = new System.Drawing.Point(565, 9);
-            this.kryptonDateTimePicker2.Name = "kryptonDateTimePicker2";
-            this.kryptonDateTimePicker2.ShowCheckBox = true;
-            this.kryptonDateTimePicker2.Size = new System.Drawing.Size(115, 21);
-            this.kryptonDateTimePicker2.TabIndex = 2;
+            this.dtpFilterEnd.Checked = false;
+            this.dtpFilterEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFilterEnd.Location = new System.Drawing.Point(565, 9);
+            this.dtpFilterEnd.Name = "dtpFilterEnd";
+            this.dtpFilterEnd.ShowCheckBox = true;
+            this.dtpFilterEnd.Size = new System.Drawing.Size(115, 21);
+            this.dtpFilterEnd.TabIndex = 2;
             // 
             // label1
             // 
@@ -549,18 +553,18 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "款项金额(单价×数量)：";
             // 
-            // kryptonNumericUpDown2
+            // nudFilterEnd
             // 
-            this.kryptonNumericUpDown2.Location = new System.Drawing.Point(615, 39);
-            this.kryptonNumericUpDown2.Maximum = new decimal(new int[] {
+            this.nudFilterEnd.Location = new System.Drawing.Point(615, 39);
+            this.nudFilterEnd.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.kryptonNumericUpDown2.Name = "kryptonNumericUpDown2";
-            this.kryptonNumericUpDown2.Size = new System.Drawing.Size(65, 22);
-            this.kryptonNumericUpDown2.TabIndex = 3;
-            this.kryptonNumericUpDown2.Value = new decimal(new int[] {
+            this.nudFilterEnd.Name = "nudFilterEnd";
+            this.nudFilterEnd.Size = new System.Drawing.Size(65, 22);
+            this.nudFilterEnd.TabIndex = 3;
+            this.nudFilterEnd.Value = new decimal(new int[] {
             999999,
             0,
             0,
@@ -576,12 +580,22 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "日期：";
             // 
+            // btnClearFilter
+            // 
+            this.btnClearFilter.AutoSize = true;
+            this.btnClearFilter.Location = new System.Drawing.Point(704, 38);
+            this.btnClearFilter.Name = "btnClearFilter";
+            this.btnClearFilter.Size = new System.Drawing.Size(62, 25);
+            this.btnClearFilter.TabIndex = 5;
+            this.btnClearFilter.Values.Text = "清空筛选";
+            this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
+            // 
             // 装修明细Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(764, 510);
+            this.ClientSize = new System.Drawing.Size(783, 510);
             this.Controls.Add(this.toolStripContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.MaximizeBox = true;
@@ -604,8 +618,8 @@
             this.kryptonHeaderGroup1.Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup1)).EndInit();
             this.kryptonHeaderGroup1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFilter装修分类)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFilter源房)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -630,21 +644,21 @@
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kryptonDataGridView1;
         private ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup kryptonHeaderGroup1;
         private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup buttonSpecHeaderGroup1;
-        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox1;
-        private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker2;
-        private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker1;
-        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox2;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbFilter源房;
+        private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker dtpFilterEnd;
+        private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker dtpFilterBegin;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbFilter装修分类;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox2;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnFilter;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox tbFilter地点;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox tbFilter规格;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown2;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown1;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown nudFilterEnd;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown nudFilterBegin;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridViewTextBoxColumn 日期DataGridViewTextBoxColumn;
@@ -658,5 +672,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 单价DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 购买地点DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 备注DataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnClearFilter;
     }
 }
