@@ -242,7 +242,7 @@ namespace Landlord2.UI
                     object obj = row.Cells["缴费金额DataGridViewTextBoxColumn"].Value;
                     total += (decimal)obj;
                 }
-                labCountMoney.Text = string.Format("当前合计：{0} 元", total);
+                labCountMoney.Text = string.Format("当前合计：{0} 元", decimal.Round(total,2));
             }
             else
                 labCountMoney.Text = string.Empty;

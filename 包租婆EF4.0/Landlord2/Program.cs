@@ -14,7 +14,7 @@ namespace Landlord2
         [STAThread]
         static void Main()
         {
-            MessageBox.Show("装修明细过滤及合计");
+            //MessageBox.Show("装修明细过滤及合计");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

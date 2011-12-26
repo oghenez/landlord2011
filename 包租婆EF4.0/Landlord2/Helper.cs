@@ -201,7 +201,7 @@ namespace Landlord2
                 else
                     returnVal = (number - dic["k10"]) * dic["k1"];
             }
-            return returnVal;
+            return decimal.Round(returnVal,2);
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace Landlord2
         {
             decimal returnVal = 0.00M;
             returnVal = Convert.ToDecimal(value) * number;
-            return returnVal;
+            return decimal.Round(returnVal,2);
         }
     }
 
