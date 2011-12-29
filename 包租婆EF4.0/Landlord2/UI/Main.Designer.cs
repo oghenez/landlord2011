@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -50,6 +50,7 @@
             this.编辑源房ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.源房缴费明细ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.源房装修明细ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.客房ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.客房收租ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.日常损耗ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -127,7 +128,17 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
             this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.源房装修明细ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.提醒BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.源房BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.客房BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.提醒时间DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.源房IDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.客房IDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.事项DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.已完成DataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.创建日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.完成日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -146,10 +157,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup2)).BeginInit();
             this.kryptonHeaderGroup2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup3)).BeginInit();
+            this.kryptonHeaderGroup3.Panel.SuspendLayout();
             this.kryptonHeaderGroup3.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonCheckSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.提醒BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.客房BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonManager1
@@ -255,48 +271,55 @@
             // 源房缴费ToolStripMenuItem
             // 
             this.源房缴费ToolStripMenuItem.Name = "源房缴费ToolStripMenuItem";
-            this.源房缴费ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.源房缴费ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.源房缴费ToolStripMenuItem.Text = "源房缴费";
             // 
             // 水电气核查ToolStripMenuItem
             // 
             this.水电气核查ToolStripMenuItem.Name = "水电气核查ToolStripMenuItem";
-            this.水电气核查ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.水电气核查ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.水电气核查ToolStripMenuItem.Text = "水电气核查";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(143, 6);
             // 
             // 新增源房ToolStripMenuItem
             // 
             this.新增源房ToolStripMenuItem.Name = "新增源房ToolStripMenuItem";
-            this.新增源房ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.新增源房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.新增源房ToolStripMenuItem.Text = "新增源房";
             // 
             // 删除源房ToolStripMenuItem
             // 
             this.删除源房ToolStripMenuItem.Name = "删除源房ToolStripMenuItem";
-            this.删除源房ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除源房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.删除源房ToolStripMenuItem.Text = "删除源房";
             // 
             // 编辑源房ToolStripMenuItem
             // 
             this.编辑源房ToolStripMenuItem.Name = "编辑源房ToolStripMenuItem";
-            this.编辑源房ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.编辑源房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.编辑源房ToolStripMenuItem.Text = "编辑源房";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(143, 6);
             // 
             // 源房缴费明细ToolStripMenuItem
             // 
             this.源房缴费明细ToolStripMenuItem.Name = "源房缴费明细ToolStripMenuItem";
-            this.源房缴费明细ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.源房缴费明细ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.源房缴费明细ToolStripMenuItem.Text = "源房缴费明细";
+            // 
+            // 源房装修明细ToolStripMenuItem
+            // 
+            this.源房装修明细ToolStripMenuItem.Name = "源房装修明细ToolStripMenuItem";
+            this.源房装修明细ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.源房装修明细ToolStripMenuItem.Text = "源房装修明细";
+            this.源房装修明细ToolStripMenuItem.Click += new System.EventHandler(this.装修明细_Click);
             // 
             // 客房ToolStripMenuItem
             // 
@@ -407,24 +430,24 @@
             // 新增提醒ToolStripMenuItem
             // 
             this.新增提醒ToolStripMenuItem.Name = "新增提醒ToolStripMenuItem";
-            this.新增提醒ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.新增提醒ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.新增提醒ToolStripMenuItem.Text = "新增提醒";
             // 
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(119, 6);
             // 
             // 提醒设置ToolStripMenuItem
             // 
             this.提醒设置ToolStripMenuItem.Name = "提醒设置ToolStripMenuItem";
-            this.提醒设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.提醒设置ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.提醒设置ToolStripMenuItem.Text = "提醒设置";
             // 
             // 提醒管理ToolStripMenuItem
             // 
             this.提醒管理ToolStripMenuItem.Name = "提醒管理ToolStripMenuItem";
-            this.提醒管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.提醒管理ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.提醒管理ToolStripMenuItem.Text = "提醒管理";
             // 
             // 数据报表ToolStripMenuItem
@@ -614,11 +637,11 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.ImageIndex = 7;
-            treeNode1.Name = "节点0";
-            treeNode1.Text = "加载信息，请稍候．．．";
+            treeNode2.ImageIndex = 7;
+            treeNode2.Name = "节点0";
+            treeNode2.Text = "加载信息，请稍候．．．";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.treeView1.SelectedImageIndex = 7;
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.ShowRootLines = false;
@@ -721,6 +744,11 @@
             this.kryptonHeaderGroup3.HeaderVisibleSecondary = false;
             this.kryptonHeaderGroup3.Location = new System.Drawing.Point(0, 0);
             this.kryptonHeaderGroup3.Name = "kryptonHeaderGroup3";
+            // 
+            // kryptonHeaderGroup3.Panel
+            // 
+            this.kryptonHeaderGroup3.Panel.AutoScroll = true;
+            this.kryptonHeaderGroup3.Panel.Controls.Add(this.kryptonDataGridView1);
             this.kryptonHeaderGroup3.Size = new System.Drawing.Size(793, 105);
             this.kryptonHeaderGroup3.TabIndex = 0;
             this.kryptonHeaderGroup3.ValuesPrimary.Heading = "提醒";
@@ -998,12 +1026,102 @@
             this.AlarmTimer1.Interval = 500;
             this.AlarmTimer1.Tick += new System.EventHandler(this.AlarmTimer1_Tick);
             // 
-            // 源房装修明细ToolStripMenuItem
+            // 提醒BindingSource
             // 
-            this.源房装修明细ToolStripMenuItem.Name = "源房装修明细ToolStripMenuItem";
-            this.源房装修明细ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.源房装修明细ToolStripMenuItem.Text = "源房装修明细";
-            this.源房装修明细ToolStripMenuItem.Click += new System.EventHandler(this.装修明细_Click);
+            this.提醒BindingSource.DataSource = typeof(Landlord2.Data.提醒);
+            // 
+            // kryptonDataGridView1
+            // 
+            this.kryptonDataGridView1.AllowUserToAddRows = false;
+            this.kryptonDataGridView1.AllowUserToDeleteRows = false;
+            this.kryptonDataGridView1.AutoGenerateColumns = false;
+            this.kryptonDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.kryptonDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.提醒时间DataGridViewTextBoxColumn,
+            this.源房IDDataGridViewTextBoxColumn,
+            this.客房IDDataGridViewTextBoxColumn,
+            this.事项DataGridViewTextBoxColumn,
+            this.已完成DataGridViewCheckBoxColumn,
+            this.创建日期DataGridViewTextBoxColumn,
+            this.完成日期DataGridViewTextBoxColumn});
+            this.kryptonDataGridView1.DataSource = this.提醒BindingSource;
+            this.kryptonDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonDataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonDataGridView1.Name = "kryptonDataGridView1";
+            this.kryptonDataGridView1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
+            this.kryptonDataGridView1.ReadOnly = true;
+            this.kryptonDataGridView1.RowHeadersWidth = 24;
+            this.kryptonDataGridView1.RowTemplate.Height = 23;
+            this.kryptonDataGridView1.Size = new System.Drawing.Size(791, 76);
+            this.kryptonDataGridView1.TabIndex = 0;
+            // 
+            // 源房BindingSource
+            // 
+            this.源房BindingSource.DataSource = typeof(Landlord2.Data.源房);
+            // 
+            // 客房BindingSource
+            // 
+            this.客房BindingSource.DataSource = typeof(Landlord2.Data.客房);
+            // 
+            // 提醒时间DataGridViewTextBoxColumn
+            // 
+            this.提醒时间DataGridViewTextBoxColumn.DataPropertyName = "提醒时间";
+            this.提醒时间DataGridViewTextBoxColumn.HeaderText = "提醒时间";
+            this.提醒时间DataGridViewTextBoxColumn.Name = "提醒时间DataGridViewTextBoxColumn";
+            this.提醒时间DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 源房IDDataGridViewTextBoxColumn
+            // 
+            this.源房IDDataGridViewTextBoxColumn.DataPropertyName = "源房ID";
+            this.源房IDDataGridViewTextBoxColumn.DataSource = this.源房BindingSource;
+            this.源房IDDataGridViewTextBoxColumn.DisplayMember = "房名";
+            this.源房IDDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.源房IDDataGridViewTextBoxColumn.HeaderText = "源房";
+            this.源房IDDataGridViewTextBoxColumn.Name = "源房IDDataGridViewTextBoxColumn";
+            this.源房IDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.源房IDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.源房IDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.源房IDDataGridViewTextBoxColumn.ValueMember = "ID";
+            // 
+            // 客房IDDataGridViewTextBoxColumn
+            // 
+            this.客房IDDataGridViewTextBoxColumn.DataPropertyName = "客房ID";
+            this.客房IDDataGridViewTextBoxColumn.DataSource = this.客房BindingSource;
+            this.客房IDDataGridViewTextBoxColumn.DisplayMember = "命名";
+            this.客房IDDataGridViewTextBoxColumn.HeaderText = "客房";
+            this.客房IDDataGridViewTextBoxColumn.Name = "客房IDDataGridViewTextBoxColumn";
+            this.客房IDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.客房IDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.客房IDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.客房IDDataGridViewTextBoxColumn.ValueMember = "ID";
+            // 
+            // 事项DataGridViewTextBoxColumn
+            // 
+            this.事项DataGridViewTextBoxColumn.DataPropertyName = "事项";
+            this.事项DataGridViewTextBoxColumn.HeaderText = "事项";
+            this.事项DataGridViewTextBoxColumn.Name = "事项DataGridViewTextBoxColumn";
+            this.事项DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 已完成DataGridViewCheckBoxColumn
+            // 
+            this.已完成DataGridViewCheckBoxColumn.DataPropertyName = "已完成";
+            this.已完成DataGridViewCheckBoxColumn.HeaderText = "已完成";
+            this.已完成DataGridViewCheckBoxColumn.Name = "已完成DataGridViewCheckBoxColumn";
+            this.已完成DataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // 创建日期DataGridViewTextBoxColumn
+            // 
+            this.创建日期DataGridViewTextBoxColumn.DataPropertyName = "创建日期";
+            this.创建日期DataGridViewTextBoxColumn.HeaderText = "创建日期";
+            this.创建日期DataGridViewTextBoxColumn.Name = "创建日期DataGridViewTextBoxColumn";
+            this.创建日期DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 完成日期DataGridViewTextBoxColumn
+            // 
+            this.完成日期DataGridViewTextBoxColumn.DataPropertyName = "完成日期";
+            this.完成日期DataGridViewTextBoxColumn.HeaderText = "完成日期";
+            this.完成日期DataGridViewTextBoxColumn.Name = "完成日期DataGridViewTextBoxColumn";
+            this.完成日期DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Main
             // 
@@ -1040,6 +1158,7 @@
             this.kryptonSplitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup2)).EndInit();
             this.kryptonHeaderGroup2.ResumeLayout(false);
+            this.kryptonHeaderGroup3.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup3)).EndInit();
             this.kryptonHeaderGroup3.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
@@ -1047,6 +1166,10 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonCheckSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.提醒BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.客房BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1151,6 +1274,17 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 源房装修明细ToolStripMenuItem;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kryptonDataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 提醒时间DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn 源房IDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource 源房BindingSource;
+        private System.Windows.Forms.DataGridViewComboBoxColumn 客房IDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource 客房BindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 事项DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn 已完成DataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 创建日期DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 完成日期DataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource 提醒BindingSource;
     }
 }
 
