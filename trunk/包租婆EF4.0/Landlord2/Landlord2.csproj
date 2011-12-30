@@ -210,6 +210,18 @@
     <Compile Include="UI\客房选择Form.Designer.cs">
       <DependentUpon>客房选择Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\提醒Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\提醒Form.Designer.cs">
+      <DependentUpon>提醒Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\提醒管理Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\提醒管理Form.Designer.cs">
+      <DependentUpon>提醒管理Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\源房Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -310,6 +322,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\客房选择Form.resx">
       <DependentUpon>客房选择Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\提醒Form.resx">
+      <DependentUpon>提醒Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\提醒管理Form.resx">
+      <DependentUpon>提醒管理Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\源房Form.resx">
       <DependentUpon>源房Form.cs</DependentUpon>
