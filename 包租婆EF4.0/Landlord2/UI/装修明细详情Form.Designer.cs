@@ -145,9 +145,9 @@
             备注Label.AutoSize = true;
             备注Label.Location = new System.Drawing.Point(21, 165);
             备注Label.Name = "备注Label";
-            备注Label.Size = new System.Drawing.Size(35, 12);
+            备注Label.Size = new System.Drawing.Size(59, 12);
             备注Label.TabIndex = 14;
-            备注Label.Text = "备注:";
+            备注Label.Text = "备    注:";
             // 
             // 装修分类Label
             // 
@@ -288,9 +288,9 @@
             // kryptonTextBox5
             // 
             this.kryptonTextBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.装修明细BindingSource, "备注", true));
-            this.kryptonTextBox5.Location = new System.Drawing.Point(62, 161);
+            this.kryptonTextBox5.Location = new System.Drawing.Point(86, 161);
             this.kryptonTextBox5.Name = "kryptonTextBox5";
-            this.kryptonTextBox5.Size = new System.Drawing.Size(454, 20);
+            this.kryptonTextBox5.Size = new System.Drawing.Size(430, 20);
             this.kryptonTextBox5.TabIndex = 10;
             // 
             // btnOK

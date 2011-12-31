@@ -35,15 +35,14 @@ namespace Landlord2.UI
         }
         private void 装修明细详情Form_Load(object sender, EventArgs e)
         {
-            Text = string.Format("装修明细详情 - {0}", isNew ? "新增" : "编辑");
-            Refresh装修分类();
-            源房BindingSource.DataSource = 源房.GetYF(context).Execute(System.Data.Objects.MergeOption.NoTracking);
-            
-            if(isNew)
+            if (isNew)
             {
                 BtnOkAndContinue.Visible = true;//保存并继续按钮可见
             }
 
+            Text = string.Format("装修明细详情 - {0}", isNew ? "新增" : "编辑");
+            Refresh装修分类();
+            源房BindingSource.DataSource = 源房.GetYF(context).Execute(System.Data.Objects.MergeOption.NoTracking);
             装修明细BindingSource.DataSource = entity;
         }
 
