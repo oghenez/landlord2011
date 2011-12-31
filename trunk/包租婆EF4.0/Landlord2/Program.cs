@@ -23,8 +23,8 @@ namespace Landlord2
             //File.Delete(path);//删除指定的文件。如果指定的文件不存在，则不引发异常。 
 
             AppRoot.Inital();//根对象初始化
-            Application.Run(new Main());
-            //Application.Run(new Landlord2.UI.Form1());
+            //Application.Run(new Main());
+            Application.Run(new Landlord2.UI.提醒Form());
         }
     }
 }
