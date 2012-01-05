@@ -39,16 +39,23 @@ namespace Landlord2.UI
             提醒BindingSource.DataSource = entity;
         }
 
-        private void kryptonComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmb源房_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (kryptonComboBox2.SelectedIndex == -1)
+            if (cmb源房.SelectedIndex == -1)
             {
                 客房BindingSource.DataSource = null;
                 return;
             }
 
-            源房 selectedYF = kryptonComboBox2.SelectedItem as 源房;
-            客房BindingSource.DataSource = selectedYF.客房;
+            源房 selectedYF = cmb源房.SelectedItem as 源房;
+            List<客房> list = selectedYF.客房.ToList();
+            list.Insert(0, new 客房() { ID =Guid.Empty, 命名 = "- 无 -" });
+            客房BindingSource.DataSource = list;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            //Close();
         }
     }
 }

@@ -38,12 +38,12 @@
             System.Windows.Forms.Label 源房IDLabel;
             this.提醒BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kryptonDateTimePicker1 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
-            this.kryptonComboBox1 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.cmb客房 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.客房BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kryptonTextBox1 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonDateTimePicker2 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             this.kryptonDateTimePicker3 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
-            this.kryptonComboBox2 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.cmb源房 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.源房BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BtnOkAndContinue = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -57,9 +57,9 @@
             已完成Label = new System.Windows.Forms.Label();
             源房IDLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.提醒BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmb客房)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.客房BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmb源房)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -138,18 +138,18 @@
             this.kryptonDateTimePicker1.Size = new System.Drawing.Size(134, 21);
             this.kryptonDateTimePicker1.TabIndex = 17;
             // 
-            // kryptonComboBox1
+            // cmb客房
             // 
-            this.kryptonComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.提醒BindingSource, "客房ID", true));
-            this.kryptonComboBox1.DataSource = this.客房BindingSource;
-            this.kryptonComboBox1.DisplayMember = "命名";
-            this.kryptonComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kryptonComboBox1.DropDownWidth = 134;
-            this.kryptonComboBox1.Location = new System.Drawing.Point(345, 138);
-            this.kryptonComboBox1.Name = "kryptonComboBox1";
-            this.kryptonComboBox1.Size = new System.Drawing.Size(134, 21);
-            this.kryptonComboBox1.TabIndex = 18;
-            this.kryptonComboBox1.ValueMember = "ID";
+            this.cmb客房.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.提醒BindingSource, "客房ID", true));
+            this.cmb客房.DataSource = this.客房BindingSource;
+            this.cmb客房.DisplayMember = "命名";
+            this.cmb客房.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb客房.DropDownWidth = 134;
+            this.cmb客房.Location = new System.Drawing.Point(345, 138);
+            this.cmb客房.Name = "cmb客房";
+            this.cmb客房.Size = new System.Drawing.Size(134, 21);
+            this.cmb客房.TabIndex = 18;
+            this.cmb客房.ValueMember = "ID";
             // 
             // 客房BindingSource
             // 
@@ -174,26 +174,28 @@
             // 
             // kryptonDateTimePicker3
             // 
-            this.kryptonDateTimePicker3.DataBindings.Add(new System.Windows.Forms.Binding("ValueNullable", this.提醒BindingSource, "完成日期", true));
-            this.kryptonDateTimePicker3.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.提醒BindingSource, "已完成", true));
+            this.kryptonDateTimePicker3.Checked = false;
+            this.kryptonDateTimePicker3.CustomNullText = "- 无 -";
+            this.kryptonDateTimePicker3.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.提醒BindingSource, "已完成", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.kryptonDateTimePicker3.DataBindings.Add(new System.Windows.Forms.Binding("ValueNullable", this.提醒BindingSource, "完成日期", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.kryptonDateTimePicker3.Location = new System.Drawing.Point(345, 104);
             this.kryptonDateTimePicker3.Name = "kryptonDateTimePicker3";
             this.kryptonDateTimePicker3.Size = new System.Drawing.Size(134, 21);
             this.kryptonDateTimePicker3.TabIndex = 17;
             // 
-            // kryptonComboBox2
+            // cmb源房
             // 
-            this.kryptonComboBox2.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.提醒BindingSource, "源房ID", true));
-            this.kryptonComboBox2.DataSource = this.源房BindingSource;
-            this.kryptonComboBox2.DisplayMember = "房名";
-            this.kryptonComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kryptonComboBox2.DropDownWidth = 134;
-            this.kryptonComboBox2.Location = new System.Drawing.Point(86, 138);
-            this.kryptonComboBox2.Name = "kryptonComboBox2";
-            this.kryptonComboBox2.Size = new System.Drawing.Size(134, 21);
-            this.kryptonComboBox2.TabIndex = 18;
-            this.kryptonComboBox2.ValueMember = "ID";
-            this.kryptonComboBox2.SelectedIndexChanged += new System.EventHandler(this.kryptonComboBox2_SelectedIndexChanged);
+            this.cmb源房.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.提醒BindingSource, "源房ID", true));
+            this.cmb源房.DataSource = this.源房BindingSource;
+            this.cmb源房.DisplayMember = "房名";
+            this.cmb源房.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb源房.DropDownWidth = 134;
+            this.cmb源房.Location = new System.Drawing.Point(86, 138);
+            this.cmb源房.Name = "cmb源房";
+            this.cmb源房.Size = new System.Drawing.Size(134, 21);
+            this.cmb源房.TabIndex = 18;
+            this.cmb源房.ValueMember = "ID";
+            this.cmb源房.SelectedIndexChanged += new System.EventHandler(this.cmb源房_SelectedIndexChanged);
             // 
             // 源房BindingSource
             // 
@@ -228,10 +230,11 @@
             this.btnCancel.Size = new System.Drawing.Size(90, 25);
             this.btnCancel.TabIndex = 28;
             this.btnCancel.Values.Text = "取消";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // kryptonCheckBox1
             // 
-            this.kryptonCheckBox1.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.提醒BindingSource, "已完成", true));
+            this.kryptonCheckBox1.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.提醒BindingSource, "已完成", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.kryptonCheckBox1.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl;
             this.kryptonCheckBox1.Location = new System.Drawing.Point(86, 107);
             this.kryptonCheckBox1.Name = "kryptonCheckBox1";
@@ -250,8 +253,8 @@
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.kryptonTextBox1);
-            this.Controls.Add(this.kryptonComboBox2);
-            this.Controls.Add(this.kryptonComboBox1);
+            this.Controls.Add(this.cmb源房);
+            this.Controls.Add(this.cmb客房);
             this.Controls.Add(this.kryptonDateTimePicker3);
             this.Controls.Add(this.kryptonDateTimePicker2);
             this.Controls.Add(this.kryptonDateTimePicker1);
@@ -266,9 +269,9 @@
             this.Text = "提醒";
             this.Load += new System.EventHandler(this.提醒Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.提醒BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmb客房)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.客房BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmb源房)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -279,11 +282,11 @@
 
         private System.Windows.Forms.BindingSource 提醒BindingSource;
         private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker1;
-        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmb客房;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox1;
         private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker2;
         private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker3;
-        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox2;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmb源房;
         private ComponentFactory.Krypton.Toolkit.KryptonButton BtnOkAndContinue;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOK;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
