@@ -12,6 +12,8 @@ namespace Landlord2.Data
         public 提醒()
         {
             this.ID = Guid.NewGuid();
+            this.提醒时间 = DateTime.Today;
+            this.创建日期 = DateTime.Today;
         }
     }
    
