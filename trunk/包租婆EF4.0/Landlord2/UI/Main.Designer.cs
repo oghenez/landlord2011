@@ -101,6 +101,7 @@
             this.kryptonHeaderGroup3 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.buttonSpecHeaderGroup6 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.buttonSpecHeaderGroupAlarm = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
+            this.kryptonListBox1 = new ComponentFactory.Krypton.Toolkit.KryptonListBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.yfBtnAdd = new System.Windows.Forms.ToolStripButton();
             this.yfBtnDel = new System.Windows.Forms.ToolStripButton();
@@ -125,7 +126,6 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
             this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.kryptonListBox1 = new ComponentFactory.Krypton.Toolkit.KryptonListBox();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -738,12 +738,22 @@
             // 
             this.buttonSpecHeaderGroup6.Text = "提醒管理";
             this.buttonSpecHeaderGroup6.UniqueName = "0D041C045F9742B8D882AFEB8A5EE571";
+            this.buttonSpecHeaderGroup6.Click += new System.EventHandler(this.提醒管理_Click);
             // 
             // buttonSpecHeaderGroupAlarm
             // 
             this.buttonSpecHeaderGroupAlarm.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.ArrowDown;
             this.buttonSpecHeaderGroupAlarm.UniqueName = "360B4AAA7FA84B1FAF806F875045C459";
             this.buttonSpecHeaderGroupAlarm.Click += new System.EventHandler(this.OnUpDown);
+            // 
+            // kryptonListBox1
+            // 
+            this.kryptonListBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonListBox1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonListBox1.Name = "kryptonListBox1";
+            this.kryptonListBox1.Size = new System.Drawing.Size(820, 76);
+            this.kryptonListBox1.StateCommon.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
+            this.kryptonListBox1.TabIndex = 0;
             // 
             // toolStrip1
             // 
@@ -964,7 +974,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(878, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(895, 17);
             this.toolStripStatusLabel1.Spring = true;
             this.toolStripStatusLabel1.Text = "单机版V2.0";
             this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -987,15 +997,6 @@
             // 
             this.AlarmTimer1.Interval = 500;
             this.AlarmTimer1.Tick += new System.EventHandler(this.AlarmTimer1_Tick);
-            // 
-            // kryptonListBox1
-            // 
-            this.kryptonListBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonListBox1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonListBox1.Name = "kryptonListBox1";
-            this.kryptonListBox1.Size = new System.Drawing.Size(820, 76);
-            this.kryptonListBox1.StateCommon.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
-            this.kryptonListBox1.TabIndex = 0;
             // 
             // Main
             // 

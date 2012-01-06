@@ -49,6 +49,7 @@
             this.btnOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonCheckBox1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             创建日期Label = new System.Windows.Forms.Label();
             客房IDLabel = new System.Windows.Forms.Label();
             事项Label = new System.Windows.Forms.Label();
@@ -80,6 +81,7 @@
             客房IDLabel.Size = new System.Drawing.Size(59, 12);
             客房IDLabel.TabIndex = 5;
             客房IDLabel.Text = "相关客房:";
+            this.toolTip1.SetToolTip(客房IDLabel, "此条提醒涉及到的客房。（如不涉及客房，选择‘无’。）");
             // 
             // 事项Label
             // 
@@ -125,6 +127,7 @@
             源房IDLabel.Size = new System.Drawing.Size(59, 12);
             源房IDLabel.TabIndex = 15;
             源房IDLabel.Text = "相关源房:";
+            this.toolTip1.SetToolTip(源房IDLabel, "此条提醒涉及到的源房。");
             // 
             // 提醒BindingSource
             // 
@@ -140,7 +143,7 @@
             // 
             // cmb客房
             // 
-            this.cmb客房.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.提醒BindingSource, "客房ID", true));
+            this.cmb客房.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.提醒BindingSource, "客房ID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.cmb客房.DataSource = this.客房BindingSource;
             this.cmb客房.DisplayMember = "命名";
             this.cmb客房.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -149,6 +152,7 @@
             this.cmb客房.Name = "cmb客房";
             this.cmb客房.Size = new System.Drawing.Size(134, 21);
             this.cmb客房.TabIndex = 18;
+            this.toolTip1.SetToolTip(this.cmb客房, "此条提醒涉及到的客房。（如不涉及客房，选择‘无’。）");
             this.cmb客房.ValueMember = "ID";
             // 
             // 客房BindingSource
@@ -185,7 +189,7 @@
             // 
             // cmb源房
             // 
-            this.cmb源房.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.提醒BindingSource, "源房ID", true));
+            this.cmb源房.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.提醒BindingSource, "源房ID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.cmb源房.DataSource = this.源房BindingSource;
             this.cmb源房.DisplayMember = "房名";
             this.cmb源房.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -194,12 +198,13 @@
             this.cmb源房.Name = "cmb源房";
             this.cmb源房.Size = new System.Drawing.Size(134, 21);
             this.cmb源房.TabIndex = 18;
+            this.toolTip1.SetToolTip(this.cmb源房, "此条提醒涉及到的源房。");
             this.cmb源房.ValueMember = "ID";
-            this.cmb源房.SelectedIndexChanged += new System.EventHandler(this.cmb源房_SelectedIndexChanged);
             // 
             // 源房BindingSource
             // 
             this.源房BindingSource.DataSource = typeof(Landlord2.Data.源房);
+            this.源房BindingSource.PositionChanged += new System.EventHandler(this.源房BindingSource_PositionChanged);
             // 
             // BtnOkAndContinue
             // 
@@ -210,6 +215,7 @@
             this.BtnOkAndContinue.TabIndex = 29;
             this.BtnOkAndContinue.Values.Text = "保存并继续";
             this.BtnOkAndContinue.Visible = false;
+            this.BtnOkAndContinue.Click += new System.EventHandler(this.BtnOkAndContinue_Click);
             // 
             // btnOK
             // 
@@ -219,6 +225,7 @@
             this.btnOK.Size = new System.Drawing.Size(90, 25);
             this.btnOK.TabIndex = 27;
             this.btnOK.Values.Text = "保存";
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -241,6 +248,14 @@
             this.kryptonCheckBox1.Size = new System.Drawing.Size(19, 13);
             this.kryptonCheckBox1.TabIndex = 30;
             this.kryptonCheckBox1.Values.Text = "";
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutoPopDelay = 5000;
+            this.toolTip1.InitialDelay = 50;
+            this.toolTip1.OwnerDraw = true;
+            this.toolTip1.ReshowDelay = 10;
+            this.toolTip1.ShowAlways = true;
             // 
             // 提醒Form
             // 
@@ -293,5 +308,6 @@
         private System.Windows.Forms.BindingSource 客房BindingSource;
         private System.Windows.Forms.BindingSource 源房BindingSource;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryptonCheckBox1;
+        public System.Windows.Forms.ToolTip toolTip1;
     }
 }

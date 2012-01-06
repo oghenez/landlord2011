@@ -604,6 +604,15 @@ namespace Landlord2
                 deForm.ShowDialog(this);
             }
         }
+
+        private void 提醒管理_Click(object sender, EventArgs e)
+        {
+            //提醒管理
+            using (提醒管理Form tiForm = new 提醒管理Form())
+            {
+                tiForm.ShowDialog(this);
+            }
+        }
         #endregion
 
 
