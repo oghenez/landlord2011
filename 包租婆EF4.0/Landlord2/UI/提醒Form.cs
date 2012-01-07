@@ -36,8 +36,8 @@ namespace Landlord2.UI
             }
 
             Text = string.Format("提醒 - {0}", isNew ? "新增" : "编辑");
-            提醒BindingSource.DataSource = entity;
             源房BindingSource.DataSource = 源房.GetYF(context).Include("客房").Execute(System.Data.Objects.MergeOption.AppendOnly);//通过Include预先加载相关客房
+            提醒BindingSource.DataSource = entity;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -60,6 +60,9 @@ namespace Landlord2.UI
         {
             提醒BindingSource.EndEdit();
 
+            if (entity.客房ID == Guid.Empty)//手动转换
+                entity.客房ID = null;
+
             string check = entity.CheckRules();
             if (!string.IsNullOrEmpty(check))
             {
@@ -79,7 +82,7 @@ namespace Landlord2.UI
                     }
                     else if (this.Owner is 提醒管理Form)
                     {
-                        //!++ ...
+                        (this.Owner as 提醒管理Form).RefreshAndLocate提醒(entity.ID);
                     }
                     Close();
                 }
@@ -107,7 +110,7 @@ namespace Landlord2.UI
                         }
                         else if (this.Owner is 提醒管理Form)
                         {
-                            //!++ ...
+                            (this.Owner as 提醒管理Form).RefreshAndLocate提醒(entity.ID);
                         }
                         Close();
                     }
@@ -122,6 +125,10 @@ namespace Landlord2.UI
         private void BtnOkAndContinue_Click(object sender, EventArgs e)
         {
             提醒BindingSource.EndEdit();
+
+            if (entity.客房ID == Guid.Empty)//手动转换
+                entity.客房ID = null;
+
             string check = entity.CheckRules();
             if (!string.IsNullOrEmpty(check))
             {
@@ -142,7 +149,7 @@ namespace Landlord2.UI
                 }
                 else if (this.Owner is 提醒管理Form)
                 {
-                    //!++ ...
+                    (this.Owner as 提醒管理Form).RefreshAndLocate提醒(entity.ID);
                 }
 
                 提醒 old = entity;
