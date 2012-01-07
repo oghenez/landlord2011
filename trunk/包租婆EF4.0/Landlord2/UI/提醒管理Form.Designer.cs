@@ -41,34 +41,36 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorEditItem = new System.Windows.Forms.ToolStripButton();
-            this.源房BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.客房BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.提醒时间DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.源房IDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.源房BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.客房IDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.客房BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.事项DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.已完成DataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.创建日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.完成日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             ((System.ComponentModel.ISupportInitialize)(this.提醒BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.提醒BindingNavigator)).BeginInit();
             this.提醒BindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.客房BindingSource)).BeginInit();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.客房BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // 提醒BindingSource
             // 
             this.提醒BindingSource.DataSource = typeof(Landlord2.Data.提醒);
+            this.提醒BindingSource.DataSourceChanged += new System.EventHandler(this.提醒BindingSource_DataSourceChanged);
+            this.提醒BindingSource.CurrentChanged += new System.EventHandler(this.提醒BindingSource_CurrentChanged);
             // 
             // 提醒BindingNavigator
             // 
@@ -172,6 +174,33 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.Image = global::Landlord2.Properties.Resources.add_16_hot;
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(51, 22);
+            this.bindingNavigatorAddNewItem.Text = "新增";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.Image = global::Landlord2.Properties.Resources.delete_16_hot;
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(51, 22);
+            this.bindingNavigatorDeleteItem.Text = "删除";
+            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
+            // 
+            // bindingNavigatorEditItem
+            // 
+            this.bindingNavigatorEditItem.Image = global::Landlord2.Properties.Resources.edit_16_hot;
+            this.bindingNavigatorEditItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bindingNavigatorEditItem.Name = "bindingNavigatorEditItem";
+            this.bindingNavigatorEditItem.Size = new System.Drawing.Size(51, 22);
+            this.bindingNavigatorEditItem.Text = "编辑";
+            this.bindingNavigatorEditItem.Click += new System.EventHandler(this.bindingNavigatorEditItem_Click);
+            // 
             // kryptonDataGridView1
             // 
             this.kryptonDataGridView1.AllowUserToAddRows = false;
@@ -197,59 +226,7 @@
             this.kryptonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.kryptonDataGridView1.Size = new System.Drawing.Size(727, 472);
             this.kryptonDataGridView1.TabIndex = 1;
-            // 
-            // toolStripContainer1
-            // 
-            this.toolStripContainer1.BottomToolStripPanelVisible = false;
-            // 
-            // toolStripContainer1.ContentPanel
-            // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.kryptonDataGridView1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(727, 472);
-            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStripContainer1.LeftToolStripPanelVisible = false;
-            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
-            this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.RightToolStripPanelVisible = false;
-            this.toolStripContainer1.Size = new System.Drawing.Size(727, 497);
-            this.toolStripContainer1.TabIndex = 2;
-            this.toolStripContainer1.Text = "toolStripContainer1";
-            // 
-            // toolStripContainer1.TopToolStripPanel
-            // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.提醒BindingNavigator);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.Image = global::Landlord2.Properties.Resources.add_16_hot;
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(51, 22);
-            this.bindingNavigatorAddNewItem.Text = "新增";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.Image = global::Landlord2.Properties.Resources.delete_16_hot;
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(51, 22);
-            this.bindingNavigatorDeleteItem.Text = "删除";
-            // 
-            // bindingNavigatorEditItem
-            // 
-            this.bindingNavigatorEditItem.Image = global::Landlord2.Properties.Resources.edit_16_hot;
-            this.bindingNavigatorEditItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bindingNavigatorEditItem.Name = "bindingNavigatorEditItem";
-            this.bindingNavigatorEditItem.Size = new System.Drawing.Size(51, 22);
-            this.bindingNavigatorEditItem.Text = "编辑";
-            // 
-            // 源房BindingSource
-            // 
-            this.源房BindingSource.DataSource = typeof(Landlord2.Data.源房);
-            // 
-            // 客房BindingSource
-            // 
-            this.客房BindingSource.DataSource = typeof(Landlord2.Data.客房);
+            this.kryptonDataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.kryptonDataGridView1_CellMouseDoubleClick);
             // 
             // 提醒时间DataGridViewTextBoxColumn
             // 
@@ -272,6 +249,10 @@
             this.源房IDDataGridViewTextBoxColumn.ValueMember = "ID";
             this.源房IDDataGridViewTextBoxColumn.Width = 150;
             // 
+            // 源房BindingSource
+            // 
+            this.源房BindingSource.DataSource = typeof(Landlord2.Data.源房);
+            // 
             // 客房IDDataGridViewTextBoxColumn
             // 
             this.客房IDDataGridViewTextBoxColumn.DataPropertyName = "客房ID";
@@ -285,6 +266,10 @@
             this.客房IDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.客房IDDataGridViewTextBoxColumn.ValueMember = "ID";
             this.客房IDDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // 客房BindingSource
+            // 
+            this.客房BindingSource.DataSource = typeof(Landlord2.Data.客房);
             // 
             // 事项DataGridViewTextBoxColumn
             // 
@@ -316,6 +301,27 @@
             this.完成日期DataGridViewTextBoxColumn.Name = "完成日期DataGridViewTextBoxColumn";
             this.完成日期DataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // toolStripContainer1
+            // 
+            this.toolStripContainer1.BottomToolStripPanelVisible = false;
+            // 
+            // toolStripContainer1.ContentPanel
+            // 
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.kryptonDataGridView1);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(727, 472);
+            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStripContainer1.LeftToolStripPanelVisible = false;
+            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
+            this.toolStripContainer1.Name = "toolStripContainer1";
+            this.toolStripContainer1.RightToolStripPanelVisible = false;
+            this.toolStripContainer1.Size = new System.Drawing.Size(727, 497);
+            this.toolStripContainer1.TabIndex = 2;
+            this.toolStripContainer1.Text = "toolStripContainer1";
+            // 
+            // toolStripContainer1.TopToolStripPanel
+            // 
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.提醒BindingNavigator);
+            // 
             // 提醒管理Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -333,12 +339,12 @@
             this.提醒BindingNavigator.ResumeLayout(false);
             this.提醒BindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.客房BindingSource)).EndInit();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.客房BindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
