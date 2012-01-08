@@ -90,6 +90,7 @@ namespace Landlord2.UI
                     if (Helper.saveData(context, view.Object, out msg))
                     {
                         提醒BindingSource.RemoveCurrent();//如果成功删除数据库中指定项，那么同步删除界面中当前选中项，避免再次Load数据库和刷新界面。
+                        (this.Owner as Main).RefreshAlarmData();//刷新Main窗体
                     }
                     else
                     {

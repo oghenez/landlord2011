@@ -70,8 +70,50 @@ namespace Landlord2
                 LoadTreeView(null);
                 DoThreadSafe(delegate { yfUC = new UC源房详细(true) { Dock = DockStyle.Fill }; });
                 DoThreadSafe(delegate { kfUC = new UC客房详细(true) { Dock = DockStyle.Fill }; });
+                RefreshAlarmData();
+            });           
+        }
+
+        /// <summary>
+        /// 刷新‘提醒’数据
+        /// </summary>
+        public void RefreshAlarmData()
+        {
+            DoThreadSafe(delegate
+            {
+                kryptonListBox1.BeginUpdate();
+                kryptonListBox1.Items.Clear();
             });
-            AlarmTimer1.Enabled = true; //-- 测试闪动提醒图标
+            var alarms = 提醒.GetTX_In7Days(context).Execute(MergeOption.NoTracking).ToList();
+            alarms.ForEach(m => { AddOneAlarmMsg(m); });
+
+            DoThreadSafe(delegate
+            {
+                kryptonListBox1.EndUpdate();
+                AlarmTimer1.Enabled = alarms.Count > 0; //闪动提醒图标
+            });
+            
+        }
+        //增加一条提醒
+        private void AddOneAlarmMsg(提醒 tx)
+        { 
+            var yf = context.源房.FirstOrDefault(m=>m.ID == tx.源房ID);
+            var kf = context.客房.FirstOrDefault(m=>m.ID == tx.客房ID);
+            string longText ;
+            if(kf==null)
+                longText = string.Format("{0}【源房提醒】", yf.房名);
+            else
+                longText = string.Format("{0} - {1}【客房提醒】", yf.房名, kf.命名);
+
+            KryptonListItem item = new KryptonListItem();
+            item.ShortText = tx.ToString();
+            item.LongText = longText;
+            item.Image = Resources.idea_16;
+            item.Tag = tx;
+            DoThreadSafe(delegate
+            {
+                kryptonListBox1.Items.Add(item);
+            });
         }
 
         #region 闪动提醒图标
@@ -383,6 +425,11 @@ namespace Landlord2
                     string msg;
                     if (Helper.saveData(context, yf, out msg))
                     {
+                        //删除源房后，删除相关的提醒
+                        var tx = context.提醒.Where(m => m.源房ID == yf.ID).ToList();
+                        for (int i = tx.Count-1; i >= 0; i--)
+                            context.提醒.DeleteObject(tx[i]);
+
                         KryptonMessageBox.Show(msg, "成功删除源房");
                         RefreshAndLocateTree(null);
                         LoadOrRefreshUC(null);
@@ -444,6 +491,11 @@ namespace Landlord2
                     string msg;
                     if (Helper.saveData(context, kf, out msg))
                     {
+                        //删除客房后，删除相关的提醒
+                        var tx = context.提醒.Where(m => m.客房ID == kf.ID).ToList();
+                        for (int i = tx.Count - 1; i >= 0; i--)
+                            context.提醒.DeleteObject(tx[i]);
+
                         KryptonMessageBox.Show(msg, "成功删除客房");
                         RefreshAndLocateTree(null);
                         LoadOrRefreshUC(null);
@@ -613,11 +665,27 @@ namespace Landlord2
                 tiForm.ShowDialog(this);
             }
         }
+
+        private void kryptonListBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left && kryptonListBox1.SelectedItem != null)
+            {
+                KryptonListItem item = kryptonListBox1.SelectedItem as KryptonListItem;
+                提醒 obj = item.Tag as 提醒;
+                using (提醒Form form = new 提醒Form(obj))
+                {
+                    form.ShowDialog(this);
+                }
+            }
+        }
         #endregion
 
 
 
-    
+
+
+
+
 
 
 
