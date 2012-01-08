@@ -65,6 +65,9 @@ namespace Landlord2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //解决kryptonListBox的双击Bug
+            kryptonListBox1.ListBox.MouseDoubleClick += new MouseEventHandler(kryptonListBox1_MouseDoubleClick);
+
             ThreadPool.QueueUserWorkItem(delegate
             {
                 LoadTreeView(null);

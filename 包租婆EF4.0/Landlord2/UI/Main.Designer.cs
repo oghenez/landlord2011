@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -620,11 +620,11 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.ImageIndex = 7;
-            treeNode1.Name = "节点0";
-            treeNode1.Text = "加载信息，请稍候．．．";
+            treeNode2.ImageIndex = 7;
+            treeNode2.Name = "节点0";
+            treeNode2.Text = "加载信息，请稍候．．．";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.treeView1.SelectedImageIndex = 7;
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.ShowRootLines = false;
@@ -731,7 +731,7 @@
             this.kryptonHeaderGroup3.Panel.Controls.Add(this.kryptonListBox1);
             this.kryptonHeaderGroup3.Size = new System.Drawing.Size(822, 105);
             this.kryptonHeaderGroup3.TabIndex = 0;
-            this.kryptonHeaderGroup3.ValuesPrimary.Heading = "今日提醒";
+            this.kryptonHeaderGroup3.ValuesPrimary.Heading = "7日内提醒";
             this.kryptonHeaderGroup3.ValuesPrimary.Image = global::Landlord2.Properties.Resources.idea_16_dis;
             // 
             // buttonSpecHeaderGroup6
@@ -754,7 +754,6 @@
             this.kryptonListBox1.Size = new System.Drawing.Size(820, 76);
             this.kryptonListBox1.StateCommon.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
             this.kryptonListBox1.TabIndex = 0;
-            this.kryptonListBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.kryptonListBox1_MouseDoubleClick);
             // 
             // toolStrip1
             // 
