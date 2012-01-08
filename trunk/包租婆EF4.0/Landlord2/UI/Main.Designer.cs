@@ -732,7 +732,7 @@
             this.kryptonHeaderGroup3.Size = new System.Drawing.Size(822, 105);
             this.kryptonHeaderGroup3.TabIndex = 0;
             this.kryptonHeaderGroup3.ValuesPrimary.Heading = "今日提醒";
-            this.kryptonHeaderGroup3.ValuesPrimary.Image = global::Landlord2.Properties.Resources.idea_16;
+            this.kryptonHeaderGroup3.ValuesPrimary.Image = global::Landlord2.Properties.Resources.idea_16_dis;
             // 
             // buttonSpecHeaderGroup6
             // 
@@ -754,6 +754,7 @@
             this.kryptonListBox1.Size = new System.Drawing.Size(820, 76);
             this.kryptonListBox1.StateCommon.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
             this.kryptonListBox1.TabIndex = 0;
+            this.kryptonListBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.kryptonListBox1_MouseDoubleClick);
             // 
             // toolStrip1
             // 
