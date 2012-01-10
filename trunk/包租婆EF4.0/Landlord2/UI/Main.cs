@@ -28,26 +28,26 @@ namespace Landlord2
             InitializeComponent();
             context = new MyContext();
 
-//            #region 调试代码
-//#if DEBUG
-//            context.ObjectStateManager.ObjectStateManagerChanged += (sender, e) =>
-//            {
-//                Console.WriteLine(string.Format(
-//                "ObjectStateManager.ObjectStateManagerChanged | Action:{0} Object:{1}"
-//                , e.Action
-//                , e.Element));
-//                MessageBox.Show(string.Format(
-//                    "MainContext刚刚检测到缓存改动--Action:{0} Object:{1}\r\n目前本地缓存实体数量：\r\n\tAdded-{2}\r\n\tDeleted-{3}\r\n\tModified-{4}\r\n\tUnchanged-{5}"
-//                    , e.Action
-//                    , e.Element
-//                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Added).Count()
-//                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted).Count()
-//                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Modified).Count()
-//                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Unchanged).Count()
-//                    ));
-//            };
-//#endif
-//            #endregion
+            #region 调试代码
+#if DEBUG
+            context.ObjectStateManager.ObjectStateManagerChanged += (sender, e) =>
+            {
+                Console.WriteLine(string.Format(
+                "ObjectStateManager.ObjectStateManagerChanged | Action:{0} Object:{1}"
+                , e.Action
+                , e.Element));
+                MessageBox.Show(string.Format(
+                    "MainContext刚刚检测到缓存改动--Action:{0} Object:{1}\r\n目前本地缓存实体数量：\r\n\tAdded-{2}\r\n\tDeleted-{3}\r\n\tModified-{4}\r\n\tUnchanged-{5}"
+                    , e.Action
+                    , e.Element
+                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Added).Count()
+                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted).Count()
+                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Modified).Count()
+                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Unchanged).Count()
+                    ));
+            };
+#endif
+            #endregion
 
         }
         #region 线程安全的访问UI控件的方法
@@ -93,7 +93,13 @@ namespace Landlord2
             DoThreadSafe(delegate
             {
                 kryptonListBox1.EndUpdate();
-                AlarmTimer1.Enabled = alarms.Count > 0; //闪动提醒图标
+                if (alarms.Count > 0)
+                    AlarmTimer1.Enabled = true;//闪动提醒图标
+                else
+                {
+                    AlarmTimer1.Enabled = false;
+                    kryptonHeaderGroup3.ValuesPrimary.Image = Resources.idea_16_dis;
+                }
             });
             
         }
@@ -102,16 +108,19 @@ namespace Landlord2
         { 
             var yf = context.源房.FirstOrDefault(m=>m.ID == tx.源房ID);
             var kf = context.客房.FirstOrDefault(m=>m.ID == tx.客房ID);
-            string longText ;
-            if(kf==null)
-                longText = string.Format("{0}【源房提醒】", yf.房名);
-            else
-                longText = string.Format("{0} - {1}【客房提醒】", yf.房名, kf.命名);
 
             KryptonListItem item = new KryptonListItem();
-            item.ShortText = tx.ToString();
-            item.LongText = longText;
-            item.Image = Resources.idea_16;
+            if (kf == null)
+            {
+                item.LongText = string.Format("{0}【源房提醒】", yf.房名);
+                item.Image = Resources.源房16;
+            }
+            else
+            {
+                item.LongText = string.Format("{0} - {1}【客房提醒】", yf.房名, kf.命名);
+                item.Image = Resources.客房16;
+            }
+            item.ShortText = tx.ToString();            
             item.Tag = tx;
             DoThreadSafe(delegate
             {
@@ -674,10 +683,13 @@ namespace Landlord2
             if (e.Button == System.Windows.Forms.MouseButtons.Left && kryptonListBox1.SelectedItem != null)
             {
                 KryptonListItem item = kryptonListBox1.SelectedItem as KryptonListItem;
-                提醒 obj = item.Tag as 提醒;
-                using (提醒Form form = new 提醒Form(obj))
+                if (item.Tag != null)
                 {
-                    form.ShowDialog(this);
+                    提醒 obj = item.Tag as 提醒;
+                    using (提醒Form form = new 提醒Form(obj))
+                    {
+                        form.ShowDialog(this);
+                    }
                 }
             }
         }
