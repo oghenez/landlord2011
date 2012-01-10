@@ -412,6 +412,8 @@
     <None Include="Resources\收租明细48.png" />
     <None Include="Resources\收租明细24.png" />
     <None Include="Resources\收租24.png" />
+    <None Include="Resources\客房16.png" />
+    <None Include="Resources\源房16.png" />
     <Content Include="Resources\缴费24.png" />
     <Content Include="Resources\缴费48.png" />
     <Content Include="Resources\缴费明细24.png" />

@@ -332,7 +332,7 @@
             this.MaximizeBox = true;
             this.MinimizeBox = true;
             this.Name = "提醒管理Form";
-            this.Text = "提醒管理";
+            this.Text = "自定义提醒管理";
             this.Load += new System.EventHandler(this.提醒管理Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.提醒BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.提醒BindingNavigator)).EndInit();

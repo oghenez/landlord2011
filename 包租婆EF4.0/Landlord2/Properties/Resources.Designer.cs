@@ -123,6 +123,13 @@ namespace Landlord2.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap 客房16 {
+            get {
+                object obj = ResourceManager.GetObject("客房16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap 客房24Add {
             get {
                 object obj = ResourceManager.GetObject("客房24Add", resourceCulture);
@@ -282,6 +289,13 @@ namespace Landlord2.Properties {
         internal static string 武汉市阶梯电价默认值 {
             get {
                 return ResourceManager.GetString("武汉市阶梯电价默认值", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap 源房16 {
+            get {
+                object obj = ResourceManager.GetObject("源房16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

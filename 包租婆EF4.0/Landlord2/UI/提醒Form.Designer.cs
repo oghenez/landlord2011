@@ -100,6 +100,7 @@
             提醒时间Label.Size = new System.Drawing.Size(59, 12);
             提醒时间Label.TabIndex = 9;
             提醒时间Label.Text = "提醒日期:";
+            this.toolTip1.SetToolTip(提醒时间Label, "系统将根据【提醒设置】中设定的‘自定义提醒提前天数’，于此日期前XX日开始提醒。");
             // 
             // 完成日期Label
             // 
@@ -175,6 +176,7 @@
             this.kryptonDateTimePicker2.Name = "kryptonDateTimePicker2";
             this.kryptonDateTimePicker2.Size = new System.Drawing.Size(134, 21);
             this.kryptonDateTimePicker2.TabIndex = 17;
+            this.toolTip1.SetToolTip(this.kryptonDateTimePicker2, "系统将根据【提醒设置】中设定的‘自定义提醒提前天数’，于此日期前XX日开始提醒。");
             // 
             // kryptonDateTimePicker3
             // 
@@ -281,7 +283,7 @@
             this.Controls.Add(已完成Label);
             this.Controls.Add(源房IDLabel);
             this.Name = "提醒Form";
-            this.Text = "提醒";
+            this.Text = "自定义提醒";
             this.Load += new System.EventHandler(this.提醒Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.提醒BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmb客房)).EndInit();
