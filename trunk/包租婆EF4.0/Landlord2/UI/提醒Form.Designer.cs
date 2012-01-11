@@ -255,7 +255,6 @@
             // 
             this.toolTip1.AutoPopDelay = 5000;
             this.toolTip1.InitialDelay = 50;
-            this.toolTip1.OwnerDraw = true;
             this.toolTip1.ReshowDelay = 10;
             this.toolTip1.ShowAlways = true;
             // 
