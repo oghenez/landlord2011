@@ -36,15 +36,15 @@ namespace Landlord2
                 "ObjectStateManager.ObjectStateManagerChanged | Action:{0} Object:{1}"
                 , e.Action
                 , e.Element));
-                MessageBox.Show(string.Format(
-                    "MainContext刚刚检测到缓存改动--Action:{0} Object:{1}\r\n目前本地缓存实体数量：\r\n\tAdded-{2}\r\n\tDeleted-{3}\r\n\tModified-{4}\r\n\tUnchanged-{5}"
-                    , e.Action
-                    , e.Element
-                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Added).Count()
-                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted).Count()
-                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Modified).Count()
-                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Unchanged).Count()
-                    ));
+                //MessageBox.Show(string.Format(
+                //    "MainContext刚刚检测到缓存改动--Action:{0} Object:{1}\r\n目前本地缓存实体数量：\r\n\tAdded-{2}\r\n\tDeleted-{3}\r\n\tModified-{4}\r\n\tUnchanged-{5}"
+                //    , e.Action
+                //    , e.Element
+                //    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Added).Count()
+                //    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted).Count()
+                //    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Modified).Count()
+                //    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Unchanged).Count()
+                //    ));
             };
 #endif
             #endregion
@@ -151,7 +151,6 @@ namespace Landlord2
         /// <summary>
         /// 加载源房、客房信息到TreeView控件。
         /// 同时如果传入了EntityObject[例如：某个源房、客房对象]，加载后则选中之。
-        //! 注意：这里每次都是读取数据源最新值-因为每次都是[MergeOption.NoTracking]；并采用Include预先加载[客房]信息。
         /// </summary>
         private void LoadTreeView(EntityObject obj)
         {
@@ -167,7 +166,7 @@ namespace Landlord2
                 root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
                 root1.ImageIndex = 0;
                 DoThreadSafe(delegate { treeView1.Nodes.Add(root1); });
-                foreach (var yf in 源房.GetYF_NoHistory(context).Include("客房").Execute(MergeOption.NoTracking))
+                foreach (var yf in 源房.GetYF_NoHistory(context).Include("客房").Execute(MergeOption.OverwriteChanges))
                     AddYuanFangToTree(root1, yf, false, obj);
 
                 TreeNode root2 = new TreeNode("历史源房信息");
@@ -176,7 +175,7 @@ namespace Landlord2
                 root2.ForeColor = Color.DimGray;
                 root2.ImageIndex = 1;
                 DoThreadSafe(delegate { treeView1.Nodes.Add(root2); });
-                foreach (var yf in 源房.GetYF_History(context).Include("客房").Execute(MergeOption.NoTracking))
+                foreach (var yf in 源房.GetYF_History(context).Include("客房").Execute(MergeOption.OverwriteChanges))
                     AddYuanFangToTree(root2, yf, true, obj);
 
                 DoThreadSafe(delegate {

@@ -353,7 +353,6 @@
     <EmbeddedResource Include="UI\阶梯电价Form.resx">
       <DependentUpon>阶梯电价Form.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App.Config" />
     <EntityDeploy Include="Data\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>

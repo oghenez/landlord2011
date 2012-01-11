@@ -79,6 +79,22 @@ namespace Landlord2.Data
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
+        public ObjectSet<system> system
+        {
+            get
+            {
+                if ((_system == null))
+                {
+                    _system = base.CreateObjectSet<system>("system");
+                }
+                return _system;
+            }
+        }
+        private ObjectSet<system> _system;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
         public ObjectSet<客房> 客房
         {
             get
@@ -256,6 +272,14 @@ namespace Landlord2.Data
         #region AddTo 方法
     
         /// <summary>
+        /// 用于向 system EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTosystem(system system)
+        {
+            base.AddObject("system", system);
+        }
+    
+        /// <summary>
         /// 用于向 客房 EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
         /// </summary>
         public void AddTo客房(客房 客房)
@@ -350,6 +374,87 @@ namespace Landlord2.Data
     #endregion
     
     #region 实体
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Landlord2Model", Name="system")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class system : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 system 对象。
+        /// </summary>
+        /// <param name="key">key 属性的初始值。</param>
+        /// <param name="value">value 属性的初始值。</param>
+        public static system Createsystem(global::System.String key, global::System.String value)
+        {
+            system system = new system();
+            system.key = key;
+            system.value = value;
+            return system;
+        }
+
+        #endregion
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String key
+        {
+            get
+            {
+                return _key;
+            }
+            set
+            {
+                if (_key != value)
+                {
+                    OnkeyChanging(value);
+                    ReportPropertyChanging("key");
+                    _key = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("key");
+                    OnkeyChanged();
+                }
+            }
+        }
+        private global::System.String _key;
+        partial void OnkeyChanging(global::System.String value);
+        partial void OnkeyChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String value
+        {
+            get
+            {
+                return _value;
+            }
+            set
+            {
+                OnvalueChanging(value);
+                ReportPropertyChanging("value");
+                _value = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("value");
+                OnvalueChanged();
+            }
+        }
+        private global::System.String _value;
+        partial void OnvalueChanging(global::System.String value);
+        partial void OnvalueChanged();
+
+        #endregion
+    
+    }
     
     /// <summary>
     /// 没有元数据文档可用。

@@ -6,6 +6,7 @@
     <edmx:StorageModels>
     <Schema Namespace="Landlord2Model.Store" Alias="Self" Provider="System.Data.SqlServerCe.3.5" ProviderManifestToken="3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="Landlord2ModelStoreContainer">
+          <EntitySet Name="system" EntityType="Landlord2Model.Store.system" store:Type="Tables" />
           <EntitySet Name="客房" EntityType="Landlord2Model.Store.客房" store:Type="Tables" />
           <EntitySet Name="客房出租历史记录" EntityType="Landlord2Model.Store.客房出租历史记录" store:Type="Tables" />
           <EntitySet Name="客房租金明细" EntityType="Landlord2Model.Store.客房租金明细" store:Type="Tables" />
@@ -46,6 +47,13 @@
             <End Role="装修明细" EntitySet="装修明细" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="system">
+          <Key>
+            <PropertyRef Name="key" />
+          </Key>
+          <Property Name="key" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="value" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
         <EntityType Name="客房">
           <Key>
             <PropertyRef Name="ID" />
@@ -361,6 +369,7 @@
     <edmx:ConceptualModels>
       <Schema Namespace="Landlord2Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="system" EntityType="Landlord2Model.system" />
           <EntitySet Name="客房" EntityType="Landlord2Model.客房" />
           <EntitySet Name="客房出租历史记录" EntityType="Landlord2Model.客房出租历史记录" />
           <EntitySet Name="客房租金明细" EntityType="Landlord2Model.客房租金明细" />
@@ -401,6 +410,13 @@
             <End Role="装修明细" EntitySet="装修明细" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="system">
+          <Key>
+            <PropertyRef Name="key" />
+          </Key>
+          <Property Type="String" Name="key" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="value" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="客房">
           <Key>
             <PropertyRef Name="ID" />
@@ -717,6 +733,14 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Landlord2ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="system">
+            <EntityTypeMapping TypeName="Landlord2Model.system">
+              <MappingFragment StoreEntitySet="system">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="key" ColumnName="key" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="客房">
             <EntityTypeMapping TypeName="Landlord2Model.客房">
               <MappingFragment StoreEntitySet="客房">
@@ -961,20 +985,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model1">
+        <EntityTypeShape EntityType="Landlord2Model.system" Width="1.5" PointX="0.75" PointY="0.75" Height="1.3969734700520888" />
         <EntityTypeShape EntityType="Landlord2Model.客房" Width="1.5" PointX="3" PointY="4" Height="6.7455249023437531" />
-        <EntityTypeShape EntityType="Landlord2Model.客房出租历史记录" Width="1.5" PointX="5.25" PointY="2.125" Height="5.9814461263020817" />
+        <EntityTypeShape EntityType="Landlord2Model.客房出租历史记录" Width="1.5" PointX="5.25" PointY="2.125" Height="5.9814461263020888" />
         <EntityTypeShape EntityType="Landlord2Model.客房租金明细" Width="1.5" PointX="5.25" PointY="8.875" Height="3.6892097981770888" />
-        <EntityTypeShape EntityType="Landlord2Model.日常损耗" Width="1.5" PointX="0.75" PointY="0.75" Height="2.3520719401041674" />
-        <EntityTypeShape EntityType="Landlord2Model.提醒" Width="1.5" PointX="7.75" PointY="0.75" Height="2.5430916341145888" />
+        <EntityTypeShape EntityType="Landlord2Model.日常损耗" Width="1.5" PointX="7.75" PointY="0.75" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="Landlord2Model.提醒" Width="1.5" PointX="7.75" PointY="4.75" Height="2.5430916341145888" />
         <EntityTypeShape EntityType="Landlord2Model.源房" Width="1.5" PointX="0.75" PointY="10.5" Height="8.8467415364583371" />
         <EntityTypeShape EntityType="Landlord2Model.源房缴费明细" Width="1.5" PointX="3" PointY="13.25" Height="3.1161507161458388" />
-        <EntityTypeShape EntityType="Landlord2Model.源房水电气核查" Width="1.5" PointX="3" PointY="17.125" Height="3.6892097981770888" />
+        <EntityTypeShape EntityType="Landlord2Model.源房水电气核查" Width="1.5" PointX="3" PointY="17.125" Height="3.6892097981770817" />
         <EntityTypeShape EntityType="Landlord2Model.源房涨租协定" Width="1.5" PointX="3" PointY="21.625" Height="2.1610522460937531" />
-        <EntityTypeShape EntityType="Landlord2Model.装修分类" Width="1.5" PointX="7.75" PointY="4.75" Height="1.3969734700520888" />
+        <EntityTypeShape EntityType="Landlord2Model.装修分类" Width="1.5" PointX="7.75" PointY="8.75" Height="1.3969734700520782" />
         <EntityTypeShape EntityType="Landlord2Model.装修明细" Width="1.5" PointX="3" PointY="24.5" Height="3.307170410156246" />
         <AssociationConnector Association="Landlord2Model.客房_客房出租历史" >
-          <ConnectorPoint PointX="4.5" PointY="6.0532230631510409" />
-          <ConnectorPoint PointX="5.25" PointY="6.0532230631510409" />
+          <ConnectorPoint PointX="4.5" PointY="6.0532230631510444" />
+          <ConnectorPoint PointX="5.25" PointY="6.0532230631510444" />
         </AssociationConnector>
         <AssociationConnector Association="Landlord2Model.客房_客房租金明细" >
           <ConnectorPoint PointX="4.5" PointY="9.8102624511718766" />

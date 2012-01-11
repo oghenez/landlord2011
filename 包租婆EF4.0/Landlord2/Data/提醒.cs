@@ -47,7 +47,7 @@ namespace Landlord2.Data
         }
 
         /// <summary>
-        /// 预编译查询1 -- 查询最近7天提醒(包括已到期的)
+        /// 预编译查询1 -- 查询最近n天提醒(包括已到期的)
         /// </summary>
         static readonly Func<Entities,DateTime, ObjectQuery<提醒>> compiledQuery1 =
             CompiledQuery.Compile<Entities,DateTime, ObjectQuery<提醒>>(
@@ -55,11 +55,12 @@ namespace Landlord2.Data
                 Where(m => m.已完成 == false && m.提醒时间 <= endDate).
                 OrderBy(m => m.提醒时间));
         /// <summary>
-        /// 预编译查询1 -- 查询最近7天提醒(包括已到期的)，按提醒时间顺序排列【紧急的排前面】
+        /// 预编译查询1 -- 查询最近n天提醒(包括已到期的)，按提醒时间顺序排列【紧急的排前面】
         /// </summary>
         public static ObjectQuery<提醒> GetTX_In7Days(MyContext context)
         {
-            return compiledQuery1.Invoke(context,DateTime.Today.AddDays(7));
+            int alarmDays = int.Parse(context.system.FirstOrDefault(m => m.key == "alarmDays").value);
+            return compiledQuery1.Invoke(context, DateTime.Today.AddDays(alarmDays));
         }
 
 

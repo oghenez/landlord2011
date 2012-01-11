@@ -231,12 +231,12 @@ namespace Landlord2.Data
                 }
                 else
                 {
-                    DateTime min源房期始 = this.源房.源房涨租协定.Min(m => m.期始);
-                    DateTime max源房期止 = this.源房.源房涨租协定.Max(m => m.期止);
+                    DateTime min源房期始 = this.源房.源房涨租协定.Min(m => m.期始).Date;
+                    DateTime max源房期止 = this.源房.源房涨租协定.Max(m => m.期止).Date;
                     if (this.期始.Value.Date < min源房期始)
                         returnStr += string.Format("期始时间[{0}]不能小于所隶属的源房的期始时间[{1}]!",
                             this.期始.Value.ToShortDateString(),min源房期始.ToShortDateString()) +Environment.NewLine;
-                    if (this.期止 > max源房期止)
+                    if (this.期止.Value.Date > max源房期止)
                         returnStr += string.Format("期止时间[{0}]不能大于所隶属的源房的期止时间[{1}]!",
                             this.期止.Value.ToShortDateString(), max源房期止.ToShortDateString()) + Environment.NewLine;
                 }
