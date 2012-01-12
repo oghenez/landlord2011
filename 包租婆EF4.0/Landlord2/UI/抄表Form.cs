@@ -9,14 +9,14 @@ using System.Windows.Forms;
 
 namespace Landlord2.UI
 {
-    public partial class 水电气核查Form : FormBase
+    public partial class 抄表Form : FormBase
     {
-        public 水电气核查Form()
+        public 抄表Form()
         {
             InitializeComponent();
         }
 
-        private void 水电气核查Form_Load(object sender, EventArgs e)
+        private void 抄表Form_Load(object sender, EventArgs e)
         {
 
         }
