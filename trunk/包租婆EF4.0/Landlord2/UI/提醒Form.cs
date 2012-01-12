@@ -78,12 +78,12 @@ namespace Landlord2.UI
                     KryptonMessageBox.Show(msg, "成功新增提醒");
                     if (this.Owner is Main)
                     {
-                        (this.Owner as Main).RefreshAlarmData();
+                        (this.Owner as Main).RefreshCustomAlarmData();
                     }
                     else if (this.Owner is 提醒管理Form)
                     {
                         (this.Owner as 提醒管理Form).RefreshAndLocate提醒(entity.ID);
-                        (this.Owner.Owner as Main).RefreshAlarmData();
+                        (this.Owner.Owner as Main).RefreshCustomAlarmData();
                     }
                     Close();
                 }
@@ -107,12 +107,12 @@ namespace Landlord2.UI
                         KryptonMessageBox.Show(msg, "成功编辑提醒");
                         if (this.Owner is Main)
                         {
-                            (this.Owner as Main).RefreshAlarmData();
+                            (this.Owner as Main).RefreshCustomAlarmData();
                         }
                         else if (this.Owner is 提醒管理Form)
                         {
                             (this.Owner as 提醒管理Form).RefreshAndLocate提醒(entity.ID);
-                            (this.Owner.Owner as Main).RefreshAlarmData();
+                            (this.Owner.Owner as Main).RefreshCustomAlarmData();
                         }
                         Close();
                     }
@@ -147,12 +147,12 @@ namespace Landlord2.UI
                 KryptonMessageBox.Show("成功新增提醒，您可以继续添加。", "成功新增提醒");
                 if (this.Owner is Main)
                 {
-                    (this.Owner as Main).RefreshAlarmData();
+                    (this.Owner as Main).RefreshCustomAlarmData();
                 }
                 else if (this.Owner is 提醒管理Form)
                 {
                     (this.Owner as 提醒管理Form).RefreshAndLocate提醒(entity.ID);
-                    (this.Owner.Owner as Main).RefreshAlarmData();
+                    (this.Owner.Owner as Main).RefreshCustomAlarmData();
                 }
 
                 提醒 old = entity;

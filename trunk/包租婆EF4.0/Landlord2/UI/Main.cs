@@ -73,55 +73,96 @@ namespace Landlord2
                 LoadTreeView(null);
                 DoThreadSafe(delegate { yfUC = new UC源房详细(true) { Dock = DockStyle.Fill }; });
                 DoThreadSafe(delegate { kfUC = new UC客房详细(true) { Dock = DockStyle.Fill }; });
-                RefreshAlarmData();
+                RefreshCustomAlarmData();
+                RefreshSystemAlarmData();
             });           
         }
 
-        /// <summary>
-        /// 刷新‘提醒’数据
-        /// </summary>
-        public void RefreshAlarmData()
+        //刷新系统提醒 -- 系统自动检测，这些系统提醒临时生成，不放入数据库。
+        private void RefreshSystemAlarmData()
         {
             DoThreadSafe(delegate
             {
                 kryptonListBox1.BeginUpdate();
-                kryptonListBox1.Items.Clear();
+                //删除已有系统提醒
+                for (int i = kryptonListBox1.Items.Count - 1; i >= 0; i--)
+                {
+                    if ((kryptonListBox1.Items[i] as KryptonListItem).Tag == null)
+                        kryptonListBox1.Items.RemoveAt(i);
+                }
             });
-            var alarms = 提醒.GetTX_In7Days(context).Execute(MergeOption.NoTracking).ToList();
-            alarms.ForEach(m => { AddOneAlarmMsg(m); });
+
+            List<提醒> systemAlarms = new List<提醒>();
+            //执行系统检测，搜索得到所有系统提醒
+            //!++ 补充完整系统检测，构造相应的提醒对象，加入集合。还有定时检测刷新需要处理。。。
+            提醒 test = new 提醒();
+            test.事项 = "test";
+            test.源房ID = context.源房.First().ID;
+
+            systemAlarms.Add(test);
+            systemAlarms.ForEach(m => { AddOneAlarmMsg(m,true); });
 
             DoThreadSafe(delegate
             {
                 kryptonListBox1.EndUpdate();
-                if (alarms.Count > 0)
-                    AlarmTimer1.Enabled = true;//闪动提醒图标
-                else
+                IsEnableAlarm(kryptonListBox1.Items.Count);
+            });
+
+        }
+        /// <summary>
+        /// 刷新自定义‘提醒’数据
+        /// </summary>
+        public void RefreshCustomAlarmData()
+        {
+            DoThreadSafe(delegate
+            {
+                kryptonListBox1.BeginUpdate();
+                //删除已有自定义提醒
+                for (int i = kryptonListBox1.Items.Count - 1; i >= 0; i--)
                 {
-                    AlarmTimer1.Enabled = false;
-                    kryptonHeaderGroup3.ValuesPrimary.Image = Resources.idea_16_dis;
+                    if ((kryptonListBox1.Items[i] as KryptonListItem).Tag != null)
+                        kryptonListBox1.Items.RemoveAt(i);
                 }
+            });
+            var customAlarms = 提醒.GetTX_InSomeDays(context).Execute(MergeOption.NoTracking).ToList();
+            customAlarms.ForEach(m => { AddOneAlarmMsg(m,false); });
+
+            DoThreadSafe(delegate
+            {
+                kryptonListBox1.EndUpdate();
+                IsEnableAlarm(kryptonListBox1.Items.Count);
             });
             
         }
-        //增加一条提醒
-        private void AddOneAlarmMsg(提醒 tx)
+        //增加一条提醒。flag=true系统提醒；flag=false自定义提醒
+        private void AddOneAlarmMsg(提醒 tx,bool flag)
         { 
-            var yf = context.源房.FirstOrDefault(m=>m.ID == tx.源房ID);
-            var kf = context.客房.FirstOrDefault(m=>m.ID == tx.客房ID);
-
             KryptonListItem item = new KryptonListItem();
-            if (kf == null)
+            if (flag)//系统提醒
             {
-                item.LongText = string.Format("{0}【源房提醒】", yf.房名);
-                item.Image = Resources.源房16;
+                item.Image = Resources.idea_16;
+                item.ShortText = tx.事项;
+                item.LongText = "【系统提醒】";
             }
-            else
+            else//自定义提醒
             {
-                item.LongText = string.Format("{0} - {1}【客房提醒】", yf.房名, kf.命名);
-                item.Image = Resources.客房16;
-            }
-            item.ShortText = tx.ToString();            
-            item.Tag = tx;
+                var yf = context.源房.FirstOrDefault(m => m.ID == tx.源房ID);
+                var kf = context.客房.FirstOrDefault(m => m.ID == tx.客房ID);
+
+                item.ShortText = tx.ToString();
+                item.Tag = tx;//自定义提醒的tag保留对象引用，双击会发生响应。
+                if (kf == null)
+                {
+                    item.LongText = string.Format("{0}【源房提醒】", yf.房名);
+                    item.Image = Resources.源房16;
+                }
+                else
+                {
+                    item.LongText = string.Format("{0} - {1}【客房提醒】", yf.房名, kf.命名);
+                    item.Image = Resources.客房16;
+                }
+            }          
+            
             DoThreadSafe(delegate
             {
                 kryptonListBox1.Items.Add(item);
@@ -129,6 +170,16 @@ namespace Landlord2
         }
 
         #region 闪动提醒图标
+        private void IsEnableAlarm(int alarmsCount)
+        {
+            if(alarmsCount > 0)
+                AlarmTimer1.Enabled = true;//闪动提醒图标
+            else
+            {
+                AlarmTimer1.Enabled = false;
+                kryptonHeaderGroup3.ValuesPrimary.Image = Resources.idea_16_dis;
+            }
+        }
         private bool flag = false;
         private void AlarmTimer1_Tick(object sender, EventArgs e)
         {
