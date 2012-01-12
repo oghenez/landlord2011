@@ -57,7 +57,7 @@ namespace Landlord2.Data
         /// <summary>
         /// 预编译查询1 -- 查询最近n天提醒(包括已到期的)，按提醒时间顺序排列【紧急的排前面】
         /// </summary>
-        public static ObjectQuery<提醒> GetTX_In7Days(MyContext context)
+        public static ObjectQuery<提醒> GetTX_InSomeDays(MyContext context)
         {
             int alarmDays = int.Parse(context.system.FirstOrDefault(m => m.key == "alarmDays").value);
             return compiledQuery1.Invoke(context, DateTime.Today.AddDays(alarmDays));

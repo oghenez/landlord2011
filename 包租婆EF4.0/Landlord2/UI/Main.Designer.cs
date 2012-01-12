@@ -254,53 +254,53 @@
             // 源房缴费ToolStripMenuItem
             // 
             this.源房缴费ToolStripMenuItem.Name = "源房缴费ToolStripMenuItem";
-            this.源房缴费ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.源房缴费ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.源房缴费ToolStripMenuItem.Text = "源房缴费";
             // 
             // 水电气核查ToolStripMenuItem
             // 
             this.水电气核查ToolStripMenuItem.Name = "水电气核查ToolStripMenuItem";
-            this.水电气核查ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.水电气核查ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.水电气核查ToolStripMenuItem.Text = "水电气核查";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(143, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // 新增源房ToolStripMenuItem
             // 
             this.新增源房ToolStripMenuItem.Name = "新增源房ToolStripMenuItem";
-            this.新增源房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.新增源房ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.新增源房ToolStripMenuItem.Text = "新增源房";
             // 
             // 删除源房ToolStripMenuItem
             // 
             this.删除源房ToolStripMenuItem.Name = "删除源房ToolStripMenuItem";
-            this.删除源房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.删除源房ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.删除源房ToolStripMenuItem.Text = "删除源房";
             // 
             // 编辑源房ToolStripMenuItem
             // 
             this.编辑源房ToolStripMenuItem.Name = "编辑源房ToolStripMenuItem";
-            this.编辑源房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.编辑源房ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.编辑源房ToolStripMenuItem.Text = "编辑源房";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(143, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // 源房缴费明细ToolStripMenuItem
             // 
             this.源房缴费明细ToolStripMenuItem.Name = "源房缴费明细ToolStripMenuItem";
-            this.源房缴费明细ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.源房缴费明细ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.源房缴费明细ToolStripMenuItem.Text = "源房缴费明细";
             // 
             // 源房装修明细ToolStripMenuItem
             // 
             this.源房装修明细ToolStripMenuItem.Name = "源房装修明细ToolStripMenuItem";
-            this.源房装修明细ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.源房装修明细ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.源房装修明细ToolStripMenuItem.Text = "源房装修明细";
             this.源房装修明细ToolStripMenuItem.Click += new System.EventHandler(this.装修明细_Click);
             // 
@@ -327,76 +327,76 @@
             // 客房收租ToolStripMenuItem
             // 
             this.客房收租ToolStripMenuItem.Name = "客房收租ToolStripMenuItem";
-            this.客房收租ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.客房收租ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.客房收租ToolStripMenuItem.Text = "客房收租";
             // 
             // 日常损耗ToolStripMenuItem
             // 
             this.日常损耗ToolStripMenuItem.Name = "日常损耗ToolStripMenuItem";
-            this.日常损耗ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.日常损耗ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.日常损耗ToolStripMenuItem.Text = "日常损耗";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(143, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // 新增客房ToolStripMenuItem
             // 
             this.新增客房ToolStripMenuItem.Name = "新增客房ToolStripMenuItem";
-            this.新增客房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.新增客房ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.新增客房ToolStripMenuItem.Text = "新增客房";
             // 
             // 删除客房ToolStripMenuItem
             // 
             this.删除客房ToolStripMenuItem.Name = "删除客房ToolStripMenuItem";
-            this.删除客房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.删除客房ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.删除客房ToolStripMenuItem.Text = "删除客房";
             // 
             // 编辑客房ToolStripMenuItem
             // 
             this.编辑客房ToolStripMenuItem.Name = "编辑客房ToolStripMenuItem";
-            this.编辑客房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.编辑客房ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.编辑客房ToolStripMenuItem.Text = "编辑客房";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(143, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
             // 
             // 客房出租ToolStripMenuItem
             // 
             this.客房出租ToolStripMenuItem.Name = "客房出租ToolStripMenuItem";
-            this.客房出租ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.客房出租ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.客房出租ToolStripMenuItem.Text = "客房出租";
             // 
             // 客房退租ToolStripMenuItem
             // 
             this.客房退租ToolStripMenuItem.Name = "客房退租ToolStripMenuItem";
-            this.客房退租ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.客房退租ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.客房退租ToolStripMenuItem.Text = "客房退租";
             // 
             // 客房续租ToolStripMenuItem
             // 
             this.客房续租ToolStripMenuItem.Name = "客房续租ToolStripMenuItem";
-            this.客房续租ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.客房续租ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.客房续租ToolStripMenuItem.Text = "客房续租";
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(143, 6);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(149, 6);
             // 
             // 出租历史记录ToolStripMenuItem
             // 
             this.出租历史记录ToolStripMenuItem.Name = "出租历史记录ToolStripMenuItem";
-            this.出租历史记录ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.出租历史记录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.出租历史记录ToolStripMenuItem.Text = "出租历史记录";
             // 
             // 收租明细记录ToolStripMenuItem
             // 
             this.收租明细记录ToolStripMenuItem.Name = "收租明细记录ToolStripMenuItem";
-            this.收租明细记录ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.收租明细记录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.收租明细记录ToolStripMenuItem.Text = "收租明细记录";
             // 
             // 提醒ToolStripMenuItem
@@ -413,25 +413,25 @@
             // 新增提醒ToolStripMenuItem
             // 
             this.新增提醒ToolStripMenuItem.Name = "新增提醒ToolStripMenuItem";
-            this.新增提醒ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.新增提醒ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.新增提醒ToolStripMenuItem.Text = "新增提醒";
             // 
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(119, 6);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(155, 6);
             // 
             // 提醒设置ToolStripMenuItem
             // 
             this.提醒设置ToolStripMenuItem.Name = "提醒设置ToolStripMenuItem";
-            this.提醒设置ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.提醒设置ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.提醒设置ToolStripMenuItem.Text = "提醒设置";
             // 
             // 提醒管理ToolStripMenuItem
             // 
             this.提醒管理ToolStripMenuItem.Name = "提醒管理ToolStripMenuItem";
-            this.提醒管理ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.提醒管理ToolStripMenuItem.Text = "提醒管理";
+            this.提醒管理ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.提醒管理ToolStripMenuItem.Text = "自定义提醒管理";
             // 
             // 数据报表ToolStripMenuItem
             // 

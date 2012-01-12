@@ -222,6 +222,12 @@
     <Compile Include="UI\提醒管理Form.Designer.cs">
       <DependentUpon>提醒管理Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\水电气核查Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\水电气核查Form.Designer.cs">
+      <DependentUpon>水电气核查Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\源房Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -328,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\提醒管理Form.resx">
       <DependentUpon>提醒管理Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\水电气核查Form.resx">
+      <DependentUpon>水电气核查Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\源房Form.resx">
       <DependentUpon>源房Form.cs</DependentUpon>
