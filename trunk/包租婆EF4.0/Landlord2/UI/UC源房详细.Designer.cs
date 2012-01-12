@@ -1163,7 +1163,7 @@
             this.toolStripButton7.Name = "toolStripButton7";
             this.toolStripButton7.Size = new System.Drawing.Size(83, 28);
             this.toolStripButton7.Text = "源房缴费";
-            this.toolStripButton7.ToolTipText = "为当前选中的源房缴费\\r\\n例如：缴纳房租、水电等";
+            this.toolStripButton7.ToolTipText = "为当前选中的源房缴费(例如：缴纳房租、水电等)";
             // 
             // toolStripButton6
             // 
@@ -1185,7 +1185,7 @@
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Size = new System.Drawing.Size(35, 28);
             this.toolStripButton5.Text = "抄表";
-            this.toolStripButton5.ToolTipText = "为当前选中的源房抄表\\r\\n包括：水、电、气表";
+            this.toolStripButton5.ToolTipText = "为当前选中的源房抄表(包括：水、电、气表)";
             // 
             // toolStripSeparator4
             // 
