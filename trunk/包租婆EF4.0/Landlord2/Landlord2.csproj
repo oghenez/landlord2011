@@ -123,7 +123,7 @@
     <Compile Include="Data\提醒.cs" />
     <Compile Include="Data\日常损耗.cs" />
     <Compile Include="Data\源房.cs" />
-    <Compile Include="Data\源房水电气核查.cs" />
+    <Compile Include="Data\源房抄表.cs" />
     <Compile Include="Data\源房涨租协定.cs" />
     <Compile Include="Data\源房缴费明细.cs" />
     <Compile Include="Data\装修明细.cs" />
@@ -366,6 +366,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="Data\Model1.Views.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Views.cs</LastGenOutput>

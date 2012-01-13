@@ -14,7 +14,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Data.Mapping.EntityViewGenerationAttribute(typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySetsE875525514652CDAEF7F7C29BBA4251ACBEA887D34F630D00F1FDE9ADCF68906))]
+[assembly: System.Data.Mapping.EntityViewGenerationAttribute(typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySetsE3712F4F02EB678FDBBC75F989C893294690A9647C168A59A808A0BF987C911F))]
 
 namespace Edm_EntityMappingGeneratedViews
 {
@@ -23,18 +23,18 @@ namespace Edm_EntityMappingGeneratedViews
     /// <Summary>
     /// 此类型包含在设计时生成的 EntitySets 和 AssociationSets 的视图。
     /// </Summary>
-    public sealed class ViewsForBaseEntitySetsE875525514652CDAEF7F7C29BBA4251ACBEA887D34F630D00F1FDE9ADCF68906 : System.Data.Mapping.EntityViewContainer
+    public sealed class ViewsForBaseEntitySetsE3712F4F02EB678FDBBC75F989C893294690A9647C168A59A808A0BF987C911F : System.Data.Mapping.EntityViewContainer
     {
         
         /// <Summary>
         /// 构造函数存储各区的视图，以及根据元数据和映射结束和视图生成的哈希值。
         /// </Summary>
-        public ViewsForBaseEntitySetsE875525514652CDAEF7F7C29BBA4251ACBEA887D34F630D00F1FDE9ADCF68906()
+        public ViewsForBaseEntitySetsE3712F4F02EB678FDBBC75F989C893294690A9647C168A59A808A0BF987C911F()
         {
             this.EdmEntityContainerName = "Entities";
             this.StoreEntityContainerName = "Landlord2ModelStoreContainer";
-            this.HashOverMappingClosure = "3e8bf80354bc9b6256ac2eb08e4e7273920392fe4a836d918292b99916c7dac5";
-            this.HashOverAllExtentViews = "9574c278d65078c6bc2507ec6c281938e559f949f50de60d4a31c4194f8ace05";
+            this.HashOverMappingClosure = "f932df335059e4abf9ce1951d46f030600878eb09a3fae70ece3edc66eb6c928";
+            this.HashOverAllExtentViews = "f909e4111f48fcda5671d857514135830d8febeb3c2dbe6da5d70c61e31b58c6";
             this.ViewCount = 24;
         }
         
@@ -292,9 +292,34 @@ namespace Edm_EntityMappingGeneratedViews
         }
         
         /// <Summary>
-        /// 返回 Landlord2ModelStoreContainer.源房缴费明细 的视图
+        /// 返回 Landlord2ModelStoreContainer.源房抄表 的视图
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView6()
+        {
+            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.源房抄表", @"
+    SELECT VALUE -- Constructing 源房抄表
+        [Landlord2Model.Store.源房抄表](T1.[源房抄表_水止码], T1.[源房抄表_水账户余额], T1.[源房抄表_电止码], T1.[源房抄表_电账户余额], T1.[源房抄表_气表剩余字数], T1.[源房抄表_备注], T1.[源房抄表_源房ID], T1.[源房抄表_ID], T1.[源房抄表_抄表人], T1.[源房抄表_抄表时间])
+    FROM (
+        SELECT 
+            T.[水止码] AS [源房抄表_水止码], 
+            T.[水账户余额] AS [源房抄表_水账户余额], 
+            T.[电止码] AS [源房抄表_电止码], 
+            T.[电账户余额] AS [源房抄表_电账户余额], 
+            T.[气表剩余字数] AS [源房抄表_气表剩余字数], 
+            T.[备注] AS [源房抄表_备注], 
+            T.[源房ID] AS [源房抄表_源房ID], 
+            T.ID AS [源房抄表_ID], 
+            T.[抄表人] AS [源房抄表_抄表人], 
+            T.[抄表时间] AS [源房抄表_抄表时间], 
+            True AS _from0
+        FROM Entities.[源房抄表] AS T
+    ) AS T1");
+        }
+        
+        /// <Summary>
+        /// 返回 Landlord2ModelStoreContainer.源房缴费明细 的视图
+        /// </Summary>
+        private System.Collections.Generic.KeyValuePair<string, string> GetView7()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.源房缴费明细", @"
     SELECT VALUE -- Constructing 源房缴费明细
@@ -313,34 +338,6 @@ namespace Edm_EntityMappingGeneratedViews
             T.ID AS [源房缴费明细_ID], 
             True AS _from0
         FROM Entities.[源房缴费明细] AS T
-    ) AS T1");
-        }
-        
-        /// <Summary>
-        /// 返回 Landlord2ModelStoreContainer.源房水电气核查 的视图
-        /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView7()
-        {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Landlord2ModelStoreContainer.源房水电气核查", @"
-    SELECT VALUE -- Constructing 源房水电气核查
-        [Landlord2Model.Store.源房水电气核查](T1.[源房水电气核查_抄表日期(水)], T1.[源房水电气核查_水止码], T1.[源房水电气核查_水账户余额], T1.[源房水电气核查_抄表日期(电)], T1.[源房水电气核查_电止码], T1.[源房水电气核查_电账户余额], T1.[源房水电气核查_抄表日期(气)], T1.[源房水电气核查_气表剩余字数], T1.[源房水电气核查_核查人], T1.[源房水电气核查_核查时间], T1.[源房水电气核查_备注], T1.[源房水电气核查_源房ID], T1.[源房水电气核查_ID])
-    FROM (
-        SELECT 
-            T.[抄表日期_水_] AS [源房水电气核查_抄表日期(水)], 
-            T.[水止码] AS [源房水电气核查_水止码], 
-            T.[水账户余额] AS [源房水电气核查_水账户余额], 
-            T.[抄表日期_电_] AS [源房水电气核查_抄表日期(电)], 
-            T.[电止码] AS [源房水电气核查_电止码], 
-            T.[电账户余额] AS [源房水电气核查_电账户余额], 
-            T.[抄表日期_气_] AS [源房水电气核查_抄表日期(气)], 
-            T.[气表剩余字数] AS [源房水电气核查_气表剩余字数], 
-            T.[核查人] AS [源房水电气核查_核查人], 
-            T.[核查时间] AS [源房水电气核查_核查时间], 
-            T.[备注] AS [源房水电气核查_备注], 
-            T.[源房ID] AS [源房水电气核查_源房ID], 
-            T.ID AS [源房水电气核查_ID], 
-            True AS _from0
-        FROM Entities.[源房水电气核查] AS T
     ) AS T1");
         }
         
@@ -507,9 +504,34 @@ namespace Edm_EntityMappingGeneratedViews
         }
         
         /// <Summary>
-        /// 返回 Entities.源房缴费明细 的视图
+        /// 返回 Entities.源房抄表 的视图
         /// </Summary>
         private System.Collections.Generic.KeyValuePair<string, string> GetView14()
+        {
+            return new System.Collections.Generic.KeyValuePair<string, string>("Entities.源房抄表", @"
+    SELECT VALUE -- Constructing 源房抄表
+        [Landlord2Model.源房抄表](T1.[源房抄表_水止码], T1.[源房抄表_水账户余额], T1.[源房抄表_电止码], T1.[源房抄表_电账户余额], T1.[源房抄表_气表剩余字数], T1.[源房抄表_备注], T1.[源房抄表_源房ID], T1.[源房抄表_ID], T1.[源房抄表_抄表人], T1.[源房抄表_抄表时间])
+    FROM (
+        SELECT 
+            T.[水止码] AS [源房抄表_水止码], 
+            T.[水账户余额] AS [源房抄表_水账户余额], 
+            T.[电止码] AS [源房抄表_电止码], 
+            T.[电账户余额] AS [源房抄表_电账户余额], 
+            T.[气表剩余字数] AS [源房抄表_气表剩余字数], 
+            T.[备注] AS [源房抄表_备注], 
+            T.[源房ID] AS [源房抄表_源房ID], 
+            T.ID AS [源房抄表_ID], 
+            T.[抄表人] AS [源房抄表_抄表人], 
+            T.[抄表时间] AS [源房抄表_抄表时间], 
+            True AS _from0
+        FROM Landlord2ModelStoreContainer.[源房抄表] AS T
+    ) AS T1");
+        }
+        
+        /// <Summary>
+        /// 返回 Entities.源房缴费明细 的视图
+        /// </Summary>
+        private System.Collections.Generic.KeyValuePair<string, string> GetView15()
         {
             return new System.Collections.Generic.KeyValuePair<string, string>("Entities.源房缴费明细", @"
     SELECT VALUE -- Constructing 源房缴费明细
@@ -528,34 +550,6 @@ namespace Edm_EntityMappingGeneratedViews
             T.ID AS [源房缴费明细_ID], 
             True AS _from0
         FROM Landlord2ModelStoreContainer.[源房缴费明细] AS T
-    ) AS T1");
-        }
-        
-        /// <Summary>
-        /// 返回 Entities.源房水电气核查 的视图
-        /// </Summary>
-        private System.Collections.Generic.KeyValuePair<string, string> GetView15()
-        {
-            return new System.Collections.Generic.KeyValuePair<string, string>("Entities.源房水电气核查", @"
-    SELECT VALUE -- Constructing 源房水电气核查
-        [Landlord2Model.源房水电气核查](T1.[源房水电气核查.抄表日期_水_], T1.[源房水电气核查_水止码], T1.[源房水电气核查_水账户余额], T1.[源房水电气核查.抄表日期_电_], T1.[源房水电气核查_电止码], T1.[源房水电气核查_电账户余额], T1.[源房水电气核查.抄表日期_气_], T1.[源房水电气核查_气表剩余字数], T1.[源房水电气核查_核查人], T1.[源房水电气核查_核查时间], T1.[源房水电气核查_备注], T1.[源房水电气核查_源房ID], T1.[源房水电气核查_ID])
-    FROM (
-        SELECT 
-            T.[抄表日期(水)] AS [源房水电气核查.抄表日期_水_], 
-            T.[水止码] AS [源房水电气核查_水止码], 
-            T.[水账户余额] AS [源房水电气核查_水账户余额], 
-            T.[抄表日期(电)] AS [源房水电气核查.抄表日期_电_], 
-            T.[电止码] AS [源房水电气核查_电止码], 
-            T.[电账户余额] AS [源房水电气核查_电账户余额], 
-            T.[抄表日期(气)] AS [源房水电气核查.抄表日期_气_], 
-            T.[气表剩余字数] AS [源房水电气核查_气表剩余字数], 
-            T.[核查人] AS [源房水电气核查_核查人], 
-            T.[核查时间] AS [源房水电气核查_核查时间], 
-            T.[备注] AS [源房水电气核查_备注], 
-            T.[源房ID] AS [源房水电气核查_源房ID], 
-            T.ID AS [源房水电气核查_ID], 
-            True AS _from0
-        FROM Landlord2ModelStoreContainer.[源房水电气核查] AS T
     ) AS T1");
         }
         

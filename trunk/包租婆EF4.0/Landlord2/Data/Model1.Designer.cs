@@ -22,7 +22,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("Landlord2Model", "客房_客房租金明细", "客房", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Landlord2.Data.客房), "客房租金明细", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Landlord2.Data.客房租金明细), true)]
 [assembly: EdmRelationshipAttribute("Landlord2Model", "源房客房", "源房", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Landlord2.Data.源房), "客房", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Landlord2.Data.客房), true)]
 [assembly: EdmRelationshipAttribute("Landlord2Model", "源房_源房缴费明细", "源房", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Landlord2.Data.源房), "源房缴费明细", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Landlord2.Data.源房缴费明细), true)]
-[assembly: EdmRelationshipAttribute("Landlord2Model", "源房_源房水电气核查", "源房", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Landlord2.Data.源房), "源房水电气核查", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Landlord2.Data.源房水电气核查), true)]
+[assembly: EdmRelationshipAttribute("Landlord2Model", "源房_源房水电气核查", "源房", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Landlord2.Data.源房), "源房抄表", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Landlord2.Data.源房抄表), true)]
 [assembly: EdmRelationshipAttribute("Landlord2Model", "源房_源房涨租协定", "源房", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Landlord2.Data.源房), "源房涨租协定", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Landlord2.Data.源房涨租协定), true)]
 [assembly: EdmRelationshipAttribute("Landlord2Model", "源房_装修明细", "源房", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Landlord2.Data.源房), "装修明细", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Landlord2.Data.装修明细), true)]
 
@@ -191,6 +191,22 @@ namespace Landlord2.Data
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
+        public ObjectSet<源房抄表> 源房抄表
+        {
+            get
+            {
+                if ((_源房抄表 == null))
+                {
+                    _源房抄表 = base.CreateObjectSet<源房抄表>("源房抄表");
+                }
+                return _源房抄表;
+            }
+        }
+        private ObjectSet<源房抄表> _源房抄表;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
         public ObjectSet<源房缴费明细> 源房缴费明细
         {
             get
@@ -203,22 +219,6 @@ namespace Landlord2.Data
             }
         }
         private ObjectSet<源房缴费明细> _源房缴费明细;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        public ObjectSet<源房水电气核查> 源房水电气核查
-        {
-            get
-            {
-                if ((_源房水电气核查 == null))
-                {
-                    _源房水电气核查 = base.CreateObjectSet<源房水电气核查>("源房水电气核查");
-                }
-                return _源房水电气核查;
-            }
-        }
-        private ObjectSet<源房水电气核查> _源房水电气核查;
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -328,19 +328,19 @@ namespace Landlord2.Data
         }
     
         /// <summary>
+        /// 用于向 源房抄表 EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddTo源房抄表(源房抄表 源房抄表)
+        {
+            base.AddObject("源房抄表", 源房抄表);
+        }
+    
+        /// <summary>
         /// 用于向 源房缴费明细 EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
         /// </summary>
         public void AddTo源房缴费明细(源房缴费明细 源房缴费明细)
         {
             base.AddObject("源房缴费明细", 源房缴费明细);
-        }
-    
-        /// <summary>
-        /// 用于向 源房水电气核查 EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddTo源房水电气核查(源房水电气核查 源房水电气核查)
-        {
-            base.AddObject("源房水电气核查", 源房水电气核查);
         }
     
         /// <summary>
@@ -3783,18 +3783,18 @@ namespace Landlord2.Data
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Landlord2Model", "源房_源房水电气核查", "源房水电气核查")]
-        public EntityCollection<源房水电气核查> 源房水电气核查
+        [EdmRelationshipNavigationPropertyAttribute("Landlord2Model", "源房_源房水电气核查", "源房抄表")]
+        public EntityCollection<源房抄表> 源房抄表
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<源房水电气核查>("Landlord2Model.源房_源房水电气核查", "源房水电气核查");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<源房抄表>("Landlord2Model.源房_源房水电气核查", "源房抄表");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<源房水电气核查>("Landlord2Model.源房_源房水电气核查", "源房水电气核查", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<源房抄表>("Landlord2Model.源房_源房水电气核查", "源房抄表", value);
                 }
             }
         }
@@ -3839,6 +3839,320 @@ namespace Landlord2.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<装修明细>("Landlord2Model.源房_装修明细", "装修明细", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Landlord2Model", Name="源房抄表")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class 源房抄表 : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 源房抄表 对象。
+        /// </summary>
+        /// <param name="源房ID">源房ID 属性的初始值。</param>
+        /// <param name="id">ID 属性的初始值。</param>
+        public static 源房抄表 Create源房抄表(global::System.Guid 源房ID, global::System.Guid id)
+        {
+            源房抄表 源房抄表 = new 源房抄表();
+            源房抄表.源房ID = 源房ID;
+            源房抄表.ID = id;
+            return 源房抄表;
+        }
+
+        #endregion
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> 水止码
+        {
+            get
+            {
+                return _水止码;
+            }
+            set
+            {
+                On水止码Changing(value);
+                ReportPropertyChanging("水止码");
+                _水止码 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("水止码");
+                On水止码Changed();
+            }
+        }
+        private Nullable<global::System.Double> _水止码;
+        partial void On水止码Changing(Nullable<global::System.Double> value);
+        partial void On水止码Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 水账户余额
+        {
+            get
+            {
+                return _水账户余额;
+            }
+            set
+            {
+                On水账户余额Changing(value);
+                ReportPropertyChanging("水账户余额");
+                _水账户余额 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("水账户余额");
+                On水账户余额Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _水账户余额;
+        partial void On水账户余额Changing(Nullable<global::System.Decimal> value);
+        partial void On水账户余额Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> 电止码
+        {
+            get
+            {
+                return _电止码;
+            }
+            set
+            {
+                On电止码Changing(value);
+                ReportPropertyChanging("电止码");
+                _电止码 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("电止码");
+                On电止码Changed();
+            }
+        }
+        private Nullable<global::System.Double> _电止码;
+        partial void On电止码Changing(Nullable<global::System.Double> value);
+        partial void On电止码Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> 电账户余额
+        {
+            get
+            {
+                return _电账户余额;
+            }
+            set
+            {
+                On电账户余额Changing(value);
+                ReportPropertyChanging("电账户余额");
+                _电账户余额 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("电账户余额");
+                On电账户余额Changed();
+            }
+        }
+        private Nullable<global::System.Decimal> _电账户余额;
+        partial void On电账户余额Changing(Nullable<global::System.Decimal> value);
+        partial void On电账户余额Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> 气表剩余字数
+        {
+            get
+            {
+                return _气表剩余字数;
+            }
+            set
+            {
+                On气表剩余字数Changing(value);
+                ReportPropertyChanging("气表剩余字数");
+                _气表剩余字数 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("气表剩余字数");
+                On气表剩余字数Changed();
+            }
+        }
+        private Nullable<global::System.Double> _气表剩余字数;
+        partial void On气表剩余字数Changing(Nullable<global::System.Double> value);
+        partial void On气表剩余字数Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 备注
+        {
+            get
+            {
+                return _备注;
+            }
+            set
+            {
+                On备注Changing(value);
+                ReportPropertyChanging("备注");
+                _备注 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("备注");
+                On备注Changed();
+            }
+        }
+        private global::System.String _备注;
+        partial void On备注Changing(global::System.String value);
+        partial void On备注Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid 源房ID
+        {
+            get
+            {
+                return _源房ID;
+            }
+            set
+            {
+                On源房IDChanging(value);
+                ReportPropertyChanging("源房ID");
+                _源房ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("源房ID");
+                On源房IDChanged();
+            }
+        }
+        private global::System.Guid _源房ID;
+        partial void On源房IDChanging(global::System.Guid value);
+        partial void On源房IDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Guid _ID;
+        partial void OnIDChanging(global::System.Guid value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String 抄表人
+        {
+            get
+            {
+                return _抄表人;
+            }
+            set
+            {
+                On抄表人Changing(value);
+                ReportPropertyChanging("抄表人");
+                _抄表人 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("抄表人");
+                On抄表人Changed();
+            }
+        }
+        private global::System.String _抄表人;
+        partial void On抄表人Changing(global::System.String value);
+        partial void On抄表人Changed();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> 抄表时间
+        {
+            get
+            {
+                return _抄表时间;
+            }
+            set
+            {
+                On抄表时间Changing(value);
+                ReportPropertyChanging("抄表时间");
+                _抄表时间 = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("抄表时间");
+                On抄表时间Changed();
+            }
+        }
+        private Nullable<global::System.DateTime> _抄表时间;
+        partial void On抄表时间Changing(Nullable<global::System.DateTime> value);
+        partial void On抄表时间Changed();
+
+        #endregion
+    
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Landlord2Model", "源房_源房水电气核查", "源房")]
+        public 源房 源房
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("Landlord2Model.源房_源房水电气核查", "源房").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("Landlord2Model.源房_源房水电气核查", "源房").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<源房> 源房Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("Landlord2Model.源房_源房水电气核查", "源房");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<源房>("Landlord2Model.源房_源房水电气核查", "源房", value);
                 }
             }
         }
@@ -4159,392 +4473,6 @@ namespace Landlord2.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<源房>("Landlord2Model.源房_源房缴费明细", "源房", value);
-                }
-            }
-        }
-
-        #endregion
-    }
-    
-    /// <summary>
-    /// 没有元数据文档可用。
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Landlord2Model", Name="源房水电气核查")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class 源房水电气核查 : EntityObject
-    {
-        #region 工厂方法
-    
-        /// <summary>
-        /// 创建新的 源房水电气核查 对象。
-        /// </summary>
-        /// <param name="源房ID">源房ID 属性的初始值。</param>
-        /// <param name="id">ID 属性的初始值。</param>
-        public static 源房水电气核查 Create源房水电气核查(global::System.Guid 源房ID, global::System.Guid id)
-        {
-            源房水电气核查 源房水电气核查 = new 源房水电气核查();
-            源房水电气核查.源房ID = 源房ID;
-            源房水电气核查.ID = id;
-            return 源房水电气核查;
-        }
-
-        #endregion
-        #region 基元属性
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> 抄表日期_水_
-        {
-            get
-            {
-                return _抄表日期_水_;
-            }
-            set
-            {
-                On抄表日期_水_Changing(value);
-                ReportPropertyChanging("抄表日期_水_");
-                _抄表日期_水_ = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("抄表日期_水_");
-                On抄表日期_水_Changed();
-            }
-        }
-        private Nullable<global::System.DateTime> _抄表日期_水_;
-        partial void On抄表日期_水_Changing(Nullable<global::System.DateTime> value);
-        partial void On抄表日期_水_Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Double> 水止码
-        {
-            get
-            {
-                return _水止码;
-            }
-            set
-            {
-                On水止码Changing(value);
-                ReportPropertyChanging("水止码");
-                _水止码 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("水止码");
-                On水止码Changed();
-            }
-        }
-        private Nullable<global::System.Double> _水止码;
-        partial void On水止码Changing(Nullable<global::System.Double> value);
-        partial void On水止码Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Decimal> 水账户余额
-        {
-            get
-            {
-                return _水账户余额;
-            }
-            set
-            {
-                On水账户余额Changing(value);
-                ReportPropertyChanging("水账户余额");
-                _水账户余额 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("水账户余额");
-                On水账户余额Changed();
-            }
-        }
-        private Nullable<global::System.Decimal> _水账户余额;
-        partial void On水账户余额Changing(Nullable<global::System.Decimal> value);
-        partial void On水账户余额Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> 抄表日期_电_
-        {
-            get
-            {
-                return _抄表日期_电_;
-            }
-            set
-            {
-                On抄表日期_电_Changing(value);
-                ReportPropertyChanging("抄表日期_电_");
-                _抄表日期_电_ = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("抄表日期_电_");
-                On抄表日期_电_Changed();
-            }
-        }
-        private Nullable<global::System.DateTime> _抄表日期_电_;
-        partial void On抄表日期_电_Changing(Nullable<global::System.DateTime> value);
-        partial void On抄表日期_电_Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Double> 电止码
-        {
-            get
-            {
-                return _电止码;
-            }
-            set
-            {
-                On电止码Changing(value);
-                ReportPropertyChanging("电止码");
-                _电止码 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("电止码");
-                On电止码Changed();
-            }
-        }
-        private Nullable<global::System.Double> _电止码;
-        partial void On电止码Changing(Nullable<global::System.Double> value);
-        partial void On电止码Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Decimal> 电账户余额
-        {
-            get
-            {
-                return _电账户余额;
-            }
-            set
-            {
-                On电账户余额Changing(value);
-                ReportPropertyChanging("电账户余额");
-                _电账户余额 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("电账户余额");
-                On电账户余额Changed();
-            }
-        }
-        private Nullable<global::System.Decimal> _电账户余额;
-        partial void On电账户余额Changing(Nullable<global::System.Decimal> value);
-        partial void On电账户余额Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> 抄表日期_气_
-        {
-            get
-            {
-                return _抄表日期_气_;
-            }
-            set
-            {
-                On抄表日期_气_Changing(value);
-                ReportPropertyChanging("抄表日期_气_");
-                _抄表日期_气_ = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("抄表日期_气_");
-                On抄表日期_气_Changed();
-            }
-        }
-        private Nullable<global::System.DateTime> _抄表日期_气_;
-        partial void On抄表日期_气_Changing(Nullable<global::System.DateTime> value);
-        partial void On抄表日期_气_Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Double> 气表剩余字数
-        {
-            get
-            {
-                return _气表剩余字数;
-            }
-            set
-            {
-                On气表剩余字数Changing(value);
-                ReportPropertyChanging("气表剩余字数");
-                _气表剩余字数 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("气表剩余字数");
-                On气表剩余字数Changed();
-            }
-        }
-        private Nullable<global::System.Double> _气表剩余字数;
-        partial void On气表剩余字数Changing(Nullable<global::System.Double> value);
-        partial void On气表剩余字数Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String 核查人
-        {
-            get
-            {
-                return _核查人;
-            }
-            set
-            {
-                On核查人Changing(value);
-                ReportPropertyChanging("核查人");
-                _核查人 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("核查人");
-                On核查人Changed();
-            }
-        }
-        private global::System.String _核查人;
-        partial void On核查人Changing(global::System.String value);
-        partial void On核查人Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> 核查时间
-        {
-            get
-            {
-                return _核查时间;
-            }
-            set
-            {
-                On核查时间Changing(value);
-                ReportPropertyChanging("核查时间");
-                _核查时间 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("核查时间");
-                On核查时间Changed();
-            }
-        }
-        private Nullable<global::System.DateTime> _核查时间;
-        partial void On核查时间Changing(Nullable<global::System.DateTime> value);
-        partial void On核查时间Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String 备注
-        {
-            get
-            {
-                return _备注;
-            }
-            set
-            {
-                On备注Changing(value);
-                ReportPropertyChanging("备注");
-                _备注 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("备注");
-                On备注Changed();
-            }
-        }
-        private global::System.String _备注;
-        partial void On备注Changing(global::System.String value);
-        partial void On备注Changed();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Guid 源房ID
-        {
-            get
-            {
-                return _源房ID;
-            }
-            set
-            {
-                On源房IDChanging(value);
-                ReportPropertyChanging("源房ID");
-                _源房ID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("源房ID");
-                On源房IDChanged();
-            }
-        }
-        private global::System.Guid _源房ID;
-        partial void On源房IDChanging(global::System.Guid value);
-        partial void On源房IDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Guid ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Guid _ID;
-        partial void OnIDChanging(global::System.Guid value);
-        partial void OnIDChanged();
-
-        #endregion
-    
-        #region 导航属性
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Landlord2Model", "源房_源房水电气核查", "源房")]
-        public 源房 源房
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("Landlord2Model.源房_源房水电气核查", "源房").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("Landlord2Model.源房_源房水电气核查", "源房").Value = value;
-            }
-        }
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<源房> 源房Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<源房>("Landlord2Model.源房_源房水电气核查", "源房");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<源房>("Landlord2Model.源房_源房水电气核查", "源房", value);
                 }
             }
         }

@@ -13,8 +13,8 @@
           <EntitySet Name="日常损耗" EntityType="Landlord2Model.Store.日常损耗" store:Type="Tables" />
           <EntitySet Name="提醒" EntityType="Landlord2Model.Store.提醒" store:Type="Tables" />
           <EntitySet Name="源房" EntityType="Landlord2Model.Store.源房" store:Type="Tables" />
+          <EntitySet Name="源房抄表" EntityType="Landlord2Model.Store.源房抄表" store:Type="Tables" />
           <EntitySet Name="源房缴费明细" EntityType="Landlord2Model.Store.源房缴费明细" store:Type="Tables" />
-          <EntitySet Name="源房水电气核查" EntityType="Landlord2Model.Store.源房水电气核查" store:Type="Tables" />
           <EntitySet Name="源房涨租协定" EntityType="Landlord2Model.Store.源房涨租协定" store:Type="Tables" />
           <EntitySet Name="装修分类" EntityType="Landlord2Model.Store.装修分类" store:Type="Tables" />
           <EntitySet Name="装修明细" EntityType="Landlord2Model.Store.装修明细" store:Type="Tables" />
@@ -36,7 +36,7 @@
           </AssociationSet>
           <AssociationSet Name="源房-源房水电气核查" Association="Landlord2Model.Store.源房-源房水电气核查">
             <End Role="源房" EntitySet="源房" />
-            <End Role="源房水电气核查" EntitySet="源房水电气核查" />
+            <End Role="源房抄表" EntitySet="源房抄表" />
           </AssociationSet>
           <AssociationSet Name="源房-源房涨租协定" Association="Landlord2Model.Store.源房-源房涨租协定">
             <End Role="源房" EntitySet="源房" />
@@ -200,6 +200,21 @@
           <Property Name="气单价" Type="money" Nullable="false" />
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
+        <EntityType Name="源房抄表">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="水止码" Type="float" />
+          <Property Name="水账户余额" Type="money" />
+          <Property Name="电止码" Type="float" />
+          <Property Name="电账户余额" Type="money" />
+          <Property Name="气表剩余字数" Type="float" />
+          <Property Name="备注" Type="nvarchar" MaxLength="500" />
+          <Property Name="源房ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="抄表人" Type="nvarchar" MaxLength="10" />
+          <Property Name="抄表时间" Type="datetime" />
+        </EntityType>
         <EntityType Name="源房缴费明细">
           <Key>
             <PropertyRef Name="ID" />
@@ -213,24 +228,6 @@
           <Property Name="备注" Type="nvarchar" MaxLength="500" />
           <Property Name="源房ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="缴费项" Type="nvarchar" Nullable="false" MaxLength="10" />
-          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
-        </EntityType>
-        <EntityType Name="源房水电气核查">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="抄表日期(水)" Type="datetime" />
-          <Property Name="水止码" Type="float" />
-          <Property Name="水账户余额" Type="money" />
-          <Property Name="抄表日期(电)" Type="datetime" />
-          <Property Name="电止码" Type="float" />
-          <Property Name="电账户余额" Type="money" />
-          <Property Name="抄表日期(气)" Type="datetime" />
-          <Property Name="气表剩余字数" Type="float" />
-          <Property Name="核查人" Type="nvarchar" MaxLength="10" />
-          <Property Name="核查时间" Type="datetime" />
-          <Property Name="备注" Type="nvarchar" MaxLength="500" />
-          <Property Name="源房ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="源房涨租协定">
@@ -326,12 +323,12 @@
           <End Role="源房" Type="Landlord2Model.Store.源房" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="源房水电气核查" Type="Landlord2Model.Store.源房水电气核查" Multiplicity="*" />
+          <End Role="源房抄表" Type="Landlord2Model.Store.源房抄表" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="源房">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="源房水电气核查">
+            <Dependent Role="源房抄表">
               <PropertyRef Name="源房ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -376,8 +373,8 @@
           <EntitySet Name="日常损耗" EntityType="Landlord2Model.日常损耗" />
           <EntitySet Name="提醒" EntityType="Landlord2Model.提醒" />
           <EntitySet Name="源房" EntityType="Landlord2Model.源房" />
+          <EntitySet Name="源房抄表" EntityType="Landlord2Model.源房抄表" />
           <EntitySet Name="源房缴费明细" EntityType="Landlord2Model.源房缴费明细" />
-          <EntitySet Name="源房水电气核查" EntityType="Landlord2Model.源房水电气核查" />
           <EntitySet Name="源房涨租协定" EntityType="Landlord2Model.源房涨租协定" />
           <EntitySet Name="装修分类" EntityType="Landlord2Model.装修分类" />
           <EntitySet Name="装修明细" EntityType="Landlord2Model.装修明细" />
@@ -399,7 +396,7 @@
           </AssociationSet>
           <AssociationSet Name="源房_源房水电气核查" Association="Landlord2Model.源房_源房水电气核查">
             <End Role="源房" EntitySet="源房" />
-            <End Role="源房水电气核查" EntitySet="源房水电气核查" />
+            <End Role="源房抄表" EntitySet="源房抄表" />
           </AssociationSet>
           <AssociationSet Name="源房_源房涨租协定" Association="Landlord2Model.源房_源房涨租协定">
             <End Role="源房" EntitySet="源房" />
@@ -569,9 +566,25 @@
           <Property Type="Guid" Name="ID" Nullable="false" />
           <NavigationProperty Name="客房" Relationship="Landlord2Model.源房客房" FromRole="源房" ToRole="客房" />
           <NavigationProperty Name="源房缴费明细" Relationship="Landlord2Model.源房_源房缴费明细" FromRole="源房" ToRole="源房缴费明细" />
-          <NavigationProperty Name="源房水电气核查" Relationship="Landlord2Model.源房_源房水电气核查" FromRole="源房" ToRole="源房水电气核查" />
+          <NavigationProperty Name="源房抄表" Relationship="Landlord2Model.源房_源房水电气核查" FromRole="源房" ToRole="源房抄表" />
           <NavigationProperty Name="源房涨租协定" Relationship="Landlord2Model.源房_源房涨租协定" FromRole="源房" ToRole="源房涨租协定" />
           <NavigationProperty Name="装修明细" Relationship="Landlord2Model.源房_装修明细" FromRole="源房" ToRole="装修明细" />
+        </EntityType>
+        <EntityType Name="源房抄表">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Double" Name="水止码" />
+          <Property Type="Decimal" Name="水账户余额" Precision="19" Scale="4" />
+          <Property Type="Double" Name="电止码" />
+          <Property Type="Decimal" Name="电账户余额" Precision="19" Scale="4" />
+          <Property Type="Double" Name="气表剩余字数" />
+          <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="源房ID" Nullable="false" />
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="抄表人" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="抄表时间" />
+          <NavigationProperty Name="源房" Relationship="Landlord2Model.源房_源房水电气核查" FromRole="源房抄表" ToRole="源房" />
         </EntityType>
         <EntityType Name="源房缴费明细">
           <Key>
@@ -588,25 +601,6 @@
           <Property Type="String" Name="缴费项" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Type="Guid" Name="ID" Nullable="false" />
           <NavigationProperty Name="源房" Relationship="Landlord2Model.源房_源房缴费明细" FromRole="源房缴费明细" ToRole="源房" />
-        </EntityType>
-        <EntityType Name="源房水电气核查">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Type="DateTime" Name="抄表日期_水_" />
-          <Property Type="Double" Name="水止码" />
-          <Property Type="Decimal" Name="水账户余额" Precision="19" Scale="4" />
-          <Property Type="DateTime" Name="抄表日期_电_" />
-          <Property Type="Double" Name="电止码" />
-          <Property Type="Decimal" Name="电账户余额" Precision="19" Scale="4" />
-          <Property Type="DateTime" Name="抄表日期_气_" />
-          <Property Type="Double" Name="气表剩余字数" />
-          <Property Type="String" Name="核查人" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="核查时间" />
-          <Property Type="String" Name="备注" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="Guid" Name="源房ID" Nullable="false" />
-          <Property Type="Guid" Name="ID" Nullable="false" />
-          <NavigationProperty Name="源房" Relationship="Landlord2Model.源房_源房水电气核查" FromRole="源房水电气核查" ToRole="源房" />
         </EntityType>
         <EntityType Name="源房涨租协定">
           <Key>
@@ -693,12 +687,12 @@
         </Association>
         <Association Name="源房_源房水电气核查">
           <End Type="Landlord2Model.源房" Role="源房" Multiplicity="1" />
-          <End Type="Landlord2Model.源房水电气核查" Role="源房水电气核查" Multiplicity="*" />
+          <End Type="Landlord2Model.源房抄表" Role="源房抄表" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="源房">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="源房水电气核查">
+            <Dependent Role="源房抄表">
               <PropertyRef Name="源房ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -893,6 +887,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="源房抄表">
+            <EntityTypeMapping TypeName="Landlord2Model.源房抄表">
+              <MappingFragment StoreEntitySet="源房抄表">
+                <ScalarProperty Name="抄表时间" ColumnName="抄表时间" />
+                <ScalarProperty Name="抄表人" ColumnName="抄表人" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="源房ID" ColumnName="源房ID" />
+                <ScalarProperty Name="备注" ColumnName="备注" />
+                <ScalarProperty Name="气表剩余字数" ColumnName="气表剩余字数" />
+                <ScalarProperty Name="电账户余额" ColumnName="电账户余额" />
+                <ScalarProperty Name="电止码" ColumnName="电止码" />
+                <ScalarProperty Name="水账户余额" ColumnName="水账户余额" />
+                <ScalarProperty Name="水止码" ColumnName="水止码" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="源房缴费明细">
             <EntityTypeMapping TypeName="Landlord2Model.源房缴费明细">
               <MappingFragment StoreEntitySet="源房缴费明细">
@@ -906,25 +916,6 @@
                 <ScalarProperty Name="期始" ColumnName="期始" />
                 <ScalarProperty Name="缴费金额" ColumnName="缴费金额" />
                 <ScalarProperty Name="缴费时间" ColumnName="缴费时间" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="源房水电气核查">
-            <EntityTypeMapping TypeName="Landlord2Model.源房水电气核查">
-              <MappingFragment StoreEntitySet="源房水电气核查">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="源房ID" ColumnName="源房ID" />
-                <ScalarProperty Name="备注" ColumnName="备注" />
-                <ScalarProperty Name="核查时间" ColumnName="核查时间" />
-                <ScalarProperty Name="核查人" ColumnName="核查人" />
-                <ScalarProperty Name="气表剩余字数" ColumnName="气表剩余字数" />
-                <ScalarProperty Name="抄表日期_气_" ColumnName="抄表日期(气)" />
-                <ScalarProperty Name="电账户余额" ColumnName="电账户余额" />
-                <ScalarProperty Name="电止码" ColumnName="电止码" />
-                <ScalarProperty Name="抄表日期_电_" ColumnName="抄表日期(电)" />
-                <ScalarProperty Name="水账户余额" ColumnName="水账户余额" />
-                <ScalarProperty Name="水止码" ColumnName="水止码" />
-                <ScalarProperty Name="抄表日期_水_" ColumnName="抄表日期(水)" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -986,49 +977,48 @@
     <Diagrams>
       <Diagram Name="Model1">
         <EntityTypeShape EntityType="Landlord2Model.system" Width="1.5" PointX="0.75" PointY="0.75" Height="1.3969734700520888" />
-        <EntityTypeShape EntityType="Landlord2Model.客房" Width="1.5" PointX="3" PointY="4" Height="6.7455249023437531" />
+        <EntityTypeShape EntityType="Landlord2Model.客房" Width="1.5" PointX="3" PointY="3.875" Height="6.7455249023437531" />
         <EntityTypeShape EntityType="Landlord2Model.客房出租历史记录" Width="1.5" PointX="5.25" PointY="2.125" Height="5.9814461263020888" />
         <EntityTypeShape EntityType="Landlord2Model.客房租金明细" Width="1.5" PointX="5.25" PointY="8.875" Height="3.6892097981770888" />
         <EntityTypeShape EntityType="Landlord2Model.日常损耗" Width="1.5" PointX="7.75" PointY="0.75" Height="2.3520719401041674" />
         <EntityTypeShape EntityType="Landlord2Model.提醒" Width="1.5" PointX="7.75" PointY="4.75" Height="2.5430916341145888" />
-        <EntityTypeShape EntityType="Landlord2Model.源房" Width="1.5" PointX="0.75" PointY="10.5" Height="8.8467415364583371" />
-        <EntityTypeShape EntityType="Landlord2Model.源房缴费明细" Width="1.5" PointX="3" PointY="13.25" Height="3.1161507161458388" />
-        <EntityTypeShape EntityType="Landlord2Model.源房水电气核查" Width="1.5" PointX="3" PointY="17.125" Height="3.6892097981770817" />
-        <EntityTypeShape EntityType="Landlord2Model.源房涨租协定" Width="1.5" PointX="3" PointY="21.625" Height="2.1610522460937531" />
-        <EntityTypeShape EntityType="Landlord2Model.装修分类" Width="1.5" PointX="7.75" PointY="8.75" Height="1.3969734700520782" />
-        <EntityTypeShape EntityType="Landlord2Model.装修明细" Width="1.5" PointX="3" PointY="24.5" Height="3.307170410156246" />
+        <EntityTypeShape EntityType="Landlord2Model.源房" Width="1.5" PointX="0.75" PointY="10.25" Height="8.8467415364583371" />
+        <EntityTypeShape EntityType="Landlord2Model.源房抄表" Width="1.5" PointX="3" PointY="13.25" Height="3.1161507161458388" />
+        <EntityTypeShape EntityType="Landlord2Model.源房缴费明细" Width="1.5" PointX="3" PointY="17.125" Height="3.1161507161458317" />
+        <EntityTypeShape EntityType="Landlord2Model.源房涨租协定" Width="1.5" PointX="3" PointY="21" Height="2.161052246093746" />
+        <EntityTypeShape EntityType="Landlord2Model.装修分类" Width="1.5" PointX="7.75" PointY="8.75" Height="1.3969734700520746" />
+        <EntityTypeShape EntityType="Landlord2Model.装修明细" Width="1.5" PointX="3" PointY="23.875" Height="3.307170410156246" />
         <AssociationConnector Association="Landlord2Model.客房_客房出租历史" >
-          <ConnectorPoint PointX="4.5" PointY="6.0532230631510444" />
-          <ConnectorPoint PointX="5.25" PointY="6.0532230631510444" />
+          <ConnectorPoint PointX="4.5" PointY="5.9907230631510444" />
+          <ConnectorPoint PointX="5.25" PointY="5.9907230631510444" />
         </AssociationConnector>
         <AssociationConnector Association="Landlord2Model.客房_客房租金明细" >
-          <ConnectorPoint PointX="4.5" PointY="9.8102624511718766" />
-          <ConnectorPoint PointX="5.25" PointY="9.8102624511718766" />
+          <ConnectorPoint PointX="4.5" PointY="9.7477624511718766" />
+          <ConnectorPoint PointX="5.25" PointY="9.7477624511718766" />
         </AssociationConnector>
         <AssociationConnector Association="Landlord2Model.源房客房" >
-          <ConnectorPoint PointX="1.5" PointY="10.5" />
-          <ConnectorPoint PointX="1.5" PointY="7.2499995" />
-          <ConnectorPoint PointX="3" PointY="7.2499995" />
+          <ConnectorPoint PointX="2.25" PointY="10.435262451171877" />
+          <ConnectorPoint PointX="3" PointY="10.435262451171877" />
         </AssociationConnector>
         <AssociationConnector Association="Landlord2Model.源房_源房缴费明细" >
+          <ConnectorPoint PointX="2.25" PointY="18.110870768229169" />
+          <ConnectorPoint PointX="3" PointY="18.110870768229169" />
+        </AssociationConnector>
+        <AssociationConnector Association="Landlord2Model.源房_源房水电气核查" >
           <ConnectorPoint PointX="2.25" PointY="14.808075358072919" />
           <ConnectorPoint PointX="3" PointY="14.808075358072919" />
         </AssociationConnector>
-        <AssociationConnector Association="Landlord2Model.源房_源房水电气核查" >
-          <ConnectorPoint PointX="2.25" PointY="18.235870768229169" />
-          <ConnectorPoint PointX="3" PointY="18.235870768229169" />
-        </AssociationConnector>
         <AssociationConnector Association="Landlord2Model.源房_源房涨租协定" >
-          <ConnectorPoint PointX="1.5" PointY="19.346741536458339" />
-          <ConnectorPoint PointX="1.5" PointY="22.705526123046877" />
-          <ConnectorPoint PointX="1.8229191666666667" PointY="22.705526123046877" />
-          <ConnectorPoint PointX="1.9895858333333332" PointY="22.705526123046877" />
-          <ConnectorPoint PointX="3" PointY="22.705526123046877" />
+          <ConnectorPoint PointX="1.5" PointY="19.096741536458339" />
+          <ConnectorPoint PointX="1.5" PointY="22.080526123046873" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="22.080526123046873" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="22.080526123046873" />
+          <ConnectorPoint PointX="3" PointY="22.080526123046873" />
         </AssociationConnector>
         <AssociationConnector Association="Landlord2Model.源房_装修明细" >
-          <ConnectorPoint PointX="1.9062525" PointY="19.346741536458339" />
-          <ConnectorPoint PointX="1.9062525" PointY="26.153585205078123" />
-          <ConnectorPoint PointX="3" PointY="26.153585205078123" />
+          <ConnectorPoint PointX="1.9062525" PointY="19.096741536458339" />
+          <ConnectorPoint PointX="1.9062525" PointY="25.528585205078123" />
+          <ConnectorPoint PointX="3" PointY="25.528585205078123" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
