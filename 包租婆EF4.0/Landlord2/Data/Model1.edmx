@@ -213,7 +213,7 @@
           <Property Name="源房ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="抄表人" Type="nvarchar" MaxLength="10" />
-          <Property Name="抄表时间" Type="datetime" />
+          <Property Name="抄表时间" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="源房缴费明细">
           <Key>
@@ -583,7 +583,7 @@
           <Property Type="Guid" Name="源房ID" Nullable="false" />
           <Property Type="Guid" Name="ID" Nullable="false" />
           <Property Type="String" Name="抄表人" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="抄表时间" />
+          <Property Type="DateTime" Name="抄表时间" Nullable="false" />
           <NavigationProperty Name="源房" Relationship="Landlord2Model.源房_源房水电气核查" FromRole="源房抄表" ToRole="源房" />
         </EntityType>
         <EntityType Name="源房缴费明细">

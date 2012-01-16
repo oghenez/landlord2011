@@ -304,7 +304,7 @@ namespace Landlord2.UI
             lbl电费.Text = temp.ToString("F2");
             sum += temp;
 
-            temp = (decimal)kf.源房.气单价 * ((decimal)collectRent.气止码 - Convert.ToDecimal(气始码Label1.Text));
+            temp = (-1) * (decimal)kf.源房.气单价 * ((decimal)collectRent.气止码 - Convert.ToDecimal(气始码Label1.Text));//气表剩余读数小于起始读数，计算为负数
             lbl气费.Text = temp.ToString("F2");
             sum += temp;
 

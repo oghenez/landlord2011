@@ -210,17 +210,17 @@
     <Compile Include="UI\客房选择Form.Designer.cs">
       <DependentUpon>客房选择Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\抄表Form.cs">
+    <Compile Include="UI\源房抄表Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\抄表Form.Designer.cs">
-      <DependentUpon>抄表Form.cs</DependentUpon>
+    <Compile Include="UI\源房抄表Form.Designer.cs">
+      <DependentUpon>源房抄表Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\抄表明细Form.cs">
+    <Compile Include="UI\源房抄表明细Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\抄表明细Form.Designer.cs">
-      <DependentUpon>抄表明细Form.cs</DependentUpon>
+    <Compile Include="UI\源房抄表明细Form.Designer.cs">
+      <DependentUpon>源房抄表明细Form.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\提醒Form.cs">
       <SubType>Form</SubType>
@@ -335,11 +335,11 @@
     <EmbeddedResource Include="UI\客房选择Form.resx">
       <DependentUpon>客房选择Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\抄表Form.resx">
-      <DependentUpon>抄表Form.cs</DependentUpon>
+    <EmbeddedResource Include="UI\源房抄表Form.resx">
+      <DependentUpon>源房抄表Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\抄表明细Form.resx">
-      <DependentUpon>抄表明细Form.cs</DependentUpon>
+    <EmbeddedResource Include="UI\源房抄表明细Form.resx">
+      <DependentUpon>源房抄表明细Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\提醒Form.resx">
       <DependentUpon>提醒Form.cs</DependentUpon>
