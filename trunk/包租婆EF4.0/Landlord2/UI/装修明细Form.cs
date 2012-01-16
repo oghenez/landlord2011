@@ -103,7 +103,6 @@ namespace Landlord2.UI
 
             cmbFilter装修分类.Items.Add("");
             cmbFilter装修分类.Items.AddRange(context.装修分类.Execute(System.Data.Objects.MergeOption.NoTracking).Select(m => m.类别).ToArray());
-                      
         }
 
         private void 装修明细BindingSource_CurrentChanged(object sender, EventArgs e)

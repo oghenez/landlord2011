@@ -14,7 +14,7 @@ namespace Landlord2
         [STAThread]
         static void Main()
         {
-            //MessageBox.Show("装修明细过滤及合计");
+            MessageBox.Show("抄表中水电气始码，校验问题。2个问题");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

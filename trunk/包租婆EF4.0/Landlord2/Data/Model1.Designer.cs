@@ -3861,11 +3861,13 @@ namespace Landlord2.Data
         /// </summary>
         /// <param name="源房ID">源房ID 属性的初始值。</param>
         /// <param name="id">ID 属性的初始值。</param>
-        public static 源房抄表 Create源房抄表(global::System.Guid 源房ID, global::System.Guid id)
+        /// <param name="抄表时间">抄表时间 属性的初始值。</param>
+        public static 源房抄表 Create源房抄表(global::System.Guid 源房ID, global::System.Guid id, global::System.DateTime 抄表时间)
         {
             源房抄表 源房抄表 = new 源房抄表();
             源房抄表.源房ID = 源房ID;
             源房抄表.ID = id;
+            源房抄表.抄表时间 = 抄表时间;
             return 源房抄表;
         }
 
@@ -4094,9 +4096,9 @@ namespace Landlord2.Data
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> 抄表时间
+        public global::System.DateTime 抄表时间
         {
             get
             {
@@ -4111,8 +4113,8 @@ namespace Landlord2.Data
                 On抄表时间Changed();
             }
         }
-        private Nullable<global::System.DateTime> _抄表时间;
-        partial void On抄表时间Changing(Nullable<global::System.DateTime> value);
+        private global::System.DateTime _抄表时间;
+        partial void On抄表时间Changing(global::System.DateTime value);
         partial void On抄表时间Changed();
 
         #endregion

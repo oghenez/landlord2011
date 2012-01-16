@@ -11,6 +11,7 @@ namespace Landlord2.Data
         public 源房抄表()
         {
             this.ID = Guid.NewGuid();
+            this.抄表时间 = DateTime.Today;
         }
     }
 }

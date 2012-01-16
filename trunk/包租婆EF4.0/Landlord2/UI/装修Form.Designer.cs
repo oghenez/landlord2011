@@ -187,6 +187,7 @@
             this.kryptonComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.装修明细BindingSource, "源房ID", true));
             this.kryptonComboBox1.DataSource = this.源房BindingSource;
             this.kryptonComboBox1.DisplayMember = "房名";
+            this.kryptonComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kryptonComboBox1.DropDownWidth = 121;
             this.kryptonComboBox1.Location = new System.Drawing.Point(62, 21);
             this.kryptonComboBox1.Name = "kryptonComboBox1";
