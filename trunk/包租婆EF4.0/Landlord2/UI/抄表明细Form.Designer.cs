@@ -1,6 +1,6 @@
 ﻿namespace Landlord2.UI
 {
-    partial class 抄表Form
+    partial class 抄表明细Form
     {
         /// <summary>
         /// Required designer variable.
@@ -30,19 +30,18 @@
         {
             this.SuspendLayout();
             // 
-            // 抄表Form
+            // 抄表明细Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(791, 416);
-            this.Name = "抄表Form";
-            this.Text = "源房抄表";
-            this.Load += new System.EventHandler(this.抄表Form_Load);
+            this.ClientSize = new System.Drawing.Size(686, 413);
+            this.Name = "抄表明细Form";
+            this.Text = "源房抄表明细";
+            this.Load += new System.EventHandler(this.抄表明细Form_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
     }
 }

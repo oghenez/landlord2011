@@ -1,6 +1,6 @@
 ﻿namespace Landlord2.UI
 {
-    partial class 装修明细详情Form
+    partial class 装修Form
     {
         /// <summary>
         /// Required designer variable.
@@ -359,7 +359,7 @@
             this.BtnOkAndContinue.Visible = false;
             this.BtnOkAndContinue.Click += new System.EventHandler(this.BtnOkAndContinue_Click);
             // 
-            // 装修明细详情Form
+            // 装修Form
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -391,9 +391,9 @@
             this.Controls.Add(规格Label);
             this.Controls.Add(项目名称Label);
             this.Controls.Add(日期Label);
-            this.Name = "装修明细详情Form";
-            this.Text = "装修明细详情";
-            this.Load += new System.EventHandler(this.装修明细详情Form_Load);
+            this.Name = "装修Form";
+            this.Text = "装修";
+            this.Load += new System.EventHandler(this.装修Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.装修明细BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).EndInit();

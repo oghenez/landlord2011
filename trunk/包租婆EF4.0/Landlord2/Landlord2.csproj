@@ -216,6 +216,12 @@
     <Compile Include="UI\抄表Form.Designer.cs">
       <DependentUpon>抄表Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\抄表明细Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\抄表明细Form.Designer.cs">
+      <DependentUpon>抄表明细Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\提醒Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,11 +264,11 @@
     <Compile Include="UI\装修明细Form.Designer.cs">
       <DependentUpon>装修明细Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\装修明细详情Form.cs">
+    <Compile Include="UI\装修Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\装修明细详情Form.Designer.cs">
-      <DependentUpon>装修明细详情Form.cs</DependentUpon>
+    <Compile Include="UI\装修Form.Designer.cs">
+      <DependentUpon>装修Form.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\阶梯水价Form.cs">
       <SubType>Form</SubType>
@@ -332,6 +338,9 @@
     <EmbeddedResource Include="UI\抄表Form.resx">
       <DependentUpon>抄表Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\抄表明细Form.resx">
+      <DependentUpon>抄表明细Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\提醒Form.resx">
       <DependentUpon>提醒Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -353,8 +362,8 @@
     <EmbeddedResource Include="UI\装修明细Form.resx">
       <DependentUpon>装修明细Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\装修明细详情Form.resx">
-      <DependentUpon>装修明细详情Form.cs</DependentUpon>
+    <EmbeddedResource Include="UI\装修Form.resx">
+      <DependentUpon>装修Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\阶梯水价Form.resx">
       <DependentUpon>阶梯水价Form.cs</DependentUpon>
@@ -376,7 +385,9 @@
     <None Include="Properties\DataSources\Landlord2.Data.客房出租历史记录.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.客房租金明细.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.提醒.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.日常损耗.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.源房.datasource" />
+    <None Include="Properties\DataSources\Landlord2.Data.源房抄表.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.源房涨租协定.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.源房缴费明细.datasource" />
     <None Include="Properties\DataSources\Landlord2.Data.装修分类.datasource" />

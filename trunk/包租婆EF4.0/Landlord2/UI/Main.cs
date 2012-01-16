@@ -743,7 +743,18 @@ namespace Landlord2
                 }
             }
         }
+
+        private void 源房抄表明细ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //源房抄表明细
+            using (抄表明细Form form = new 抄表明细Form())
+            {
+                form.ShowDialog(this);
+            }
+        }
         #endregion
+
+
 
 
 
