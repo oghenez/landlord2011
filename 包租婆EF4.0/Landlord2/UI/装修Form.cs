@@ -11,19 +11,19 @@ using ComponentFactory.Krypton.Toolkit;
 
 namespace Landlord2.UI
 {
-    public partial class 装修明细详情Form : FormBase
+    public partial class 装修Form : FormBase
     {
         private 装修明细 entity;
         private bool isNew;//是否新增操作
 
-        public 装修明细详情Form()//新增操作
+        public 装修Form()//新增操作
         {
             InitializeComponent();
             entity = new 装修明细();
             isNew = true;
         }
 
-        public 装修明细详情Form( 装修明细 entity)//编辑操作
+        public 装修Form( 装修明细 entity)//编辑操作
         {
             InitializeComponent();
             this.entity = context.装修明细.FirstOrDefault(m => m.ID == entity.ID);            
@@ -33,14 +33,14 @@ namespace Landlord2.UI
         {
             装修分类BindingSource.DataSource = context.装修分类.Execute(System.Data.Objects.MergeOption.NoTracking);
         }
-        private void 装修明细详情Form_Load(object sender, EventArgs e)
+        private void 装修Form_Load(object sender, EventArgs e)
         {
             if (isNew)
             {
                 BtnOkAndContinue.Visible = true;//保存并继续按钮可见
             }
 
-            Text = string.Format("装修明细详情 - {0}", isNew ? "新增" : "编辑");
+            Text = string.Format("装修 - {0}", isNew ? "新增" : "编辑");
             Refresh装修分类();
             源房BindingSource.DataSource = 源房.GetYF(context).Execute(System.Data.Objects.MergeOption.NoTracking);
             装修明细BindingSource.DataSource = entity;

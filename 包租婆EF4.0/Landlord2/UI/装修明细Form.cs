@@ -115,7 +115,7 @@ namespace Landlord2.UI
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            using (装修明细详情Form form = new 装修明细详情Form())
+            using (装修Form form = new 装修Form())
             {
                 form.ShowDialog(this);
             }
@@ -142,7 +142,7 @@ namespace Landlord2.UI
             ObjectView<装修明细> view = 装修明细BindingSource.Current as ObjectView<装修明细>;
             if (view != null && view.Object != null)
             {
-                using (装修明细详情Form form = new 装修明细详情Form(view.Object))
+                using (装修Form form = new 装修Form(view.Object))
                 {
                     form.ShowDialog(this);
                 }
