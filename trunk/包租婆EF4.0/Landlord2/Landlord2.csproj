@@ -210,6 +210,18 @@
     <Compile Include="UI\客房选择Form.Designer.cs">
       <DependentUpon>客房选择Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\日常损耗Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\日常损耗Form.Designer.cs">
+      <DependentUpon>日常损耗Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\日常损耗管理Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\日常损耗管理Form.Designer.cs">
+      <DependentUpon>日常损耗管理Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\源房抄表Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -334,6 +346,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\客房选择Form.resx">
       <DependentUpon>客房选择Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\日常损耗Form.resx">
+      <DependentUpon>日常损耗Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\日常损耗管理Form.resx">
+      <DependentUpon>日常损耗管理Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\源房抄表Form.resx">
       <DependentUpon>源房抄表Form.cs</DependentUpon>
