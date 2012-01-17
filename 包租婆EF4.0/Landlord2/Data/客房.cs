@@ -12,7 +12,11 @@ namespace Landlord2.Data
             this.ID = Guid.NewGuid();
             this.支付月数 = 3;//默认3月一付
         }
-
+        //重载ToString方法。
+        public override string ToString()
+        {
+            return this.命名;
+        }
         /// <summary>
         /// 移除‘已出租’的客房中租户相关信息，置为‘未出租’状态。
         /// </summary>
