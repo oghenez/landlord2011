@@ -424,6 +424,7 @@
             // 
             // cmbFilter装修分类
             // 
+            this.cmbFilter装修分类.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFilter装修分类.DropDownWidth = 121;
             this.cmbFilter装修分类.Location = new System.Drawing.Point(72, 40);
             this.cmbFilter装修分类.Name = "cmbFilter装修分类";
@@ -507,6 +508,7 @@
             // 
             // cmbFilter源房
             // 
+            this.cmbFilter源房.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFilter源房.DropDownWidth = 121;
             this.cmbFilter源房.Location = new System.Drawing.Point(72, 9);
             this.cmbFilter源房.Name = "cmbFilter源房";

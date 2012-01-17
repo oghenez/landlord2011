@@ -752,7 +752,17 @@ namespace Landlord2
                 form.ShowDialog(this);
             }
         }
+        private void 日常损耗ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //日常损耗
+            using (日常损耗管理Form form = new 日常损耗管理Form())
+            {
+                form.ShowDialog(this);
+            }
+        }
         #endregion
+
+
 
 
 

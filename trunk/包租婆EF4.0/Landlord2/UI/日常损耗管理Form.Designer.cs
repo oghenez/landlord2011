@@ -29,12 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(日常损耗管理Form));
             System.Windows.Forms.Label 客房IDLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(日常损耗管理Form));
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.日常损耗BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.源房IDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.源房BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.客房IDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.客房BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.项目DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.支出金额DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.支出日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.备注DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.日常损耗BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.btnFilter = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -52,18 +59,6 @@
             this.buttonSpecHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.kryptonHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
-            this.cmbFilter源房 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.客房BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.源房IDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.客房IDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.项目DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.支出金额DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.支出日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.备注DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbFilter客房 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.tbFilter项目 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.nudFilterBegin = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.dtpFilterBegin = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
@@ -72,12 +67,18 @@
             this.label5 = new System.Windows.Forms.Label();
             this.nudFilterEnd = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.tbFilter备注 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbFilter项目 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbFilter客房 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.cmbFilter源房 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             客房IDLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.日常损耗BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.客房BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.日常损耗BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.日常损耗BindingNavigator)).BeginInit();
             this.日常损耗BindingNavigator.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -86,10 +87,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup1)).BeginInit();
             this.kryptonHeaderGroup1.Panel.SuspendLayout();
             this.kryptonHeaderGroup1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbFilter源房)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.客房BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFilter客房)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFilter源房)).BeginInit();
             this.SuspendLayout();
+            // 
+            // 客房IDLabel
+            // 
+            客房IDLabel.AutoSize = true;
+            客房IDLabel.Location = new System.Drawing.Point(20, 44);
+            客房IDLabel.Name = "客房IDLabel";
+            客房IDLabel.Size = new System.Drawing.Size(41, 12);
+            客房IDLabel.TabIndex = 19;
+            客房IDLabel.Text = "客房：";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -124,14 +133,79 @@
             this.kryptonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.kryptonDataGridView1.Size = new System.Drawing.Size(783, 386);
             this.kryptonDataGridView1.TabIndex = 2;
+            this.kryptonDataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.kryptonDataGridView1_CellMouseDoubleClick);
             // 
-            // 日常损耗BindingSource
+            // 源房IDDataGridViewTextBoxColumn
             // 
-            this.日常损耗BindingSource.DataSource = typeof(Landlord2.Data.日常损耗);
+            this.源房IDDataGridViewTextBoxColumn.DataPropertyName = "源房ID";
+            this.源房IDDataGridViewTextBoxColumn.DataSource = this.源房BindingSource;
+            this.源房IDDataGridViewTextBoxColumn.DisplayMember = "房名";
+            this.源房IDDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.源房IDDataGridViewTextBoxColumn.HeaderText = "源房";
+            this.源房IDDataGridViewTextBoxColumn.Name = "源房IDDataGridViewTextBoxColumn";
+            this.源房IDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.源房IDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.源房IDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.源房IDDataGridViewTextBoxColumn.ValueMember = "ID";
+            this.源房IDDataGridViewTextBoxColumn.Width = 150;
             // 
             // 源房BindingSource
             // 
             this.源房BindingSource.DataSource = typeof(Landlord2.Data.源房);
+            // 
+            // 客房IDDataGridViewTextBoxColumn
+            // 
+            this.客房IDDataGridViewTextBoxColumn.DataPropertyName = "客房ID";
+            this.客房IDDataGridViewTextBoxColumn.DataSource = this.客房BindingSource;
+            this.客房IDDataGridViewTextBoxColumn.DisplayMember = "命名";
+            this.客房IDDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.客房IDDataGridViewTextBoxColumn.HeaderText = "客房";
+            this.客房IDDataGridViewTextBoxColumn.Name = "客房IDDataGridViewTextBoxColumn";
+            this.客房IDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.客房IDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.客房IDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.客房IDDataGridViewTextBoxColumn.ValueMember = "ID";
+            // 
+            // 客房BindingSource
+            // 
+            this.客房BindingSource.DataSource = typeof(Landlord2.Data.客房);
+            // 
+            // 项目DataGridViewTextBoxColumn
+            // 
+            this.项目DataGridViewTextBoxColumn.DataPropertyName = "项目";
+            this.项目DataGridViewTextBoxColumn.HeaderText = "项目";
+            this.项目DataGridViewTextBoxColumn.Name = "项目DataGridViewTextBoxColumn";
+            this.项目DataGridViewTextBoxColumn.ReadOnly = true;
+            this.项目DataGridViewTextBoxColumn.Width = 150;
+            // 
+            // 支出金额DataGridViewTextBoxColumn
+            // 
+            this.支出金额DataGridViewTextBoxColumn.DataPropertyName = "支出金额";
+            this.支出金额DataGridViewTextBoxColumn.HeaderText = "支出金额";
+            this.支出金额DataGridViewTextBoxColumn.Name = "支出金额DataGridViewTextBoxColumn";
+            this.支出金额DataGridViewTextBoxColumn.ReadOnly = true;
+            this.支出金额DataGridViewTextBoxColumn.Width = 80;
+            // 
+            // 支出日期DataGridViewTextBoxColumn
+            // 
+            this.支出日期DataGridViewTextBoxColumn.DataPropertyName = "支出日期";
+            this.支出日期DataGridViewTextBoxColumn.HeaderText = "支出日期";
+            this.支出日期DataGridViewTextBoxColumn.Name = "支出日期DataGridViewTextBoxColumn";
+            this.支出日期DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 备注DataGridViewTextBoxColumn
+            // 
+            this.备注DataGridViewTextBoxColumn.DataPropertyName = "备注";
+            this.备注DataGridViewTextBoxColumn.HeaderText = "备注";
+            this.备注DataGridViewTextBoxColumn.Name = "备注DataGridViewTextBoxColumn";
+            this.备注DataGridViewTextBoxColumn.ReadOnly = true;
+            this.备注DataGridViewTextBoxColumn.Width = 200;
+            // 
+            // 日常损耗BindingSource
+            // 
+            this.日常损耗BindingSource.DataSource = typeof(Landlord2.Data.日常损耗);
+            this.日常损耗BindingSource.DataSourceChanged += new System.EventHandler(this.日常损耗BindingSource_DataSourceChanged);
+            this.日常损耗BindingSource.CurrentChanged += new System.EventHandler(this.日常损耗BindingSource_CurrentChanged);
             // 
             // bindingNavigatorCountItem
             // 
@@ -158,6 +232,7 @@
             this.btnFilter.TabIndex = 5;
             this.btnFilter.Values.Image = global::Landlord2.Properties.Resources.Filter;
             this.btnFilter.Values.Text = "筛选";
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // 日常损耗BindingNavigator
             // 
@@ -242,6 +317,7 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(51, 22);
             this.bindingNavigatorAddNewItem.Text = "新增";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // bindingNavigatorDeleteItem
             // 
@@ -250,6 +326,7 @@
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(51, 22);
             this.bindingNavigatorDeleteItem.Text = "删除";
+            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
             // bindingNavigatorEditItem
             // 
@@ -258,6 +335,7 @@
             this.bindingNavigatorEditItem.Name = "bindingNavigatorEditItem";
             this.bindingNavigatorEditItem.Size = new System.Drawing.Size(51, 22);
             this.bindingNavigatorEditItem.Text = "编辑";
+            this.bindingNavigatorEditItem.Click += new System.EventHandler(this.bindingNavigatorEditItem_Click);
             // 
             // btnClearFilter
             // 
@@ -267,6 +345,7 @@
             this.btnClearFilter.Size = new System.Drawing.Size(62, 25);
             this.btnClearFilter.TabIndex = 5;
             this.btnClearFilter.Values.Text = "清空筛选";
+            this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
             // 
             // buttonSpecHeaderGroup1
             // 
@@ -339,124 +418,6 @@
             this.kryptonHeaderGroup1.ValuesPrimary.Heading = "所有源房";
             this.kryptonHeaderGroup1.ValuesSecondary.Description = "0.00";
             this.kryptonHeaderGroup1.ValuesSecondary.Heading = "当前损耗合计支出：";
-            // 
-            // cmbFilter源房
-            // 
-            this.cmbFilter源房.DropDownWidth = 121;
-            this.cmbFilter源房.Location = new System.Drawing.Point(57, 9);
-            this.cmbFilter源房.Name = "cmbFilter源房";
-            this.cmbFilter源房.Size = new System.Drawing.Size(136, 21);
-            this.cmbFilter源房.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(20, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "源房：";
-            // 
-            // 客房BindingSource
-            // 
-            this.客房BindingSource.DataSource = typeof(Landlord2.Data.客房);
-            // 
-            // 源房IDDataGridViewTextBoxColumn
-            // 
-            this.源房IDDataGridViewTextBoxColumn.DataPropertyName = "源房ID";
-            this.源房IDDataGridViewTextBoxColumn.DataSource = this.源房BindingSource;
-            this.源房IDDataGridViewTextBoxColumn.DisplayMember = "房名";
-            this.源房IDDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.源房IDDataGridViewTextBoxColumn.HeaderText = "源房";
-            this.源房IDDataGridViewTextBoxColumn.Name = "源房IDDataGridViewTextBoxColumn";
-            this.源房IDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.源房IDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.源房IDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.源房IDDataGridViewTextBoxColumn.ValueMember = "ID";
-            this.源房IDDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // 客房IDDataGridViewTextBoxColumn
-            // 
-            this.客房IDDataGridViewTextBoxColumn.DataPropertyName = "客房ID";
-            this.客房IDDataGridViewTextBoxColumn.DataSource = this.客房BindingSource;
-            this.客房IDDataGridViewTextBoxColumn.DisplayMember = "命名";
-            this.客房IDDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.客房IDDataGridViewTextBoxColumn.HeaderText = "客房";
-            this.客房IDDataGridViewTextBoxColumn.Name = "客房IDDataGridViewTextBoxColumn";
-            this.客房IDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.客房IDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.客房IDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.客房IDDataGridViewTextBoxColumn.ValueMember = "ID";
-            // 
-            // 项目DataGridViewTextBoxColumn
-            // 
-            this.项目DataGridViewTextBoxColumn.DataPropertyName = "项目";
-            this.项目DataGridViewTextBoxColumn.HeaderText = "项目";
-            this.项目DataGridViewTextBoxColumn.Name = "项目DataGridViewTextBoxColumn";
-            this.项目DataGridViewTextBoxColumn.ReadOnly = true;
-            this.项目DataGridViewTextBoxColumn.Width = 150;
-            // 
-            // 支出金额DataGridViewTextBoxColumn
-            // 
-            this.支出金额DataGridViewTextBoxColumn.DataPropertyName = "支出金额";
-            this.支出金额DataGridViewTextBoxColumn.HeaderText = "支出金额";
-            this.支出金额DataGridViewTextBoxColumn.Name = "支出金额DataGridViewTextBoxColumn";
-            this.支出金额DataGridViewTextBoxColumn.ReadOnly = true;
-            this.支出金额DataGridViewTextBoxColumn.Width = 80;
-            // 
-            // 支出日期DataGridViewTextBoxColumn
-            // 
-            this.支出日期DataGridViewTextBoxColumn.DataPropertyName = "支出日期";
-            this.支出日期DataGridViewTextBoxColumn.HeaderText = "支出日期";
-            this.支出日期DataGridViewTextBoxColumn.Name = "支出日期DataGridViewTextBoxColumn";
-            this.支出日期DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 备注DataGridViewTextBoxColumn
-            // 
-            this.备注DataGridViewTextBoxColumn.DataPropertyName = "备注";
-            this.备注DataGridViewTextBoxColumn.HeaderText = "备注";
-            this.备注DataGridViewTextBoxColumn.Name = "备注DataGridViewTextBoxColumn";
-            this.备注DataGridViewTextBoxColumn.ReadOnly = true;
-            this.备注DataGridViewTextBoxColumn.Width = 200;
-            // 
-            // cmbFilter客房
-            // 
-            this.cmbFilter客房.DataSource = this.客房BindingSource;
-            this.cmbFilter客房.DisplayMember = "命名";
-            this.cmbFilter客房.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbFilter客房.DropDownWidth = 134;
-            this.cmbFilter客房.Location = new System.Drawing.Point(57, 40);
-            this.cmbFilter客房.Name = "cmbFilter客房";
-            this.cmbFilter客房.Size = new System.Drawing.Size(136, 21);
-            this.cmbFilter客房.TabIndex = 20;
-            this.cmbFilter客房.ValueMember = "ID";
-            // 
-            // 客房IDLabel
-            // 
-            客房IDLabel.AutoSize = true;
-            客房IDLabel.Location = new System.Drawing.Point(20, 44);
-            客房IDLabel.Name = "客房IDLabel";
-            客房IDLabel.Size = new System.Drawing.Size(41, 12);
-            客房IDLabel.TabIndex = 19;
-            客房IDLabel.Text = "客房：";
-            // 
-            // tbFilter项目
-            // 
-            this.tbFilter项目.Location = new System.Drawing.Point(581, 10);
-            this.tbFilter项目.Name = "tbFilter项目";
-            this.tbFilter项目.Size = new System.Drawing.Size(100, 20);
-            this.tbFilter项目.TabIndex = 22;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Location = new System.Drawing.Point(543, 14);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 12);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "项目：";
             // 
             // nudFilterBegin
             // 
@@ -547,6 +508,13 @@
             this.label3.TabIndex = 23;
             this.label3.Text = "支出日期：";
             // 
+            // tbFilter备注
+            // 
+            this.tbFilter备注.Location = new System.Drawing.Point(581, 38);
+            this.tbFilter备注.Name = "tbFilter备注";
+            this.tbFilter备注.Size = new System.Drawing.Size(100, 20);
+            this.tbFilter备注.TabIndex = 22;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -557,12 +525,51 @@
             this.label2.TabIndex = 21;
             this.label2.Text = "备注：";
             // 
-            // tbFilter备注
+            // tbFilter项目
             // 
-            this.tbFilter备注.Location = new System.Drawing.Point(581, 38);
-            this.tbFilter备注.Name = "tbFilter备注";
-            this.tbFilter备注.Size = new System.Drawing.Size(100, 20);
-            this.tbFilter备注.TabIndex = 22;
+            this.tbFilter项目.Location = new System.Drawing.Point(581, 10);
+            this.tbFilter项目.Name = "tbFilter项目";
+            this.tbFilter项目.Size = new System.Drawing.Size(100, 20);
+            this.tbFilter项目.TabIndex = 22;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Location = new System.Drawing.Point(543, 14);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 12);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "项目：";
+            // 
+            // cmbFilter客房
+            // 
+            this.cmbFilter客房.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFilter客房.DropDownWidth = 134;
+            this.cmbFilter客房.Location = new System.Drawing.Point(57, 40);
+            this.cmbFilter客房.Name = "cmbFilter客房";
+            this.cmbFilter客房.Size = new System.Drawing.Size(136, 21);
+            this.cmbFilter客房.TabIndex = 20;
+            // 
+            // cmbFilter源房
+            // 
+            this.cmbFilter源房.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFilter源房.DropDownWidth = 121;
+            this.cmbFilter源房.Location = new System.Drawing.Point(57, 9);
+            this.cmbFilter源房.Name = "cmbFilter源房";
+            this.cmbFilter源房.Size = new System.Drawing.Size(136, 21);
+            this.cmbFilter源房.TabIndex = 0;
+            this.cmbFilter源房.SelectedIndexChanged += new System.EventHandler(this.cmbFilter源房_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(20, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "源房：";
             // 
             // 日常损耗管理Form
             // 
@@ -577,8 +584,9 @@
             this.Text = "日常损耗管理";
             this.Load += new System.EventHandler(this.日常损耗管理Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.日常损耗BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.客房BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.日常损耗BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.日常损耗BindingNavigator)).EndInit();
             this.日常损耗BindingNavigator.ResumeLayout(false);
             this.日常损耗BindingNavigator.PerformLayout();
@@ -591,9 +599,8 @@
             this.kryptonHeaderGroup1.Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup1)).EndInit();
             this.kryptonHeaderGroup1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cmbFilter源房)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.客房BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFilter客房)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbFilter源房)).EndInit();
             this.ResumeLayout(false);
 
         }

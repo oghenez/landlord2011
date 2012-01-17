@@ -17,6 +17,12 @@ namespace Landlord2.Data
             this.ID = Guid.NewGuid();
         }
 
+        //重载ToString方法。
+        public override string ToString()
+        {
+            return this.房名;
+        }
+
         #region 预编译查询
         /// <summary>
         /// 预编译查询0 -- 查询所有

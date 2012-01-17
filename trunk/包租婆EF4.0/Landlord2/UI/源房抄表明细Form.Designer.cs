@@ -289,6 +289,7 @@
             // 
             // cmbFilter源房
             // 
+            this.cmbFilter源房.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFilter源房.DropDownWidth = 121;
             this.cmbFilter源房.Location = new System.Drawing.Point(57, 12);
             this.cmbFilter源房.Name = "cmbFilter源房";
