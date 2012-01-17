@@ -351,6 +351,9 @@ namespace Landlord2.Data
             //校验所有非空属性
             returnStr += MyEntityHelper.CheckNullOrEmptyAndABS(this);
 
+            //水电气的止码必须要至少有一个
+            if (this.水止码 == null && this.电止码 == null && this.气表剩余字数 == null)
+                returnStr += "水电气止码不可全部为空！" + Environment.NewLine;
             return returnStr;
         }
     }
