@@ -42,17 +42,23 @@
             this.kryptonComboBox1 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.源房BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kryptonDateTimePicker1 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
-            this.nud水止码 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.nud电止码 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.nud气止码 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.kryptonTextBox1 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.kryptonTextBox2 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.ktb水余额 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.buttonSpecAny1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
             this.kryptonTextBox3 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonTextBox4 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.ktb水止码 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.buttonSpecAny2 = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
+            this.ktb电止码 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.buttonSpecAny3 = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
+            this.ktb气止码 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.buttonSpecAny4 = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
+            this.ktb电余额 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.buttonSpecAny5 = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             源房IDLabel = new System.Windows.Forms.Label();
             抄表时间Label = new System.Windows.Forms.Label();
             备注Label = new System.Windows.Forms.Label();
@@ -66,6 +72,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // 源房IDLabel
@@ -112,7 +120,6 @@
             电账户余额Label.Size = new System.Drawing.Size(71, 12);
             电账户余额Label.TabIndex = 8;
             电账户余额Label.Text = "电账户余额:";
-            this.toolTip1.SetToolTip(电账户余额Label, "请保证其准确性。如不清楚可不填，系统将自动推算。");
             // 
             // 电止码Label
             // 
@@ -140,7 +147,6 @@
             水账户余额Label.Size = new System.Drawing.Size(71, 12);
             水账户余额Label.TabIndex = 14;
             水账户余额Label.Text = "水账户余额:";
-            this.toolTip1.SetToolTip(水账户余额Label, "请保证其准确性。如不清楚可不填，系统将自动推算。");
             // 
             // 气表剩余字数Label
             // 
@@ -150,7 +156,6 @@
             气表剩余字数Label.Size = new System.Drawing.Size(47, 12);
             气表剩余字数Label.TabIndex = 16;
             气表剩余字数Label.Text = "气止码:";
-            this.toolTip1.SetToolTip(气表剩余字数Label, "气表剩余字数");
             // 
             // 源房抄表BindingSource
             // 
@@ -166,8 +171,9 @@
             this.kryptonComboBox1.Location = new System.Drawing.Point(74, 21);
             this.kryptonComboBox1.Name = "kryptonComboBox1";
             this.kryptonComboBox1.Size = new System.Drawing.Size(269, 21);
-            this.kryptonComboBox1.TabIndex = 1;
+            this.kryptonComboBox1.TabIndex = 0;
             this.kryptonComboBox1.ValueMember = "ID";
+            this.kryptonComboBox1.SelectedIndexChanged += new System.EventHandler(this.kryptonComboBox1_SelectedIndexChanged);
             // 
             // 源房BindingSource
             // 
@@ -180,77 +186,36 @@
             this.kryptonDateTimePicker1.Location = new System.Drawing.Point(249, 56);
             this.kryptonDateTimePicker1.Name = "kryptonDateTimePicker1";
             this.kryptonDateTimePicker1.Size = new System.Drawing.Size(94, 21);
-            this.kryptonDateTimePicker1.TabIndex = 4;
+            this.kryptonDateTimePicker1.TabIndex = 2;
+            this.kryptonDateTimePicker1.ValueChanged += new System.EventHandler(this.kryptonDateTimePicker1_ValueChanged);
             // 
-            // nud水止码
+            // ktb水余额
             // 
-            this.nud水止码.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.源房抄表BindingSource, "水止码", true));
-            this.nud水止码.DecimalPlaces = 1;
-            this.nud水止码.Location = new System.Drawing.Point(74, 90);
-            this.nud水止码.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.nud水止码.Name = "nud水止码";
-            this.nud水止码.Size = new System.Drawing.Size(74, 22);
-            this.nud水止码.TabIndex = 18;
+            this.ktb水余额.AllowButtonSpecToolTips = true;
+            this.ktb水余额.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecAny[] {
+            this.buttonSpecAny1});
+            this.ktb水余额.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房抄表BindingSource, "水账户余额", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ktb水余额.Location = new System.Drawing.Point(269, 91);
+            this.ktb水余额.Name = "ktb水余额";
+            this.ktb水余额.Size = new System.Drawing.Size(74, 20);
+            this.ktb水余额.TabIndex = 4;
             // 
-            // nud电止码
+            // buttonSpecAny1
             // 
-            this.nud电止码.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.源房抄表BindingSource, "电止码", true));
-            this.nud电止码.DecimalPlaces = 1;
-            this.nud电止码.Location = new System.Drawing.Point(74, 125);
-            this.nud电止码.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.nud电止码.Name = "nud电止码";
-            this.nud电止码.Size = new System.Drawing.Size(74, 22);
-            this.nud电止码.TabIndex = 19;
-            // 
-            // nud气止码
-            // 
-            this.nud气止码.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.源房抄表BindingSource, "气表剩余字数", true));
-            this.nud气止码.DecimalPlaces = 1;
-            this.nud气止码.Location = new System.Drawing.Point(76, 160);
-            this.nud气止码.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.nud气止码.Name = "nud气止码";
-            this.nud气止码.Size = new System.Drawing.Size(74, 22);
-            this.nud气止码.TabIndex = 20;
-            this.toolTip1.SetToolTip(this.nud气止码, "气表剩余字数");
-            // 
-            // kryptonTextBox1
-            // 
-            this.kryptonTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房抄表BindingSource, "水账户余额", true));
-            this.kryptonTextBox1.Location = new System.Drawing.Point(269, 91);
-            this.kryptonTextBox1.Name = "kryptonTextBox1";
-            this.kryptonTextBox1.Size = new System.Drawing.Size(74, 20);
-            this.kryptonTextBox1.TabIndex = 4;
-            this.toolTip1.SetToolTip(this.kryptonTextBox1, "请保证其准确性。如不清楚可不填，系统将自动推算。");
-            // 
-            // kryptonTextBox2
-            // 
-            this.kryptonTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房抄表BindingSource, "电账户余额", true));
-            this.kryptonTextBox2.Location = new System.Drawing.Point(269, 126);
-            this.kryptonTextBox2.Name = "kryptonTextBox2";
-            this.kryptonTextBox2.Size = new System.Drawing.Size(74, 20);
-            this.kryptonTextBox2.TabIndex = 4;
-            this.toolTip1.SetToolTip(this.kryptonTextBox2, "请保证其准确性。如不清楚可不填，系统将自动推算。");
+            this.buttonSpecAny1.ToolTipBody = "请保证其准确性。如不清楚可不填，系统将自动推算。";
+            this.buttonSpecAny1.ToolTipTitle = "清除";
+            this.buttonSpecAny1.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Close;
+            this.buttonSpecAny1.UniqueName = "A29EB7CD98AD436DB895A4AD7F0E0A65";
+            this.buttonSpecAny1.Click += new System.EventHandler(this.buttonSpecAny_Close_Click);
             // 
             // kryptonTextBox3
             // 
             this.kryptonTextBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房抄表BindingSource, "备注", true));
-            this.kryptonTextBox3.Location = new System.Drawing.Point(76, 194);
+            this.kryptonTextBox3.Location = new System.Drawing.Point(74, 194);
             this.kryptonTextBox3.Multiline = true;
             this.kryptonTextBox3.Name = "kryptonTextBox3";
-            this.kryptonTextBox3.Size = new System.Drawing.Size(267, 43);
-            this.kryptonTextBox3.TabIndex = 4;
+            this.kryptonTextBox3.Size = new System.Drawing.Size(269, 43);
+            this.kryptonTextBox3.TabIndex = 8;
             // 
             // kryptonTextBox4
             // 
@@ -258,22 +223,15 @@
             this.kryptonTextBox4.Location = new System.Drawing.Point(74, 56);
             this.kryptonTextBox4.Name = "kryptonTextBox4";
             this.kryptonTextBox4.Size = new System.Drawing.Size(74, 20);
-            this.kryptonTextBox4.TabIndex = 4;
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.AutoPopDelay = 5000;
-            this.toolTip1.InitialDelay = 50;
-            this.toolTip1.ReshowDelay = 10;
-            this.toolTip1.ShowAlways = true;
+            this.kryptonTextBox4.TabIndex = 1;
             // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(82, 259);
+            this.btnOK.Location = new System.Drawing.Point(151, 313);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(90, 25);
-            this.btnOK.TabIndex = 27;
+            this.btnOK.TabIndex = 9;
             this.btnOK.Values.Text = "保存";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
@@ -282,17 +240,115 @@
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.CausesValidation = false;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(197, 259);
+            this.btnCancel.Location = new System.Drawing.Point(266, 313);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 25);
-            this.btnCancel.TabIndex = 28;
+            this.btnCancel.TabIndex = 10;
             this.btnCancel.Values.Text = "取消";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // ktb水止码
+            // 
+            this.ktb水止码.AllowButtonSpecToolTips = true;
+            this.ktb水止码.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecAny[] {
+            this.buttonSpecAny2});
+            this.ktb水止码.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房抄表BindingSource, "水止码", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ktb水止码.Location = new System.Drawing.Point(74, 91);
+            this.ktb水止码.Name = "ktb水止码";
+            this.ktb水止码.Size = new System.Drawing.Size(74, 20);
+            this.ktb水止码.TabIndex = 4;
+            // 
+            // buttonSpecAny2
+            // 
+            this.buttonSpecAny2.ToolTipBody = "未抄水表可不填";
+            this.buttonSpecAny2.ToolTipTitle = "清除";
+            this.buttonSpecAny2.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Close;
+            this.buttonSpecAny2.UniqueName = "A29EB7CD98AD436DB895A4AD7F0E0A65";
+            this.buttonSpecAny2.Click += new System.EventHandler(this.buttonSpecAny_Close_Click);
+            // 
+            // ktb电止码
+            // 
+            this.ktb电止码.AllowButtonSpecToolTips = true;
+            this.ktb电止码.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecAny[] {
+            this.buttonSpecAny3});
+            this.ktb电止码.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房抄表BindingSource, "电止码", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ktb电止码.Location = new System.Drawing.Point(74, 126);
+            this.ktb电止码.Name = "ktb电止码";
+            this.ktb电止码.Size = new System.Drawing.Size(74, 20);
+            this.ktb电止码.TabIndex = 4;
+            // 
+            // buttonSpecAny3
+            // 
+            this.buttonSpecAny3.ToolTipBody = "未抄电表可不填";
+            this.buttonSpecAny3.ToolTipTitle = "清除";
+            this.buttonSpecAny3.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Close;
+            this.buttonSpecAny3.UniqueName = "A29EB7CD98AD436DB895A4AD7F0E0A65";
+            this.buttonSpecAny3.Click += new System.EventHandler(this.buttonSpecAny_Close_Click);
+            // 
+            // ktb气止码
+            // 
+            this.ktb气止码.AllowButtonSpecToolTips = true;
+            this.ktb气止码.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecAny[] {
+            this.buttonSpecAny4});
+            this.ktb气止码.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房抄表BindingSource, "气表剩余字数", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ktb气止码.Location = new System.Drawing.Point(74, 161);
+            this.ktb气止码.Name = "ktb气止码";
+            this.ktb气止码.Size = new System.Drawing.Size(74, 20);
+            this.ktb气止码.TabIndex = 4;
+            // 
+            // buttonSpecAny4
+            // 
+            this.buttonSpecAny4.ToolTipBody = "未抄气表可不填";
+            this.buttonSpecAny4.ToolTipTitle = "清除";
+            this.buttonSpecAny4.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Close;
+            this.buttonSpecAny4.UniqueName = "A29EB7CD98AD436DB895A4AD7F0E0A65";
+            this.buttonSpecAny4.Click += new System.EventHandler(this.buttonSpecAny_Close_Click);
+            // 
+            // ktb电余额
+            // 
+            this.ktb电余额.AllowButtonSpecToolTips = true;
+            this.ktb电余额.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecAny[] {
+            this.buttonSpecAny5});
+            this.ktb电余额.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.源房抄表BindingSource, "电账户余额", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ktb电余额.Location = new System.Drawing.Point(269, 126);
+            this.ktb电余额.Name = "ktb电余额";
+            this.ktb电余额.Size = new System.Drawing.Size(74, 20);
+            this.ktb电余额.TabIndex = 4;
+            // 
+            // buttonSpecAny5
+            // 
+            this.buttonSpecAny5.ToolTipBody = "请保证其准确性。如不清楚可不填，系统将自动推算。";
+            this.buttonSpecAny5.ToolTipTitle = "清除";
+            this.buttonSpecAny5.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Close;
+            this.buttonSpecAny5.UniqueName = "A29EB7CD98AD436DB895A4AD7F0E0A65";
+            this.buttonSpecAny5.Click += new System.EventHandler(this.buttonSpecAny_Close_Click);
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.DataSource = this.源房抄表BindingSource;
+            // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Controls.Add(this.kryptonLabel1);
+            this.kryptonPanel1.Location = new System.Drawing.Point(5, 246);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Padding = new System.Windows.Forms.Padding(5);
+            this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ControlToolTip;
+            this.kryptonPanel1.Size = new System.Drawing.Size(358, 55);
+            this.kryptonPanel1.TabIndex = 17;
+            // 
+            // kryptonLabel1
+            // 
+            this.kryptonLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonLabel1.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
+            this.kryptonLabel1.Location = new System.Drawing.Point(5, 5);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(348, 45);
+            this.kryptonLabel1.StateCommon.ShortText.Color1 = System.Drawing.Color.Red;
+            this.kryptonLabel1.TabIndex = 0;
+            this.kryptonLabel1.Values.ExtraText = "【水：XXXX】【电：XXXX】【气：XXXX】";
+            this.kryptonLabel1.Values.Text = "最近一次抄表数值：";
             // 
             // 源房抄表Form
             // 
@@ -300,12 +356,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(368, 296);
+            this.ClientSize = new System.Drawing.Size(368, 350);
+            this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.nud水止码);
-            this.Controls.Add(this.nud电止码);
-            this.Controls.Add(this.nud气止码);
             this.Controls.Add(气表剩余字数Label);
             this.Controls.Add(水账户余额Label);
             this.Controls.Add(水止码Label);
@@ -315,10 +369,13 @@
             this.Controls.Add(备注Label);
             this.Controls.Add(this.kryptonDateTimePicker1);
             this.Controls.Add(抄表时间Label);
-            this.Controls.Add(this.kryptonTextBox2);
             this.Controls.Add(this.kryptonTextBox4);
             this.Controls.Add(this.kryptonTextBox3);
-            this.Controls.Add(this.kryptonTextBox1);
+            this.Controls.Add(this.ktb电余额);
+            this.Controls.Add(this.ktb气止码);
+            this.Controls.Add(this.ktb电止码);
+            this.Controls.Add(this.ktb水止码);
+            this.Controls.Add(this.ktb水余额);
             this.Controls.Add(this.kryptonComboBox1);
             this.Controls.Add(源房IDLabel);
             this.Name = "源房抄表Form";
@@ -328,6 +385,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            this.kryptonPanel1.ResumeLayout(false);
+            this.kryptonPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,18 +398,24 @@
         private System.Windows.Forms.BindingSource 源房抄表BindingSource;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox1;
         private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker1;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown nud水止码;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown nud电止码;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown nud气止码;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox1;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox2;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox ktb水余额;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox3;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox4;
-        private System.Windows.Forms.ToolTip toolTip1;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOK;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
         private System.Windows.Forms.BindingSource 源房BindingSource;
+        private ComponentFactory.Krypton.Toolkit.ButtonSpecAny buttonSpecAny1;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox ktb电余额;
+        private ComponentFactory.Krypton.Toolkit.ButtonSpecAny buttonSpecAny5;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox ktb气止码;
+        private ComponentFactory.Krypton.Toolkit.ButtonSpecAny buttonSpecAny4;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox ktb电止码;
+        private ComponentFactory.Krypton.Toolkit.ButtonSpecAny buttonSpecAny3;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox ktb水止码;
+        private ComponentFactory.Krypton.Toolkit.ButtonSpecAny buttonSpecAny2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
 
     }
 }

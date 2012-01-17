@@ -74,7 +74,7 @@ namespace Landlord2.UI
 
         public void RefreshAndLocate源房抄表(Guid? entityID)
         {
-            blv = context.源房抄表.Execute(System.Data.Objects.MergeOption.OverwriteChanges).ToBindingListView();//这里用NoTracking那么无法删除（因为context未保存对应记录）；用AppendOnly那么当编辑后无法刷新
+            blv = 源房抄表.GetYFCB(context,null).Execute(System.Data.Objects.MergeOption.OverwriteChanges).ToBindingListView();//这里用NoTracking那么无法删除（因为context未保存对应记录）；用AppendOnly那么当编辑后无法刷新
             源房抄表BindingSource.DataSource = blv;
             FilterData();
 

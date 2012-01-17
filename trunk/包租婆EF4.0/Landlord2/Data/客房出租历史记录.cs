@@ -37,8 +37,8 @@ namespace Landlord2.Data
 
         /// <summary>
         ///  [调用预编译查询]查询客房出租历史记录 - 默认按操作日期逆序排列
-        ///  1.查询所有客房租金明细 - GetRentDetails(null)
-        ///  2.根据客房ID过滤 - GetRentDetails(客房ID, null)
+        ///  1.查询所有客房租金明细
+        ///  2.根据客房ID过滤
         /// </summary>
         /// <param name="客房ID"></param>
         /// <returns></returns>

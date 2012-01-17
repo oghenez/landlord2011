@@ -57,10 +57,10 @@ namespace Landlord2.Data
 
         /// <summary>
         ///  [调用预编译查询]查询源房缴费明细 - 默认按缴费时间逆序排列
-        ///  1.查询所有源房缴费明细 - GetPayDetails(null,null)
-        ///  2.根据源房ID和缴费项2个条件过滤 - GetPayDetails(源房ID, 缴费项)
-        ///  3.根据源房ID过滤 - GetPayDetails(源房ID, null)
-        ///  4.根据缴费项过滤 - GetPayDetails(null, 缴费项)
+        ///  1.查询所有源房缴费明细
+        ///  2.根据源房ID和缴费项2个条件过滤
+        ///  3.根据源房ID过滤
+        ///  4.根据缴费项过滤 
         /// </summary>
         /// <param name="源房ID"></param>
         /// <param name="缴费项"></param>
