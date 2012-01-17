@@ -211,7 +211,7 @@
             // BtnOkAndContinue
             // 
             this.BtnOkAndContinue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnOkAndContinue.Location = new System.Drawing.Point(176, 199);
+            this.BtnOkAndContinue.Location = new System.Drawing.Point(176, 190);
             this.BtnOkAndContinue.Name = "BtnOkAndContinue";
             this.BtnOkAndContinue.Size = new System.Drawing.Size(90, 25);
             this.BtnOkAndContinue.TabIndex = 29;
@@ -222,7 +222,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(291, 199);
+            this.btnOK.Location = new System.Drawing.Point(291, 190);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(90, 25);
             this.btnOK.TabIndex = 27;
@@ -234,7 +234,7 @@
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.CausesValidation = false;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(406, 199);
+            this.btnCancel.Location = new System.Drawing.Point(406, 190);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 25);
             this.btnCancel.TabIndex = 28;
@@ -263,7 +263,7 @@
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(509, 236);
+            this.ClientSize = new System.Drawing.Size(509, 227);
             this.Controls.Add(this.kryptonCheckBox1);
             this.Controls.Add(this.BtnOkAndContinue);
             this.Controls.Add(this.btnOK);

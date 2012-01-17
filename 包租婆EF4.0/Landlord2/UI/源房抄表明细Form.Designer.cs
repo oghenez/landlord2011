@@ -32,7 +32,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(源房抄表明细Form));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.抄表时间DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.源房DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.源房BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.水止码DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.水账户余额DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.电止码DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.电账户余额DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.气表剩余字数DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.抄表人DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.备注DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.源房抄表BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kryptonHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.buttonSpecHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
@@ -57,15 +66,6 @@
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorEditItem = new System.Windows.Forms.ToolStripButton();
-            this.抄表时间DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.源房DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.水止码DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.水账户余额DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.电止码DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.电账户余额DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.气表剩余字数DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.抄表人DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.备注DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -131,9 +131,85 @@
             this.kryptonDataGridView1.TabIndex = 2;
             this.kryptonDataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.kryptonDataGridView1_CellMouseDoubleClick);
             // 
+            // 抄表时间DataGridViewTextBoxColumn
+            // 
+            this.抄表时间DataGridViewTextBoxColumn.DataPropertyName = "抄表时间";
+            this.抄表时间DataGridViewTextBoxColumn.HeaderText = "抄表时间";
+            this.抄表时间DataGridViewTextBoxColumn.Name = "抄表时间DataGridViewTextBoxColumn";
+            this.抄表时间DataGridViewTextBoxColumn.ReadOnly = true;
+            this.抄表时间DataGridViewTextBoxColumn.Width = 140;
+            // 
+            // 源房DataGridViewTextBoxColumn
+            // 
+            this.源房DataGridViewTextBoxColumn.DataPropertyName = "源房ID";
+            this.源房DataGridViewTextBoxColumn.DataSource = this.源房BindingSource;
+            this.源房DataGridViewTextBoxColumn.DisplayMember = "房名";
+            this.源房DataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.源房DataGridViewTextBoxColumn.HeaderText = "源房";
+            this.源房DataGridViewTextBoxColumn.Name = "源房DataGridViewTextBoxColumn";
+            this.源房DataGridViewTextBoxColumn.ReadOnly = true;
+            this.源房DataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.源房DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.源房DataGridViewTextBoxColumn.ValueMember = "ID";
+            this.源房DataGridViewTextBoxColumn.Width = 150;
+            // 
             // 源房BindingSource
             // 
             this.源房BindingSource.DataSource = typeof(Landlord2.Data.源房);
+            // 
+            // 水止码DataGridViewTextBoxColumn
+            // 
+            this.水止码DataGridViewTextBoxColumn.DataPropertyName = "水止码";
+            this.水止码DataGridViewTextBoxColumn.HeaderText = "水止码";
+            this.水止码DataGridViewTextBoxColumn.Name = "水止码DataGridViewTextBoxColumn";
+            this.水止码DataGridViewTextBoxColumn.ReadOnly = true;
+            this.水止码DataGridViewTextBoxColumn.Width = 60;
+            // 
+            // 水账户余额DataGridViewTextBoxColumn
+            // 
+            this.水账户余额DataGridViewTextBoxColumn.DataPropertyName = "水账户余额";
+            this.水账户余额DataGridViewTextBoxColumn.HeaderText = "水账户余额";
+            this.水账户余额DataGridViewTextBoxColumn.Name = "水账户余额DataGridViewTextBoxColumn";
+            this.水账户余额DataGridViewTextBoxColumn.ReadOnly = true;
+            this.水账户余额DataGridViewTextBoxColumn.Width = 80;
+            // 
+            // 电止码DataGridViewTextBoxColumn
+            // 
+            this.电止码DataGridViewTextBoxColumn.DataPropertyName = "电止码";
+            this.电止码DataGridViewTextBoxColumn.HeaderText = "电止码";
+            this.电止码DataGridViewTextBoxColumn.Name = "电止码DataGridViewTextBoxColumn";
+            this.电止码DataGridViewTextBoxColumn.ReadOnly = true;
+            this.电止码DataGridViewTextBoxColumn.Width = 60;
+            // 
+            // 电账户余额DataGridViewTextBoxColumn
+            // 
+            this.电账户余额DataGridViewTextBoxColumn.DataPropertyName = "电账户余额";
+            this.电账户余额DataGridViewTextBoxColumn.HeaderText = "电账户余额";
+            this.电账户余额DataGridViewTextBoxColumn.Name = "电账户余额DataGridViewTextBoxColumn";
+            this.电账户余额DataGridViewTextBoxColumn.ReadOnly = true;
+            this.电账户余额DataGridViewTextBoxColumn.Width = 80;
+            // 
+            // 气表剩余字数DataGridViewTextBoxColumn
+            // 
+            this.气表剩余字数DataGridViewTextBoxColumn.DataPropertyName = "气表剩余字数";
+            this.气表剩余字数DataGridViewTextBoxColumn.HeaderText = "气表剩余字数";
+            this.气表剩余字数DataGridViewTextBoxColumn.Name = "气表剩余字数DataGridViewTextBoxColumn";
+            this.气表剩余字数DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 抄表人DataGridViewTextBoxColumn
+            // 
+            this.抄表人DataGridViewTextBoxColumn.DataPropertyName = "抄表人";
+            this.抄表人DataGridViewTextBoxColumn.HeaderText = "抄表人";
+            this.抄表人DataGridViewTextBoxColumn.Name = "抄表人DataGridViewTextBoxColumn";
+            this.抄表人DataGridViewTextBoxColumn.ReadOnly = true;
+            this.抄表人DataGridViewTextBoxColumn.Width = 60;
+            // 
+            // 备注DataGridViewTextBoxColumn
+            // 
+            this.备注DataGridViewTextBoxColumn.DataPropertyName = "备注";
+            this.备注DataGridViewTextBoxColumn.HeaderText = "备注";
+            this.备注DataGridViewTextBoxColumn.Name = "备注DataGridViewTextBoxColumn";
+            this.备注DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // 源房抄表BindingSource
             // 
@@ -253,7 +329,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(234, 16);
+            this.label3.Location = new System.Drawing.Point(243, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 1;
@@ -387,77 +463,6 @@
             this.bindingNavigatorEditItem.Size = new System.Drawing.Size(51, 22);
             this.bindingNavigatorEditItem.Text = "编辑";
             this.bindingNavigatorEditItem.Click += new System.EventHandler(this.bindingNavigatorEditItem_Click);
-            // 
-            // 抄表时间DataGridViewTextBoxColumn
-            // 
-            this.抄表时间DataGridViewTextBoxColumn.DataPropertyName = "抄表时间";
-            this.抄表时间DataGridViewTextBoxColumn.HeaderText = "抄表时间";
-            this.抄表时间DataGridViewTextBoxColumn.Name = "抄表时间DataGridViewTextBoxColumn";
-            this.抄表时间DataGridViewTextBoxColumn.ReadOnly = true;
-            this.抄表时间DataGridViewTextBoxColumn.Width = 80;
-            // 
-            // 源房DataGridViewTextBoxColumn
-            // 
-            this.源房DataGridViewTextBoxColumn.DataPropertyName = "源房ID";
-            this.源房DataGridViewTextBoxColumn.DataSource = this.源房BindingSource;
-            this.源房DataGridViewTextBoxColumn.DisplayMember = "房名";
-            this.源房DataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.源房DataGridViewTextBoxColumn.HeaderText = "源房";
-            this.源房DataGridViewTextBoxColumn.Name = "源房DataGridViewTextBoxColumn";
-            this.源房DataGridViewTextBoxColumn.ReadOnly = true;
-            this.源房DataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.源房DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.源房DataGridViewTextBoxColumn.ValueMember = "ID";
-            this.源房DataGridViewTextBoxColumn.Width = 150;
-            // 
-            // 水止码DataGridViewTextBoxColumn
-            // 
-            this.水止码DataGridViewTextBoxColumn.DataPropertyName = "水止码";
-            this.水止码DataGridViewTextBoxColumn.HeaderText = "水止码";
-            this.水止码DataGridViewTextBoxColumn.Name = "水止码DataGridViewTextBoxColumn";
-            this.水止码DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 水账户余额DataGridViewTextBoxColumn
-            // 
-            this.水账户余额DataGridViewTextBoxColumn.DataPropertyName = "水账户余额";
-            this.水账户余额DataGridViewTextBoxColumn.HeaderText = "水账户余额";
-            this.水账户余额DataGridViewTextBoxColumn.Name = "水账户余额DataGridViewTextBoxColumn";
-            this.水账户余额DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 电止码DataGridViewTextBoxColumn
-            // 
-            this.电止码DataGridViewTextBoxColumn.DataPropertyName = "电止码";
-            this.电止码DataGridViewTextBoxColumn.HeaderText = "电止码";
-            this.电止码DataGridViewTextBoxColumn.Name = "电止码DataGridViewTextBoxColumn";
-            this.电止码DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 电账户余额DataGridViewTextBoxColumn
-            // 
-            this.电账户余额DataGridViewTextBoxColumn.DataPropertyName = "电账户余额";
-            this.电账户余额DataGridViewTextBoxColumn.HeaderText = "电账户余额";
-            this.电账户余额DataGridViewTextBoxColumn.Name = "电账户余额DataGridViewTextBoxColumn";
-            this.电账户余额DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 气表剩余字数DataGridViewTextBoxColumn
-            // 
-            this.气表剩余字数DataGridViewTextBoxColumn.DataPropertyName = "气表剩余字数";
-            this.气表剩余字数DataGridViewTextBoxColumn.HeaderText = "气表剩余字数";
-            this.气表剩余字数DataGridViewTextBoxColumn.Name = "气表剩余字数DataGridViewTextBoxColumn";
-            this.气表剩余字数DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 抄表人DataGridViewTextBoxColumn
-            // 
-            this.抄表人DataGridViewTextBoxColumn.DataPropertyName = "抄表人";
-            this.抄表人DataGridViewTextBoxColumn.HeaderText = "抄表人";
-            this.抄表人DataGridViewTextBoxColumn.Name = "抄表人DataGridViewTextBoxColumn";
-            this.抄表人DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 备注DataGridViewTextBoxColumn
-            // 
-            this.备注DataGridViewTextBoxColumn.DataPropertyName = "备注";
-            this.备注DataGridViewTextBoxColumn.HeaderText = "备注";
-            this.备注DataGridViewTextBoxColumn.Name = "备注DataGridViewTextBoxColumn";
-            this.备注DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // 源房抄表明细Form
             // 

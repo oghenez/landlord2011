@@ -61,6 +61,7 @@
             this.buttonSpecHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.nudFilterBegin = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.cmbFilter装修分类 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.btnClearFilter = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnFilter = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.tbFilter地点 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.tbFilter规格 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -76,7 +77,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.nudFilterEnd = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnClearFilter = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.装修明细BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.装修明细BindingNavigator)).BeginInit();
             this.装修明细BindingNavigator.SuspendLayout();
@@ -430,6 +430,16 @@
             this.cmbFilter装修分类.Size = new System.Drawing.Size(136, 21);
             this.cmbFilter装修分类.TabIndex = 0;
             // 
+            // btnClearFilter
+            // 
+            this.btnClearFilter.AutoSize = true;
+            this.btnClearFilter.Location = new System.Drawing.Point(704, 38);
+            this.btnClearFilter.Name = "btnClearFilter";
+            this.btnClearFilter.Size = new System.Drawing.Size(62, 25);
+            this.btnClearFilter.TabIndex = 5;
+            this.btnClearFilter.Values.Text = "清空筛选";
+            this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
+            // 
             // btnFilter
             // 
             this.btnFilter.AutoSize = true;
@@ -579,16 +589,6 @@
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 1;
             this.label3.Text = "日期：";
-            // 
-            // btnClearFilter
-            // 
-            this.btnClearFilter.AutoSize = true;
-            this.btnClearFilter.Location = new System.Drawing.Point(704, 38);
-            this.btnClearFilter.Name = "btnClearFilter";
-            this.btnClearFilter.Size = new System.Drawing.Size(62, 25);
-            this.btnClearFilter.TabIndex = 5;
-            this.btnClearFilter.Values.Text = "清空筛选";
-            this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
             // 
             // 装修明细Form
             // 
