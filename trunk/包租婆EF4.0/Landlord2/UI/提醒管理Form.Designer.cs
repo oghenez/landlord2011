@@ -31,6 +31,17 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(提醒管理Form));
             this.提醒BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.源房BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.客房BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.提醒时间DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.源房IDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.客房IDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.事项DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.已完成DataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.创建日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.完成日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.提醒BindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -44,26 +55,15 @@
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorEditItem = new System.Windows.Forms.ToolStripButton();
-            this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.提醒时间DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.源房IDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.源房BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.客房IDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.客房BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.事项DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.已完成DataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.创建日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.完成日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             ((System.ComponentModel.ISupportInitialize)(this.提醒BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.提醒BindingNavigator)).BeginInit();
-            this.提醒BindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.客房BindingSource)).BeginInit();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.提醒BindingNavigator)).BeginInit();
+            this.提醒BindingNavigator.SuspendLayout();
             this.SuspendLayout();
             // 
             // 提醒BindingSource
@@ -71,6 +71,127 @@
             this.提醒BindingSource.DataSource = typeof(Landlord2.Data.提醒);
             this.提醒BindingSource.DataSourceChanged += new System.EventHandler(this.提醒BindingSource_DataSourceChanged);
             this.提醒BindingSource.CurrentChanged += new System.EventHandler(this.提醒BindingSource_CurrentChanged);
+            // 
+            // 源房BindingSource
+            // 
+            this.源房BindingSource.DataSource = typeof(Landlord2.Data.源房);
+            // 
+            // 客房BindingSource
+            // 
+            this.客房BindingSource.DataSource = typeof(Landlord2.Data.客房);
+            // 
+            // toolStripContainer1
+            // 
+            this.toolStripContainer1.BottomToolStripPanelVisible = false;
+            // 
+            // toolStripContainer1.ContentPanel
+            // 
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.kryptonDataGridView1);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(727, 472);
+            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStripContainer1.LeftToolStripPanelVisible = false;
+            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
+            this.toolStripContainer1.Name = "toolStripContainer1";
+            this.toolStripContainer1.RightToolStripPanelVisible = false;
+            this.toolStripContainer1.Size = new System.Drawing.Size(727, 497);
+            this.toolStripContainer1.TabIndex = 2;
+            this.toolStripContainer1.Text = "toolStripContainer1";
+            // 
+            // toolStripContainer1.TopToolStripPanel
+            // 
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.提醒BindingNavigator);
+            // 
+            // kryptonDataGridView1
+            // 
+            this.kryptonDataGridView1.AllowUserToAddRows = false;
+            this.kryptonDataGridView1.AllowUserToDeleteRows = false;
+            this.kryptonDataGridView1.AutoGenerateColumns = false;
+            this.kryptonDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.提醒时间DataGridViewTextBoxColumn,
+            this.源房IDDataGridViewTextBoxColumn,
+            this.客房IDDataGridViewTextBoxColumn,
+            this.事项DataGridViewTextBoxColumn,
+            this.已完成DataGridViewCheckBoxColumn,
+            this.创建日期DataGridViewTextBoxColumn,
+            this.完成日期DataGridViewTextBoxColumn});
+            this.kryptonDataGridView1.DataSource = this.提醒BindingSource;
+            this.kryptonDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonDataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonDataGridView1.MultiSelect = false;
+            this.kryptonDataGridView1.Name = "kryptonDataGridView1";
+            this.kryptonDataGridView1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
+            this.kryptonDataGridView1.ReadOnly = true;
+            this.kryptonDataGridView1.RowHeadersWidth = 24;
+            this.kryptonDataGridView1.RowTemplate.Height = 23;
+            this.kryptonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.kryptonDataGridView1.Size = new System.Drawing.Size(727, 472);
+            this.kryptonDataGridView1.TabIndex = 1;
+            this.kryptonDataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.kryptonDataGridView1_CellMouseDoubleClick);
+            // 
+            // 提醒时间DataGridViewTextBoxColumn
+            // 
+            this.提醒时间DataGridViewTextBoxColumn.DataPropertyName = "提醒时间";
+            this.提醒时间DataGridViewTextBoxColumn.HeaderText = "提醒时间";
+            this.提醒时间DataGridViewTextBoxColumn.Name = "提醒时间DataGridViewTextBoxColumn";
+            this.提醒时间DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 源房IDDataGridViewTextBoxColumn
+            // 
+            this.源房IDDataGridViewTextBoxColumn.DataPropertyName = "源房ID";
+            this.源房IDDataGridViewTextBoxColumn.DataSource = this.源房BindingSource;
+            this.源房IDDataGridViewTextBoxColumn.DisplayMember = "房名";
+            this.源房IDDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.源房IDDataGridViewTextBoxColumn.HeaderText = "源房";
+            this.源房IDDataGridViewTextBoxColumn.Name = "源房IDDataGridViewTextBoxColumn";
+            this.源房IDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.源房IDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.源房IDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.源房IDDataGridViewTextBoxColumn.ValueMember = "ID";
+            this.源房IDDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // 客房IDDataGridViewTextBoxColumn
+            // 
+            this.客房IDDataGridViewTextBoxColumn.DataPropertyName = "客房ID";
+            this.客房IDDataGridViewTextBoxColumn.DataSource = this.客房BindingSource;
+            this.客房IDDataGridViewTextBoxColumn.DisplayMember = "命名";
+            this.客房IDDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.客房IDDataGridViewTextBoxColumn.HeaderText = "客房";
+            this.客房IDDataGridViewTextBoxColumn.Name = "客房IDDataGridViewTextBoxColumn";
+            this.客房IDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.客房IDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.客房IDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.客房IDDataGridViewTextBoxColumn.ValueMember = "ID";
+            this.客房IDDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // 事项DataGridViewTextBoxColumn
+            // 
+            this.事项DataGridViewTextBoxColumn.DataPropertyName = "事项";
+            this.事项DataGridViewTextBoxColumn.HeaderText = "事项";
+            this.事项DataGridViewTextBoxColumn.Name = "事项DataGridViewTextBoxColumn";
+            this.事项DataGridViewTextBoxColumn.ReadOnly = true;
+            this.事项DataGridViewTextBoxColumn.Width = 200;
+            // 
+            // 已完成DataGridViewCheckBoxColumn
+            // 
+            this.已完成DataGridViewCheckBoxColumn.DataPropertyName = "已完成";
+            this.已完成DataGridViewCheckBoxColumn.HeaderText = "已完成";
+            this.已完成DataGridViewCheckBoxColumn.Name = "已完成DataGridViewCheckBoxColumn";
+            this.已完成DataGridViewCheckBoxColumn.ReadOnly = true;
+            this.已完成DataGridViewCheckBoxColumn.Width = 50;
+            // 
+            // 创建日期DataGridViewTextBoxColumn
+            // 
+            this.创建日期DataGridViewTextBoxColumn.DataPropertyName = "创建日期";
+            this.创建日期DataGridViewTextBoxColumn.HeaderText = "创建日期";
+            this.创建日期DataGridViewTextBoxColumn.Name = "创建日期DataGridViewTextBoxColumn";
+            this.创建日期DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 完成日期DataGridViewTextBoxColumn
+            // 
+            this.完成日期DataGridViewTextBoxColumn.DataPropertyName = "完成日期";
+            this.完成日期DataGridViewTextBoxColumn.HeaderText = "完成日期";
+            this.完成日期DataGridViewTextBoxColumn.Name = "完成日期DataGridViewTextBoxColumn";
+            this.完成日期DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // 提醒BindingNavigator
             // 
@@ -201,127 +322,6 @@
             this.bindingNavigatorEditItem.Text = "编辑";
             this.bindingNavigatorEditItem.Click += new System.EventHandler(this.bindingNavigatorEditItem_Click);
             // 
-            // kryptonDataGridView1
-            // 
-            this.kryptonDataGridView1.AllowUserToAddRows = false;
-            this.kryptonDataGridView1.AllowUserToDeleteRows = false;
-            this.kryptonDataGridView1.AutoGenerateColumns = false;
-            this.kryptonDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.提醒时间DataGridViewTextBoxColumn,
-            this.源房IDDataGridViewTextBoxColumn,
-            this.客房IDDataGridViewTextBoxColumn,
-            this.事项DataGridViewTextBoxColumn,
-            this.已完成DataGridViewCheckBoxColumn,
-            this.创建日期DataGridViewTextBoxColumn,
-            this.完成日期DataGridViewTextBoxColumn});
-            this.kryptonDataGridView1.DataSource = this.提醒BindingSource;
-            this.kryptonDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonDataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonDataGridView1.MultiSelect = false;
-            this.kryptonDataGridView1.Name = "kryptonDataGridView1";
-            this.kryptonDataGridView1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonDataGridView1.ReadOnly = true;
-            this.kryptonDataGridView1.RowHeadersWidth = 24;
-            this.kryptonDataGridView1.RowTemplate.Height = 23;
-            this.kryptonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.kryptonDataGridView1.Size = new System.Drawing.Size(727, 472);
-            this.kryptonDataGridView1.TabIndex = 1;
-            this.kryptonDataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.kryptonDataGridView1_CellMouseDoubleClick);
-            // 
-            // 提醒时间DataGridViewTextBoxColumn
-            // 
-            this.提醒时间DataGridViewTextBoxColumn.DataPropertyName = "提醒时间";
-            this.提醒时间DataGridViewTextBoxColumn.HeaderText = "提醒时间";
-            this.提醒时间DataGridViewTextBoxColumn.Name = "提醒时间DataGridViewTextBoxColumn";
-            this.提醒时间DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 源房IDDataGridViewTextBoxColumn
-            // 
-            this.源房IDDataGridViewTextBoxColumn.DataPropertyName = "源房ID";
-            this.源房IDDataGridViewTextBoxColumn.DataSource = this.源房BindingSource;
-            this.源房IDDataGridViewTextBoxColumn.DisplayMember = "房名";
-            this.源房IDDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.源房IDDataGridViewTextBoxColumn.HeaderText = "源房";
-            this.源房IDDataGridViewTextBoxColumn.Name = "源房IDDataGridViewTextBoxColumn";
-            this.源房IDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.源房IDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.源房IDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.源房IDDataGridViewTextBoxColumn.ValueMember = "ID";
-            this.源房IDDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // 源房BindingSource
-            // 
-            this.源房BindingSource.DataSource = typeof(Landlord2.Data.源房);
-            // 
-            // 客房IDDataGridViewTextBoxColumn
-            // 
-            this.客房IDDataGridViewTextBoxColumn.DataPropertyName = "客房ID";
-            this.客房IDDataGridViewTextBoxColumn.DataSource = this.客房BindingSource;
-            this.客房IDDataGridViewTextBoxColumn.DisplayMember = "命名";
-            this.客房IDDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.客房IDDataGridViewTextBoxColumn.HeaderText = "客房";
-            this.客房IDDataGridViewTextBoxColumn.Name = "客房IDDataGridViewTextBoxColumn";
-            this.客房IDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.客房IDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.客房IDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.客房IDDataGridViewTextBoxColumn.ValueMember = "ID";
-            this.客房IDDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // 客房BindingSource
-            // 
-            this.客房BindingSource.DataSource = typeof(Landlord2.Data.客房);
-            // 
-            // 事项DataGridViewTextBoxColumn
-            // 
-            this.事项DataGridViewTextBoxColumn.DataPropertyName = "事项";
-            this.事项DataGridViewTextBoxColumn.HeaderText = "事项";
-            this.事项DataGridViewTextBoxColumn.Name = "事项DataGridViewTextBoxColumn";
-            this.事项DataGridViewTextBoxColumn.ReadOnly = true;
-            this.事项DataGridViewTextBoxColumn.Width = 200;
-            // 
-            // 已完成DataGridViewCheckBoxColumn
-            // 
-            this.已完成DataGridViewCheckBoxColumn.DataPropertyName = "已完成";
-            this.已完成DataGridViewCheckBoxColumn.HeaderText = "已完成";
-            this.已完成DataGridViewCheckBoxColumn.Name = "已完成DataGridViewCheckBoxColumn";
-            this.已完成DataGridViewCheckBoxColumn.ReadOnly = true;
-            this.已完成DataGridViewCheckBoxColumn.Width = 50;
-            // 
-            // 创建日期DataGridViewTextBoxColumn
-            // 
-            this.创建日期DataGridViewTextBoxColumn.DataPropertyName = "创建日期";
-            this.创建日期DataGridViewTextBoxColumn.HeaderText = "创建日期";
-            this.创建日期DataGridViewTextBoxColumn.Name = "创建日期DataGridViewTextBoxColumn";
-            this.创建日期DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 完成日期DataGridViewTextBoxColumn
-            // 
-            this.完成日期DataGridViewTextBoxColumn.DataPropertyName = "完成日期";
-            this.完成日期DataGridViewTextBoxColumn.HeaderText = "完成日期";
-            this.完成日期DataGridViewTextBoxColumn.Name = "完成日期DataGridViewTextBoxColumn";
-            this.完成日期DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // toolStripContainer1
-            // 
-            this.toolStripContainer1.BottomToolStripPanelVisible = false;
-            // 
-            // toolStripContainer1.ContentPanel
-            // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.kryptonDataGridView1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(727, 472);
-            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStripContainer1.LeftToolStripPanelVisible = false;
-            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
-            this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.RightToolStripPanelVisible = false;
-            this.toolStripContainer1.Size = new System.Drawing.Size(727, 497);
-            this.toolStripContainer1.TabIndex = 2;
-            this.toolStripContainer1.Text = "toolStripContainer1";
-            // 
-            // toolStripContainer1.TopToolStripPanel
-            // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.提醒BindingNavigator);
-            // 
             // 提醒管理Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -335,16 +335,16 @@
             this.Text = "自定义提醒管理";
             this.Load += new System.EventHandler(this.提醒管理Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.提醒BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.提醒BindingNavigator)).EndInit();
-            this.提醒BindingNavigator.ResumeLayout(false);
-            this.提醒BindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.源房BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.客房BindingSource)).EndInit();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.提醒BindingNavigator)).EndInit();
+            this.提醒BindingNavigator.ResumeLayout(false);
+            this.提醒BindingNavigator.PerformLayout();
             this.ResumeLayout(false);
 
         }

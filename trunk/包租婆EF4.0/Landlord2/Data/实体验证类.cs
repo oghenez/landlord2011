@@ -374,4 +374,21 @@ namespace Landlord2.Data
             return returnStr;
         }
     }
+
+    public partial class 日常损耗 : ICheck
+    {
+        public string CheckRules()
+        {
+            string returnStr = string.Empty;
+            if (this.源房ID == null || this.源房ID == Guid.Empty)
+            {
+                returnStr += "请指定日常损耗所涉及的源房！" + Environment.NewLine;
+                return returnStr;
+            }
+            //校验所有非空属性
+            returnStr += MyEntityHelper.CheckNullOrEmptyAndABS(this);
+
+            return returnStr;
+        }
+    }
 }

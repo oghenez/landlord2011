@@ -128,7 +128,7 @@
             this.kryptonDataGridView1.RowTemplate.Height = 23;
             this.kryptonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.kryptonDataGridView1.Size = new System.Drawing.Size(783, 412);
-            this.kryptonDataGridView1.TabIndex = 2;
+            this.kryptonDataGridView1.TabIndex = 0;
             this.kryptonDataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.kryptonDataGridView1_CellMouseDoubleClick);
             // 
             // 抄表时间DataGridViewTextBoxColumn
@@ -262,7 +262,7 @@
             this.btnClearFilter.Location = new System.Drawing.Point(706, 7);
             this.btnClearFilter.Name = "btnClearFilter";
             this.btnClearFilter.Size = new System.Drawing.Size(62, 30);
-            this.btnClearFilter.TabIndex = 5;
+            this.btnClearFilter.TabIndex = 4;
             this.btnClearFilter.Values.Text = "清空筛选";
             this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
             // 
@@ -272,7 +272,7 @@
             this.btnFilter.Location = new System.Drawing.Point(615, 7);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(62, 30);
-            this.btnFilter.TabIndex = 5;
+            this.btnFilter.TabIndex = 3;
             this.btnFilter.Values.Image = global::Landlord2.Properties.Resources.Filter;
             this.btnFilter.Values.Text = "筛选";
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
@@ -285,7 +285,7 @@
             this.dtpFilterBegin.Name = "dtpFilterBegin";
             this.dtpFilterBegin.ShowCheckBox = true;
             this.dtpFilterBegin.Size = new System.Drawing.Size(115, 21);
-            this.dtpFilterBegin.TabIndex = 2;
+            this.dtpFilterBegin.TabIndex = 1;
             // 
             // cmbFilter源房
             // 

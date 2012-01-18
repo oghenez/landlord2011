@@ -31,7 +31,7 @@ namespace Landlord2.UI
             if (cmbFilter源房.SelectedItem != null && !string.IsNullOrEmpty(cmbFilter源房.SelectedItem.ToString()))
                 predicateList.Add(m => m.源房ID == ((源房)cmbFilter源房.SelectedItem).ID);
 
-            if (cmbFilter客房.SelectedValue != null && !string.IsNullOrEmpty(cmbFilter客房.SelectedItem.ToString()))
+            if (cmbFilter客房.SelectedItem != null && !string.IsNullOrEmpty(cmbFilter客房.SelectedItem.ToString()))
                 predicateList.Add(m => m.客房ID == ((客房)cmbFilter客房.SelectedItem).ID);
 
             if (!string.IsNullOrEmpty(tbFilter项目.Text))
@@ -74,7 +74,7 @@ namespace Landlord2.UI
             RefreshAndLocate日常损耗(null);
 
             cmbFilter源房.Items.Add("");//先加一个空行
-            Array.ForEach(yuanFang,m =>{ cmbFilter源房.Items.Add(m);});
+            Array.ForEach(yuanFang, m => { cmbFilter源房.Items.Add(m); });
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
@@ -85,8 +85,8 @@ namespace Landlord2.UI
 
         private void btnClearFilter_Click(object sender, EventArgs e)
         {
-            cmbFilter源房.SelectedIndex = 0;
-            cmbFilter客房.SelectedIndex = 0;
+            cmbFilter源房.SelectedIndex = -1;
+            cmbFilter客房.SelectedIndex = -1;
             tbFilter项目.Text = "";
             tbFilter备注.Text = "";
             dtpFilterBegin.Checked = false;

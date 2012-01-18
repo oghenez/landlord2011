@@ -66,7 +66,7 @@ namespace Landlord2.UI
 
         private void btnClearFilter_Click(object sender, EventArgs e)
         {
-            cmbFilter源房.SelectedIndex = 0;
+            cmbFilter源房.SelectedIndex = -1;
             dtpFilterBegin.Checked = false;
             dtpFilterEnd.Checked = false;
             blv.RemoveFilter();

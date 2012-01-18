@@ -71,8 +71,8 @@ namespace Landlord2.UI
 
         private void btnClearFilter_Click(object sender, EventArgs e)
         {
-            cmbFilter源房.SelectedIndex = 0;
-            cmbFilter装修分类.SelectedIndex = 0;
+            cmbFilter源房.SelectedIndex = -1;
+            cmbFilter装修分类.SelectedIndex = -1;
             tbFilter规格.Text = "";
             tbFilter地点.Text = "";
             dtpFilterBegin.Checked = false;
