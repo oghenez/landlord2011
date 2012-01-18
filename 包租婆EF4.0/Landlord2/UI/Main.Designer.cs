@@ -111,13 +111,18 @@
             this.yfBtnDel = new System.Windows.Forms.ToolStripButton();
             this.yfBtnEdit = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.yfBtnPay = new System.Windows.Forms.ToolStripButton();
+            this.yfBtnPayDetail = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
+            this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.kfBtnAdd = new System.Windows.Forms.ToolStripButton();
             this.kfBtnDel = new System.Windows.Forms.ToolStripButton();
             this.kfBtnEdit = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.yfBtnPay = new System.Windows.Forms.ToolStripButton();
-            this.yfBtnPayDetail = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.kfBtnRent = new System.Windows.Forms.ToolStripButton();
             this.kfBtnStopRent = new System.Windows.Forms.ToolStripButton();
             this.kfBtnContinueRent = new System.Windows.Forms.ToolStripButton();
@@ -125,11 +130,6 @@
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.kfBtnCollectRent = new System.Windows.Forms.ToolStripButton();
             this.kfBtnCollectRentDetail = new System.Windows.Forms.ToolStripButton();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
-            this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -153,6 +153,7 @@
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonCheckSet1)).BeginInit();
+            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonManager1
@@ -263,18 +264,21 @@
             this.新增源房ToolStripMenuItem.Name = "新增源房ToolStripMenuItem";
             this.新增源房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.新增源房ToolStripMenuItem.Text = "新增源房";
+            this.新增源房ToolStripMenuItem.Click += new System.EventHandler(this.新增源房_Click);
             // 
             // 删除源房ToolStripMenuItem
             // 
             this.删除源房ToolStripMenuItem.Name = "删除源房ToolStripMenuItem";
             this.删除源房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.删除源房ToolStripMenuItem.Text = "删除源房";
+            this.删除源房ToolStripMenuItem.Click += new System.EventHandler(this.删除源房_Click);
             // 
             // 编辑源房ToolStripMenuItem
             // 
             this.编辑源房ToolStripMenuItem.Name = "编辑源房ToolStripMenuItem";
             this.编辑源房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.编辑源房ToolStripMenuItem.Text = "编辑源房";
+            this.编辑源房ToolStripMenuItem.Click += new System.EventHandler(this.编辑源房_Click);
             // 
             // toolStripSeparator2
             // 
@@ -286,12 +290,14 @@
             this.源房缴费ToolStripMenuItem.Name = "源房缴费ToolStripMenuItem";
             this.源房缴费ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.源房缴费ToolStripMenuItem.Text = "源房缴费";
+            this.源房缴费ToolStripMenuItem.Click += new System.EventHandler(this.源房缴费_Click);
             // 
             // 源房缴费明细ToolStripMenuItem
             // 
             this.源房缴费明细ToolStripMenuItem.Name = "源房缴费明细ToolStripMenuItem";
             this.源房缴费明细ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.源房缴费明细ToolStripMenuItem.Text = "源房缴费明细";
+            this.源房缴费明细ToolStripMenuItem.Click += new System.EventHandler(this.源房缴费明细_Click);
             // 
             // toolStripSeparator3
             // 
@@ -303,13 +309,14 @@
             this.源房抄表ToolStripMenuItem.Name = "源房抄表ToolStripMenuItem";
             this.源房抄表ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.源房抄表ToolStripMenuItem.Text = "源房抄表";
+            this.源房抄表ToolStripMenuItem.Click += new System.EventHandler(this.源房抄表_Click);
             // 
             // 源房抄表明细ToolStripMenuItem
             // 
             this.源房抄表明细ToolStripMenuItem.Name = "源房抄表明细ToolStripMenuItem";
             this.源房抄表明细ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.源房抄表明细ToolStripMenuItem.Text = "源房抄表明细";
-            this.源房抄表明细ToolStripMenuItem.Click += new System.EventHandler(this.源房抄表明细ToolStripMenuItem_Click);
+            this.源房抄表明细ToolStripMenuItem.Click += new System.EventHandler(this.源房抄表明细_Click);
             // 
             // toolStripSeparator13
             // 
@@ -321,13 +328,14 @@
             this.源房装修ToolStripMenuItem.Name = "源房装修ToolStripMenuItem";
             this.源房装修ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.源房装修ToolStripMenuItem.Text = "源房装修";
+            this.源房装修ToolStripMenuItem.Click += new System.EventHandler(this.源房装修_Click);
             // 
             // 源房装修明细ToolStripMenuItem
             // 
             this.源房装修明细ToolStripMenuItem.Name = "源房装修明细ToolStripMenuItem";
             this.源房装修明细ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.源房装修明细ToolStripMenuItem.Text = "源房装修明细";
-            this.源房装修明细ToolStripMenuItem.Click += new System.EventHandler(this.装修明细_Click);
+            this.源房装修明细ToolStripMenuItem.Click += new System.EventHandler(this.源房装修明细_Click);
             // 
             // 客房ToolStripMenuItem
             // 
@@ -353,83 +361,92 @@
             // 新增客房ToolStripMenuItem
             // 
             this.新增客房ToolStripMenuItem.Name = "新增客房ToolStripMenuItem";
-            this.新增客房ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.新增客房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.新增客房ToolStripMenuItem.Text = "新增客房";
+            this.新增客房ToolStripMenuItem.Click += new System.EventHandler(this.新增客房_Click);
             // 
             // 删除客房ToolStripMenuItem
             // 
             this.删除客房ToolStripMenuItem.Name = "删除客房ToolStripMenuItem";
-            this.删除客房ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除客房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.删除客房ToolStripMenuItem.Text = "删除客房";
+            this.删除客房ToolStripMenuItem.Click += new System.EventHandler(this.删除客房_Click);
             // 
             // 编辑客房ToolStripMenuItem
             // 
             this.编辑客房ToolStripMenuItem.Name = "编辑客房ToolStripMenuItem";
-            this.编辑客房ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.编辑客房ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.编辑客房ToolStripMenuItem.Text = "编辑客房";
+            this.编辑客房ToolStripMenuItem.Click += new System.EventHandler(this.编辑客房_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(143, 6);
             // 
             // 客房出租ToolStripMenuItem
             // 
             this.客房出租ToolStripMenuItem.Name = "客房出租ToolStripMenuItem";
-            this.客房出租ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.客房出租ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.客房出租ToolStripMenuItem.Text = "客房出租";
+            this.客房出租ToolStripMenuItem.Click += new System.EventHandler(this.客房出租_Click);
             // 
             // 出租历史记录ToolStripMenuItem
             // 
             this.出租历史记录ToolStripMenuItem.Name = "出租历史记录ToolStripMenuItem";
-            this.出租历史记录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.出租历史记录ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.出租历史记录ToolStripMenuItem.Text = "出租历史记录";
+            this.出租历史记录ToolStripMenuItem.Click += new System.EventHandler(this.客房出租历史记录_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(143, 6);
             // 
             // 客房收租ToolStripMenuItem
             // 
             this.客房收租ToolStripMenuItem.Name = "客房收租ToolStripMenuItem";
-            this.客房收租ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.客房收租ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.客房收租ToolStripMenuItem.Text = "客房收租";
+            this.客房收租ToolStripMenuItem.Click += new System.EventHandler(this.客房收租_Click);
             // 
             // 收租明细记录ToolStripMenuItem
             // 
             this.收租明细记录ToolStripMenuItem.Name = "收租明细记录ToolStripMenuItem";
-            this.收租明细记录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.收租明细记录ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.收租明细记录ToolStripMenuItem.Text = "收租明细记录";
+            this.收租明细记录ToolStripMenuItem.Click += new System.EventHandler(this.客房收租明细_Click);
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(143, 6);
             // 
             // 客房退租ToolStripMenuItem
             // 
             this.客房退租ToolStripMenuItem.Name = "客房退租ToolStripMenuItem";
-            this.客房退租ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.客房退租ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.客房退租ToolStripMenuItem.Text = "客房退租";
+            this.客房退租ToolStripMenuItem.Click += new System.EventHandler(this.客房退租_Click);
             // 
             // 客房续租ToolStripMenuItem
             // 
             this.客房续租ToolStripMenuItem.Name = "客房续租ToolStripMenuItem";
-            this.客房续租ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.客房续租ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.客房续租ToolStripMenuItem.Text = "客房续租";
+            this.客房续租ToolStripMenuItem.Click += new System.EventHandler(this.客房续租_Click);
             // 
             // toolStripSeparator14
             // 
             this.toolStripSeparator14.Name = "toolStripSeparator14";
-            this.toolStripSeparator14.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator14.Size = new System.Drawing.Size(143, 6);
             // 
             // 日常损耗ToolStripMenuItem
             // 
             this.日常损耗ToolStripMenuItem.Name = "日常损耗ToolStripMenuItem";
-            this.日常损耗ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.日常损耗ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.日常损耗ToolStripMenuItem.Text = "日常损耗";
-            this.日常损耗ToolStripMenuItem.Click += new System.EventHandler(this.日常损耗ToolStripMenuItem_Click);
+            this.日常损耗ToolStripMenuItem.Click += new System.EventHandler(this.日常损耗_Click);
             // 
             // 提醒ToolStripMenuItem
             // 
@@ -447,6 +464,7 @@
             this.新增提醒ToolStripMenuItem.Name = "新增提醒ToolStripMenuItem";
             this.新增提醒ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.新增提醒ToolStripMenuItem.Text = "新增提醒";
+            this.新增提醒ToolStripMenuItem.Click += new System.EventHandler(this.新增提醒_Click);
             // 
             // toolStripSeparator11
             // 
@@ -458,12 +476,14 @@
             this.提醒设置ToolStripMenuItem.Name = "提醒设置ToolStripMenuItem";
             this.提醒设置ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.提醒设置ToolStripMenuItem.Text = "提醒设置";
+            this.提醒设置ToolStripMenuItem.Click += new System.EventHandler(this.提醒设置_Click);
             // 
             // 提醒管理ToolStripMenuItem
             // 
             this.提醒管理ToolStripMenuItem.Name = "提醒管理ToolStripMenuItem";
             this.提醒管理ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.提醒管理ToolStripMenuItem.Text = "自定义提醒管理";
+            this.提醒管理ToolStripMenuItem.Click += new System.EventHandler(this.提醒管理_Click);
             // 
             // 数据报表ToolStripMenuItem
             // 
@@ -597,6 +617,7 @@
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip2);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
             // 
             // kryptonSplitContainer1
@@ -797,23 +818,11 @@
             this.yfBtnDel,
             this.yfBtnEdit,
             this.toolStripSeparator6,
-            this.kfBtnAdd,
-            this.kfBtnDel,
-            this.kfBtnEdit,
-            this.toolStripSeparator7,
             this.yfBtnPay,
-            this.yfBtnPayDetail,
-            this.toolStripSeparator9,
-            this.kfBtnRent,
-            this.kfBtnStopRent,
-            this.kfBtnContinueRent,
-            this.kfBtnRentHistory,
-            this.toolStripSeparator8,
-            this.kfBtnCollectRent,
-            this.kfBtnCollectRentDetail});
+            this.yfBtnPayDetail});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(862, 70);
+            this.toolStrip1.Size = new System.Drawing.Size(313, 70);
             this.toolStrip1.TabIndex = 0;
             // 
             // yfBtnAdd
@@ -825,7 +834,7 @@
             this.yfBtnAdd.Text = "新增源房";
             this.yfBtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.yfBtnAdd.ToolTipText = "新增一套源房信息";
-            this.yfBtnAdd.Click += new System.EventHandler(this.yfBtnAdd_Click);
+            this.yfBtnAdd.Click += new System.EventHandler(this.新增源房_Click);
             // 
             // yfBtnDel
             // 
@@ -836,7 +845,7 @@
             this.yfBtnDel.Text = "删除源房";
             this.yfBtnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.yfBtnDel.ToolTipText = "删除当前选中的源房信息";
-            this.yfBtnDel.Click += new System.EventHandler(this.yfBtnDel_Click);
+            this.yfBtnDel.Click += new System.EventHandler(this.删除源房_Click);
             // 
             // yfBtnEdit
             // 
@@ -847,50 +856,12 @@
             this.yfBtnEdit.Text = "编辑源房";
             this.yfBtnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.yfBtnEdit.ToolTipText = "编辑当前选中的源房信息";
-            this.yfBtnEdit.Click += new System.EventHandler(this.yfBtnEdit_Click);
+            this.yfBtnEdit.Click += new System.EventHandler(this.编辑源房_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(6, 70);
-            // 
-            // kfBtnAdd
-            // 
-            this.kfBtnAdd.Image = global::Landlord2.Properties.Resources.客房48Add;
-            this.kfBtnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.kfBtnAdd.Name = "kfBtnAdd";
-            this.kfBtnAdd.Size = new System.Drawing.Size(59, 67);
-            this.kfBtnAdd.Text = "增加客房";
-            this.kfBtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.kfBtnAdd.ToolTipText = "为当前源房增加一套客房信息";
-            this.kfBtnAdd.Click += new System.EventHandler(this.kfBtnAdd_Click);
-            // 
-            // kfBtnDel
-            // 
-            this.kfBtnDel.Image = global::Landlord2.Properties.Resources.客房48Del;
-            this.kfBtnDel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.kfBtnDel.Name = "kfBtnDel";
-            this.kfBtnDel.Size = new System.Drawing.Size(59, 67);
-            this.kfBtnDel.Text = "删除客房";
-            this.kfBtnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.kfBtnDel.ToolTipText = "删除当前选中的客房信息";
-            this.kfBtnDel.Click += new System.EventHandler(this.kfBtnDel_Click);
-            // 
-            // kfBtnEdit
-            // 
-            this.kfBtnEdit.Image = global::Landlord2.Properties.Resources.客房48Edit;
-            this.kfBtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.kfBtnEdit.Name = "kfBtnEdit";
-            this.kfBtnEdit.Size = new System.Drawing.Size(59, 67);
-            this.kfBtnEdit.Text = "编辑客房";
-            this.kfBtnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.kfBtnEdit.ToolTipText = "编辑当前选中的客房信息";
-            this.kfBtnEdit.Click += new System.EventHandler(this.kfBtnEdit_Click);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 70);
             // 
             // yfBtnPay
             // 
@@ -901,7 +872,7 @@
             this.yfBtnPay.Text = "源房缴费";
             this.yfBtnPay.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.yfBtnPay.ToolTipText = "源房相关缴费事宜\r\n例如：交付源房租、水电等。";
-            this.yfBtnPay.Click += new System.EventHandler(this.yfBtnPay_Click);
+            this.yfBtnPay.Click += new System.EventHandler(this.源房缴费_Click);
             // 
             // yfBtnPayDetail
             // 
@@ -912,83 +883,7 @@
             this.yfBtnPayDetail.Text = "缴费明细";
             this.yfBtnPayDetail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.yfBtnPayDetail.ToolTipText = "所有源房相关缴费的明细";
-            this.yfBtnPayDetail.Click += new System.EventHandler(this.yfBtnPayDetail_Click);
-            // 
-            // toolStripSeparator9
-            // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 70);
-            // 
-            // kfBtnRent
-            // 
-            this.kfBtnRent.Image = global::Landlord2.Properties.Resources.客房出租48;
-            this.kfBtnRent.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.kfBtnRent.Name = "kfBtnRent";
-            this.kfBtnRent.Size = new System.Drawing.Size(59, 67);
-            this.kfBtnRent.Text = "客房出租";
-            this.kfBtnRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.kfBtnRent.ToolTipText = "客房出租";
-            this.kfBtnRent.Click += new System.EventHandler(this.kfBtnRent_Click);
-            // 
-            // kfBtnStopRent
-            // 
-            this.kfBtnStopRent.Image = global::Landlord2.Properties.Resources.客房退租48;
-            this.kfBtnStopRent.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.kfBtnStopRent.Name = "kfBtnStopRent";
-            this.kfBtnStopRent.Size = new System.Drawing.Size(59, 67);
-            this.kfBtnStopRent.Text = "客房退租";
-            this.kfBtnStopRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.kfBtnStopRent.ToolTipText = "客房退租";
-            this.kfBtnStopRent.Click += new System.EventHandler(this.kfBtnStopRent_Click);
-            // 
-            // kfBtnContinueRent
-            // 
-            this.kfBtnContinueRent.Image = global::Landlord2.Properties.Resources.客房续租48;
-            this.kfBtnContinueRent.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.kfBtnContinueRent.Name = "kfBtnContinueRent";
-            this.kfBtnContinueRent.Size = new System.Drawing.Size(59, 67);
-            this.kfBtnContinueRent.Text = "客房续租";
-            this.kfBtnContinueRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.kfBtnContinueRent.ToolTipText = "客房续租";
-            this.kfBtnContinueRent.Click += new System.EventHandler(this.kfBtnContinueRent_Click);
-            // 
-            // kfBtnRentHistory
-            // 
-            this.kfBtnRentHistory.Image = global::Landlord2.Properties.Resources.客房出租历史48;
-            this.kfBtnRentHistory.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.kfBtnRentHistory.Name = "kfBtnRentHistory";
-            this.kfBtnRentHistory.Size = new System.Drawing.Size(59, 67);
-            this.kfBtnRentHistory.Text = "出租历史";
-            this.kfBtnRentHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.kfBtnRentHistory.ToolTipText = "所有源房相关缴费的明细";
-            this.kfBtnRentHistory.Click += new System.EventHandler(this.kfBtnRentHistory_Click);
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 70);
-            // 
-            // kfBtnCollectRent
-            // 
-            this.kfBtnCollectRent.Image = global::Landlord2.Properties.Resources.收租48;
-            this.kfBtnCollectRent.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.kfBtnCollectRent.Name = "kfBtnCollectRent";
-            this.kfBtnCollectRent.Size = new System.Drawing.Size(59, 67);
-            this.kfBtnCollectRent.Text = "客房收租";
-            this.kfBtnCollectRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.kfBtnCollectRent.ToolTipText = "客房出租";
-            this.kfBtnCollectRent.Click += new System.EventHandler(this.kfBtnCollectRent_Click);
-            // 
-            // kfBtnCollectRentDetail
-            // 
-            this.kfBtnCollectRentDetail.Image = global::Landlord2.Properties.Resources.收租明细48;
-            this.kfBtnCollectRentDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.kfBtnCollectRentDetail.Name = "kfBtnCollectRentDetail";
-            this.kfBtnCollectRentDetail.Size = new System.Drawing.Size(59, 67);
-            this.kfBtnCollectRentDetail.Text = "收租明细";
-            this.kfBtnCollectRentDetail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.kfBtnCollectRentDetail.ToolTipText = "客房出租";
-            this.kfBtnCollectRentDetail.Click += new System.EventHandler(this.kfBtnCollectRentDetail_Click);
+            this.yfBtnPayDetail.Click += new System.EventHandler(this.源房缴费明细_Click);
             // 
             // statusStrip1
             // 
@@ -1029,6 +924,137 @@
             // 
             this.AlarmTimer1.Interval = 500;
             this.AlarmTimer1.Tick += new System.EventHandler(this.AlarmTimer1_Tick);
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(48, 48);
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.kfBtnAdd,
+            this.kfBtnDel,
+            this.kfBtnEdit,
+            this.toolStripSeparator7,
+            this.kfBtnRent,
+            this.kfBtnStopRent,
+            this.kfBtnContinueRent,
+            this.kfBtnRentHistory,
+            this.toolStripSeparator8,
+            this.kfBtnCollectRent,
+            this.kfBtnCollectRentDetail});
+            this.toolStrip2.Location = new System.Drawing.Point(316, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(555, 70);
+            this.toolStrip2.TabIndex = 1;
+            // 
+            // kfBtnAdd
+            // 
+            this.kfBtnAdd.Image = global::Landlord2.Properties.Resources.客房48Add;
+            this.kfBtnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnAdd.Name = "kfBtnAdd";
+            this.kfBtnAdd.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnAdd.Text = "新增客房";
+            this.kfBtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnAdd.ToolTipText = "为当前源房增加一套客房信息";
+            this.kfBtnAdd.Click += new System.EventHandler(this.新增客房_Click);
+            // 
+            // kfBtnDel
+            // 
+            this.kfBtnDel.Image = global::Landlord2.Properties.Resources.客房48Del;
+            this.kfBtnDel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnDel.Name = "kfBtnDel";
+            this.kfBtnDel.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnDel.Text = "删除客房";
+            this.kfBtnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnDel.ToolTipText = "删除当前选中的客房信息";
+            this.kfBtnDel.Click += new System.EventHandler(this.删除客房_Click);
+            // 
+            // kfBtnEdit
+            // 
+            this.kfBtnEdit.Image = global::Landlord2.Properties.Resources.客房48Edit;
+            this.kfBtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnEdit.Name = "kfBtnEdit";
+            this.kfBtnEdit.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnEdit.Text = "编辑客房";
+            this.kfBtnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnEdit.ToolTipText = "编辑当前选中的客房信息";
+            this.kfBtnEdit.Click += new System.EventHandler(this.编辑客房_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 70);
+            // 
+            // kfBtnRent
+            // 
+            this.kfBtnRent.Image = global::Landlord2.Properties.Resources.客房出租48;
+            this.kfBtnRent.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnRent.Name = "kfBtnRent";
+            this.kfBtnRent.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnRent.Text = "客房出租";
+            this.kfBtnRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnRent.ToolTipText = "客房出租";
+            this.kfBtnRent.Click += new System.EventHandler(this.客房出租_Click);
+            // 
+            // kfBtnStopRent
+            // 
+            this.kfBtnStopRent.Image = global::Landlord2.Properties.Resources.客房退租48;
+            this.kfBtnStopRent.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnStopRent.Name = "kfBtnStopRent";
+            this.kfBtnStopRent.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnStopRent.Text = "客房退租";
+            this.kfBtnStopRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnStopRent.ToolTipText = "客房退租";
+            this.kfBtnStopRent.Click += new System.EventHandler(this.客房退租_Click);
+            // 
+            // kfBtnContinueRent
+            // 
+            this.kfBtnContinueRent.Image = global::Landlord2.Properties.Resources.客房续租48;
+            this.kfBtnContinueRent.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnContinueRent.Name = "kfBtnContinueRent";
+            this.kfBtnContinueRent.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnContinueRent.Text = "客房续租";
+            this.kfBtnContinueRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnContinueRent.ToolTipText = "客房续租";
+            this.kfBtnContinueRent.Click += new System.EventHandler(this.客房续租_Click);
+            // 
+            // kfBtnRentHistory
+            // 
+            this.kfBtnRentHistory.Image = global::Landlord2.Properties.Resources.客房出租历史48;
+            this.kfBtnRentHistory.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnRentHistory.Name = "kfBtnRentHistory";
+            this.kfBtnRentHistory.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnRentHistory.Text = "出租历史";
+            this.kfBtnRentHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnRentHistory.ToolTipText = "所有源房相关缴费的明细";
+            this.kfBtnRentHistory.Click += new System.EventHandler(this.客房出租历史记录_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 70);
+            // 
+            // kfBtnCollectRent
+            // 
+            this.kfBtnCollectRent.Image = global::Landlord2.Properties.Resources.收租48;
+            this.kfBtnCollectRent.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnCollectRent.Name = "kfBtnCollectRent";
+            this.kfBtnCollectRent.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnCollectRent.Text = "客房收租";
+            this.kfBtnCollectRent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnCollectRent.ToolTipText = "客房出租";
+            this.kfBtnCollectRent.Click += new System.EventHandler(this.客房收租_Click);
+            // 
+            // kfBtnCollectRentDetail
+            // 
+            this.kfBtnCollectRentDetail.Image = global::Landlord2.Properties.Resources.收租明细48;
+            this.kfBtnCollectRentDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kfBtnCollectRentDetail.Name = "kfBtnCollectRentDetail";
+            this.kfBtnCollectRentDetail.Size = new System.Drawing.Size(59, 67);
+            this.kfBtnCollectRentDetail.Text = "收租明细";
+            this.kfBtnCollectRentDetail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.kfBtnCollectRentDetail.ToolTipText = "客房出租";
+            this.kfBtnCollectRentDetail.Click += new System.EventHandler(this.客房收租明细_Click);
             // 
             // Main
             // 
@@ -1073,6 +1099,8 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonCheckSet1)).EndInit();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1103,24 +1131,12 @@
         private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup buttonSpecHeaderGroup6;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton kfBtnEdit;
         private System.Windows.Forms.ToolStripButton yfBtnAdd;
         private System.Windows.Forms.ToolStripButton yfBtnDel;
         private System.Windows.Forms.ToolStripButton yfBtnEdit;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripButton kfBtnAdd;
-        private System.Windows.Forms.ToolStripButton kfBtnDel;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripButton yfBtnPay;
         private System.Windows.Forms.ToolStripButton yfBtnPayDetail;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
-        private System.Windows.Forms.ToolStripButton kfBtnRent;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.ToolStripButton kfBtnStopRent;
-        private System.Windows.Forms.ToolStripButton kfBtnContinueRent;
-        private System.Windows.Forms.ToolStripButton kfBtnCollectRent;
-        private System.Windows.Forms.ToolStripButton kfBtnCollectRentDetail;
-        private System.Windows.Forms.ToolStripButton kfBtnRentHistory;
         private System.Windows.Forms.ToolStripMenuItem 系统ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 基本设定ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -1179,6 +1195,18 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         private System.Windows.Forms.ToolStripMenuItem 源房装修ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripButton kfBtnAdd;
+        private System.Windows.Forms.ToolStripButton kfBtnDel;
+        private System.Windows.Forms.ToolStripButton kfBtnEdit;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripButton kfBtnRent;
+        private System.Windows.Forms.ToolStripButton kfBtnStopRent;
+        private System.Windows.Forms.ToolStripButton kfBtnContinueRent;
+        private System.Windows.Forms.ToolStripButton kfBtnRentHistory;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripButton kfBtnCollectRent;
+        private System.Windows.Forms.ToolStripButton kfBtnCollectRentDetail;
     }
 }
 

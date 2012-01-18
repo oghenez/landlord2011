@@ -33,9 +33,10 @@ namespace Landlord2
             context.ObjectStateManager.ObjectStateManagerChanged += (sender, e) =>
             {
                 Console.WriteLine(string.Format(
-                "ObjectStateManager.ObjectStateManagerChanged | Action:{0} Object:{1}"
+                "ObjectStateManager.ObjectStateManagerChanged | Action:{0} Object:{1} -- {2}"
                 , e.Action
-                , e.Element));
+                , e.Element
+                ,DateTime.Now.ToShortTimeString()));
                 //MessageBox.Show(string.Format(
                 //    "MainContext刚刚检测到缓存改动--Action:{0} Object:{1}\r\n目前本地缓存实体数量：\r\n\tAdded-{2}\r\n\tDeleted-{3}\r\n\tModified-{4}\r\n\tUnchanged-{5}"
                 //    , e.Action
@@ -450,18 +451,10 @@ namespace Landlord2
 
             }
         }
-        /// <summary>
-        /// 从上下文中删除所有源房（关联的客房也会自动删除）
-        /// </summary>
-        private void clearObjectManagement()
-        {
-            foreach (源房 entity in context.源房.ToList())
-                context.源房.Detach(entity);
-            foreach (var entity in context.客房.ToList())
-                context.客房.Detach(entity);
-        }
+
+
         #region 菜单按钮
-        private void yfBtnAdd_Click(object sender, EventArgs e)
+        public void 新增源房_Click(object sender, EventArgs e)
         {
             //新增源房
             using (源房Form yF = new 源房Form())
@@ -469,7 +462,7 @@ namespace Landlord2
                 yF.ShowDialog(this);
             }
         }
-        private void yfBtnDel_Click(object sender, EventArgs e)
+        public void 删除源房_Click(object sender, EventArgs e)
         {
             //删除源房
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 源房)
@@ -481,8 +474,6 @@ namespace Landlord2
                     MessageBoxDefaultButton.Button2);
                 if (result == DialogResult.OK)
                 {
-                    if(yf.EntityState == EntityState.Detached)
-                        context.Attach(yf);
                     context.DeleteObject(yf);
                     string msg;
                     if (Helper.saveData(context, yf, out msg))
@@ -491,6 +482,10 @@ namespace Landlord2
                         var tx = context.提醒.Where(m => m.源房ID == yf.ID).ToList();
                         for (int i = tx.Count-1; i >= 0; i--)
                             context.提醒.DeleteObject(tx[i]);
+                        //删除源房后，删除相关日常损耗
+                        var sh = context.日常损耗.Where(m => m.源房ID == yf.ID).ToList();
+                        for (int i = sh.Count - 1; i >= 0; i--)
+                            context.日常损耗.DeleteObject(sh[i]);
 
                         KryptonMessageBox.Show(msg, "成功删除源房");
                         RefreshAndLocateTree(null);
@@ -501,11 +496,11 @@ namespace Landlord2
                         KryptonMessageBox.Show(msg, "失败");
                         context.Refresh(System.Data.Objects.RefreshMode.StoreWins, yf);
                     }
-                    clearObjectManagement();
+                    //clearObjectManagement();
                 }
             }
         }
-        private void yfBtnEdit_Click(object sender, EventArgs e)
+        public void 编辑源房_Click(object sender, EventArgs e)
         {
             //编辑源房
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 源房)
@@ -518,7 +513,7 @@ namespace Landlord2
             }
         }
 
-        private void kfBtnAdd_Click(object sender, EventArgs e)
+        public void 新增客房_Click(object sender, EventArgs e)
         {
             //新增客房
             客房Form kF = null;
@@ -535,7 +530,7 @@ namespace Landlord2
             kF.ShowDialog(this);
             kF.Dispose();
         }
-        private void kfBtnDel_Click(object sender, EventArgs e)
+        public void 删除客房_Click(object sender, EventArgs e)
         {
             //删除客房
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
@@ -547,8 +542,6 @@ namespace Landlord2
                     MessageBoxDefaultButton.Button2);
                 if (result == DialogResult.OK)
                 {
-                    if (kf.EntityState == EntityState.Detached)
-                        context.Attach(kf);
                     context.DeleteObject(kf);
                     string msg;
                     if (Helper.saveData(context, kf, out msg))
@@ -557,6 +550,10 @@ namespace Landlord2
                         var tx = context.提醒.Where(m => m.客房ID == kf.ID).ToList();
                         for (int i = tx.Count - 1; i >= 0; i--)
                             context.提醒.DeleteObject(tx[i]);
+                        //删除源房后，删除相关日常损耗
+                        var sh = context.日常损耗.Where(m => m.客房ID == kf.ID).ToList();
+                        for (int i = sh.Count - 1; i >= 0; i--)
+                            context.日常损耗.DeleteObject(sh[i]);
 
                         KryptonMessageBox.Show(msg, "成功删除客房");
                         RefreshAndLocateTree(null);
@@ -567,11 +564,11 @@ namespace Landlord2
                         KryptonMessageBox.Show(msg, "失败");
                         context.Refresh(System.Data.Objects.RefreshMode.StoreWins, kf);
                     }
-                    clearObjectManagement();
+                    //clearObjectManagement();
                 }
             }
         }
-        private void kfBtnEdit_Click(object sender, EventArgs e)
+        public void 编辑客房_Click(object sender, EventArgs e)
         {
             //编辑客房
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
@@ -584,7 +581,7 @@ namespace Landlord2
             }
         }
 
-        private void yfBtnPay_Click(object sender, EventArgs e)
+        public void 源房缴费_Click(object sender, EventArgs e)
         {
             //源房缴费
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag != null)
@@ -609,7 +606,7 @@ namespace Landlord2
                 }
             }            
         }
-        private void yfBtnPayDetail_Click(object sender, EventArgs e)
+        public void 源房缴费明细_Click(object sender, EventArgs e)
         {
             //源房缴费明细
             using (源房缴费明细Form jF = new 源房缴费明细Form())
@@ -617,7 +614,7 @@ namespace Landlord2
                 jF.ShowDialog(this);
             }
         }
-        private void kfBtnRent_Click(object sender, EventArgs e)
+        public void 客房出租_Click(object sender, EventArgs e)
         {
             //出租
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
@@ -642,7 +639,7 @@ namespace Landlord2
                 }
             }
         }
-        private void kfBtnContinueRent_Click(object sender, EventArgs e)
+        public void 客房续租_Click(object sender, EventArgs e)
         {
             //客房续租
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
@@ -657,7 +654,7 @@ namespace Landlord2
                 }
             }
         }
-        private void kfBtnStopRent_Click(object sender, EventArgs e)
+        public void 客房退租_Click(object sender, EventArgs e)
         {
             //客房退租
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
@@ -672,9 +669,9 @@ namespace Landlord2
                 }
             }
         }
-        private void kfBtnCollectRent_Click(object sender, EventArgs e)
+        public void 客房收租_Click(object sender, EventArgs e)
         {
-            //收租
+            //客房收租
             if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is 客房)
             {
                 客房 kf = treeView1.SelectedNode.Tag as 客房;
@@ -691,17 +688,17 @@ namespace Landlord2
                     collectRent.ShowDialog(this);
                 }
             }
-        }        
-        private void kfBtnCollectRentDetail_Click(object sender, EventArgs e)
+        }
+        public void 客房收租明细_Click(object sender, EventArgs e)
         {
-            //收租明细
+            //客房收租明细
             using (客房收租明细Form sz = new 客房收租明细Form())
             {
                 sz.ShowDialog(this);
             }
         }
 
-        private void kfBtnRentHistory_Click(object sender, EventArgs e)
+        public void 客房出租历史记录_Click(object sender, EventArgs e)
         {
             //客房出租历史记录
             using (客房出租历史记录Form collectRent = new 客房出租历史记录Form())
@@ -710,7 +707,16 @@ namespace Landlord2
             }
         }
 
-        private void 装修明细_Click(object sender, EventArgs e)
+
+        public void 源房装修_Click(object sender, EventArgs e)
+        {
+            //源房装修
+            using (装修Form cb = new 装修Form())
+            {
+                cb.ShowDialog(this);
+            }
+        }
+        public void 源房装修明细_Click(object sender, EventArgs e)
         {
             //装修明细
             using (装修明细Form deForm = new 装修明细Form())
@@ -719,7 +725,17 @@ namespace Landlord2
             }
         }
 
-        private void 提醒管理_Click(object sender, EventArgs e)
+
+        public void 新增提醒_Click(object sender, EventArgs e)
+        {
+            //新增提醒
+            using (提醒Form tx = new 提醒Form())
+            {
+                tx.ShowDialog(this);
+            }
+        }
+
+        public void 提醒管理_Click(object sender, EventArgs e)
         {
             //提醒管理
             using (提醒管理Form tiForm = new 提醒管理Form())
@@ -728,8 +744,9 @@ namespace Landlord2
             }
         }
 
-        private void kryptonListBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        public void kryptonListBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            //编辑提醒
             if (e.Button == System.Windows.Forms.MouseButtons.Left && kryptonListBox1.SelectedItem != null)
             {
                 KryptonListItem item = kryptonListBox1.SelectedItem as KryptonListItem;
@@ -743,8 +760,19 @@ namespace Landlord2
                 }
             }
         }
-
-        private void 源房抄表明细ToolStripMenuItem_Click(object sender, EventArgs e)
+        public void 提醒设置_Click(object sender, EventArgs e)
+        {
+            //!++ 提醒设置
+        }
+        public void 源房抄表_Click(object sender, EventArgs e)
+        {
+            //源房抄表
+            using (源房抄表Form cb = new 源房抄表Form())
+            {
+                cb.ShowDialog(this);
+            }  
+        }
+        public void 源房抄表明细_Click(object sender, EventArgs e)
         {
             //源房抄表明细
             using (源房抄表明细Form form = new 源房抄表明细Form())
@@ -752,7 +780,7 @@ namespace Landlord2
                 form.ShowDialog(this);
             }
         }
-        private void 日常损耗ToolStripMenuItem_Click(object sender, EventArgs e)
+        public void 日常损耗_Click(object sender, EventArgs e)
         {
             //日常损耗
             using (日常损耗管理Form form = new 日常损耗管理Form())
@@ -761,6 +789,10 @@ namespace Landlord2
             }
         }
         #endregion
+
+
+
+
 
 
 

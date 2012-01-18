@@ -200,5 +200,56 @@ namespace Landlord2.UI
             }
         }
 
+        #region 工具栏
+        private void 新增客房_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).新增客房_Click(sender, e);
+        }
+
+        private void 删除客房_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).删除客房_Click(sender, e);
+        }
+
+        private void 编辑客房_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).编辑客房_Click(sender, e);
+        }
+
+        private void 出租_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).客房出租_Click(sender, e);
+        }
+
+        private void 退租_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).客房退租_Click(sender, e);
+        }
+
+        private void 续租_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).客房续租_Click(sender, e);
+        }
+
+        private void 出租历史_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).客房出租历史记录_Click(sender, e);
+        }
+
+        private void 收租_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).客房收租_Click(sender, e);
+        }
+
+        private void 收租明细_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).客房收租明细_Click(sender, e);
+        }
+
+        private void 日常损耗_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).日常损耗_Click(sender, e);
+        }
+        #endregion
     }
 }
