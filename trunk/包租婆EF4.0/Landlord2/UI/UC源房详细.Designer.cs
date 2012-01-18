@@ -1118,6 +1118,7 @@
             this.toolStripButton4.Size = new System.Drawing.Size(83, 28);
             this.toolStripButton4.Text = "新增源房";
             this.toolStripButton4.ToolTipText = "新增一套源房信息";
+            this.toolStripButton4.Click += new System.EventHandler(this.新增源房_Click);
             // 
             // toolStripButton3
             // 
@@ -1127,6 +1128,7 @@
             this.toolStripButton3.Size = new System.Drawing.Size(83, 28);
             this.toolStripButton3.Text = "删除源房";
             this.toolStripButton3.ToolTipText = "删除当前选中的源房信息";
+            this.toolStripButton3.Click += new System.EventHandler(this.删除源房_Click);
             // 
             // toolStripButton2
             // 
@@ -1136,6 +1138,7 @@
             this.toolStripButton2.Size = new System.Drawing.Size(83, 28);
             this.toolStripButton2.Text = "编辑源房";
             this.toolStripButton2.ToolTipText = "编辑当前选中的源房信息";
+            this.toolStripButton2.Click += new System.EventHandler(this.编辑源房_Click);
             // 
             // toolStripSeparator1
             // 
@@ -1148,8 +1151,9 @@
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
             this.toolStripButton8.Size = new System.Drawing.Size(83, 28);
-            this.toolStripButton8.Text = "增加客房";
+            this.toolStripButton8.Text = "新增客房";
             this.toolStripButton8.ToolTipText = "为当前选中的源房增加客房";
+            this.toolStripButton8.Click += new System.EventHandler(this.新增客房_Click);
             // 
             // toolStripSeparator2
             // 
@@ -1164,6 +1168,7 @@
             this.toolStripButton7.Size = new System.Drawing.Size(83, 28);
             this.toolStripButton7.Text = "源房缴费";
             this.toolStripButton7.ToolTipText = "为当前选中的源房缴费(例如：缴纳房租、水电等)";
+            this.toolStripButton7.Click += new System.EventHandler(this.源房缴费_Click);
             // 
             // toolStripButton6
             // 
@@ -1173,6 +1178,7 @@
             this.toolStripButton6.Size = new System.Drawing.Size(83, 28);
             this.toolStripButton6.Text = "缴费明细";
             this.toolStripButton6.ToolTipText = "当前选中源房的所有缴费明细";
+            this.toolStripButton6.Click += new System.EventHandler(this.源房缴费明细_Click);
             // 
             // toolStripSeparator3
             // 
@@ -1186,6 +1192,7 @@
             this.toolStripButton5.Size = new System.Drawing.Size(35, 28);
             this.toolStripButton5.Text = "抄表";
             this.toolStripButton5.ToolTipText = "为当前选中的源房抄表(包括：水、电、气表)";
+            this.toolStripButton5.Click += new System.EventHandler(this.源房抄表_Click);
             // 
             // toolStripSeparator4
             // 
@@ -1199,6 +1206,7 @@
             this.toolStripButton1.Size = new System.Drawing.Size(59, 28);
             this.toolStripButton1.Text = "装修明细";
             this.toolStripButton1.ToolTipText = "当前选中源房的所有装修明细";
+            this.toolStripButton1.Click += new System.EventHandler(this.源房装修明细_Click);
             // 
             // labReadOnly
             // 

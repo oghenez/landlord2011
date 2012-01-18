@@ -502,8 +502,9 @@
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(83, 28);
-            this.toolStripButton2.Text = "增加客房";
+            this.toolStripButton2.Text = "新增客房";
             this.toolStripButton2.ToolTipText = "为当前源房增加一套客房信息";
+            this.toolStripButton2.Click += new System.EventHandler(this.新增客房_Click);
             // 
             // toolStripButton1
             // 
@@ -513,6 +514,7 @@
             this.toolStripButton1.Size = new System.Drawing.Size(83, 28);
             this.toolStripButton1.Text = "删除客房";
             this.toolStripButton1.ToolTipText = "删除当前选中的客房信息";
+            this.toolStripButton1.Click += new System.EventHandler(this.删除客房_Click);
             // 
             // toolStripButton3
             // 
@@ -522,6 +524,7 @@
             this.toolStripButton3.Size = new System.Drawing.Size(83, 28);
             this.toolStripButton3.Text = "编辑客房";
             this.toolStripButton3.ToolTipText = "编辑当前选中的客房信息";
+            this.toolStripButton3.Click += new System.EventHandler(this.编辑客房_Click);
             // 
             // toolStripSeparator1
             // 
@@ -535,6 +538,7 @@
             this.toolStripButton10.Name = "toolStripButton10";
             this.toolStripButton10.Size = new System.Drawing.Size(59, 28);
             this.toolStripButton10.Text = "出租";
+            this.toolStripButton10.Click += new System.EventHandler(this.出租_Click);
             // 
             // toolStripButton9
             // 
@@ -543,6 +547,7 @@
             this.toolStripButton9.Name = "toolStripButton9";
             this.toolStripButton9.Size = new System.Drawing.Size(59, 28);
             this.toolStripButton9.Text = "退租";
+            this.toolStripButton9.Click += new System.EventHandler(this.退租_Click);
             // 
             // toolStripButton4
             // 
@@ -551,6 +556,7 @@
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(59, 28);
             this.toolStripButton4.Text = "续租";
+            this.toolStripButton4.Click += new System.EventHandler(this.续租_Click);
             // 
             // toolStripButton7
             // 
@@ -559,6 +565,7 @@
             this.toolStripButton7.Name = "toolStripButton7";
             this.toolStripButton7.Size = new System.Drawing.Size(83, 28);
             this.toolStripButton7.Text = "出租历史";
+            this.toolStripButton7.Click += new System.EventHandler(this.出租历史_Click);
             // 
             // toolStripSeparator2
             // 
@@ -572,6 +579,7 @@
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Size = new System.Drawing.Size(59, 28);
             this.toolStripButton5.Text = "收租";
+            this.toolStripButton5.Click += new System.EventHandler(this.收租_Click);
             // 
             // toolStripButton8
             // 
@@ -580,6 +588,7 @@
             this.toolStripButton8.Name = "toolStripButton8";
             this.toolStripButton8.Size = new System.Drawing.Size(83, 28);
             this.toolStripButton8.Text = "收租明细";
+            this.toolStripButton8.Click += new System.EventHandler(this.收租明细_Click);
             // 
             // toolStripSeparator3
             // 
@@ -592,6 +601,7 @@
             this.toolStripButton6.Name = "toolStripButton6";
             this.toolStripButton6.Size = new System.Drawing.Size(59, 19);
             this.toolStripButton6.Text = "日常损耗";
+            this.toolStripButton6.Click += new System.EventHandler(this.日常损耗_Click);
             // 
             // 客房BindingSource
             // 

@@ -241,8 +241,47 @@ namespace Landlord2.UI
             obj.源房 = temp;//同步外键引用
             e.NewObject = obj;
         }
+        #region 工具栏
+        private void 新增源房_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).新增源房_Click(sender, e);
+        }
 
+        private void 删除源房_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).删除源房_Click(sender, e);
+        }
 
+        private void 编辑源房_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).编辑源房_Click(sender, e);
+        }
+
+        private void 新增客房_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).新增客房_Click(sender, e);
+        }
+
+        private void 源房缴费_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).源房缴费_Click(sender, e);
+        }
+
+        private void 源房缴费明细_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).源房缴费明细_Click(sender, e);
+        }
+
+        private void 源房抄表_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).源房抄表_Click(sender, e);
+        }
+
+        private void 源房装修明细_Click(object sender, EventArgs e)
+        {
+            (this.ParentForm as Main).源房装修明细_Click(sender, e);
+        }
+        #endregion
 
 
     }
