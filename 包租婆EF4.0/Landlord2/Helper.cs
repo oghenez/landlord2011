@@ -216,6 +216,98 @@ namespace Landlord2
             returnVal = Convert.ToDecimal(value) * number;
             return decimal.Round(returnVal,2);
         }
+
+        #region 加密狗相关
+        /// <summary>
+        /// 查询本机是否安装加密狗
+        /// </summary>
+        /// <param name="errMsg">如未检测到，回传错误信息</param>
+        /// <returns></returns>
+        public static bool FindDog(out string errMsg)
+        {
+            errMsg = string.Empty;
+            byte[] bytPID = new byte[8];
+            int count = 0;
+            bytPID = System.Text.Encoding.ASCII.GetBytes(Properties.Resources.PID);
+            uint result = ET99_API.et_FindToken(bytPID, out count);
+            if (result == ET99_API.ET_SUCCESS)
+                return true;
+            else
+            {
+                errMsg = string.Format("系统未检测到加密狗，请检查！\r\n错误：{0}",
+                    ET99_API.ShowResultText(result));
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 打开并进入加密狗
+        /// </summary>
+        /// <param name="errMsg"></param>
+        public static bool OpenDog(out string errMsg)
+        {
+            errMsg = string.Empty;
+            int index = 1;//默认仅打开第一个加密狗
+            byte[] bytPID = new byte[8];
+            bytPID = System.Text.Encoding.ASCII.GetBytes(Properties.Resources.PID);
+            uint result = ET99_API.et_OpenToken(ref ET99_API.dogHandle, bytPID, index);
+            if (result == ET99_API.ET_SUCCESS)//打开成功
+            {
+                byte[] bytPIN = new byte[16];
+                bytPIN = System.Text.Encoding.ASCII.GetBytes(Properties.Resources.UserPIN);
+                result = ET99_API.et_Verify(ET99_API.dogHandle,ET99_API.ET_VERIFY_USERPIN, bytPIN);
+                if (result == ET99_API.ET_SUCCESS)
+                    return true;
+                else
+                {
+                    errMsg = string.Format("加密狗认证失败，请检查！\r\n错误：{0}",
+                                       ET99_API.ShowResultText(result));
+                    return false;
+                }
+            }
+            else
+            {
+                errMsg = string.Format("打开加密狗失败，请检查！\r\n错误：{0}",
+                    ET99_API.ShowResultText(result));
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 关闭加密狗
+        /// </summary>
+        /// <param name="errMsg"></param>
+        /// <returns></returns>
+        public static bool CloseDog(out string errMsg)
+        {
+            errMsg = string.Empty;
+            uint result = ET99_API.et_CloseToken(ET99_API.dogHandle);
+            if (result == ET99_API.ET_SUCCESS)
+            {
+                ET99_API.dogHandle = System.IntPtr.Zero;
+                return true;
+            }
+            else
+            {
+                errMsg = string.Format("关闭加密狗失败，请检查！\r\n错误：{0}",
+                    ET99_API.ShowResultText(result));
+                return false;
+            }            
+        }
+
+        public static void FlashLED(int milliseconds,int times)
+        {
+            System.Threading.Thread thread = new System.Threading.Thread(()=>
+                {
+                    ET99_API.et_TurnOffLED(ET99_API.dogHandle);
+                });
+
+            System.Timers.Timer turnOffTimer = new System.Timers.Timer(milliseconds);
+            System.Timers.Timer turnOnTimer = new System.Timers.Timer(milliseconds);
+            turnOffTimer.Elapsed += new System.Timers.ElapsedEventHandler(() => { });
+
+        }
+        #endregion
     }
 
 }
