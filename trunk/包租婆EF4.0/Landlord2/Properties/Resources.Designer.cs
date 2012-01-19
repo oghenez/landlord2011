@@ -95,6 +95,15 @@ namespace Landlord2.Properties {
             }
         }
         
+        /// <summary>
+        ///   查找类似 d15336fef55d9053bedd65c2cb8f5a6e2fb7b85f9ea9d73e2a8c0cdff6de5507d373032f833afd7568acf8efa77820212a2462faf17334c690df3e212034f2bd 的本地化字符串。
+        /// </summary>
+        internal static string HMAC_MD5 {
+            get {
+                return ResourceManager.GetString("HMAC_MD5", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap idea_16 {
             get {
                 object obj = ResourceManager.GetObject("idea_16", resourceCulture);
@@ -120,6 +129,24 @@ namespace Landlord2.Properties {
             get {
                 object obj = ResourceManager.GetObject("info", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 2141221B 的本地化字符串。
+        /// </summary>
+        internal static string PID {
+            get {
+                return ResourceManager.GetString("PID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 8cfac3342adfee5e 的本地化字符串。
+        /// </summary>
+        internal static string UserPIN {
+            get {
+                return ResourceManager.GetString("UserPIN", resourceCulture);
             }
         }
         

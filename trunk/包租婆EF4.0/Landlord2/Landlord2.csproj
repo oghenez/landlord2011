@@ -41,21 +41,23 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>App.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
-    <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.3.2.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+    <Reference Include="Landlord2.Toolkit, Version=4.3.2.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>dll\ComponentFactory.Krypton.Toolkit.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>.\Landlord2.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -127,6 +129,7 @@
     <Compile Include="Data\源房涨租协定.cs" />
     <Compile Include="Data\源房缴费明细.cs" />
     <Compile Include="Data\装修明细.cs" />
+    <Compile Include="ET99_API.cs" />
     <Compile Include="MyDataGridViewDateTimePickerColumn.cs" />
     <Compile Include="Data\实体验证类.cs" />
     <Compile Include="Helper.cs" />
@@ -393,7 +396,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="App.Config" />
     <None Include="Data\Model1.Views.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Views.cs</LastGenOutput>
@@ -421,7 +423,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ComponentFactory.Krypton.Toolkit.dll">
+    <None Include="Landlord2.Toolkit.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -431,6 +433,9 @@
     <Content Include="Data\Landlord2.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Landlord2.FT.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="Readme.txt" />
     <None Include="Resources\add_16_hot.png" />
     <None Include="Resources\delete_16_hot.png" />

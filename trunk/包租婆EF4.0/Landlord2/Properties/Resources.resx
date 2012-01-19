@@ -250,4 +250,16 @@
   <data name="源房16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\源房16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="HMAC_MD5" xml:space="preserve">
+    <value>d15336fef55d9053bedd65c2cb8f5a6e2fb7b85f9ea9d73e2a8c0cdff6de5507d373032f833afd7568acf8efa77820212a2462faf17334c690df3e212034f2bd</value>
+    <comment>8个32字节HMAC_MD5密钥（每一个密钥都是由1个16字节密钥种子重复一次而成，这里存储的是8个16字节‘密钥种子’）</comment>
+  </data>
+  <data name="PID" xml:space="preserve">
+    <value>2141221B</value>
+    <comment>加密狗PID</comment>
+  </data>
+  <data name="UserPIN" xml:space="preserve">
+    <value>8cfac3342adfee5e</value>
+    <comment>用户密码</comment>
+  </data>
 </root>

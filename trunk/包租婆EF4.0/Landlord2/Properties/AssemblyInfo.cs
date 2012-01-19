@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Landlord2")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("二房东")]
+[assembly: AssemblyDescription("二房东 -- 租赁管理系统")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Landlord2")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2011")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("武汉创方科技有限公司")]
+[assembly: AssemblyProduct("二房东 -- 租赁管理系统")]
+[assembly: AssemblyCopyright("Copyright © TransformTech 2012")]
+[assembly: AssemblyTrademark("Wuhan Transform Technology Co.,Ltd.")]
 [assembly: AssemblyCulture("")]
 
 // 将 ComVisible 设置为 false 使此程序集中的类型
