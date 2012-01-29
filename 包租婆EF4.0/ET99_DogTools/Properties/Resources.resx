@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Data00" xml:space="preserve">
+    <value>武汉创方科技有限公司</value>
+    <comment>数据区00</comment>
+  </data>
+  <data name="Data01" xml:space="preserve">
+    <value>Wuhan Transform Technology Co.,Ltd.</value>
+    <comment>数据区01</comment>
+  </data>
+  <data name="Data02" xml:space="preserve">
+    <value>transformtech@qq.com</value>
+    <comment>数据区02</comment>
+  </data>
+  <data name="Data03" xml:space="preserve">
+    <value>http://www.transformtech.com.cn</value>
+    <comment>数据区03</comment>
+  </data>
+  <data name="HMAC_MD5_01" xml:space="preserve">
+    <value>d15336fef55d9053d15336fef55d9053</value>
+    <comment>HMAC_MD5密钥设置【针对测试版】</comment>
+  </data>
+  <data name="HMAC_MD5_02" xml:space="preserve">
+    <value>bedd65c2cb8f5a6ebedd65c2cb8f5a6e</value>
+    <comment>HMAC_MD5密钥设置【针对试用版】</comment>
+  </data>
+  <data name="HMAC_MD5_03" xml:space="preserve">
+    <value>2fb7b85f9ea9d73e2fb7b85f9ea9d73e</value>
+    <comment>HMAC_MD5密钥设置【针对标准版】</comment>
+  </data>
+  <data name="HMAC_MD5_04" xml:space="preserve">
+    <value>2a8c0cdff6de55072a8c0cdff6de5507</value>
+    <comment>HMAC_MD5密钥设置【针对专业版】</comment>
+  </data>
+  <data name="PID" xml:space="preserve">
+    <value>2141221B</value>
+    <comment>加密狗PID</comment>
+  </data>
+  <data name="PID_Default" xml:space="preserve">
+    <value>FFFFFFFF</value>
+    <comment>缺省PID值</comment>
+  </data>
+  <data name="PID种子" xml:space="preserve">
+    <value>416080100100084469001</value>
+    <comment>（公司银行账号+3位流水号）</comment>
+  </data>
+  <data name="SOPIN" xml:space="preserve">
+    <value>ABD5414789594810</value>
+    <comment>【开发商密码】</comment>
+  </data>
+  <data name="SOPIN_Default" xml:space="preserve">
+    <value>FFFFFFFFFFFFFFFF</value>
+    <comment>缺省SOPIN值</comment>
+  </data>
+  <data name="SOPIN种子" xml:space="preserve">
+    <value>420101663462759001</value>
+    <comment>（税务登记号+3位流水号）</comment>
+  </data>
+  <data name="SOPIN重试次数" xml:space="preserve">
+    <value>15</value>
+    <comment>（此处锁死只能返厂）</comment>
+  </data>
+  <data name="UserPIN" xml:space="preserve">
+    <value>8cfac3342adfee5e</value>
+    <comment>【用户密码】（随机数产生）</comment>
+  </data>
+  <data name="UserPIN_Default" xml:space="preserve">
+    <value>FFFFFFFFFFFFFFFF</value>
+    <comment>缺省UserPIN值</comment>
+  </data>
+  <data name="UserPIN重试次数" xml:space="preserve">
+    <value>3</value>
+    <comment>（此处锁死可由SOPIN密码登陆后重置）</comment>
+  </data>
+</root>
