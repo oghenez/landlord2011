@@ -29,7 +29,8 @@ namespace ET99_DogTools
         }
 
         #endregion
-        private Dog_Flag dogFlag;
+        private Dog_Flag dogFlag;//新狗还是旧狗
+        private string dogSN;//狗的SN
         public Form1()
         {
             InitializeComponent();
@@ -43,6 +44,10 @@ namespace ET99_DogTools
         {
             DoThreadSafe(() => { toolStripStatusLabel1.Text = msg; });
             DoThreadSafe(() => { PrintLog(msg); });
+        }
+        private void output2(string msg)
+        {
+            DoThreadSafe(() => { listBox1.Items.Add(msg) ; });
         }
         /// <summary>
         /// 写日志，当前目录下的log.txt文件。
@@ -162,6 +167,7 @@ namespace ET99_DogTools
                 }
 
                 msg = "获取硬件SN成功！-- " + strSN;
+                dogSN = strSN;
                 return true;
             }
             else
@@ -479,6 +485,7 @@ namespace ET99_DogTools
                     return false;
                 else
                 {
+                    sb.Append(i.ToString().PadLeft(2, '0') + ":");//加上标号，方便显示。
                     sb.Append(str);
                     sb.Append(Environment.NewLine);
                 }
@@ -486,11 +493,30 @@ namespace ET99_DogTools
             MessageBox.Show(sb.ToString(), "读取全部数据区 - 测试");
             return true;
         }
-        /// <summary>
-        /// 关闭加密狗
-        /// </summary>
-        /// <param name="errMsg"></param>
-        /// <returns></returns>
+
+        //关闭LED
+        public bool CloseLED(out string msg)
+        {
+            if (ET99_API.dogHandle == System.IntPtr.Zero)
+            {
+                msg = "请先打开设备！";
+                return false;
+            }
+
+            uint result = ET99_API.et_TurnOffLED(ET99_API.dogHandle);
+            if (result == ET99_API.ET_SUCCESS)
+            {
+                msg = "关闭LED成功！";
+                return true;
+            }
+            else
+            {
+                msg = "关闭LED失败！ 错误：" + ET99_API.ShowResultText(result);
+                return false;
+            }
+        }
+
+        // 关闭加密狗
         public bool CloseDog(out string msg)
         {
             msg = string.Empty;
@@ -507,34 +533,6 @@ namespace ET99_DogTools
                     ET99_API.ShowResultText(result));
                 return false;
             }
-        }
-
-        /// <summary>
-        /// 闪烁LED灯n次
-        /// </summary>
-        /// <param name="times">闪烁次数</param>
-        /// <param name="interval">间隔毫秒数，300貌似不错</param>
-        public void FlashLED(int times, int interval)
-        {
-            int count = 0;
-            System.Timers.Timer turnOffTimer = new System.Timers.Timer(interval);
-            turnOffTimer.AutoReset = false;
-            System.Timers.Timer turnOnTimer = new System.Timers.Timer(interval);
-            turnOnTimer.AutoReset = false;
-            turnOffTimer.Elapsed += new System.Timers.ElapsedEventHandler((m, n) =>
-            {
-                ET99_API.et_TurnOffLED(ET99_API.dogHandle);
-                turnOnTimer.Start();
-            });
-            turnOnTimer.Elapsed += new System.Timers.ElapsedEventHandler((m, n) =>
-            {
-                count++;
-                ET99_API.et_TurnOnLED(ET99_API.dogHandle);
-                if (count < times)
-                    turnOffTimer.Start();
-            });
-
-            turnOffTimer.Start();
         }
 
         /// <summary>
@@ -663,7 +661,7 @@ namespace ET99_DogTools
             if (resultmess == ET99_API.ET_SUCCESS)
             {
                 msg = "读取数据成功！";
-                str = System.Text.Encoding.Default.GetString(zyn).Trim();
+                str = System.Text.Encoding.Default.GetString(zyn).TrimEnd('\0');
                 return true;
             }
             else
@@ -683,14 +681,16 @@ namespace ET99_DogTools
         #endregion
         private void button1_Click(object sender, EventArgs e)
         {
+            //生成加密狗
             button1.Enabled = false;
             toolStripProgressBar1.Value = 0;
             ThreadPool.QueueUserWorkItem(delegate
             {
-                DoThreadSafe(() => { PrintLog("---开始执行---"); });
+                DoThreadSafe(() => { PrintLog("---开始生成加密狗---"); });
                 CreateDog();
                 DoThreadSafe(() => { button1.Enabled = true; });
                 DoThreadSafe(() => { toolStripProgressBar1.Value = 0; });
+                DoThreadSafe(() => { toolStripStatusLabel1.Text = string.Format("编号【{0}】的加密狗生成完毕！", dogSN) ; });
             });
         }
 
@@ -710,9 +710,11 @@ namespace ET99_DogTools
             else
             {
                 output(msg);//error
-                return;
+                DoThreadSafe(() => { button1.Enabled = true; });
+                Thread.CurrentThread.Abort();//终止调用线程，因为此处非主线程。
             }
         }
+
         /// <summary>
         /// 生成加密狗流程
         /// </summary>
@@ -720,6 +722,7 @@ namespace ET99_DogTools
         {
             //初始化dog
             ET99_API.dogHandle = System.IntPtr.Zero;
+            dogSN = string.Empty;
             //查询加密狗
             CallStep(FindDog);
             //打开加密狗
@@ -753,10 +756,61 @@ namespace ET99_DogTools
             CallStep(WriteData);
             //读取整个数据区
             CallStep(ReadData);
-            //LED闪烁3次
-            FlashLED(3, 300);
+            //关闭LED
+            CallStep(CloseLED); 
             //关闭设备
             CallStep(CloseDog);
        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //检测加密狗
+            listBox1.Items.Clear();
+            button2.Enabled = false;
+            toolStripProgressBar1.Value = 0;
+            ThreadPool.QueueUserWorkItem(delegate
+            {
+                DoThreadSafe(() => { listBox1.Items.Add("---开始检测加密狗---"); });
+                CheckDog();
+                DoThreadSafe(() => { button2.Enabled = true; });
+                DoThreadSafe(() => { toolStripProgressBar1.Value = 0; });
+                DoThreadSafe(() => { toolStripStatusLabel1.Text = string.Format("编号【{0}】的加密狗检测完毕！", dogSN); });
+            });
+        }
+        private void CheckStep(Step step)
+        {
+            string msg;
+            if (step(out msg))
+            {
+                output2(msg);//ok
+                DoThreadSafe(() => { toolStripProgressBar1.PerformStep(); });
+            }
+            else
+            {
+                output2(msg);//error
+                DoThreadSafe(() => { button2.Enabled = true; });
+                Thread.CurrentThread.Abort();//终止调用线程，因为此处非主线程。
+            }
+        }
+        private void CheckDog()
+        {
+            //初始化dog
+            ET99_API.dogHandle = System.IntPtr.Zero;
+            dogSN = string.Empty;
+            //查询加密狗
+            CheckStep(FindDog);
+            //打开加密狗
+            CheckStep(OpenDog);
+            //校验加密狗，进入超级用户状态
+            CheckStep(VerifyDog);
+            //获取硬件SN
+            CheckStep(GetSN);           
+            
+            //读取整个数据区
+            CheckStep(ReadData);
+            
+            //关闭设备
+            CheckStep(CloseDog);
+        }
     }
 }
