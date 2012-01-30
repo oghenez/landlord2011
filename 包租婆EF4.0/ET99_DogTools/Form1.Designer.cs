@@ -198,8 +198,8 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(521, 66);
             this.label1.TabIndex = 0;
-            this.label1.Text = "1、此操作可以生成加密狗（针对【二房东】房屋租赁软件）。\r\n2、请根据状态提示进行操作，生成完毕后加密狗指示灯闪烁3次后即可拔下换插。\r\n3、系统首先会清空现有加" +
-    "密狗所有数据，所以支持已写入数据的加密狗。\r\n";
+            this.label1.Text = "1、此操作可以生成加密狗（针对【二房东】房屋租赁软件）。\r\n2、请根据状态提示进行操作，生成完毕后，加密狗指示灯关闭即可拔下换插。\r\n3、系统首先会清空现有加密狗" +
+    "所有数据，所以支持已写入数据的加密狗。\r\n";
             // 
             // tabPage2
             // 
@@ -233,6 +233,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "开始";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // statusStrip1
             // 
@@ -242,13 +243,14 @@
             this.statusStrip1.Location = new System.Drawing.Point(0, 269);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(535, 22);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(387, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(418, 17);
             this.toolStripStatusLabel1.Spring = true;
             this.toolStripStatusLabel1.Text = "状态：";
             this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
