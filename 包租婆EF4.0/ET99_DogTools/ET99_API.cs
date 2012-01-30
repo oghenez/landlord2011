@@ -236,13 +236,13 @@ namespace ET99_DogTools
         [DllImport("Landlord2.FT.dll")]
         public static extern uint et_GenSOPIN(IntPtr hHandle, int seedlen, byte[] pucseed, StringBuilder pucNewSoPin);
 
-        
+
         /// <summary>
-        /// 重新设置普通用户密码为 16 个‘F’，相当于解锁。命令执行成功后，当前安全状态变成超级用户状态。 
+        /// 重新设置普通用户密码为 16 个 F，相当于解锁。命令执行成功后，当前安全状态变成超级用户状态。 
         /// </summary>
         /// <param name="hHandle">[in]设备句柄 </param>
         /// <param name="pucSoPin">[in]超级用户密码，16 字节。</param>
-        /// <returns>如果验证超级PIN码错误，并且错误值在0xF0和ET_PIN_ERR_MAX （0xFF）之间,我们可以通过错误码&ET_PIN_ERR_MASK(0x0F)得到剩余重试次数。如果还回 0xF0 表示已经被锁死，如果还回 0xFF 表示验证出错，且 pin 永远不被锁死</returns>
+        /// <returns>[如果验证超级PIN码错误，并且错误值在0xF0和ET_PIN_ERR_MAX （0xFF）之间,我们可以通过错误码 ET_PIN_ERR_MASK(0x0F)得到剩余重试次数。如果还回 0xF0 表示已经被锁死，如果还回 0xFF 表示验证出错，且 pin 永远不被锁死.</returns>
         [DllImport("Landlord2.FT.dll")]
         public static extern uint et_ResetPIN(IntPtr hHandle,byte[] pucSoPin);
 
@@ -268,7 +268,8 @@ namespace ET99_DogTools
         /// <param name="pucDigest">[out]计算结果，固定 16 字节。 </param>
         /// <returns></returns>
         [DllImport("Landlord2.FT.dll")]
-        public static extern uint MD5_HMAC(byte[] pucText, byte ulText_Len, byte[] pucKey, byte ulKey_Len, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 32)]byte[] pucToenKey, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 16)]byte[] pucDigest);
+        public static extern uint MD5_HMAC(byte[] pucText, byte ulText_Len, byte[] pucKey, byte ulKey_Len, [MarshalAs(UnmanagedType.LPArray, SizeConst = 1)]byte[] pucToenKey, [MarshalAs(UnmanagedType.LPArray, SizeConst = 1)]byte[] pucDigest);
+        //public static extern uint MD5_HMAC(byte[] pucText, byte ulText_Len, byte[] pucKey, byte ulKey_Len, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 32)]byte[] pucToenKey, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 16)]byte[] pucDigest);原始代码，在clr4.0下异常。
  
 
         /// <summary>
@@ -281,7 +282,8 @@ namespace ET99_DogTools
         /// <param name="digest">[out]散列结果的数据指针，固定长度 16 个字节。 </param>
         /// <returns></returns>
         [DllImport("Landlord2.FT.dll")]
-        public static extern uint et_HMAC_MD5(IntPtr hHandle, int Keyid, int textLen, byte[] pucText, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 16)]byte[] digest);
+        public static extern uint et_HMAC_MD5(IntPtr hHandle, int Keyid, int textLen, byte[] pucText, [MarshalAs(UnmanagedType.LPArray, SizeConst = 1)]byte[] digest);
+        //public static extern uint et_HMAC_MD5(IntPtr hHandle, int Keyid, int textLen, byte[] pucText, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 16)]byte[] digest);原始代码，在clr4.0下异常。
 
         /// <summary>
         /// 验证密码，以获得相应的安全状态，不受安全状态限制，验证成功以后，进入相应的安全状态。ET_VERIFY_USER_PIN = 验证的是普通用户PIN码，如果验证通过，则进入普通用户状态。
@@ -320,7 +322,7 @@ namespace ET99_DogTools
         /// <param name="pucSN">[out]用于存放获得的序列号，长度固定为 8 字节 </param>
         /// <returns></returns>
         [DllImport("Landlord2.FT.dll")]
-        public static extern uint et_GetSN(IntPtr hHandle, [MarshalAs(UnmanagedType.LPArray,SizeConst=1)]byte[] pucSN);
+        public static extern uint et_GetSN(IntPtr hHandle, [MarshalAs(UnmanagedType.LPArray, SizeConst = 1)]byte[] pucSN);
         //public static extern uint et_GetSN(IntPtr hHandle, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 32)]byte[] pucSN);原始代码，在clr4.0下异常。
 
         /// <summary>
