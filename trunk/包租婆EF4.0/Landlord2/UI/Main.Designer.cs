@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -106,18 +106,6 @@
             this.buttonSpecHeaderGroup6 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.buttonSpecHeaderGroupAlarm = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.kryptonListBox1 = new ComponentFactory.Krypton.Toolkit.KryptonListBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.yfBtnAdd = new System.Windows.Forms.ToolStripButton();
-            this.yfBtnDel = new System.Windows.Forms.ToolStripButton();
-            this.yfBtnEdit = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.yfBtnPay = new System.Windows.Forms.ToolStripButton();
-            this.yfBtnPayDetail = new System.Windows.Forms.ToolStripButton();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
-            this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.kfBtnAdd = new System.Windows.Forms.ToolStripButton();
             this.kfBtnDel = new System.Windows.Forms.ToolStripButton();
@@ -130,6 +118,18 @@
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.kfBtnCollectRent = new System.Windows.Forms.ToolStripButton();
             this.kfBtnCollectRentDetail = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.yfBtnAdd = new System.Windows.Forms.ToolStripButton();
+            this.yfBtnDel = new System.Windows.Forms.ToolStripButton();
+            this.yfBtnEdit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.yfBtnPay = new System.Windows.Forms.ToolStripButton();
+            this.yfBtnPayDetail = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
+            this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -150,10 +150,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup3)).BeginInit();
             this.kryptonHeaderGroup3.Panel.SuspendLayout();
             this.kryptonHeaderGroup3.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonCheckSet1)).BeginInit();
-            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonManager1
@@ -617,8 +617,8 @@
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip2);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip2);
             // 
             // kryptonSplitContainer1
             // 
@@ -673,11 +673,11 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.ImageIndex = 7;
-            treeNode1.Name = "节点0";
-            treeNode1.Text = "加载信息，请稍候．．．";
+            treeNode2.ImageIndex = 7;
+            treeNode2.Name = "节点0";
+            treeNode2.Text = "加载信息，请稍候．．．";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.treeView1.SelectedImageIndex = 7;
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.ShowRootLines = false;
@@ -808,123 +808,6 @@
             this.kryptonListBox1.StateCommon.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
             this.kryptonListBox1.TabIndex = 0;
             // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(48, 48);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.yfBtnAdd,
-            this.yfBtnDel,
-            this.yfBtnEdit,
-            this.toolStripSeparator6,
-            this.yfBtnPay,
-            this.yfBtnPayDetail});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(313, 70);
-            this.toolStrip1.TabIndex = 0;
-            // 
-            // yfBtnAdd
-            // 
-            this.yfBtnAdd.Image = global::Landlord2.Properties.Resources.源房48Add;
-            this.yfBtnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.yfBtnAdd.Name = "yfBtnAdd";
-            this.yfBtnAdd.Size = new System.Drawing.Size(59, 67);
-            this.yfBtnAdd.Text = "新增源房";
-            this.yfBtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.yfBtnAdd.ToolTipText = "新增一套源房信息";
-            this.yfBtnAdd.Click += new System.EventHandler(this.新增源房_Click);
-            // 
-            // yfBtnDel
-            // 
-            this.yfBtnDel.Image = global::Landlord2.Properties.Resources.源房48Del;
-            this.yfBtnDel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.yfBtnDel.Name = "yfBtnDel";
-            this.yfBtnDel.Size = new System.Drawing.Size(59, 67);
-            this.yfBtnDel.Text = "删除源房";
-            this.yfBtnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.yfBtnDel.ToolTipText = "删除当前选中的源房信息";
-            this.yfBtnDel.Click += new System.EventHandler(this.删除源房_Click);
-            // 
-            // yfBtnEdit
-            // 
-            this.yfBtnEdit.Image = global::Landlord2.Properties.Resources.源房48Edit;
-            this.yfBtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.yfBtnEdit.Name = "yfBtnEdit";
-            this.yfBtnEdit.Size = new System.Drawing.Size(59, 67);
-            this.yfBtnEdit.Text = "编辑源房";
-            this.yfBtnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.yfBtnEdit.ToolTipText = "编辑当前选中的源房信息";
-            this.yfBtnEdit.Click += new System.EventHandler(this.编辑源房_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 70);
-            // 
-            // yfBtnPay
-            // 
-            this.yfBtnPay.Image = global::Landlord2.Properties.Resources.缴费48;
-            this.yfBtnPay.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.yfBtnPay.Name = "yfBtnPay";
-            this.yfBtnPay.Size = new System.Drawing.Size(59, 67);
-            this.yfBtnPay.Text = "源房缴费";
-            this.yfBtnPay.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.yfBtnPay.ToolTipText = "源房相关缴费事宜\r\n例如：交付源房租、水电等。";
-            this.yfBtnPay.Click += new System.EventHandler(this.源房缴费_Click);
-            // 
-            // yfBtnPayDetail
-            // 
-            this.yfBtnPayDetail.Image = global::Landlord2.Properties.Resources.缴费明细48;
-            this.yfBtnPayDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.yfBtnPayDetail.Name = "yfBtnPayDetail";
-            this.yfBtnPayDetail.Size = new System.Drawing.Size(59, 67);
-            this.yfBtnPayDetail.Text = "缴费明细";
-            this.yfBtnPayDetail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.yfBtnPayDetail.ToolTipText = "所有源房相关缴费的明细";
-            this.yfBtnPayDetail.Click += new System.EventHandler(this.源房缴费明细_Click);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 711);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
-            this.statusStrip1.Size = new System.Drawing.Size(1037, 22);
-            this.statusStrip1.TabIndex = 3;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(895, 17);
-            this.toolStripStatusLabel1.Spring = true;
-            this.toolStripStatusLabel1.Text = "单机版V2.0";
-            this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(127, 17);
-            this.toolStripStatusLabel2.Text = "武汉创方科技有限公司";
-            // 
-            // kryptonCheckSet1
-            // 
-            this.kryptonCheckSet1.CheckButtons.Add(this.kryptonCheckButton1);
-            this.kryptonCheckSet1.CheckButtons.Add(this.kryptonCheckButton2);
-            this.kryptonCheckSet1.CheckButtons.Add(this.kryptonCheckButton3);
-            this.kryptonCheckSet1.CheckedButton = this.kryptonCheckButton3;
-            this.kryptonCheckSet1.CheckedButtonChanged += new System.EventHandler(this.kryptonCheckSet1_CheckedButtonChanged);
-            // 
-            // AlarmTimer1
-            // 
-            this.AlarmTimer1.Interval = 500;
-            this.AlarmTimer1.Tick += new System.EventHandler(this.AlarmTimer1_Tick);
-            // 
             // toolStrip2
             // 
             this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
@@ -942,7 +825,7 @@
             this.toolStripSeparator8,
             this.kfBtnCollectRent,
             this.kfBtnCollectRentDetail});
-            this.toolStrip2.Location = new System.Drawing.Point(316, 0);
+            this.toolStrip2.Location = new System.Drawing.Point(3, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(555, 70);
             this.toolStrip2.TabIndex = 1;
@@ -1056,6 +939,123 @@
             this.kfBtnCollectRentDetail.ToolTipText = "客房出租";
             this.kfBtnCollectRentDetail.Click += new System.EventHandler(this.客房收租明细_Click);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(48, 48);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.yfBtnAdd,
+            this.yfBtnDel,
+            this.yfBtnEdit,
+            this.toolStripSeparator6,
+            this.yfBtnPay,
+            this.yfBtnPayDetail});
+            this.toolStrip1.Location = new System.Drawing.Point(558, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(313, 70);
+            this.toolStrip1.TabIndex = 0;
+            // 
+            // yfBtnAdd
+            // 
+            this.yfBtnAdd.Image = global::Landlord2.Properties.Resources.源房48Add;
+            this.yfBtnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnAdd.Name = "yfBtnAdd";
+            this.yfBtnAdd.Size = new System.Drawing.Size(59, 67);
+            this.yfBtnAdd.Text = "新增源房";
+            this.yfBtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.yfBtnAdd.ToolTipText = "新增一套源房信息";
+            this.yfBtnAdd.Click += new System.EventHandler(this.新增源房_Click);
+            // 
+            // yfBtnDel
+            // 
+            this.yfBtnDel.Image = global::Landlord2.Properties.Resources.源房48Del;
+            this.yfBtnDel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnDel.Name = "yfBtnDel";
+            this.yfBtnDel.Size = new System.Drawing.Size(59, 67);
+            this.yfBtnDel.Text = "删除源房";
+            this.yfBtnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.yfBtnDel.ToolTipText = "删除当前选中的源房信息";
+            this.yfBtnDel.Click += new System.EventHandler(this.删除源房_Click);
+            // 
+            // yfBtnEdit
+            // 
+            this.yfBtnEdit.Image = global::Landlord2.Properties.Resources.源房48Edit;
+            this.yfBtnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnEdit.Name = "yfBtnEdit";
+            this.yfBtnEdit.Size = new System.Drawing.Size(59, 67);
+            this.yfBtnEdit.Text = "编辑源房";
+            this.yfBtnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.yfBtnEdit.ToolTipText = "编辑当前选中的源房信息";
+            this.yfBtnEdit.Click += new System.EventHandler(this.编辑源房_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 70);
+            // 
+            // yfBtnPay
+            // 
+            this.yfBtnPay.Image = global::Landlord2.Properties.Resources.缴费48;
+            this.yfBtnPay.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnPay.Name = "yfBtnPay";
+            this.yfBtnPay.Size = new System.Drawing.Size(59, 67);
+            this.yfBtnPay.Text = "源房缴费";
+            this.yfBtnPay.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.yfBtnPay.ToolTipText = "源房相关缴费事宜\r\n例如：交付源房租、水电等。";
+            this.yfBtnPay.Click += new System.EventHandler(this.源房缴费_Click);
+            // 
+            // yfBtnPayDetail
+            // 
+            this.yfBtnPayDetail.Image = global::Landlord2.Properties.Resources.缴费明细48;
+            this.yfBtnPayDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.yfBtnPayDetail.Name = "yfBtnPayDetail";
+            this.yfBtnPayDetail.Size = new System.Drawing.Size(59, 67);
+            this.yfBtnPayDetail.Text = "缴费明细";
+            this.yfBtnPayDetail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.yfBtnPayDetail.ToolTipText = "所有源房相关缴费的明细";
+            this.yfBtnPayDetail.Click += new System.EventHandler(this.源房缴费明细_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 711);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
+            this.statusStrip1.Size = new System.Drawing.Size(1037, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(895, 17);
+            this.toolStripStatusLabel1.Spring = true;
+            this.toolStripStatusLabel1.Text = "单机版V2.0";
+            this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(127, 17);
+            this.toolStripStatusLabel2.Text = "武汉创方科技有限公司";
+            // 
+            // kryptonCheckSet1
+            // 
+            this.kryptonCheckSet1.CheckButtons.Add(this.kryptonCheckButton1);
+            this.kryptonCheckSet1.CheckButtons.Add(this.kryptonCheckButton2);
+            this.kryptonCheckSet1.CheckButtons.Add(this.kryptonCheckButton3);
+            this.kryptonCheckSet1.CheckedButton = this.kryptonCheckButton3;
+            this.kryptonCheckSet1.CheckedButtonChanged += new System.EventHandler(this.kryptonCheckSet1_CheckedButtonChanged);
+            // 
+            // AlarmTimer1
+            // 
+            this.AlarmTimer1.Interval = 500;
+            this.AlarmTimer1.Tick += new System.EventHandler(this.AlarmTimer1_Tick);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1094,13 +1094,13 @@
             this.kryptonHeaderGroup3.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonHeaderGroup3)).EndInit();
             this.kryptonHeaderGroup3.ResumeLayout(false);
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonCheckSet1)).EndInit();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
