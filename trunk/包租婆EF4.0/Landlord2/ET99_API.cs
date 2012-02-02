@@ -95,7 +95,7 @@ namespace Landlord2
         internal const string CONST_PID = "ffffffff";
 
 
-        #endregion 
+        #endregion
 
         /// <summary>
         /// 根据错误码显示错误提示内容
@@ -163,7 +163,7 @@ namespace Landlord2
         /// <param name="count">[out]还回的设备个数；</param>
         /// <returns></returns>
         [DllImport("Landlord2.FT.dll")]
-        public static extern uint et_FindToken(byte[] pid,out int count);
+        public static extern uint et_FindToken(byte[] pid, out int count);
 
         /// <summary>
         /// 打开指定 PID的硬件,由 index 指定打开硬件的索引， index 应该小于等于找到的 Token 数目。进入匿名用户状态。
@@ -192,7 +192,7 @@ namespace Landlord2
         /// <param name="pucReadBuf">[out]读出的数据存放此缓存区中，调用者保证缓冲区大小至少是 Len，否则可能产生系统存取异常。 </param>
         /// <returns>第二章 API接口函数 ET_COMMUNICATIONS_ERROR：没有打开设备。ET_SUCCESS：表示成功。 ET_INVALID_PARAMETER：无效的参数。 ET_NOT_SET_PID：没有设置 PID。 ET_ACCESS_DENY：权限不够。 </returns>
         [DllImport("Landlord2.FT.dll")]
-        public static extern uint et_Read(IntPtr hHandle,ushort offset,int len,byte[] pucReadBuf);
+        public static extern uint et_Read(IntPtr hHandle, ushort offset, int len, byte[] pucReadBuf);
 
         /// <summary>
         /// 将 buf 中，Length 长的数据写到指定的偏移。有存取权限控制。匿名状态不可用，且在普通用户状态时还需要检查设备的配置。不改变安全状态。
@@ -214,7 +214,7 @@ namespace Landlord2
         /// <param name="pid">[out]产生的产品标识,  为固定长度 8 个字节的字符串； </param>
         /// <returns>ET_SUCCESS：表示成功； ET_HARD_ERROR：硬件错误 ET_INVALID_PARAMETER：无效的参数； ET_ACCESS_DENY：权限不够，需要先验证 SOPIN。 ET_COMMUNICATIONS_ERROR：没有打开设备。 </returns>
         [DllImport("Landlord2.FT.dll")]
-        public static extern uint et_GenPID(IntPtr hHandle,int seedlen,byte[] pucseed,StringBuilder pid);
+        public static extern uint et_GenPID(IntPtr hHandle, int seedlen, byte[] pucseed, StringBuilder pid);
 
         /// <summary>
         /// 产生 16 字节的随机数，放到参数指定的 BUF中。调用者需要保护 BUF至少16 字节，否则会产生系统的存取异常。该函数在匿名状态不可用，且在函数调用以后，安全状态不变。 
@@ -236,17 +236,17 @@ namespace Landlord2
         [DllImport("Landlord2.FT.dll")]
         public static extern uint et_GenSOPIN(IntPtr hHandle, int seedlen, byte[] pucseed, StringBuilder pucNewSoPin);
 
-        
+
         /// <summary>
-        /// 重新设置普通用户密码为 16 个‘F’，相当于解锁。命令执行成功后，当前安全状态变成超级用户状态。 
+        /// 重新设置普通用户密码为 16 个 F，相当于解锁。命令执行成功后，当前安全状态变成超级用户状态。 
         /// </summary>
         /// <param name="hHandle">[in]设备句柄 </param>
         /// <param name="pucSoPin">[in]超级用户密码，16 字节。</param>
-        /// <returns>如果验证超级PIN码错误，并且错误值在0xF0和ET_PIN_ERR_MAX （0xFF）之间,我们可以通过错误码&ET_PIN_ERR_MASK(0x0F)得到剩余重试次数。如果还回 0xF0 表示已经被锁死，如果还回 0xFF 表示验证出错，且 pin 永远不被锁死</returns>
+        /// <returns>[如果验证超级PIN码错误，并且错误值在0xF0和ET_PIN_ERR_MAX （0xFF）之间,我们可以通过错误码 ET_PIN_ERR_MASK(0x0F)得到剩余重试次数。如果还回 0xF0 表示已经被锁死，如果还回 0xFF 表示验证出错，且 pin 永远不被锁死.</returns>
         [DllImport("Landlord2.FT.dll")]
-        public static extern uint et_ResetPIN(IntPtr hHandle,byte[] pucSoPin);
+        public static extern uint et_ResetPIN(IntPtr hHandle, byte[] pucSoPin);
 
-        
+
         /// <summary>
         /// 更新参数指定的密钥，此密钥是用于计算 HMAC－MD5 的。其中 KEY的获得，是通过一个纯软件接口 HMAC_MD5（），参见相应说明。匿名状态不可用，且在普通用户状态时还需要检查设备配置。不改变安全状态。
         /// </summary>
@@ -268,8 +268,9 @@ namespace Landlord2
         /// <param name="pucDigest">[out]计算结果，固定 16 字节。 </param>
         /// <returns></returns>
         [DllImport("Landlord2.FT.dll")]
-        public static extern uint MD5_HMAC(byte[] pucText, byte ulText_Len, byte[] pucKey, byte ulKey_Len, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 32)]byte[] pucToenKey, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 16)]byte[] pucDigest);
- 
+        public static extern uint MD5_HMAC(byte[] pucText, byte ulText_Len, byte[] pucKey, byte ulKey_Len, [MarshalAs(UnmanagedType.LPArray, SizeConst = 1)]byte[] pucToenKey, [MarshalAs(UnmanagedType.LPArray, SizeConst = 1)]byte[] pucDigest);
+        //public static extern uint MD5_HMAC(byte[] pucText, byte ulText_Len, byte[] pucKey, byte ulKey_Len, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 32)]byte[] pucToenKey, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 16)]byte[] pucDigest);原始代码，在clr4.0下异常。
+
 
         /// <summary>
         /// 利用硬件计算 HMAC-MD5  ，pid 为出厂时，还回错误。权限等同于 KEY的读权限。不改变安全状态。
@@ -281,7 +282,8 @@ namespace Landlord2
         /// <param name="digest">[out]散列结果的数据指针，固定长度 16 个字节。 </param>
         /// <returns></returns>
         [DllImport("Landlord2.FT.dll")]
-        public static extern uint et_HMAC_MD5(IntPtr hHandle, int Keyid, int textLen, byte[] pucText, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 16)]byte[] digest);
+        public static extern uint et_HMAC_MD5(IntPtr hHandle, int Keyid, int textLen, byte[] pucText, [MarshalAs(UnmanagedType.LPArray, SizeConst = 1)]byte[] digest);
+        //public static extern uint et_HMAC_MD5(IntPtr hHandle, int Keyid, int textLen, byte[] pucText, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 16)]byte[] digest);原始代码，在clr4.0下异常。
 
         /// <summary>
         /// 验证密码，以获得相应的安全状态，不受安全状态限制，验证成功以后，进入相应的安全状态。ET_VERIFY_USER_PIN = 验证的是普通用户PIN码，如果验证通过，则进入普通用户状态。
@@ -293,7 +295,7 @@ namespace Landlord2
         [DllImport("Landlord2.FT.dll")]
         public static extern uint et_Verify(IntPtr hHandle, int Flags, byte[] pucPIN);
 
-        
+
         /// <summary>
         ///   修改普通用户密码，从 pucOldPIN，改为 pucNewPIN。普通用户密码长度固定为 16 字节。此命令可以在匿名状态下进行，命令执行成功后，进入普通用户状态。 
         /// </summary>
@@ -312,7 +314,7 @@ namespace Landlord2
         [DllImport("Landlord2.FT.dll")]
         public static extern uint et_ResetSecurityState(IntPtr hHandle);
 
-        
+
         /// <summary>
         /// 获得硬件序列号。可以在匿名状态下进行。不改变安全状态。
         /// </summary>
@@ -320,8 +322,8 @@ namespace Landlord2
         /// <param name="pucSN">[out]用于存放获得的序列号，长度固定为 8 字节 </param>
         /// <returns></returns>
         [DllImport("Landlord2.FT.dll")]
-        public static extern uint et_GetSN(IntPtr hHandle, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 32)]byte[] pucSN);
-
+        public static extern uint et_GetSN(IntPtr hHandle, [MarshalAs(UnmanagedType.LPArray, SizeConst = 1)]byte[] pucSN);
+        //public static extern uint et_GetSN(IntPtr hHandle, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 32)]byte[] pucSN);原始代码，在clr4.0下异常。
 
         /// <summary>
         /// 对硬件进行配置。必须在超级用户状态下进行。不改变安全状态。 
@@ -359,4 +361,5 @@ namespace Landlord2
             throw new Exception("The method or operation is not implemented.");
         }
     }
+
 }

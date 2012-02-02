@@ -22,6 +22,15 @@ namespace Landlord2
             //string path = Path.Combine(Directory.GetCurrentDirectory(),"Landlord2.log");
             //File.Delete(path);//删除指定的文件。如果指定的文件不存在，则不引发异常。 
 
+            //打开并进入加密狗
+            string errMsg;
+            if (!Helper.OpenDog(out errMsg))
+            {
+                ComponentFactory.Krypton.Toolkit.KryptonMessageBox.Show(errMsg, "错误",
+                    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return;
+            }
+
             AppRoot.Inital();//根对象初始化
             Application.Run(new Main());
             //Application.Run(new Landlord2.UI.提醒Form());

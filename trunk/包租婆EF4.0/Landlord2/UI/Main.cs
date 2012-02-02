@@ -27,6 +27,8 @@ namespace Landlord2
         {
             InitializeComponent();
             context = new MyContext();
+            Text += Helper.ReadOffsetDataAndDecrypt(352, 24);
+            数据报表ToolStripMenuItem.Visible = bool.Parse(Helper.ReadOffsetDataAndDecrypt(472, 12));
 
             #region 调试代码
 #if DEBUG
