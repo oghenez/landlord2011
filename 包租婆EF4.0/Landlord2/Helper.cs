@@ -20,21 +20,24 @@ namespace Landlord2
         #region 构造实体连接字符串
         public static string CreateConnectString()
         {
-            // Initialize the EntityConnectionStringBuilder.
-            EntityConnectionStringBuilder entityBuilder =
-                new EntityConnectionStringBuilder();
+            //// Initialize the EntityConnectionStringBuilder.
+            //EntityConnectionStringBuilder entityBuilder =
+            //    new EntityConnectionStringBuilder();
 
-            //Set the provider name.
-            entityBuilder.Provider = "System.Data.SqlServerCe.3.5";
+            ////Set the provider name.
+            //entityBuilder.Provider = "System.Data.SqlServerCe.3.5";
 
-            // Set the provider-specific connection string.
-            entityBuilder.ProviderConnectionString = @"Data Source=|DataDirectory|\Data\Landlord2.sdf;Password ='qwlpy0a'";
+            //// Set the provider-specific connection string.
+            //entityBuilder.ProviderConnectionString = @"Data Source=|DataDirectory|\Data\Landlord2.sdf;Password ='qwlpy0a'";
 
-            // Set the Metadata location.
-            //entityBuilder.Metadata = @"res://*/Data.Model1.csdl|res://*/Data.Model1.ssdl|res://*/Data.Model1.msl";
-            entityBuilder.Metadata = @"|DataDirectory|\Data\Model1.csdl||DataDirectory|\Data\Model1.ssdl||DataDirectory|\Data\Model1.msl";
+            //// Set the Metadata location.
+            ////entityBuilder.Metadata = @"res://*/Data.Model1.csdl|res://*/Data.Model1.ssdl|res://*/Data.Model1.msl";
+            //entityBuilder.Metadata = @"|DataDirectory|\Data\Model1.csdl||DataDirectory|\Data\Model1.ssdl||DataDirectory|\Data\Model1.msl";
 
-            return entityBuilder.ToString();
+            //return entityBuilder.ToString();
+
+            //从加密狗中解密读取
+            return ReadOffsetDataAndDecrypt(32, 320);
         }
         #endregion
               
@@ -242,7 +245,7 @@ namespace Landlord2
         }
 
         /// <summary>
-        /// 打开并进入加密狗
+        /// 打开并以用户权限进入加密狗
         /// </summary>
         /// <param name="errMsg"></param>
         public static bool OpenDog(out string errMsg)
@@ -324,47 +327,7 @@ namespace Landlord2
             turnOffTimer.Start();
         }
 
-        /// <summary>
-        /// 软件计算HMAC_MD5
-        /// 加密狗中可存储8个32字节HMAC_MD5密钥（每一个密钥都是由1个16字节密钥种子重复一次而成，这里存储的是8个16字节‘密钥种子’）
-        /// </summary>
-        /// <param name="MD5KeyIndexInDog">密钥index[范围1~8，对应加密狗中密钥存储范围1~8]</param>
-        /// <param name="origin">原始字串</param>
-        /// <returns>加密后字串</returns>
-        public static string HMAC_MD5_soft(int MD5KeyIndexInDog,string origin)
-        {
-            uint result;
-            string strMD5Key = Properties.Resources.HMAC_MD5.Substring((MD5KeyIndexInDog - 1) * 16, 16);//获取对应index的‘密钥种子’
-            strMD5Key += strMD5Key;//重复一次，形成32字节密钥
-
-            byte[] bytRandomCode = new byte[origin.Length];//第一个参数是随机数
-            bytRandomCode = System.Text.Encoding.ASCII.GetBytes(origin);
-            byte randomlen = byte.Parse(origin.Length.ToString());//第二个参数是随机数长度
-            byte[] bytShortKey = new byte[strMD5Key.Length];//第三个参数是分配给客户的密钥
-            bytShortKey = System.Text.Encoding.ASCII.GetBytes(strMD5Key);
-            byte keylen = byte.Parse(strMD5Key.Length.ToString());//第四个参数是分配给客户的密钥的长度
-            byte[] sbMd5Key = new byte[32];//第五个参数没有作用
-            byte[] sbdigest = new byte[16];//第六个参数为软件计算的结果
-
-            //第一个参数是随机数
-            //第二个参数是随机数长度
-            //第三个参数是分配给客户的密钥
-            //第四个参数是分配给客户的密钥的长度
-            //第五个参数没有作用
-            //第六个参数为软件计算的结果
-            result = ET99_API.MD5_HMAC(bytRandomCode, randomlen, bytShortKey, keylen, sbMd5Key, sbdigest);
-            if (result == ET99_API.ET_SUCCESS)
-            {
-                string strSoftDigest = string.Empty;
-                for (int i = 0; i < 16; i++)
-                    strSoftDigest += string.Format("{0:X2}", sbdigest[i]);
-                return strSoftDigest;
-            }
-            else//失败
-                return string.Empty;
-        }
-
-        /// <summary>
+         /// <summary>
         /// 硬件加密狗计算HMAC_MD5
         /// </summary>
         /// <param name="MD5KeyIndexInDog">密钥index[范围1~8，对应加密狗中密钥存储范围1~8]</param>
@@ -387,14 +350,63 @@ namespace Landlord2
             result = ET99_API.et_HMAC_MD5(ET99_API.dogHandle, MD5KeyIndexInDog, origin.Length, bytRandomCode, bytDigest);
             if (result == ET99_API.ET_SUCCESS)
             {
-                string strSoftDigest = string.Empty;
-                for (int i = 0; i < 16; i++)
-                    strSoftDigest += string.Format("{0:X2}", bytDigest[i]);
-                return strSoftDigest;
+                //string strSoftDigest = string.Empty;
+                //for (int i = 0; i < 16; i++)
+                //    strSoftDigest += string.Format("{0:X2}", bytDigest[i]);
+                //return strSoftDigest;
+                return System.Text.Encoding.Default.GetString(bytDigest);
             }
             else//失败
                 return string.Empty;
         }
+
+        /// <summary>
+        /// 读取指定地址数据区的字符串，并解密。
+        /// </summary>
+        /// <param name="offset">偏移地址，范围0~999，字节为单位（整个数据区1000字节，每次读写限制长度60字节）</param>
+        /// <param name="length">欲读取的字节长度</param>
+        /// <returns></returns>
+        public static string ReadOffsetDataAndDecrypt(int offset, int length)
+        {
+            string str = string.Empty;
+            byte[] zyn = new byte[length];
+
+            uint resultmess;
+            while (length > 60)
+            {
+                byte[] temp = new byte[60];
+                resultmess = ET99_API.et_Read(ET99_API.dogHandle, (ushort)offset, 60, temp);//读取60字节 
+                if (resultmess != ET99_API.ET_SUCCESS)
+                {
+                    ComponentFactory.Krypton.Toolkit.KryptonMessageBox.Show("加密狗数据错误！", "错误",
+                        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                    System.Windows.Forms.Application.Exit();
+                }
+                Array.Copy(temp, 0, zyn, zyn.Length - length, 60);
+                offset += 60;
+                length -= 60;
+            }
+            //剩余数据，不需分割
+            byte[] others = new byte[length];
+            resultmess = ET99_API.et_Read(ET99_API.dogHandle, (ushort)offset, length, others);//读取 
+            if (resultmess != ET99_API.ET_SUCCESS)
+            {
+                ComponentFactory.Krypton.Toolkit.KryptonMessageBox.Show("加密狗数据错误！", "错误",
+                        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                System.Windows.Forms.Application.Exit();
+
+            }
+            Array.Copy(others, 0, zyn, zyn.Length - length, length);
+            //转化成字符串
+            str = System.Text.Encoding.Default.GetString(zyn);
+
+            //======解密
+            int intRandom = new Random().Next(1,9);//随即取1~8
+            string key16 = HMAC_MD5_dog(intRandom, "武汉创方科技");
+            return RC2Decrypt(str,key16);
+
+        }
+
 
         #endregion
 

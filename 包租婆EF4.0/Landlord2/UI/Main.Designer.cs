@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -673,11 +673,11 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode2.ImageIndex = 7;
-            treeNode2.Name = "节点0";
-            treeNode2.Text = "加载信息，请稍候．．．";
+            treeNode1.ImageIndex = 7;
+            treeNode1.Name = "节点0";
+            treeNode1.Text = "加载信息，请稍候．．．";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode1});
             this.treeView1.SelectedImageIndex = 7;
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.ShowRootLines = false;
@@ -825,9 +825,9 @@
             this.toolStripSeparator8,
             this.kfBtnCollectRent,
             this.kfBtnCollectRentDetail});
-            this.toolStrip2.Location = new System.Drawing.Point(3, 0);
+            this.toolStrip2.Location = new System.Drawing.Point(316, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(555, 70);
+            this.toolStrip2.Size = new System.Drawing.Size(586, 70);
             this.toolStrip2.TabIndex = 1;
             // 
             // kfBtnAdd
@@ -951,7 +951,7 @@
             this.toolStripSeparator6,
             this.yfBtnPay,
             this.yfBtnPayDetail});
-            this.toolStrip1.Location = new System.Drawing.Point(558, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(313, 70);
             this.toolStrip1.TabIndex = 0;
@@ -1069,7 +1069,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "二房东 -- 租赁管理系统（单机版V2.0）";
+            this.Text = "二房东 -- 租赁管理系统V2.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
