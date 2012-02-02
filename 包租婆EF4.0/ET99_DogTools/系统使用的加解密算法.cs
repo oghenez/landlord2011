@@ -1,22 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.IO;
 
 namespace ET99_DogTools
 {
-    public partial class TestForm : Form
+    public static class 系统使用的加解密算法
     {
-        public TestForm()
-        {
-            InitializeComponent();
-        }
         #region 系统使用的加解密算法(RC2算法 加密解密)
         /**===================================================================================================*
          *  ET99加密狗密钥存储区可以存储8个32字节密钥，用于HMAC-MD5计算。实际上相当于种子码算法，通过输入（每次不超过51字节）
@@ -136,73 +128,5 @@ namespace ET99_DogTools
         }
         #endregion
 
-        /// <summary>
-        /// 硬件加密狗计算HMAC_MD5
-        /// </summary>
-        /// <param name="MD5KeyIndexInDog">密钥index[范围1~8，对应加密狗中密钥存储范围1~8]</param>
-        /// <param name="origin">原始字串</param>
-        /// <returns>加密后字串</returns>
-        public string HMAC_MD5_dog(int MD5KeyIndexInDog, string origin)
-        {
-            byte[] bytRandomCode = new byte[origin.Length];//第四个参数为随机数
-            bytRandomCode = System.Text.Encoding.ASCII.GetBytes(origin);
-            byte[] bytDigest = new byte[16];//第五个参数为硬件中计算结果
-
-            //硬件中计算
-            //第一个参数为设备的handle句柄
-            //第二个参数为硬件中密钥索引
-            //第三个参数为随机数长度
-            //第四个参数为随机数
-            //第五个参数为硬件中计算结果
-            uint result = ET99_API.et_HMAC_MD5(ET99_API.dogHandle, MD5KeyIndexInDog, origin.Length, bytRandomCode, bytDigest);
-            if (result == ET99_API.ET_SUCCESS)
-                return System.Text.Encoding.Default.GetString(bytDigest);
-            else//失败
-                return "硬件中计算失败";
-        }
-        
-        private void button1_Click(object sender, EventArgs e)
-        {
-            int index = 1;//默认仅打开第一个加密狗
-            byte[] bytPID = System.Text.Encoding.ASCII.GetBytes(Properties.Resources.PID);
-            uint result = ET99_API.et_OpenToken(ref ET99_API.dogHandle, bytPID, index);
-            //------------
-            byte[] bytPIN = System.Text.Encoding.ASCII.GetBytes(Properties.Resources.SOPIN);
-            result = ET99_API.et_Verify(ET99_API.dogHandle, ET99_API.ET_VERIFY_SOPIN, bytPIN);
-            if (result == ET99_API.ET_SUCCESS)
-            {
-                MessageBox.Show("加密狗认证成功，进入超级用户状态。");               
-            }
-            else
-            {
-                MessageBox.Show("加密狗认证失败，请检查！错误：{0}",
-                                   ET99_API.ShowResultText(result));                
-            }            
-        }
-        
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //RC2加密
-            string key16 = HMAC_MD5_dog(1, "武汉创方科技");
-            textBox2.Text = RC2Encrypt(textBox1.Text, key16);
-            button2.Text = "运用加密狗第一个密钥RC2加密后数据：(字节数" + System.Text.Encoding.Default.GetByteCount(textBox2.Text) + ")";
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            //RC2解密
-            string key16 = HMAC_MD5_dog(1, "武汉创方科技");
-            textBox3.Text = RC2Decrypt(textBox2.Text, key16);
-            button3.Text = "运用加密狗第一个密钥解密后还原的数据：(字节数" + System.Text.Encoding.Default.GetByteCount(textBox3.Text) + ")";
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            //计算原始数据字节数
-            string s = textBox1.Text;
-            int intLong = System.Text.Encoding.Default.GetByteCount(s);
-            button4.Text = "计算原始数据字节数：(字节数" + intLong + ")";
-
-        }
     }
 }

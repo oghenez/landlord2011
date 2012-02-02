@@ -15,7 +15,7 @@ namespace ET99_DogTools
         新狗, //出厂未经初始化
         旧狗  //曾经已初始化过
     }
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
         #region 线程安全的访问UI控件的方法
 
@@ -31,7 +31,7 @@ namespace ET99_DogTools
         #endregion
         private Dog_Flag dogFlag;//新狗还是旧狗
         private string dogSN;//狗的SN
-        public Form1()
+        public Main()
         {
             InitializeComponent();
         }
@@ -289,7 +289,7 @@ namespace ET99_DogTools
             }
         }
 
-        //设置前4个MD5校验密匙
+        //设置8个MD5校验密匙
         public bool SetMd5Key(out string msg)
         {
             msg = string.Empty;
@@ -299,21 +299,12 @@ namespace ET99_DogTools
                 return false;
             }
 
-            string[] strMd5Keys = new string[4];
-            strMd5Keys[0] = Properties.Resources.HMAC_MD5_01;
-            strMd5Keys[1] = Properties.Resources.HMAC_MD5_02;
-            strMd5Keys[2] = Properties.Resources.HMAC_MD5_03;
-            strMd5Keys[3] = Properties.Resources.HMAC_MD5_04;
-            byte[] bytShortKey;
-            for (int keyid = 1; keyid <= 4; keyid++)//循环写入前4个Md5Key
+            string strMd5Key = Properties.Resources.HMAC_MD5;//需要写入的KEY
+            byte[] bytShortKey = System.Text.Encoding.ASCII.GetBytes(strMd5Key);
+            for (int keyid = 1; keyid <= 8; keyid++)//循环写入Md5Key
             {
-
-                //生成需要写入的KEY
-                bytShortKey = new byte[strMd5Keys[keyid - 1].Length];
-                bytShortKey = System.Text.Encoding.ASCII.GetBytes(strMd5Keys[keyid - 1]);
-
                 byte[] randombuffer = new byte[51];
-                byte keylen = byte.Parse(strMd5Keys[keyid - 1].Length.ToString());
+                byte keylen = byte.Parse(strMd5Key.Length.ToString());
                 byte randomlen = 51;
 
                 byte[] sbMd5Key = new byte[32];
@@ -329,7 +320,7 @@ namespace ET99_DogTools
                 result = ET99_API.et_SetKey(ET99_API.dogHandle, keyid, sbMd5Key);
                 if (result == ET99_API.ET_SUCCESS)
                 {
-                    msg = "设置前4个MD5校验密匙成功！";
+                    msg = "设置8个MD5校验密匙成功！";
                 }
                 else
                 {
@@ -350,8 +341,8 @@ namespace ET99_DogTools
                 return false;
             }
 
-            string origin = "0123456789ABCD"; //测试用原始字符串
-            for (int keyId = 1; keyId <= 4; keyId++)
+            string origin = "武汉创方科技"; //测试用原始字符串
+            for (int keyId = 1; keyId <= 8; keyId++)
             {
                 string softResult = HMAC_MD5_soft(keyId, origin);
                 string dogResult = HMAC_MD5_dog(keyId, origin);
@@ -439,32 +430,81 @@ namespace ET99_DogTools
             }
 
             //数据区根据不同版本进行设置
-            //数据区约定：ET99数据区有1000字节，每次读写限制长度60字节。
-            //我们把整个1000字节分为20份，每一份的偏移量为50字节。（相当于可存储20行文字信息，每行25个汉字容量）
-            string[] origin = new string[8];
-            origin[0] = Properties.Resources.Data00;
-            origin[1] = Properties.Resources.Data01;
-            origin[2] = Properties.Resources.Data02;
-            origin[3] = Properties.Resources.Data03;
-            foreach(Control rb in groupBox1.Controls)
+            //┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            //┃起始偏移地址（字节地址）：密文长度  ～～～   具体内容
+            //┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            //┃ 0      ：长度32   ～～～  1、【开发商密码】SOPIN的密文-->用于临时获取管理员权限，写数据，使用时需解密。（升级时、验证试用版到期时）
+            //┃ 32     ：长度320  ～～～  2、数据库连结字符串的密文   
+            //┃ 352    ：长度24   ～～～  3、“【测试版】、【试用版】、【标准版】、【专业版】”密文-->不同加密狗对应软件不同版本（软件直接读出显示在标题栏）
+            //┃ 376    ：长度12   ～～～  4、源房套数限制，为0则不限制。（针对试用版或标准版）
+            //┃ 388    ：长度12   ～～～  5、试用版本到期天数，为0则不限制。
+            //┃ 400    ：长度24   ～～～  6、加密狗生成时间（格式类似20100118231818,意为2010-01-18 23:18:18精确到秒）
+            //┃ 424    ：长度24   ～～～  7、试用版起始时间（格式类似20100118231818,意为2010-01-18 23:18:18精确到秒）-->开始为空，详见下面《软件到期判断策略》
+            //┃ 448    ：长度24   ～～～  8、试用版结束时间（格式类似20100118231818,意为2010-01-18 23:18:18精确到秒）-->开始为空
+            //┃ 472    ：长度12   ～～～  9、软件中‘数据报表’的Visible属性值‘true/false’的密文
+            //┃ 484    ：长度     ～～～  10、升级服务器地址（保留）
+            //┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            string key16 = HMAC_MD5_dog(1, "武汉创方科技");//用于RC2的16字节密钥
+            //1.写入SOPIN
+            string origin = Properties.Resources.SOPIN;
+            string encryptString = 系统使用的加解密算法.RC2Encrypt(origin, key16);//密文
+            int byteCount = System.Text.Encoding.Default.GetByteCount(encryptString);//密文字节长度
+            System.Diagnostics.Debug.Assert(byteCount == 32);
+            if (!WriteDataToDog(encryptString, 0, out msg))
+                return false;
+            //2.数据库连结字符串的密文
+            origin = @"metadata=|DataDirectory|\Data\Model1.csdl||DataDirectory|\Data\Model1.ssdl||DataDirectory|\Data\Model1.msl;provider=System.Data.SqlServerCe.3.5;provider connection string=""Data Source=|DataDirectory|\Data\Landlord2.sdf;Password ='qwlpy0a'""";
+            encryptString = 系统使用的加解密算法.RC2Encrypt(origin, key16);//密文
+            byteCount = System.Text.Encoding.Default.GetByteCount(encryptString);//密文字节长度
+            System.Diagnostics.Debug.Assert(byteCount == 320);
+            if (!WriteDataToDog(encryptString, 32, out msg))
+                return false;
+            //3.“【测试版】、【试用版】、【标准版】、【专业版】”
+            foreach (Control rb in groupBox1.Controls)
             {
                 if (rb is RadioButton && (rb as RadioButton).Checked)
                 {
-                    origin[4] = rb.Text;//【测试版】、【试用版】、【标准版】、【专业版】-->不同加密狗对应软件不同版本（软件直接读出显示在标题栏）
+                    origin = rb.Text;//【测试版】、【试用版】、【标准版】、【专业版】-->不同加密狗对应软件不同版本（软件直接读出显示在标题栏）
                     break;
                 }
             }
-            origin[5] = checkBox1.Checked ? maskedTextBox1.Text : "0";//源房套数限制，为0则不限制。（针对试用版或标准版）
-            origin[6] = checkBox2.Checked ? maskedTextBox2.Text : "0";//试用版本到期天数，为0则不限制。（联合数据库中的首次启动日期判断到期）
-            origin[7] = DateTime.Now.ToString("yyyyMMdd");
-
-            for (int i = 0; i < 8; i++)
-            {
-                if (!WriteDataToDog(origin[i], i, out msg))
-                {
-                    return false;
-                }
-            }
+            encryptString = 系统使用的加解密算法.RC2Encrypt(origin, key16);//密文
+            byteCount = System.Text.Encoding.Default.GetByteCount(encryptString);//密文字节长度
+            System.Diagnostics.Debug.Assert(byteCount == 24);
+            if (!WriteDataToDog(encryptString, 352, out msg))
+                return false;
+            //4.源房套数限制，为0则不限制。（针对试用版或标准版）
+            origin = checkBox1.Checked ? maskedTextBox1.Text : "0";//源房套数限制，为0则不限制。（针对试用版或标准版）
+            encryptString = 系统使用的加解密算法.RC2Encrypt(origin, key16);//密文
+            byteCount = System.Text.Encoding.Default.GetByteCount(encryptString);//密文字节长度
+            System.Diagnostics.Debug.Assert(byteCount == 12);
+            if (!WriteDataToDog(encryptString, 376, out msg))
+                return false;
+            //5.试用版本到期天数，为0则不限制。
+            origin = checkBox2.Checked ? maskedTextBox2.Text : "0";//试用版本到期天数，为0则不限制。（联合数据库中的首次启动日期判断到期）
+            encryptString = 系统使用的加解密算法.RC2Encrypt(origin, key16);//密文
+            byteCount = System.Text.Encoding.Default.GetByteCount(encryptString);//密文字节长度
+            System.Diagnostics.Debug.Assert(byteCount == 12);
+            if (!WriteDataToDog(encryptString, 388, out msg))
+                return false;
+            //6.加密狗生成时间（格式类似20100118231818,意为2010-01-18 23:18:18精确到秒）
+            origin = DateTime.Now.ToString("yyyyMMddHHmmss");
+            encryptString = 系统使用的加解密算法.RC2Encrypt(origin, key16);//密文
+            byteCount = System.Text.Encoding.Default.GetByteCount(encryptString);//密文字节长度
+            System.Diagnostics.Debug.Assert(byteCount == 24);
+            if (!WriteDataToDog(encryptString, 400, out msg))
+                return false;
+            //7.试用版起始时间（格式类似20100118231818,意为2010-01-18 23:18:18精确到秒）-->开始为空
+            //8.试用版结束时间（格式类似20100118231818,意为2010-01-18 23:18:18精确到秒）-->开始为空
+            //9、软件中‘数据报表’的Visible属性值‘true/false’的密文
+            origin = checkBox3.Checked ? bool.TrueString : bool.FalseString;
+            encryptString = 系统使用的加解密算法.RC2Encrypt(origin, key16);//密文
+            byteCount = System.Text.Encoding.Default.GetByteCount(encryptString);//密文字节长度
+            System.Diagnostics.Debug.Assert(byteCount == 12);
+            if (!WriteDataToDog(encryptString, 472, out msg))
+                return false;
+            //10、升级服务器地址（保留）
+            
             return true;
         }
 
@@ -477,20 +517,12 @@ namespace ET99_DogTools
                 msg = "请先打开设备！";
                 return false;
             }
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < 20; i++)
+            string str;
+            if (!ReadDataFromDog(out str, 0, 1000, out msg))
             {
-                string str;
-                if (!ReadDataFromDog(out str, i, out msg))
-                    return false;
-                else
-                {
-                    sb.Append(i.ToString().PadLeft(2, '0') + ":");//加上标号，方便显示。
-                    sb.Append(str);
-                    sb.Append(Environment.NewLine);
-                }
+                return false;
             }
-            MessageBox.Show(sb.ToString(), "读取全部数据区 - 测试");
+            MessageBox.Show(str.Replace('\0',' '), "读取全部数据区 - 测试");
             return true;
         }
 
@@ -544,13 +576,7 @@ namespace ET99_DogTools
         /// <returns>加密后字串</returns>
         public string HMAC_MD5_soft(int MD5KeyIndexInDog, string origin)
         {
-            string[] strMd5Keys = new string[4];
-            strMd5Keys[0] = Properties.Resources.HMAC_MD5_01;
-            strMd5Keys[1] = Properties.Resources.HMAC_MD5_02;
-            strMd5Keys[2] = Properties.Resources.HMAC_MD5_03;
-            strMd5Keys[3] = Properties.Resources.HMAC_MD5_04;
-
-            string strMD5Key = strMd5Keys[MD5KeyIndexInDog-1];
+            string strMD5Key = Properties.Resources.HMAC_MD5;
             byte[] bytRandomCode = new byte[origin.Length];//第一个参数是随机数
             bytRandomCode = System.Text.Encoding.ASCII.GetBytes(origin);
             byte randomlen = byte.Parse(origin.Length.ToString());//第二个参数是随机数长度
@@ -569,10 +595,11 @@ namespace ET99_DogTools
             uint result = ET99_API.MD5_HMAC(bytRandomCode, randomlen, bytShortKey, keylen, sbMd5Key, sbdigest);
             if (result == ET99_API.ET_SUCCESS)
             {
-                string strSoftDigest = string.Empty;
-                for (int i = 0; i < 16; i++)
-                    strSoftDigest += string.Format("{0:X2}", sbdigest[i]);
-                return strSoftDigest;
+                //string strSoftDigest = string.Empty;
+                //for (int i = 0; i < 16; i++)
+                //    strSoftDigest += string.Format("{0:X2}", sbdigest[i]);
+                //return strSoftDigest;
+                return System.Text.Encoding.Default.GetString(sbdigest);
             }
             else//失败
                 return "软件计算失败";
@@ -599,10 +626,11 @@ namespace ET99_DogTools
             uint result = ET99_API.et_HMAC_MD5(ET99_API.dogHandle, MD5KeyIndexInDog, origin.Length, bytRandomCode, bytDigest);
             if (result == ET99_API.ET_SUCCESS)
             {
-                string strSoftDigest = string.Empty;
-                for (int i = 0; i < 16; i++)
-                    strSoftDigest += string.Format("{0:X2}", bytDigest[i]);
-                return strSoftDigest;
+                //string strSoftDigest = string.Empty;
+                //for (int i = 0; i < 16; i++)
+                //    strSoftDigest += string.Format("{0:X2}", bytDigest[i]);
+                //return strSoftDigest;
+                return System.Text.Encoding.Default.GetString(bytDigest);
             }
             else//失败
                 return "硬件中计算失败";
@@ -937,6 +965,14 @@ namespace ET99_DogTools
             
             //关闭设备
             CheckStep(CloseDog);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (加解密校验器 form = new 加解密校验器())
+            {
+                form.ShowDialog();
+            }
         }
     }
 }

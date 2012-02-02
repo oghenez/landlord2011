@@ -14,8 +14,8 @@ namespace ET99_DogTools
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
-            Application.Run(new TestForm());
+            Application.Run(new Main());
+            //Application.Run(new 加解密校验器());
         }
     }
 }
