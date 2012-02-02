@@ -61,74 +61,11 @@ namespace ET99_DogTools.Properties {
         }
         
         /// <summary>
-        ///   查找类似 武汉创方科技有限公司 的本地化字符串。
+        ///   查找类似 d15336fef55d9053bedd65c2cb8f5a6e 的本地化字符串。
         /// </summary>
-        internal static string Data00 {
+        internal static string HMAC_MD5 {
             get {
-                return ResourceManager.GetString("Data00", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Wuhan Transform Technology Co.,Ltd. 的本地化字符串。
-        /// </summary>
-        internal static string Data01 {
-            get {
-                return ResourceManager.GetString("Data01", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 transformtech@qq.com 的本地化字符串。
-        /// </summary>
-        internal static string Data02 {
-            get {
-                return ResourceManager.GetString("Data02", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 http://www.transformtech.com.cn 的本地化字符串。
-        /// </summary>
-        internal static string Data03 {
-            get {
-                return ResourceManager.GetString("Data03", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 d15336fef55d9053d15336fef55d9053 的本地化字符串。
-        /// </summary>
-        internal static string HMAC_MD5_01 {
-            get {
-                return ResourceManager.GetString("HMAC_MD5_01", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 bedd65c2cb8f5a6ebedd65c2cb8f5a6e 的本地化字符串。
-        /// </summary>
-        internal static string HMAC_MD5_02 {
-            get {
-                return ResourceManager.GetString("HMAC_MD5_02", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 2fb7b85f9ea9d73e2fb7b85f9ea9d73e 的本地化字符串。
-        /// </summary>
-        internal static string HMAC_MD5_03 {
-            get {
-                return ResourceManager.GetString("HMAC_MD5_03", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 2a8c0cdff6de55072a8c0cdff6de5507 的本地化字符串。
-        /// </summary>
-        internal static string HMAC_MD5_04 {
-            get {
-                return ResourceManager.GetString("HMAC_MD5_04", resourceCulture);
+                return ResourceManager.GetString("HMAC_MD5", resourceCulture);
             }
         }
         

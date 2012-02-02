@@ -1,6 +1,6 @@
 ﻿namespace ET99_DogTools
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -47,17 +47,22 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -92,6 +97,7 @@
             // 
             this.groupBox1.Controls.Add(this.maskedTextBox2);
             this.groupBox1.Controls.Add(this.maskedTextBox1);
+            this.groupBox1.Controls.Add(this.checkBox3);
             this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.radioButton4);
@@ -107,7 +113,7 @@
             // 
             // maskedTextBox2
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(279, 76);
+            this.maskedTextBox2.Location = new System.Drawing.Point(279, 53);
             this.maskedTextBox2.Mask = "99";
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.Size = new System.Drawing.Size(37, 21);
@@ -116,7 +122,7 @@
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(279, 30);
+            this.maskedTextBox1.Location = new System.Drawing.Point(279, 19);
             this.maskedTextBox1.Mask = "99999";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(37, 21);
@@ -129,7 +135,7 @@
             this.checkBox2.AutoSize = true;
             this.checkBox2.Checked = true;
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(179, 78);
+            this.checkBox2.Location = new System.Drawing.Point(179, 55);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(108, 16);
             this.checkBox2.TabIndex = 4;
@@ -139,7 +145,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(179, 32);
+            this.checkBox1.Location = new System.Drawing.Point(179, 21);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(108, 16);
             this.checkBox1.TabIndex = 4;
@@ -262,6 +268,37 @@
             this.toolStripProgressBar1.Step = 1;
             this.toolStripProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(179, 89);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(96, 16);
+            this.checkBox3.TabIndex = 4;
+            this.checkBox3.Text = "数据报表可见";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.button3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(527, 243);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "其他工具";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(20, 17);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(93, 38);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "加解密校验器";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -281,6 +318,7 @@
             this.tabPage2.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,6 +345,9 @@
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button button3;
     }
 }
 

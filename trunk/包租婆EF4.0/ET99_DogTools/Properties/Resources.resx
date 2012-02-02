@@ -117,37 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Data00" xml:space="preserve">
-    <value>武汉创方科技有限公司</value>
-    <comment>数据区00</comment>
-  </data>
-  <data name="Data01" xml:space="preserve">
-    <value>Wuhan Transform Technology Co.,Ltd.</value>
-    <comment>数据区01</comment>
-  </data>
-  <data name="Data02" xml:space="preserve">
-    <value>transformtech@qq.com</value>
-    <comment>数据区02</comment>
-  </data>
-  <data name="Data03" xml:space="preserve">
-    <value>http://www.transformtech.com.cn</value>
-    <comment>数据区03</comment>
-  </data>
-  <data name="HMAC_MD5_01" xml:space="preserve">
-    <value>d15336fef55d9053d15336fef55d9053</value>
-    <comment>HMAC_MD5密钥设置【针对测试版】</comment>
-  </data>
-  <data name="HMAC_MD5_02" xml:space="preserve">
-    <value>bedd65c2cb8f5a6ebedd65c2cb8f5a6e</value>
-    <comment>HMAC_MD5密钥设置【针对试用版】</comment>
-  </data>
-  <data name="HMAC_MD5_03" xml:space="preserve">
-    <value>2fb7b85f9ea9d73e2fb7b85f9ea9d73e</value>
-    <comment>HMAC_MD5密钥设置【针对标准版】</comment>
-  </data>
-  <data name="HMAC_MD5_04" xml:space="preserve">
-    <value>2a8c0cdff6de55072a8c0cdff6de5507</value>
-    <comment>HMAC_MD5密钥设置【针对专业版】</comment>
+  <data name="HMAC_MD5" xml:space="preserve">
+    <value>d15336fef55d9053bedd65c2cb8f5a6e</value>
+    <comment>HMAC_MD5密钥设置</comment>
   </data>
   <data name="PID" xml:space="preserve">
     <value>2141221B</value>
