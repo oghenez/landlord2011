@@ -28,8 +28,9 @@ namespace Landlord2
             InitializeComponent();
             context = new MyContext();
             Text += Helper.ReadOffsetDataAndDecrypt(352, 24);
-            数据报表ToolStripMenuItem.Visible = bool.Parse(Helper.ReadOffsetDataAndDecrypt(472, 12));
-
+            bool v = bool.Parse(Helper.ReadOffsetDataAndDecrypt(472, 12));
+            数据报表ToolStripMenuItem.Visible = v;
+            数据报表kryptonCheckButton.Visible = v;
             #region 调试代码
 #if DEBUG
             context.ObjectStateManager.ObjectStateManagerChanged += (sender, e) =>

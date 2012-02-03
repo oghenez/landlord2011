@@ -97,7 +97,7 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.kryptonCheckButton3 = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
-            this.kryptonCheckButton2 = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
+            this.数据报表kryptonCheckButton = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
             this.kryptonCheckButton1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
             this.kryptonSplitContainer2 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.kryptonHeaderGroup2 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
@@ -652,7 +652,7 @@
             // 
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.treeView1);
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonCheckButton3);
-            this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonCheckButton2);
+            this.kryptonHeaderGroup1.Panel.Controls.Add(this.数据报表kryptonCheckButton);
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonCheckButton1);
             this.kryptonHeaderGroup1.Size = new System.Drawing.Size(200, 607);
             this.kryptonHeaderGroup1.TabIndex = 0;
@@ -711,12 +711,12 @@
             // 
             // kryptonCheckButton2
             // 
-            this.kryptonCheckButton2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonCheckButton2.Location = new System.Drawing.Point(0, 523);
-            this.kryptonCheckButton2.Name = "kryptonCheckButton2";
-            this.kryptonCheckButton2.Size = new System.Drawing.Size(198, 25);
-            this.kryptonCheckButton2.TabIndex = 1;
-            this.kryptonCheckButton2.Values.Text = "数据报表";
+            this.数据报表kryptonCheckButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.数据报表kryptonCheckButton.Location = new System.Drawing.Point(0, 523);
+            this.数据报表kryptonCheckButton.Name = "kryptonCheckButton2";
+            this.数据报表kryptonCheckButton.Size = new System.Drawing.Size(198, 25);
+            this.数据报表kryptonCheckButton.TabIndex = 1;
+            this.数据报表kryptonCheckButton.Values.Text = "数据报表";
             // 
             // kryptonCheckButton1
             // 
@@ -1046,7 +1046,7 @@
             // kryptonCheckSet1
             // 
             this.kryptonCheckSet1.CheckButtons.Add(this.kryptonCheckButton1);
-            this.kryptonCheckSet1.CheckButtons.Add(this.kryptonCheckButton2);
+            this.kryptonCheckSet1.CheckButtons.Add(this.数据报表kryptonCheckButton);
             this.kryptonCheckSet1.CheckButtons.Add(this.kryptonCheckButton3);
             this.kryptonCheckSet1.CheckedButton = this.kryptonCheckButton3;
             this.kryptonCheckSet1.CheckedButtonChanged += new System.EventHandler(this.kryptonCheckSet1_CheckedButtonChanged);
@@ -1118,7 +1118,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup kryptonHeaderGroup2;
         private System.Windows.Forms.TreeView treeView1;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckButton kryptonCheckButton3;
-        private ComponentFactory.Krypton.Toolkit.KryptonCheckButton kryptonCheckButton2;
+        private ComponentFactory.Krypton.Toolkit.KryptonCheckButton 数据报表kryptonCheckButton;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckButton kryptonCheckButton1;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckSet kryptonCheckSet1;
         private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup buttonSpecHeaderGroup1;
