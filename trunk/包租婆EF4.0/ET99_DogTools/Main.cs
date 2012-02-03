@@ -522,10 +522,41 @@ namespace ET99_DogTools
             {
                 return false;
             }
-            MessageBox.Show(str.Replace('\0',' '), "读取全部数据区 - 测试");
+            //MessageBox.Show(str.Replace('\0',' '), "读取全部数据区 - 测试");
             return true;
         }
+        //检测时，读数据区相应数据
+        public bool ReadData2(out string msg)
+        {
+            msg = "数据区读取完毕";
+            if (ET99_API.dogHandle == System.IntPtr.Zero)
+            {
+                msg = "请先打开设备！";
+                return false;
+            }
 
+            string str;
+            str = string.Format("【开发商密码】：{0}", ReadOffsetDataAndDecrypt(0, 32)==Properties.Resources.SOPIN?"正确":"错误");
+            output2(str);
+            str = string.Format("【连接字符串】：{0}", ReadOffsetDataAndDecrypt(32, 320));
+            output2(str);
+            str = string.Format("【版本】：{0}", ReadOffsetDataAndDecrypt(352, 24));
+            output2(str);
+            str = string.Format("【源房套数限制(为0则不限制)】：{0}", ReadOffsetDataAndDecrypt(376, 12));
+            output2(str);
+            str = string.Format("【到期天数(为0则不限制)】：{0}", ReadOffsetDataAndDecrypt(388, 12));
+            output2(str);
+            str = string.Format("【加密狗生成时间】：{0}", ReadOffsetDataAndDecrypt(400, 24));
+            output2(str);
+            str = string.Format("【试用版起始时间】：{0}", ReadOffsetDataAndDecrypt(424, 24));
+            output2(str);
+            str = string.Format("【试用版结束时间】：{0}", ReadOffsetDataAndDecrypt(448, 24));
+            output2(str);
+            str = string.Format("【数据报表是否可用】：{0}", ReadOffsetDataAndDecrypt(472, 12));
+            output2(str);
+                        
+            return true;
+        }
         //关闭LED
         public bool CloseLED(out string msg)
         {
@@ -547,7 +578,33 @@ namespace ET99_DogTools
                 return false;
             }
         }
+        /// <summary>
+        /// 闪烁LED灯n次
+        /// </summary>
+        /// <param name="times">闪烁次数</param>
+        /// <param name="interval">间隔毫秒数，300貌似不错</param>
+        public void FlashLED(int times, int interval)
+        {
+            int count = 0;
+            System.Timers.Timer turnOffTimer = new System.Timers.Timer(interval);
+            turnOffTimer.AutoReset = false;
+            System.Timers.Timer turnOnTimer = new System.Timers.Timer(interval);
+            turnOnTimer.AutoReset = false;
+            turnOffTimer.Elapsed += new System.Timers.ElapsedEventHandler((m, n) =>
+            {
+                ET99_API.et_TurnOffLED(ET99_API.dogHandle);
+                turnOnTimer.Start();
+            });
+            turnOnTimer.Elapsed += new System.Timers.ElapsedEventHandler((m, n) =>
+            {
+                count++;
+                ET99_API.et_TurnOnLED(ET99_API.dogHandle);
+                if (count < times)
+                    turnOffTimer.Start();
+            });
 
+            turnOffTimer.Start();
+        }
         // 关闭加密狗
         public bool CloseDog(out string msg)
         {
@@ -761,77 +818,55 @@ namespace ET99_DogTools
 
         }
 
+        /// <summary>
+        /// 读取指定地址数据区的字符串，并解密。
+        /// </summary>
+        /// <param name="offset">偏移地址，范围0~999，字节为单位（整个数据区1000字节，每次读写限制长度60字节）</param>
+        /// <param name="length">欲读取的字节长度</param>
+        /// <returns></returns>
+        public string ReadOffsetDataAndDecrypt(int offset, int length)
+        {
+            string str = string.Empty;
+            byte[] zyn = new byte[length];
 
-        ///// <summary>
-        ///// 将字符串写入指定地址的数据区
-        ///// </summary>
-        ///// <param name="origin">欲写入的字符串</param>
-        ///// <param name="index">范围【0~19】（我们把整个数据区1000字节分为20份，每一份的偏移量为50字节。）</param>
-        ///// <param name="msg">成功与否详细信息</param>
-        ///// <returns>是否成功</returns>
-        //public bool WriteDataToDog(string origin, int index, out string msg)
-        //{
-        //    byte[] zyn = System.Text.Encoding.Default.GetBytes(origin);
-        //    if (zyn.Length > 50)
-        //    {
-        //        msg = "信息超过50字节，请检查";
-        //        return false;
-        //    }
-        //    ushort offset = (ushort)(index * 50);//偏移
-        //    uint resultmess = ET99_API.et_Write(ET99_API.dogHandle, offset, zyn.Length, zyn);// 传入值
-        //    if (resultmess == ET99_API.ET_SUCCESS)
-        //    {
-        //        msg = "写入成功！";
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        msg = "其他错误";
-        //        if (resultmess == ET99_API.ET_HARD_ERROR)
-        //        {
-        //            msg = "硬件错误！";
-        //        }
-        //        if (resultmess == ET99_API.ET_ACCESS_DENY)
-        //        {
-        //            msg ="权限不够！";
-        //        }
-        //        return false;
-        //    }
-        //}
+            uint resultmess;
+            while (length > 60)
+            {
+                byte[] temp = new byte[60];
+                resultmess = ET99_API.et_Read(ET99_API.dogHandle, (ushort)offset, 60, temp);//读取60字节 
+                if (resultmess != ET99_API.ET_SUCCESS)
+                {
+                    //ComponentFactory.Krypton.Toolkit.KryptonMessageBox.Show("加密狗数据错误！", "错误",
+                    //    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                    //System.Windows.Forms.Application.Exit();
+                    return string.Format("加密狗读取失败。偏移：{0}，长度：{1}", offset, length) ;
+                }
+                Array.Copy(temp, 0, zyn, zyn.Length - length, 60);
+                offset += 60;
+                length -= 60;
+            }
+            //剩余数据，不需分割
+            byte[] others = new byte[length];
+            resultmess = ET99_API.et_Read(ET99_API.dogHandle, (ushort)offset, length, others);//读取 
+            if (resultmess != ET99_API.ET_SUCCESS)
+            {
+                //ComponentFactory.Krypton.Toolkit.KryptonMessageBox.Show("加密狗数据错误！", "错误",
+                //        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                //System.Windows.Forms.Application.Exit();
+                return string.Format("加密狗读取失败。偏移：{0}，长度：{1}", offset, length) ;
+            }
+            Array.Copy(others, 0, zyn, zyn.Length - length, length);
+            //转化成字符串
+            str = System.Text.Encoding.Default.GetString(zyn);
+            if (string.IsNullOrWhiteSpace(str.Replace('\0',' ')))
+                return string.Empty;//类似加密狗初期没有的数据‘起始时间’等，直接返回空。
 
-        ///// <summary>
-        ///// 读取指定地址数据区的字符串
-        ///// </summary>
-        ///// <param name="str">指定地址数据区的字符串</param>
-        ///// <param name="index">范围【0~19】（我们把整个数据区1000字节分为20份，每一份的偏移量为50字节。）</param>
-        ///// <param name="msg">成功与否详细信息</param>
-        ///// <returns>是否成功</returns>
-        //public bool ReadDataFromDog(out string str, int index, out string msg)
-        //{
-        //    str = string.Empty;
-        //    byte[] zyn = new byte[50];
-        //    ushort offset = (ushort)(index * 50);//偏移
-        //    uint resultmess = ET99_API.et_Read(ET99_API.dogHandle, offset, 50, zyn);//读出50字节的数据
-        //    if (resultmess == ET99_API.ET_SUCCESS)
-        //    {
-        //        msg = "读取数据成功！";
-        //        str = System.Text.Encoding.Default.GetString(zyn).TrimEnd('\0');
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        msg = "其他错误";
-        //        if (resultmess == ET99_API.ET_HARD_ERROR)
-        //        {
-        //            msg = "硬件错误！";
-        //        }
-        //        if (resultmess == ET99_API.ET_ACCESS_DENY)
-        //        {
-        //            msg = "权限不够！";
-        //        }
-        //        return false;
-        //    }
-        //}
+            //======解密
+            int intRandom = new Random().Next(1, 9);//随即取1~8
+            string key16 = HMAC_MD5_dog(intRandom, "武汉创方科技");
+            return 系统使用的加解密算法.RC2Decrypt(str, key16);
+
+        }
         #endregion
         private void button1_Click(object sender, EventArgs e)
         {
@@ -958,10 +993,9 @@ namespace ET99_DogTools
             //校验加密狗，进入超级用户状态
             CheckStep(VerifyDog);
             //获取硬件SN
-            CheckStep(GetSN);           
-            
+            CheckStep(GetSN);            
             //读取整个数据区
-            CheckStep(ReadData);
+            CheckStep(ReadData2);
             
             //关闭设备
             CheckStep(CloseDog);
@@ -973,6 +1007,25 @@ namespace ET99_DogTools
             {
                 form.ShowDialog();
             }
+        }
+        //闪灯测试
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string msg;
+            //初始化dog
+            ET99_API.dogHandle = System.IntPtr.Zero;
+            dogSN = string.Empty;
+            //查询加密狗
+            FindDog(out msg);
+            //打开加密狗
+            OpenDog(out msg);
+            //校验加密狗，进入超级用户状态
+            VerifyDog(out msg);
+            //闪灯测试
+            FlashLED(3, 300);
+            Thread.Sleep(3 * 300 * 2+300);//300后启动，3次灭亮；300毫秒灭300毫秒亮
+            //关闭设备
+            CloseDog(out msg);
         }
     }
 }

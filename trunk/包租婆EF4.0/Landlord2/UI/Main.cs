@@ -458,6 +458,19 @@ namespace Landlord2
         #region 菜单按钮
         public void 新增源房_Click(object sender, EventArgs e)
         {
+            #region 加密狗对源房套数的限制
+            int num = int.Parse(Helper.ReadOffsetDataAndDecrypt(376, 12));
+            if (num != 0)
+            {
+                int num2 = 源房.GetYF(context).Execute(System.Data.Objects.MergeOption.NoTracking).Count();//系统当前源房数量
+                if (num2 >= num)
+                {
+                    ComponentFactory.Krypton.Toolkit.KryptonMessageBox.Show(string.Format("此版本已达到源房套数上限 - {0}套源房。\r\n如需操作更多源房，请联系软件开发商！",num), "源房上限提示",
+                       System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                    return;
+                }
+            }
+            #endregion
             //新增源房
             using (源房Form yF = new 源房Form())
             {
