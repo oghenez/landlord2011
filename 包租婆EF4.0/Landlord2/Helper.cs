@@ -399,6 +399,8 @@ namespace Landlord2
             Array.Copy(others, 0, zyn, zyn.Length - length, length);
             //转化成字符串
             str = System.Text.Encoding.Default.GetString(zyn);
+            if (string.IsNullOrWhiteSpace(str.Replace('\0', ' ')))
+                return string.Empty;//类似加密狗初期没有的数据‘起始时间’等，直接返回空。
 
             //======解密
             int intRandom = new Random().Next(1,9);//随即取1~8
@@ -407,7 +409,30 @@ namespace Landlord2
 
         }
 
-
+        /// <summary>
+        /// 临时获得管理员权限，写入数据到加密狗，然后返回到用户权限
+        /// </summary>
+        /// <param name="origin">欲写入的原始字串</param>
+        /// <param name="offset">偏移字节地址</param>
+        public static void TempAdminWriteDog(string origin, int offset)
+        { 
+            //因为此函数的调用前提是通过校验了的狗，省略相关校验，加速
+            //获取SOPIN
+            string sopin = Helper.ReadOffsetDataAndDecrypt(0, 32);
+            //提升管理员权限
+            byte[] bytPIN = new byte[16];
+            bytPIN = System.Text.Encoding.ASCII.GetBytes(sopin);
+            ET99_API.et_Verify(ET99_API.dogHandle, ET99_API.ET_VERIFY_SOPIN, bytPIN);
+            //写入
+            int intRandom = new Random().Next(1, 9);//随即取1~8
+            string key16 = Helper.HMAC_MD5_dog(intRandom, "武汉创方科技");
+            string encryptString = Helper.RC2Encrypt(origin, key16);//密文
+            byte[] zyn = System.Text.Encoding.Default.GetBytes(encryptString);
+            ET99_API.et_Write(ET99_API.dogHandle, (ushort)offset, zyn.Length, zyn);
+            //重新进入用户权限
+            bytPIN = System.Text.Encoding.ASCII.GetBytes(Properties.Resources.UserPIN);
+            ET99_API.et_Verify(ET99_API.dogHandle, ET99_API.ET_VERIFY_USERPIN, bytPIN);
+        }
         #endregion
 
         #region 系统使用的加解密算法(RC2算法 加密解密)
