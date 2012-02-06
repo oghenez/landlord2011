@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Dotfuscate">
+  <PropertyGroup>
+    <DotfuscatorBinPath>$(MSBuildExtensionsPath)\PreEmptive\Dotfuscator\4.0</DotfuscatorBinPath>
+    <DotfuscatorDataPath>$(MSBuildExtensionsPath)\PreEmptive\Dotfuscator\4.0</DotfuscatorDataPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition="'$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>4.0</ProductVersion>
+    <SchemaVersion>2.2</SchemaVersion>
+    <ProjectGuid>{b75fae06-eb2d-411d-ae6d-7ad31d752441}</ProjectGuid>
+    <ConfigPath>$(Configuration)\Dotfuscator.xml</ConfigPath>
+    <OutputPath>$(Configuration)</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VSConfigurationCount>2</VSConfigurationCount>
+    <VSConfiguration0>Debug</VSConfiguration0>
+    <VSConfiguration1>Release</VSConfiguration1>
+  </PropertyGroup>
+  <ItemGroup>
+    <InputAssembly Include="..\Landlord2\obj\x86\$(Configuration)\Landlord2.exe">
+      <InputAssemblyType>DynamicProjectOutput</InputAssemblyType>
+      <ProjectGuid>{78845175-88ff-4d51-af00-a472a3256f54}</ProjectGuid>
+      <ProjectUniqueName>Landlord2\Landlord2.csproj</ProjectUniqueName>
+      <ProjectDisplayName>Landlord2</ProjectDisplayName>
+      <InputAssemblyFileName>Landlord2.exe</InputAssemblyFileName>
+      <OutputGroupCanonicalName>Built</OutputGroupCanonicalName>
+      <OutputGroupDisplayName>主输出</OutputGroupDisplayName>
+      <OutputConfiguration>$(Configuration)</OutputConfiguration>
+    </InputAssembly>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Landlord2\Landlord2.csproj">
+      <Project>{78845175-88ff-4d51-af00-a472a3256f54}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(DotfuscatorDataPath)\PreEmptive.Dotfuscator.Targets" />
+</Project>
