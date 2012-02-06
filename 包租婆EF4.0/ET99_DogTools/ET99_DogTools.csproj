@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -75,7 +78,6 @@
     <EmbeddedResource Include="加解密校验器.resx">
       <DependentUpon>加解密校验器.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -92,7 +94,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="二房东加密狗配置.txt" />
+    <None Include="二房东加密狗配置.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
