@@ -13,6 +13,7 @@ using Landlord2.Properties;
 using System.Data.Objects.DataClasses;
 using System.Threading;
 using System.Data.Objects;
+using System.IO;
 
 namespace Landlord2
 {
@@ -27,10 +28,19 @@ namespace Landlord2
         {
             InitializeComponent();
             context = new MyContext();
-            Text += Helper.ReadOffsetDataAndDecrypt(352, 24);
+            #region 加密狗读取
+            string s = Helper.ReadOffsetDataAndDecrypt(352, 24);
+            Text += s;
+            if (s == "【测试版】")//【测试版】到期提示
+            {
+                DateTime begin = DateTime.ParseExact(Helper.ReadOffsetDataAndDecrypt(424, 24), "yyyyMMddHHmmss", null);
+                DateTime end = DateTime.ParseExact(Helper.ReadOffsetDataAndDecrypt(448, 24), "yyyyMMddHHmmss", null);
+                toolStripStatusLabel1.Text = string.Format("距测试到期还有{0}天", (end - begin).Days);
+            }
             bool v = bool.Parse(Helper.ReadOffsetDataAndDecrypt(472, 12));
             数据报表ToolStripMenuItem.Visible = v;
             数据报表kryptonCheckButton.Visible = v;
+            #endregion
             #region 调试代码
 #if DEBUG
             context.ObjectStateManager.ObjectStateManagerChanged += (sender, e) =>
@@ -79,6 +89,11 @@ namespace Landlord2
                 DoThreadSafe(delegate { kfUC = new UC客房详细(true) { Dock = DockStyle.Fill }; });
                 RefreshCustomAlarmData();
                 RefreshSystemAlarmData();
+                
+                string msg;
+                if(!AutoBackupData(out msg))
+                    KryptonMessageBox.Show(msg, "自动备份错误提示",
+                                           System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             });           
         }
 
@@ -454,8 +469,97 @@ namespace Landlord2
 
             }
         }
+        //系统自动备份检测，失败则回传错误信息
+        private bool AutoBackupData(out string msg)
+        {
+            msg = string.Empty;
+            //检测上次备份时间
+            DateTime lastBackupDateTime = DateTime.MinValue;
+            string path =Path.Combine( Directory.GetCurrentDirectory(),"Data");            
+            List<string> files = Directory.GetFiles(path, "自动备份??????????????.bak", SearchOption.TopDirectoryOnly).ToList();
+            if (files.Count > 0)//存在备份
+            {
+                string max = files.Max();
+                max = Path.GetFileNameWithoutExtension(max);
+                if(!DateTime.TryParseExact(max.Substring(4,14),"yyyyMMddHHmmss",null,System.Globalization.DateTimeStyles.None,out lastBackupDateTime))
+                {
+                    msg = "自动备份出错（请勿随意更改自动备份文件名）！";
+                    return false;
+                }
+                //是否间隔7天，如果7天未自动备份，系统将自动备份
+                if((DateTime.Now - lastBackupDateTime).Days >= 7)
+                {
+                    bool result = BackupData(true,out msg);//开始自动备份
+                    if(result)
+                    {
+                        //备份完毕后，系统保留最近3次自动备份记录，删除更早之前的记录
+                        while(files.Count >= 3)
+                        {
+                            string min = files.Min();
+                            File.Delete(min);
+                            files.Remove(min);
+                        }
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return true;//不需要自动备份
+                }
 
-
+            }
+            else//不存在备份
+            {
+                return BackupData(true,out msg);
+            }
+            
+            
+        }
+        /// <summary>
+        /// 数据备份（供手动备份和系统自动备份调用）
+        /// 自动备份文件名格式："自动备份20100208115432.bak"--"自动备份"开头 + 年月日时分秒
+        /// </summary>
+        /// <param name="AutoOrNot">是否系统自动备份（自动备份：true；手动备份：false）</param>
+        /// <param name="msg">如果出错，回传出错信息</param>
+        private bool BackupData(bool AutoOrNot, out string msg)
+        {
+            msg = string.Empty;
+            string sourceFilename = Path.Combine(Directory.GetCurrentDirectory(),
+                                    "Data",
+                                    "Landlord2.sdf");
+            string destFilename;
+            if (AutoOrNot)//自动备份
+            {
+                destFilename =Path.Combine(Directory.GetCurrentDirectory(),
+                    "Data",
+                    string.Format("自动备份{0}.bak", DateTime.Now.ToString("yyyyMMddHHmmss"))) ;
+            }
+            else//手动备份
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "数据备份文件 (*.bak)|*.bak|所有文件 (*.*)|*.*";
+                if (sfd.ShowDialog() == DialogResult.Cancel)
+                {
+                    msg = "用户取消备份操作";
+                    return true;
+                }
+                destFilename = sfd.FileName;
+            }
+            try
+            {
+                File.Copy(sourceFilename, destFilename, true);
+            }
+            catch (Exception ex)
+            {
+                msg = ex.Message;
+                return false;
+            }
+            return true;
+        }
         #region 菜单按钮
         public void 新增源房_Click(object sender, EventArgs e)
         {
@@ -804,7 +908,79 @@ namespace Landlord2
                 form.ShowDialog(this);
             }
         }
+        private void 数据备份ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string msg;
+            if (!BackupData(false, out msg))
+            {
+                KryptonMessageBox.Show(msg, "手动备份错误提示",
+                                           System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            else
+            {
+                KryptonMessageBox.Show("手动备份数据成功！", "成功备份数据");
+            }
+        }
+
+        private void 数据还原ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "数据备份文件 (*.bak)|*.bak|所有文件 (*.*)|*.*";
+            ofd.InitialDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Data");
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.Cancel)
+                return;
+
+            string filename = ofd.FileName;
+            try
+            {
+                string oldfile = Path.Combine(Directory.GetCurrentDirectory(),
+                                    "Data",
+                                    "Landlord2.sdf");
+                //先备份
+                string temp = Path.Combine(Directory.GetCurrentDirectory(),"Data","temp.bak");
+                File.Copy(oldfile, temp, true);
+                //删除
+                context.DeleteDatabase();
+                //销毁context
+                context.Dispose();
+                //再覆盖
+                File.Copy(filename, oldfile, true);
+                //删除临时
+                File.Delete(temp);
+                //重构context
+                context = new MyContext();
+                //成功提示
+                KryptonMessageBox.Show("数据还原成功", "数据还原成功提示",
+                          System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+
+                //刷新界面
+                ThreadPool.QueueUserWorkItem(delegate
+                {
+                    LoadTreeView(null);
+                    RefreshCustomAlarmData();
+                    RefreshSystemAlarmData();
+                });  
+            }
+            catch (Exception ex)
+            {
+                KryptonMessageBox.Show(ex.Message, "数据还原错误提示",
+                          System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void 数据初始化ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
         #endregion
+
+
 
 
 
