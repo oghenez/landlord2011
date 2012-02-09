@@ -14,7 +14,7 @@ namespace Landlord2
         [STAThread]
         static void Main()
         {
-            MessageBox.Show("数据还原还有问题");
+            //MessageBox.Show("数据还原还有问题");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
