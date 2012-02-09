@@ -76,14 +76,14 @@ namespace Landlord2
 			instance = null;
 			instance = new AppRoot();
 
-			//连接初始化
-			ThreadPool.QueueUserWorkItem(delegate
-		   {
-			   if (connection != null)
-				   connection.Dispose();
-			   connection = new EntityConnection(Helper.CreateConnectString());
-			   connection.Open();
-		   });
+           // //连接初始化
+           // ThreadPool.QueueUserWorkItem(delegate
+           //{
+           //    if (connection != null)
+           //        connection.Dispose();
+           //    connection = new EntityConnection(Helper.CreateConnectString());
+           //    connection.Open();
+           //});
 		}  
 	}
 }

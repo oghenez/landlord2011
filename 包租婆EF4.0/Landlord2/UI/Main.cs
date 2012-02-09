@@ -916,7 +916,7 @@ namespace Landlord2
                 KryptonMessageBox.Show(msg, "手动备份错误提示",
                                            System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
-            else
+            else if(msg != "用户取消备份操作")
             {
                 KryptonMessageBox.Show("手动备份数据成功！", "成功备份数据");
             }
@@ -939,11 +939,11 @@ namespace Landlord2
                 //先备份
                 string temp = Path.Combine(Directory.GetCurrentDirectory(),"Data","temp.bak");
                 File.Copy(oldfile, temp, true);
-                //删除
-                context.DeleteDatabase();
                 //销毁context
-                context.Dispose();
+                context.Connection.Close();
+                //context.Dispose();
                 //再覆盖
+                File.Delete(oldfile);
                 File.Copy(filename, oldfile, true);
                 //删除临时
                 File.Delete(temp);
