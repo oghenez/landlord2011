@@ -10,7 +10,7 @@ namespace Landlord2
 	class AppRoot
 	{		
 		private static AppRoot instance = null;//将AppRoot设计为单件模式
-		private static EntityConnection connection;
+		public static EntityConnection connection;
 
 		/// <summary>
 		/// IsAllInOneConnection标志
@@ -20,41 +20,41 @@ namespace Landlord2
 		//x 这里主要是针对EF4.1的DBContext构造函数的,当前EF4.0之ObjectContext不需要
 		public static bool IsAllInOneConnection = false; //默认false
 
-		/// <summary>
-		/// 此项目因为用sql compact作为数据库，因为连接的open,close费用太大，所以此项目用以下2种模式：
-		/// 1、初始构造一个连接，并常开。其他窗体用各自新建的连接（默认情况下， EF的context根据需要开关连接）。整个应用结束时销毁初始打开的连接。
-		/// 2、整个应用使用同一个连接，初始构造并常开，应用结束销毁。
-		/// 参考文献：
-		/// 1、Working with Objects (Entity Framework 4.1)http://msdn.microsoft.com/en-us/library/gg696163(v=VS.103).aspx
-		/// 2、c# - To close or not to close connection in database - Stack Overflow http://stackoverflow.com/questions/4962021/to-close-or-not-to-close-connection-in-database
-		/// </summary>
-		public static EntityConnection MyConnection
-		{
-			get 
-			{
-				if (IsAllInOneConnection == false)
-				{
-					if (connection == null)//! 默认第一个Context会常开连接，项目初始会创建
-					{
-						connection = new EntityConnection(Helper.CreateConnectString());
-						connection.Open();
-						return connection;
-					}
-					else
-						return new EntityConnection(Helper.CreateConnectString());
-				}
-				else
-				{
-					if (connection == null)
-					{
-						connection = new EntityConnection(Helper.CreateConnectString());
-						connection.Open();
-					}
-					return connection;
-				}
+        ///// <summary>
+        ///// 此项目因为用sql compact作为数据库，因为连接的open,close费用太大，所以此项目用以下2种模式：
+        ///// 1、初始构造一个连接，并常开。其他窗体用各自新建的连接（默认情况下， EF的context根据需要开关连接）。整个应用结束时销毁初始打开的连接。
+        ///// 2、整个应用使用同一个连接，初始构造并常开，应用结束销毁。
+        ///// 参考文献：
+        ///// 1、Working with Objects (Entity Framework 4.1)http://msdn.microsoft.com/en-us/library/gg696163(v=VS.103).aspx
+        ///// 2、c# - To close or not to close connection in database - Stack Overflow http://stackoverflow.com/questions/4962021/to-close-or-not-to-close-connection-in-database
+        ///// </summary>
+        //public static EntityConnection MyConnection
+        //{
+        //    get 
+        //    {
+        //        if (IsAllInOneConnection == false)
+        //        {
+        //            if (connection == null)//! 默认主窗体Context会常开连接，项目初始会创建
+        //            {
+        //                connection = new EntityConnection(Helper.CreateConnectString());
+        //                connection.Open();
+        //                return connection;
+        //            }
+        //            else
+        //                return new EntityConnection(Helper.CreateConnectString());
+        //        }
+        //        else
+        //        {
+        //            if (connection == null)
+        //            {
+        //                connection = new EntityConnection(Helper.CreateConnectString());
+        //                connection.Open();
+        //            }
+        //            return connection;
+        //        }
 
-			}
-		}
+        //    }
+        //}
 		
 		private AppRoot()
 		{
@@ -76,14 +76,14 @@ namespace Landlord2
 			instance = null;
 			instance = new AppRoot();
 
-           // //连接初始化
-           // ThreadPool.QueueUserWorkItem(delegate
-           //{
-           //    if (connection != null)
-           //        connection.Dispose();
-           //    connection = new EntityConnection(Helper.CreateConnectString());
-           //    connection.Open();
-           //});
+            //连接初始化
+            ThreadPool.QueueUserWorkItem(delegate
+           {
+               if (connection != null)
+                   connection.Dispose();
+               connection = new EntityConnection(Helper.CreateConnectString());
+               connection.Open();
+           });
 		}  
 	}
 }

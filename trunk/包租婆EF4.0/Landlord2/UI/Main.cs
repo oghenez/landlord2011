@@ -27,7 +27,7 @@ namespace Landlord2
         public Main()
         {
             InitializeComponent();
-            context = new MyContext();
+            context = new MyContext(AppRoot.connection);
             #region 加密狗读取
             string s = Helper.ReadOffsetDataAndDecrypt(352, 24);
             Text += s;
@@ -249,6 +249,8 @@ namespace Landlord2
                     AddYuanFangToTree(root2, yf, true, obj);
 
                 DoThreadSafe(delegate {
+                    if (obj == null)
+                        treeView1.SelectedNode = root1;//默认刷新定位到此节点
                     treeView1.ExpandAll();
                     treeView1.EndUpdate();
                 });           
@@ -924,6 +926,10 @@ namespace Landlord2
 
         private void 数据还原ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var result = KryptonMessageBox.Show("当前所有数据将丢失，还原至选定备份！请再次确认！", "数据还原确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            if (result == System.Windows.Forms.DialogResult.Cancel)
+                return;
+
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "数据备份文件 (*.bak)|*.bak|所有文件 (*.*)|*.*";
             ofd.InitialDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Data");
@@ -940,15 +946,18 @@ namespace Landlord2
                 string temp = Path.Combine(Directory.GetCurrentDirectory(),"Data","temp.bak");
                 File.Copy(oldfile, temp, true);
                 //销毁context
-                context.Connection.Close();
-                //context.Dispose();
+                AppRoot.connection.Close();
+                context.Dispose();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
                 //再覆盖
                 File.Delete(oldfile);
                 File.Copy(filename, oldfile, true);
                 //删除临时
                 File.Delete(temp);
-                //重构context
-                context = new MyContext();
+                //重开连接
+                AppRoot.connection.Open();
+                context = new MyContext(AppRoot.connection);
                 //成功提示
                 KryptonMessageBox.Show("数据还原成功", "数据还原成功提示",
                           System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
