@@ -114,11 +114,11 @@ namespace Landlord2
             List<提醒> systemAlarms = new List<提醒>();
             //执行系统检测，搜索得到所有系统提醒
             //!++ 补充完整系统检测，构造相应的提醒对象，加入集合。还有定时检测刷新需要处理。。。
-            提醒 test = new 提醒();
-            test.事项 = "test";
-            test.源房ID = context.源房.First().ID;
+            //提醒 test = new 提醒();
+            //test.事项 = "test";
+            //test.源房ID = context.源房.First().ID;
 
-            systemAlarms.Add(test);
+            //systemAlarms.Add(test);
             systemAlarms.ForEach(m => { AddOneAlarmMsg(m,true); });
 
             DoThreadSafe(delegate
@@ -224,13 +224,14 @@ namespace Landlord2
         /// </summary>
         private void LoadTreeView(EntityObject obj)
         {
-            if (context.源房.Count() > 0)
+            DoThreadSafe(delegate
             {
-                DoThreadSafe(delegate {
-                    treeView1.BeginUpdate();
-                    treeView1.Nodes.Clear(); 
-                });
-                
+                treeView1.BeginUpdate();
+                treeView1.Nodes.Clear();
+            });
+
+            if (context.源房.Count() > 0)
+            {                
                 TreeNode root1 = new TreeNode("当前源房信息");
                 root1.ToolTipText = "当前源房按照签约时间自动排序";
                 root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
@@ -247,18 +248,20 @@ namespace Landlord2
                 DoThreadSafe(delegate { treeView1.Nodes.Add(root2); });
                 foreach (var yf in 源房.GetYF_History(context).Include("客房").Execute(MergeOption.OverwriteChanges))
                     AddYuanFangToTree(root2, yf, true, obj);
-
-                DoThreadSafe(delegate {
-                    if (obj == null)
-                        treeView1.SelectedNode = root1;//默认刷新定位到此节点
-                    treeView1.ExpandAll();
-                    treeView1.EndUpdate();
-                });           
             }
             else
             {
-                DoThreadSafe(delegate { treeView1.Nodes.Add("当前没有源房、客房信息"); }); 
+                DoThreadSafe(delegate {
+                    treeView1.Nodes.Add("当前没有源房、客房信息"); }); 
             }
+
+            DoThreadSafe(delegate
+            {
+                if (obj == null)
+                    treeView1.SelectedNode = treeView1.Nodes[0];//默认刷新定位到此节点
+                treeView1.ExpandAll();
+                treeView1.EndUpdate();
+            });   
         }
 
         /// <summary>
@@ -937,13 +940,25 @@ namespace Landlord2
                 return;
 
             string filename = ofd.FileName;
+            ChangeDataBase(filename,true);
+
+        }
+
+        /// <summary>
+        /// 更换数据库
+        /// </summary>
+        /// <param name="filename">新数据库文件名</param>
+        /// <param name="flag">true-数据还原操作；false-数据初始化操作。</param>
+        private void ChangeDataBase(string filename,bool flag)
+        {
+            string s = flag ? "数据还原" : "数据初始化";
             try
             {
                 string oldfile = Path.Combine(Directory.GetCurrentDirectory(),
                                     "Data",
                                     "Landlord2.sdf");
                 //先备份
-                string temp = Path.Combine(Directory.GetCurrentDirectory(),"Data","temp.bak");
+                string temp = Path.Combine(Directory.GetCurrentDirectory(), "Data", "temp.bak");
                 File.Copy(oldfile, temp, true);
                 //销毁context
                 AppRoot.connection.Close();
@@ -955,11 +970,14 @@ namespace Landlord2
                 File.Copy(filename, oldfile, true);
                 //删除临时
                 File.Delete(temp);
+                //删除初始化临时数据库
+                if (flag == false)
+                    File.Delete(filename);
                 //重开连接
                 AppRoot.connection.Open();
                 context = new MyContext(AppRoot.connection);
                 //成功提示
-                KryptonMessageBox.Show("数据还原成功", "数据还原成功提示",
+                KryptonMessageBox.Show(s+"成功", s+"成功提示",
                           System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 
                 //刷新界面
@@ -968,26 +986,42 @@ namespace Landlord2
                     LoadTreeView(null);
                     RefreshCustomAlarmData();
                     RefreshSystemAlarmData();
-                });  
+                });
             }
             catch (Exception ex)
             {
-                KryptonMessageBox.Show(ex.Message, "数据还原错误提示",
+                KryptonMessageBox.Show(ex.Message, s+"错误提示",
                           System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
-
         }
 
         private void 数据初始化ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var result = KryptonMessageBox.Show("此操作将清空当前所有数据！请再次确认！", "数据初始化确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            if (result == System.Windows.Forms.DialogResult.Cancel)
+                return;
 
+            string tempfile = Path.Combine(Directory.GetCurrentDirectory(),
+                                    "Data",
+                                    Guid.NewGuid().ToString());
+            File.WriteAllBytes(tempfile, Properties.Resources.Empty);//将空数据库文件写入临时文件
+            ChangeDataBase(tempfile,false);
         }
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
         #endregion
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (KryptonMessageBox.Show("确定退出租赁管理系统？", "退出确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) 
+                == System.Windows.Forms.DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+        }
 
 
 
