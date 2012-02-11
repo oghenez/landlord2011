@@ -565,6 +565,16 @@ namespace Landlord2
             }
             return true;
         }
+        
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (KryptonMessageBox.Show("确定退出租赁管理系统？", "退出确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2)
+                == System.Windows.Forms.DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+        }
+
         #region 菜单按钮
         public void 新增源房_Click(object sender, EventArgs e)
         {
@@ -1012,18 +1022,20 @@ namespace Landlord2
         {
             Close();
         }
-        #endregion
 
-        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        private void 计算器ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (KryptonMessageBox.Show("确定退出租赁管理系统？", "退出确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) 
-                == System.Windows.Forms.DialogResult.Cancel)
-            {
-                e.Cancel = true;
-            }
+            System.Diagnostics.Process.Start(@"calc.exe");
         }
 
+        #endregion
 
+        private void 电子地图ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //电子地图
+            Map form = new Map();
+            form.Show();
+        }
 
 
 
