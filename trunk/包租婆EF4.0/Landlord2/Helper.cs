@@ -12,6 +12,7 @@ using Landlord2.Data;
 using System.ComponentModel;
 using Equin.ApplicationFramework;
 using System.Security.Cryptography;
+using System.Runtime.InteropServices;
 
 namespace Landlord2
 {
@@ -219,6 +220,18 @@ namespace Landlord2
             decimal returnVal = 0.00M;
             returnVal = Convert.ToDecimal(value) * number;
             return decimal.Round(returnVal,2);
+        }
+
+        [DllImport("wininet.dll")]
+        private static extern bool InternetGetConnectedState(out int Description, int ReservedValue);
+
+        /// <summary>
+        ///判断当前的网络连接状态 
+        /// </summary>
+        public static bool IsConnectedToInternet()
+        {
+            int Desc;
+            return InternetGetConnectedState(out Desc, 0);
         }
 
         #region 加密狗相关
