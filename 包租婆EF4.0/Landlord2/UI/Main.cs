@@ -1034,7 +1034,7 @@ namespace Landlord2
         {
             //电子地图
             Map form = new Map();
-            form.Show();
+            form.Show(this);//这里加上this,可以使子窗口永远位于父窗口的前端！
         }
 
 
