@@ -1037,6 +1037,13 @@ namespace Landlord2
             form.Show(this);//这里加上this,可以使子窗口永远位于父窗口的前端！
         }
 
+        private void 网上银行ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //网上银行
+            WebForm form = new WebForm(WebFormCategory.网上银行);
+            form.Show(this);
+        }
+
 
 
 

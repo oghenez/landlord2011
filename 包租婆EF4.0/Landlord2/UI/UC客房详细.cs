@@ -185,8 +185,7 @@ namespace Landlord2.UI
                 //使用默认设置初始化集合的默认构造函数。默认情况下，此临时文件集合将文件存储在默认临时目录中，并在生成和使用临时文件后将其删除。
                 using (TempFileCollection tfc = new TempFileCollection())
                 {
-                    tfc.KeepFiles = true;
-                    string fileName = tfc.AddExtension("jpg");
+                    string fileName = tfc.AddExtension("jpg",true);
                     try
                     {
                         img.Save(fileName);

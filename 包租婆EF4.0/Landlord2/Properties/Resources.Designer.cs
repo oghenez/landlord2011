@@ -74,6 +74,13 @@ namespace Landlord2.Properties {
             }
         }
         
+        internal static byte[] Bank {
+            get {
+                object obj = ResourceManager.GetObject("Bank", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap delete_16_hot {
             get {
                 object obj = ResourceManager.GetObject("delete_16_hot", resourceCulture);
