@@ -13,7 +13,6 @@ using System.ComponentModel;
 using Equin.ApplicationFramework;
 using System.Security.Cryptography;
 using System.Runtime.InteropServices;
-using Ionic.Zip;
 
 namespace Landlord2
 {
@@ -233,29 +232,6 @@ namespace Landlord2
         {
             int Desc;
             return InternetGetConnectedState(out Desc, 0);
-        }
-
-        /// <summary>
-        /// 从资源文件中临时生成文件（此文件为zip压缩文件，html及jpg等），调用Ionic.zip.dll解压至临时目录，然后加载进web控件中。
-        /// </summary>
-        /// <param name="PropertyResource">针对的资源文件</param>
-        /// <returns>返回临时目录路径（主html文件名都是Default.Html）【Web控件即可加载/关闭后即可依据此路径清除】</returns>
-        public static string GetWebContent(byte[] PropertyResource)
-        {
-            /*
-using(ZipFile zip= new ZipFile())
-      {
-        zip.AddFile(filename);
-        zip.Save(NameOfZipFileTocreate);
-      }
-             * 
-             * 
-using (ZipFile zip = ZipFile.Read(NameOfExistingZipFile))
-      {
-        zip.ExtractAll(args[1]);
-      }             
-             */
-            return string.Empty;
         }
 
         #region 加密狗相关

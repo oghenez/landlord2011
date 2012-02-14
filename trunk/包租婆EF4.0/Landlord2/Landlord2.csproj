@@ -179,6 +179,12 @@
     <Compile Include="UI\UC源房详细.Designer.cs">
       <DependentUpon>UC源房详细.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\WebForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\WebForm.Designer.cs">
+      <DependentUpon>WebForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\客房Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -343,6 +349,9 @@
     <EmbeddedResource Include="UI\UC源房详细.resx">
       <DependentUpon>UC源房详细.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\WebForm.resx">
+      <DependentUpon>WebForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\客房Form.resx">
       <DependentUpon>客房Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -452,6 +461,7 @@
     <Content Include="Ionic.Zip.Reduced.dll" />
     <Content Include="Readme.txt" />
     <None Include="Resources\add_16_hot.png" />
+    <None Include="Resources\Bank.zip" />
     <None Include="Resources\delete_16_hot.png" />
     <None Include="Resources\edit_16_hot.png" />
     <Content Include="Resources\Filter.png" />
