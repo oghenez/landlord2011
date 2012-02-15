@@ -35,7 +35,7 @@ namespace Landlord2.UI
             switch (category)
             {
                 case WebFormCategory.生活助手:
-                    //GetWebContent(Properties.Resources.Bank);
+                    GetWebContent(Properties.Resources.Service);
                     break;
                 case WebFormCategory.网上银行:
                     GetWebContent(Properties.Resources.Bank);

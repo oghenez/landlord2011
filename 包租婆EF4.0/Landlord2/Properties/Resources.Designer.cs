@@ -146,6 +146,13 @@ namespace Landlord2.Properties {
             }
         }
         
+        internal static byte[] Service {
+            get {
+                object obj = ResourceManager.GetObject("Service", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         /// <summary>
         ///   查找类似 8cfac3342adfee5e 的本地化字符串。
         /// </summary>
