@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -517,35 +517,37 @@
             // 计算器ToolStripMenuItem
             // 
             this.计算器ToolStripMenuItem.Name = "计算器ToolStripMenuItem";
-            this.计算器ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.计算器ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.计算器ToolStripMenuItem.Text = "计算器";
             this.计算器ToolStripMenuItem.Click += new System.EventHandler(this.计算器ToolStripMenuItem_Click);
             // 
             // 电子地图ToolStripMenuItem
             // 
             this.电子地图ToolStripMenuItem.Name = "电子地图ToolStripMenuItem";
-            this.电子地图ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.电子地图ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.电子地图ToolStripMenuItem.Text = "电子地图";
             this.电子地图ToolStripMenuItem.Click += new System.EventHandler(this.电子地图ToolStripMenuItem_Click);
             // 
             // 网上银行ToolStripMenuItem
             // 
             this.网上银行ToolStripMenuItem.Name = "网上银行ToolStripMenuItem";
-            this.网上银行ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.网上银行ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.网上银行ToolStripMenuItem.Text = "网上银行";
             this.网上银行ToolStripMenuItem.Click += new System.EventHandler(this.网上银行ToolStripMenuItem_Click);
             // 
             // 生活助手ToolStripMenuItem
             // 
             this.生活助手ToolStripMenuItem.Name = "生活助手ToolStripMenuItem";
-            this.生活助手ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.生活助手ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.生活助手ToolStripMenuItem.Text = "生活助手";
+            this.生活助手ToolStripMenuItem.Click += new System.EventHandler(this.生活助手ToolStripMenuItem_Click);
             // 
             // 租赁网站ToolStripMenuItem
             // 
             this.租赁网站ToolStripMenuItem.Name = "租赁网站ToolStripMenuItem";
-            this.租赁网站ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.租赁网站ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.租赁网站ToolStripMenuItem.Text = "租赁网站";
+            this.租赁网站ToolStripMenuItem.Click += new System.EventHandler(this.租赁网站ToolStripMenuItem_Click);
             // 
             // 帮助ToolStripMenuItem
             // 
@@ -665,11 +667,11 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.ImageIndex = 7;
-            treeNode1.Name = "节点0";
-            treeNode1.Text = "加载信息，请稍候．．．";
+            treeNode2.ImageIndex = 7;
+            treeNode2.Name = "节点0";
+            treeNode2.Text = "加载信息，请稍候．．．";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.treeView1.SelectedImageIndex = 7;
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.ShowRootLines = false;
@@ -894,7 +896,7 @@
             this.toolStripSeparator8,
             this.kfBtnCollectRent,
             this.kfBtnCollectRentDetail});
-            this.toolStrip2.Location = new System.Drawing.Point(316, 0);
+            this.toolStrip2.Location = new System.Drawing.Point(317, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(555, 70);
             this.toolStrip2.TabIndex = 1;

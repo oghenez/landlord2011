@@ -76,6 +76,7 @@
             this.MaximizeBox = true;
             this.MinimizeBox = true;
             this.Name = "WebForm";
+            this.ShowInTaskbar = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "网上银行/生活助手/租赁网站";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WebForm_FormClosing);

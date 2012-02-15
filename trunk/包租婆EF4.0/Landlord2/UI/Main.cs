@@ -1028,7 +1028,7 @@ namespace Landlord2
             System.Diagnostics.Process.Start(@"calc.exe");
         }
 
-        #endregion
+
 
         private void 电子地图ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1044,7 +1044,19 @@ namespace Landlord2
             form.Show(this);
         }
 
+        private void 生活助手ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //生活助手
+            WebForm form = new WebForm(WebFormCategory.生活助手);
+            form.Show(this);
+        }
 
+        private void 租赁网站ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
 
 
 
