@@ -109,6 +109,13 @@ namespace Landlord2.Properties {
             }
         }
         
+        internal static byte[] House {
+            get {
+                object obj = ResourceManager.GetObject("House", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap idea_16 {
             get {
                 object obj = ResourceManager.GetObject("idea_16", resourceCulture);

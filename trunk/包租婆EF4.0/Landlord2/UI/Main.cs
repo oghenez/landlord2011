@@ -923,7 +923,7 @@ namespace Landlord2
                 form.ShowDialog(this);
             }
         }
-        private void 数据备份ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 数据备份_Click(object sender, EventArgs e)
         {
             string msg;
             if (!BackupData(false, out msg))
@@ -937,7 +937,7 @@ namespace Landlord2
             }
         }
 
-        private void 数据还原ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 数据还原_Click(object sender, EventArgs e)
         {
             var result = KryptonMessageBox.Show("当前所有数据将丢失，还原至选定备份！请再次确认！", "数据还原确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
             if (result == System.Windows.Forms.DialogResult.Cancel)
@@ -1005,7 +1005,7 @@ namespace Landlord2
             }
         }
 
-        private void 数据初始化ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 数据初始化_Click(object sender, EventArgs e)
         {
             var result = KryptonMessageBox.Show("此操作将清空当前所有数据！请再次确认！", "数据初始化确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
             if (result == System.Windows.Forms.DialogResult.Cancel)
@@ -1018,42 +1018,44 @@ namespace Landlord2
             ChangeDataBase(tempfile,false);
         }
 
-        private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 退出_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void 计算器ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 计算器_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(@"calc.exe");
         }
 
 
 
-        private void 电子地图ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 电子地图_Click(object sender, EventArgs e)
         {
             //电子地图
             Map form = new Map();
             form.Show(this);//这里加上this,可以使子窗口永远位于父窗口的前端！
         }
 
-        private void 网上银行ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 网上银行_Click(object sender, EventArgs e)
         {
             //网上银行
             WebForm form = new WebForm(WebFormCategory.网上银行);
             form.Show(this);
         }
 
-        private void 生活助手ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 生活助手_Click(object sender, EventArgs e)
         {
             //生活助手
             WebForm form = new WebForm(WebFormCategory.生活助手);
             form.Show(this);
         }
 
-        private void 租赁网站ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 租赁网站_Click(object sender, EventArgs e)
         {
-
+            //租赁网站
+            WebForm form = new WebForm(WebFormCategory.租赁网站);
+            form.Show(this);
         }
 
         #endregion

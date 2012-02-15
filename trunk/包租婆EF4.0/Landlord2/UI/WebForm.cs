@@ -41,7 +41,7 @@ namespace Landlord2.UI
                     GetWebContent(Properties.Resources.Bank);
                     break;
                 case WebFormCategory.租赁网站:
-                    //GetWebContent(Properties.Resources.Bank);
+                    GetWebContent(Properties.Resources.House);
                     break;
                 default:
                     break;
