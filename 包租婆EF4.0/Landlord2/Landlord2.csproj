@@ -468,6 +468,7 @@
     <Content Include="Resources\idea_16.png" />
     <Content Include="Resources\info.png" />
     <None Include="Resources\Empty.kkk" />
+    <None Include="Resources\House.zip" />
     <None Include="Resources\Service.zip" />
     <None Include="Resources\客房续租24.png" />
     <None Include="Resources\客房续租48.png" />
