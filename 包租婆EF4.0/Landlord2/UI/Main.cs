@@ -39,7 +39,7 @@ namespace Landlord2
             }
             bool v = bool.Parse(Helper.ReadOffsetDataAndDecrypt(472, 12));
             数据报表ToolStripMenuItem.Visible = v;
-            数据报表kryptonCheckButton.Visible = v;
+            kcheckBtn数据报表.Visible = v;
             #endregion
             #region 调试代码
 #if DEBUG
@@ -401,8 +401,47 @@ namespace Landlord2
         private void kryptonCheckSet1_CheckedButtonChanged(object sender, EventArgs e)
         {
             kryptonHeaderGroup1.ValuesPrimary.Heading = kryptonCheckSet1.CheckedButton.Values.Text;
+            DisplayLeftToolBar(kryptonCheckSet1.CheckedIndex);
         }
-
+        //左侧控件的显示隐藏
+        private void DisplayLeftToolBar(int checkedIndex)
+        {
+            switch (checkedIndex)
+            {
+                case 0://辅助工具
+                    {
+                        treeView1.Visible = false;
+                        treeView1.Dock = DockStyle.None;
+                        listViewReports.Visible = false;
+                        listViewReports.Dock = DockStyle.None;
+                        listViewTools.Visible = true;
+                        listViewTools.Dock = DockStyle.Fill;
+                    }
+                    break;
+                case 1://数据报表
+                    {
+                        treeView1.Visible = false;
+                        treeView1.Dock = DockStyle.None;
+                        listViewTools.Visible = false;
+                        listViewTools.Dock = DockStyle.None;
+                        listViewReports.Visible = true;
+                        listViewReports.Dock = DockStyle.Fill;
+                    }
+                    break;
+                case 2://房屋租赁
+                    {
+                        listViewTools.Visible = false;
+                        listViewTools.Dock = DockStyle.None;
+                        listViewReports.Visible = false;
+                        listViewReports.Dock = DockStyle.None;
+                        treeView1.Visible = true;
+                        treeView1.Dock = DockStyle.Fill;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
         #region 加载或刷新用户控件（例如：上次和当前都是点击的‘源房’，那么仅仅刷新而不重复加载）
         private void LoadOrRefreshUC(object entity)
         {
@@ -1027,9 +1066,7 @@ namespace Landlord2
         {
             System.Diagnostics.Process.Start(@"calc.exe");
         }
-
-
-
+        
         private void 电子地图_Click(object sender, EventArgs e)
         {
             //电子地图
@@ -1058,8 +1095,43 @@ namespace Landlord2
             form.Show(this);
         }
 
-        #endregion
 
+        private void listViewTools_ItemActivate(object sender, EventArgs e)
+        {
+            int index = 0;
+            if(listViewTools.SelectedIndices == null || listViewTools.SelectedIndices.Count == 0)
+                return ;
+            else
+            {
+                foreach(int i in listViewTools.SelectedIndices)
+                {
+                    index = i;//这里因为已经设置Listview为单选，所以只能循环一次
+                }
+            }
+            switch (index)
+            {
+                case 0:
+                    计算器_Click(null, null);
+                    break;
+                case 1:
+                    电子地图_Click(null, null);
+                    break;
+                case 2:
+                    网上银行_Click(null, null);
+                    break;
+                case 3:
+                    生活助手_Click(null, null);
+                    break;
+                case 4:
+                    租赁网站_Click(null, null);
+                    break;
+                default:
+                    break;
+
+            }
+        }
+
+        #endregion
 
 
 

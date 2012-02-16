@@ -29,9 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("计算器", 0);
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("电子地图", 1);
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("网上银行", 2);
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("生活助手", 3);
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("租赁网站", 4);
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("计算器");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("数据报表...", 0);
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,11 +98,12 @@
             this.kryptonSplitContainer1 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.kryptonHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.buttonSpecHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
+            this.listViewTools = new System.Windows.Forms.ListView();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.kryptonCheckButton3 = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
-            this.数据报表kryptonCheckButton = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
-            this.kryptonCheckButton1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
+            this.kcheckBtn房屋租赁 = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
+            this.kcheckBtn数据报表 = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
+            this.kcheckBtn辅助工具 = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
             this.kryptonSplitContainer2 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.kryptonHeaderGroup2 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.buttonSpecHeaderGroup2 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
@@ -129,7 +135,8 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
             this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.listViewTools = new System.Windows.Forms.ListView();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.listViewReports = new System.Windows.Forms.ListView();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -646,11 +653,12 @@
             // 
             // kryptonHeaderGroup1.Panel
             // 
+            this.kryptonHeaderGroup1.Panel.Controls.Add(this.listViewReports);
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.listViewTools);
             this.kryptonHeaderGroup1.Panel.Controls.Add(this.treeView1);
-            this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonCheckButton3);
-            this.kryptonHeaderGroup1.Panel.Controls.Add(this.数据报表kryptonCheckButton);
-            this.kryptonHeaderGroup1.Panel.Controls.Add(this.kryptonCheckButton1);
+            this.kryptonHeaderGroup1.Panel.Controls.Add(this.kcheckBtn房屋租赁);
+            this.kryptonHeaderGroup1.Panel.Controls.Add(this.kcheckBtn数据报表);
+            this.kryptonHeaderGroup1.Panel.Controls.Add(this.kcheckBtn辅助工具);
             this.kryptonHeaderGroup1.Size = new System.Drawing.Size(200, 607);
             this.kryptonHeaderGroup1.TabIndex = 0;
             this.kryptonHeaderGroup1.ValuesPrimary.Heading = " ";
@@ -661,6 +669,29 @@
             this.buttonSpecHeaderGroup1.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.ArrowLeft;
             this.buttonSpecHeaderGroup1.UniqueName = "7EE3A8BB0E1C4C417E97E929C1580079";
             this.buttonSpecHeaderGroup1.Click += new System.EventHandler(this.OnLeftRight);
+            // 
+            // listViewTools
+            // 
+            this.listViewTools.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listViewTools.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.listViewTools.Dock = System.Windows.Forms.DockStyle.Top;
+            this.listViewTools.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6});
+            this.listViewTools.LargeImageList = this.imageList2;
+            this.listViewTools.Location = new System.Drawing.Point(0, 131);
+            this.listViewTools.MultiSelect = false;
+            this.listViewTools.Name = "listViewTools";
+            this.listViewTools.Scrollable = false;
+            this.listViewTools.ShowGroups = false;
+            this.listViewTools.Size = new System.Drawing.Size(198, 203);
+            this.listViewTools.TabIndex = 4;
+            this.listViewTools.UseCompatibleStateImageBehavior = false;
+            this.listViewTools.Visible = false;
+            this.listViewTools.ItemActivate += new System.EventHandler(this.listViewTools_ItemActivate);
             // 
             // treeView1
             // 
@@ -696,33 +727,33 @@
             this.imageList1.Images.SetKeyName(6, "客房-历史24.png");
             this.imageList1.Images.SetKeyName(7, "Ball_Yellow.png");
             // 
-            // kryptonCheckButton3
+            // kcheckBtn房屋租赁
             // 
-            this.kryptonCheckButton3.Checked = true;
-            this.kryptonCheckButton3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonCheckButton3.Location = new System.Drawing.Point(0, 498);
-            this.kryptonCheckButton3.Name = "kryptonCheckButton3";
-            this.kryptonCheckButton3.Size = new System.Drawing.Size(198, 25);
-            this.kryptonCheckButton3.TabIndex = 2;
-            this.kryptonCheckButton3.Values.Text = "房屋租赁";
+            this.kcheckBtn房屋租赁.Checked = true;
+            this.kcheckBtn房屋租赁.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.kcheckBtn房屋租赁.Location = new System.Drawing.Point(0, 498);
+            this.kcheckBtn房屋租赁.Name = "kcheckBtn房屋租赁";
+            this.kcheckBtn房屋租赁.Size = new System.Drawing.Size(198, 25);
+            this.kcheckBtn房屋租赁.TabIndex = 2;
+            this.kcheckBtn房屋租赁.Values.Text = "房屋租赁";
             // 
-            // 数据报表kryptonCheckButton
+            // kcheckBtn数据报表
             // 
-            this.数据报表kryptonCheckButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.数据报表kryptonCheckButton.Location = new System.Drawing.Point(0, 523);
-            this.数据报表kryptonCheckButton.Name = "数据报表kryptonCheckButton";
-            this.数据报表kryptonCheckButton.Size = new System.Drawing.Size(198, 25);
-            this.数据报表kryptonCheckButton.TabIndex = 1;
-            this.数据报表kryptonCheckButton.Values.Text = "数据报表";
+            this.kcheckBtn数据报表.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.kcheckBtn数据报表.Location = new System.Drawing.Point(0, 523);
+            this.kcheckBtn数据报表.Name = "kcheckBtn数据报表";
+            this.kcheckBtn数据报表.Size = new System.Drawing.Size(198, 25);
+            this.kcheckBtn数据报表.TabIndex = 1;
+            this.kcheckBtn数据报表.Values.Text = "数据报表";
             // 
-            // kryptonCheckButton1
+            // kcheckBtn辅助工具
             // 
-            this.kryptonCheckButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonCheckButton1.Location = new System.Drawing.Point(0, 548);
-            this.kryptonCheckButton1.Name = "kryptonCheckButton1";
-            this.kryptonCheckButton1.Size = new System.Drawing.Size(198, 25);
-            this.kryptonCheckButton1.TabIndex = 0;
-            this.kryptonCheckButton1.Values.Text = "辅助工具";
+            this.kcheckBtn辅助工具.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.kcheckBtn辅助工具.Location = new System.Drawing.Point(0, 548);
+            this.kcheckBtn辅助工具.Name = "kcheckBtn辅助工具";
+            this.kcheckBtn辅助工具.Size = new System.Drawing.Size(198, 25);
+            this.kcheckBtn辅助工具.TabIndex = 0;
+            this.kcheckBtn辅助工具.Values.Text = "辅助工具";
             // 
             // kryptonSplitContainer2
             // 
@@ -817,7 +848,7 @@
             this.toolStripSeparator6,
             this.yfBtnPay,
             this.yfBtnPayDetail});
-            this.toolStrip1.Location = new System.Drawing.Point(8, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(4, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(313, 70);
             this.toolStrip1.TabIndex = 0;
@@ -899,7 +930,7 @@
             this.toolStripSeparator8,
             this.kfBtnCollectRent,
             this.kfBtnCollectRentDetail});
-            this.toolStrip2.Location = new System.Drawing.Point(321, 0);
+            this.toolStrip2.Location = new System.Drawing.Point(317, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(555, 70);
             this.toolStrip2.TabIndex = 1;
@@ -1041,10 +1072,10 @@
             // 
             // kryptonCheckSet1
             // 
-            this.kryptonCheckSet1.CheckButtons.Add(this.kryptonCheckButton1);
-            this.kryptonCheckSet1.CheckButtons.Add(this.数据报表kryptonCheckButton);
-            this.kryptonCheckSet1.CheckButtons.Add(this.kryptonCheckButton3);
-            this.kryptonCheckSet1.CheckedButton = this.kryptonCheckButton3;
+            this.kryptonCheckSet1.CheckButtons.Add(this.kcheckBtn辅助工具);
+            this.kryptonCheckSet1.CheckButtons.Add(this.kcheckBtn数据报表);
+            this.kryptonCheckSet1.CheckButtons.Add(this.kcheckBtn房屋租赁);
+            this.kryptonCheckSet1.CheckedButton = this.kcheckBtn房屋租赁;
             this.kryptonCheckSet1.CheckedButtonChanged += new System.EventHandler(this.kryptonCheckSet1_CheckedButtonChanged);
             // 
             // AlarmTimer1
@@ -1052,22 +1083,32 @@
             this.AlarmTimer1.Interval = 500;
             this.AlarmTimer1.Tick += new System.EventHandler(this.AlarmTimer1_Tick);
             // 
-            // listViewTools
+            // imageList2
             // 
-            this.listViewTools.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.listViewTools.AutoArrange = false;
-            this.listViewTools.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.listViewTools.Dock = System.Windows.Forms.DockStyle.Top;
-            this.listViewTools.HotTracking = true;
-            this.listViewTools.HoverSelection = true;
-            this.listViewTools.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList2.Images.SetKeyName(0, "calc48.png");
+            this.imageList2.Images.SetKeyName(1, "map48.png");
+            this.imageList2.Images.SetKeyName(2, "bank48.png");
+            this.imageList2.Images.SetKeyName(3, "水电气48.png");
+            this.imageList2.Images.SetKeyName(4, "房产网站48.png");
+            // 
+            // listViewReports
+            // 
+            this.listViewReports.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listViewReports.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.listViewReports.Dock = System.Windows.Forms.DockStyle.Top;
+            this.listViewReports.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
-            this.listViewTools.Location = new System.Drawing.Point(0, 131);
-            this.listViewTools.MultiSelect = false;
-            this.listViewTools.Name = "listViewTools";
-            this.listViewTools.Size = new System.Drawing.Size(198, 138);
-            this.listViewTools.TabIndex = 4;
-            this.listViewTools.UseCompatibleStateImageBehavior = false;
+            this.listViewReports.Location = new System.Drawing.Point(0, 334);
+            this.listViewReports.MultiSelect = false;
+            this.listViewReports.Name = "listViewReports";
+            this.listViewReports.Scrollable = false;
+            this.listViewReports.ShowGroups = false;
+            this.listViewReports.Size = new System.Drawing.Size(198, 130);
+            this.listViewReports.TabIndex = 5;
+            this.listViewReports.UseCompatibleStateImageBehavior = false;
+            this.listViewReports.Visible = false;
             // 
             // Main
             // 
@@ -1131,9 +1172,9 @@
         private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer kryptonSplitContainer2;
         private ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup kryptonHeaderGroup2;
         private System.Windows.Forms.TreeView treeView1;
-        private ComponentFactory.Krypton.Toolkit.KryptonCheckButton kryptonCheckButton3;
-        private ComponentFactory.Krypton.Toolkit.KryptonCheckButton 数据报表kryptonCheckButton;
-        private ComponentFactory.Krypton.Toolkit.KryptonCheckButton kryptonCheckButton1;
+        private ComponentFactory.Krypton.Toolkit.KryptonCheckButton kcheckBtn房屋租赁;
+        private ComponentFactory.Krypton.Toolkit.KryptonCheckButton kcheckBtn数据报表;
+        private ComponentFactory.Krypton.Toolkit.KryptonCheckButton kcheckBtn辅助工具;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckSet kryptonCheckSet1;
         private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup buttonSpecHeaderGroup1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
@@ -1220,6 +1261,8 @@
         private System.Windows.Forms.ToolStripButton kfBtnCollectRent;
         private System.Windows.Forms.ToolStripButton kfBtnCollectRentDetail;
         private System.Windows.Forms.ListView listViewTools;
+        private System.Windows.Forms.ImageList imageList2;
+        private System.Windows.Forms.ListView listViewReports;
     }
 }
 
