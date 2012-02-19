@@ -72,6 +72,7 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -167,11 +168,23 @@
     <Compile Include="UI\UCBase.Designer.cs">
       <DependentUpon>UCBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UCBaseChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UCBaseChart.Designer.cs">
+      <DependentUpon>UCBaseChart.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UC客房详细.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\UC客房详细.Designer.cs">
       <DependentUpon>UC客房详细.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UC源房客房到期一览.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UC源房客房到期一览.Designer.cs">
+      <DependentUpon>UC源房客房到期一览.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UC源房详细.cs">
       <SubType>UserControl</SubType>
@@ -345,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UC客房详细.resx">
       <DependentUpon>UC客房详细.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UC源房客房到期一览.resx">
+      <DependentUpon>UC源房客房到期一览.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UC源房详细.resx">
       <DependentUpon>UC源房详细.cs</DependentUpon>
