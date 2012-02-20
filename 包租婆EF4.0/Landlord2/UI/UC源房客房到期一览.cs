@@ -13,6 +13,12 @@ namespace Landlord2.UI
         public UC源房客房到期一览()
         {
             InitializeComponent();
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            
         }
     }
 }
