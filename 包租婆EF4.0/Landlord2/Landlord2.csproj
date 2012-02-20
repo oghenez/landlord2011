@@ -356,6 +356,9 @@
     <EmbeddedResource Include="UI\UCBase.resx">
       <DependentUpon>UCBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\UCBaseChart.resx">
+      <DependentUpon>UCBaseChart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UC客房详细.resx">
       <DependentUpon>UC客房详细.cs</DependentUpon>
     </EmbeddedResource>

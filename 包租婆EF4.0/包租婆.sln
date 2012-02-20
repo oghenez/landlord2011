@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landlord2", "Landlord2\Landlord2.csproj", "{78845175-88FF-4D51-AF00-A472A3256F54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ET99_DogTools", "ET99_DogTools\ET99_DogTools.csproj", "{24ADAF62-8071-4AEF-B7D9-A66AC42626D6}"
-EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -29,15 +27,6 @@ Global
 		{78845175-88FF-4D51-AF00-A472A3256F54}.Release|Mixed Platforms.Build.0 = Release|x86
 		{78845175-88FF-4D51-AF00-A472A3256F54}.Release|x86.ActiveCfg = Release|x86
 		{78845175-88FF-4D51-AF00-A472A3256F54}.Release|x86.Build.0 = Release|x86
-		{24ADAF62-8071-4AEF-B7D9-A66AC42626D6}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{24ADAF62-8071-4AEF-B7D9-A66AC42626D6}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{24ADAF62-8071-4AEF-B7D9-A66AC42626D6}.Debug|x86.ActiveCfg = Debug|x86
-		{24ADAF62-8071-4AEF-B7D9-A66AC42626D6}.Debug|x86.Build.0 = Debug|x86
-		{24ADAF62-8071-4AEF-B7D9-A66AC42626D6}.Release|Any CPU.ActiveCfg = Release|x86
-		{24ADAF62-8071-4AEF-B7D9-A66AC42626D6}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{24ADAF62-8071-4AEF-B7D9-A66AC42626D6}.Release|Mixed Platforms.Build.0 = Release|x86
-		{24ADAF62-8071-4AEF-B7D9-A66AC42626D6}.Release|x86.ActiveCfg = Release|x86
-		{24ADAF62-8071-4AEF-B7D9-A66AC42626D6}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
