@@ -41,7 +41,8 @@
             // kryptonPanel1
             // 
             this.kryptonPanel1.Controls.Add(this.chart1);
-            this.kryptonPanel1.Location = new System.Drawing.Point(9, 28);
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Size = new System.Drawing.Size(816, 462);
             // 
             // chart1
             // 
@@ -82,7 +83,7 @@
             series1.YValuesPerPoint = 2;
             series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(569, 372);
+            this.chart1.Size = new System.Drawing.Size(816, 462);
             this.chart1.TabIndex = 4;
             title1.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             title1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(59)))), ((int)(((byte)(105)))));

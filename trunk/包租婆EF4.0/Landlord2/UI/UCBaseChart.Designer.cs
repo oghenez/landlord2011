@@ -15,7 +15,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Size = new System.Drawing.Size(816, 462);
+            // 
+            // UCBaseChart
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.Name = "UCBaseChart";
+            this.Size = new System.Drawing.Size(816, 462);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
