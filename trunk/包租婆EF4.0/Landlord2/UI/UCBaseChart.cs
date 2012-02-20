@@ -15,6 +15,7 @@ namespace Landlord2.UI
         public UCBaseChart()
         {
             InitializeComponent();
+            this.kryptonPanel1.Controls.Clear();//移除基类Panel的4条边线。
             try
             {
                 context = new MyContext();
@@ -23,6 +24,26 @@ namespace Landlord2.UI
             {
                 //! 窗体设计器初始化时会出问题，真正运行时不会到这里。
             }
+        }
+
+        /// <summary> 
+        /// 清理所有正在使用的资源。
+        /// </summary>
+        /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (context != null)
+                {
+                    context.Dispose();
+                }                
+            }
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

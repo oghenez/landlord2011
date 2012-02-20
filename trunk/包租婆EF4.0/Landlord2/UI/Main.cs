@@ -23,7 +23,7 @@ namespace Landlord2
         private MyContext context;
         private UC源房详细 yfUC ;//= new UC源房详细(true) { Dock = DockStyle.Fill };
         private UC客房详细 kfUC ;//= new UC客房详细(true) { Dock = DockStyle.Fill };
-
+        
         public Main()
         {
             InitializeComponent();
@@ -87,6 +87,7 @@ namespace Landlord2
                 LoadTreeView(null);
                 DoThreadSafe(delegate { yfUC = new UC源房详细(true) { Dock = DockStyle.Fill }; });
                 DoThreadSafe(delegate { kfUC = new UC客房详细(true) { Dock = DockStyle.Fill }; });
+                
                 RefreshCustomAlarmData();
                 RefreshSystemAlarmData();
                 
@@ -450,6 +451,8 @@ namespace Landlord2
             {
                 kryptonHeaderGroup2.Panel.Controls.Clear();
                 kryptonHeaderGroup2.ValuesPrimary.Heading = " ";//加个空格，避免控件高度自动减少
+                UC源房客房到期一览 chartUC = new UC源房客房到期一览() { Dock = DockStyle.Fill };
+                kryptonHeaderGroup2.Panel.Controls.Add(chartUC);
             }
             
             if (entity is 源房)
@@ -465,7 +468,7 @@ namespace Landlord2
                 {
                     //仅仅更改绑定实体
                 }
-                else if (kryptonHeaderGroup2.Panel.Controls[0] is UC客房详细)
+                else 
                 {
                     //删除控件
                     kryptonHeaderGroup2.Panel.Controls.RemoveAt(0);
@@ -487,7 +490,7 @@ namespace Landlord2
                 {
                     //仅仅更改绑定实体
                 }
-                else if (kryptonHeaderGroup2.Panel.Controls[0] is UC源房详细)
+                else 
                 {
                     //删除控件
                     kryptonHeaderGroup2.Panel.Controls.RemoveAt(0);
