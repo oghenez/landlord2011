@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using Landlord2.Data;
 
 namespace Landlord2.UI
 {
@@ -18,7 +20,11 @@ namespace Landlord2.UI
 
         private void LoadData()
         {
-            
+            chart1.Series[0].YValueType = ChartValueType.DateTime;
+            foreach (源房 yf in 源房.GetYF_NoHistory(context).Include("客房").Execute(System.Data.Objects.MergeOption.NoTracking))
+            {
+                
+            }
         }
     }
 }
