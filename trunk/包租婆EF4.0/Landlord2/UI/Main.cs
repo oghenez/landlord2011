@@ -450,12 +450,11 @@ namespace Landlord2
             if (entity == null)
             {
                 kryptonHeaderGroup2.Panel.Controls.Clear();
-                kryptonHeaderGroup2.ValuesPrimary.Heading = " ";//加个空格，避免控件高度自动减少
+                kryptonHeaderGroup2.ValuesPrimary.Heading = "源房、客房到期一览";
                 UC源房客房到期一览 chartUC = new UC源房客房到期一览() { Dock = DockStyle.Fill };
                 kryptonHeaderGroup2.Panel.Controls.Add(chartUC);
-            }
-            
-            if (entity is 源房)
+            }            
+            else if (entity is 源房)
             {
                 yfUC.源房BindingSource.DataSource = entity;
                 yfUC.源房涨租协定BindingSource.DataSource = 源房涨租协定.GetByYFid(context, ((源房)entity).ID).Execute(MergeOption.NoTracking);                    
