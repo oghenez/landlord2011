@@ -29,7 +29,8 @@ namespace Landlord2.UI
                 return;
 
             var yfSeriesPoints = chart1.Series["Series源房"].Points;
-            var kfSeriesPoints = chart1.Series["Series客房"].Points;
+            var kfSeriesList = new List<Series>();//每个源房的第一个客房作为一个序列；第二个作为一个序列，依此类推。
+            
             DateTime min=DateTime.Now;
             DateTime max=DateTime.Now;
             for (int index = 0; index < yfCount; index++)
@@ -42,15 +43,32 @@ namespace Landlord2.UI
                         max = yfzzxd.期止;
                     yfSeriesPoints.AddXY(index, yfzzxd.期始, yfzzxd.期止);
                 }
-                foreach (var kf in yfList[index].客房)
+                List<客房> kfList = yfList[index].客房.ToList();
+                for (int i = 0; i < kfList.Count ;i++ )
                 {
-                    kfSeriesPoints.AddXY(index, kf.期始, kf.期止);
+                    if (kfSeriesList.Count <= i)
+                    {
+                        Series kfSeries = new Series("Series客房"+i);
+                        kfSeries.ChartArea = "Default";
+                        kfSeries.ChartType = SeriesChartType.RangeBar;
+                        kfSeries.YValueType = ChartValueType.DateTime;
+                        kfSeries.YValuesPerPoint = 2;
+                        kfSeries["DrawingStyle"] = "Cylinder";
+                        kfSeries["DrawSideBySide"] = "true";
+                        kfSeries["PointWidth"] = "0.6";
+                        kfSeriesList.Add(kfSeries);
+                    }
+                    kfSeriesList[i].Points.AddXY(index, kfList[i].期始, kfList[i].期止);
                 }
-                yfSeriesPoints[index].AxisLabel = string.Format("[源房]{0}",yfList[index].房名);
+
+                yfSeriesPoints[index].AxisLabel = yfList[index].房名;
             }
+
+            kfSeriesList.ForEach(m => chart1.Series.Add(m));
 
             chart1.ChartAreas[0].AxisY.Minimum = min.ToOADate();
             chart1.ChartAreas[0].AxisY.Maximum = max.ToOADate();
+            //chart1.ChartAreas[0].AxisY.Interval 
             chart1.ChartAreas[0].AxisY.LabelStyle.Format = "yyyy/MM/dd";
 
         }
