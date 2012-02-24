@@ -116,13 +116,13 @@
     <Compile Include="BindingListView\ProvidedViewPropertyDescriptor.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Data\装修分类.cs" />
-    <Compile Include="Data\MyContext.cs" />
     <Compile Include="Data\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Data\装修分类.cs" />
+    <Compile Include="Data\MyContext.cs" />
     <Compile Include="Data\Model1.Views.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
