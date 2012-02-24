@@ -450,7 +450,7 @@ namespace Landlord2
             if (entity == null)
             {
                 kryptonHeaderGroup2.Panel.Controls.Clear();
-                kryptonHeaderGroup2.ValuesPrimary.Heading = "源房、客房到期一览";
+                kryptonHeaderGroup2.ValuesPrimary.Heading = "源房、客房租期一览";
                 UC源房客房到期一览 chartUC = new UC源房客房到期一览() { Dock = DockStyle.Fill };
                 kryptonHeaderGroup2.Panel.Controls.Add(chartUC);
             }            
