@@ -15,7 +15,15 @@ namespace Landlord2.UI
         public UCBaseChart()
         {
             InitializeComponent();
-            this.kryptonPanel1.Controls.Clear();//移除基类Panel的4条边线。
+
+            this.Controls.RemoveByKey("kryptonPanel1");//移除基类Panel
+
+            //配置双缓冲
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.ResizeRedraw, true);
+
             try
             {
                 context = new MyContext();

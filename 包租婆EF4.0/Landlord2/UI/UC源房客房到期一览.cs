@@ -14,19 +14,31 @@ namespace Landlord2.UI
 {
     public partial class UC源房客房到期一览 : Landlord2.UI.UCBaseChart
     {
-        public UC源房客房到期一览()
+        private Bitmap bufferimage;
+        private int x;
+        private int y;
+
+        public UC源房客房到期一览(Bitmap bmp)
         {
             InitializeComponent();
-            LoadData();
+            bufferimage = bmp;
         }
 
-        private void LoadData()
+        //调整载入bmp的起始点,及容器大小
+        private void changeLocation(Bitmap bufferimage)
         {
-            //Title chartTitle = new Title("源房、客房租期一览");
-            //chartTitle.Font = new System.Drawing.Font("微软雅黑",12);
-            //chart1.Titles.Add(chartTitle);
+            int width = bufferimage.Width;
+            int height = bufferimage.Height;
+            //父容器过小，则上下左右最少各留出10px空隙；父容器过大，则居中
 
+        }
 
+        private void UC源房客房到期一览_Paint(object sender, PaintEventArgs e)
+        {
+            using (Graphics tg = e.Graphics)
+            {
+                tg.DrawImage(bufferimage, x, y);　　//把画布贴到画面上
+            }
         }
 
         //private void LoadDataOld()
