@@ -20,13 +20,13 @@
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Size = new System.Drawing.Size(816, 462);
+            this.kryptonPanel1.Location = new System.Drawing.Point(93, 73);
+            this.kryptonPanel1.Size = new System.Drawing.Size(630, 315);
             // 
             // UCBaseChart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.Name = "UCBaseChart";
             this.Size = new System.Drawing.Size(816, 462);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
