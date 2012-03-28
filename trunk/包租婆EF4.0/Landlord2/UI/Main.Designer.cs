@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("计算器", 0);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("电子地图", 1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("网上银行", 2);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("生活助手", 3);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("租赁网站", 4);
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("数据报表...", 0);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("计算器", 0);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("电子地图", 1);
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("网上银行", 2);
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("生活助手", 3);
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("租赁网站", 4);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("数据报表...", 0);
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,7 +98,9 @@
             this.kryptonSplitContainer1 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.kryptonHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.buttonSpecHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
+            this.listViewReports = new System.Windows.Forms.ListView();
             this.listViewTools = new System.Windows.Forms.ListView();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.kcheckBtn房屋租赁 = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
@@ -135,8 +137,6 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
             this.AlarmTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.listViewReports = new System.Windows.Forms.ListView();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -526,35 +526,35 @@
             // 计算器ToolStripMenuItem
             // 
             this.计算器ToolStripMenuItem.Name = "计算器ToolStripMenuItem";
-            this.计算器ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.计算器ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.计算器ToolStripMenuItem.Text = "计算器";
             this.计算器ToolStripMenuItem.Click += new System.EventHandler(this.计算器_Click);
             // 
             // 电子地图ToolStripMenuItem
             // 
             this.电子地图ToolStripMenuItem.Name = "电子地图ToolStripMenuItem";
-            this.电子地图ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.电子地图ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.电子地图ToolStripMenuItem.Text = "电子地图";
             this.电子地图ToolStripMenuItem.Click += new System.EventHandler(this.电子地图_Click);
             // 
             // 网上银行ToolStripMenuItem
             // 
             this.网上银行ToolStripMenuItem.Name = "网上银行ToolStripMenuItem";
-            this.网上银行ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.网上银行ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.网上银行ToolStripMenuItem.Text = "网上银行";
             this.网上银行ToolStripMenuItem.Click += new System.EventHandler(this.网上银行_Click);
             // 
             // 生活助手ToolStripMenuItem
             // 
             this.生活助手ToolStripMenuItem.Name = "生活助手ToolStripMenuItem";
-            this.生活助手ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.生活助手ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.生活助手ToolStripMenuItem.Text = "生活助手";
             this.生活助手ToolStripMenuItem.Click += new System.EventHandler(this.生活助手_Click);
             // 
             // 租赁网站ToolStripMenuItem
             // 
             this.租赁网站ToolStripMenuItem.Name = "租赁网站ToolStripMenuItem";
-            this.租赁网站ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.租赁网站ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.租赁网站ToolStripMenuItem.Text = "租赁网站";
             this.租赁网站ToolStripMenuItem.Click += new System.EventHandler(this.租赁网站_Click);
             // 
@@ -670,17 +670,34 @@
             this.buttonSpecHeaderGroup1.UniqueName = "7EE3A8BB0E1C4C417E97E929C1580079";
             this.buttonSpecHeaderGroup1.Click += new System.EventHandler(this.OnLeftRight);
             // 
+            // listViewReports
+            // 
+            this.listViewReports.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listViewReports.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.listViewReports.Dock = System.Windows.Forms.DockStyle.Top;
+            this.listViewReports.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem7});
+            this.listViewReports.Location = new System.Drawing.Point(0, 334);
+            this.listViewReports.MultiSelect = false;
+            this.listViewReports.Name = "listViewReports";
+            this.listViewReports.Scrollable = false;
+            this.listViewReports.ShowGroups = false;
+            this.listViewReports.Size = new System.Drawing.Size(198, 130);
+            this.listViewReports.TabIndex = 5;
+            this.listViewReports.UseCompatibleStateImageBehavior = false;
+            this.listViewReports.Visible = false;
+            // 
             // listViewTools
             // 
             this.listViewTools.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.listViewTools.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listViewTools.Dock = System.Windows.Forms.DockStyle.Top;
             this.listViewTools.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6});
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12});
             this.listViewTools.LargeImageList = this.imageList2;
             this.listViewTools.Location = new System.Drawing.Point(0, 131);
             this.listViewTools.MultiSelect = false;
@@ -693,6 +710,16 @@
             this.listViewTools.Visible = false;
             this.listViewTools.ItemActivate += new System.EventHandler(this.listViewTools_ItemActivate);
             // 
+            // imageList2
+            // 
+            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList2.Images.SetKeyName(0, "calc48.png");
+            this.imageList2.Images.SetKeyName(1, "map48.png");
+            this.imageList2.Images.SetKeyName(2, "bank48.png");
+            this.imageList2.Images.SetKeyName(3, "水电气48.png");
+            this.imageList2.Images.SetKeyName(4, "房产网站48.png");
+            // 
             // treeView1
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -701,11 +728,11 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.ImageIndex = 7;
-            treeNode1.Name = "节点0";
-            treeNode1.Text = "加载信息，请稍候．．．";
+            treeNode2.ImageIndex = 7;
+            treeNode2.Name = "节点0";
+            treeNode2.Text = "加载信息，请稍候．．．";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.treeView1.SelectedImageIndex = 7;
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.ShowRootLines = false;
@@ -784,6 +811,10 @@
             this.kryptonHeaderGroup2.HeaderVisibleSecondary = false;
             this.kryptonHeaderGroup2.Location = new System.Drawing.Point(0, 0);
             this.kryptonHeaderGroup2.Name = "kryptonHeaderGroup2";
+            // 
+            // kryptonHeaderGroup2.Panel
+            // 
+            this.kryptonHeaderGroup2.Panel.AutoScroll = true;
             this.kryptonHeaderGroup2.Size = new System.Drawing.Size(822, 497);
             this.kryptonHeaderGroup2.TabIndex = 0;
             this.kryptonHeaderGroup2.ValuesPrimary.Heading = " ";
@@ -1082,33 +1113,6 @@
             // 
             this.AlarmTimer1.Interval = 500;
             this.AlarmTimer1.Tick += new System.EventHandler(this.AlarmTimer1_Tick);
-            // 
-            // imageList2
-            // 
-            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
-            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList2.Images.SetKeyName(0, "calc48.png");
-            this.imageList2.Images.SetKeyName(1, "map48.png");
-            this.imageList2.Images.SetKeyName(2, "bank48.png");
-            this.imageList2.Images.SetKeyName(3, "水电气48.png");
-            this.imageList2.Images.SetKeyName(4, "房产网站48.png");
-            // 
-            // listViewReports
-            // 
-            this.listViewReports.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.listViewReports.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.listViewReports.Dock = System.Windows.Forms.DockStyle.Top;
-            this.listViewReports.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.listViewReports.Location = new System.Drawing.Point(0, 334);
-            this.listViewReports.MultiSelect = false;
-            this.listViewReports.Name = "listViewReports";
-            this.listViewReports.Scrollable = false;
-            this.listViewReports.ShowGroups = false;
-            this.listViewReports.Size = new System.Drawing.Size(198, 130);
-            this.listViewReports.TabIndex = 5;
-            this.listViewReports.UseCompatibleStateImageBehavior = false;
-            this.listViewReports.Visible = false;
             // 
             // Main
             // 

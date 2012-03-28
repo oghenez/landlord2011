@@ -17,28 +17,47 @@ namespace Landlord2.UI
         private Bitmap bufferimage;
         private int x;
         private int y;
+        private Label tempLable;//使用此lable，调整父容器大小（父容器AutoScroll）
 
         public UC源房客房到期一览(Bitmap bmp)
         {
             InitializeComponent();
             bufferimage = bmp;
+            //private void UCBase_Layout(object sender, LayoutEventArgs e)
+            this.Layout -= base.UCBase_Layout;
+            tempLable = new Label() {Text = "test", AutoSize = false } ;
+            this.Controls.Add(tempLable);
         }
 
         //调整载入bmp的起始点,及容器大小
-        private void changeLocation(Bitmap bufferimage)
+        private void changeLocation( )
         {
+            tempLable.Location = new Point(0, 0);//不需父容器调整大小
+            y = 10;//y值固定
             int width = bufferimage.Width;
             int height = bufferimage.Height;
             //父容器过小，则上下左右最少各留出10px空隙；父容器过大，则居中
-
+            int parentWidth = Parent.Width;
+            int parentHeight = Parent.Height;
+            if (10 + width + 10 < parentWidth)
+                x = (parentWidth - 10 - width) / 2;
+            else
+            {
+                x = 10;
+                tempLable.Location = new Point(10 + width + 10, 0);
+            }
         }
 
         private void UC源房客房到期一览_Paint(object sender, PaintEventArgs e)
         {
-            using (Graphics tg = e.Graphics)
-            {
-                tg.DrawImage(bufferimage, x, y);　　//把画布贴到画面上
-            }
+            changeLocation();            
+            //using (Graphics tg = e.Graphics)
+            //{
+            //    //tg.DrawImage(bufferimage, x, y);　　//把画布贴到画面上
+                
+            //}
+            e.Graphics.DrawImage(bufferimage, x, y);　　//把画布贴到画面上
+            //e.Graphics.DrawString("testing...", new Font("宋体", 14), new SolidBrush(Color.Red), 10, 10);
         }
 
         //private void LoadDataOld()
