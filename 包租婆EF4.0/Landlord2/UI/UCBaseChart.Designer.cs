@@ -26,6 +26,7 @@
             // UCBaseChart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.Name = "UCBaseChart";
             this.Size = new System.Drawing.Size(816, 462);

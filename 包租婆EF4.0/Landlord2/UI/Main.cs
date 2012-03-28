@@ -23,7 +23,8 @@ namespace Landlord2
         private MyContext context;
         private UC源房详细 yfUC ;//= new UC源房详细(true) { Dock = DockStyle.Fill };
         private UC客房详细 kfUC ;//= new UC客房详细(true) { Dock = DockStyle.Fill };
-        
+        private Bitmap infoBmp;//到期一览bmp
+
         public Main()
         {
             InitializeComponent();
@@ -451,7 +452,12 @@ namespace Landlord2
             {
                 kryptonHeaderGroup2.Panel.Controls.Clear();
                 kryptonHeaderGroup2.ValuesPrimary.Heading = "源房、客房租期一览";
-                UC源房客房到期一览 chartUC = new UC源房客房到期一览() { Dock = DockStyle.Fill };
+                //test
+                if (infoBmp == null)
+                    infoBmp = new Bitmap("c:\\1.gif");
+                else
+                    infoBmp = new Bitmap("c:\\2.jpg");
+                UC源房客房到期一览 chartUC = new UC源房客房到期一览(infoBmp) { Dock = DockStyle.Fill };
                 kryptonHeaderGroup2.Panel.Controls.Add(chartUC);
             }            
             else if (entity is 源房)
