@@ -17,22 +17,19 @@ namespace Landlord2.UI
         private Bitmap bufferimage;
         private int x;
         private int y;
-        private Label tempLable;//使用此lable，调整父容器大小（父容器AutoScroll）
 
-        public UC源房客房到期一览(Bitmap bmp)
+        public UC源房客房到期一览()
         {
             InitializeComponent();
-            bufferimage = bmp;
-            //private void UCBase_Layout(object sender, LayoutEventArgs e)
-            this.Layout -= base.UCBase_Layout;
-            tempLable = new Label() {Text = "test", AutoSize = false } ;
-            this.Controls.Add(tempLable);
         }
 
-        //调整载入bmp的起始点,及容器大小
-        private void changeLocation( )
+        //加载或更新bmp并根据图像大小调整父容器
+        public void LoadAndResize(Bitmap bmp)
         {
-            tempLable.Location = new Point(0, 0);//不需父容器调整大小
+            bufferimage = bmp;
+            this.AutoScrollMinSize = new Size(bmp.Width+20, bmp.Height+20);//上下左右各留10px
+
+            //调整载入bmp的起始点
             y = 10;//y值固定
             int width = bufferimage.Width;
             int height = bufferimage.Height;
@@ -44,19 +41,23 @@ namespace Landlord2.UI
             else
             {
                 x = 10;
-                tempLable.Location = new Point(10 + width + 10, 0);
             }
+
+            Invalidate();
         }
 
         private void UC源房客房到期一览_Paint(object sender, PaintEventArgs e)
         {
-            changeLocation();            
-            //using (Graphics tg = e.Graphics)
-            //{
-            //    //tg.DrawImage(bufferimage, x, y);　　//把画布贴到画面上
-                
-            //}
-            e.Graphics.DrawImage(bufferimage, x, y);　　//把画布贴到画面上
+            if (bufferimage != null)
+            {
+                Graphics g = e.Graphics;
+
+                //平移坐标系
+                g.TranslateTransform(this.AutoScrollPosition.X, this.AutoScrollPosition.Y);
+
+                //把画布贴到画面上
+                e.Graphics.DrawImage(bufferimage, x, y);　　
+            }                
             //e.Graphics.DrawString("testing...", new Font("宋体", 14), new SolidBrush(Color.Red), 10, 10);
         }
 
