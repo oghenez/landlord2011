@@ -23,7 +23,8 @@ namespace Landlord2
         private MyContext context;
         private UC源房详细 yfUC ;//= new UC源房详细(true) { Dock = DockStyle.Fill };
         private UC客房详细 kfUC ;//= new UC客房详细(true) { Dock = DockStyle.Fill };
-        private Bitmap infoBmp;//到期一览bmp
+        private UC源房客房到期一览 chartUC ;//= new UC源房客房到期一览(infoBmp) { Dock = DockStyle.Fill };
+        private Bitmap infoBmp ;//到期一览bmp
 
         public Main()
         {
@@ -85,10 +86,12 @@ namespace Landlord2
 
             ThreadPool.QueueUserWorkItem(delegate
             {
-                LoadTreeView(null);
                 DoThreadSafe(delegate { yfUC = new UC源房详细(true) { Dock = DockStyle.Fill }; });
                 DoThreadSafe(delegate { kfUC = new UC客房详细(true) { Dock = DockStyle.Fill }; });
-                
+                DoThreadSafe(delegate { chartUC = new UC源房客房到期一览() { Dock = DockStyle.Fill }; });
+                infoBmp = new Bitmap(kryptonHeaderGroup2.Panel.Width, kryptonHeaderGroup2.Panel.Height);//!+ 这里。。。20120329
+                LoadTreeView(null);
+
                 RefreshCustomAlarmData();
                 RefreshSystemAlarmData();
                 
@@ -233,7 +236,8 @@ namespace Landlord2
             });
 
             if (context.源房.Count() > 0)
-            {                
+            {
+                infoBmp = new Bitmap(kryptonHeaderGroup2.Panel.Width, kryptonHeaderGroup2.Panel.Height);
                 TreeNode root1 = new TreeNode("当前源房信息");
                 root1.ToolTipText = "当前源房按照签约时间自动排序";
                 root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
@@ -253,6 +257,7 @@ namespace Landlord2
             }
             else
             {
+                infoBmp = null;
                 DoThreadSafe(delegate {
                     treeView1.Nodes.Add("当前没有源房、客房信息"); }); 
             }
@@ -450,15 +455,28 @@ namespace Landlord2
             kryptonHeaderGroup2.SuspendLayout();
             if (entity == null)
             {
-                kryptonHeaderGroup2.Panel.Controls.Clear();
-                kryptonHeaderGroup2.ValuesPrimary.Heading = "源房、客房租期一览";
-                //test
-                if (infoBmp == null)
-                    infoBmp = new Bitmap("c:\\1.gif");
+                ////test
+                //if (infoBmp==null)
+                //    infoBmp = new Bitmap("c:\\2.jpg");
+                //else
+                //    infoBmp = new Bitmap("c:\\1.jpg");                
+
+                if (kryptonHeaderGroup2.Panel.Controls.Count == 0) //初次加载
+                {
+                    kryptonHeaderGroup2.Panel.Controls.Add(chartUC);
+                }
+                else if (kryptonHeaderGroup2.Panel.Controls[0] is UC源房客房到期一览)
+                {
+                }
                 else
-                    infoBmp = new Bitmap("c:\\2.jpg");
-                UC源房客房到期一览 chartUC = new UC源房客房到期一览(infoBmp) { Dock = DockStyle.Fill };
-                kryptonHeaderGroup2.Panel.Controls.Add(chartUC);
+                {
+                    //删除控件
+                    kryptonHeaderGroup2.Panel.Controls.RemoveAt(0);
+                    //加载
+                    kryptonHeaderGroup2.Panel.Controls.Add(chartUC);
+                }
+                chartUC.LoadAndResize(infoBmp);
+                kryptonHeaderGroup2.ValuesPrimary.Heading = "源房、客房租期一览";
             }            
             else if (entity is 源房)
             {
