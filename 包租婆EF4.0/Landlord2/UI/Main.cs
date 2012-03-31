@@ -89,7 +89,7 @@ namespace Landlord2
                 DoThreadSafe(delegate { yfUC = new UC源房详细(true) { Dock = DockStyle.Fill }; });
                 DoThreadSafe(delegate { kfUC = new UC客房详细(true) { Dock = DockStyle.Fill }; });
                 DoThreadSafe(delegate { chartUC = new UC源房客房到期一览() { Dock = DockStyle.Fill }; });
-                infoBmp = new Bitmap(kryptonHeaderGroup2.Panel.Width, kryptonHeaderGroup2.Panel.Height);//!+ 这里。。。20120329
+                infoBmp = new Bitmap(kryptonHeaderGroup2.Panel.Width-20, kryptonHeaderGroup2.Panel.Height-20);//暂定父容器尺寸
                 LoadTreeView(null);
 
                 RefreshCustomAlarmData();
