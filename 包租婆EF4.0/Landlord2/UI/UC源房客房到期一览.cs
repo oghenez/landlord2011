@@ -26,6 +26,8 @@ namespace Landlord2.UI
         //加载或更新bmp并根据图像大小调整父容器
         public void LoadAndResize(Bitmap bmp)
         {
+            //test
+            Graphics.FromImage(bmp).Clear(Color.Red);
             bufferimage = bmp;
             this.AutoScrollMinSize = new Size(bmp.Width+20, bmp.Height+20);//上下左右各留10px
 
