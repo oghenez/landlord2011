@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 
@@ -125,5 +119,21 @@ namespace Landlord2.UI
         #endregion
 
        
+    }
+
+    //自定义的双缓冲Panel
+    public class DoubleBufferdPanel : System.Windows.Forms.Panel
+    {
+        public DoubleBufferdPanel()
+            : base()
+        {
+            //配置双缓冲
+            base.SetStyle(ControlStyles.UserPaint |
+                        ControlStyles.AllPaintingInWmPaint |
+                        ControlStyles.OptimizedDoubleBuffer |
+                        ControlStyles.ResizeRedraw |
+                        ControlStyles.SupportsTransparentBackColor, true);
+            base.UpdateStyles();
+        }
     }
 }

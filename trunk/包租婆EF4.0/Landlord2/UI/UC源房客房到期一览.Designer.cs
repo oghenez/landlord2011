@@ -28,21 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.SuspendLayout();
             // 
-            // kryptonPanel1
+            // BasePanel
             // 
-            this.kryptonPanel1.Location = new System.Drawing.Point(133, 81);
-            this.kryptonPanel1.Size = new System.Drawing.Size(550, 300);
+            this.BasePanel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BasePanel.Location = new System.Drawing.Point(125, 76);
+            this.BasePanel.Size = new System.Drawing.Size(550, 300);
             // 
             // UC源房客房到期一览
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.Name = "UC源房客房到期一览";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.UC源房客房到期一览_Paint);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            this.Size = new System.Drawing.Size(800, 452);
             this.ResumeLayout(false);
 
         }

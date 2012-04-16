@@ -14,54 +14,61 @@ namespace Landlord2.UI
 {
     public partial class UC源房客房到期一览 : Landlord2.UI.UCBaseChart
     {
-        private Bitmap bufferimage;
-        private int x;
-        private int y;
+        //private Bitmap bufferimage;
+        //private int x;
+        //private int y;
 
         public UC源房客房到期一览()
         {
             InitializeComponent();
+            
         }
 
         //加载或更新bmp并根据图像大小调整父容器
         public void LoadAndResize(Bitmap bmp)
         {
-            //test
-            Graphics.FromImage(bmp).Clear(Color.Red);
-            bufferimage = bmp;
-            this.AutoScrollMinSize = new Size(bmp.Width+20, bmp.Height+20);//上下左右各留10px
+            //Graphics.FromImage(bmp).Clear(Color.Red);
+
+            BasePanel.Size = bmp.Size;
+            BasePanel.BackgroundImage = bmp;
+            ////test
+            //Graphics.FromImage(bmp).Clear(Color.Red);
+            //bufferimage = bmp;
+            //this.AutoScrollMinSize = new Size(bmp.Width+20, bmp.Height+20);//上下左右各留10px
 
             //调整载入bmp的起始点
-            y = 10;//y值固定
-            int width = bufferimage.Width;
-            int height = bufferimage.Height;
-            //父容器过小，则上下左右最少各留出10px空隙；父容器过大，则居中
-            int parentWidth = Parent.Width;
-            int parentHeight = Parent.Height;
-            if (10 + width + 10 < parentWidth)
-                x = (parentWidth - 10 - width) / 2;
-            else
-            {
-                x = 10;
-            }
-
-            Invalidate();
+            //y = 10;//y值固定
+            //int width = bufferimage.Width;
+            //int height = bufferimage.Height;
+            ////父容器过小，则上下左右最少各留出10px空隙；父容器过大，则居中
+            //int parentWidth = Parent.Width;
+            //int parentHeight = Parent.Height;
+            //if (10 + width + 10 < parentWidth)
+            //    x = (parentWidth - 10 - width) / 2;
+            //else
+            //{
+            //    x = 10;
+            //}
+            //x = BasePanel.Location.X;
+            //y = BasePanel.Location.Y;
+            
+            //Invalidate();
         }
 
-        private void UC源房客房到期一览_Paint(object sender, PaintEventArgs e)
-        {
-            if (bufferimage != null)
-            {
-                Graphics g = e.Graphics;
+        //private void UC源房客房到期一览_Paint(object sender, PaintEventArgs e)
+        //{
+        //    if (bufferimage != null)
+        //    {
+        //        Graphics g = e.Graphics;
 
-                //平移坐标系
-                g.TranslateTransform(this.AutoScrollPosition.X, this.AutoScrollPosition.Y);
+        //        //平移坐标系
+        //        g.TranslateTransform(this.AutoScrollPosition.X, this.AutoScrollPosition.Y);
 
-                //把画布贴到画面上
-                e.Graphics.DrawImage(bufferimage, x, y);　　
-            }                
-            //e.Graphics.DrawString("testing...", new Font("宋体", 14), new SolidBrush(Color.Red), 10, 10);
-        }
+        //        //把画布贴到画面上
+        //        e.Graphics.DrawImage(bufferimage, x, y);
+        //    }
+        //    //e.Graphics.DrawString("testing...", new Font("宋体", 14), new SolidBrush(Color.Red), 10, 10);
+        //}
 
         //private void LoadDataOld()
         //{            
