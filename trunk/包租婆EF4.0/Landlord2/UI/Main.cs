@@ -224,12 +224,54 @@ namespace Landlord2
         //绘制标题
         private void paintTitle(Graphics g)
         {
-            
+            //(阴影刷)
+            //HatchBrush  hatchBrush = new HatchBrush(HatchStyle.DiagonalCross,Color.DarkOrange, Color.Aquamarine);
+            //g.DrawString("源房客房到期一览", new Font("宋体", Font.Bold,9f), hatchBrush,);
+
+            // Set up string.
+            //string measureString = "源房客房到期一览";
+            //Font stringFont = new Font("黑体", 14f);//, FontStyle.Bold);
+            //// Measure string.
+            //SizeF stringSize = new SizeF();
+            //stringSize = g.MeasureString(measureString, stringFont);
+            //// Draw rectangle representing size of string.
+            //g.DrawRectangle(new Pen(Color.Red, 1),0.0F, 0.0F, stringSize.Width, stringSize.Height);
+            //// Draw string to screen.
+            //g.DrawString(measureString,stringFont,Brushes.Black,new PointF(0, 0));
+
+            //test
+            HatchBrush hb = new HatchBrush(HatchStyle.LightUpwardDiagonal, Color.Black, Color.White);
+
+            g.FillEllipse(Brushes.Gray, 10f, 10f, 200, 200);
+            g.DrawEllipse(new Pen(Color.Black, 1f), 10f, 10f, 200, 200);
+
+            g.FillEllipse(hb, 30f, 95f, 30, 30);
+            g.DrawEllipse(new Pen(Color.Black, 1f), 30f, 95f, 30, 30);
+
+            g.FillEllipse(hb, 160f, 95f, 30, 30);
+            g.DrawEllipse(new Pen(Color.Black, 1f), 160f, 95f, 30, 30);
+
+            g.FillEllipse(hb, 95f, 30f, 30, 30);
+            g.DrawEllipse(new Pen(Color.Black, 1f), 95f, 30f, 30, 30);
+
+            g.FillEllipse(hb, 95f, 160f, 30, 30);
+            g.DrawEllipse(new Pen(Color.Black, 1f), 95f, 160f, 30, 30);
+
+            g.FillEllipse(Brushes.Blue, 60f, 60f, 100, 100);
+            g.DrawEllipse(new Pen(Color.Black, 1f), 60f, 60f, 100, 100);
+
+            g.FillEllipse(Brushes.BlanchedAlmond, 95f, 95f, 30, 30);
+            g.DrawEllipse(new Pen(Color.Black, 1f), 95f, 95f, 30, 30);
+
+            g.DrawRectangle(new Pen(Brushes.Blue, 0.1f), 6, 6, 208, 208);
+
+            g.DrawLine(new Pen(Color.Black, 0.1f), 110f, 110f, 220f, 25f);
+            g.DrawString("剖面图", new Font("宋体", 12f), Brushes.Green, 220f, 20f);
         }
         //绘制一条源房信息
         private void paintYF(Graphics g)
         {
-            throw new NotImplementedException();
+            
         }
         //绘制一条客房信息
         private void paintKF(Graphics g)
@@ -268,9 +310,10 @@ namespace Landlord2
                 g.InterpolationMode = InterpolationMode.HighQualityBicubic;
                 g.CompositingQuality = CompositingQuality.HighQuality;
                 g.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;//文字clearType
-
+                
                 if (context.源房.Count() > 0)
                 {
+                    paintTitle(g);//绘制标题
                     TreeNode root1 = new TreeNode("当前源房信息");
                     root1.ToolTipText = "当前源房按照签约时间自动排序";
                     root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);

@@ -30,7 +30,9 @@ namespace Landlord2.UI
             //Graphics.FromImage(bmp).Clear(Color.Red);
 
             BasePanel.Size = bmp.Size;
+            BasePanel.BackgroundImageLayout = ImageLayout.None;
             BasePanel.BackgroundImage = bmp;
+
             ////test
             //Graphics.FromImage(bmp).Clear(Color.Red);
             //bufferimage = bmp;
