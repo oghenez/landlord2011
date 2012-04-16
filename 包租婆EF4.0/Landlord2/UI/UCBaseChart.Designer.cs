@@ -15,13 +15,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.SuspendLayout();
             // 
-            // kryptonPanel1
+            // BasePanel
             // 
-            this.kryptonPanel1.Location = new System.Drawing.Point(93, 73);
-            this.kryptonPanel1.Size = new System.Drawing.Size(630, 315);
+            this.BasePanel.Location = new System.Drawing.Point(90, 71);
+            this.BasePanel.Size = new System.Drawing.Size(630, 315);
             // 
             // UCBaseChart
             // 
@@ -29,8 +28,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(243)))), ((int)(((byte)(250)))));
             this.Name = "UCBaseChart";
-            this.Size = new System.Drawing.Size(816, 462);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            this.Size = new System.Drawing.Size(810, 458);
             this.ResumeLayout(false);
 
         }

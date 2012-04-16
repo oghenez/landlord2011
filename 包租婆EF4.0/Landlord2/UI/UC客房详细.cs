@@ -21,8 +21,8 @@ namespace Landlord2.UI
         {
             InitializeComponent();
             Controls.Remove(toolStrip1);
-            kryptonPanel1.Controls.Remove(kryptonDataGridView1);
-            kryptonPanel1.Height -= kryptonDataGridView1.Height;
+            BasePanel.Controls.Remove(kryptonDataGridView1);
+            BasePanel.Height -= kryptonDataGridView1.Height;
         }
         public UC客房详细(bool isReadOnly)
         {
@@ -40,7 +40,7 @@ namespace Landlord2.UI
             if (IsReadOnly)
             {
                 labReadOnly.Visible = true;
-                foreach (var con in kryptonPanel1.Controls)
+                foreach (var con in BasePanel.Controls)
                 {
                     if (con is KryptonTextBox)
                         (con as KryptonTextBox).ReadOnly = true;

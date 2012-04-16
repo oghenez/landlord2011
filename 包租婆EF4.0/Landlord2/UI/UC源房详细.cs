@@ -35,7 +35,7 @@ namespace Landlord2.UI
             if (IsReadOnly)
             {
                 labReadOnly.Visible = true;
-                foreach (var con in kryptonPanel1.Controls)
+                foreach (var con in BasePanel.Controls)
                 {
                     if (con is KryptonTextBox)
                         (con as KryptonTextBox).ReadOnly = true;

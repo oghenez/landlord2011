@@ -14,16 +14,8 @@ namespace Landlord2.UI
         protected MyContext context;
         public UCBaseChart()
         {
-            InitializeComponent();
-
-            this.Controls.RemoveByKey("kryptonPanel1");//移除基类Panel
-
-            //配置双缓冲
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            SetStyle(ControlStyles.ResizeRedraw, true);
-
+            InitializeComponent();         
+            
             try
             {
                 context = new MyContext();

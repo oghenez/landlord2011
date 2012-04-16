@@ -14,6 +14,8 @@ using System.Data.Objects.DataClasses;
 using System.Threading;
 using System.Data.Objects;
 using System.IO;
+using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 
 namespace Landlord2
 {
@@ -212,6 +214,29 @@ namespace Landlord2
         } 
         #endregion
 
+        ////绘制“源房客房到期一览”图片
+        //private void PaintBmp()
+        //{
+        //    paintTitle();
+        //    paintYF();
+        //}
+
+        //绘制标题
+        private void paintTitle(Graphics g)
+        {
+            
+        }
+        //绘制一条源房信息
+        private void paintYF(Graphics g)
+        {
+            throw new NotImplementedException();
+        }
+        //绘制一条客房信息
+        private void paintKF(Graphics g)
+        {
+
+        }
+
         //根据数据源，刷新TreeView，并定位到指定对象所对应的节点。（新增、修改、删除等操作后）
         //如果obj传入null，那么如果原来选择的是源房或客房节点，继续选择它。
         //! 注意：此处的obj，有可能是从属于其他界面context的，所以函数里会根据entitykey判断
@@ -235,31 +260,41 @@ namespace Landlord2
                 treeView1.Nodes.Clear();
             });
 
-            if (context.源房.Count() > 0)
+            using (Graphics g = Graphics.FromImage(infoBmp))
             {
-                infoBmp = new Bitmap(kryptonHeaderGroup2.Panel.Width, kryptonHeaderGroup2.Panel.Height);
-                TreeNode root1 = new TreeNode("当前源房信息");
-                root1.ToolTipText = "当前源房按照签约时间自动排序";
-                root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
-                root1.ImageIndex = 0;
-                DoThreadSafe(delegate { treeView1.Nodes.Add(root1); });
-                foreach (var yf in 源房.GetYF_NoHistory(context).Include("客房").Execute(MergeOption.OverwriteChanges))
-                    AddYuanFangToTree(root1, yf, false, obj);
+                g.Clear(Color.Transparent);//清除背景图片
+                g.SmoothingMode = SmoothingMode.HighQuality; //高质量
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality; //高像素偏移质量            
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;//文字clearType
 
-                TreeNode root2 = new TreeNode("历史源房信息");
-                root2.ToolTipText = "历史源房按照签约时间自动排序";
-                root2.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
-                root2.ForeColor = Color.DimGray;
-                root2.ImageIndex = 1;
-                DoThreadSafe(delegate { treeView1.Nodes.Add(root2); });
-                foreach (var yf in 源房.GetYF_History(context).Include("客房").Execute(MergeOption.OverwriteChanges))
-                    AddYuanFangToTree(root2, yf, true, obj);
-            }
-            else
-            {
-                infoBmp = null;
-                DoThreadSafe(delegate {
-                    treeView1.Nodes.Add("当前没有源房、客房信息"); }); 
+                if (context.源房.Count() > 0)
+                {
+                    TreeNode root1 = new TreeNode("当前源房信息");
+                    root1.ToolTipText = "当前源房按照签约时间自动排序";
+                    root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
+                    root1.ImageIndex = 0;
+                    DoThreadSafe(delegate { treeView1.Nodes.Add(root1); });
+                    foreach (var yf in 源房.GetYF_NoHistory(context).Include("客房").Execute(MergeOption.OverwriteChanges))
+                        AddYuanFangToTree(root1, yf, false, obj);
+
+                    TreeNode root2 = new TreeNode("历史源房信息");
+                    root2.ToolTipText = "历史源房按照签约时间自动排序";
+                    root2.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
+                    root2.ForeColor = Color.DimGray;
+                    root2.ImageIndex = 1;
+                    DoThreadSafe(delegate { treeView1.Nodes.Add(root2); });
+                    foreach (var yf in 源房.GetYF_History(context).Include("客房").Execute(MergeOption.OverwriteChanges))
+                        AddYuanFangToTree(root2, yf, true, obj);
+                }
+                else
+                {
+                    DoThreadSafe(delegate
+                    {
+                        treeView1.Nodes.Add("当前没有源房、客房信息");
+                    });
+                }
             }
 
             DoThreadSafe(delegate
@@ -449,18 +484,13 @@ namespace Landlord2
                     break;
             }
         }
+
         #region 加载或刷新用户控件（例如：上次和当前都是点击的‘源房’，那么仅仅刷新而不重复加载）
         private void LoadOrRefreshUC(object entity)
         {
             kryptonHeaderGroup2.SuspendLayout();
             if (entity == null)
             {
-                ////test
-                //if (infoBmp==null)
-                //    infoBmp = new Bitmap("c:\\2.jpg");
-                //else
-                //    infoBmp = new Bitmap("c:\\1.jpg");                
-
                 if (kryptonHeaderGroup2.Panel.Controls.Count == 0) //初次加载
                 {
                     kryptonHeaderGroup2.Panel.Controls.Add(chartUC);
