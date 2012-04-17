@@ -266,7 +266,7 @@ namespace Landlord2
             g.DrawRectangle(new Pen(Brushes.Blue, 0.1f), 6, 6, 208, 208);
 
             g.DrawLine(new Pen(Color.Black, 0.1f), 110f, 110f, 220f, 25f);
-            g.DrawString("剖面图", new Font("宋体", 12f), Brushes.Green, 220f, 20f);
+            g.DrawString("剖面图", new Font("宋体", 12f, FontStyle.Bold), Brushes.Green, 220f, 20f);
         }
         //绘制一条源房信息
         private void paintYF(Graphics g)
@@ -304,6 +304,7 @@ namespace Landlord2
 
             using (Graphics g = Graphics.FromImage(infoBmp))
             {
+                g.TranslateTransform(0, 0);//还原坐标原点
                 g.Clear(Color.Transparent);//清除背景图片
                 g.SmoothingMode = SmoothingMode.HighQuality; //高质量
                 g.PixelOffsetMode = PixelOffsetMode.HighQuality; //高像素偏移质量            
@@ -549,7 +550,7 @@ namespace Landlord2
                     kryptonHeaderGroup2.Panel.Controls.Add(chartUC);
                 }
                 chartUC.LoadAndResize(infoBmp);
-                kryptonHeaderGroup2.ValuesPrimary.Heading = "源房、客房租期一览";
+                kryptonHeaderGroup2.ValuesPrimary.Heading = "源房缴费、客房收租一览【本期】";
             }            
             else if (entity is 源房)
             {
