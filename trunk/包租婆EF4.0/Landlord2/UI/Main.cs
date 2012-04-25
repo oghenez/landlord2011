@@ -550,7 +550,7 @@ namespace Landlord2
                     kryptonHeaderGroup2.Panel.Controls.Add(chartUC);
                 }
                 chartUC.LoadAndResize(infoBmp);
-                kryptonHeaderGroup2.ValuesPrimary.Heading = "源房缴费、客房收租一览【本期】";
+                kryptonHeaderGroup2.ValuesPrimary.Heading = "本期缴费、收租一览";
             }            
             else if (entity is 源房)
             {
