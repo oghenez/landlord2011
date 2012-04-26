@@ -269,9 +269,18 @@ namespace Landlord2
             g.DrawString("剖面图", new Font("宋体", 12f, FontStyle.Bold), Brushes.Green, 220f, 20f);
         }
         //绘制一条源房信息
-        private void paintYF(Graphics g)
+        private void paintYF(Graphics g,源房 yf)
         {
-            
+            float width = infoBmp.Width;
+            float height = infoBmp.Height;
+            string measureString = yf.房名;
+            Font font = new Font("宋体", 12f, FontStyle.Bold);
+            SizeF stringSize = new SizeF();
+            stringSize = g.MeasureString(measureString, font, 200, StringFormat.GenericDefault);//字符串最大布局宽度200像素
+            g.DrawRectangle(new Pen(Color.Red, 0.1f), 10f, 10f, stringSize.Width, stringSize.Height);
+            g.DrawString(measureString, font, Brushes.Black,10f,10f);
+
+            g.TranslateTransform(0, stringSize.Height);//下移坐标原点
         }
         //绘制一条客房信息
         private void paintKF(Graphics g)
@@ -314,14 +323,17 @@ namespace Landlord2
                 
                 if (context.源房.Count() > 0)
                 {
-                    paintTitle(g);//绘制标题
+                    //paintTitle(g);//绘制标题
                     TreeNode root1 = new TreeNode("当前源房信息");
                     root1.ToolTipText = "当前源房按照签约时间自动排序";
                     root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
                     root1.ImageIndex = 0;
                     DoThreadSafe(delegate { treeView1.Nodes.Add(root1); });
                     foreach (var yf in 源房.GetYF_NoHistory(context).Include("客房").Execute(MergeOption.OverwriteChanges))
+                    {
                         AddYuanFangToTree(root1, yf, false, obj);
+                        paintYF(g, yf);//绘制源房
+                    }
 
                     TreeNode root2 = new TreeNode("历史源房信息");
                     root2.ToolTipText = "历史源房按照签约时间自动排序";
