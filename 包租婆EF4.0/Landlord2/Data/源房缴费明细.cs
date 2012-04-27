@@ -93,6 +93,22 @@ namespace Landlord2.Data
             return result;
         }
 
+        /// <summary>
+        /// 查询某个源房最近一次的缴费明细（仅仅针对‘房租’这个缴费项而言）
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="yf"></param>
+        /// <returns></returns>
+        public static 源房缴费明细 GetRecentPayDetail(MyContext context, 源房 yf)
+        {
+            源房缴费明细 recentPayDetail = null;
+            ObjectQuery<源房缴费明细> result = compiledQuery1.Invoke(context, yf.ID, "房租");
+            if (result.Count() > 0)
+            {
+                recentPayDetail = result.First();
+            }
+            return recentPayDetail;
+        }
         #endregion
 
     }

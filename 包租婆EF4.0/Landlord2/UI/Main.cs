@@ -268,19 +268,46 @@ namespace Landlord2
             g.DrawLine(new Pen(Color.Black, 0.1f), 110f, 110f, 220f, 25f);
             g.DrawString("剖面图", new Font("宋体", 12f, FontStyle.Bold), Brushes.Green, 220f, 20f);
         }
-        //绘制一条源房信息
+        /// <summary>
+        /// 绘制一条源房信息
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="yf"></param>
         private void paintYF(Graphics g,源房 yf)
         {
-            float width = infoBmp.Width;
-            float height = infoBmp.Height;
             string measureString = yf.房名;
+            源房缴费明细 payDetail = 源房缴费明细.GetRecentPayDetail(context, yf);//得到最近一次的源房缴费明细(特指‘房租’的缴费)
+            RectangleF strRecF = new RectangleF(10f, 10f, 200, 60);//源房房名字符串区域           
+
+            //根据字体计算‘房名’字符串的宽高【最长200像素，超过则换行】
             Font font = new Font("宋体", 12f, FontStyle.Bold);
             SizeF stringSize = new SizeF();
             stringSize = g.MeasureString(measureString, font, 200, StringFormat.GenericDefault);//字符串最大布局宽度200像素
-            g.DrawRectangle(new Pen(Color.Red, 0.1f), 10f, 10f, stringSize.Width, stringSize.Height);
-            g.DrawString(measureString, font, Brushes.Black,10f,10f);
 
-            g.TranslateTransform(0, stringSize.Height);//下移坐标原点
+            //右对齐字符串
+            StringFormat strFormat = new StringFormat();
+            strFormat.Alignment = StringAlignment.Far;
+            strFormat.LineAlignment = StringAlignment.Center; 
+
+            //确定字符串区域，绘制字符串
+            g.DrawRectangle(new Pen(Color.Red, 0.1f), Rectangle.Round(strRecF));
+            g.DrawString(measureString, font, Brushes.Black, strRecF, strFormat);
+            
+            //绘制分割线
+            g.DrawLine(new Pen(Color.Black, 0.1f), 220, 0, 220, 60);
+
+            //计算缴费的3个时间点，及对应Bar图中的占比
+            if (payDetail == null)//该源房没有缴费（缴房租）的记录
+            {
+                //!++ Here...2012.4.28
+            }
+
+
+            g.TranslateTransform(0, 60);//下移坐标原点
+
+            Pen linepen = new Pen(Color.Blue, 1);
+            linepen.CustomStartCap = new System.Drawing.Drawing2D.AdjustableArrowCap(4, 5, true);
+            g.DrawLine(linepen, new Point( 100, 100), new Point( 100, 110));   
         }
         //绘制一条客房信息
         private void paintKF(Graphics g)
