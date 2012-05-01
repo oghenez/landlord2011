@@ -279,10 +279,32 @@ namespace Landlord2
             源房缴费明细 payDetail = 源房缴费明细.GetRecentPayDetail(context, yf);//得到最近一次的源房缴费明细(特指‘房租’的缴费)
             RectangleF strRecF = new RectangleF(10f, 10f, 200, 60);//源房房名字符串区域           
 
-            //根据字体计算‘房名’字符串的宽高【最长200像素，超过则换行】
-            Font font = new Font("宋体", 12f, FontStyle.Bold);
-            SizeF stringSize = new SizeF();
-            stringSize = g.MeasureString(measureString, font, 200, StringFormat.GenericDefault);//字符串最大布局宽度200像素
+            //房名字符串超过30个汉字就截断，用“...”代替
+            if (System.Text.Encoding.Default.GetByteCount(measureString) > 60)
+            {
+                int t = 0;
+                string temp = string.Empty;
+                char[] q = measureString.ToCharArray();
+                for (int i = 0; i < q.Length && t < 60; i++)
+                {
+                    if ((int)q[i] >= 0x4E00 && (int)q[i] <= 0x9FA5)//是否汉字
+                    {
+                        temp += q[i];
+                        t += 2;
+                    }
+                    else
+                    {
+                        temp += q[i];
+                        t++;
+                    }
+                }
+                measureString = temp + "...";
+            }
+
+            ////根据字体计算‘房名’字符串的宽高【最长200像素，超过则换行】
+            //Font font = new Font("宋体", 12f, FontStyle.Bold);
+            //SizeF stringSize = new SizeF();
+            //stringSize = g.MeasureString(measureString, font, 200, StringFormat.GenericDefault);//字符串最大布局宽度200像素
 
             //右对齐字符串
             StringFormat strFormat = new StringFormat();
@@ -291,7 +313,7 @@ namespace Landlord2
 
             //确定字符串区域，绘制字符串
             g.DrawRectangle(new Pen(Color.Red, 0.1f), Rectangle.Round(strRecF));
-            g.DrawString(measureString, font, Brushes.Black, strRecF, strFormat);
+            g.DrawString(measureString, new Font("宋体", 12f, FontStyle.Bold), Brushes.Black, strRecF, strFormat);
             
             //绘制分割线
             g.DrawLine(new Pen(Color.Black, 0.1f), 220, 0, 220, 60);
@@ -301,7 +323,18 @@ namespace Landlord2
             {
                 //!++ Here...2012.4.28
             }
+            else//存在最近缴房租的记录
+            {
+                DateTime begin = (DateTime)payDetail.期始;
+                DateTime end = (DateTime)payDetail.期止;
+                if (DateTime.Now < end)//
+                {
+                }
+                else
+                { 
+                }
 
+            }
 
             g.TranslateTransform(0, 60);//下移坐标原点
 
