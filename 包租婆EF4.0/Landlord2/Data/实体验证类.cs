@@ -159,14 +159,14 @@ namespace Landlord2.Data
                     if (index > 0)//this不排首位
                     {
                         if (list[index - 1].期止.Value.Date.AddDays(1) != this.期始.Value.Date)
-                            returnStr += string.Format("期始时间和上次此源房同类型缴费的期止时间应该连续，请检查[期止{0}]和[期始{1}]!",
+                            returnStr += string.Format("期始时间和上次此源房同类型缴费的期止时间应该连续，请检查[上次期止{0}]和[本次期始{1}]!",
                                                   list[index - 1].期止.Value.ToShortDateString(), 
                                                   this.期始.Value.ToShortDateString()) + Environment.NewLine;
                     }
                     if (index < list.Count-1)//this不排在末尾
                     {
                         if(this.期止.Value.Date.AddDays(1) != list[index+1].期始.Value.Date)
-                            returnStr += string.Format("期止时间和下次此源房同类型缴费的期始时间应该连续，请检查[期止{0}]和[期始{1}]!",
+                            returnStr += string.Format("期止时间和下次此源房同类型缴费的期始时间应该连续，请检查[本次期止{0}]和[下次期始{1}]!",
                                                   this.期止.Value.ToShortDateString(),
                                                   list[index + 1].期始.Value.ToShortDateString()) + Environment.NewLine;
                     }
