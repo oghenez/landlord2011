@@ -87,7 +87,7 @@ namespace Landlord2.Data
             //客房租金明细必须隶属于一个上级的客房
             if (this.客房ID == null || this.客房ID == Guid.Empty)
             {
-                returnStr += "请指定此租金明细的客房! " + Environment.NewLine;
+                returnStr += "△ 请指定此租金明细的客房! " + Environment.NewLine;
                 return returnStr;
             }
 
@@ -98,18 +98,18 @@ namespace Landlord2.Data
             //期止>期始，并且期始时间和上次此源房同类型缴费的期止时间应该连续
             if (this.止付日期.Date < this.起付日期.Date)
             {
-                returnStr += string.Format("止付日期[{0}]不能小于起付日期[{1}]!",
+                returnStr += string.Format("△ 止付日期[{0}]不能小于起付日期[{1}]!",
                  this.止付日期.ToShortDateString(), this.起付日期.ToShortDateString()) + Environment.NewLine;
             }
             else
             {
                 //支付期是否在协议时间段内
                 if (this.起付日期.Date < this.客房.期始.Value.Date)
-                    returnStr += string.Format("起付日期[{0}]不能小于客房协议租期的期始日期[{1}]!",
+                    returnStr += string.Format("△ 起付日期[{0}]不能小于客房协议租期的期始日期[{1}]!",
                         this.起付日期.ToShortDateString(), this.客房.期始.Value.ToShortDateString()) + Environment.NewLine;
 
                 if(this.止付日期.Date > this.客房.期止.Value.Date)
-                    returnStr += string.Format("止付日期[{0}]不能大于客房协议租期的期止日期[{1}]!",
+                    returnStr += string.Format("△ 止付日期[{0}]不能大于客房协议租期的期止日期[{1}]!",
                         this.止付日期.ToShortDateString(), this.客房.期止.Value.ToShortDateString()) + Environment.NewLine;
             }
             return returnStr;
@@ -125,7 +125,7 @@ namespace Landlord2.Data
             //源房缴费明细必须隶属于一个上级的源房
             if (this.源房ID == null || this.源房ID == Guid.Empty)
             {
-                returnStr += "请指定此缴费明细的源房! " + Environment.NewLine;
+                returnStr += "△ 请指定此缴费明细的源房! " + Environment.NewLine;
                 return returnStr;
             }
 
@@ -133,21 +133,40 @@ namespace Landlord2.Data
             returnStr += MyEntityHelper.CheckNullOrEmptyAndABS(this);
 
             //时间校验
+            //校验期始期止时间是否在源房协议期内
+            {
+                using (MyContext context = new MyContext())
+                {
+                    var objectQuery = 源房涨租协定.GetByYFid(context, this.源房ID).Execute(System.Data.Objects.MergeOption.NoTracking).ToList();
+                    DateTime min = objectQuery.Min(m => m.期始);
+                    DateTime max = objectQuery.Max(m => m.期止);
+                    if(this.期始.HasValue && this.期始.Value.Date < min.Date)
+                        returnStr += "△ 期始时间小于源房的协议期始时间!" + Environment.NewLine;
+                    if(this.期止.HasValue && max.Date < this.期止.Value.Date)
+                        returnStr += "△ 期止时间大于源房的协议期止时间!" + Environment.NewLine;
+                }
+            }
+            //当缴费项为‘房租’时，必须有期始期止时间
+            if (this.缴费项 == "房租")
+            {
+                if (!this.期始.HasValue || !this.期止.HasValue)
+                    returnStr += "△ 当缴费项为‘房租’时，必须有期始期止时间!" + Environment.NewLine;                
+            }
             //不可仅有单边值
             if (this.期始.HasValue && !this.期止.HasValue)
             {
-                returnStr += "缺少期止时间!" + Environment.NewLine;
+                returnStr += "△ 缺少期止时间!" + Environment.NewLine;
             }
             else if (!this.期始.HasValue && this.期止.HasValue)
             {
-                returnStr += "缺少期始时间!" + Environment.NewLine;
+                returnStr += "△ 缺少期始时间!" + Environment.NewLine;
             }
             //期止>期始，并且期始时间和上次此源房同类型缴费的期止时间应该连续
             if (this.期始.HasValue && this.期止.HasValue)
             {
                 if (this.期止.Value.Date < this.期始.Value.Date)
                 {
-                    returnStr += string.Format("期止时间[{0}]不能小于期始时间[{1}]!",
+                    returnStr += string.Format("△ 期止时间[{0}]不能小于期始时间[{1}]!",
                      this.期止.Value.ToShortDateString(), this.期始.Value.ToShortDateString()) + Environment.NewLine;
                 }
                 else
@@ -159,14 +178,14 @@ namespace Landlord2.Data
                     if (index > 0)//this不排首位
                     {
                         if (list[index - 1].期止.Value.Date.AddDays(1) != this.期始.Value.Date)
-                            returnStr += string.Format("期始时间和上次此源房同类型缴费的期止时间应该连续，请检查[上次期止{0}]和[本次期始{1}]!",
+                            returnStr += string.Format("△ 期始时间和上次此源房同类型缴费的期止时间应该连续，请检查[上次期止{0}]和[本次期始{1}]!",
                                                   list[index - 1].期止.Value.ToShortDateString(), 
                                                   this.期始.Value.ToShortDateString()) + Environment.NewLine;
                     }
                     if (index < list.Count-1)//this不排在末尾
                     {
                         if(this.期止.Value.Date.AddDays(1) != list[index+1].期始.Value.Date)
-                            returnStr += string.Format("期止时间和下次此源房同类型缴费的期始时间应该连续，请检查[本次期止{0}]和[下次期始{1}]!",
+                            returnStr += string.Format("△ 期止时间和下次此源房同类型缴费的期始时间应该连续，请检查[本次期止{0}]和[下次期始{1}]!",
                                                   this.期止.Value.ToShortDateString(),
                                                   list[index + 1].期始.Value.ToShortDateString()) + Environment.NewLine;
                     }
@@ -184,7 +203,7 @@ namespace Landlord2.Data
             //客房必须隶属于一个上级的源房
             if (this.源房ID == null || this.源房ID == Guid.Empty)
             {
-                returnStr += "请指定此客房上级的源房!" + Environment.NewLine;
+                returnStr += "△ 请指定此客房上级的源房!" + Environment.NewLine;
                 return returnStr;
             }
 
@@ -193,40 +212,40 @@ namespace Landlord2.Data
 
             //检测重名
             if (this.源房.客房.Count(m => m.命名 == this.命名) > 1)
-                returnStr += "客房命名重复，请重新指定!" + Environment.NewLine;
+                returnStr += "△ 客房命名重复，请重新指定!" + Environment.NewLine;
 
             //支付月数 >= 1
             if(this.支付月数 < 1)
-                returnStr += "客房支付月数必须大于等于1个月!" + Environment.NewLine;
+                returnStr += "△ 客房支付月数必须大于等于1个月!" + Environment.NewLine;
 
             #region  时间校验
             //1、当存在‘租户’时，必须有期止、期始值，必须有电话1、联系地址、身份证号、
             if (!string.IsNullOrEmpty(this.租户))
             {
                 if (!this.期始.HasValue || !this.期止.HasValue)
-                    returnStr += string.Format("存在租户时，必须有期始和期止时间!") + Environment.NewLine;
+                    returnStr += string.Format("△ 存在租户时，必须有期始和期止时间!") + Environment.NewLine;
                 if(string.IsNullOrEmpty(this.电话1))
-                    returnStr += string.Format("存在租户时，[电话1]不可为空!") + Environment.NewLine;
+                    returnStr += string.Format("△ 存在租户时，[电话1]不可为空!") + Environment.NewLine;
                 if(string.IsNullOrEmpty(this.联系地址))
-                    returnStr += string.Format("存在租户时，[联系地址]不可为空!") + Environment.NewLine;
+                    returnStr += string.Format("△ 存在租户时，[联系地址]不可为空!") + Environment.NewLine;
                 if(string.IsNullOrEmpty(this.身份证号))
-                    returnStr += string.Format("存在租户时，[身份证号]不可为空!") + Environment.NewLine;
+                    returnStr += string.Format("△ 存在租户时，[身份证号]不可为空!") + Environment.NewLine;
             }
             //2、不可仅有单边值
             if (this.期始.HasValue && !this.期止.HasValue)
             {
-                returnStr += "缺少期止时间!" + Environment.NewLine;
+                returnStr += "△ 缺少期止时间!" + Environment.NewLine;
             }
             else if (!this.期始.HasValue && this.期止.HasValue)
             {
-                returnStr += "缺少期始时间!" + Environment.NewLine;
+                returnStr += "△ 缺少期始时间!" + Environment.NewLine;
             }
             //3、期止>期始，并且时间范围必须在源房协议期之内
             if (this.期始.HasValue && this.期止.HasValue)
             {
                 if (this.期止.Value.Date < this.期始.Value.Date)
                 {
-                    returnStr += string.Format("期止时间[{0}]不能小于期始时间[{1}]!",
+                    returnStr += string.Format("△ 期止时间[{0}]不能小于期始时间[{1}]!",
                      this.期止.Value.ToShortDateString(), this.期始.Value.ToShortDateString()) + Environment.NewLine;
                 }
                 else
@@ -234,10 +253,10 @@ namespace Landlord2.Data
                     DateTime min源房期始 = this.源房.源房涨租协定.Min(m => m.期始).Date;
                     DateTime max源房期止 = this.源房.源房涨租协定.Max(m => m.期止).Date;
                     if (this.期始.Value.Date < min源房期始)
-                        returnStr += string.Format("期始时间[{0}]不能小于所隶属的源房的期始时间[{1}]!",
+                        returnStr += string.Format("△ 期始时间[{0}]不能小于所隶属的源房的期始时间[{1}]!",
                             this.期始.Value.ToShortDateString(),min源房期始.ToShortDateString()) +Environment.NewLine;
                     if (this.期止.Value.Date > max源房期止)
-                        returnStr += string.Format("期止时间[{0}]不能大于所隶属的源房的期止时间[{1}]!",
+                        returnStr += string.Format("△ 期止时间[{0}]不能大于所隶属的源房的期止时间[{1}]!",
                             this.期止.Value.ToShortDateString(), max源房期止.ToShortDateString()) + Environment.NewLine;
                 }
             }            
@@ -256,7 +275,7 @@ namespace Landlord2.Data
 
             //源房必须有‘源房涨租协定表’
             if (this.源房涨租协定.Count() == 0)
-                returnStr += "请填写协议租期!" + Environment.NewLine;
+                returnStr += "△ 请填写协议租期!" + Environment.NewLine;
 
             //校验源房下的‘源房涨租协定’表
             DateTime temp = DateTime.MinValue;
@@ -268,7 +287,7 @@ namespace Landlord2.Data
                 {
                     if (temp.Date.AddDays(1) != o.期始.Date)
                     {
-                        returnStr += string.Format("时间段不连续，请检查[期止{0}]和[期始{1}]!",
+                        returnStr += string.Format("△ 时间段不连续，请检查[期止{0}]和[期始{1}]!",
                             temp.ToShortDateString(), o.期始.ToShortDateString()) + Environment.NewLine ;
                     }
                 }
@@ -283,10 +302,10 @@ namespace Landlord2.Data
                 foreach (var o in this.客房.Where(m => !string.IsNullOrEmpty(m.租户)))
                 {
                     if (o.期始 < start)
-                        returnStr += string.Format("客房期始时间不能在源房期始时间之前！请检查源房起始租期[{0}]与客房[{1}]的期始时间{2}。",
+                        returnStr += string.Format("△ 客房期始时间不能在源房期始时间之前！请检查源房起始租期[{0}]与客房[{1}]的期始时间{2}。",
                             start.ToShortDateString(), o.命名, o.期始.Value.ToShortDateString()) + Environment.NewLine;
                     if (o.期止 > end)
-                        returnStr += string.Format("客房期止时间不能在源房期止时间之后！请检查源房期止时间[{0}]与客房[{1}]的期止时间{2}。",
+                        returnStr += string.Format("△ 客房期止时间不能在源房期止时间之后！请检查源房期止时间[{0}]与客房[{1}]的期止时间{2}。",
                             end.ToShortDateString(), o.命名, o.期止.Value.ToShortDateString()) + Environment.NewLine;
                 } 
             }
@@ -304,7 +323,7 @@ namespace Landlord2.Data
             //源房涨租协定必须隶属于一个上级的源房
             if (this.源房ID == null || this.源房ID == Guid.Empty)
             {
-                returnStr += "请指定源房涨租协定上级的源房! " + Environment.NewLine;
+                returnStr += "△ 请指定源房涨租协定上级的源房! " + Environment.NewLine;
                 return returnStr;
             }
 
@@ -313,7 +332,7 @@ namespace Landlord2.Data
 
             //时间校验
             if (this.期止.Date < this.期始.Date)
-                returnStr += string.Format("期止时间[{0}]不能小于期始时间[{1}]!",
+                returnStr += string.Format("△ 期止时间[{0}]不能小于期始时间[{1}]!",
                     this.期止.ToShortDateString(),this.期始.ToShortDateString()) + Environment.NewLine;
             return returnStr;
         }
@@ -326,7 +345,7 @@ namespace Landlord2.Data
             string returnStr = string.Empty;
             if (this.源房ID == null || this.源房ID == Guid.Empty)
             {
-                returnStr += "请指定装修明细所属的源房！ " + Environment.NewLine;
+                returnStr += "△ 请指定装修明细所属的源房！ " + Environment.NewLine;
                 return returnStr;
             }
 
@@ -344,7 +363,7 @@ namespace Landlord2.Data
             string returnStr = string.Empty;
             if (this.源房ID == null || this.源房ID == Guid.Empty)
             {
-                returnStr += "请指定抄表记录所属的源房！ " + Environment.NewLine;
+                returnStr += "△ 请指定抄表记录所属的源房！ " + Environment.NewLine;
                 return returnStr;
             }
 
@@ -353,7 +372,7 @@ namespace Landlord2.Data
 
             //水电气的止码必须要至少有一个
             if (this.水止码 == null && this.电止码 == null && this.气表剩余字数 == null)
-                returnStr += "水电气止码不可全部为空！" + Environment.NewLine;
+                returnStr += "△ 水电气止码不可全部为空！" + Environment.NewLine;
             return returnStr;
         }
     }
@@ -365,7 +384,7 @@ namespace Landlord2.Data
             string returnStr = string.Empty;
             if (this.源房ID == null || this.源房ID == Guid.Empty)
             {
-                returnStr += "请指定提醒所涉及的源房！" + Environment.NewLine;
+                returnStr += "△ 请指定提醒所涉及的源房！" + Environment.NewLine;
                 return returnStr;
             }
             //校验所有非空属性
@@ -382,7 +401,7 @@ namespace Landlord2.Data
             string returnStr = string.Empty;
             if (this.源房ID == null || this.源房ID == Guid.Empty)
             {
-                returnStr += "请指定日常损耗所涉及的源房！" + Environment.NewLine;
+                returnStr += "△ 请指定日常损耗所涉及的源房！" + Environment.NewLine;
                 return returnStr;
             }
             //校验所有非空属性

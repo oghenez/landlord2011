@@ -313,25 +313,27 @@ namespace Landlord2
 
             //确定字符串区域，绘制字符串
             g.DrawRectangle(new Pen(Color.Red, 0.1f), Rectangle.Round(strRecF));
-            g.DrawString(measureString, new Font("宋体", 12f, FontStyle.Bold), Brushes.Black, strRecF, strFormat);
+            g.DrawString(measureString, new Font("宋体", 12f), Brushes.Black, strRecF, strFormat);
             
             //绘制分割线
-            g.DrawLine(new Pen(Color.Black, 0.1f), 220, 0, 220, 60);
+            g.DrawLine(new Pen(Color.Black, 0.1f), 220, 10, 220, 70);
 
-            //计算缴费的3个时间点，及对应Bar图中的占比
+            //计算缴费的3个时间点(期始、期止、今日)，及对应Bar图中的占比
             if (payDetail == null)//该源房没有缴费（缴房租）的记录
             {
-                //!++ Here...2012.4.28
+               
             }
             else//存在最近缴房租的记录
             {
-                DateTime begin = (DateTime)payDetail.期始;
-                DateTime end = (DateTime)payDetail.期止;
-                if (DateTime.Now < end)//
+                DateTime begin = (DateTime)payDetail.期始.Value.Date;
+                DateTime end = (DateTime)payDetail.期止.Value.Date;
+                DateTime now = DateTime.Now.Date;
+                if (begin >= now && now <= end)//最近交房租记录为当前期
                 {
+                    g.DrawRectangle(new Pen(Color.Black, 0.1f), 230, 30, 400, 20);//绘制Bar矩形
                 }
                 else
-                { 
+                {
                 }
 
             }
