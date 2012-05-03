@@ -14,7 +14,7 @@ namespace Landlord2.Data
         public MyContext()
             : base(new EntityConnection(Helper.CreateConnectString()))
         {
-            //!+ 项目调用这个构造Context
+            //!+ 常规窗体调用这个构造Context
         }
 
         /// <summary>
