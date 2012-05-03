@@ -118,7 +118,7 @@ namespace Landlord2.Data
     public partial class 源房缴费明细 : ICheck
     {
 
-        public string CheckRules()
+        public string CheckRules()//!++ 这里有错误，删除时，this.源房=null
         {
             string returnStr = string.Empty;
 
