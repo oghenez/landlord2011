@@ -13,7 +13,7 @@ namespace Landlord2.Data
         public 源房缴费明细()
         {
             this.ID = Guid.NewGuid();
-            this.缴费时间 = DateTime.Today;//缴费时间默认当前操作日期
+            this.缴费时间 = DateTime.Now;//缴费时间默认当前操作时间，之后的查询会根据此降序排列，所以需要详细时间。
         }
 
 
