@@ -347,6 +347,7 @@
             this.kryptonDateTimePicker2.Checked = false;
             this.kryptonDateTimePicker2.CustomNullText = "<无>";
             this.kryptonDateTimePicker2.DataBindings.Add(new System.Windows.Forms.Binding("ValueNullable", this.源房缴费明细BindingSource, "期始", true));
+            this.kryptonDateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.kryptonDateTimePicker2.Location = new System.Drawing.Point(320, 56);
             this.kryptonDateTimePicker2.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
             this.kryptonDateTimePicker2.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
@@ -360,6 +361,7 @@
             this.kryptonDateTimePicker3.Checked = false;
             this.kryptonDateTimePicker3.CustomNullText = "<无>";
             this.kryptonDateTimePicker3.DataBindings.Add(new System.Windows.Forms.Binding("ValueNullable", this.源房缴费明细BindingSource, "期止", true));
+            this.kryptonDateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.kryptonDateTimePicker3.Location = new System.Drawing.Point(320, 86);
             this.kryptonDateTimePicker3.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
             this.kryptonDateTimePicker3.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);

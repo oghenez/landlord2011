@@ -82,6 +82,10 @@ namespace Landlord2.Data
     {
         public string CheckRules()
         {
+            //如果是删除操作，则不需校验。（原因1：加速；2：因为从模型中删除后会相应删除外键关联，相关引用会为null。）
+            if (this.EntityState == System.Data.EntityState.Deleted)
+                return string.Empty;
+
             string returnStr = string.Empty;
 
             //客房租金明细必须隶属于一个上级的客房
@@ -115,11 +119,15 @@ namespace Landlord2.Data
             return returnStr;
         }
     }
+
     public partial class 源房缴费明细 : ICheck
     {
-
-        public string CheckRules()//!++ 这里有错误，删除时，this.源房=null
+        public string CheckRules()
         {
+            //如果是删除操作，则不需校验。（原因1：加速；2：因为从模型中删除后会相应删除外键关联，相关引用会为null。）
+            if (this.EntityState == System.Data.EntityState.Deleted)
+                return string.Empty;
+
             string returnStr = string.Empty;
 
             //源房缴费明细必须隶属于一个上级的源房
@@ -194,10 +202,15 @@ namespace Landlord2.Data
             return returnStr;
         }
     }
+
     public partial class 客房 : ICheck
     {
         public string CheckRules()
         {
+            //如果是删除操作，则不需校验。（原因1：加速；2：因为从模型中删除后会相应删除外键关联，相关引用会为null。）
+            if (this.EntityState == System.Data.EntityState.Deleted)
+                return string.Empty;
+
             string returnStr = string.Empty;
             
             //客房必须隶属于一个上级的源房
@@ -265,10 +278,15 @@ namespace Landlord2.Data
             return returnStr;
         }
     }
+
     public partial class 源房:ICheck
     {
         public string CheckRules()
         {
+            //如果是删除操作，则不需校验。（原因1：加速；2：因为从模型中删除后会相应删除外键关联，相关引用会为null。）
+            if (this.EntityState == System.Data.EntityState.Deleted)
+                return string.Empty;
+
             string returnStr = string.Empty;
             //校验所有非空属性
             returnStr += MyEntityHelper.CheckNullOrEmptyAndABS(this);
@@ -314,10 +332,15 @@ namespace Landlord2.Data
         }
 
     }
+
     public partial class 源房涨租协定 :ICheck
     {
         public string CheckRules()
         {
+            //如果是删除操作，则不需校验。（原因1：加速；2：因为从模型中删除后会相应删除外键关联，相关引用会为null。）
+            if (this.EntityState == System.Data.EntityState.Deleted)
+                return string.Empty;
+
             string returnStr = string.Empty;
 
             //源房涨租协定必须隶属于一个上级的源房
@@ -342,6 +365,10 @@ namespace Landlord2.Data
     {
         public string CheckRules()
         {
+            //如果是删除操作，则不需校验。（原因1：加速；2：因为从模型中删除后会相应删除外键关联，相关引用会为null。）
+            if (this.EntityState == System.Data.EntityState.Deleted)
+                return string.Empty;
+
             string returnStr = string.Empty;
             if (this.源房ID == null || this.源房ID == Guid.Empty)
             {
@@ -360,6 +387,10 @@ namespace Landlord2.Data
     {
         public string CheckRules()
         {
+            //如果是删除操作，则不需校验。（原因1：加速；2：因为从模型中删除后会相应删除外键关联，相关引用会为null。）
+            if (this.EntityState == System.Data.EntityState.Deleted)
+                return string.Empty;
+
             string returnStr = string.Empty;
             if (this.源房ID == null || this.源房ID == Guid.Empty)
             {
@@ -381,6 +412,10 @@ namespace Landlord2.Data
     {
         public string CheckRules()
         {
+            //如果是删除操作，则不需校验。（原因1：加速；2：因为从模型中删除后会相应删除外键关联，相关引用会为null。）
+            if (this.EntityState == System.Data.EntityState.Deleted)
+                return string.Empty;
+
             string returnStr = string.Empty;
             if (this.源房ID == null || this.源房ID == Guid.Empty)
             {
@@ -398,6 +433,10 @@ namespace Landlord2.Data
     {
         public string CheckRules()
         {
+            //如果是删除操作，则不需校验。（原因1：加速；2：因为从模型中删除后会相应删除外键关联，相关引用会为null。）
+            if (this.EntityState == System.Data.EntityState.Deleted)
+                return string.Empty;
+
             string returnStr = string.Empty;
             if (this.源房ID == null || this.源房ID == Guid.Empty)
             {

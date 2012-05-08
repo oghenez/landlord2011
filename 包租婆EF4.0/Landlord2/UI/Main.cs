@@ -328,9 +328,12 @@ namespace Landlord2
                 DateTime begin = (DateTime)payDetail.期始.Value.Date;
                 DateTime end = (DateTime)payDetail.期止.Value.Date;
                 DateTime now = DateTime.Now.Date;
-                if (begin >= now && now <= end)//最近交房租记录为当前期
+                if (begin <= now && now <= end)//最近交房租记录为当前期
                 {
-                    g.DrawRectangle(new Pen(Color.Black, 0.1f), 230, 30, 400, 20);//绘制Bar矩形
+                    Rectangle rect = new Rectangle(230, 30, 400, 20);
+                    g.DrawRectangle(Pens.Black, rect);//绘制Bar矩形
+                    //g.DrawRectangle(new Pen(Brushes.Blue), 230, 30, 400, 20);
+                    g.FillRectangle(new LinearGradientBrush(rect,Color.White,Color.Blue,LinearGradientMode.Vertical), rect);
                 }
                 else
                 {
