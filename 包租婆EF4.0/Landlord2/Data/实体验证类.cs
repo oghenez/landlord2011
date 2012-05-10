@@ -145,13 +145,17 @@ namespace Landlord2.Data
             {
                 using (MyContext context = new MyContext())
                 {
-                    var objectQuery = 源房涨租协定.GetByYFid(context, this.源房ID).Execute(System.Data.Objects.MergeOption.NoTracking).ToList();
-                    DateTime min = objectQuery.Min(m => m.期始);
-                    DateTime max = objectQuery.Max(m => m.期止);
+                    var list = 源房涨租协定.GetByYFid(context, this.源房ID).Execute(System.Data.Objects.MergeOption.NoTracking).ToList();
+                    DateTime min = list.Min(m => m.期始);
+                    DateTime max = list.Max(m => m.期止);
                     if(this.期始.HasValue && this.期始.Value.Date < min.Date)
                         returnStr += "△ 期始时间小于源房的协议期始时间!" + Environment.NewLine;
                     if(this.期止.HasValue && max.Date < this.期止.Value.Date)
                         returnStr += "△ 期止时间大于源房的协议期止时间!" + Environment.NewLine;
+
+                    //首次源房缴租时，缴费的期始时间必须等于协议期始时间
+                    if (源房缴费明细.GetPayDetails(context, this.源房ID, "房租").Execute(System.Data.Objects.MergeOption.NoTracking).Count() == 0 && this.期始.Value.Date != min.Date)
+                        returnStr += "△ 首次源房缴租时，缴费的期始时间必须等于协议期始时间!" + Environment.NewLine;
                 }
             }
             //当缴费项为‘房租’时，必须有期始期止时间

@@ -321,7 +321,7 @@ namespace Landlord2
             //计算缴费的3个时间点(期始、期止、今日)，及对应Bar图中的占比
             if (payDetail == null)//该源房没有缴费（缴房租）的记录
             {
-               
+                
             }
             else//存在最近缴房租的记录
             {
@@ -330,12 +330,30 @@ namespace Landlord2
                 DateTime now = DateTime.Now.Date;
                 if (begin <= now && now <= end)//最近交房租记录为当前期
                 {
+                    //Bar总长度400*20
                     Rectangle rect = new Rectangle(230, 30, 400, 20);
-                    g.DrawRectangle(Pens.Black, rect);//绘制Bar矩形
-                    //g.DrawRectangle(new Pen(Brushes.Blue), 230, 30, 400, 20);
-                    g.FillRectangle(new LinearGradientBrush(rect,Color.White,Color.Blue,LinearGradientMode.Vertical), rect);
+                    //今日占比对应的区域
+                    int todayWidth = 400 * (now - begin).Days / (end - begin).Days;
+                    Rectangle todayRect = new Rectangle(230, 30, todayWidth, 20);
+                    //绘制Bar矩形外框
+                    g.DrawRectangle(Pens.Black, rect);
+                    //填充整个Bar
+                    g.FillRectangle(new LinearGradientBrush(rect, Color.White, Color.LightGray, LinearGradientMode.Vertical), rect);
+                    //填充至今日
+                    g.FillRectangle(new LinearGradientBrush(todayRect, Color.White, Color.Blue, LinearGradientMode.Vertical), todayRect);
+                    //绘制对应的小箭头及日期
+                    Pen linepen = new Pen(Color.Black);
+                    linepen.CustomStartCap = new System.Drawing.Drawing2D.AdjustableArrowCap(4, 5, true);
+                    g.DrawLine(linepen, new Point(230, 30+20), new Point(230, 30+20+10));
+                    g.DrawString(begin.ToShortDateString(), new Font("宋体", 9f), Brushes.Black, 230, 30 + 20 + 10);
+                    g.DrawLine(linepen, new Point(230 + 400, 50), new Point(230 + 400, 60));
+                    g.DrawString(end.ToShortDateString(), new Font("宋体", 9f), Brushes.Black, 230 + 400, 30 + 20 + 10);
+                    linepen.StartCap = LineCap.NoAnchor;
+                    linepen.DashStyle = DashStyle.Dash; //点划线绘制today
+                    g.DrawLine(linepen, new Point(230 + todayWidth, 30 - 10), new Point(230 + todayWidth, 30 + 20 + 10));
+                    g.DrawString(now.ToShortDateString()+"(今日)", new Font("宋体", 9f), Brushes.Black, 230 + todayWidth + 5, 30 - 10 - 5); //5px偏移
                 }
-                else
+                else//房租超期
                 {
                 }
 
@@ -343,9 +361,7 @@ namespace Landlord2
 
             g.TranslateTransform(0, 60);//下移坐标原点
 
-            Pen linepen = new Pen(Color.Blue, 1);
-            linepen.CustomStartCap = new System.Drawing.Drawing2D.AdjustableArrowCap(4, 5, true);
-            g.DrawLine(linepen, new Point( 100, 100), new Point( 100, 110));   
+              
         }
         //绘制一条客房信息
         private void paintKF(Graphics g)
