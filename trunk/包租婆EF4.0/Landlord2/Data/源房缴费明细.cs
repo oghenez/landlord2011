@@ -95,6 +95,7 @@ namespace Landlord2.Data
 
         /// <summary>
         /// 查询某个源房最近一次的缴费明细（仅仅针对‘房租’这个缴费项而言）
+        /// （如果最近一次的缴费不包含DateTime.Now时间点，则向下查询，找到当前缴费时间区域。）
         /// </summary>
         /// <param name="context"></param>
         /// <param name="yf"></param>
@@ -102,11 +103,16 @@ namespace Landlord2.Data
         public static 源房缴费明细 GetRecentPayDetail(MyContext context, 源房 yf)
         {
             源房缴费明细 recentPayDetail = null;
-            ObjectQuery<源房缴费明细> result = compiledQuery1.Invoke(context, yf.ID, "房租");
-            if (result.Count() > 0)
+            var result = compiledQuery1.Invoke(context, yf.ID, "房租").Execute(MergeOption.NoTracking).ToList();
+            var temp = result.GetEnumerator();
+            do
             {
-                recentPayDetail = result.First();
+                if (temp.MoveNext())
+                    recentPayDetail = temp.Current;
+                else
+                    break;
             }
+            while (temp.Current.期始.Value.Date > DateTime.Now.Date);
             return recentPayDetail;
         }
         #endregion
