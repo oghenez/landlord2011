@@ -95,7 +95,7 @@ namespace Landlord2.Data
 
         /// <summary>
         /// 查询某个源房最近一次的缴费明细（仅仅针对‘房租’这个缴费项而言）
-        /// （如果最近一次的缴费不包含DateTime.Now时间点，则向下查询，找到当前缴费时间区域。）
+        /// （如果最近一次的缴费期始时间大于DateTime.Now时间点，则向下查询，找到当前缴费时间区域。）
         /// </summary>
         /// <param name="context"></param>
         /// <param name="yf"></param>
