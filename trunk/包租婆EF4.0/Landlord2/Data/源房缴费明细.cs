@@ -94,26 +94,34 @@ namespace Landlord2.Data
         }
 
         /// <summary>
-        /// 查询某个源房最近一次的缴费明细（仅仅针对‘房租’这个缴费项而言）
-        /// （如果最近一次的缴费期始时间大于DateTime.Now时间点，则向下查询，找到当前缴费时间区域。）
+        /// 查询包含DateTime.Now时间点的已缴房租时间段
+        /// 1、如果最近一次的缴费期始时间大于DateTime.Now时间点，则包含此时间段，并向下查询，找到包含DateTime.Now时间点的缴费时间区域，并叠加。）
+        /// 2、如果欠费，即最近一次缴费期末时间小于DateTime.Now，那么返回最近缴费时间区域
         /// </summary>
         /// <param name="context"></param>
         /// <param name="yf"></param>
         /// <returns></returns>
-        public static 源房缴费明细 GetRecentPayDetail(MyContext context, 源房 yf)
+        public static MyDate GetRecentPayMyDate(MyContext context, 源房 yf)
         {
-            源房缴费明细 recentPayDetail = null;
+            MyDate myDate = new MyDate();
             var result = compiledQuery1.Invoke(context, yf.ID, "房租").Execute(MergeOption.NoTracking).ToList();
             var temp = result.GetEnumerator();
             do
             {
                 if (temp.MoveNext())
-                    recentPayDetail = temp.Current;
+                {
+                    myDate.Begin = MyDate.Smaller(temp.Current.期始.Value, myDate.Begin);
+                    myDate.End = MyDate.Bigger(temp.Current.期止.Value, myDate.End);
+                }
                 else
                     break;
             }
             while (temp.Current.期始.Value.Date > DateTime.Now.Date);
-            return recentPayDetail;
+
+            if (myDate.Begin == DateTime.MaxValue || myDate.End == DateTime.MinValue)
+                return null;
+            else
+                return myDate;
         }
         #endregion
 

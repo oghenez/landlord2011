@@ -240,33 +240,41 @@ namespace Landlord2
             //g.DrawString(measureString,stringFont,Brushes.Black,new PointF(0, 0));
 
             //test
-            HatchBrush hb = new HatchBrush(HatchStyle.LightUpwardDiagonal, Color.Black, Color.White);
+            HatchBrush hb = new HatchBrush(HatchStyle.DottedDiamond, Color.Black, Color.Gray);
+            Rectangle rect = new Rectangle((infoBmp.Width-480)/2, 10, 480, 30);
+            //绘制Title矩形外框
+            g.DrawRectangle(new Pen(hb), rect);
+            //垂直居中对齐字符串
+            StringFormat strFormat = new StringFormat();
+            strFormat.LineAlignment = StringAlignment.Center;
 
-            g.FillEllipse(Brushes.Gray, 10f, 10f, 200, 200);
-            g.DrawEllipse(new Pen(Color.Black, 1f), 10f, 10f, 200, 200);
+            g.TranslateTransform(0, 40);//下移坐标原点
 
-            g.FillEllipse(hb, 30f, 95f, 30, 30);
-            g.DrawEllipse(new Pen(Color.Black, 1f), 30f, 95f, 30, 30);
+            //g.FillEllipse(Brushes.Gray, 10f, 10f, 200, 200);
+            //g.DrawEllipse(new Pen(Color.Black, 1f), 10f, 10f, 200, 200);
 
-            g.FillEllipse(hb, 160f, 95f, 30, 30);
-            g.DrawEllipse(new Pen(Color.Black, 1f), 160f, 95f, 30, 30);
+            //g.FillEllipse(hb, 30f, 95f, 30, 30);
+            //g.DrawEllipse(new Pen(Color.Black, 1f), 30f, 95f, 30, 30);
 
-            g.FillEllipse(hb, 95f, 30f, 30, 30);
-            g.DrawEllipse(new Pen(Color.Black, 1f), 95f, 30f, 30, 30);
+            //g.FillEllipse(hb, 160f, 95f, 30, 30);
+            //g.DrawEllipse(new Pen(Color.Black, 1f), 160f, 95f, 30, 30);
 
-            g.FillEllipse(hb, 95f, 160f, 30, 30);
-            g.DrawEllipse(new Pen(Color.Black, 1f), 95f, 160f, 30, 30);
+            //g.FillEllipse(hb, 95f, 30f, 30, 30);
+            //g.DrawEllipse(new Pen(Color.Black, 1f), 95f, 30f, 30, 30);
 
-            g.FillEllipse(Brushes.Blue, 60f, 60f, 100, 100);
-            g.DrawEllipse(new Pen(Color.Black, 1f), 60f, 60f, 100, 100);
+            //g.FillEllipse(hb, 95f, 160f, 30, 30);
+            //g.DrawEllipse(new Pen(Color.Black, 1f), 95f, 160f, 30, 30);
 
-            g.FillEllipse(Brushes.BlanchedAlmond, 95f, 95f, 30, 30);
-            g.DrawEllipse(new Pen(Color.Black, 1f), 95f, 95f, 30, 30);
+            //g.FillEllipse(Brushes.Blue, 60f, 60f, 100, 100);
+            //g.DrawEllipse(new Pen(Color.Black, 1f), 60f, 60f, 100, 100);
 
-            g.DrawRectangle(new Pen(Brushes.Blue, 0.1f), 6, 6, 208, 208);
+            //g.FillEllipse(Brushes.BlanchedAlmond, 95f, 95f, 30, 30);
+            //g.DrawEllipse(new Pen(Color.Black, 1f), 95f, 95f, 30, 30);
 
-            g.DrawLine(new Pen(Color.Black, 0.1f), 110f, 110f, 220f, 25f);
-            g.DrawString("剖面图", new Font("宋体", 12f, FontStyle.Bold), Brushes.Green, 220f, 20f);
+            //g.DrawRectangle(new Pen(Brushes.Blue, 0.1f), 6, 6, 208, 208);
+
+            //g.DrawLine(new Pen(Color.Black, 0.1f), 110f, 110f, 220f, 25f);
+            //g.DrawString("剖面图", new Font("宋体", 12f, FontStyle.Bold), Brushes.Green, 220f, 20f);
         }
         /// <summary>
         /// 绘制一条源房信息
@@ -276,7 +284,7 @@ namespace Landlord2
         private void paintYF(Graphics g,源房 yf)
         {
             string measureString = yf.房名;
-            源房缴费明细 payDetail = 源房缴费明细.GetRecentPayDetail(context, yf);//得到最近一次的源房缴费明细(特指‘房租’的缴费)
+            MyDate myDate = 源房缴费明细.GetRecentPayMyDate(context, yf);//得到最近一次的源房缴费明细(特指‘房租’的缴费)
             RectangleF strRecF = new RectangleF(10, 10, 200, 60);//源房房名字符串区域           
 
             //房名字符串超过30个汉字就截断，用“...”代替
@@ -319,7 +327,7 @@ namespace Landlord2
             g.DrawLine(new Pen(Color.Black, 0.1f), 220, 10, 220, 70);
 
             //计算缴费的3个时间点(期始、期止、今日)，及对应Bar图中的占比
-            if (payDetail == null)//该源房没有缴费（缴房租）的记录
+            if (myDate == null)//该源房没有缴费（缴房租）的记录
             {
                 //Bar总长度400*20
                 RectangleF rect = new RectangleF(230, 30, 400, 20);                
@@ -332,22 +340,25 @@ namespace Landlord2
             }
             else//存在最近缴房租的记录
             {
-                DateTime begin = (DateTime)payDetail.期始.Value.Date;
-                DateTime end = (DateTime)payDetail.期止.Value.Date;
+                DateTime begin = (DateTime)myDate.Begin.Date;
+                DateTime end = (DateTime)myDate.End.Date;
                 DateTime now = DateTime.Now.Date;
                 if (begin <= now && now <= end)//最近交房租记录为当前期
                 {
                     //Bar总长度400*20( begin < now < end )
                     Rectangle rect = new Rectangle(230, 30, 400, 20);
-                    //今日占比对应的区域
-                    int todayWidth = 400 * (now - begin).Days / (end - begin).Days;
-                    Rectangle todayRect = new Rectangle(230, 30, todayWidth, 20);
                     //绘制Bar矩形外框
                     g.DrawRectangle(Pens.Black, rect);
                     //填充整个Bar
                     g.FillRectangle(new LinearGradientBrush(rect, Color.White, Color.Green, LinearGradientMode.Vertical), rect);
-                    //填充至今日
-                    g.FillRectangle(new LinearGradientBrush(todayRect, Color.White, Color.Blue, LinearGradientMode.Vertical), todayRect);
+                    //今日占比对应的区域
+                    int todayWidth = 400 * (now - begin).Days / (end - begin).Days;
+                    if (todayWidth > 0)
+                    {
+                        Rectangle todayRect = new Rectangle(230, 30, todayWidth, 20);
+                        //填充至今日
+                        g.FillRectangle(new LinearGradientBrush(todayRect, Color.White, Color.Blue, LinearGradientMode.Vertical), todayRect);
+                    }
                     //绘制对应的小箭头及日期
                     Pen linepen = new Pen(Color.Black);
                     linepen.CustomStartCap = new System.Drawing.Drawing2D.AdjustableArrowCap(4, 5, true);
@@ -364,15 +375,18 @@ namespace Landlord2
                 {
                     //Bar总长度400*20
                     Rectangle rect = new Rectangle(230, 30, 400, 20);
-                    //缴费期占比对应的区域
-                    int endWidth = 400 * (end - begin).Days / (now - begin).Days;
-                    Rectangle endRect = new Rectangle(230, 30, endWidth, 20);
                     //绘制Bar矩形外框
                     g.DrawRectangle(Pens.Black, rect);
                     //填充整个Bar
                     g.FillRectangle(new LinearGradientBrush(rect, Color.White, Color.Red, LinearGradientMode.Vertical), rect);
-                    //填充至end
-                    g.FillRectangle(new LinearGradientBrush(endRect, Color.White, Color.Blue, LinearGradientMode.Vertical), endRect);
+                    //缴费期占比对应的区域
+                    int endWidth = 400 * (end - begin).Days / (now - begin).Days;
+                    if (endWidth > 0)
+                    {
+                        Rectangle endRect = new Rectangle(230, 30, endWidth, 20);
+                        //填充至end
+                        g.FillRectangle(new LinearGradientBrush(endRect, Color.White, Color.Blue, LinearGradientMode.Vertical), endRect);
+                    }
                     //绘制对应的小箭头及日期
                     Pen linepen = new Pen(Color.Black);
                     linepen.CustomStartCap = new System.Drawing.Drawing2D.AdjustableArrowCap(4, 5, true);
@@ -389,12 +403,12 @@ namespace Landlord2
 
             }
 
-            g.TranslateTransform(0, 60);//下移坐标原点
+            g.TranslateTransform(0, 60+10);//下移坐标原点
 
               
         }
         //绘制一条客房信息
-        private void paintKF(Graphics g)
+        private void paintKF(Graphics g, 客房 kf)
         {
 
         }
@@ -434,7 +448,7 @@ namespace Landlord2
                 
                 if (context.源房.Count() > 0)
                 {
-                    //paintTitle(g);//绘制标题
+                    paintTitle(g);//绘制标题
                     TreeNode root1 = new TreeNode("当前源房信息");
                     root1.ToolTipText = "当前源房按照签约时间自动排序";
                     root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
@@ -442,8 +456,8 @@ namespace Landlord2
                     DoThreadSafe(delegate { treeView1.Nodes.Add(root1); });
                     foreach (var yf in 源房.GetYF_NoHistory(context).Include("客房").Execute(MergeOption.OverwriteChanges))
                     {
-                        AddYuanFangToTree(root1, yf, false, obj);
                         paintYF(g, yf);//绘制源房
+                        AddYuanFangToTree(root1, yf, false, obj);
                     }
 
                     TreeNode root2 = new TreeNode("历史源房信息");
