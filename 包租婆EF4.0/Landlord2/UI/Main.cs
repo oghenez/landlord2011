@@ -224,57 +224,35 @@ namespace Landlord2
         //绘制标题
         private void paintTitle(Graphics g)
         {
-            //(阴影刷)
-            //HatchBrush  hatchBrush = new HatchBrush(HatchStyle.DiagonalCross,Color.DarkOrange, Color.Aquamarine);
-            //g.DrawString("源房客房到期一览", new Font("宋体", Font.Bold,9f), hatchBrush,);
-
-            // Set up string.
-            //string measureString = "源房客房到期一览";
-            //Font stringFont = new Font("黑体", 14f);//, FontStyle.Bold);
-            //// Measure string.
-            //SizeF stringSize = new SizeF();
-            //stringSize = g.MeasureString(measureString, stringFont);
-            //// Draw rectangle representing size of string.
-            //g.DrawRectangle(new Pen(Color.Red, 1),0.0F, 0.0F, stringSize.Width, stringSize.Height);
-            //// Draw string to screen.
-            //g.DrawString(measureString,stringFont,Brushes.Black,new PointF(0, 0));
-
-            //test
-            HatchBrush hb = new HatchBrush(HatchStyle.DottedDiamond, Color.Black, Color.Gray);
-            Rectangle rect = new Rectangle((infoBmp.Width-480)/2, 10, 480, 30);
-            //绘制Title矩形外框
-            g.DrawRectangle(new Pen(hb), rect);
+            int beginX = (infoBmp.Width-480)/2;
+            Rectangle rect = new Rectangle(beginX, 10, 480, 30);
             //垂直居中对齐字符串
             StringFormat strFormat = new StringFormat();
             strFormat.LineAlignment = StringAlignment.Center;
+            //绘制各类目矩形和文字
+            RectangleF smallRect = new RectangleF(beginX + 35, 10 + 10, 60, 10);
+            g.DrawRectangle(Pens.Black,Rectangle.Round(smallRect));
+            g.FillRectangle(new LinearGradientBrush(smallRect, Color.White, Color.Green, LinearGradientMode.Vertical), smallRect);
+            rect.Offset(35+60, 0);
+            g.DrawString("已缴纳房租", new Font("宋体", 9f), Brushes.Black, rect, strFormat);
+            smallRect.Offset(150, 0);
+            rect.X = (int)smallRect.X - 5;
 
-            g.TranslateTransform(0, 40);//下移坐标原点
+            g.DrawRectangle(Pens.Black, Rectangle.Round(smallRect));
+            g.FillRectangle(new LinearGradientBrush(smallRect, Color.White, Color.Red, LinearGradientMode.Vertical), smallRect);
+            rect.Offset(5 + 60, 0);
+            g.DrawString("超期未缴纳", new Font("宋体", 9f), Brushes.Black, rect, strFormat);
+            smallRect.Offset(150, 0);
+            rect.X = (int)smallRect.X - 5;
 
-            //g.FillEllipse(Brushes.Gray, 10f, 10f, 200, 200);
-            //g.DrawEllipse(new Pen(Color.Black, 1f), 10f, 10f, 200, 200);
+            g.DrawRectangle(Pens.Black, Rectangle.Round(smallRect));
+            g.FillRectangle(new LinearGradientBrush(smallRect, Color.White, Color.Blue, LinearGradientMode.Vertical), smallRect);
+            rect.Offset(5 + 60, 0);
+            g.DrawString("截至今日", new Font("宋体", 9f), Brushes.Black, rect, strFormat);
+            //smallRect.Offset(100, 0);
+            //rect.X = (int)smallRect.X - 5;
 
-            //g.FillEllipse(hb, 30f, 95f, 30, 30);
-            //g.DrawEllipse(new Pen(Color.Black, 1f), 30f, 95f, 30, 30);
-
-            //g.FillEllipse(hb, 160f, 95f, 30, 30);
-            //g.DrawEllipse(new Pen(Color.Black, 1f), 160f, 95f, 30, 30);
-
-            //g.FillEllipse(hb, 95f, 30f, 30, 30);
-            //g.DrawEllipse(new Pen(Color.Black, 1f), 95f, 30f, 30, 30);
-
-            //g.FillEllipse(hb, 95f, 160f, 30, 30);
-            //g.DrawEllipse(new Pen(Color.Black, 1f), 95f, 160f, 30, 30);
-
-            //g.FillEllipse(Brushes.Blue, 60f, 60f, 100, 100);
-            //g.DrawEllipse(new Pen(Color.Black, 1f), 60f, 60f, 100, 100);
-
-            //g.FillEllipse(Brushes.BlanchedAlmond, 95f, 95f, 30, 30);
-            //g.DrawEllipse(new Pen(Color.Black, 1f), 95f, 95f, 30, 30);
-
-            //g.DrawRectangle(new Pen(Brushes.Blue, 0.1f), 6, 6, 208, 208);
-
-            //g.DrawLine(new Pen(Color.Black, 0.1f), 110f, 110f, 220f, 25f);
-            //g.DrawString("剖面图", new Font("宋体", 12f, FontStyle.Bold), Brushes.Green, 220f, 20f);
+            g.TranslateTransform(0, 50);//下移坐标原点
         }
         /// <summary>
         /// 绘制一条源房信息
@@ -407,8 +385,8 @@ namespace Landlord2
 
               
         }
-        //绘制一条客房信息
-        private void paintKF(Graphics g, 客房 kf)
+        //绘制一条客房信息。state状态 = 4(未租),3(已租，协议到期，请续租或退租),2(已租，协议未到期，逾期交租),1(正常已租状态)
+        private void paintKF(Graphics g, 客房 kf,int state)
         {
 
         }
@@ -457,7 +435,7 @@ namespace Landlord2
                     foreach (var yf in 源房.GetYF_NoHistory(context).Include("客房").Execute(MergeOption.OverwriteChanges))
                     {
                         paintYF(g, yf);//绘制源房
-                        AddYuanFangToTree(root1, yf, false, obj);
+                        AddYuanFangToTree(root1, yf, false, obj,g);
                     }
 
                     TreeNode root2 = new TreeNode("历史源房信息");
@@ -467,7 +445,7 @@ namespace Landlord2
                     root2.ImageIndex = 1;
                     DoThreadSafe(delegate { treeView1.Nodes.Add(root2); });
                     foreach (var yf in 源房.GetYF_History(context).Include("客房").Execute(MergeOption.OverwriteChanges))
-                        AddYuanFangToTree(root2, yf, true, obj);
+                        AddYuanFangToTree(root2, yf, true, obj,g);
                 }
                 else
                 {
@@ -493,7 +471,7 @@ namespace Landlord2
         /// <param name="parent"></param>
         /// <param name="yf"></param>
         /// <param name="isHistory">是否是历史源房（历史源房下的客房不管到期与否都置灰）</param>
-        private void AddYuanFangToTree(TreeNode parent, 源房 yf, bool isHistory,EntityObject obj)
+        private void AddYuanFangToTree(TreeNode parent, 源房 yf, bool isHistory, EntityObject obj, Graphics g)
         {
             TreeNode yfNode = new TreeNode();
             yfNode.Text = yf.房名;
@@ -516,7 +494,10 @@ namespace Landlord2
                 else
                 {
                     if (string.IsNullOrEmpty(kf.租户))
+                    {
                         kfNode.ImageIndex = 4;//未租4
+                        paintKF(g, kf, 4);
+                    }
                     else
                     {
                         kfNode.ImageIndex = 3;//已租3
@@ -526,13 +507,19 @@ namespace Landlord2
                             kfNode.Text += "[协议到期]";
                             kfNode.ToolTipText = "协议到期，请[续租]或[退租]。";
                             kfNode.ForeColor = Color.Red;
+                            paintKF(g, kf, 3);
                         }
                         else if (kf.客房租金明细.Count == 0 || kf.客房租金明细.Max(m => m.止付日期) < DateTime.Now)//已租，协议未到期，逾期交租
                         {
                             kfNode.Text += "[逾期交租]";
                             kfNode.ToolTipText = "逾期交租，请[收租]或[退租]。";
                             kfNode.ForeColor = Color.Magenta;
-                        }       
+                            paintKF(g, kf, 2);
+                        }
+                        else //正常已租状态
+                        {
+                            paintKF(g, kf, 1);
+                        }
                     }                    
                 }
                 DoThreadSafe(delegate {
