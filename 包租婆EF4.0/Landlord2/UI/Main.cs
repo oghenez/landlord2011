@@ -388,7 +388,7 @@ namespace Landlord2
         //绘制一条客房信息。state状态 = 4(未租),3(已租，协议到期，请续租或退租),2(已租，协议未到期，逾期交租),1(正常已租状态)
         private void paintKF(Graphics g, 客房 kf,int state)
         {
-
+            string measureString = kf.命名;
         }
 
         //根据数据源，刷新TreeView，并定位到指定对象所对应的节点。（新增、修改、删除等操作后）

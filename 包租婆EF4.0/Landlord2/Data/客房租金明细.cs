@@ -92,6 +92,37 @@ namespace Landlord2.Data
             return kf.客房租金明细.Where(m => m.起付日期 >= begin.Date).
                 OrderByDescending(m => m.起付日期).ToList();
         }
+
+        /// <summary>
+        /// 查询包含DateTime.Now时间点的已缴房租时间段
+        /// 1、如果最近一次的缴费期始时间大于DateTime.Now时间点，则包含此时间段，并向下查询，找到包含DateTime.Now时间点的缴费时间区域，并叠加。）
+        /// 2、如果欠费，即最近一次缴费期末时间小于DateTime.Now，那么返回最近缴费时间区域
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="kf"></param>
+        /// <returns></returns>
+        public static MyDate GetRecentMyDate(MyContext context, 客房 kf)
+        {
+            MyDate myDate = new MyDate();
+            var result = GetRentDetails_Current2(kf);
+            var temp = result.GetEnumerator();
+            do
+            {
+                if (temp.MoveNext())
+                {
+                    myDate.Begin = MyDate.Smaller(temp.Current.起付日期, myDate.Begin);
+                    myDate.End = MyDate.Bigger(temp.Current.止付日期, myDate.End);
+                }
+                else
+                    break;
+            }
+            while (temp.Current.起付日期.Date > DateTime.Now.Date);
+
+            if (myDate.Begin == DateTime.MaxValue || myDate.End == DateTime.MinValue)
+                return null;
+            else
+                return myDate;
+        }
         #endregion
     }
 
