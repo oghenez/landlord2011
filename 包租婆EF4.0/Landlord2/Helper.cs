@@ -234,6 +234,39 @@ namespace Landlord2
             return InternetGetConnectedState(out Desc, 0);
         }
 
+        /// <summary>
+        /// 字符串截取，超过长度用‘...’代替
+        /// </summary>
+        /// <param name="old">原始字符串</param>
+        /// <param name="number">汉字长度（双字节）</param>
+        /// <returns>截取后的字符串</returns>
+        public static string CutString(string old,int number)
+        {
+            //房名字符串超过number个汉字就截断，用“...”代替
+            int n = number * 2;
+            if (System.Text.Encoding.Default.GetByteCount(old) > n)
+            {
+                int t = 0;
+                string temp = string.Empty;
+                char[] q = old.ToCharArray();
+                for (int i = 0; i < q.Length && t < n; i++)
+                {
+                    if ((int)q[i] >= 0x4E00 && (int)q[i] <= 0x9FA5)//是否汉字
+                    {
+                        temp += q[i];
+                        t += 2;
+                    }
+                    else
+                    {
+                        temp += q[i];
+                        t++;
+                    }
+                }
+                old = temp + "...";
+            }
+            return old;
+        }
+
         #region 加密狗相关
         /// <summary>
         /// 查询本机是否安装加密狗
