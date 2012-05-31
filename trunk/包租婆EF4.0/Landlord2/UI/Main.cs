@@ -262,30 +262,11 @@ namespace Landlord2
         private void paintYF(Graphics g,源房 yf)
         {
             string measureString = yf.房名;
-            MyDate myDate = 源房缴费明细.GetRecentPayMyDate(context, yf);//得到最近一次的源房缴费明细(特指‘房租’的缴费)
+            MyDate myDate = 源房缴费明细.GetRecentPayMyDate(context, yf);//查询包含DateTime.Now时间点的已缴房租时间段
             RectangleF strRecF = new RectangleF(10, 10, 200, 60);//源房房名字符串区域           
 
-            //房名字符串超过30个汉字就截断，用“...”代替
-            if (System.Text.Encoding.Default.GetByteCount(measureString) > 60)
-            {
-                int t = 0;
-                string temp = string.Empty;
-                char[] q = measureString.ToCharArray();
-                for (int i = 0; i < q.Length && t < 60; i++)
-                {
-                    if ((int)q[i] >= 0x4E00 && (int)q[i] <= 0x9FA5)//是否汉字
-                    {
-                        temp += q[i];
-                        t += 2;
-                    }
-                    else
-                    {
-                        temp += q[i];
-                        t++;
-                    }
-                }
-                measureString = temp + "...";
-            }
+            //房名字符串超过18个汉字就截断，用“...”代替
+            measureString = Helper.CutString(measureString, 18);            
 
             ////根据字体计算‘房名’字符串的宽高【最长200像素，超过则换行】
             //Font font = new Font("宋体", 12f, FontStyle.Bold);
@@ -299,7 +280,7 @@ namespace Landlord2
 
             //确定字符串区域，绘制字符串
             g.DrawRectangle(Pens.Red, Rectangle.Round(strRecF));
-            g.DrawString(measureString, new Font("宋体", 12f), Brushes.Black, strRecF, strFormat);
+            g.DrawString(measureString, new Font("宋体", 14,FontStyle.Bold), Brushes.Black, strRecF, strFormat);
             
             //绘制分割线
             g.DrawLine(new Pen(Color.Black, 0.1f), 220, 10, 220, 70);
@@ -389,6 +370,28 @@ namespace Landlord2
         private void paintKF(Graphics g, 客房 kf,int state)
         {
             string measureString = kf.命名;
+            MyDate myDate = 客房租金明细.GetRecentMyDate(context, kf);//查询包含DateTime.Now时间点的已缴房租时间段
+            RectangleF strRecF = new RectangleF(110, 0, 100, 40);//客房命名字符串区域
+
+            //命名字符串超过20个汉字就截断，用“...”代替
+            measureString = Helper.CutString(measureString, 20);
+
+            //右对齐字符串
+            StringFormat strFormat = new StringFormat();
+            strFormat.Alignment = StringAlignment.Far;
+            strFormat.LineAlignment = StringAlignment.Center;
+
+            //确定字符串区域，绘制字符串
+            g.DrawRectangle(Pens.Red, Rectangle.Round(strRecF));
+            g.DrawString(measureString, new Font("宋体", 10f), Brushes.Black, strRecF, strFormat);
+
+            //绘制分割线
+            g.DrawLine(new Pen(Color.Black, 0.1f), 220, 0, 220, 40);
+
+
+
+            g.TranslateTransform(0, 40);//下移坐标原点
+
         }
 
         //根据数据源，刷新TreeView，并定位到指定对象所对应的节点。（新增、修改、删除等操作后）
@@ -417,7 +420,7 @@ namespace Landlord2
             using (Graphics g = Graphics.FromImage(infoBmp))
             {
                 g.TranslateTransform(0, 0);//还原坐标原点
-                g.Clear(Color.Transparent);//清除背景图片
+                g.Clear(Color.FromArgb(238, 243, 250));//清除背景图片
                 g.SmoothingMode = SmoothingMode.HighQuality; //高质量
                 g.PixelOffsetMode = PixelOffsetMode.HighQuality; //高像素偏移质量            
                 g.InterpolationMode = InterpolationMode.HighQualityBicubic;
