@@ -121,7 +121,10 @@ namespace Landlord2.Data
             if (myDate.Begin == DateTime.MaxValue || myDate.End == DateTime.MinValue)
                 return null;
             else
+            {
+                myDate.ContractEnd = kf.期止;//当有缴费数据时，同时得到客房协议期止时间
                 return myDate;
+            }
         }
         #endregion
     }

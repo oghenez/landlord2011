@@ -121,7 +121,10 @@ namespace Landlord2.Data
             if (myDate.Begin == DateTime.MaxValue || myDate.End == DateTime.MinValue)
                 return null;
             else
+            {
+                myDate.ContractEnd = 源房涨租协定.GetByYFid(context,yf.ID).Execute(MergeOption.NoTracking).Max(m => m.期止);//当有缴费数据时，同时得到源房协议期止时间
                 return myDate;
+            }
         }
         #endregion
 
