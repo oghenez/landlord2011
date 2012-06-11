@@ -54,15 +54,15 @@ namespace Landlord2
                 , e.Action
                 , e.Element
                 ,DateTime.Now.ToShortTimeString()));
-                //MessageBox.Show(string.Format(
-                //    "MainContext刚刚检测到缓存改动--Action:{0} Object:{1}\r\n目前本地缓存实体数量：\r\n\tAdded-{2}\r\n\tDeleted-{3}\r\n\tModified-{4}\r\n\tUnchanged-{5}"
-                //    , e.Action
-                //    , e.Element
-                //    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Added).Count()
-                //    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted).Count()
-                //    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Modified).Count()
-                //    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Unchanged).Count()
-                //    ));
+                MessageBox.Show(string.Format(
+                    "MainContext刚刚检测到缓存改动--Action:{0} Object:{1}\r\n目前本地缓存实体数量：\r\n\tAdded-{2}\r\n\tDeleted-{3}\r\n\tModified-{4}\r\n\tUnchanged-{5}"
+                    , e.Action
+                    , e.Element
+                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Added).Count()
+                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted).Count()
+                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Modified).Count()
+                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Unchanged).Count()
+                    ));
             };
 #endif
             #endregion
@@ -286,15 +286,15 @@ namespace Landlord2
             g.DrawLine(new Pen(Color.Black, 0.1f), 220, 10, 220, 70);
 
             //计算缴费的3个时间点(期始、期止、今日)，及对应Bar图中的占比
+            strFormat.Alignment = StringAlignment.Near;
+            //Bar总长度400*20
+            Rectangle rect = new Rectangle(230, 30, 400, 20);
             if (myDate == null)//该源房没有缴费（缴房租）的记录
-            {
-                //Bar总长度400*20
-                RectangleF rect = new RectangleF(230, 30, 400, 20);                
+            {                               
                 //绘制Bar矩形外框
                 g.DrawRectangle(Pens.Black, Rectangle.Round(rect));
                 //填充整个Bar
                 g.FillRectangle(new LinearGradientBrush(rect, Color.White, Color.LightGray, LinearGradientMode.Vertical), rect);
-                strFormat.Alignment = StringAlignment.Near;
                 g.DrawString("无源房缴租记录", new Font("宋体", 9f), Brushes.Black,rect,strFormat); 
             }
             else//存在最近缴房租的记录
@@ -302,10 +302,9 @@ namespace Landlord2
                 DateTime begin = (DateTime)myDate.Begin.Date;
                 DateTime end = (DateTime)myDate.End.Date;
                 DateTime now = DateTime.Now.Date;
-                if (begin <= now && now <= end)//最近交房租记录为当前期
-                {
-                    //Bar总长度400*20( begin < now < end )
-                    Rectangle rect = new Rectangle(230, 30, 400, 20);
+                
+                if (begin <= now && now <= end)//最近交房租记录为当前期( begin < now < end )
+                {                    
                     //绘制Bar矩形外框
                     g.DrawRectangle(Pens.Black, rect);
                     //填充整个Bar
@@ -331,9 +330,7 @@ namespace Landlord2
                     g.DrawString(now.ToShortDateString()+"(今日)", new Font("宋体", 9f), Brushes.Black, 230 + todayWidth + 5, 30 - 10 - 5); //5px偏移
                 }
                 else//房租超期( begin < end< now )
-                {
-                    //Bar总长度400*20
-                    Rectangle rect = new Rectangle(230, 30, 400, 20);
+                {                    
                     //绘制Bar矩形外框
                     g.DrawRectangle(Pens.Black, rect);
                     //填充整个Bar
@@ -359,7 +356,15 @@ namespace Landlord2
                     g.DrawString(now.ToShortDateString() + "(今日)", new Font("宋体", 9f), Brushes.Black, 230 + 400 + 5, 30 - 10 - 5); //5px偏移
 
                 }
-
+                if (myDate.ContractEnd != null)
+                {
+                    DateTime contractEnd = myDate.ContractEnd.Value;
+                    if ((contractEnd - DateTime.Now).Days < 30)
+                    {
+                        rect.Offset(rect.Width + 5, 0) ;//横移rect
+                        g.DrawString(string.Format("【源房将于{0}到期】",contractEnd.ToShortDateString()), new Font("宋体", 9f), Brushes.Red, rect, strFormat);
+                    }
+                }
             }
 
             g.TranslateTransform(0, 60+10);//下移坐标原点
