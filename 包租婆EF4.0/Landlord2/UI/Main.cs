@@ -396,7 +396,7 @@ namespace Landlord2
             //计算缴费的3个时间点(期始、期止、今日)，及对应Bar图中的占比
             strFormat.Alignment = StringAlignment.Near;
             //Bar总长度300*15
-            Rectangle rect = new Rectangle(230, 22, 300, 15);
+            Rectangle rect = new Rectangle(230, 12, 300, 15);
             if (myDate == null)//该客房没有收租记录（【未租】或【已租但没收租记录的】）
             {
                 //绘制Bar矩形外框
@@ -438,19 +438,19 @@ namespace Landlord2
                             int todayWidth = 300 * (now - begin).Days / (end - begin).Days;
                             if (todayWidth > 0)
                             {
-                                Rectangle todayRect = new Rectangle(230, 22, todayWidth, 15);
+                                Rectangle todayRect = new Rectangle(230, 12, todayWidth, 15);
                                 g.FillRectangle(new LinearGradientBrush(todayRect, Color.White, Color.Blue, LinearGradientMode.Vertical), todayRect);
                             }
                             Pen linepen = new Pen(Color.Black);
                             linepen.CustomStartCap = new System.Drawing.Drawing2D.AdjustableArrowCap(4, 5, true);
-                            g.DrawLine(linepen, new Point(230, 22 + 15), new Point(230, 22 + 15 + 10));
-                            g.DrawString(begin.ToShortDateString(), new Font("宋体", 9f), Brushes.Black, 230, 22 + 15 + 10);
-                            g.DrawLine(linepen, new Point(230 + 300, 50), new Point(230 + 300, 60));
-                            g.DrawString(end.ToShortDateString(), new Font("宋体", 9f), Brushes.Black, 230 + 300, 22 + 15 + 10);
+                            g.DrawLine(linepen, new Point(230, 12 + 15), new Point(230, 12 + 15 + 10));
+                            g.DrawString(begin.ToShortDateString(), new Font("宋体", 9f), Brushes.Black, 230, 12 + 15 + 10);
+                            g.DrawLine(linepen, new Point(230 + 300, 12 + 15), new Point(230 + 300, 12 + 15 + 10));
+                            g.DrawString(end.ToShortDateString(), new Font("宋体", 9f), Brushes.Black, 230 + 300, 12 + 15 + 10);
                             linepen.StartCap = LineCap.NoAnchor;
                             linepen.DashStyle = DashStyle.Dash;
-                            g.DrawLine(linepen, new Point(230 + todayWidth, 22 - 10), new Point(230 + todayWidth, 22 + 15 + 10));
-                            g.DrawString(now.ToShortDateString() + "(今日)", new Font("宋体", 9f), Brushes.Black, 230 + todayWidth + 5, 22 - 10 - 5);
+                            g.DrawLine(linepen, new Point(230 + todayWidth, 12 - 10), new Point(230 + todayWidth, 12 + 15 + 10));
+                            g.DrawString(now.ToShortDateString() + "(今日)", new Font("宋体", 9f), Brushes.Black, 230 + todayWidth + 5, 12 - 10 - 5);
                         }
                         break;
                     default:
