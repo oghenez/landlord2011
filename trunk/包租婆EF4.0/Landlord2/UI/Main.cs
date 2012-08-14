@@ -53,7 +53,7 @@ namespace Landlord2
                 "ObjectStateManager.ObjectStateManagerChanged | Action:{0} Object:{1} -- {2}"
                 , e.Action
                 , e.Element
-                ,DateTime.Now.ToShortTimeString()));
+                , DateTime.Now.ToShortTimeString()));
                 MessageBox.Show(string.Format(
                     "MainContext刚刚检测到缓存改动--Action:{0} Object:{1}\r\n目前本地缓存实体数量：\r\n\tAdded-{2}\r\n\tDeleted-{3}\r\n\tModified-{4}\r\n\tUnchanged-{5}"
                     , e.Action
@@ -368,7 +368,7 @@ namespace Landlord2
             }
 
             g.TranslateTransform(0, 60+10);//下移坐标原点
-
+            
               
         }
         //绘制一条客房信息。state状态 = 4(未租),3(已租，协议到期，请续租或退租),2(已租，协议未到期，逾期交租),1(正常已租状态)
