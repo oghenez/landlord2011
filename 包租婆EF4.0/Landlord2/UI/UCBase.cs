@@ -76,8 +76,7 @@ namespace Landlord2.UI
 
         #region 使加载的控件居中
         protected void UCBase_Layout(object sender, LayoutEventArgs e)
-        {
-       
+        {       
             switch (Controls.Count)
             {
                 case 0:

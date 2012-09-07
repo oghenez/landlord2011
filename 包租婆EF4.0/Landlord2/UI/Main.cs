@@ -26,7 +26,6 @@ namespace Landlord2
         private UC源房详细 yfUC ;//= new UC源房详细(true) { Dock = DockStyle.Fill };
         private UC客房详细 kfUC ;//= new UC客房详细(true) { Dock = DockStyle.Fill };
         private UC源房客房到期一览 chartUC ;//= new UC源房客房到期一览(infoBmp) { Dock = DockStyle.Fill };
-        private Bitmap infoBmp ;//到期一览bmp
 
         public Main()
         {
@@ -45,27 +44,27 @@ namespace Landlord2
             数据报表ToolStripMenuItem.Visible = v;
             kcheckBtn数据报表.Visible = v;
             #endregion
-            #region 调试代码
-#if DEBUG
-            context.ObjectStateManager.ObjectStateManagerChanged += (sender, e) =>
-            {
-                Console.WriteLine(string.Format(
-                "ObjectStateManager.ObjectStateManagerChanged | Action:{0} Object:{1} -- {2}"
-                , e.Action
-                , e.Element
-                , DateTime.Now.ToShortTimeString()));
-                MessageBox.Show(string.Format(
-                    "MainContext刚刚检测到缓存改动--Action:{0} Object:{1}\r\n目前本地缓存实体数量：\r\n\tAdded-{2}\r\n\tDeleted-{3}\r\n\tModified-{4}\r\n\tUnchanged-{5}"
-                    , e.Action
-                    , e.Element
-                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Added).Count()
-                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted).Count()
-                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Modified).Count()
-                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Unchanged).Count()
-                    ));
-            };
-#endif
-            #endregion
+//            #region 调试代码
+//#if DEBUG
+//            context.ObjectStateManager.ObjectStateManagerChanged += (sender, e) =>
+//            {
+//                Console.WriteLine(string.Format(
+//                "ObjectStateManager.ObjectStateManagerChanged | Action:{0} Object:{1} -- {2}"
+//                , e.Action
+//                , e.Element
+//                , DateTime.Now.ToShortTimeString()));
+//                MessageBox.Show(string.Format(
+//                    "MainContext刚刚检测到缓存改动--Action:{0} Object:{1}\r\n目前本地缓存实体数量：\r\n\tAdded-{2}\r\n\tDeleted-{3}\r\n\tModified-{4}\r\n\tUnchanged-{5}"
+//                    , e.Action
+//                    , e.Element
+//                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Added).Count()
+//                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Deleted).Count()
+//                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Modified).Count()
+//                    , context.ObjectStateManager.GetObjectStateEntries(EntityState.Unchanged).Count()
+//                    ));
+//            };
+//#endif
+//            #endregion
 
         }
         #region 线程安全的访问UI控件的方法
@@ -91,7 +90,6 @@ namespace Landlord2
                 DoThreadSafe(delegate { yfUC = new UC源房详细(true) { Dock = DockStyle.Fill }; });
                 DoThreadSafe(delegate { kfUC = new UC客房详细(true) { Dock = DockStyle.Fill }; });
                 DoThreadSafe(delegate { chartUC = new UC源房客房到期一览() { Dock = DockStyle.Fill }; });
-                infoBmp = new Bitmap(kryptonHeaderGroup2.Panel.Width-20, kryptonHeaderGroup2.Panel.Height-20);//暂定父容器尺寸
                 LoadTreeView(null);
 
                 RefreshCustomAlarmData();
@@ -214,254 +212,6 @@ namespace Landlord2
         } 
         #endregion
 
-        ////绘制“源房客房到期一览”图片
-        //private void PaintBmp()
-        //{
-        //    paintTitle();
-        //    paintYF();
-        //}
-
-        //绘制标题
-        private void paintTitle(Graphics g)
-        {
-            int beginX = (infoBmp.Width-480)/2;
-            Rectangle rect = new Rectangle(beginX, 10, 480, 30);
-            //垂直居中对齐字符串
-            StringFormat strFormat = new StringFormat();
-            strFormat.LineAlignment = StringAlignment.Center;
-            //绘制各类目矩形和文字
-            RectangleF smallRect = new RectangleF(beginX + 35, 10 + 10, 60, 10);
-            g.DrawRectangle(Pens.Black,Rectangle.Round(smallRect));
-            g.FillRectangle(new LinearGradientBrush(smallRect, Color.White, Color.Green, LinearGradientMode.Vertical), smallRect);
-            rect.Offset(35+60, 0);
-            g.DrawString("已缴纳房租", new Font("宋体", 9f), Brushes.Black, rect, strFormat);
-            smallRect.Offset(150, 0);
-            rect.X = (int)smallRect.X - 5;
-
-            g.DrawRectangle(Pens.Black, Rectangle.Round(smallRect));
-            g.FillRectangle(new LinearGradientBrush(smallRect, Color.White, Color.Red, LinearGradientMode.Vertical), smallRect);
-            rect.Offset(5 + 60, 0);
-            g.DrawString("超期未缴纳", new Font("宋体", 9f), Brushes.Black, rect, strFormat);
-            smallRect.Offset(150, 0);
-            rect.X = (int)smallRect.X - 5;
-
-            g.DrawRectangle(Pens.Black, Rectangle.Round(smallRect));
-            g.FillRectangle(new LinearGradientBrush(smallRect, Color.White, Color.Blue, LinearGradientMode.Vertical), smallRect);
-            rect.Offset(5 + 60, 0);
-            g.DrawString("截至今日", new Font("宋体", 9f), Brushes.Black, rect, strFormat);
-            //smallRect.Offset(100, 0);
-            //rect.X = (int)smallRect.X - 5;
-
-            g.TranslateTransform(0, 50);//下移坐标原点
-        }
-        /// <summary>
-        /// 绘制一条源房信息
-        /// </summary>
-        /// <param name="g"></param>
-        /// <param name="yf"></param>
-        private void paintYF(Graphics g,源房 yf)
-        {
-            string measureString = yf.房名;
-            MyDate myDate = 源房缴费明细.GetRecentPayMyDate(context, yf);//查询包含DateTime.Now时间点的已缴房租时间段
-            RectangleF strRecF = new RectangleF(10, 10, 200, 60);//源房房名字符串区域           
-
-            //房名字符串超过18个汉字就截断，用“...”代替
-            measureString = Helper.CutString(measureString, 18);            
-
-            ////根据字体计算‘房名’字符串的宽高【最长200像素，超过则换行】
-            //Font font = new Font("宋体", 12f, FontStyle.Bold);
-            //SizeF stringSize = new SizeF();
-            //stringSize = g.MeasureString(measureString, font, 200, StringFormat.GenericDefault);//字符串最大布局宽度200像素
-
-            //右对齐字符串
-            StringFormat strFormat = new StringFormat();
-            strFormat.Alignment = StringAlignment.Far;
-            strFormat.LineAlignment = StringAlignment.Center; 
-
-            //确定字符串区域，绘制字符串
-            g.DrawRectangle(Pens.Red, Rectangle.Round(strRecF));
-            g.DrawString(measureString, new Font("宋体", 14,FontStyle.Bold), Brushes.Black, strRecF, strFormat);
-            
-            //绘制分割线
-            g.DrawLine(new Pen(Color.Black, 0.1f), 220, 10, 220, 70);
-
-            //计算缴费的3个时间点(期始、期止、今日)，及对应Bar图中的占比
-            strFormat.Alignment = StringAlignment.Near;
-            //Bar总长度400*20
-            Rectangle rect = new Rectangle(230, 30, 400, 20);
-            if (myDate == null)//该源房没有缴费（缴房租）的记录
-            {                               
-                //绘制Bar矩形外框
-                g.DrawRectangle(Pens.Black, Rectangle.Round(rect));
-                //填充整个Bar
-                g.FillRectangle(new LinearGradientBrush(rect, Color.White, Color.LightGray, LinearGradientMode.Vertical), rect);
-                g.DrawString("无源房缴租记录", new Font("宋体", 9f), Brushes.Black,rect,strFormat); 
-            }
-            else//存在最近缴房租的记录
-            {
-                DateTime begin = (DateTime)myDate.Begin.Date;
-                DateTime end = (DateTime)myDate.End.Date;
-                DateTime now = DateTime.Now.Date;
-                
-                if (begin <= now && now <= end)//最近交房租记录为当前期( begin < now < end )
-                {                    
-                    //绘制Bar矩形外框
-                    g.DrawRectangle(Pens.Black, rect);
-                    //填充整个Bar
-                    g.FillRectangle(new LinearGradientBrush(rect, Color.White, Color.Green, LinearGradientMode.Vertical), rect);
-                    //今日占比对应的区域
-                    int todayWidth = 400 * (now - begin).Days / (end - begin).Days;
-                    if (todayWidth > 0)
-                    {
-                        Rectangle todayRect = new Rectangle(230, 30, todayWidth, 20);
-                        //填充至今日
-                        g.FillRectangle(new LinearGradientBrush(todayRect, Color.White, Color.Blue, LinearGradientMode.Vertical), todayRect);
-                    }
-                    //绘制对应的小箭头及日期
-                    Pen linepen = new Pen(Color.Black);
-                    linepen.CustomStartCap = new System.Drawing.Drawing2D.AdjustableArrowCap(4, 5, true);
-                    g.DrawLine(linepen, new Point(230, 30+20), new Point(230, 30+20+10));
-                    g.DrawString(begin.ToShortDateString(), new Font("宋体", 9f), Brushes.Black, 230, 30 + 20 + 10);
-                    g.DrawLine(linepen, new Point(230 + 400, 50), new Point(230 + 400, 60));
-                    g.DrawString(end.ToShortDateString(), new Font("宋体", 9f), Brushes.Black, 230 + 400, 30 + 20 + 10);
-                    linepen.StartCap = LineCap.NoAnchor;
-                    linepen.DashStyle = DashStyle.Dash; //点划线绘制today
-                    g.DrawLine(linepen, new Point(230 + todayWidth, 30 - 10), new Point(230 + todayWidth, 30 + 20 + 10));
-                    g.DrawString(now.ToShortDateString()+"(今日)", new Font("宋体", 9f), Brushes.Black, 230 + todayWidth + 5, 30 - 10 - 5); //5px偏移
-                }
-                else//房租超期( begin < end< now )
-                {                    
-                    //绘制Bar矩形外框
-                    g.DrawRectangle(Pens.Black, rect);
-                    //填充整个Bar
-                    g.FillRectangle(new LinearGradientBrush(rect, Color.White, Color.Red, LinearGradientMode.Vertical), rect);
-                    //缴费期占比对应的区域
-                    int endWidth = 400 * (end - begin).Days / (now - begin).Days;
-                    if (endWidth > 0)
-                    {
-                        Rectangle endRect = new Rectangle(230, 30, endWidth, 20);
-                        //填充至end
-                        g.FillRectangle(new LinearGradientBrush(endRect, Color.White, Color.Blue, LinearGradientMode.Vertical), endRect);
-                    }
-                    //绘制对应的小箭头及日期
-                    Pen linepen = new Pen(Color.Black);
-                    linepen.CustomStartCap = new System.Drawing.Drawing2D.AdjustableArrowCap(4, 5, true);
-                    g.DrawLine(linepen, new Point(230, 30 + 20), new Point(230, 30 + 20 + 10));
-                    g.DrawString(begin.ToShortDateString(), new Font("宋体", 9f), Brushes.Black, 230, 30 + 20 + 10);
-                    g.DrawLine(linepen, new Point(230 + endWidth, 50), new Point(230 + endWidth, 60));
-                    g.DrawString(end.ToShortDateString(), new Font("宋体", 9f), Brushes.Black, 230 + endWidth, 30 + 20 + 10);
-                    linepen.StartCap = LineCap.NoAnchor;
-                    linepen.DashStyle = DashStyle.Dash; //点划线绘制today
-                    g.DrawLine(linepen, new Point(230 + 400, 30 - 10), new Point(230 + 400, 30 + 20 + 10));
-                    g.DrawString(now.ToShortDateString() + "(今日)", new Font("宋体", 9f), Brushes.Black, 230 + 400 + 5, 30 - 10 - 5); //5px偏移
-
-                }
-                if (myDate.ContractEnd != null)
-                {
-                    DateTime contractEnd = myDate.ContractEnd.Value;
-                    if ((contractEnd - DateTime.Now).Days < 30)
-                    {
-                        rect.Offset(rect.Width + 5, 0) ;//横移rect
-                        g.DrawString(string.Format("【源房将于{0}到期】",contractEnd.ToShortDateString()), new Font("宋体", 9f), Brushes.Red, rect, strFormat);
-                    }
-                }
-            }
-
-            g.TranslateTransform(0, 60+10);//下移坐标原点
-            
-              
-        }
-        //绘制一条客房信息。state状态 = 4(未租),3(已租，协议到期，请续租或退租),2(已租，协议未到期，逾期交租),1(正常已租状态)
-        private void paintKF(Graphics g, 客房 kf,int state)
-        {
-            string measureString = kf.命名;
-            MyDate myDate = 客房租金明细.GetRecentMyDate(context, kf);//查询包含DateTime.Now时间点的已缴房租时间段
-            RectangleF strRecF = new RectangleF(110, 0, 100, 40);//客房命名字符串区域
-
-            //命名字符串超过20个汉字就截断，用“...”代替
-            measureString = Helper.CutString(measureString, 20);
-
-            //右对齐字符串
-            StringFormat strFormat = new StringFormat();
-            strFormat.Alignment = StringAlignment.Far;
-            strFormat.LineAlignment = StringAlignment.Center;
-
-            //确定字符串区域，绘制字符串
-            g.DrawRectangle(Pens.Red, Rectangle.Round(strRecF));
-            g.DrawString(measureString, new Font("宋体", 10f), Brushes.Black, strRecF, strFormat);
-
-            //绘制分割线
-            g.DrawLine(new Pen(Color.Black, 0.1f), 220, 0, 220, 40);
-
-            //计算缴费的3个时间点(期始、期止、今日)，及对应Bar图中的占比
-            strFormat.Alignment = StringAlignment.Near;
-            //Bar总长度300*15
-            Rectangle rect = new Rectangle(230, 12, 300, 15);
-            if (myDate == null)//该客房没有收租记录（【未租】或【已租但没收租记录的】）
-            {
-                //绘制Bar矩形外框
-                g.DrawRectangle(Pens.Black, Rectangle.Round(rect));
-                //填充整个Bar
-                g.FillRectangle(new LinearGradientBrush(rect, Color.White, Color.LightGray, LinearGradientMode.Vertical), rect);
-                string s;
-                Brush brush;
-                if (state == 4)
-                { 
-                    s = "未租";
-                    brush = Brushes.Red;
-                }
-                else
-                {
-                    s = "已租但无客房收租记录";
-                    brush = Brushes.Black;
-                }
-                g.DrawString(s, new Font("宋体", 9f), brush, rect, strFormat);
-            }
-            else//存在最近收租记录的
-            {
-                DateTime begin = (DateTime)myDate.Begin.Date;
-                DateTime end = (DateTime)myDate.End.Date;
-                DateTime now = DateTime.Now.Date;
-                switch (state)
-                {
-                    case 3://已租，协议到期，请续租或退租
-                        { }
-                        break;
-                    case 2://已租，协议未到期，逾期交租
-                        { }
-                        break;
-                    case 1://正常已租状态
-                        {
-                            System.Diagnostics.Debug.Assert(begin <= now && now <= end);
-                            g.DrawRectangle(Pens.Black, rect);
-                            g.FillRectangle(new LinearGradientBrush(rect, Color.White, Color.Green, LinearGradientMode.Vertical), rect);
-                            int todayWidth = 300 * (now - begin).Days / (end - begin).Days;
-                            if (todayWidth > 0)
-                            {
-                                Rectangle todayRect = new Rectangle(230, 12, todayWidth, 15);
-                                g.FillRectangle(new LinearGradientBrush(todayRect, Color.White, Color.Blue, LinearGradientMode.Vertical), todayRect);
-                            }
-                            Pen linepen = new Pen(Color.Black);
-                            linepen.CustomStartCap = new System.Drawing.Drawing2D.AdjustableArrowCap(4, 5, true);
-                            g.DrawLine(linepen, new Point(230, 12 + 15), new Point(230, 12 + 15 + 10));
-                            g.DrawString(begin.ToShortDateString(), new Font("宋体", 9f), Brushes.Black, 230, 12 + 15 + 10);
-                            g.DrawLine(linepen, new Point(230 + 300, 12 + 15), new Point(230 + 300, 12 + 15 + 10));
-                            g.DrawString(end.ToShortDateString(), new Font("宋体", 9f), Brushes.Black, 230 + 300, 12 + 15 + 10);
-                            linepen.StartCap = LineCap.NoAnchor;
-                            linepen.DashStyle = DashStyle.Dash;
-                            g.DrawLine(linepen, new Point(230 + todayWidth, 12 - 10), new Point(230 + todayWidth, 12 + 15 + 10));
-                            g.DrawString(now.ToShortDateString() + "(今日)", new Font("宋体", 9f), Brushes.Black, 230 + todayWidth + 5, 12 - 10 - 5);
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            g.TranslateTransform(0, 40);//下移坐标原点
-
-        }
-
         //根据数据源，刷新TreeView，并定位到指定对象所对应的节点。（新增、修改、删除等操作后）
         //如果obj传入null，那么如果原来选择的是源房或客房节点，继续选择它。
         //! 注意：此处的obj，有可能是从属于其他界面context的，所以函数里会根据entitykey判断
@@ -485,46 +235,33 @@ namespace Landlord2
                 treeView1.Nodes.Clear();
             });
 
-            using (Graphics g = Graphics.FromImage(infoBmp))
+            if (context.源房.Count() > 0)
             {
-                g.TranslateTransform(0, 0);//还原坐标原点
-                g.Clear(Color.FromArgb(238, 243, 250));//清除背景图片
-                g.SmoothingMode = SmoothingMode.HighQuality; //高质量
-                g.PixelOffsetMode = PixelOffsetMode.HighQuality; //高像素偏移质量            
-                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                g.CompositingQuality = CompositingQuality.HighQuality;
-                g.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;//文字clearType
-                
-                if (context.源房.Count() > 0)
+                TreeNode root1 = new TreeNode("当前源房信息");
+                root1.ToolTipText = "当前源房按照签约时间自动排序";
+                root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
+                root1.ImageIndex = 0;
+                DoThreadSafe(delegate { treeView1.Nodes.Add(root1); });
+                foreach (var yf in 源房.GetYF_NoHistory(context).Include("客房").Execute(MergeOption.OverwriteChanges))
                 {
-                    paintTitle(g);//绘制标题
-                    TreeNode root1 = new TreeNode("当前源房信息");
-                    root1.ToolTipText = "当前源房按照签约时间自动排序";
-                    root1.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
-                    root1.ImageIndex = 0;
-                    DoThreadSafe(delegate { treeView1.Nodes.Add(root1); });
-                    foreach (var yf in 源房.GetYF_NoHistory(context).Include("客房").Execute(MergeOption.OverwriteChanges))
-                    {
-                        paintYF(g, yf);//绘制源房
-                        AddYuanFangToTree(root1, yf, false, obj,g);
-                    }
+                    AddYuanFangToTree(root1, yf, false, obj);
+                }
 
-                    TreeNode root2 = new TreeNode("历史源房信息");
-                    root2.ToolTipText = "历史源房按照签约时间自动排序";
-                    root2.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
-                    root2.ForeColor = Color.DimGray;
-                    root2.ImageIndex = 1;
-                    DoThreadSafe(delegate { treeView1.Nodes.Add(root2); });
-                    foreach (var yf in 源房.GetYF_History(context).Include("客房").Execute(MergeOption.OverwriteChanges))
-                        AddYuanFangToTree(root2, yf, true, obj,g);
-                }
-                else
+                TreeNode root2 = new TreeNode("历史源房信息");
+                root2.ToolTipText = "历史源房按照签约时间自动排序";
+                root2.NodeFont = new System.Drawing.Font("宋体", 10, FontStyle.Bold);
+                root2.ForeColor = Color.DimGray;
+                root2.ImageIndex = 1;
+                DoThreadSafe(delegate { treeView1.Nodes.Add(root2); });
+                foreach (var yf in 源房.GetYF_History(context).Include("客房").Execute(MergeOption.OverwriteChanges))
+                    AddYuanFangToTree(root2, yf, true, obj);
+            }
+            else
+            {
+                DoThreadSafe(delegate
                 {
-                    DoThreadSafe(delegate
-                    {
-                        treeView1.Nodes.Add("当前没有源房、客房信息");
-                    });
-                }
+                    treeView1.Nodes.Add("当前没有源房、客房信息");
+                });
             }
 
             DoThreadSafe(delegate
@@ -532,6 +269,7 @@ namespace Landlord2
                 if (obj == null)
                     treeView1.SelectedNode = treeView1.Nodes[0];//默认刷新定位到此节点
                 treeView1.ExpandAll();
+                treeView1.Nodes[0].EnsureVisible(); 
                 treeView1.EndUpdate();
             });   
         }
@@ -542,7 +280,7 @@ namespace Landlord2
         /// <param name="parent"></param>
         /// <param name="yf"></param>
         /// <param name="isHistory">是否是历史源房（历史源房下的客房不管到期与否都置灰）</param>
-        private void AddYuanFangToTree(TreeNode parent, 源房 yf, bool isHistory, EntityObject obj, Graphics g)
+        private void AddYuanFangToTree(TreeNode parent, 源房 yf, bool isHistory, EntityObject obj)
         {
             TreeNode yfNode = new TreeNode();
             yfNode.Text = yf.房名;
@@ -567,7 +305,6 @@ namespace Landlord2
                     if (string.IsNullOrEmpty(kf.租户))
                     {
                         kfNode.ImageIndex = 4;//未租4
-                        paintKF(g, kf, 4);
                     }
                     else
                     {
@@ -578,18 +315,16 @@ namespace Landlord2
                             kfNode.Text += "[协议到期]";
                             kfNode.ToolTipText = "协议到期，请[续租]或[退租]。";
                             kfNode.ForeColor = Color.Red;
-                            paintKF(g, kf, 3);
                         }
                         else if (kf.客房租金明细.Count == 0 || kf.客房租金明细.Max(m => m.止付日期) < DateTime.Now)//已租，协议未到期，逾期交租
                         {
                             kfNode.Text += "[逾期交租]";
                             kfNode.ToolTipText = "逾期交租，请[收租]或[退租]。";
                             kfNode.ForeColor = Color.Magenta;
-                            paintKF(g, kf, 2);
                         }
                         else //正常已租状态
                         {
-                            paintKF(g, kf, 1);
+                            
                         }
                     }                    
                 }
@@ -744,7 +479,6 @@ namespace Landlord2
                     //加载
                     kryptonHeaderGroup2.Panel.Controls.Add(chartUC);
                 }
-                chartUC.LoadAndResize(infoBmp);
                 kryptonHeaderGroup2.ValuesPrimary.Heading = "本期缴费、收租一览";
             }            
             else if (entity is 源房)
