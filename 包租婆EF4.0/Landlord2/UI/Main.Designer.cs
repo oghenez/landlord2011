@@ -879,9 +879,9 @@
             this.toolStripSeparator6,
             this.yfBtnPay,
             this.yfBtnPayDetail});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(4, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(313, 70);
+            this.toolStrip1.Size = new System.Drawing.Size(344, 70);
             this.toolStrip1.TabIndex = 0;
             // 
             // yfBtnAdd
@@ -961,7 +961,7 @@
             this.toolStripSeparator8,
             this.kfBtnCollectRent,
             this.kfBtnCollectRentDetail});
-            this.toolStrip2.Location = new System.Drawing.Point(316, 0);
+            this.toolStrip2.Location = new System.Drawing.Point(348, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(555, 70);
             this.toolStrip2.TabIndex = 1;
