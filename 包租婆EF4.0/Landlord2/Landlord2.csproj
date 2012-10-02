@@ -140,6 +140,12 @@
     <Compile Include="Data\源房缴费明细.cs" />
     <Compile Include="Data\装修明细.cs" />
     <Compile Include="ET99_API.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyDataGridViewDateTimePickerColumn.cs" />
     <Compile Include="Data\实体验证类.cs" />
     <Compile Include="Helper.cs" />
