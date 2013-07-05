@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("数据报表...", 0);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("计算器", 0);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("电子地图", 1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("网上银行", 2);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("生活助手", 3);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("租赁网站", 4);
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("数据报表...", 0);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("计算器", 0);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("电子地图", 1);
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("网上银行", 2);
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("生活助手", 3);
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("租赁网站", 4);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("加载信息，请稍候．．．");
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -676,7 +676,7 @@
             this.listViewReports.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listViewReports.Dock = System.Windows.Forms.DockStyle.Top;
             this.listViewReports.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem7});
             this.listViewReports.Location = new System.Drawing.Point(0, 334);
             this.listViewReports.MultiSelect = false;
             this.listViewReports.Name = "listViewReports";
@@ -693,11 +693,11 @@
             this.listViewTools.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listViewTools.Dock = System.Windows.Forms.DockStyle.Top;
             this.listViewTools.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6});
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12});
             this.listViewTools.LargeImageList = this.imageList2;
             this.listViewTools.Location = new System.Drawing.Point(0, 131);
             this.listViewTools.MultiSelect = false;
@@ -728,11 +728,11 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.ImageIndex = 7;
-            treeNode1.Name = "节点0";
-            treeNode1.Text = "加载信息，请稍候．．．";
+            treeNode2.ImageIndex = 7;
+            treeNode2.Name = "节点0";
+            treeNode2.Text = "加载信息，请稍候．．．";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.treeView1.SelectedImageIndex = 7;
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.ShowRootLines = false;
@@ -879,9 +879,9 @@
             this.toolStripSeparator6,
             this.yfBtnPay,
             this.yfBtnPayDetail});
-            this.toolStrip1.Location = new System.Drawing.Point(4, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(344, 70);
+            this.toolStrip1.Size = new System.Drawing.Size(313, 70);
             this.toolStrip1.TabIndex = 0;
             // 
             // yfBtnAdd
@@ -961,9 +961,9 @@
             this.toolStripSeparator8,
             this.kfBtnCollectRent,
             this.kfBtnCollectRentDetail});
-            this.toolStrip2.Location = new System.Drawing.Point(348, 0);
+            this.toolStrip2.Location = new System.Drawing.Point(316, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(555, 70);
+            this.toolStrip2.Size = new System.Drawing.Size(586, 70);
             this.toolStrip2.TabIndex = 1;
             // 
             // kfBtnAdd
